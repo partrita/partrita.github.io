@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1512986450.590512
+_modified_time = 1512992538.744539
 _enable_loop = True
-_template_filename = 'c:/users/deepthought/appdata/local/continuum/anaconda2/envs/blog/lib/site-packages/nikola/data/themes/base/templates/comments_helper_livefyre.tmpl'
+_template_filename = '/home/partrita/miniconda2/envs/blog/lib/python3.6/site-packages/nikola/data/themes/base/templates/comments_helper_livefyre.tmpl'
 _template_uri = 'comments_helper_livefyre.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['comment_form', 'comment_link', 'comment_link_script']
@@ -70,6 +70,6 @@ def render_comment_link_script(context):
 
 """
 __M_BEGIN_METADATA
-{"filename": "c:/users/deepthought/appdata/local/continuum/anaconda2/envs/blog/lib/site-packages/nikola/data/themes/base/templates/comments_helper_livefyre.tmpl", "uri": "comments_helper_livefyre.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 21, "22": 28, "23": 33, "29": 2, "34": 2, "35": 7, "36": 7, "37": 11, "38": 11, "44": 23, "49": 23, "50": 24, "51": 24, "52": 25, "53": 25, "54": 25, "55": 25, "61": 31, "65": 31, "71": 65}}
+{"filename": "/home/partrita/miniconda2/envs/blog/lib/python3.6/site-packages/nikola/data/themes/base/templates/comments_helper_livefyre.tmpl", "uri": "comments_helper_livefyre.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 21, "22": 28, "23": 33, "29": 2, "34": 2, "35": 7, "36": 7, "37": 11, "38": 11, "44": 23, "49": 23, "50": 24, "51": 24, "52": 25, "53": 25, "54": 25, "55": 25, "61": 31, "65": 31, "71": 65}}
 __M_END_METADATA
 """
