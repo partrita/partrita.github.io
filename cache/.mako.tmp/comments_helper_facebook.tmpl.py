@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1512993557.141709
+_modified_time = 1513034606.8804724
 _enable_loop = True
-_template_filename = '/home/partrita/miniconda2/envs/blog/lib/python3.6/site-packages/nikola/data/themes/base/templates/comments_helper_facebook.tmpl'
+_template_filename = 'c:/users/deepthought/appdata/local/continuum/anaconda2/envs/blog/lib/site-packages/nikola/data/themes/base/templates/comments_helper_facebook.tmpl'
 _template_uri = 'comments_helper_facebook.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['comment_form', 'comment_link', 'comment_link_script']
@@ -68,6 +68,6 @@ def render_comment_link_script(context):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/home/partrita/miniconda2/envs/blog/lib/python3.6/site-packages/nikola/data/themes/base/templates/comments_helper_facebook.tmpl", "uri": "comments_helper_facebook.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 26, "22": 30, "23": 62, "29": 2, "34": 2, "35": 8, "36": 8, "37": 25, "38": 25, "44": 28, "48": 28, "49": 29, "50": 29, "56": 32, "61": 32, "62": 46, "63": 46, "69": 63}}
+{"filename": "c:/users/deepthought/appdata/local/continuum/anaconda2/envs/blog/lib/site-packages/nikola/data/themes/base/templates/comments_helper_facebook.tmpl", "uri": "comments_helper_facebook.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 26, "22": 30, "23": 62, "29": 2, "34": 2, "35": 8, "36": 8, "37": 25, "38": 25, "44": 28, "48": 28, "49": 29, "50": 29, "56": 32, "61": 32, "62": 46, "63": 46, "69": 63}}
 __M_END_METADATA
 """

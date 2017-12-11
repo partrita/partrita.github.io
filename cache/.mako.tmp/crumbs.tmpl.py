@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1512993557.2530582
+_modified_time = 1513034606.947566
 _enable_loop = True
-_template_filename = '/home/partrita/miniconda2/envs/blog/lib/python3.6/site-packages/nikola/data/themes/base/templates/crumbs.tmpl'
+_template_filename = 'c:/users/deepthought/appdata/local/continuum/anaconda2/envs/blog/lib/site-packages/nikola/data/themes/base/templates/crumbs.tmpl'
 _template_uri = 'crumbs.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['bar']
@@ -53,6 +53,6 @@ def render_bar(context,crumbs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/home/partrita/miniconda2/envs/blog/lib/python3.6/site-packages/nikola/data/themes/base/templates/crumbs.tmpl", "uri": "crumbs.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 2, "22": 19, "28": 3, "33": 3, "34": 4, "35": 5, "36": 7, "37": 8, "38": 9, "39": 10, "40": 10, "41": 10, "42": 11, "43": 12, "44": 12, "45": 12, "46": 12, "47": 12, "48": 16, "54": 48}}
+{"filename": "c:/users/deepthought/appdata/local/continuum/anaconda2/envs/blog/lib/site-packages/nikola/data/themes/base/templates/crumbs.tmpl", "uri": "crumbs.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 2, "22": 19, "28": 3, "33": 3, "34": 4, "35": 5, "36": 7, "37": 8, "38": 9, "39": 10, "40": 10, "41": 10, "42": 11, "43": 12, "44": 12, "45": 12, "46": 12, "47": 12, "48": 16, "54": 48}}
 __M_END_METADATA
 """

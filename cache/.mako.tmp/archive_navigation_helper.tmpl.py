@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1512993557.2957306
+_modified_time = 1513034606.5970762
 _enable_loop = True
-_template_filename = '/home/partrita/miniconda2/envs/blog/lib/python3.6/site-packages/nikola/data/themes/base/templates/archive_navigation_helper.tmpl'
+_template_filename = 'c:/users/deepthought/appdata/local/continuum/anaconda2/envs/blog/lib/site-packages/nikola/data/themes/base/templates/archive_navigation_helper.tmpl'
 _template_uri = 'archive_navigation_helper.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['archive_navigation']
@@ -28,12 +28,12 @@ def render_body(context,**pageargs):
 def render_archive_navigation(context):
     __M_caller = context.caller_stack._push_frame()
     try:
-        messages = context.get('messages', UNDEFINED)
-        next_archive = context.get('next_archive', UNDEFINED)
-        up_archive = context.get('up_archive', UNDEFINED)
         previous_archive = context.get('previous_archive', UNDEFINED)
-        has_archive_navigation = context.get('has_archive_navigation', UNDEFINED)
+        up_archive = context.get('up_archive', UNDEFINED)
         pagekind = context.get('pagekind', UNDEFINED)
+        next_archive = context.get('next_archive', UNDEFINED)
+        messages = context.get('messages', UNDEFINED)
+        has_archive_navigation = context.get('has_archive_navigation', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if 'archive_page' in pagekind:
@@ -77,6 +77,6 @@ def render_archive_navigation(context):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/home/partrita/miniconda2/envs/blog/lib/python3.6/site-packages/nikola/data/themes/base/templates/archive_navigation_helper.tmpl", "uri": "archive_navigation_helper.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 2, "22": 27, "28": 3, "38": 3, "39": 4, "40": 5, "41": 6, "42": 8, "43": 9, "44": 9, "45": 9, "46": 9, "47": 9, "48": 10, "49": 11, "50": 11, "51": 11, "52": 13, "53": 14, "54": 14, "55": 14, "56": 14, "57": 14, "58": 15, "59": 16, "60": 16, "61": 16, "62": 18, "63": 19, "64": 19, "65": 19, "66": 19, "67": 19, "68": 20, "69": 21, "70": 21, "71": 21, "72": 23, "78": 72}}
+{"filename": "c:/users/deepthought/appdata/local/continuum/anaconda2/envs/blog/lib/site-packages/nikola/data/themes/base/templates/archive_navigation_helper.tmpl", "uri": "archive_navigation_helper.tmpl", "source_encoding": "utf-8", "line_map": {"16": 0, "21": 2, "22": 27, "28": 3, "38": 3, "39": 4, "40": 5, "41": 6, "42": 8, "43": 9, "44": 9, "45": 9, "46": 9, "47": 9, "48": 10, "49": 11, "50": 11, "51": 11, "52": 13, "53": 14, "54": 14, "55": 14, "56": 14, "57": 14, "58": 15, "59": 16, "60": 16, "61": 16, "62": 18, "63": 19, "64": 19, "65": 19, "66": 19, "67": 19, "68": 20, "69": 21, "70": 21, "71": 21, "72": 23, "78": 72}}
 __M_END_METADATA
 """
