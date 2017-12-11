@@ -2,17 +2,39 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="this is for fun">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TIL</title>
-<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link href="assets/css/ipython.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<title>Pandas tutorial | TIL</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-<link rel="canonical" href="http://partrita.github.io/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/test/" type="text/html">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://partrita.github.io/posts/Stats-tutorial/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="partrita">
+<link rel="next" href="../test/" title="Test" type="text/html">
+<meta property="og:site_name" content="TIL">
+<meta property="og:title" content="Pandas tutorial">
+<meta property="og:url" content="http://partrita.github.io/posts/Stats-tutorial/">
+<meta property="og:description" content="TEST¶T-test¶
+t.test()
+t.test(paired=True)
+prop.test()
+wilcox.test()
+
+
+
+
+
+
+
+In [1]:
+
+    
+# t.test() 분석 사용 예제 MASS 패키지에 내장된 Cars93 데이터 프레임의 가격과 생산국가 중 미국산과 비국산이 아닌 차 가격의 평균이 차이가 있는지 검정해보고
+# 95% 신뢰 구간을 ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-12-10T19:52:05Z">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -37,18 +59,24 @@
         <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
             <ul class="nav navbar-nav">
 <li>
-<a href="archive.html">Archive</a>
+<a href="../../archive.html">Archive</a>
                 </li>
 <li>
-<a href="categories/">Tags</a>
+<a href="../../categories/">Tags</a>
                 </li>
 <li>
-<a href="rss.xml">RSS feed</a>
+<a href="../../rss.xml">RSS feed</a>
 
                 
             </li>
 </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.ipynb" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
 </div>
 <!-- /.navbar-collapse -->
     </div>
@@ -59,30 +87,20 @@
         <div class="row">
             
             
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Pandas tutorial</a></h1>
 
-    
-
-
-    
-<div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/test/" class="u-url">Test</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                partrita
+                    partrita
             </span></p>
-            <p class="dateline"><a href="posts/test/" rel="bookmark"><time class="published dt-published" datetime="2017-12-11T20:20:47+09:00" title="2017-12-11 20:20">2017-12-11 20:20</time></a></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-12-10T19:52:05Z" itemprop="datePublished" title="2017-12-10 19:52">2017-12-10 19:52</time></a></p>
+            
+        <p class="sourceline"><a href="index.ipynb" class="sourcelink">Source</a></p>
+
         </div>
-    </header><div class="e-content entry-content">
-    <p>Write your post here.</p>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/Stats-tutorial/" class="u-url">Pandas tutorial</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                partrita
-            </span></p>
-            <p class="dateline"><a href="posts/Stats-tutorial/" rel="bookmark"><time class="published dt-published" datetime="2017-12-10T19:52:05Z" title="2017-12-10 19:52">2017-12-10 19:52</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
@@ -91,9 +109,9 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TEST">TEST<a class="anchor-link" href="posts/Stats-tutorial/#TEST">¶</a>
+<h2 id="TEST">TEST<a class="anchor-link" href="#TEST">¶</a>
 </h2>
-<h3 id="T-test">T-test<a class="anchor-link" href="posts/Stats-tutorial/#T-test">¶</a>
+<h3 id="T-test">T-test<a class="anchor-link" href="#T-test">¶</a>
 </h3>
 <ol>
 <li>t.test()</li>
@@ -625,7 +643,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2way-ANOVA">2way ANOVA<a class="anchor-link" href="posts/Stats-tutorial/#2way-ANOVA">¶</a>
+<h4 id="2way-ANOVA">2way ANOVA<a class="anchor-link" href="#2way-ANOVA">¶</a>
 </h4>
 <p>관측값이 하나일 경우와 관측값이 2개일 경우로 나누어 볼 수 있습니다.
 첫번째의 경우를 설명</p>
@@ -797,7 +815,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 <p>A 차종에 따르 분산분석 결과 p-values 0.01으로서 유의수준보다 적으므로 차종에 따라서 보험료에 차이가 있다는 대립가설을 채택할 수 있게 되었습니다.
 또한, 요인 B  보험 회사에 따르 분산분석 결과또한 유의수준보다 작으므로 회사에 따라 보험료에 차이가 있다는 대립가설을 채택 할 수 있습니다.</p>
 </blockquote>
-<h4 id="관측값이-두개-이상일-경우-2WAY-ANOVA">관측값이 두개 이상일 경우 2WAY ANOVA<a class="anchor-link" href="posts/Stats-tutorial/#%EA%B4%80%EC%B8%A1%EA%B0%92%EC%9D%B4-%EB%91%90%EA%B0%9C-%EC%9D%B4%EC%83%81%EC%9D%BC-%EA%B2%BD%EC%9A%B0-2WAY-ANOVA">¶</a>
+<h4 id="관측값이-두개-이상일-경우-2WAY-ANOVA">관측값이 두개 이상일 경우 2WAY ANOVA<a class="anchor-link" href="#%EA%B4%80%EC%B8%A1%EA%B0%92%EC%9D%B4-%EB%91%90%EA%B0%9C-%EC%9D%B4%EC%83%81%EC%9D%BC-%EA%B2%BD%EC%9A%B0-2WAY-ANOVA">¶</a>
 </h4>
 <p>관측값이 두개 이상일 경우는 두개의 요인 수준별 주효과와 더불어 두요인이 서로 상호간에 영항을 주고 받으면서 나타나는 반응효과인 <em>교호작용 효과</em>를 추가로 분석하는 것이 차이점입니다.</p>
 
@@ -1295,17 +1313,13 @@ Residuals            12 157.33  13.111               </pre>
   </div>
 
     </div>
-    </article>
-</div>
-
-
-
-
-
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="next">
+                <a href="../test/" rel="next" title="Test">Next post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
-        </script>
+        </script></article>
 </div>
         <!--End of body content-->
 
@@ -1317,7 +1331,7 @@ Residuals            12 157.33  13.111               </pre>
 </div>
 
 
-            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->
