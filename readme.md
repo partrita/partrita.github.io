@@ -1,1 +1,0 @@
-# partrita.github.io
