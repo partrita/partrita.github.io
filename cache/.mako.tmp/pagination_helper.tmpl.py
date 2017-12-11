@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1512992538.6677616
+_modified_time = 1512993557.490697
 _enable_loop = True
 _template_filename = '/home/partrita/miniconda2/envs/blog/lib/python3.6/site-packages/nikola/data/themes/bootstrap3/templates/pagination_helper.tmpl'
 _template_uri = 'pagination_helper.tmpl'
@@ -27,9 +27,9 @@ def render_body(context,**pageargs):
 def render_page_navigation(context,current_page,page_links,prevlink,nextlink,prev_next_links_reversed,surrounding=5):
     __M_caller = context.caller_stack._push_frame()
     try:
+        len = context.get('len', UNDEFINED)
         messages = context.get('messages', UNDEFINED)
         enumerate = context.get('enumerate', UNDEFINED)
-        len = context.get('len', UNDEFINED)
         abs = context.get('abs', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n<nav aria-label="Page navigation">\n  <ul class="pagination">\n')
