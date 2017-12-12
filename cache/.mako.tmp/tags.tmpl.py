@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1513034606.9175243
+_modified_time = 1513043688.0293508
 _enable_loop = True
 _template_filename = 'c:/users/deepthought/appdata/local/continuum/anaconda2/envs/blog/lib/site-packages/nikola/data/themes/bootstrap3/templates/tags.tmpl'
 _template_uri = 'tags.tmpl'
@@ -28,16 +28,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        title = context.get('title', UNDEFINED)
+        cat_items = context.get('cat_items', UNDEFINED)
+        items = context.get('items', UNDEFINED)
         range = context.get('range', UNDEFINED)
-        len = context.get('len', UNDEFINED)
+        title = context.get('title', UNDEFINED)
+        hidden_tags = context.get('hidden_tags', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        len = context.get('len', UNDEFINED)
         messages = context.get('messages', UNDEFINED)
-        items = context.get('items', UNDEFINED)
         cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
-        cat_items = context.get('cat_items', UNDEFINED)
-        hidden_tags = context.get('hidden_tags', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -53,16 +53,16 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        title = context.get('title', UNDEFINED)
+        cat_items = context.get('cat_items', UNDEFINED)
+        items = context.get('items', UNDEFINED)
         range = context.get('range', UNDEFINED)
-        len = context.get('len', UNDEFINED)
+        title = context.get('title', UNDEFINED)
+        hidden_tags = context.get('hidden_tags', UNDEFINED)
         def content():
             return render_content(context)
+        len = context.get('len', UNDEFINED)
         messages = context.get('messages', UNDEFINED)
-        items = context.get('items', UNDEFINED)
         cat_hierarchy = context.get('cat_hierarchy', UNDEFINED)
-        cat_items = context.get('cat_items', UNDEFINED)
-        hidden_tags = context.get('hidden_tags', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n<h1>')
         __M_writer(filters.html_escape(str(title)))
