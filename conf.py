@@ -134,6 +134,7 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
+        ("/pages/bio/index.html", "Resume"),
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
         ("/rss.xml", "RSS feed"),
@@ -1432,7 +1433,7 @@ LICENSE = """
 import json
 
 SEARCH_FORM = """
-<span class="navbar-form navbar-left">
+<span class="navbar-form navbar-right">
 <input type="text" id="tipue_search_input" class="form-control" placeholder="Search">
 </span>"""
 
