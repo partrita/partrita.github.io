@@ -18,15 +18,15 @@ import time
 
 # Data about this site
 BLOG_AUTHOR = "partrita"  # (translatable)
-BLOG_TITLE = "TIL"  # (translatable)
+BLOG_TITLE = "EHOTTL: 42"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "http://partrita.github.io/"
+SITE_URL = "https://partrita.github.io/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "http://partrita.github.io/"
 BLOG_EMAIL = "partrita@gmail.com"
-BLOG_DESCRIPTION = "this is for fun"  # (translatable)
+BLOG_DESCRIPTION = "Basically, all about my interest. but something useful "  # (translatable)
 
 # Nikola is multilingual!
 #
@@ -141,11 +141,11 @@ NAVIGATION_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "bootstrap3"
+THEME = "fine"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
-THEME_COLOR = '#5670d4'
+THEME_COLOR = '#ffffff'
 
 # POSTS and PAGES contains (wildcard, destination, template) tuples.
 # (translatable)
@@ -902,6 +902,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # Show teasers (instead of full posts) in indexes? Defaults to False.
 # INDEX_TEASERS = False
 
+
 # HTML fragments with the Read more... links.
 # The following tags exist and are replaced for you:
 # {link}                        A link to the full post page.
@@ -1367,3 +1368,60 @@ GLOBAL_CONTEXT = {}
 # GLOBAL_CONTEXT as parameter when the template is about to be
 # rendered
 GLOBAL_CONTEXT_FILLER = []
+
+# Add social media links
+
+EXTRA_HEAD_DATA = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">'
+CONTENT_FOOTER = '''
+<div class="text-center">
+<p>
+<span class="fa-stack fa-2x">
+  <a href="/rss.xml">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+<span class="fa-stack fa-2x">
+  <a href="https://twitter.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+<span class="fa-stack fa-2x">
+  <a href="https://github.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-github fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+<span class="fa-stack fa-2x">
+  <a href="https://www.linkedin.com/in/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-linkedin fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+<span class="fa-stack fa-2x">
+  <a href="mailto:{email}">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+</p>
+<p>
+  Contents &copy; {date}  <a href="mailto:{email}">{author}</a>
+  &mdash;
+  {license}
+  &mdash;
+  Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+</p>
+</div>
+'''
+
+# Add a license
+
+LICENSE = """
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+  <img alt="Creative Commons License BY-SA"
+       style="border-width:0; margin-bottom:12px;"
+       src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png">
+</a>
+"""
