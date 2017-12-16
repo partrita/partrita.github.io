@@ -289,27 +289,31 @@ pip install nikola<span class="o">[</span>extras<span class="o">]</span>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1.-파이썬-설치">1. 파이썬 설치<a class="anchor-link" href="posts/setup/#1.-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%84%A4%EC%B9%98">¶</a>
 </h2>
-<p>제일 먼저 파이썬(Python)에 대해 설명할게요. 파이썬은 아주 인기있는 프로그래밍 언어로, 웹 사이트는 물론 게임, 과학용 소프트웨어, 그래픽 소프트웨어 등 다양한 것을 만들 수 있답니다.</p>
-<p>파이썬은 1980년대 후반에 프로그래밍 언어를 기계 뿐만 아니라 인간도 읽을 수 있도록 만들고자 탄생한 언어입니다. 파이썬이 다른 프로그래밍 언어보다 훨씬 간단하게 보이고, 배우기도 쉬운 이유도 그 때문이죠. 하지만 파이썬은 아주 강력한 기능을 가진 프로그래밍 언어랍니다.</p>
-<blockquote>
-<p>아래의 방법보다는 Anaconda를 사용하는것을 추천합니다.</p>
-</blockquote>
-<p>사용중인 OS의 종류에 따라서 설치방법이 다릅니다.</p>
+<p>파이썬은 아주 인기있는 프로그래밍 언어로, 웹 사이트는 물론 게임, 과학용 소프트웨어, 그래픽 소프트웨어 등 다양한 것을 만들 수 있습니다. 파이썬은 1980년대 후반에 <strong>귀도 반 로썸</strong> 프로그래밍 언어를 기계 뿐만 아니라 인간도 읽을 수 있도록 만들고자 탄생한 언어입니다. 파이썬이 다른 프로그래밍 언어보다 훨씬 간단하게 보이고, 배우기도 쉬운 이유도 그 때문이죠. 이를 바탕으로 과거 15년 동안 <strong>numpy</strong>,<strong>scipy</strong>,<strong>matplotlib</strong>,<strong>jupyter</strong> 같이 널리 사용되는 라이브러리가 개발되어있습니다. 
+파이썬은 사용중인 OS의 종류에 따라서 설치방법이 다릅니다.</p>
 <h4 id="Windows">Windows<a class="anchor-link" href="posts/setup/#Windows">¶</a>
 </h4>
-<p>사용 중인 컴퓨터 윈도우 운영체제가 32비트인지 64비트인지 확인하려면 <a href="https://support.microsoft.com/en-au/kb/827218">https://support.microsoft.com/en-au/kb/827218</a> 에서 확인하세요. 윈도우 용 파이썬은 <a href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a> 웹 사이트에서 다운로드 할 수 있습니다. "Latest Python 3 Release - Python x.x.x"링크를 클릭하세요. 64 비트 버전의 Windows인 경우 Windows x86-64 executable installer를 다운로드하세요. 이외에는 Windows x86 executable installer을 다운로드하세요. 설치 프로그램을 다운로드 한 후에 실행(더블 클릭)하고 지시 사항을 따르세요.</p>
+<ol>
+<li>사용 중인 컴퓨터 윈도우 운영체제가 32비트인지 64비트인지 확인하세요.</li>
+<li>
+<a href="https://www.python.org/downloads/windows/">공식 웹사이트</a>에서 다운로드 할 수 있습니다. <ul>
+<li>64 비트 버전의 Windows인 경우 <em>Windows x86-64 executable installer</em>를 다운로드하세요.</li>
+<li>32 비트 버전은 <em>Windows x86 executable installer</em>을 다운로드하세요.</li>
+</ul>
+</li>
+<li>설치 프로그램을 다운로드 한 후에 실행(더블 클릭)하고 지시 사항을 따르세요.</li>
+</ol>
 <h4 id="OSX">OSX<a class="anchor-link" href="posts/setup/#OSX">¶</a>
 </h4>
-<p>웹 사이트로 가서 파이썬 설치 파일을 다운 받으세요. : <a href="https://www.python.org/downloads/release/python-351/">https://www.python.org/downloads/release/python-351/</a></p>
+<p><a href="https://www.python.org/downloads/release/python-351/">웹 사이트</a>로 가서 파이썬 설치 파일을 다운 받으세요.</p>
 <h4 id="Linux">Linux<a class="anchor-link" href="posts/setup/#Linux">¶</a>
 </h4>
 <p>이미 파이썬이 설치되었을 겁니다. 설치된 버전을 확인하려면 콘솔을 열고 다음 명령을 입력하세요.</p>
 <div class="highlight"><pre><span></span>$ python3 --version
-Python <span class="m">3</span>.6.1
-
-
-<span class="sb">`</span>
 </pre></div>
+<blockquote>
+<p>하지만 위의 방법보다는 저는 Anaconda를 사용하는것을 추천합니다.</p>
+</blockquote>
 
 </div>
 </div>
@@ -321,13 +325,13 @@ Python <span class="m">3</span>.6.1
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2.-Anaconda-설치">2. Anaconda 설치<a class="anchor-link" href="posts/setup/#2.-Anaconda-%EC%84%A4%EC%B9%98">¶</a>
 </h2>
-<p>파이썬 기반의 데이터 분석에 특화된 각종 OpenSource 패키지들을 모아놓은 개발 플랫폼이다. 한마디로 규정짓긴 어렵지만 아무튼 그동안 파이썬을 교육용언어, 다루기 쉬운언어, 프로토 타이핑용 스크립트 언어정도로만 봐왔다면 Anaconda라는 것은 본격적으로 파이썬의 능력을 제대로 활용하는 거대한 프로젝트 같은 개념으로 볼수 있다. Panda, Numpy, Numba, Scipy, IPython, GPGPU, 과학, 수학, 데이터 분석등과 관련된 수많은 수준높은 패키지들을 정말 간단하게 설치할 수 있도록 해놓았으니 나의 파이썬 수준을 한단계 업그레이드 해보고자 한다면 이 Anaconda를 꼭 설치해보아야 할것이다.</p>
-<p><a href="https://www.anaconda.com/">Anaconda</a></p>
+<p>파이썬 기반의 데이터 분석에 특화된 각종 OpenSource 라이브러리를 모아놓은 개발 플랫폼입니다. 무엇보다도 <strong>Panda, Numpy, Numba, Scipy, IPython, GPGPU, 과학, 수학, 데이터 분석</strong>등과 관련된 수많은 라이브러리 한번에 그리고 <strong>의존성</strong>(dependency)문제 없이 설치 할 수 있습니다. 또한 <strong>conda</strong>라는 관리 라이브러리 매니저가 있어서 편리 합니다.<a href="https://www.anaconda.com/">Anaconda 홈페이지</a></p>
 <h4 id="Anaconda">Anaconda<a class="anchor-link" href="posts/setup/#Anaconda">¶</a>
 </h4>
-<p>필자는 anaconda를 애용자로 anaconda 4.3.1 64bit 환경을 설치했다. 모든 설치는 "Next"만 누르면 해결되므로 별도의 설명은 서술하지 않는다. 다음 링크는 아나콘다 사이트다. 아나콘다는 기존 파이썬에 비해 매우 용량이 크지만 데이터 분석을 위한 다양한 라이브러리를 갖춘 파이썬을 배포한다. 이 패키지에는 conda도 함께 포함돼 있다. Anaconda가 버거우신 분들은 miniconda를 사용하면 된다.</p>
+<p>공식 홈페이지에서 <strong>OS</strong>에 맞는 파일을 다운받아 "Next"만 누르면 해결되므로 별도의 설명은 서술하지 않습니다.</p>
 <h4 id="Miniconda">Miniconda<a class="anchor-link" href="posts/setup/#Miniconda">¶</a>
 </h4>
+<p><strong>Anaconda</strong>에서 라이브러리 관리 메니저인 <strong>conda</strong>만을 설치 하고 싶다면 <a href="https://conda.io/miniconda.html">miniconda</a>를 다운받아 설치 하면 됩니다.</p>
 <blockquote>
 <p>개인적으로 <strong>Miniconda</strong>를 추천합니다.</p>
 </blockquote>
@@ -342,12 +346,16 @@ Python <span class="m">3</span>.6.1
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.-Conda-명령어-사용법">3. Conda 명령어 사용법<a class="anchor-link" href="posts/setup/#3.-Conda-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%82%AC%EC%9A%A9%EB%B2%95">¶</a>
 </h2>
-<p>Conda는 아나콘다에서 버전 관리를 위해 제공되는 애플리케이션이다. 파이썬을 많이 사용하다 보면 다양한 환경에서 프로그래밍을 진행하게 된다. 그 이유는 파이썬의 유용한 애플리케이션들이 각 버전과 라이브러리에 대해 아주 많이 의존적이기 때문이다. 그렇기 때문에 Conda를 사용할 줄 모른다면 "프로그램 추가/제거" 기능에 종류별로 파이썬이 설치된 모습을 볼 수 있다. 필자의 경우는 그 무겁디무거운 아나콘다를 4개 버전 정도를 설치했었다.</p>
-<p>하지만 conda를 사용하면 이 모든 고민이 해결된다. 용량의 문제, 관리의 문제, 충돌의 문제, 버전 호환성의 문제를 한방에 해결 가능하다. 때문에 파이썬 데이터 분석 강의에서는 항상 이 부분을 먼저 설명한다. 많은 사람들이 파이썬을 기존에 사용하던 것들이 있기 때문에 같은 환경에서 진행하기 어려운 케이스들이 많다.</p>
-<p>서론이 길었지만 요약하면 "conda"는 파이썬을 자주 사용하면서 발생할 수밖에 없는 여러 문제들을 해결하기 위한 해결책이다(conda 외에도 virtualenv도 있다). 아래 사이트에서 정보를 제공받을 수 있다.</p>
+<p><strong>conda</strong>는 라이브러리 관리를 위해 제공되는 애플리케이션입니다. 파이썬 생태계의 라이브러리는 서로에 대해 아무 많이 의존적이기 때문에 각각의 버전이 너무 많은 문제가 발생하기도 합니다. 하지만 conda를 사용하면 이 모든 고민을 신경쓰지 않을 수 있습니다. 다시 말해, <strong>conda</strong>는 파이썬 라이브러리의 교통정리를 해줍니다.</p>
+<blockquote>
+<p>conda 외에도 virtualenv을 사용하는 방법이 있습니다.</p>
+</blockquote>
 <h4 id="주요기능">주요기능<a class="anchor-link" href="posts/setup/#%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5">¶</a>
 </h4>
-<p>conda는 자동으로 의존성을 설치한다. 모든 라이브러리를 갖고 있지는 않으므로 pip와 병행하여 사용하길 바란다. 자주 사용하는 conda의 기능에 대해 알아보자. 이 기능들은 외울 필요가 없다. 필요할 때 찾아볼 수 있도록 기억해두자.</p>
+<p>conda는 자동으로 의존성을 해결해 줍니다. 자주 사용하는 conda 명령어는 기억해 두세요.</p>
+<blockquote>
+<p>numpy를 기준으로 설명하겠습니다.</p>
+</blockquote>
 <table>
 <thead><tr>
 <th>기능</th>
@@ -355,27 +363,27 @@ Python <span class="m">3</span>.6.1
 </tr></thead>
 <tbody>
 <tr>
-<td>패키지를 설치</td>
+<td>라이브러리 설치</td>
 <td>conda install numpy </td>
 </tr>
 <tr>
-<td>동시에 여러 패키지를 설치</td>
-<td>conda install numpy scipy pandas numpy</td>
+<td>동시에 여러 라이브러리를 설치</td>
+<td>conda install numpy scipy pandas</td>
 </tr>
 <tr>
 <td>특정 버전 설치</td>
 <td>conda install numpy=1.10</td>
 </tr>
 <tr>
-<td>패키지 제거</td>
-<td>conda remove package_name</td>
+<td>라이브러리 제거</td>
+<td>conda remove numpy</td>
 </tr>
 <tr>
-<td>패키지 업데이트</td>
-<td>conda update package_name</td>
+<td>라이브러리 업데이트</td>
+<td>conda update numpy</td>
 </tr>
 <tr>
-<td>모든 패키지 업데이트</td>
+<td>모든 라이브러리 업데이트</td>
 <td>conda update –all</td>
 </tr>
 <tr>
@@ -383,51 +391,48 @@ Python <span class="m">3</span>.6.1
 <td>conda list</td>
 </tr>
 <tr>
-<td>설치하려는 패키지 검색</td>
-<td>conda search search_term</td>
+<td>설치하려는 라이브러리 검색</td>
+<td>conda search numpy</td>
 </tr>
 </tbody>
 </table>
-<h4 id="패키지-관리하기">패키지 관리하기<a class="anchor-link" href="posts/setup/#%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0">¶</a>
+<blockquote>
+<p>찾는 라이브러리가 없다면 <strong>pip</strong>를 사용해보세요</p>
+</blockquote>
+<h4 id="가상환경-만들기">가상환경 만들기<a class="anchor-link" href="posts/setup/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
 </h4>
-<p>Now let’s play with packages. We’ve already installed several packages (Astroid, Babel and a specific version of Python) when we created a new environment. We’ll check what packages we have, check what are available, look for a specific package and install it. Then we’ll look for and install specific packages on the Anaconda.org repository, install more using pip install instead of conda install, and install a commercial package.</p>
-<h5 id="설치되어-있는-패키지-목록-확인">설치되어 있는 패키지 목록 확인<a class="anchor-link" href="posts/setup/#%EC%84%A4%EC%B9%98%EB%90%98%EC%96%B4-%EC%9E%88%EB%8A%94-%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%AA%A9%EB%A1%9D-%ED%99%95%EC%9D%B8">¶</a>
-</h5>
-<div class="highlight"><pre><span></span>conda list
-</pre></div>
-<h5 id="새로운-패키지를-설치">새로운 패키지를 설치<a class="anchor-link" href="posts/setup/#%EC%83%88%EB%A1%9C%EC%9A%B4-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-%EC%84%A4%EC%B9%98">¶</a>
-</h5>
-<p>만약 beautifulsoup4를 설치하려면 아래와 같이 입력한다</p>
-<div class="highlight"><pre><span></span>conda install beautifulsoup4
-</pre></div>
-<h5 id="패키지를-제거">패키지를 제거<a class="anchor-link" href="posts/setup/#%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-%EC%A0%9C%EA%B1%B0">¶</a>
-</h5>
-<div class="highlight"><pre><span></span>conda remove beautifulsoup4
-</pre></div>
-<h4 id="virtualenv">virtualenv<a class="anchor-link" href="posts/setup/#virtualenv">¶</a>
-</h4>
-<p>conda는 프로젝트를 격리할 환경을 만드는 데 사용할 수 있다. 환경을 생성할 때는 몇 가지의 환경에 대한 정보를 제공해야 한다.</p>
+<p>파이썬 라이브러리들의 의존성 문제를 피하기 위해 새로운 프로젝트를 시작할때면 가상환경을 만들어 작업하는것이 좋습니다. 여기서는 <strong>virtualenv</strong> 대신에 <strong>conda</strong>를 사용해서 간단히 만들어 보겠습니다.</p>
 <ul>
-<li>환경 이름</li>
-<li>환경에 설치할 Python 버전</li>
+<li>새로운 가상환경 이름은 ENV_NAME</li>
+<li>사용할 Python 버전은 3이상으로 하겠습니다.</li>
 </ul>
-<p>터미널에 다음과 같이 입력한다.</p>
-<div class="highlight"><pre><span></span>conda create -n ENV_NAME <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
+<ol>
+<li>터미널에 다음과 같이 입력하면 새로운 가상환경이 만들어 집니다.<div class="highlight"><pre><span></span>conda create -n ENV_NAME <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
 </pre></div>
-<p>목록을 확인하기 위한 명령어</p>
+</li>
+<li>가상환경을 사용하기 위해서는 <em>activate</em> 시켜줘야 합니다. 활성화되면 터미널에 (ENV_NAME)이 표시됩니다.<div class="highlight"><pre><span></span><span class="nb">source</span> activate ENV_NAME
+</pre></div>
+</li>
+<li>필요한 라이브러리들을 설치합니다.<div class="highlight"><pre><span></span>conda install numpy pandas
+</pre></div>
+</li>
+</ol>
+<h4 id="가상환경-확인-및-제거">가상환경 확인 및 제거<a class="anchor-link" href="posts/setup/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%ED%99%95%EC%9D%B8-%EB%B0%8F-%EC%A0%9C%EA%B1%B0">¶</a>
+</h4>
+<p>가상환경의 목록을 확인하려면 아래와 같이 입력하세요.</p>
 <div class="highlight"><pre><span></span>conda env list
 </pre></div>
-<p>삭제를 위한 명령어</p>
+<p>가상환경을 삭제하려면 아래와 같이 입력하세요.</p>
 <div class="highlight"><pre><span></span>conda env remove -n ENV_NAME
 </pre></div>
 <h4 id="Conda-제거하기">Conda 제거하기<a class="anchor-link" href="posts/setup/#Conda-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0">¶</a>
 </h4>
 <h5 id="Windows">Windows<a class="anchor-link" href="posts/setup/#Windows">¶</a>
 </h5>
-<p>Go to Control Panel, click “Add or remove Program,” select “Python 2.7 (Anaconda)” OR “Python 2.7 Miniconda)” and click Remove Program.</p>
+<p>제어판에 들어가서 <em>Python (Anaconda)</em> 혹은 <em>“Python (Miniconda)</em>를 제거합니다.</p>
 <h5 id="Linux,-OSX">Linux, OSX<a class="anchor-link" href="posts/setup/#Linux,-OSX">¶</a>
 </h5>
-<p>디렉토리만 삭제하면 된다.</p>
+<p>디렉토리만 삭제하면 됩니다.</p>
 <div class="highlight"><pre><span></span>rm -rf ~/miniconda
 rm -rf ~/anaconda
 </pre></div>
@@ -442,25 +447,25 @@ rm -rf ~/anaconda
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="4.-코드-에디터">4. 코드 에디터<a class="anchor-link" href="posts/setup/#4.-%EC%BD%94%EB%93%9C-%EC%97%90%EB%94%94%ED%84%B0">¶</a>
 </h2>
-<p>코드 에디터는 종류가 많고 다양해 자신의 취향에 따라 선택할 수 있어요. 대부분의 파이썬 프로그래머는 PyCharm과 같이 복잡하지만 강력한 IDE(통합개발환경: Integrated Development Environments)를 이용합니다. 하지만 초보자에게 적합하지 않을 수 있어요. 간단하지만 강력한 기능을 갖춘 에디터 프로그램을 아래 추천합니다.</p>
-<p>이 중 내가 사용하고 싶은 것을 선택해 사용해도 되지만, 여러분의 코치가 어떤 프로그램을 사용하는지 물어보세요. 같은 프로그램을 사용하면 도움받기 수월해질 거에요.</p>
+<p>코드 에디터는 종류가 많고 다양해 자신의 취향에 따라 선택할 수 있습니다. 간단하지만 강력한 기능을 갖춘 에디터 프로그램을 아래에 추천합니다.</p>
 <h4 id="Gedit">Gedit<a class="anchor-link" href="posts/setup/#Gedit">¶</a>
 </h4>
 <p>Gedit는 모든 운영체제에서 사용 가능한 무료 오픈소스에요.</p>
-<p>다운받기</p>
 <h4 id="Sublime-Text-3">Sublime Text 3<a class="anchor-link" href="posts/setup/#Sublime-Text-3">¶</a>
 </h4>
-<p>Sublime Text는 가장 널리 알려진 프로그램으로 무료로 사용할 수 있어요. 설치와 사용이 편리하고 모든 운영체제에서 쓸 수 있어요.</p>
-<p>다운받기</p>
-<h5 id="Atom">Atom<a class="anchor-link" href="posts/setup/#Atom">¶</a>
-</h5>
-<p>Atom은 GitHub에서 만든 에디터예요. 무료로 제공되는 오픈소스이며, 설치나 사용이 쉬워요. 윈도우, 맥OS, 리눅스에서 쓸 수 있어요.</p>
-<p>다운받기
-왜 코드 에디터를 설치해야 하나요?</p>
-<p>워드나 노트패드가 있는데도, 굳이 코드 에디터 소프트웨어를 설치해야 하는 이유가 궁금할 거에요.</p>
-<p>첫 번째로 코드는 일반 텍스트여야 하는데, 워드나 텍스트에딧(Textedit)과 같은 프로그램에서는 일반 텍스트가 아닌 RTF(Rich Text Format)와 같은 사용자 서식을 쓴 리치 텍스트(폰트와 서식이 있는 텍스트)가 생성되기 때문입니다.</p>
-<p>두 번째는 코드 에디터 프로그램은 개발에 유용한 여러 기능을 제공하기 때문입니다. 대표적인 예로, 코드를 해석해 문법을 하이라이팅해주는 기능이라든가 큰따옴표("")를 자동으로 닫아주는 기능이지요.</p>
-<p>앞으로 코드 에디터가 어떻게 작동하는지 알아볼 거에요. 곧 여러분은 내가 사용하는 코드 에디터를 제일 좋아하게 될 거랍니다.</p>
+<p>Sublime Text는 가장 널리 알려진 프로그램으로 상용프로그램이지만, 무료로 사용할 수 있고 속도가 빨라요. 
+물론 모든 운영체제에서 쓸 수 있어요.</p>
+<h4 id="Atom">Atom<a class="anchor-link" href="posts/setup/#Atom">¶</a>
+</h4>
+<p>Atom은 GitHub에서 만든 무료로 제공되는 오픈소스이며, 설치나 사용이 쉬워요. 모든 운영체제에서 쓸 수 있어요.</p>
+<h4 id="VScode">VScode<a class="anchor-link" href="posts/setup/#VScode">¶</a>
+</h4>
+<p>Microsoft에서 만든 무료 에디터에요. 설치와 사용이 쉽고 안정적입니다.</p>
+<h3 id="왜-코드-에디터를-설치해야-하나요?">왜 코드 에디터를 설치해야 하나요?<a class="anchor-link" href="posts/setup/#%EC%99%9C-%EC%BD%94%EB%93%9C-%EC%97%90%EB%94%94%ED%84%B0%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%B4%EC%95%BC-%ED%95%98%EB%82%98%EC%9A%94?">¶</a>
+</h3>
+<p>워드나 노트패드가 있는데도, 굳이 코드 에디터 소프트웨어를 설치해야 하는 이유가 궁금할 거에요.<br>
+첫 번째로 코드는 일반 텍스트여야 하는데, 워드나 텍스트에딧(Textedit)과 같은 프로그램에서는 일반 텍스트가 아닌 RTF(Rich Text Format)와 같은 사용자 서식을 쓴 리치 텍스트(폰트와 서식이 있는 텍스트)가 생성되기 때문입니다. 
+두 번째는 코드 에디터 프로그램은 개발에 유용한 여러 기능을 제공하기 때문입니다. 대표적인 예로, 코드를 해석해 문법을 하이라이팅해주는 기능이라든가 큰따옴표("")를 자동으로 닫아주는 기능이지요. 앞으로 코드 에디터가 어떻게 작동하는지 알아볼 거에요. 곧 여러분은 내가 사용하는 코드 에디터를 제일 좋아하게 될 거랍니다.</p>
 
 </div>
 </div>
