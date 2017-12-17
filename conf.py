@@ -17,8 +17,8 @@ import time
 
 
 # Data about this site
-BLOG_AUTHOR = "partrita"  # (translatable)
-BLOG_TITLE = "EHOTTL: 42"  # (translatable)
+BLOG_AUTHOR = "Taeyoon"  # (translatable)
+BLOG_TITLE = "Frontend-Biotech"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
 SITE_URL = "https://partrita.github.io/"
@@ -146,7 +146,7 @@ THEME = "fine"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
-THEME_COLOR = '#ffffff'
+THEME_COLOR = '#083551'
 
 # POSTS and PAGES contains (wildcard, destination, template) tuples.
 # (translatable)
@@ -934,14 +934,14 @@ FEED_LINKS_APPEND_QUERY = False
 
 # A HTML fragment describing the license, for the sidebar.
 # (translatable)
-LICENSE = ""
+# LICENSE = ""
 # I recommend using the Creative Commons' wizard:
 # https://creativecommons.org/choose/
-# LICENSE = """
-# <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-# <img alt="Creative Commons License BY-NC-SA"
-# style="border-width:0; margin-bottom:12px;"
-# src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>"""
+LICENSE = """
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License BY-NC-SA"
+style="border-width:0; margin-bottom:12px;"
+src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>"""
 
 # A small copyright notice for the page footer (in HTML).
 # (translatable)
@@ -954,7 +954,7 @@ CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{autho
 # tuples of tuples of positional arguments and dicts of keyword arguments
 # to format().  For example, {'en': (('Hello'), {'target': 'World'})}
 # results in CONTENT_FOOTER['en'].format('Hello', target='World').
-# If you need to use the literal braces '{' and '}' in your footer text, use
+# If you need to use the literal braces '{' and '}' in your footer text, useFOOTER
 # '{{' and '}}' to escape them (str.format is used)
 # WARNING: If you do not use multiple languages with CONTENT_FOOTER, this
 #          still needs to be a dict of this format.  (it can be empty if you
@@ -1202,19 +1202,19 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 # """ % SITE_URL
 #
 # If you prefer a Google search form, here's an example that should just work:
-# SEARCH_FORM = """
-# <!-- Google custom search -->
-# <form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
-# <div class="form-group">
-# <input type="text" name="q" class="form-control" placeholder="Search">
-# </div>
-# <button type="submit" class="btn btn-primary">
-# 	<span class="glyphicon glyphicon-search"></span>
-# </button>
-# <input type="hidden" name="sitesearch" value="%s">
-# </form>
-# <!-- End of custom search -->
-# """ % SITE_URL
+SEARCH_FORM = """
+<!-- Google custom search -->
+<form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
+<div class="form-group">
+<input type="text" name="q" class="form-control" placeholder="Search">
+</div>
+<button type="submit" class="btn btn-primary">
+	<span class="glyphicon glyphicon-search"></span>
+</button>
+<input type="hidden" name="sitesearch" value="%s">
+</form>
+<!-- End of custom search -->
+""" % SITE_URL
 
 # Use content distribution networks for jQuery, twitter-bootstrap css and js,
 # and html5shiv (for older versions of Internet Explorer)
@@ -1372,114 +1372,105 @@ GLOBAL_CONTEXT_FILLER = []
 
 # Add social media links
 
-EXTRA_HEAD_DATA = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">'
-CONTENT_FOOTER = '''
-<div class="text-center">
-<p>
-<span class="fa-stack fa-2x">
-  <a href="/rss.xml">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-<span class="fa-stack fa-2x">
-  <a href="https://twitter.com/jluttine">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-<span class="fa-stack fa-2x">
-  <a href="https://github.com/jluttine">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-github fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-<span class="fa-stack fa-2x">
-  <a href="https://www.linkedin.com/in/jluttine">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-linkedin fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-<span class="fa-stack fa-2x">
-  <a href="mailto:{email}">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-</p>
-<p>
-  Contents &copy; {date}  <a href="mailto:{email}">{author}</a>
-  &mdash;
-  {license}
-  &mdash;
-  Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
-</p>
-</div>
-'''
+# EXTRA_HEAD_DATA = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">'
+# CONTENT_FOOTER = '''
+# <div class="text-center">
+# <p>
+# <span class="fa-stack fa-2x">
+#   <a href="/rss.xml">
+#     <i class="fa fa-circle fa-stack-2x"></i>
+#     <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+#   </a>
+# </span>
+# <span class="fa-stack fa-2x">
+#   <a href="https://twitter.com/jluttine">
+#     <i class="fa fa-circle fa-stack-2x"></i>
+#     <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
+#   </a>
+# </span>
+# <span class="fa-stack fa-2x">
+#   <a href="https://github.com/jluttine">
+#     <i class="fa fa-circle fa-stack-2x"></i>
+#     <i class="fa fa-github fa-inverse fa-stack-1x"></i>
+#   </a>
+# </span>
+# <span class="fa-stack fa-2x">
+#   <a href="https://www.linkedin.com/in/jluttine">
+#     <i class="fa fa-circle fa-stack-2x"></i>
+#     <i class="fa fa-linkedin fa-inverse fa-stack-1x"></i>
+#   </a>
+# </span>
+# <span class="fa-stack fa-2x">
+#   <a href="mailto:{email}">
+#     <i class="fa fa-circle fa-stack-2x"></i>
+#     <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
+#   </a>
+# </span>
+# </p>
+# <p>
+#   Contents &copy; {date}  <a href="mailto:{email}">{author}</a>
+#   &mdash;
+#   {license}
+#   &mdash;
+#   Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+# </p>
+# </div>
+# '''
 
-# Add a license
-
-LICENSE = """
-<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
-  <img alt="Creative Commons License BY-SA"
-       style="border-width:0; margin-bottom:12px;"
-       src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png">
-</a>
-"""
 
 # This is an example that works well with Nikola's default Bootstrap3 theme.
 # It displays the search field in the navigation bar, and the results
 # in a modal dialog.
-import json
+# import json
 
-SEARCH_FORM = """
-<span class="navbar-form navbar-right">
-<input type="text" id="tipue_search_input" class="form-control" placeholder="Search">
-</span>"""
+# SEARCH_FORM = """
+# <span class="navbar-form navbar-right">
+# <input type="text" id="tipue_search_input" class="form-control" placeholder="Search">
+# </span>"""
 
-EXTRA_HEAD_DATA = """
-<link rel="stylesheet" type="text/css" href="/assets/css/tipuesearch.css">
-"""
+# EXTRA_HEAD_DATA = """
+# <link rel="stylesheet" type="text/css" href="/assets/css/tipuesearch.css">
+# """
 
-BODY_END = """
-<!-- Modal -->
-<div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
-  <div class="modal-dialog">
+# BODY_END = """
+# <!-- Modal -->
+# <div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
+#   <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Search Results:</h4>
-      </div>
-      <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-var siteUrl = """ + json.dumps(SITE_URL) + """
-$(document).ready(function() {
-    $.when(
-        $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
-        $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
-        $.Deferred(function( deferred ){
-            $( deferred.resolve );
-        })
-    ).done(function() {
-        $('#tipue_search_input').tipuesearch({
-            'mode': 'json',
-            'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
-        });
-        $('#tipue_search_input').keyup(function (e) {
-            if (e.keyCode == 13) {
-                $('#search-results').modal()
-            }
-        });
-    });
-});
-</script>
-"""
+#     <!-- Modal content-->
+#     <div class="modal-content">
+#       <div class="modal-header">
+#         <button type="button" class="close" data-dismiss="modal">&times;</button>
+#         <h4 class="modal-title">Search Results:</h4>
+#       </div>
+#       <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
+#       </div>
+#       <div class="modal-footer">
+#         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+#       </div>
+#     </div>
+#   </div>
+# </div>
+# <script>
+# var siteUrl = """ + json.dumps(SITE_URL) + """
+# $(document).ready(function() {
+#     $.when(
+#         $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
+#         $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
+#         $.Deferred(function( deferred ){
+#             $( deferred.resolve );
+#         })
+#     ).done(function() {
+#         $('#tipue_search_input').tipuesearch({
+#             'mode': 'json',
+#             'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
+#         });
+#         $('#tipue_search_input').keyup(function (e) {
+#             if (e.keyCode == 13) {
+#                 $('#search-results').modal()
+#             }
+#         });
+#     });
+# });
+# </script>
+# """
