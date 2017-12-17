@@ -6,23 +6,21 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nikola for jupyer blog | EHOTTL: 42</title>
+<title>Nikola for jupyer blog | Frontend-Biotech</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#083551">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://partrita.github.io/posts/nikola-for-jupyer-blog/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="../../assets/css/tipuesearch.css">
-<meta name="author" content="partrita">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Taeyoon">
 <link rel="prev" href="../setup/" title="Setup" type="text/html">
 <link rel="next" href="../Ancestral-reconstruction/" title="Ancestral reconstruction" type="text/html">
-<meta property="og:site_name" content="EHOTTL: 42">
+<meta property="og:site_name" content="Frontend-Biotech">
 <meta property="og:title" content="Nikola for jupyer blog">
 <meta property="og:url" content="https://partrita.github.io/posts/nikola-for-jupyer-blog/">
-<meta property="og:description" content="Nikola setup¶How to blog with Jupyter (IPython) Notebook and Nikola
-I have thought about starting a blog for a few years now and when I recently found some amazing tools which can be used in a data sc">
+<meta property="og:description" content="몇 년전부터 Jupyter notebook작성한 것을 언젠가는 블로그에 올려야지 라는 생각은 하고 있었습니다. 하지만 기존에 가지고 있던 워드프레스 블로그에는 편집을 해서 올려야 했기에 너무나도 귀찮았습니다. 그러다가 최근에 Nikola라는 툴을 알게 되면서 다시 블로깅을 하게 되었습니다. Nikola는 간단하게 말해서 HTML 페이지를 자동으로 만들어 줍">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-12-14T11:57:23+09:00">
 </head>
@@ -42,7 +40,7 @@ I have thought about starting a blog for a few years now and when I recently fou
             </button>
             <a class="navbar-brand" href="https://partrita.github.io/">
 
-                <span id="blog-title">EHOTTL: 42</span>
+                <span id="blog-title">Frontend-Biotech</span>
             </a>
         </div>
 <!-- /.navbar-header -->
@@ -63,8 +61,17 @@ I have thought about starting a blog for a few years now and when I recently fou
                 
             </li>
 </ul>
-<span class="navbar-form navbar-right">
-<input type="text" id="tipue_search_input" class="form-control" placeholder="Search"></span>
+<!-- Google custom search --><form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
+<div class="form-group">
+<input type="text" name="q" class="form-control" placeholder="Search">
+</div>
+<button type="submit" class="btn btn-primary">
+	<span class="glyphicon glyphicon-search"></span>
+</button>
+<input type="hidden" name="sitesearch" value="https://partrita.github.io/">
+</form>
+<!-- End of custom search -->
+
 
             <ul class="nav navbar-nav navbar-right">
 <li>
@@ -85,7 +92,7 @@ I have thought about starting a blog for a few years now and when I recently fou
 
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                    partrita
+                    Taeyoon
             </span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-12-14T11:57:23+09:00" itemprop="datePublished" title="2017-12-14 11:57">2017-12-14 11:57</time></a></p>
                     <p class="sourceline"><a href="index.ipynb" class="sourcelink">Source</a></p>
@@ -101,15 +108,12 @@ I have thought about starting a blog for a few years now and when I recently fou
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Nikola-setup">Nikola setup<a class="anchor-link" href="#Nikola-setup">¶</a>
+<p>몇 년전부터 <strong>Jupyter notebook</strong>작성한 것을 언젠가는 블로그에 올려야지 라는 생각은 하고 있었습니다. 하지만 기존에 가지고 있던 워드프레스 <a href="http://partrita.wordpress.com">블로그</a>에는 편집을 해서 올려야 했기에 너무나도 귀찮았습니다. 그러다가 최근에 <a href="https://getnikola.com/">Nikola</a>라는 툴을 알게 되면서 다시 블로깅을 하게 되었습니다. <strong>Nikola</strong>는 간단하게 말해서 HTML 페이지를 자동으로 만들어 줍니다. 제가 할일은 Jupyter notebook을 작성하기만 하면 되는거죠.</p>
+<h2 id="0.-환경-설정">0. 환경 설정<a class="anchor-link" href="#0.-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95">¶</a>
 </h2>
-<p>How to blog with Jupyter (IPython) Notebook and Nikola</p>
-<p>I have thought about starting a blog for a few years now and when I recently found some amazing tools which can be used in a data science blog I got so excited that I finally had to start my blog. I have used Python and the NumPy/SciPy stack to analyze and model data for a few years now. I'm also passionate about open data and open science, so I've been excited about how Jupyter Notebooks (a.k.a. IPython Notebooks) can be used to share a mixture of reproducible code and commentation. And with Nikola, it is possible to set up a whole blogging system based on posts written as Notebooks making it possible for anyone to easily try the analysis shown in the post. I got some inspiration from Damian Avila's blog. He has written instructions on blogging with Nikola and IPython. However, the instructions are outdated so I thought I'd start my blog by giving my own tips on setting up Nikola.</p>
-<h4 id="환경-설정">환경 설정<a class="anchor-link" href="#%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95">¶</a>
+<p>먼저, <a href="https://anaconda.org/">Anaconda</a>가 이미 설치 되어있다고 가정하겠습니다. 설치되어 있지 않다면 검색을 통해 설치해주세요.</p>
+<h4 id="가상환경-만들고-실행하기">가상환경 만들고 실행하기<a class="anchor-link" href="#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
 </h4>
-<p>First, install NumPy, SciPy, Matplotlib, IPython and Jupyter (if available) by using the package manager of your system (or use, for instance, Anaconda). I recommend you use Virtualenv and Virtualenvwrapper for setting up a virtual environment for the blog. After installing the packages, run the following command and put it to your shell startup file:</p>
-<h5 id="가상환경-만들고-실행하기">가상환경 만들고 실행하기<a class="anchor-link" href="#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
-</h5>
 <p><strong>nikola_blog</strong>라는 이름의 가상환경을 생성합니다.</p>
 <div class="highlight"><pre><span></span>conda create -n nikola_blog <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
 </pre></div>
@@ -121,11 +125,17 @@ I have thought about starting a blog for a few years now and when I recently fou
 pip install nikola<span class="o">[</span>extras<span class="o">]</span>
 </pre></div>
 <p>가상환경을 실행하고, <strong>nikola</strong>를 설치 합니다.</p>
-<h4 id="블로그-만들기">블로그 만들기<a class="anchor-link" href="#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
-</h4>
-<div class="highlight"><pre><span></span>nikola init .
+<h2 id="1.-블로그-만들기">1. 블로그 만들기<a class="anchor-link" href="#1.-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
+</h2>
+<p>Nikola가 설치가 되었다면 이제 블로그를 만들어 보겠습니다. 원하는 폴더에서 터미널을 열고 아래의 명령어를 입력하세요.</p>
+<div class="highlight"><pre><span></span>nikola init
 </pre></div>
-<p><strong>conf.py</strong>에서 다음과 같이 수정합니다.</p>
+<p>여러가지 질문들이 나오면서 사이트의 이름, 저자, 설명과 URL을 물어봅니다. 나중에 모두 <strong>conf.py</strong> 파일에서 수정이 가능하니까 너무 고민하지말고 넘어가주세요.
+질문이 끝나면 폴더안에 여러 파일과 다른 폴더가 생긴것을 확인 할 수 있습니다.</p>
+<h4 id="Jupyter-notebook-확장자-추가하기">Jupyter notebook 확장자 추가하기<a class="anchor-link" href="#Jupyter-notebook-%ED%99%95%EC%9E%A5%EC%9E%90-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<p>Nikola가 Jupyter notebook을 처리하기 위해서는 확장자를 추가해 줘야합니다.
+폴더안의 <strong>conf.py</strong> 파일을 열어서 아래와 비슷한 코드를 찾고 다음과 같이 <strong>("pages/*.ipynb", "", "story.tmpl"),</strong> 를 추가합니다.</p>
 <div class="highlight"><pre><span></span><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
     <span class="p">(</span><span class="s2">"posts/*.ipynb"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"posts/*.md"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
@@ -139,7 +149,45 @@ pip install nikola<span class="o">[</span>extras<span class="o">]</span>
     <span class="p">(</span><span class="s2">"pages/*.txt"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
 <span class="p">)</span>
 </pre></div>
-<p><a href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/</a></p>
+<h2 id="새-포스트-작성하기">새 포스트 작성하기<a class="anchor-link" href="#%EC%83%88-%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0">¶</a>
+</h2>
+<p>이제 새로운 포스트를 작성해보겠습니다. 다음과 같이 터미널에 입력을 하세요.</p>
+<div class="highlight"><pre><span></span>nikola new_post -f ipynb
+</pre></div>
+<p>제목을 물어보고는 알아서 새 Jupyter notebook을 만들어줍니다. 폴더에 새로운 파일이 생성된것을 확인하셨다면, 모든 준비가 되었습니다.</p>
+<h2 id="블로그-실행하기">블로그 실행하기<a class="anchor-link" href="#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
+</h2>
+<p>터미널에서 아래 명령어를 입력하고 웹브라우저에서 <em>localhost:8000</em>에 접속하세요.</p>
+<div class="highlight"><pre><span></span>nikola auto
+</pre></div>
+<p>블로그 생성된것을 확인 하셨나요?</p>
+<h2 id="Github-page에-올리기">Github page에 올리기<a class="anchor-link" href="#Github-page%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B8%B0">¶</a>
+</h2>
+<h4 id="git-시작하기">git 시작하기<a class="anchor-link" href="#git-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<p>깃허브(Github)는 너무나도 유명하기 때문에 따로 설명드리지는 않을게요. 블로그를 인터넷에 올리기 위해서 깃허브에서 제공하는 서비스를 이용할 거에요. 깃(git)을 어느정도 이해한다는 전제하에 간략하게 설명하겠습니다.</p>
+<ol>
+<li>먼저 깃허브에서 새로운 저장소(repository)를 생성합니다. 이때 이름은 <strong>USERNAME.github.io</strong>로 하세요. USERNAME은 본인의 ID입니다.</li>
+<li>새로운 저장소가 생성 되면 아래와 같이 터미널에 입력하세요.<div class="highlight"><pre><span></span>git init
+git add *
+git commit -am <span class="s2">"Initial commit"</span>
+git remote add origin https://github.com/USERNAME/UsERNAME.github.io.git
+git push origin -u
+</pre></div>
+</li>
+<li>만약 push 오류가 발생한다면 새로운 파일을 다음과 같이 작성하고 다시 push 하세요<div class="highlight"><pre><span></span>touch readme.md
+</pre></div>
+깃허브에 접속해보면 파일들이 정상적으로 업로드 되어있는것을 확인 하실 수 있습니다.</li>
+</ol>
+<h4 id="블로깅하기">블로깅하기<a class="anchor-link" href="#%EB%B8%94%EB%A1%9C%EA%B9%85%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<p>이제 모든 단계가 끝났습니다. 로컬에 있는 블로그 폴더에서 작업을 하고 github에 올리기만 하면 되는 것이지요. Nikola에서 보다 편하게 포스팅할 수 있도록 아래의 명령어를 지원합니다.</p>
+<div class="highlight"><pre><span></span>nikola github_deploy
+</pre></div>
+<p>깃허브에 푸쉬하고 브랜치를 나누는 작업도 알아서 해주는 강력한 기능입니다. 변경사항이 적용되는데는 몇분이 걸리지만 이제, <a href="http://USERNAME.github.io">http://USERNAME.github.io</a> 에 접속하면 블로그를 확인할 수 있을 겁니다.</p>
+<blockquote>
+<p>이제 초심을 유지하기만 하세요</p>
+</blockquote>
 
 </div>
 </div>
@@ -161,48 +209,10 @@ pip install nikola<span class="o">[</span>extras<span class="o">]</span>
 </div>
         <!--End of body content-->
 
-        <footer id="footer"><div class="text-center">
-<p>
-<span class="fa-stack fa-2x">
-  <a href="../../rss.xml">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-<span class="fa-stack fa-2x">
-  <a href="https://twitter.com/jluttine">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-<span class="fa-stack fa-2x">
-  <a href="https://github.com/jluttine">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-github fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-<span class="fa-stack fa-2x">
-  <a href="https://www.linkedin.com/in/jluttine">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-linkedin fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-<span class="fa-stack fa-2x">
-  <a href="mailto:partrita@gmail.com">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-</p>
-<p>
-  Contents © 2017  <a href="mailto:partrita@gmail.com">partrita</a>
-  —
-  
-  —
-  Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
-</p>
-</div>
-
+        <footer id="footer">
+            Contents © 2017         <a href="mailto:partrita@gmail.com">Taeyoon</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
             
         </footer>
 </div>
@@ -211,44 +221,6 @@ pip install nikola<span class="o">[</span>extras<span class="o">]</span>
             <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates --><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h4 class="modal-title">Search Results:</h4>
-      </div>
-      <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-var siteUrl = "https://partrita.github.io/"
-$(document).ready(function() {
-    $.when(
-        $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
-        $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
-        $.Deferred(function( deferred ){
-            $( deferred.resolve );
-        })
-    ).done(function() {
-        $('#tipue_search_input').tipuesearch({
-            'mode': 'json',
-            'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
-        });
-        $('#tipue_search_input').keyup(function (e) {
-            if (e.keyCode == 13) {
-                $('#search-results').modal()
-            }
-        });
-    });
-});
-</script>
+    </script><!-- end fancy dates -->
 </body>
 </html>
