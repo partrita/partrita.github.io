@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Purified plasmid DNA from e.coli">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miniprep | Noname</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#083551">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://partrita.github.io/posts/miniprep/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Taeyoon">
+<link rel="prev" href="../statistics-in-python/" title="Statistics in Python" type="text/html">
+<link rel="next" href="../PCR/" title="PCR(polymerase chain reaction)" type="text/html">
+<meta property="og:site_name" content="Noname">
+<meta property="og:title" content="Miniprep">
+<meta property="og:url" content="https://partrita.github.io/posts/miniprep/">
+<meta property="og:description" content="Purified plasmid DNA from e.coli">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-12-19T09:23:28+09:00">
+<meta property="article:tag" content="protocols">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://partrita.github.io/">
+
+                <span id="blog-title">Noname</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/bio/index.html">Resume</a>
+                </li>
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<!-- Google custom search --><form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
+<div class="form-group">
+<input type="text" name="q" class="form-control" placeholder="Search">
+</div>
+<button type="submit" class="btn btn-primary">
+	<span class="glyphicon glyphicon-search"></span>
+</button>
+<input type="hidden" name="sitesearch" value="https://partrita.github.io/">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Miniprep</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Taeyoon
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-12-19T09:23:28+09:00" itemprop="datePublished" title="2017-12-19 09:23">2017-12-19 09:23</time></a></p>
+                    <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="section" id="id1">
+<h2>양에 따른 분류</h2>
+<p>다양한 회사에서 plasmid DNSA를 정제하는 하는 키트를 생산하고 있는데, 시작하는 E.coli 배양액의 양에 따라서 다음과 같이 miniprep, midiprep, maxiprep라고 공통적으로 부르고 있습니다. 이름에서 알 수 있듯 양이 적으면 mini 많으면 maxi입니다.</p>
+<p>miniprep은 (상대적으로) 빠르고 작은 규모로 plasmid DNA를 뽑아 낼 수 있기에 많이 사용되고 있습니다. 원리는 <strong>alkaline lysis method</strong> 를 사용하고 있는데 간단히 이야기 하면 염기성 용액으로 셀을 깨주고, 빠르게 중화시켜 Plasmid DNA만 선택해 내는 방법 입니다. 보통의 경우 miniprep으로 약 50µg의 plasmid DNA를 얻을 수 있습니다.</p>
+<blockquote>
+miniprep에 사용되는 다양한 키트가 있지만, 여기에서는 Qiagen Spin Miniprep 키트 기준으로 설명합니다.</blockquote>
+</div>
+<div class="section" id="solutions-reagents">
+<h2>Solutions/reagents:</h2>
+<ul class="simple">
+<li>하룻밤 키운 E.coli 배양액 (1-5ml)</li>
+<li><dl class="first docutils">
+<dt>차가운 P1 버퍼 (50 mM Tris-HCl pH 8.0, 10 mM EDTA, 100 µg/ml RNaseA)</dt>
+<dd>RNaseA가 들어있습니다. 항상 냉장 보관하세요</dd>
+</dl></li>
+<li>P2 버퍼 (200 mM NaOH, 1% SDS)</li>
+<li>N3 버퍼 (4.2 M Gu-HCl, 0.9 M potassium acetate, pH 4.8)</li>
+<li>PB 버퍼 (5 M Gu-HCl, 30% ethanol)</li>
+<li>PE 버퍼 (10 mM Tris-HCl pH 7.5, 80% ethanol)</li>
+<li><dl class="first docutils">
+<dt>EB 버퍼 (10 mM Tris·Cl, pH 8.5)</dt>
+<dd>DW로 대체하셔도 됩니다.</dd>
+</dl></li>
+<li>QIAprep spin column</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>필요 장비:</h2>
+<ul class="simple">
+<li>Centrifuge</li>
+<li>멸균된 1.5-ml microcentrifuge 튜브</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>실험 방법:</h2>
+<ol class="arabic simple">
+<li>microcentrifuge  튜브에 <strong>1.5 ml</strong> 의 배양액을 넣어 줍니다.</li>
+<li>Centrifuge at maximum speed for <strong>1 min</strong> at <strong>room temperature</strong>, gently aspirate out the supernatant and discard it.</li>
+<li>충분한 크기의 cell pellet이 생길때 까지 반복합니다.</li>
+<li>
+<strong>250 µl</strong> 의 차가운 Buffer P1 를 넣어주고, Resuspend pelleted bacterial cells</li>
+<li>Add 250 μl Buffer P2 and <strong>조심스럽게 invert</strong> the tube 4–6 times to mix.</li>
+<li><dl class="first docutils">
+<dt>Add <strong>300 µl</strong> of Buffer N3.</dt>
+<dd>NOTE: Proceed to the next step within <strong>immediately</strong> !</dd>
+</dl></li>
+<li>Close the tube tightly and invert the tube <strong>4 - 6 times</strong> . The solution should become cloudy.</li>
+<li>Centrifuge for 10 min at 13,000 rpm (~17,900 x g) in a table-top microcentrifuge. A compact white pellet will form. Apply the supernatants from step 4 to the QIAprep spin column by decanting or pipetting.</li>
+<li>Centrifuge for 30–60 s. Discard the flow-through. Spinning for 60 seconds produces good results.</li>
+<li>Wash QIAprep spin column by adding <strong>0.75 ml</strong> Buffer PE and centrifuging for 30–60 s.</li>
+<li><dl class="first docutils">
+<dt>Discard the flow-through, and centrifuge for an additional 1 min to remove residual wash buffer.</dt>
+<dd>IMPORTANT: Residual wash buffer will inhibit subsequent enzymatic reactions.</dd>
+</dl></li>
+<li><dl class="first docutils">
+<dt>Place the QIAprep column in a clean 1.5 ml microcentrifuge tube. To elute DNA, add 50 μl Buffer EB (10 mM Tris·Cl, pH 8.5) or water to the center of each QIAprep spin column, let stand for 1 min, and centrifuge for 1 min.</dt>
+<dd>만약 높은 농도로 elution 받고 싶다면 add 30 μL의 DW를 컬럼 가운데에 넣고, incubate at room temperature on the bench for 5 mins and then centrifuge for 1 min.</dd>
+</dl></li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2>노트</h2>
+<p>한번에 10개 이상의 miniprep을 한다면 vacuum manifold 방법을 사용하는게 빠릅니다.
+셀 lysate를 over the column twice increases yield by about 20%.
+Contaminating salt from the initial lysate or the PB will ruin a sequencing reaction more frequently.</p>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/protocols/" rel="tag">protocols</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../statistics-in-python/" rel="prev" title="Statistics in Python">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../PCR/" rel="next" title="PCR(polymerase chain reaction)">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2017         <a href="mailto:partrita@gmail.com">Taeyoon</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
