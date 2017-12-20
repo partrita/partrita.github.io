@@ -3,7 +3,321 @@
 &lt;a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;
 &lt;img alt="Creative Commons License BY-NC-SA"
 style="border-width:0; margin-bottom:12px;"
-src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"&gt;&lt;/a&gt;</copyright><lastBuildDate>Wed, 20 Dec 2017 00:34:22 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Statistics in Python</title><link>https://partrita.github.io/posts/statistics-in-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"&gt;&lt;/a&gt;</copyright><lastBuildDate>Wed, 20 Dec 2017 08:35:27 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Frequency of Amino acid</title><link>https://partrita.github.io/posts/frequency-of-amino-acid/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="단백질-서열-빈도"&gt;단백질 서열 빈도&lt;a class="anchor-link" href="https://partrita.github.io/posts/frequency-of-amino-acid/#%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4-%EB%B9%88%EB%8F%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;파이썬으로 기초적인 단백질 서열의 빈도를 계산해 보겠습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 필요한 모듈 임포트&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;protein_seq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'''ATRRYYLGAVELSWDYMQSDLGELPVDARFPPRVPKSFPFNTSVVYKKTLFVEFTDHLFN&lt;/span&gt;
+&lt;span class="s1"&gt;IAKPRPPWMGLLGPTIQAEVYDTVVITLKNMASHPVSLHAVGVSYWKASEGAEYDDQTSQ&lt;/span&gt;
+&lt;span class="s1"&gt;REKEDDKVFPGGSHTYVWQVLKENGPMASDPLCLTYSYLSHVDLVKDLNSGLIGALLVCR&lt;/span&gt;
+&lt;span class="s1"&gt;EGSLAKEKTQTLHKFILLFAVFDEGKSWHSETKNSLMQDRDAASARAWPKMHTVNGYVNR&lt;/span&gt;
+&lt;span class="s1"&gt;SLPGLIGCHRKSVYWHVIGMGTTPEVHSIFLEGHTFLVRNHRQASLEISPITFLTAQTLL&lt;/span&gt;
+&lt;span class="s1"&gt;MDLGQFLLFCHISSHQHDGMEAYVKVDSCPEEPQLRMKNNEEAEDYDDDLTDSEMDVVRF&lt;/span&gt;
+&lt;span class="s1"&gt;DDDNSPSFIQIRSVAKKHPKTWVHYIAAEEEDWDYAPLVLAPDDRSYKSQYLNNGPQRIG&lt;/span&gt;
+&lt;span class="s1"&gt;RKYKKVRFMAYTDETFKTREAIQHESGILGPLLYGEVGDTLLIIFKNQASRPYNIYPHGI&lt;/span&gt;
+&lt;span class="s1"&gt;TDVRPLYSRRLPKGVKHLKDFPILPGEIFKYKWTVTVEDGPTKSDPRCLTRYYSSFVNME&lt;/span&gt;
+&lt;span class="s1"&gt;RDLASGLIGPLLICYKESVDQRGNQIMSDKRNVILFSVFDENRSWYLTENIQRFLPNPAG&lt;/span&gt;
+&lt;span class="s1"&gt;VQLEDPEFQASNIMHSINGYVFDSLQLSVCLHEVAYWYILSIGAQTDFLSVFFSGYTFKH&lt;/span&gt;
+&lt;span class="s1"&gt;KMVYEDTLTLFPFSGETVFMSMENPGLWILGCHNSDFRNRGMTALLKVSSCDKNTGDYYE&lt;/span&gt;
+&lt;span class="s1"&gt;DSYEDISAYLLSKNNAIEPRSFSQNSRHPSTRQKQFNATTIPENDIEKTDPWFAHRTPMP&lt;/span&gt;
+&lt;span class="s1"&gt;KIQNVSSSDLLMLLRQSPTPHGLSLSDLQEAKYETFSDDPSPGAIDSNNSLSEMTHFRPQ&lt;/span&gt;
+&lt;span class="s1"&gt;LHHSGDMVFTPESGLQLRLNEKLGTTAATELKKLDFKVSSTSNNLISTIPSDNLAAGTDN&lt;/span&gt;
+&lt;span class="s1"&gt;TSSLGPPSMPVHYDSQLDTTLFGKKSSPLTESGGPLSLSEENNDSKLLESGLMNSQESSW&lt;/span&gt;
+&lt;span class="s1"&gt;GKNVSSTESGRLFKGKRAHGPALLTKDNALFKVSISLLKTNKTSNNSATNRKTHIDGPSL&lt;/span&gt;
+&lt;span class="s1"&gt;LIENSPSVWQNILESDTEFKKVTPLIHDRMLMDKNATALRLNHMSNKTTSSKNMEMVQQK&lt;/span&gt;
+&lt;span class="s1"&gt;KEGPIPPDAQNPDMSFFKMLFLPESARWIQRTHGKNSLNSGQGPSPKQLVSLGPEKSVEG&lt;/span&gt;
+&lt;span class="s1"&gt;QNFLSEKNKVVVGKGEFTKDVGLKEMVFPSSRNLFLTNLDNLHENNTHNQEKKIQEEIEK&lt;/span&gt;
+&lt;span class="s1"&gt;KETLIQENVVLPQIHTVTGTKNFMKNLFLLSTRQNVEGSYDGAYAPVLQDFRSLNDSTNR&lt;/span&gt;
+&lt;span class="s1"&gt;TKKHTAHFSKKGEEENLEGLGNQTKQIVEKYACTTRISPNTSQQNFVTQRSKRALKQFRL&lt;/span&gt;
+&lt;span class="s1"&gt;PLEETELEKRIIVDDTSTQWSKNMKHLTPSTLTQIDYNEKEKGAITQSPLSDCLTRSHSI&lt;/span&gt;
+&lt;span class="s1"&gt;PQANRSPLPIAKVSSFPSIRPIYLTRVLFQDNSSHLPAASYRKKDSGVQESSHFLQGAKK&lt;/span&gt;
+&lt;span class="s1"&gt;NNLSLAILTLEMTGDQREVGSLGTSATNSVTYKKVENTVLPKPDLPKTSGKVELLPKVHI&lt;/span&gt;
+&lt;span class="s1"&gt;YQKDLFPTETSNGSPGHLDLVEGSLLQGTEGAIKWNEANRPGKVPFLRVATESSAKTPSK&lt;/span&gt;
+&lt;span class="s1"&gt;LLDPLAWDNHYGTQIPKEEWKSQEKSPEKTAFKKKDTILSLNACESNHAIAAINEGQNKP&lt;/span&gt;
+&lt;span class="s1"&gt;EIEVTWAKQGRTERLCSQNPPVLKRHQREITRTTLQSDQEEIDYDDTISVEMKKEDFDIY&lt;/span&gt;
+&lt;span class="s1"&gt;DEDENQSPRSFQKKTRHYFIAAVERLWDYGMSSSPHVLRNRAQSGSVPQFKKVVFQEFTD&lt;/span&gt;
+&lt;span class="s1"&gt;GSFTQPLYRGELNEHLGLLGPYIRAEVEDNIMVTFRNQASRPYSFYSSLISYEEDQRQGA&lt;/span&gt;
+&lt;span class="s1"&gt;EPRKNFVKPNETKTYFWKVQHHMAPTKDEFDCKAWAYFSDVDLEKDVHSGLIGPLLVCHT&lt;/span&gt;
+&lt;span class="s1"&gt;NTLNPAHGRQVTVQEFALFFTIFDETKSWYFTENMERNCRAPCNIQMEDPTFKENYRFHA&lt;/span&gt;
+&lt;span class="s1"&gt;INGYIMDTLPGLVMAQDQRIRWYLLSMGSNENIHSIHFSGHVFTVRKKEEYKMALYNLYP&lt;/span&gt;
+&lt;span class="s1"&gt;GVFETVEMLPSKAGIWRVECLIGEHLHAGMSTLFLVYSNKCQTPLGMASGHIRDFQITAS&lt;/span&gt;
+&lt;span class="s1"&gt;GQYGQWAPKLARLHYSGSINAWSTKEPFSWIKVDLLAPMIIHGIKTQGARQKFSSLYISQ&lt;/span&gt;
+&lt;span class="s1"&gt;FIIMYSLDGKKWQTYRGNSTGTLMVFFGNVDSSGIKHNIFNPPIIARYIRLHPTHYSIRS&lt;/span&gt;
+&lt;span class="s1"&gt;TLRMELMGCDLNSCSMPLGMESKAISDAQITASSYFTNMFATWSPSKARLHLQGRSNAWR&lt;/span&gt;
+&lt;span class="s1"&gt;PQVNNPKEWLQVDFQKTMKVTGVTTQGVKSLLTSMYVKEFLISSSQDGHQWTLFFQNGKV&lt;/span&gt;
+&lt;span class="s1"&gt;KVFQGNQDSFTPVVNSLDPPLLTRYLRIHPQSWVHQIALRMEVLGCEAQDLY'''&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;단백질 서열에 줄바꿈이 있는지를 확인하고, 제거합니다.
+그리고 총 2332개의 아미노산 갯수가 맞는지 확인합니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# data check&lt;/span&gt;
+&lt;span class="n"&gt;protein_seq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;protein_seq&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;protein_seq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;2332&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;
+&lt;span class="n"&gt;table&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;protein_seq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;table&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;Counter({'A': 110,
+         'C': 23,
+         'D': 121,
+         'E': 147,
+         'F': 105,
+         'G': 129,
+         'H': 75,
+         'I': 109,
+         'K': 158,
+         'L': 218,
+         'M': 60,
+         'N': 125,
+         'P': 128,
+         'Q': 109,
+         'R': 103,
+         'S': 217,
+         'T': 154,
+         'V': 125,
+         'W': 37,
+         'Y': 79})&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;table&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;orient&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'index'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'index'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;'AA'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;'count'&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="n"&gt;df2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;count&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;A&lt;/th&gt;
+      &lt;td&gt;110&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;T&lt;/th&gt;
+      &lt;td&gt;154&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;R&lt;/th&gt;
+      &lt;td&gt;103&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Y&lt;/th&gt;
+      &lt;td&gt;79&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;L&lt;/th&gt;
+      &lt;td&gt;218&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'test1: frequency of amino acid '&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;Text(0.5,1,'test1: frequency of amino acid ')&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_png output_subarea "&gt;
+&lt;img src="data:image/png;base64,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"&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="결론"&gt;결론&lt;a class="anchor-link" href="https://partrita.github.io/posts/frequency-of-amino-acid/#%EA%B2%B0%EB%A1%A0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Leucine과 Serine의 빈도가 상대적으로 높고 Cysteine과 Tryptophan은 매우 적은 빈도로 있는것을 확인 할 수 있습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</description><category>python</category><guid>https://partrita.github.io/posts/frequency-of-amino-acid/</guid><pubDate>Wed, 20 Dec 2017 08:27:02 GMT</pubDate></item><item><title>Statistics in Python</title><link>https://partrita.github.io/posts/statistics-in-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;

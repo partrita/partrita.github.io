@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="basic sequence analysis">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frequency of Amino acid | Noname</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#083551">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://partrita.github.io/posts/frequency-of-amino-acid/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Taeyoon">
+<link rel="prev" href="../PCR/" title="PCR(polymerase chain reaction)" type="text/html">
+<meta property="og:site_name" content="Noname">
+<meta property="og:title" content="Frequency of Amino acid">
+<meta property="og:url" content="https://partrita.github.io/posts/frequency-of-amino-acid/">
+<meta property="og:description" content="basic sequence analysis">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-12-20T17:27:02+09:00">
+<meta property="article:tag" content="python">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://partrita.github.io/">
+
+                <span id="blog-title">Noname</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/bio/index.html">Resume</a>
+                </li>
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<!-- Google custom search --><form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
+<div class="form-group">
+<input type="text" name="q" class="form-control" placeholder="Search">
+</div>
+<button type="submit" class="btn btn-primary">
+	<span class="glyphicon glyphicon-search"></span>
+</button>
+<input type="hidden" name="sitesearch" value="https://partrita.github.io/">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.ipynb" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Frequency of Amino acid</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Taeyoon
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-12-20T17:27:02+09:00" itemprop="datePublished" title="2017-12-20 17:27">2017-12-20 17:27</time></a></p>
+                    <p class="sourceline"><a href="index.ipynb" class="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="단백질-서열-빈도">단백질 서열 빈도<a class="anchor-link" href="#%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4-%EB%B9%88%EB%8F%84">¶</a>
+</h2>
+<p>파이썬으로 기초적인 단백질 서열의 빈도를 계산해 보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 필요한 모듈 임포트</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">protein_seq</span> <span class="o">=</span> <span class="s1">'''ATRRYYLGAVELSWDYMQSDLGELPVDARFPPRVPKSFPFNTSVVYKKTLFVEFTDHLFN</span>
+<span class="s1">IAKPRPPWMGLLGPTIQAEVYDTVVITLKNMASHPVSLHAVGVSYWKASEGAEYDDQTSQ</span>
+<span class="s1">REKEDDKVFPGGSHTYVWQVLKENGPMASDPLCLTYSYLSHVDLVKDLNSGLIGALLVCR</span>
+<span class="s1">EGSLAKEKTQTLHKFILLFAVFDEGKSWHSETKNSLMQDRDAASARAWPKMHTVNGYVNR</span>
+<span class="s1">SLPGLIGCHRKSVYWHVIGMGTTPEVHSIFLEGHTFLVRNHRQASLEISPITFLTAQTLL</span>
+<span class="s1">MDLGQFLLFCHISSHQHDGMEAYVKVDSCPEEPQLRMKNNEEAEDYDDDLTDSEMDVVRF</span>
+<span class="s1">DDDNSPSFIQIRSVAKKHPKTWVHYIAAEEEDWDYAPLVLAPDDRSYKSQYLNNGPQRIG</span>
+<span class="s1">RKYKKVRFMAYTDETFKTREAIQHESGILGPLLYGEVGDTLLIIFKNQASRPYNIYPHGI</span>
+<span class="s1">TDVRPLYSRRLPKGVKHLKDFPILPGEIFKYKWTVTVEDGPTKSDPRCLTRYYSSFVNME</span>
+<span class="s1">RDLASGLIGPLLICYKESVDQRGNQIMSDKRNVILFSVFDENRSWYLTENIQRFLPNPAG</span>
+<span class="s1">VQLEDPEFQASNIMHSINGYVFDSLQLSVCLHEVAYWYILSIGAQTDFLSVFFSGYTFKH</span>
+<span class="s1">KMVYEDTLTLFPFSGETVFMSMENPGLWILGCHNSDFRNRGMTALLKVSSCDKNTGDYYE</span>
+<span class="s1">DSYEDISAYLLSKNNAIEPRSFSQNSRHPSTRQKQFNATTIPENDIEKTDPWFAHRTPMP</span>
+<span class="s1">KIQNVSSSDLLMLLRQSPTPHGLSLSDLQEAKYETFSDDPSPGAIDSNNSLSEMTHFRPQ</span>
+<span class="s1">LHHSGDMVFTPESGLQLRLNEKLGTTAATELKKLDFKVSSTSNNLISTIPSDNLAAGTDN</span>
+<span class="s1">TSSLGPPSMPVHYDSQLDTTLFGKKSSPLTESGGPLSLSEENNDSKLLESGLMNSQESSW</span>
+<span class="s1">GKNVSSTESGRLFKGKRAHGPALLTKDNALFKVSISLLKTNKTSNNSATNRKTHIDGPSL</span>
+<span class="s1">LIENSPSVWQNILESDTEFKKVTPLIHDRMLMDKNATALRLNHMSNKTTSSKNMEMVQQK</span>
+<span class="s1">KEGPIPPDAQNPDMSFFKMLFLPESARWIQRTHGKNSLNSGQGPSPKQLVSLGPEKSVEG</span>
+<span class="s1">QNFLSEKNKVVVGKGEFTKDVGLKEMVFPSSRNLFLTNLDNLHENNTHNQEKKIQEEIEK</span>
+<span class="s1">KETLIQENVVLPQIHTVTGTKNFMKNLFLLSTRQNVEGSYDGAYAPVLQDFRSLNDSTNR</span>
+<span class="s1">TKKHTAHFSKKGEEENLEGLGNQTKQIVEKYACTTRISPNTSQQNFVTQRSKRALKQFRL</span>
+<span class="s1">PLEETELEKRIIVDDTSTQWSKNMKHLTPSTLTQIDYNEKEKGAITQSPLSDCLTRSHSI</span>
+<span class="s1">PQANRSPLPIAKVSSFPSIRPIYLTRVLFQDNSSHLPAASYRKKDSGVQESSHFLQGAKK</span>
+<span class="s1">NNLSLAILTLEMTGDQREVGSLGTSATNSVTYKKVENTVLPKPDLPKTSGKVELLPKVHI</span>
+<span class="s1">YQKDLFPTETSNGSPGHLDLVEGSLLQGTEGAIKWNEANRPGKVPFLRVATESSAKTPSK</span>
+<span class="s1">LLDPLAWDNHYGTQIPKEEWKSQEKSPEKTAFKKKDTILSLNACESNHAIAAINEGQNKP</span>
+<span class="s1">EIEVTWAKQGRTERLCSQNPPVLKRHQREITRTTLQSDQEEIDYDDTISVEMKKEDFDIY</span>
+<span class="s1">DEDENQSPRSFQKKTRHYFIAAVERLWDYGMSSSPHVLRNRAQSGSVPQFKKVVFQEFTD</span>
+<span class="s1">GSFTQPLYRGELNEHLGLLGPYIRAEVEDNIMVTFRNQASRPYSFYSSLISYEEDQRQGA</span>
+<span class="s1">EPRKNFVKPNETKTYFWKVQHHMAPTKDEFDCKAWAYFSDVDLEKDVHSGLIGPLLVCHT</span>
+<span class="s1">NTLNPAHGRQVTVQEFALFFTIFDETKSWYFTENMERNCRAPCNIQMEDPTFKENYRFHA</span>
+<span class="s1">INGYIMDTLPGLVMAQDQRIRWYLLSMGSNENIHSIHFSGHVFTVRKKEEYKMALYNLYP</span>
+<span class="s1">GVFETVEMLPSKAGIWRVECLIGEHLHAGMSTLFLVYSNKCQTPLGMASGHIRDFQITAS</span>
+<span class="s1">GQYGQWAPKLARLHYSGSINAWSTKEPFSWIKVDLLAPMIIHGIKTQGARQKFSSLYISQ</span>
+<span class="s1">FIIMYSLDGKKWQTYRGNSTGTLMVFFGNVDSSGIKHNIFNPPIIARYIRLHPTHYSIRS</span>
+<span class="s1">TLRMELMGCDLNSCSMPLGMESKAISDAQITASSYFTNMFATWSPSKARLHLQGRSNAWR</span>
+<span class="s1">PQVNNPKEWLQVDFQKTMKVTGVTTQGVKSLLTSMYVKEFLISSSQDGHQWTLFFQNGKV</span>
+<span class="s1">KVFQGNQDSFTPVVNSLDPPLLTRYLRIHPQSWVHQIALRMEVLGCEAQDLY'''</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>단백질 서열에 줄바꿈이 있는지를 확인하고, 제거합니다.
+그리고 총 2332개의 아미노산 갯수가 맞는지 확인합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># data check</span>
+<span class="n">protein_seq</span> <span class="o">=</span> <span class="n">protein_seq</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">protein_seq</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2332</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">protein_seq</span><span class="p">)</span>
+<span class="n">table</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Counter({'A': 110,
+         'C': 23,
+         'D': 121,
+         'E': 147,
+         'F': 105,
+         'G': 129,
+         'H': 75,
+         'I': 109,
+         'K': 158,
+         'L': 218,
+         'M': 60,
+         'N': 125,
+         'P': 128,
+         'Q': 109,
+         'R': 103,
+         'S': 217,
+         'T': 154,
+         'V': 125,
+         'W': 37,
+         'Y': 79})</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">'index'</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'index'</span><span class="p">:</span><span class="s1">'AA'</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="s1">'count'</span><span class="p">})</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>count</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>A</th>
+      <td>110</td>
+    </tr>
+<tr>
+<th>T</th>
+      <td>154</td>
+    </tr>
+<tr>
+<th>R</th>
+      <td>103</td>
+    </tr>
+<tr>
+<th>Y</th>
+      <td>79</td>
+    </tr>
+<tr>
+<th>L</th>
+      <td>218</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'test1: frequency of amino acid '</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5,1,'test1: frequency of amino acid ')</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="결론">결론<a class="anchor-link" href="#%EA%B2%B0%EB%A1%A0">¶</a>
+</h3>
+<p>Leucine과 Serine의 빈도가 상대적으로 높고 Cysteine과 Tryptophan은 매우 적은 빈도로 있는것을 확인 할 수 있습니다.</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/python/" rel="tag">python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../PCR/" rel="prev" title="PCR(polymerase chain reaction)">Previous post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2017         <a href="mailto:partrita@gmail.com">Taeyoon</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
