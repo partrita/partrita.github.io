@@ -1431,7 +1431,8 @@ SEARCH_FORM = """
 
 EXTRA_HEAD_DATA = """
 <link rel="stylesheet" type="text/css" href="/assets/css/tipuesearch.css">
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<meta name="naver-site-verification" content="d38b92eb0fc0075616e5ff8008f707087bfee65e"/>
 """
 
 BODY_END = """
