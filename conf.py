@@ -1429,6 +1429,7 @@ SEARCH_FORM = """
 <input type="text" id="tipue_search_input" class="form-control" placeholder="Search">
 </span>"""
 
+# 웹폰트를 위한 코드와 네이버 사이트 확인을 위한 코드가 첨부
 EXTRA_HEAD_DATA = """
 <link rel="stylesheet" type="text/css" href="/assets/css/tipuesearch.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
