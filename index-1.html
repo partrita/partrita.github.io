@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
-og: http://ogp.me/ns#
-article: http://ogp.me/ns/article#
-" lang="en">
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="description" content="Basically, all about my interest. but something useful ">
@@ -16,7 +13,8 @@ article: http://ogp.me/ns/article#
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://partrita.github.io/index-1.html">
 <link rel="prev" href="index-2.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="assets/css/tipuesearch.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -58,17 +56,8 @@ article: http://ogp.me/ns/article#
                 
             </li>
 </ul>
-<!-- Google custom search --><form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
-<div class="form-group">
-<input type="text" name="q" class="form-control" placeholder="Search">
-</div>
-<button type="submit" class="btn btn-primary">
-	<span class="glyphicon glyphicon-search"></span>
-</button>
-<input type="hidden" name="sitesearch" value="https://partrita.github.io/">
-</form>
-<!-- End of custom search -->
-
+<span class="navbar-form navbar-right">
+<input type="text" id="tipue_search_input" class="form-control" placeholder="Search"></span>
 
             <ul class="nav navbar-nav navbar-right"></ul>
 </div>
@@ -80,7 +69,11 @@ article: http://ogp.me/ns/article#
         <!--Body content-->
         <div class="row">
             
+            
+
     
+
+
     
 <div class="postindex">
     <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/Pandas-tutorial/" class="u-url">Pandas tutorial</a></h1>
@@ -991,7 +984,7 @@ some literal text
 <pre class="literal-block">
 some more literal text
 </pre>
-<pre class="code python"><a name="rest_code_bef2649af2b44c1492bbf8e10e06c081-1"></a><span class="k">print</span><span class="p">(</span><span class="s2">"A literal block directive explicitly marked as python code"</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_ff7aff085d4240e892c3c48311edbbe5-1"></a><span class="k">print</span><span class="p">(</span><span class="s2">"A literal block directive explicitly marked as python code"</span><span class="p">)</span>
 </pre>
 </div>
 </div>
@@ -1860,24 +1853,24 @@ Double-dashes - - "- -" - - must be escaped somehow in HTML output. -->
 <h3><a class="toc-backref" href="posts/restructuredtext-demo/#id61">3.1   Code Blocks</a></h3>
 <p>Here's a neat implementation of the Sieve of Eratosthenes.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/restructuredtext-demo/#rest_code_acc918b6de3b4f03bc456bb398a0f43c-1">1</a>
-<a href="posts/restructuredtext-demo/#rest_code_acc918b6de3b4f03bc456bb398a0f43c-2">2</a>
-<a href="posts/restructuredtext-demo/#rest_code_acc918b6de3b4f03bc456bb398a0f43c-3">3</a>
-<a href="posts/restructuredtext-demo/#rest_code_acc918b6de3b4f03bc456bb398a0f43c-4">4</a>
-<a href="posts/restructuredtext-demo/#rest_code_acc918b6de3b4f03bc456bb398a0f43c-5">5</a>
-<a href="posts/restructuredtext-demo/#rest_code_acc918b6de3b4f03bc456bb398a0f43c-6">6</a>
-<a href="posts/restructuredtext-demo/#rest_code_acc918b6de3b4f03bc456bb398a0f43c-7">7</a>
-<a href="posts/restructuredtext-demo/#rest_code_acc918b6de3b4f03bc456bb398a0f43c-8">8</a>
-<a href="posts/restructuredtext-demo/#rest_code_acc918b6de3b4f03bc456bb398a0f43c-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_acc918b6de3b4f03bc456bb398a0f43c-1"></a><span class="k">def</span> <span class="nf">sieve_of_eratosthenes</span><span class="p">():</span>
-<a name="rest_code_acc918b6de3b4f03bc456bb398a0f43c-2"></a>    <span class="n">factors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
-<a name="rest_code_acc918b6de3b4f03bc456bb398a0f43c-3"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-<a name="rest_code_acc918b6de3b4f03bc456bb398a0f43c-4"></a>        <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
-<a name="rest_code_acc918b6de3b4f03bc456bb398a0f43c-5"></a>            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<a name="rest_code_acc918b6de3b4f03bc456bb398a0f43c-6"></a>                <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<a name="rest_code_acc918b6de3b4f03bc456bb398a0f43c-7"></a>        <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_acc918b6de3b4f03bc456bb398a0f43c-8"></a>            <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<a name="rest_code_acc918b6de3b4f03bc456bb398a0f43c-9"></a>            <span class="k">yield</span> <span class="n">n</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/restructuredtext-demo/#rest_code_2b5a7607ff83492198acf20e146804e2-1">1</a>
+<a href="posts/restructuredtext-demo/#rest_code_2b5a7607ff83492198acf20e146804e2-2">2</a>
+<a href="posts/restructuredtext-demo/#rest_code_2b5a7607ff83492198acf20e146804e2-3">3</a>
+<a href="posts/restructuredtext-demo/#rest_code_2b5a7607ff83492198acf20e146804e2-4">4</a>
+<a href="posts/restructuredtext-demo/#rest_code_2b5a7607ff83492198acf20e146804e2-5">5</a>
+<a href="posts/restructuredtext-demo/#rest_code_2b5a7607ff83492198acf20e146804e2-6">6</a>
+<a href="posts/restructuredtext-demo/#rest_code_2b5a7607ff83492198acf20e146804e2-7">7</a>
+<a href="posts/restructuredtext-demo/#rest_code_2b5a7607ff83492198acf20e146804e2-8">8</a>
+<a href="posts/restructuredtext-demo/#rest_code_2b5a7607ff83492198acf20e146804e2-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_2b5a7607ff83492198acf20e146804e2-1"></a><span class="k">def</span> <span class="nf">sieve_of_eratosthenes</span><span class="p">():</span>
+<a name="rest_code_2b5a7607ff83492198acf20e146804e2-2"></a>    <span class="n">factors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+<a name="rest_code_2b5a7607ff83492198acf20e146804e2-3"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_2b5a7607ff83492198acf20e146804e2-4"></a>        <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
+<a name="rest_code_2b5a7607ff83492198acf20e146804e2-5"></a>            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_2b5a7607ff83492198acf20e146804e2-6"></a>                <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<a name="rest_code_2b5a7607ff83492198acf20e146804e2-7"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_2b5a7607ff83492198acf20e146804e2-8"></a>            <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a name="rest_code_2b5a7607ff83492198acf20e146804e2-9"></a>            <span class="k">yield</span> <span class="n">n</span>
 </pre></td>
 </tr></table>
 </div>
@@ -1952,6 +1945,7 @@ Duplicate target name, cannot be used as a unique reference: "duplicate target n
     </div>
     </article>
 </div>
+
         <nav class="postindexpager"><ul class="pager">
 <li class="previous">
                 <a href="index-2.html" rel="prev">Newer posts</a>
@@ -1969,9 +1963,48 @@ Duplicate target name, cannot be used as a unique reference: "duplicate target n
 </div>
 </div>
 
+
             <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+    </script><!-- end fancy dates --><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Search Results:</h4>
+      </div>
+      <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var siteUrl = "https://partrita.github.io/"
+$(document).ready(function() {
+    $.when(
+        $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
+        $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
+        $.Deferred(function( deferred ){
+            $( deferred.resolve );
+        })
+    ).done(function() {
+        $('#tipue_search_input').tipuesearch({
+            'mode': 'json',
+            'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
+        });
+        $('#tipue_search_input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $('#search-results').modal()
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
