@@ -143,7 +143,7 @@ NAVIGATION_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "fine"
+THEME = "lumen"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
@@ -1203,19 +1203,19 @@ INDEX_DISPLAY_POST_COUNT = 3
 # """ % SITE_URL
 #
 # If you prefer a Google search form, here's an example that should just work:
-SEARCH_FORM = """
-<!-- Google custom search -->
-<form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
-<div class="form-group">
-<input type="text" name="q" class="form-control" placeholder="Search">
-</div>
-<button type="submit" class="btn btn-primary">
-	<span class="glyphicon glyphicon-search"></span>
-</button>
-<input type="hidden" name="sitesearch" value="%s">
-</form>
-<!-- End of custom search -->
-""" % SITE_URL
+# SEARCH_FORM = """
+# <!-- Google custom search -->
+# <form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
+# <div class="form-group">
+# <input type="text" name="q" class="form-control" placeholder="Search">
+# </div>
+# <button type="submit" class="btn btn-primary">
+# 	<span class="glyphicon glyphicon-search"></span>
+# </button>
+# <input type="hidden" name="sitesearch" value="%s">
+# </form>
+# <!-- End of custom search -->
+# """ % SITE_URL
 
 # Use content distribution networks for jQuery, twitter-bootstrap css and js,
 # and html5shiv (for older versions of Internet Explorer)
@@ -1422,56 +1422,57 @@ GLOBAL_CONTEXT_FILLER = []
 # This is an example that works well with Nikola's default Bootstrap3 theme.
 # It displays the search field in the navigation bar, and the results
 # in a modal dialog.
-# import json
+import json
 
-# SEARCH_FORM = """
-# <span class="navbar-form navbar-right">
-# <input type="text" id="tipue_search_input" class="form-control" placeholder="Search">
-# </span>"""
+SEARCH_FORM = """
+<span class="navbar-form navbar-right">
+<input type="text" id="tipue_search_input" class="form-control" placeholder="Search">
+</span>"""
 
-# EXTRA_HEAD_DATA = """
-# <link rel="stylesheet" type="text/css" href="/assets/css/tipuesearch.css">
-# """
+EXTRA_HEAD_DATA = """
+<link rel="stylesheet" type="text/css" href="/assets/css/tipuesearch.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
+"""
 
-# BODY_END = """
-# <!-- Modal -->
-# <div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
-#   <div class="modal-dialog">
+BODY_END = """
+<!-- Modal -->
+<div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
+  <div class="modal-dialog">
 
-#     <!-- Modal content-->
-#     <div class="modal-content">
-#       <div class="modal-header">
-#         <button type="button" class="close" data-dismiss="modal">&times;</button>
-#         <h4 class="modal-title">Search Results:</h4>
-#       </div>
-#       <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
-#       </div>
-#       <div class="modal-footer">
-#         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-#       </div>
-#     </div>
-#   </div>
-# </div>
-# <script>
-# var siteUrl = """ + json.dumps(SITE_URL) + """
-# $(document).ready(function() {
-#     $.when(
-#         $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
-#         $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
-#         $.Deferred(function( deferred ){
-#             $( deferred.resolve );
-#         })
-#     ).done(function() {
-#         $('#tipue_search_input').tipuesearch({
-#             'mode': 'json',
-#             'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
-#         });
-#         $('#tipue_search_input').keyup(function (e) {
-#             if (e.keyCode == 13) {
-#                 $('#search-results').modal()
-#             }
-#         });
-#     });
-# });
-# </script>
-# """
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Search Results:</h4>
+      </div>
+      <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var siteUrl = """ + json.dumps(SITE_URL) + """
+$(document).ready(function() {
+    $.when(
+        $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
+        $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
+        $.Deferred(function( deferred ){
+            $( deferred.resolve );
+        })
+    ).done(function() {
+        $('#tipue_search_input').tipuesearch({
+            'mode': 'json',
+            'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
+        });
+        $('#tipue_search_input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $('#search-results').modal()
+            }
+        });
+    });
+});
+</script>
+"""
