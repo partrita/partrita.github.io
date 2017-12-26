@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>2Much Bio (Posts about t-test)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/t-test.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Fri, 22 Dec 2017 06:06:42 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Statistics in Python</title><link>https://partrita.github.io/posts/statistics-in-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>2Much Bio (Posts about t-test)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/t-test.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Tue, 26 Dec 2017 10:33:00 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Statistics in Python</title><link>https://partrita.github.io/posts/statistics-in-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -35,7 +35,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="CSV-파일-읽어오기"&gt;CSV 파일 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#CSV-%ED%8C%8C%EC%9D%BC-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;brain_size 데이터는 &lt;strong&gt;Willerman&lt;/strong&gt;이 1991년에 사람의 뇌 크기와 무게, 그리고 IQ에 대하여 측정한 값입니다. 범주형의 데이터와 수치형 데이터로 구성 되어 있죠.&lt;/p&gt;
+&lt;h3 id="CSV-파일-읽어오기"&gt;CSV 파일 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#CSV-%ED%8C%8C%EC%9D%BC-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;brain_size&lt;/code&gt; 데이터는 &lt;strong&gt;Willerman&lt;/strong&gt;이 1991년에 사람의 뇌 크기와 무게, 그리고 IQ에 대하여 측정한 값입니다. 범주형의 데이터와 수치형 데이터로 구성 되어 있죠.&lt;/p&gt;
 &lt;p&gt;Pandas의 read_csv 기능을 이용해 데이터프레임을 만들어 보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -161,13 +161,13 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;간단히 살펴보면, 총 40명의 사람들의 성별, IQ, 몸무게, 키 그리고 MRI_count(total pixel Count from the 18 MRI scans) 값이 측정되어 있습니다.
 IQ의 경우 3종류로 세분화 되어있는데 각각을 알아 보면 아래와 같습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src="http://2.bp.blogspot.com/_IW0KO801uXY/SPOMfp2eGuI/AAAAAAAAE00/v8Hr_l7GAgg/s1600-h/WAIS+III+Breakdown+by+Index+%26+Subtests.jpg" alt="IQ 설명"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Full Scale Intelligence Quotient (FSIQ) : VIQ와 PIQ의 종합적인 수치입니다&lt;/li&gt;
 &lt;li&gt;Verbal IQ (VIQ) : 언어적인 측면을 측정합니다.&lt;/li&gt;
 &lt;li&gt;Performance IQ (PIQ) : 논리, 계산적인 측면을 측정&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;간단하게 평균값과 표준편차등을 알아 보기 위해 다음을 실행 합니다.&lt;/p&gt;
+&lt;h3 id="Pandas-설명통계"&gt;Pandas 설명통계&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#Pandas-%EC%84%A4%EB%AA%85%ED%86%B5%EA%B3%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;pandas에서는 간단하게 평균값과 표준편차등을 계산해주는 기능이 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;describe()&lt;/code&gt; 함수를 사용하면 모든 열에 대한 설명통계값을 보여줍니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -443,8 +443,17 @@ IQ의 경우 3종류로 세분화 되어있는데 각각을 알아 보면 아래
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;당연하지만, FSIQ는 VIQ, PIQ 각각과 연관성이 있어 보입니다. VIQ와 PIQ간에는 애매하게 연관성이 없어 보이네요. FSIQ의 히스토그램에서는 100 - 125 사이에는 데이터가 없는 것을 확인 할 수 있습니다.&lt;/p&gt;
-&lt;h2 id="가설-검정:-두-그룹간의-비교"&gt;가설 검정: 두 그룹간의 비교&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95:-%EB%91%90-%EA%B7%B8%EB%A3%B9%EA%B0%84%EC%9D%98-%EB%B9%84%EA%B5%90"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;간단한 가설 검정 방법으로 &lt;strong&gt;scipy&lt;/strong&gt;의 &lt;strong&gt;scipy.stats&lt;/strong&gt; 라이브러리를 사용하겠습니다.&lt;/p&gt;
-&lt;h3 id="Student-T-test"&gt;Student T-test&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#Student-T-test"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Student T-test를 사용하려면 &lt;strong&gt;scipy.stats.ttest_1samp()&lt;/strong&gt; 함수를 사용하면 됩니다.&lt;/p&gt;
+&lt;h2 id="가설-검정:-두-그룹간의-비교"&gt;가설 검정: 두 그룹간의 비교&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95:-%EB%91%90-%EA%B7%B8%EB%A3%B9%EA%B0%84%EC%9D%98-%EB%B9%84%EA%B5%90"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;T-test&lt;/strong&gt; 는 두 그룹간의 평균의 차이가 통계적으로 의미가 있는지를 알아볼때 사용됩니다.T-test에는 다음과 같이 세 종류가 있습니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;1-sample T-test&lt;/li&gt;
+&lt;li&gt;2-sample T-test&lt;/li&gt;
+&lt;li&gt;paired T-test &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;여기서는 간단한 가설 검정 방법으로 &lt;strong&gt;scipy&lt;/strong&gt;의 &lt;strong&gt;scipy.stats&lt;/strong&gt; 라이브러리를 사용해, 1-sample, 2-sample T-test를 해보겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;각각의 T-test는 사용되는 경우가 다르기에 주의 해야 합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="1-sample-T-test"&gt;1-sample T-test&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#1-sample-T-test"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;하나의 집단의 평균이 특정 기준보다 유의미하게 다른지 를 알아보는 분석 방법입니다.
+Student T-test이라고도 하는 1-sample T-test 를 사용하려면 &lt;code&gt;scipy.stats.ttest_1samp()&lt;/code&gt; 함수를 사용하면 됩니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -468,8 +477,8 @@ IQ의 경우 3종류로 세분화 되어있는데 각각을 알아 보면 아래
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;## Student’s t-test: the simplest statistical test&lt;/span&gt;
-&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ttest_1samp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'VIQ'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# With a p-value of 10^-28 we can claim that the population mean for the IQ (VIQ measure) is not 0.&lt;/span&gt;
+&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ttest_1samp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'VIQ'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="c1"&gt;# VIQ의 평균값이 0과 통계적으로 유의미하게 다른지 알아 보겠습니다.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -501,8 +510,9 @@ IQ의 경우 3종류로 세분화 되어있는데 각각을 알아 보면 아래
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="2-sample-t-test"&gt;2-sample t-test&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#2-sample-t-test"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;testing for difference across populations 
-We have seen above that the mean VIQ in the male and female populations were different. To test if this is significant, we do a 2-sample t-test with scipy.stats.ttest_ind():&lt;/p&gt;
+&lt;p&gt;간단하게 결론만 말하자면, p-value가 아주 낮음(10의 -28제곱) 으로 VIQ의 평균은 0이 아니라고 말할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="2-sample-t-test"&gt;2-sample t-test&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#2-sample-t-test"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;서로 다른 두개의 그룹 간 평균의 차이가 유의미 한지 여부를 판단하기 위해 시행합니다. 2-sample t-test 는 &lt;code&gt;scipy.stats.ttest_ind():&lt;/code&gt; 함수를 사용합니다.&lt;/p&gt;
+&lt;p&gt;예를 들어 여자의 VIQ와 남자의 VIQ의 평균은 통계적으로 차이가 있는지 알아 보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -512,8 +522,11 @@ We have seen above that the mean VIQ in the male and female populations were dif
 &lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;female_viq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Gender'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Female'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;'VIQ'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 여자의 VIQ&lt;/span&gt;
+&lt;span class="n"&gt;female_viq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Gender'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Female'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;'VIQ'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="c1"&gt;# 남자의 VIQ&lt;/span&gt;
 &lt;span class="n"&gt;male_viq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Gender'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Male'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;'VIQ'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="c1"&gt;# 두개의 리스트를 가지고 t-test실행&lt;/span&gt;
 &lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ttest_ind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;female_viq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;male_viq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -546,8 +559,12 @@ We have seen above that the mean VIQ in the male and female populations were dif
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Paired tests: repeated measurements on the same indivuals
-PIQ, VIQ, and FSIQ give 3 measures of IQ. Let us test if FISQ and PIQ are significantly different. We can use a 2 sample test:&lt;/p&gt;
+&lt;p&gt;p-value가 0.44로 아주 높게 나왔습니다. 따라서 기무가설이었던 &lt;em&gt;남자와 여자의 VIQ 평균에는 차이가 있다.&lt;/em&gt; 는 기각되고 &lt;em&gt;차이가 없다&lt;/em&gt; 라고 결론을 낼 수 있습니다.&lt;/p&gt;
+&lt;h3 id="Paired-tests:"&gt;Paired tests:&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#Paired-tests:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Paired t-test는 동일한 집단에서의 반복적인 측정에 의한 차이를 비교하기 위해 사용됩니다. 예를 들면 커피가 수면시간에 미치는 영향을 보기 위해 커피를 마시지 않고 측정하고 커피를 마시고 측정한 데이터를 수집하여 사용합니다.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;전제조건을 충족하기 위해서는 실험이 길어지는 단점이 있습니다&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="brain_size-데이터의-T-test"&gt;brain_size 데이터의 T-test&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#brain_size-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-T-test"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;주어진 &lt;code&gt;brain_size&lt;/code&gt; 데이터에서 3가지 IQ수치 PIQ, VIQ, FSIQ가 제공 되고 있는데, FSIQ 평균 값과 PIQ 평균이 통계적으로 차이가 있는지 알아 보도록 하겠습니다. 이를 위해서 2-sample T-test를 수행하겠습니다.&lt;/p&gt;
+&lt;p&gt;먼저, 전체적인 데이터의 모습을 알기 위한 &lt;strong&gt;boxplot&lt;/strong&gt;을 그려보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -607,7 +624,8 @@ dtype: object&lt;/pre&gt;
 &lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ttest_ind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'FSIQ'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'PIQ'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 2-sample t-test&lt;/span&gt;
+&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ttest_ind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'FSIQ'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'PIQ'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -639,7 +657,8 @@ dtype: object&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The problem with this approach is that it forgets that there are links between observations: FSIQ and PIQ are measured on the same individuals. Thus the variance due to inter-subject variability is confounding, and can be removed, using a “paired test”, or “repeated measures test”:&lt;/p&gt;
+&lt;p&gt;T-test 결과 p-value가 0.64로 매우 높기 때문에 기무가설을 기각하지 못합니다. 따라서, FSIQ와 PIQ값에 통계적으로 유의적인 차이는 없다고 볼 수 있습니다.&lt;/p&gt;
+&lt;p&gt;여기서 한가지 문제 점이 있는데, 각각의 FSIQ와 PIQ값은 같은 개인에서 측정되었기 때문에, &lt;strong&gt;paried T-test&lt;/strong&gt; 으로 추가적인 확인이 필요합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -650,6 +669,8 @@ dtype: object&lt;/pre&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ttest_rel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'FSIQ'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'PIQ'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;  
+&lt;span class="c1"&gt;# This is equivalent to a 1-sample test on the difference:&lt;/span&gt;
+&lt;span class="c1"&gt;# stats.ttest_1samp(df['FSIQ'] - df['PIQ'], 0) &lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -677,176 +698,13 @@ dtype: object&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [12]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# This is equivalent to a 1-sample test on the difference:&lt;/span&gt;
-&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ttest_1samp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'FSIQ'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'PIQ'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-&lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
-
-
-
-
-&lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;Ttest_1sampResult(statistic=1.7842019405859857, pvalue=0.082172638183642358)&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [13]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# plot of df['FSIQ'] - df['PIQ']&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [14]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#T-tests assume Gaussian errors. We can use a Wilcoxon signed-rank test, that relaxes this assumption:&lt;/span&gt;
-&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wilcoxon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'FSIQ'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'PIQ'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;   
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-&lt;div class="prompt output_prompt"&gt;Out[14]:&lt;/div&gt;
-
-
-
-
-&lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;WilcoxonResult(statistic=274.5, pvalue=0.10659492713506856)&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Conclusion: we find that the data does not support the hypothesis that males and females have different VIQ.&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [15]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;statsmodels.formula.api&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ols&lt;/span&gt;
-&lt;span class="c1"&gt;# We can write a comparison between IQ of male and female using a linear model:&lt;/span&gt;
-&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"VIQ ~ Gender + 1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; 
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-&lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                    VIQ   R-squared:                       0.015
-Model:                            OLS   Adj. R-squared:                 -0.010
-Method:                 Least Squares   F-statistic:                    0.5969
-Date:                Thu, 21 Dec 2017   Prob (F-statistic):              0.445
-Time:                        15:34:54   Log-Likelihood:                -182.42
-No. Observations:                  40   AIC:                             368.8
-Df Residuals:                      38   BIC:                             372.2
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-==================================================================================
-                     coef    std err          t      P&amp;gt;|t|      [0.025      0.975]
-----------------------------------------------------------------------------------
-Intercept        109.4500      5.308     20.619      0.000      98.704     120.196
-Gender[T.Male]     5.8000      7.507      0.773      0.445      -9.397      20.997
-==============================================================================
-Omnibus:                       26.188   Durbin-Watson:                   1.709
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):                3.703
-Skew:                           0.010   Prob(JB):                        0.157
-Kurtosis:                       1.510   Cond. No.                         2.62
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Tips on specifying model&lt;/p&gt;
-&lt;p&gt;Forcing categorical: the ‘Gender’ is automatically detected as a categorical variable, and thus each of its different values are treated as different entities.&lt;/p&gt;
-&lt;p&gt;An integer column can be forced to be treated as categorical using:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'VIQ ~ C(Gender)'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Intercept: We can remove the intercept using - 1 in the formula, or force the use of an intercept using + 1.&lt;/p&gt;
-&lt;p&gt;By default, statsmodels treats a categorical variable with K possible values as K-1 ‘dummy’ boolean variables (the last level being absorbed into the intercept term). This is almost always a good default choice - however, it is possible to specify different encodings for categorical variables (&lt;a href="http://statsmodels.sourceforge.net/devel/contrasts.html"&gt;http://statsmodels.sourceforge.net/devel/contrasts.html&lt;/a&gt;).&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Relating Gender and IQ&lt;/p&gt;
-&lt;p&gt;Going back to the brain size + IQ data, test if the VIQ of male and female are different after removing the effect of brain size, height and weight.&lt;/p&gt;
-&lt;p&gt;Notice that here ‘Gender’ is a categorical value. As it is a non-float data type, statsmodels is able to automatically infer this.&lt;/p&gt;
+&lt;p&gt;Paired T-test결과에서도 p-value 값이 0.05 이상임으로 통계적으로 유의미한 차이가 없다고 볼 수 있습니다.&lt;/p&gt;
+&lt;h2 id="성별과-VIQ-수치의-관계"&gt;성별과 VIQ 수치의 관계&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#%EC%84%B1%EB%B3%84%EA%B3%BC-VIQ-%EC%88%98%EC%B9%98%EC%9D%98-%EA%B4%80%EA%B3%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;남성과 여성이 VIQ 차이가 있는지를 판단하기 위해서는 뇌의 크기, 키, 몸무게에 의한 영향을 배제해야 합니다. 이를 위해서는 &lt;code&gt;statsmodels&lt;/code&gt; 라이브러리에서 제공하는 &lt;code&gt;ols&lt;/code&gt;(ordinary least squares)모델을 사용하겠습니다. 그런 다음 &lt;strong&gt;F-test&lt;/strong&gt;을 통해 통계적 유의성을 보겠습니다.&lt;/p&gt;
+&lt;h3 id="F-test"&gt;F-test&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#F-test"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;F-test는 두 표본의 분산에 대한 차이가 통계적으로 유의한가를 판별하는 검정기법입니다. 다른 이름으로 var-test로도 불립니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -856,13 +714,10 @@ Warnings:
 &lt;div class="prompt input_prompt"&gt;In [16]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'VIQ ~ Gender + MRI_Count + Height'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;statsmodels.formula.api&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ols&lt;/span&gt;
 
-&lt;span class="c1"&gt;# Here, we don't need to define a contrast, as we are testing a single&lt;/span&gt;
-&lt;span class="c1"&gt;# coefficient of our model, and not a combination of coefficients.&lt;/span&gt;
-&lt;span class="c1"&gt;# However, defining a contrast, which would then be a 'unit contrast',&lt;/span&gt;
-&lt;span class="c1"&gt;# will give us the same results&lt;/span&gt;
+&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'VIQ ~ Gender + MRI_Count + Height'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;f_test&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -922,7 +777,8 @@ strong multicollinearity or other numerical problems.
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Here we plot a scatter matrix to get intuitions on our results. This goes beyond what was asked in the exercise&lt;/p&gt;
+&lt;p&gt;F test 결과, p-value 가 0.41로 아주 높게 나왔습니다. 따라서 기무가설을 기각하지 못합니다. 다시 말해 성별에 의한 VIQ 차이는 &lt;strong&gt;없다&lt;/strong&gt; 라고 할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="시각화"&gt;시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시각화를 하면 통계분석에 사용된 변수간의 상관관계를 손쉽게 확인할 수 있습니다. 아래 코드는 &lt;code&gt;scatter_matrix&lt;/code&gt;를 그리는 방법입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -976,6 +832,15 @@ strong multicollinearity or other numerical problems.
 &lt;/div&gt;
 &lt;/div&gt;
 
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="결론"&gt;결론&lt;a class="anchor-link" href="https://partrita.github.io/posts/statistics-in-python/#%EA%B2%B0%EB%A1%A0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;시각화와 &lt;strong&gt;F-test&lt;/strong&gt; 결과를 통해 성별은 VIQ값에 아무런 상관관계를 가지고 있지 않다는 것을 확인 할 수 있었습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;

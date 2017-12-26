@@ -131,7 +131,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="CSV-파일-읽어오기">CSV 파일 읽어오기<a class="anchor-link" href="posts/statistics-in-python/#CSV-%ED%8C%8C%EC%9D%BC-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0">¶</a>
 </h3>
-<p>brain_size 데이터는 <strong>Willerman</strong>이 1991년에 사람의 뇌 크기와 무게, 그리고 IQ에 대하여 측정한 값입니다. 범주형의 데이터와 수치형 데이터로 구성 되어 있죠.</p>
+<p><code>brain_size</code> 데이터는 <strong>Willerman</strong>이 1991년에 사람의 뇌 크기와 무게, 그리고 IQ에 대하여 측정한 값입니다. 범주형의 데이터와 수치형 데이터로 구성 되어 있죠.</p>
 <p>Pandas의 read_csv 기능을 이용해 데이터프레임을 만들어 보겠습니다.</p>
 
 </div>
@@ -256,13 +256,15 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>간단히 살펴보면, 총 40명의 사람들의 성별, IQ, 몸무게, 키 그리고 MRI_count(total pixel Count from the 18 MRI scans) 값이 측정되어 있습니다.
 IQ의 경우 3종류로 세분화 되어있는데 각각을 알아 보면 아래와 같습니다.</p>
-<p><img src="http://2.bp.blogspot.com/_IW0KO801uXY/SPOMfp2eGuI/AAAAAAAAE00/v8Hr_l7GAgg/s1600-h/WAIS+III+Breakdown+by+Index+%26+Subtests.jpg" alt="IQ 설명"></p>
 <ul>
 <li>Full Scale Intelligence Quotient (FSIQ) : VIQ와 PIQ의 종합적인 수치입니다</li>
 <li>Verbal IQ (VIQ) : 언어적인 측면을 측정합니다.</li>
 <li>Performance IQ (PIQ) : 논리, 계산적인 측면을 측정</li>
 </ul>
-<p>간단하게 평균값과 표준편차등을 알아 보기 위해 다음을 실행 합니다.</p>
+<h3 id="Pandas-설명통계">Pandas 설명통계<a class="anchor-link" href="posts/statistics-in-python/#Pandas-%EC%84%A4%EB%AA%85%ED%86%B5%EA%B3%84">¶</a>
+</h3>
+<p>pandas에서는 간단하게 평균값과 표준편차등을 계산해주는 기능이 있습니다.</p>
+<p><code>describe()</code> 함수를 사용하면 모든 열에 대한 설명통계값을 보여줍니다.</p>
 
 </div>
 </div>
@@ -543,10 +545,20 @@ IQ의 경우 3종류로 세분화 되어있는데 각각을 알아 보면 아래
 <p>당연하지만, FSIQ는 VIQ, PIQ 각각과 연관성이 있어 보입니다. VIQ와 PIQ간에는 애매하게 연관성이 없어 보이네요. FSIQ의 히스토그램에서는 100 - 125 사이에는 데이터가 없는 것을 확인 할 수 있습니다.</p>
 <h2 id="가설-검정:-두-그룹간의-비교">가설 검정: 두 그룹간의 비교<a class="anchor-link" href="posts/statistics-in-python/#%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95:-%EB%91%90-%EA%B7%B8%EB%A3%B9%EA%B0%84%EC%9D%98-%EB%B9%84%EA%B5%90">¶</a>
 </h2>
-<p>간단한 가설 검정 방법으로 <strong>scipy</strong>의 <strong>scipy.stats</strong> 라이브러리를 사용하겠습니다.</p>
-<h3 id="Student-T-test">Student T-test<a class="anchor-link" href="posts/statistics-in-python/#Student-T-test">¶</a>
+<p><strong>T-test</strong> 는 두 그룹간의 평균의 차이가 통계적으로 의미가 있는지를 알아볼때 사용됩니다.T-test에는 다음과 같이 세 종류가 있습니다.</p>
+<ol>
+<li>1-sample T-test</li>
+<li>2-sample T-test</li>
+<li>paired T-test </li>
+</ol>
+<p>여기서는 간단한 가설 검정 방법으로 <strong>scipy</strong>의 <strong>scipy.stats</strong> 라이브러리를 사용해, 1-sample, 2-sample T-test를 해보겠습니다.</p>
+<blockquote>
+<p>각각의 T-test는 사용되는 경우가 다르기에 주의 해야 합니다.</p>
+</blockquote>
+<h3 id="1-sample-T-test">1-sample T-test<a class="anchor-link" href="posts/statistics-in-python/#1-sample-T-test">¶</a>
 </h3>
-<p>Student T-test를 사용하려면 <strong>scipy.stats.ttest_1samp()</strong> 함수를 사용하면 됩니다.</p>
+<p>하나의 집단의 평균이 특정 기준보다 유의미하게 다른지 를 알아보는 분석 방법입니다.
+Student T-test이라고도 하는 1-sample T-test 를 사용하려면 <code>scipy.stats.ttest_1samp()</code> 함수를 사용하면 됩니다.</p>
 
 </div>
 </div>
@@ -570,8 +582,8 @@ IQ의 경우 3종류로 세분화 되어있는데 각각을 알아 보면 아래
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Student’s t-test: the simplest statistical test</span>
-<span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'VIQ'</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
-<span class="c1"># With a p-value of 10^-28 we can claim that the population mean for the IQ (VIQ measure) is not 0.</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'VIQ'</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> 
+<span class="c1"># VIQ의 평균값이 0과 통계적으로 유의미하게 다른지 알아 보겠습니다.</span>
 </pre></div>
 
 </div>
@@ -604,10 +616,11 @@ IQ의 경우 3종류로 세분화 되어있는데 각각을 알아 보면 아래
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>간단하게 결론만 말하자면, p-value가 아주 낮음(10의 -28제곱) 으로 VIQ의 평균은 0이 아니라고 말할 수 있습니다.</p>
 <h3 id="2-sample-t-test">2-sample t-test<a class="anchor-link" href="posts/statistics-in-python/#2-sample-t-test">¶</a>
 </h3>
-<p>testing for difference across populations 
-We have seen above that the mean VIQ in the male and female populations were different. To test if this is significant, we do a 2-sample t-test with scipy.stats.ttest_ind():</p>
+<p>서로 다른 두개의 그룹 간 평균의 차이가 유의미 한지 여부를 판단하기 위해 시행합니다. 2-sample t-test 는 <code>scipy.stats.ttest_ind():</code> 함수를 사용합니다.</p>
+<p>예를 들어 여자의 VIQ와 남자의 VIQ의 평균은 통계적으로 차이가 있는지 알아 보겠습니다.</p>
 
 </div>
 </div>
@@ -617,8 +630,11 @@ We have seen above that the mean VIQ in the male and female populations were dif
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">female_viq</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'Gender'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Female'</span><span class="p">][</span><span class="s1">'VIQ'</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 여자의 VIQ</span>
+<span class="n">female_viq</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'Gender'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Female'</span><span class="p">][</span><span class="s1">'VIQ'</span><span class="p">]</span>
+<span class="c1"># 남자의 VIQ</span>
 <span class="n">male_viq</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'Gender'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Male'</span><span class="p">][</span><span class="s1">'VIQ'</span><span class="p">]</span>
+<span class="c1"># 두개의 리스트를 가지고 t-test실행</span>
 <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">female_viq</span><span class="p">,</span> <span class="n">male_viq</span><span class="p">)</span> 
 </pre></div>
 
@@ -652,8 +668,17 @@ We have seen above that the mean VIQ in the male and female populations were dif
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Paired tests: repeated measurements on the same indivuals
-PIQ, VIQ, and FSIQ give 3 measures of IQ. Let us test if FISQ and PIQ are significantly different. We can use a 2 sample test:</p>
+<p>p-value가 0.44로 아주 높게 나왔습니다. 따라서 기무가설이었던 <em>남자와 여자의 VIQ 평균에는 차이가 있다.</em> 는 기각되고 <em>차이가 없다</em> 라고 결론을 낼 수 있습니다.</p>
+<h3 id="Paired-tests:">Paired tests:<a class="anchor-link" href="posts/statistics-in-python/#Paired-tests:">¶</a>
+</h3>
+<p>Paired t-test는 동일한 집단에서의 반복적인 측정에 의한 차이를 비교하기 위해 사용됩니다. 예를 들면 커피가 수면시간에 미치는 영향을 보기 위해 커피를 마시지 않고 측정하고 커피를 마시고 측정한 데이터를 수집하여 사용합니다.</p>
+<blockquote>
+<p>전제조건을 충족하기 위해서는 실험이 길어지는 단점이 있습니다</p>
+</blockquote>
+<h2 id="brain_size-데이터의-T-test">brain_size 데이터의 T-test<a class="anchor-link" href="posts/statistics-in-python/#brain_size-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-T-test">¶</a>
+</h2>
+<p>주어진 <code>brain_size</code> 데이터에서 3가지 IQ수치 PIQ, VIQ, FSIQ가 제공 되고 있는데, FSIQ 평균 값과 PIQ 평균이 통계적으로 차이가 있는지 알아 보도록 하겠습니다. 이를 위해서 2-sample T-test를 수행하겠습니다.</p>
+<p>먼저, 전체적인 데이터의 모습을 알기 위한 <strong>boxplot</strong>을 그려보겠습니다.</p>
 
 </div>
 </div>
@@ -713,7 +738,8 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'FSIQ'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">'PIQ'</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2-sample t-test</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'FSIQ'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">'PIQ'</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -746,7 +772,8 @@ dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The problem with this approach is that it forgets that there are links between observations: FSIQ and PIQ are measured on the same individuals. Thus the variance due to inter-subject variability is confounding, and can be removed, using a “paired test”, or “repeated measures test”:</p>
+<p>T-test 결과 p-value가 0.64로 매우 높기 때문에 기무가설을 기각하지 못합니다. 따라서, FSIQ와 PIQ값에 통계적으로 유의적인 차이는 없다고 볼 수 있습니다.</p>
+<p>여기서 한가지 문제 점이 있는데, 각각의 FSIQ와 PIQ값은 같은 개인에서 측정되었기 때문에, <strong>paried T-test</strong> 으로 추가적인 확인이 필요합니다.</p>
 
 </div>
 </div>
@@ -757,6 +784,8 @@ dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'FSIQ'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">'PIQ'</span><span class="p">])</span>  
+<span class="c1"># This is equivalent to a 1-sample test on the difference:</span>
+<span class="c1"># stats.ttest_1samp(df['FSIQ'] - df['PIQ'], 0) </span>
 </pre></div>
 
 </div>
@@ -784,179 +813,18 @@ dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This is equivalent to a 1-sample test on the difference:</span>
-<span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'FSIQ'</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">'PIQ'</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Ttest_1sampResult(statistic=1.7842019405859857, pvalue=0.082172638183642358)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot of df['FSIQ'] - df['PIQ']</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#T-tests assume Gaussian errors. We can use a Wilcoxon signed-rank test, that relaxes this assumption:</span>
-<span class="n">stats</span><span class="o">.</span><span class="n">wilcoxon</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'FSIQ'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">'PIQ'</span><span class="p">])</span>   
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>WilcoxonResult(statistic=274.5, pvalue=0.10659492713506856)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Conclusion: we find that the data does not support the hypothesis that males and females have different VIQ.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="k">import</span> <span class="n">ols</span>
-<span class="c1"># We can write a comparison between IQ of male and female using a linear model:</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">"VIQ ~ Gender + 1"</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                    VIQ   R-squared:                       0.015
-Model:                            OLS   Adj. R-squared:                 -0.010
-Method:                 Least Squares   F-statistic:                    0.5969
-Date:                Thu, 21 Dec 2017   Prob (F-statistic):              0.445
-Time:                        15:34:54   Log-Likelihood:                -182.42
-No. Observations:                  40   AIC:                             368.8
-Df Residuals:                      38   BIC:                             372.2
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-==================================================================================
-                     coef    std err          t      P&gt;|t|      [0.025      0.975]
-----------------------------------------------------------------------------------
-Intercept        109.4500      5.308     20.619      0.000      98.704     120.196
-Gender[T.Male]     5.8000      7.507      0.773      0.445      -9.397      20.997
-==============================================================================
-Omnibus:                       26.188   Durbin-Watson:                   1.709
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):                3.703
-Skew:                           0.010   Prob(JB):                        0.157
-Kurtosis:                       1.510   Cond. No.                         2.62
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Tips on specifying model</p>
-<p>Forcing categorical: the ‘Gender’ is automatically detected as a categorical variable, and thus each of its different values are treated as different entities.</p>
-<p>An integer column can be forced to be treated as categorical using:</p>
-<div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s1">'VIQ ~ C(Gender)'</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-</pre></div>
-<p>Intercept: We can remove the intercept using - 1 in the formula, or force the use of an intercept using + 1.</p>
-<p>By default, statsmodels treats a categorical variable with K possible values as K-1 ‘dummy’ boolean variables (the last level being absorbed into the intercept term). This is almost always a good default choice - however, it is possible to specify different encodings for categorical variables (<a href="http://statsmodels.sourceforge.net/devel/contrasts.html">http://statsmodels.sourceforge.net/devel/contrasts.html</a>).</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Relating Gender and IQ</p>
-<p>Going back to the brain size + IQ data, test if the VIQ of male and female are different after removing the effect of brain size, height and weight.</p>
-<p>Notice that here ‘Gender’ is a categorical value. As it is a non-float data type, statsmodels is able to automatically infer this.</p>
+<p>Paired T-test결과에서도 p-value 값이 0.05 이상임으로 통계적으로 유의미한 차이가 없다고 볼 수 있습니다.</p>
+<h2 id="성별과-VIQ-수치의-관계">성별과 VIQ 수치의 관계<a class="anchor-link" href="posts/statistics-in-python/#%EC%84%B1%EB%B3%84%EA%B3%BC-VIQ-%EC%88%98%EC%B9%98%EC%9D%98-%EA%B4%80%EA%B3%84">¶</a>
+</h2>
+<p>남성과 여성이 VIQ 차이가 있는지를 판단하기 위해서는 뇌의 크기, 키, 몸무게에 의한 영향을 배제해야 합니다. 이를 위해서는 <code>statsmodels</code> 라이브러리에서 제공하는 <code>ols</code>(ordinary least squares)모델을 사용하겠습니다. 그런 다음 <strong>F-test</strong>을 통해 통계적 유의성을 보겠습니다.</p>
+<h3 id="F-test">F-test<a class="anchor-link" href="posts/statistics-in-python/#F-test">¶</a>
+</h3>
+<p>F-test는 두 표본의 분산에 대한 차이가 통계적으로 유의한가를 판별하는 검정기법입니다. 다른 이름으로 var-test로도 불립니다.</p>
 
 </div>
 </div>
@@ -966,13 +834,10 @@ Warnings:
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s1">'VIQ ~ Gender + MRI_Count + Height'</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="k">import</span> <span class="n">ols</span>
 
-<span class="c1"># Here, we don't need to define a contrast, as we are testing a single</span>
-<span class="c1"># coefficient of our model, and not a combination of coefficients.</span>
-<span class="c1"># However, defining a contrast, which would then be a 'unit contrast',</span>
-<span class="c1"># will give us the same results</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s1">'VIQ ~ Gender + MRI_Count + Height'</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">f_test</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 
@@ -1033,7 +898,10 @@ strong multicollinearity or other numerical problems.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here we plot a scatter matrix to get intuitions on our results. This goes beyond what was asked in the exercise</p>
+<p>F test 결과, p-value 가 0.41로 아주 높게 나왔습니다. 따라서 기무가설을 기각하지 못합니다. 다시 말해 성별에 의한 VIQ 차이는 <strong>없다</strong> 라고 할 수 있습니다.</p>
+<h3 id="시각화">시각화<a class="anchor-link" href="posts/statistics-in-python/#%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
+</h3>
+<p>시각화를 하면 통계분석에 사용된 변수간의 상관관계를 손쉽게 확인할 수 있습니다. 아래 코드는 <code>scatter_matrix</code>를 그리는 방법입니다.</p>
 
 </div>
 </div>
@@ -1087,6 +955,18 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="결론">결론<a class="anchor-link" href="posts/statistics-in-python/#%EA%B2%B0%EB%A1%A0">¶</a>
+</h2>
+<p>시각화와 <strong>F-test</strong> 결과를 통해 성별은 VIQ값에 아무런 상관관계를 가지고 있지 않다는 것을 확인 할 수 있었습니다.</p>
+
+</div>
+</div>
 </div>
     </div>
   </div>
