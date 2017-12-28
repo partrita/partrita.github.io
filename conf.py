@@ -18,7 +18,7 @@ import time
 
 # Data about this site
 BLOG_AUTHOR = "Taeyoon"  # (translatable)
-BLOG_TITLE = "2Much Bio"  # (translatable)
+BLOG_TITLE = "2MuchBio"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
 SITE_URL = "https://partrita.github.io/"
