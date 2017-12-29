@@ -72,11 +72,13 @@ PCR 실험 시 유의하여야 할 사항
 
 Pipetting & DNA template:
 --------------------------
+
 여러 component를 혼합할 때에는 시료간에 오염이 되지 않도록 주의하여야 하며 가능하면 공기를 통한 오염을 방지할 수 있는 tip을 사용하는 것이 좋습니다. 반응물 혼합 시에는 tube를 ice상에 두고서 혼합하여야 상온에서의 잘못 primer annealing에 의한 extension을 방지할 수 있습니다.
 이론적으로 Taq DNA polymerase는 최적 온도 이하에서도 반응이 어느 정도 진행됨 으로 상온 등에서 정확하게 annealing되지 않은 primer에 의한 임의의 반응이 진행됨으로써 원하는 size의 product 이외의 non-specific product가 만들어질 수 있습니다.
 
 Setting up the Laboratory:
 ----------------------------
+
 PCR은 민감도가 뛰어난 실험이기 때문에 아주 적은 양의 DNA가 오염되더라도 실험에 큰 영향을 미칠 수 있습니다. 그러므로 PCR을 위한 template를 준비하는 곳과 PCR 반응을 하는 곳, 그리고 PCR 후 전기영동 및 분석을 하는 곳은 격리시키는 것이 좋으며, DNase 와 RNase free PCR tube를 사용하는 것이 좋습니다. 모든 시약류는 반드시 autoclave와 filteration을 거친 후 사용하여야 합니다. 
 
 PCR cycling program:
@@ -84,15 +86,19 @@ PCR cycling program:
 PCR cycling 조건은 PCR의 종류와 주형 DNA, primer 그리고 PCR 기기등에 따라 달라 져야 합니다. 
 
 a. Initial denaturation:
+
     template DNA의 완전한 denaturation이 중요한데 94℃∼95℃에서 2∼3 min 정도로 충분하지만 대부분 5 min 정도 초기 변성 시간을 주는 것이 좋습니다. denaturation 이 충분하지 않으면 primer의 annealing 과 extension이 방해받아 정확한 반응물이 생기지 않을 수 도 있습니다.
 
-b. Denaturation step during cycling
+b. Denaturation step during cycling:
+
     보통 94℃∼95℃에서 20∼30 sec 정도이지만 PCR 기기와 tube 등에 따라 시간을 늘리기도 합니다. Template의 GC함량이 높으면 높은 온도와 긴 시간을 사용하기도 하지만 필요 이상으로 변성 온도가 높거나 길면 Taq DNA polymerase의 활성 이 감소됩니다.
 
-c. Primer annealing
+c. Primer annealing:
+
     대개의 경우 annealing 온도는 primer의 Tm 값에 따라 결정됩니다. 온도가 너무 높으면 primer가 annealing 되지 않아 PCR product가 생기지 않게 되고, 온도가 너무 낮으면 non-specific annealing 이 일어나 정확한 PCR product가 생기지 않습니다.
 
-d. Extension (polymerization)
+d. Extension (polymerization):
+
     Taq polymerase의 경우 72℃에서 1초당 약 60개의 염기를 중합시키기 때문에 1 kb 까지는 45 sec정도면 충분합니다. 하지만 대부분의 경우 1kb당 1분정도의 시간이 필요합니다. 
 
 e. Cycle number
@@ -106,18 +112,23 @@ PCR 기기는 기본적으로 PCR 반응을 구성하는 세 가지 온도를 �
 PCR reaction components:
 --------------------------
 a. DNA template:
+
     Template 양과 질은 PCR에 절대적인 영향을 미칩니다. template가 적을수록 product의 양 역시 비례적으로 감소하게 되며, RNA의 오염은 Mg2+ 이온을 잡아먹어 yield를 낮추게 되고 불 순한 template에는 반응저해제들을 많이 포함 하고 있어 반응의 효율을 떨어뜨립니다.
 
-b. PCR Primers
+b. PCR Primers:
+
     PCR의 많은 요소들 중에서도 primer의 염기서열과 농도는 전체 반응의 성패에 가장 큰 영향을 미치는 요인 중 하나로 다음과 같은 사항들을 고려하여 설계하는 것이 좋습니다. 길이는 18∼24mer가 적당하며 두 primer의 Tm 값의 차이는 5℃ 이내로 하고 가급적 2차 구조가 형성되지 않도록하며 G+C 값은 40∼60%로하여 두 primer의 3′ 사이에 상보결합이 없어야 합니다. 
 
 c. Choice of DNA polymerase:
+
     PCR 반응에 사용하는 Taq DNA polymerase는 0.5∼2.5U/20∼50ul volume 정도가 적당합니다. 비율적으로 너무 많은 효소가 들어가게 되면 높은 glycerol 농도로 인하여 product가 끌리는 현상이나 특이성이 떨어져 불균형적인 결과를 초래하게 되며, 너무 적은 양의 효소를 사용하면 생성물의 양이 부족하게 됩니다.
 
-d. Deoxynucleotide triphosphate (dNTP)
+d. Deoxynucleotide triphosphate (dNTP):
+
     항상 dNTP의 4가지 요소들은 동일 농도로 사용하여야 합니다. dNTP mixture의 불균 형은 Taq polymerase의 fidelity를 감소시켜 error rate가 증가될 수 있습니다. 또한 dNTP stock은 thawing/freezing에 민감하여 3∼5차례만 반복하여도 활성이 감소하여 올바른 결과를 기대할 수 없습니다. 그러므로 stock은 사용량에 맞게끔 적절하게 배분해놓는 것이 좋습니다. 만일 dNTP의 농도를 증가시키려면 반드시 Mg2+의 농도 역시 증가시켜 주어야 합니다. 높은 dNTP 농도는 free Mg2+을 감소시켜 효소의 반응을 방해하고 primer의 annealing을 감소시키게 됩니다. 일반적으로 사용되는 dNTP의 최종 농도는 각 200∼250uM 입니다.
 
 e. MgCl2 concentration:
+
     Mg2+은 dNTP와 복합체를 형성하여 효소의 실질적인 substrate로 이용됩니다. free Mg2+의 농도는 dNTP, free pyrophosphate 그리 고 EDTA 같은 ion 결합 물질의 농도에 영향을 받게 됩니다. 최적 의 실험결과를 위해선 적절한 MgCl2의 농도를 사용하여야 하는데 가장 일반적인 농도는 1.5mM (dNTP 각 200uM 일 때)입니다. Mg2+은 효소 활성에 영향을 미치고 double-strand DNA의 Tm 값 을 증가시키는 효과가 있습니다. 과다한 Mg2+은 primer의 비 특이 적인 결합과 background를 증가시키게 됩니다. 
 
 f. Reaction overlay:
@@ -133,16 +144,15 @@ RT-PCR((Reverse Transcriptase Polymerase Chain Reaction)이란 P.Seeburg(1986)�
 
 RT-PCR의 세가지 과정:
 
-    1. RNA 분리 과정(이 과정은 Northern Blot을 하기 전에 시행해야 하는 동일한 과정이다)
-    2. cDNA 합성 과정(reverse transcription)
-    3. PCR amplification (이 과정은 Genomic DNA로부터 특정 유전자 부위를 증폭시키는 과정과 같다)으로 진행된다. 
+1. RNA 분리 과정(이 과정은 Northern Blot을 하기 전에 시행해야 하는 동일한 과정이다)
+2. cDNA 합성 과정(reverse transcription)
+3. PCR amplification (이 과정은 Genomic DNA로부터 특정 유전자 부위를 증폭시키는 과정과 같다)으로 진행된다. 
 
 mRNA로부터 reverse transcriptase를 이용하여 cDNA를 제조하는 방법에는 어떤 oligonucleotide를 primer로 사용하는가에 따라 세가지 방법
 
-    1. Antisense primer(3’쪽 유전자에 특이성을 지닌 primer)를 이용하여 특정부위 cDNA 제조
-    2. Random hexamer를 이용하여 전체 mRNA에 상보적인 cDNA 제조
-    3. Oligo dT primer를 이용하여 전체 mRNA에 상보적인 cDNA 제조가 있다.
-        
+1. Antisense primer(3’쪽 유전자에 특이성을 지닌 primer)를 이용하여 특정부위 cDNA 제조
+2. Random hexamer를 이용하여 전체 mRNA에 상보적인 cDNA 제조
+3. Oligo dT primer를 이용하여 전체 mRNA에 상보적인 cDNA 제조가 있다.
 
 SSCP(Single Strand Conformation Polymorphism)
 -----------------------------------------------
@@ -166,9 +176,9 @@ DDRT-PCR(Differential Display Reverse Transcriptase PCR):
 DDRT-PCR이란 서로 다른 세포로부터 RNA를 분리한 후 특정하게 발현되는 mRNA를 찾아내기 위하여 T 염기 10개와 비특정염기 2개가 연결된 oligonucleotide를 primer로 이용하여 cDNA를 합성한 후 이 primer와 비특정 염기서열을 지닌 oligonucleotide를 primer로 이용하여 PCR 하였을 때 나타나는 여러가지 PCR 산물을 비교함으로써 서로 다른 세포로부터 증폭된 PCR 산물에 차이가 있는지 없는지를 확인하는 방법이다. 서로 다르게 증폭된 PCR 산물을 선택하여 이와 같이 증폭된 DNA가 특정 세포에서 특징적으로 발현되는 유전자인지를 보는 것으로 subtractive hybridization보다 방법이 훨씬 간단한 것이 장점이지만, 실험의 sensitivity와 specificity가 낮은 것이 단점이다. 최근 이 방법에 대한 연구가 많이 진행되면서 새로운 더 좋은 방법들이 계속 발표되고 있으므로 최신 논문을 참고로 적절한 조건을 찾아내어 실험을 시행하면 좋은 결과를 얻을 수 있을 것으로 기대된다.
 
 특징:
-    – 서로 다르게 증폭된 PCR 산물을 선택하여 이와 같이 증폭된 DNA가 특정 세포에서 특징적으로 발현되는 유전자인지를 보는 것으로 subtractive hybridization보다 방법이 훨씬 간단한 것이 장점
-    – 실험의 sensitivity와 specificity가 낮은 것이 단점
 
+– 서로 다르게 증폭된 PCR 산물을 선택하여 이와 같이 증폭된 DNA가 특정 세포에서 특징적으로 발현되는 유전자인지를 보는 것으로 subtractive hybridization보다 방법이 훨씬 간단한 것이 장점
+– 실험의 sensitivity와 specificity가 낮은 것이 단점
 
 Hot start PCR:
 ----------------
@@ -204,7 +214,8 @@ Nest PCR:
 Inverse PCR:  
 ---------------
 
-Inverse PCR은 기존에 서열을 알고 있는 DNA의 양 옆에 서열을 알지 못하는 region이 있고, 이것을 알고자 할 때 많이 이용된다. 예를 들어 ******=========****** (** 서열을 알지 못함, == 서열을 알고 있음) 이런 염기 서열에서 ** 부분을 알고자 할 때 이용한다. 제일 먼저 제한 효소로 자르고, 자른 부위를 원으로 만든다. (자른 부위가 sticky end이므로 가능하다.) 그리고 그 원으로 된 곳에다가 primer를 붙이는데, 이 때 elongation이 같은 방향으로 가도록 primer를 붙인다. Inverse라는 말은 primer가 기존의 PCR과는 다른 방향으로 간다고 해서 붙여졌다.
+Inverse PCR은 기존에 서열을 알고 있는 DNA의 양 옆에 서열을 알지 못하는 region이 있고, 이것을 알고자 할 때 많이 이용된다. 
+
 
 Gradient PCR:  
 --------------
@@ -212,8 +223,9 @@ Gradient PCR:
 하나의 목적 유전자를 증폭하는 반응조건을 최적화하기 위하여 여러 번의 실험을 수행해야 하는 번거로움이 있었음. 각 단계의 온도 조건에서 시료 block의 첫 lane과 마지막 lane 사이에 최대 20 ℃의 온도 폭 설정이 가능한 gradient 기능을 이용하여 한번의 실험으로 반응조건을 최적화하는 PCR 방법
 
 효과:
-    - Annealing temp. 를 단계별로 설정하여 최적의 melting temp.를 찾을 수 있음 
-    - Denaturation 단계뿐만 아니라 extension 단계에도 적용 가능 
+
+- Annealing temp. 를 단계별로 설정하여 최적의 melting temp.를 찾을 수 있음 
+- Denaturation 단계뿐만 아니라 extension 단계에도 적용 가능 
 
 
 Real-Time PCR: 
@@ -222,6 +234,7 @@ Real-Time PCR:
 Thermal Cycler와 분광 형광 광도계가 일체화된 장치를 이용하여 PCR 증폭 산물의 생성 과정을 real time으로 모니터링하여 해석하는 방법. 지금까지 단순히 DNA 증폭을 목적으로 하는 PCR에 비해 증폭량을 real time으로 모니터 하면서 PCR 하는 방법입니다. Real time PCR은 지금까지의 PCR에 비해 (1)전기영동이 필요없고, (2)반응 사이클 도중에 증폭산물을 확인할 수 있으며, (3)정량적인 결과를 얻을 수 있는 이점을 가지고 있습니다.
 
 특징:
-    - 신속성: 전기영동이 필요 없음
-    - 정량성: 증폭이 지수함수적으로 일어나는 영역에서 증폭산물량을 비교할 수 있음(보다 정확한 정량이 가능)
-    - 역전사효소를 이용하여 total RNA나 mRNA에서 cDNA를 합성한 후, PCR로 목적 cDNA를 증폭하는 RT(Reverse Transcription)-PCR 방법은, 미량의 RNA 시료에서도 분석이 가능하여 RNA 실험에서 중요하게 대두되고 있음
+
+- 신속성: 전기영동이 필요 없음
+- 정량성: 증폭이 지수함수적으로 일어나는 영역에서 증폭산물량을 비교할 수 있음(보다 정확한 정량이 가능)
+- 역전사효소를 이용하여 total RNA나 mRNA에서 cDNA를 합성한 후, PCR로 목적 cDNA를 증폭하는 RT(Reverse Transcription)-PCR 방법은, 미량의 RNA 시료에서도 분석이 가능하여 RNA 실험에서 중요하게 대두되고 있음
