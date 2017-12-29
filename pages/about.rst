@@ -39,7 +39,7 @@
 
 - 사용하는 OS는 ``Windows`` 와 ``Linux (Ubuntu)`` 입니다. Linux 중에서도 Ubuntu를 좀 더 선호하죠, 이쁘잖아요. 
 - 코딩할 때는 `Visual studio code <https://code.visualstudio.com/>`_ 를 쓰고, 파이펫팅 할 때는 `Eppendorf 파이펫 <https://www.pipette.com/eppendorfpipettes>`_ 을 씁니다, 가볍거든요.  
-- 주로 쓰는 프로그래밍 언어는 `Python <https://www.python.org/>'_ 이고 `R <https://www.r-project.org/>`_ 과 `Julia <https://julialang.org/>'_ 를 공부하고 있습니다.
+- 주로 쓰는 프로그래밍 언어는 `Python <https://www.python.org/>`_ 이고 `R <https://www.r-project.org/>`_ 과 `Julia <https://julialang.org/>`_ 를 공부하고 있습니다.
 - 이 블로그는 ``Github`` 에서 호스팅되고, Static site generator 인 ``Nikola`` 를 사용했습니다. 자세한 것은 `링크 <http://partrita.github.io/posts/nikola-for-jupyer-blog/>`_ 를 참고 하세요.
 
 ---------------------------------------

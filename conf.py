@@ -135,7 +135,7 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/pages/about/", "About"),
-        ("/pages/bio/index.html", "Resume"),
+        ("/pages/resume/index.html", "Resume"),
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
         ("/rss.xml", "RSS feed"),
@@ -221,7 +221,7 @@ TIMEZONE = "Asia/Seoul"
 
 # Date format used to display post dates, if local dates are used. (translatable)
 # (str used by moment.js)
-# JS_DATE_FORMAT = 'YYYY-MM-DD HH:mm'
+# JS_DATE_FORMAT = 'YYYY-MM-DD'
 
 # Date fanciness.
 #
@@ -1117,7 +1117,7 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 # Social buttons. This is sample code for AddThis (which was the default for a
 # long time). Insert anything you want here, or even make it empty (which is
 # the default right now)
-# (translatable)
+# # (translatable)
 # SOCIAL_BUTTONS_CODE = """
 # <!-- Social buttons -->
 # <div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
@@ -1372,7 +1372,6 @@ GLOBAL_CONTEXT = {}
 GLOBAL_CONTEXT_FILLER = []
 
 # Add social media links
-
 # EXTRA_HEAD_DATA = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">'
 # CONTENT_FOOTER = '''
 # <div class="text-center">
@@ -1417,7 +1416,6 @@ GLOBAL_CONTEXT_FILLER = []
 # </p>
 # </div>
 # '''
-
 
 # This is an example that works well with Nikola's default Bootstrap3 theme.
 # It displays the search field in the navigation bar, and the results
