@@ -18,7 +18,7 @@ import time
 
 # Data about this site
 BLOG_AUTHOR = "Taeyoon"  # (translatable)
-BLOG_TITLE = "2MuchBio"  # (translatable)
+BLOG_TITLE = "Biohacker"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
 SITE_URL = "https://partrita.github.io/"
@@ -26,7 +26,7 @@ SITE_URL = "https://partrita.github.io/"
 # If not set, defaults to SITE_URL
 # BASE_URL = "http://partrita.github.io/"
 BLOG_EMAIL = "partrita@gmail.com"
-BLOG_DESCRIPTION = "Basically, all about my interest. but something useful "  # (translatable)
+BLOG_DESCRIPTION = "Basically, all about my interest but something useful. Warning: This containing a bunch of unorganized thoughts."  # (translatable)
 
 # Nikola is multilingual!
 #
@@ -250,7 +250,7 @@ TIMEZONE = "Asia/Seoul"
 # One or more folders containing files to be copied as-is into the output.
 # The format is a dictionary of {source: relative destination}.
 # Default is:
-# FILES_FOLDERS = {'files': ''}
+FILES_FOLDERS = {'files': ''}
 # Which means copy 'files' into 'output'
 
 # One or more folders containing code listings to be processed and published on
@@ -894,11 +894,10 @@ IMAGE_FOLDERS = {'images': 'images'}
 # CODE_COLOR_SCHEME = 'default'
 
 # FAVICONS contains (name, file, size) tuples.
-# Used to create favicon link like this:
+# # Used to create favicon link like this:
 # <link rel="name" href="file" sizes="size"/>
 # FAVICONS = (
-#     ("icon", "/favicon.ico", "16x16"),
-#     ("icon", "/icon_128x128.png", "128x128"),
+#     ("icon", "/favicon.ico", "24x24")
 # )
 
 # Show teasers (instead of full posts) in indexes? Defaults to False.
@@ -1380,7 +1379,7 @@ GLOBAL_CONTEXT_FILLER = []
 #   <a href="/rss.xml">
 #     <i class="fa fa-circle fa-stack-2x"></i>
 #     <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
-#   </a>
+#   </a>    
 # </span>
 # <span class="fa-stack fa-2x">
 #   <a href="https://twitter.com/jluttine">
