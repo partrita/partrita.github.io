@@ -182,7 +182,7 @@ git push origin -u
   </div>
 
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/setup/" class="u-url">Setup</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/setup/" class="u-url">환경설정(Environment_setup)</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
@@ -198,6 +198,7 @@ git push origin -u
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://www.python.org/static/img/python-logo.png" alt="python_logo"></p>
 <h2 id="1.-파이썬-설치">1. 파이썬 설치<a class="anchor-link" href="posts/setup/#1.-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%84%A4%EC%B9%98">¶</a>
 </h2>
 <p>파이썬은 아주 인기있는 프로그래밍 언어로, 웹 사이트는 물론 게임, 과학용 소프트웨어, 그래픽 소프트웨어 등 다양한 것을 만들 수 있습니다. 파이썬은 1980년대 후반에 <strong>귀도 반 로썸</strong> 프로그래밍 언어를 기계 뿐만 아니라 인간도 읽을 수 있도록 만들고자 탄생한 언어입니다. 파이썬이 다른 프로그래밍 언어보다 훨씬 간단하게 보이고, 배우기도 쉬운 이유도 그 때문이죠. 이를 바탕으로 과거 15년 동안 <strong>numpy</strong>,<strong>scipy</strong>,<strong>matplotlib</strong>,<strong>jupyter</strong> 같이 널리 사용되는 라이브러리가 개발되어있습니다. 
@@ -234,6 +235,7 @@ git push origin -u
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://www.anaconda.com/wp-content/themes/anaconda/images/logo-dark.png" alt="anaconda"></p>
 <h2 id="2.-Anaconda-설치">2. Anaconda 설치<a class="anchor-link" href="posts/setup/#2.-Anaconda-%EC%84%A4%EC%B9%98">¶</a>
 </h2>
 <p>파이썬 기반의 데이터 분석에 특화된 각종 OpenSource 라이브러리를 모아놓은 개발 플랫폼입니다. 무엇보다도 <strong>Panda, Numpy, Numba, Scipy, IPython, GPGPU, 과학, 수학, 데이터 분석</strong>등과 관련된 수많은 라이브러리 한번에 그리고 <strong>의존성</strong>(dependency)문제 없이 설치 할 수 있습니다. 또한 <strong>conda</strong>라는 관리 라이브러리 매니저가 있어서 편리 합니다.<a href="https://www.anaconda.com/">Anaconda 홈페이지</a></p>
@@ -377,6 +379,31 @@ rm -rf ~/anaconda
 <p>워드나 노트패드가 있는데도, 굳이 코드 에디터 소프트웨어를 설치해야 하는 이유가 궁금할 거에요.<br>
 첫 번째로 코드는 일반 텍스트여야 하는데, 워드나 텍스트에딧(Textedit)과 같은 프로그램에서는 일반 텍스트가 아닌 RTF(Rich Text Format)와 같은 사용자 서식을 쓴 리치 텍스트(폰트와 서식이 있는 텍스트)가 생성되기 때문입니다. 
 두 번째는 코드 에디터 프로그램은 개발에 유용한 여러 기능을 제공하기 때문입니다. 대표적인 예로, 코드를 해석해 문법을 하이라이팅해주는 기능이라든가 큰따옴표("")를 자동으로 닫아주는 기능이지요. 앞으로 코드 에디터가 어떻게 작동하는지 알아볼 거에요. 곧 여러분은 내가 사용하는 코드 에디터를 제일 좋아하게 될 거랍니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-Biopython">5. Biopython<a class="anchor-link" href="posts/setup/#5.-Biopython">¶</a>
+</h2>
+<p><img src="http://biopython.org/assets/images/biopython_logo_white.png" alt="logo">
+생물정보 데이터 분석을 하다 보면 공통적으로 사용되는 기능들이 많습니다. 예를 들어</p>
+<ul>
+<li>
+<a href="NCBI">NCBI</a>에서 많은 수의 nucleotide 서열을 ID만 가지고 <a href="GenBank">GenBank</a> 형식 또는 <a href="FASTA">FASTA</a> 형식으로 다운 받는다든지, </li>
+<li>다운로드 받은 서열들을 protein 서열로 translation한 후 multiple alignment를 수행하고자 할 경우 NCBI에서 서열을 다운로드하기 </li>
+<li>GenBank 혹은 FASTA 포맷의 서열을 형식에 맞게 id, description, 서열 부분을 구분하여 따로따로 읽어들이는 기능, 읽어들인 서열을 translation 하는 기능 그리고 multiple alignment를 수행이 있겠습니다.</li>
+</ul>
+<p>이렇게 <a href="Python">Python</a>으로 생물정보 데이터를 분석하고자 할 때 많이 사용되는 코드를 모아둔 라이브러리가 <a href="http://www.biopython.org/">Biopython</a> 입니다.<a href="http://www.incodom.kr/Biopython">1</a></p>
+<h3 id="설치하기">설치하기<a class="anchor-link" href="posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
+</h3>
+<p>다른 라이브러리와 마찬가지로 <code>pip install</code> 혹은 <code>conda install</code>로 설치합니다.</p>
+<div class="highlight"><pre><span></span>conda install biopython
+</pre></div>
 
 </div>
 </div>
