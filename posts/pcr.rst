@@ -1,6 +1,6 @@
 .. title: PCR(polymerase chain reaction)
 .. slug: PCR
-.. date: 2017-12-19 13:41:03 UTC+09:00
+.. date: 2017-9-19 13:41:03 UTC+09:00
 .. tags: protocols
 .. category: protocols 
 .. link: 
