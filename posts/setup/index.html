@@ -298,8 +298,10 @@ rm -rf ~/anaconda
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.-Biopython">5. Biopython<a class="anchor-link" href="#5.-Biopython">¶</a>
+<h2 id="5.-추천-라이브러리">5. 추천 라이브러리<a class="anchor-link" href="#5.-%EC%B6%94%EC%B2%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">¶</a>
 </h2>
+<h3 id="Biopython">Biopython<a class="anchor-link" href="#Biopython">¶</a>
+</h3>
 <p><img src="http://biopython.org/assets/images/biopython_logo_white.png" alt="logo">
 생물정보 데이터 분석을 하다 보면 공통적으로 사용되는 기능들이 많습니다. 예를 들어</p>
 <ul>
@@ -309,10 +311,49 @@ rm -rf ~/anaconda
 <li>GenBank 혹은 FASTA 포맷의 서열을 형식에 맞게 id, description, 서열 부분을 구분하여 따로따로 읽어들이는 기능, 읽어들인 서열을 translation 하는 기능 그리고 multiple alignment를 수행이 있겠습니다.</li>
 </ul>
 <p>이렇게 <a href="../../Python">Python</a>으로 생물정보 데이터를 분석하고자 할 때 많이 사용되는 코드를 모아둔 라이브러리가 <a href="http://www.biopython.org/">Biopython</a> 입니다.<a href="http://www.incodom.kr/Biopython">1</a></p>
-<h3 id="설치하기">설치하기<a class="anchor-link" href="#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
-</h3>
+<h4 id="설치하기">설치하기<a class="anchor-link" href="#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
+</h4>
 <p>다른 라이브러리와 마찬가지로 <code>pip install</code> 혹은 <code>conda install</code>로 설치합니다.</p>
 <div class="highlight"><pre><span></span>conda install biopython
+</pre></div>
+<h4 id="사용하기">사용하기<a class="anchor-link" href="#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+
+<span class="c1">#create a sequence object</span>
+<span class="n">my_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s1">'CATGTAGACTAG'</span><span class="p">)</span>
+
+<span class="c1">#print out some details about it</span>
+<span class="k">print</span> <span class="s1">'seq </span><span class="si">%s</span><span class="s1"> is </span><span class="si">%i</span><span class="s1"> bases long'</span> <span class="o">%</span> <span class="p">(</span><span class="n">my_seq</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_seq</span><span class="p">))</span>
+<span class="k">print</span> <span class="s1">'reverse complement is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span>
+<span class="k">print</span> <span class="s1">'protein translation is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+</pre></div>
+<h3 id="Pandas">Pandas<a class="anchor-link" href="#Pandas">¶</a>
+</h3>
+<p><img src="https://pandas.pydata.org/_static/pandas_logo.png" alt="">
+데이터로 표를 만들고 편집하는것을 아주 편리하게 해주는 필수 라이브러리입니다.</p>
+<blockquote>
+<p>pandas 는 BSD 라이센스를 따르는 오픈 소스입니다. pandas는 빠르고 쉽게 데이터를 분석하는 도구로 파이썬으로 쓰여졌습니다.</p>
+</blockquote>
+<h4 id="설치하기">설치하기<a class="anchor-link" href="#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span>conda install pandas
+</pre></div>
+<h4 id="사용하기">사용하기<a class="anchor-link" href="#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</pre></div>
+<h3 id="Matplotlib">Matplotlib<a class="anchor-link" href="#Matplotlib">¶</a>
+</h3>
+<p><img src="https://matplotlib.org/_static/logo2.svg" alt="matplotlib">
+Matplotlib은 파이썬의 시각화 라이브러리입니다. 출판용 품질의 그림부터 상호작용 가능한 시각화까지 다양한 도구를 제공합니다.</p>
+<h4 id="설치하기">설치하기<a class="anchor-link" href="#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span>conda install matplotlib
+</pre></div>
+<h4 id="사용하기">사용하기<a class="anchor-link" href="#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 </pre></div>
 
 </div>
@@ -349,7 +390,16 @@ rm -rf ~/anaconda
             <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates --><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
+    </script><!-- end fancy dates --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', UA-111815051-1, 'auto');
+  ga('send', 'pageview');
+
+</script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -388,24 +438,5 @@ $(document).ready(function() {
     });
 });
 </script>
-
-
-
-# Google Analytics or whatever else you use. Added to the bottom of 
-# in the default template (base.tmpl).
-# (translatable)
-BODY_END = """
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', UA-111815051-1, 'auto');
-  ga('send', 'pageview');
-
-</script>
-"""
-
 </body>
 </html>
