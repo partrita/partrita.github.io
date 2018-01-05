@@ -26,7 +26,11 @@ SITE_URL = "https://partrita.github.io/"
 # If not set, defaults to SITE_URL
 # BASE_URL = "http://partrita.github.io/"
 BLOG_EMAIL = "partrita@gmail.com"
-BLOG_DESCRIPTION = "Basically, all about my interest but something useful. Warning: This containing a bunch of unorganized thoughts."  # (translatable)
+BLOG_DESCRIPTION = {
+    "en": "Basically, all about my interest but something useful.",
+    "ko": "흥미롭거나 유용한것 아무거나!"
+}
+  # (translatable)
 
 # Nikola is multilingual!
 #

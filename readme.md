@@ -2,7 +2,8 @@
 넷을 떠도는 대리 구성체
 
 ## TODO list
-- [ ] CSS 수정
+- [ x ] CSS 수정
 - [ ] Wordpress migration
-- [ ] Title 바꾸기
- 
+- [ x ] Title 바꾸기
+- [ ] Tag 수정
+- [ ] category 수정
