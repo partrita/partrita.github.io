@@ -110,8 +110,8 @@
 <h2 id="0.-환경-설정">0. 환경 설정<a class="anchor-link" href="#0.-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95">¶</a>
 </h2>
 <p>먼저, <a href="https://anaconda.org/">Anaconda</a>가 이미 설치 되어있다고 가정하겠습니다. 설치되어 있지 않다면 검색을 통해 설치해주세요.</p>
-<h4 id="가상환경-만들고-실행하기">가상환경 만들고 실행하기<a class="anchor-link" href="#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
-</h4>
+<h3 id="가상환경-만들고-실행하기">가상환경 만들고 실행하기<a class="anchor-link" href="#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
+</h3>
 <p><strong>nikola_blog</strong>라는 이름의 가상환경을 생성합니다.</p>
 <div class="highlight"><pre><span></span>conda create -n nikola_blog <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
 </pre></div>
@@ -130,8 +130,8 @@ pip install nikola<span class="o">[</span>extras<span class="o">]</span>
 </pre></div>
 <p>여러가지 질문들이 나오면서 사이트의 이름, 저자, 설명과 URL을 물어봅니다. 나중에 모두 <strong>conf.py</strong> 파일에서 수정이 가능하니까 너무 고민하지말고 넘어가주세요.
 질문이 끝나면 폴더안에 여러 파일과 다른 폴더가 생긴것을 확인 할 수 있습니다.</p>
-<h4 id="Jupyter-notebook-확장자-추가하기">Jupyter notebook 확장자 추가하기<a class="anchor-link" href="#Jupyter-notebook-%ED%99%95%EC%9E%A5%EC%9E%90-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
-</h4>
+<h3 id="Jupyter-notebook-확장자-추가하기">Jupyter notebook 확장자 추가하기<a class="anchor-link" href="#Jupyter-notebook-%ED%99%95%EC%9E%A5%EC%9E%90-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
+</h3>
 <p>Nikola가 Jupyter notebook을 처리하기 위해서는 확장자를 추가해 줘야합니다.
 폴더안의 <strong>conf.py</strong> 파일을 열어서 아래와 비슷한 코드를 찾고 다음과 같이 <strong>("pages/*.ipynb", "", "story.tmpl"),</strong> 를 추가합니다.</p>
 <div class="highlight"><pre><span></span><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
@@ -147,22 +147,22 @@ pip install nikola<span class="o">[</span>extras<span class="o">]</span>
     <span class="p">(</span><span class="s2">"pages/*.txt"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
 <span class="p">)</span>
 </pre></div>
-<h2 id="새-포스트-작성하기">새 포스트 작성하기<a class="anchor-link" href="#%EC%83%88-%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="2.-새-포스트-작성하기">2. 새 포스트 작성하기<a class="anchor-link" href="#2.-%EC%83%88-%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>이제 새로운 포스트를 작성해보겠습니다. 다음과 같이 터미널에 입력을 하세요.</p>
 <div class="highlight"><pre><span></span>nikola new_post -f ipynb
 </pre></div>
 <p>제목을 물어보고는 알아서 새 Jupyter notebook을 만들어줍니다. 폴더에 새로운 파일이 생성된것을 확인하셨다면, 모든 준비가 되었습니다.</p>
-<h2 id="블로그-실행하기">블로그 실행하기<a class="anchor-link" href="#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="3.-블로그-실행하기">3. 블로그 실행하기<a class="anchor-link" href="#3.-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>터미널에서 아래 명령어를 입력하고 웹브라우저에서 <em>localhost:8000</em>에 접속하세요.</p>
 <div class="highlight"><pre><span></span>nikola auto
 </pre></div>
 <p>블로그 생성된것을 확인 하셨나요?</p>
-<h2 id="Github-page에-올리기">Github page에 올리기<a class="anchor-link" href="#Github-page%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B8%B0">¶</a>
+<h2 id="4.-Github-page에-올리기">4. Github page에 올리기<a class="anchor-link" href="#4.-Github-page%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B8%B0">¶</a>
 </h2>
-<h4 id="git-시작하기">git 시작하기<a class="anchor-link" href="#git-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">¶</a>
-</h4>
+<h3 id="git-시작하기">git 시작하기<a class="anchor-link" href="#git-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">¶</a>
+</h3>
 <p>깃허브(Github)는 너무나도 유명하기 때문에 따로 설명드리지는 않을게요. 블로그를 인터넷에 올리기 위해서 깃허브에서 제공하는 서비스를 이용할 거에요. 깃(git)을 어느정도 이해한다는 전제하에 간략하게 설명하겠습니다.</p>
 <ol>
 <li>먼저 깃허브에서 새로운 저장소(repository)를 생성합니다. 이때 이름은 <strong>USERNAME.github.io</strong>로 하세요. USERNAME은 본인의 ID입니다.</li>
@@ -177,16 +177,23 @@ git push origin -u
 </pre></div>
 깃허브에 접속해보면 파일들이 정상적으로 업로드 되어있는것을 확인 하실 수 있습니다.</li>
 </ol>
-<h4 id="블로깅하기">블로깅하기<a class="anchor-link" href="#%EB%B8%94%EB%A1%9C%EA%B9%85%ED%95%98%EA%B8%B0">¶</a>
-</h4>
+<h3 id="블로깅하기">블로깅하기<a class="anchor-link" href="#%EB%B8%94%EB%A1%9C%EA%B9%85%ED%95%98%EA%B8%B0">¶</a>
+</h3>
 <p>이제 모든 단계가 끝났습니다. 로컬에 있는 블로그 폴더에서 작업을 하고 github에 올리기만 하면 되는 것이지요. Nikola에서 보다 편하게 포스팅할 수 있도록 아래의 명령어를 지원합니다.</p>
 <div class="highlight"><pre><span></span>nikola github_deploy
 </pre></div>
 <p>깃허브에 푸쉬하고 브랜치를 나누는 작업도 알아서 해주는 강력한 기능입니다. 변경사항이 적용되는데는 몇분이 걸리지만 이제, <a href="http://USERNAME.github.io">http://USERNAME.github.io</a> 에 접속하면 블로그를 확인할 수 있을 겁니다.</p>
-<blockquote>
-<p>이제 초심을 유지하기만 하세요</p>
-</blockquote>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.">5.<a class="anchor-link" href="#5.">¶</a>
+</h2>
 </div>
 </div>
 </div>
