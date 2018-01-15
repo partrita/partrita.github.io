@@ -112,11 +112,9 @@
 <p>이번에는 파이썬을 이용해서 단백질에서 아미노산의 서열 빈도를 계산하겠습니다.</p>
 <h3 id="Protein?">Protein?<a class="anchor-link" href="#Protein?">¶</a>
 </h3>
-<pre><code>Protein(단백질)은 생물의 몸을 구성하는 고분자 유기 물질이다. 흰자질이라고도 한다.
-단백질의 영어명 프로틴은 그리스어의 proteios에서 유래된 것이다. 단백질의 한자 표기에서 단이 새알을 뜻하는 것에서 알 수 있듯,
-단백질은 달걀 등의 새알의 흰자위를 이루는 주요 성분이다.
-수많은 아미노산의 연결체로 20가지의 서로 다른 아미노산들이 펩타이드 결합이라고 하는 화학 결합으로 길게 연결된 것을 폴리펩타이드라고 한다.
- - *위키백과*</code></pre>
+<blockquote>
+<p>Protein(단백질)은 생물의 몸을 구성하는 고분자 유기 물질이다. 그리스어의 proteios에서 유래된 것이다. 수많은 아미노산의 연결체로 20가지의 서로 다른 아미노산들이 펩타이드 결합이라고 하는 화학 결합으로 길게 연결된 것을 폴리펩타이드라고 한다. - 위키백과</p>
+</blockquote>
 <p>위키백과에 서술되어 있듯이, 단백질은 20가지의 아미노산으로 구성되어 있어요. 아미노산의 서열이 어떻게 다르냐에 따라서 다른 단백질이 되죠.</p>
 <h3 id="예제">예제<a class="anchor-link" href="#%EC%98%88%EC%A0%9C">¶</a>
 </h3>
@@ -134,10 +132,10 @@ In humans, factor 8 is encoded by the F8 gene. Defects in this gene result in he
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="c1"># 필요한 라이브러리를 불러들입니다.</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 
 </div>
@@ -160,7 +158,7 @@ In humans, factor 8 is encoded by the F8 gene. Defects in this gene result in he
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">protein_seq</span> <span class="o">=</span> <span class="s1">'''MQIELSTCFFLCLLRFCFSATRRYYLGAVELSWDYMQSDLGELPVDARFPPRVPKSFPFN</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">protein_seq</span> <span class="o">=</span> <span class="s1">'''MQIELSTCFFLCLLRFCFSATRRYYLGAVELSWDYMQSDLGELPVDARFPPRVPKSFPFN</span>
 <span class="s1">TSVVYKKTLFVEFTDHLFNIAKPRPPWMGLLGPTIQAEVYDTVVITLKNMASHPVSLHAV</span>
 <span class="s1">GVSYWKASEGAEYDDQTSQREKEDDKVFPGGSHTYVWQVLKENGPMASDPLCLTYSYLSH</span>
 <span class="s1">VDLVKDLNSGLIGALLVCREGSLAKEKTQTLHKFILLFAVFDEGKSWHSETKNSLMQDRD</span>
@@ -222,7 +220,7 @@ In humans, factor 8 is encoded by the F8 gene. Defects in this gene result in he
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># data check</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># data check</span>
 <span class="n">protein_seq</span> <span class="o">=</span> <span class="n">protein_seq</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">protein_seq</span><span class="p">)</span>
 </pre></div>
@@ -270,7 +268,7 @@ In humans, factor 8 is encoded by the F8 gene. Defects in this gene result in he
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">protein_seq</span><span class="p">)</span>
 <span class="n">table</span>
 </pre></div>
@@ -337,7 +335,7 @@ In humans, factor 8 is encoded by the F8 gene. Defects in this gene result in he
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">'index'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">'index'</span><span class="p">)</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'index'</span><span class="p">:</span><span class="s1">'AA'</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="s1">'count'</span><span class="p">})</span> <span class="c1"># column의 label을 변경해줍니다.</span>
 <span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -423,7 +421,7 @@ In humans, factor 8 is encoded by the F8 gene. Defects in this gene result in he
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df2</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="c1"># [::-1]은 순서를 맞추기 위함입니다</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># [::-1]은 순서를 맞추기 위함입니다</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'frequency of amino acid '</span><span class="p">)</span>
 </pre></div>
 
@@ -482,7 +480,7 @@ In humans, factor 8 is encoded by the F8 gene. Defects in this gene result in he
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">colormap</span> <span class="o">=</span> <span class="s1">'tab20'</span><span class="p">)</span> <span class="c1"># 20가지의 색상을 표현하기 위해 color map을 변경했습니다.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">colormap</span> <span class="o">=</span> <span class="s1">'tab20'</span><span class="p">)</span> <span class="c1"># 20가지의 색상을 표현하기 위해 color map을 변경했습니다.</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'frequency of amino acid '</span><span class="p">)</span>
 </pre></div>
 
