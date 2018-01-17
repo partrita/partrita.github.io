@@ -88,7 +88,84 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/protocols/" class="u-url">Protocols</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/hello-world/" class="u-url">hello world</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Taeyoon
+            </span></p>
+            <p class="dateline"><a href="posts/hello-world/" rel="bookmark"><time class="published dt-published" datetime="2017-12-11T20:20:47+09:00" title="2017-12-11 20:20">2017-12-11 20:20</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>첫 번째 포스트 이자, 처음으로 써보는 <strong>reStructuredText</strong> 포멧입니다.</p>
+<div class="section" id="id1">
+<h2>리스트 만들기</h2>
+<ul class="simple">
+<li>A bullet list item</li>
+<li>Second item<ul>
+<li>A sub item</li>
+</ul>
+</li>
+<li>Spacing between items creates separate lists</li>
+<li>Third item</li>
+</ul>
+<ol class="arabic">
+<li>
+<p class="first">An enumerated list item</p>
+</li>
+<li>
+<p class="first">Second item</p>
+<ol class="loweralpha">
+<li>
+<p class="first">Sub item that goes on at length and thus needs
+to be wrapped. Note the indentation that must
+match the beginning of the text, not the
+enumerator.</p>
+<ol class="lowerroman">
+<li>
+<p class="first">List items can even include</p>
+<p>paragraph breaks.</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p class="first">Third item</p>
+</li>
+<li>
+<p class="first">Another enumerated list item</p>
+</li>
+<li>
+<p class="first">Second item</p>
+</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>이미지</h2>
+<img alt="https://geekpete.com/blog/wp-content/uploads/2015/07/Screen-Shot-2015-07-08-at-3.19.27-pm.png" src="https://geekpete.com/blog/wp-content/uploads/2015/07/Screen-Shot-2015-07-08-at-3.19.27-pm.png">
+</div>
+<div class="section" id="id3">
+<h2>하이퍼링크</h2>
+<p>A sentence with links to <a class="reference external" href="https://www.wikipedia.org/">Wikipedia</a> and the <a class="reference external" href="https://www.kernel.org/">Linux kernel archive</a>.</p>
+<p>Another sentence with an <a class="reference external" href="https://www.python.org/">anonymous link to the Python website</a>.</p>
+<p>N.B.: named links and anonymous links are enclosed in grave accents (`), and not in apostrophes (').</p>
+</div>
+<div class="section" id="id5">
+<h2>코드 블럭</h2>
+<pre class="literal-block">
+some literal text
+</pre>
+<p>This may also be used inline at the end of a paragraph, like so:</p>
+<pre class="literal-block">
+some more literal text
+</pre>
+<pre class="code python"><a name="rest_code_10e6ba4328dd47a19fb075ef88259fee-1"></a><span class="k">print</span><span class="p">(</span><span class="s2">"A literal block directive explicitly marked as python code"</span><span class="p">)</span>
+</pre>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/protocols/" class="u-url">Protocols</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
@@ -1458,24 +1535,24 @@ Double-dashes - - "- -" - - must be escaped somehow in HTML output. -->
 <h3><a class="toc-backref" href="posts/restructuredtext-demo/#id61">3.1   Code Blocks</a></h3>
 <p>Here's a neat implementation of the Sieve of Eratosthenes.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/restructuredtext-demo/#rest_code_ff65ff2109324e67910708a9b3b14fdc-1">1</a>
-<a href="posts/restructuredtext-demo/#rest_code_ff65ff2109324e67910708a9b3b14fdc-2">2</a>
-<a href="posts/restructuredtext-demo/#rest_code_ff65ff2109324e67910708a9b3b14fdc-3">3</a>
-<a href="posts/restructuredtext-demo/#rest_code_ff65ff2109324e67910708a9b3b14fdc-4">4</a>
-<a href="posts/restructuredtext-demo/#rest_code_ff65ff2109324e67910708a9b3b14fdc-5">5</a>
-<a href="posts/restructuredtext-demo/#rest_code_ff65ff2109324e67910708a9b3b14fdc-6">6</a>
-<a href="posts/restructuredtext-demo/#rest_code_ff65ff2109324e67910708a9b3b14fdc-7">7</a>
-<a href="posts/restructuredtext-demo/#rest_code_ff65ff2109324e67910708a9b3b14fdc-8">8</a>
-<a href="posts/restructuredtext-demo/#rest_code_ff65ff2109324e67910708a9b3b14fdc-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_ff65ff2109324e67910708a9b3b14fdc-1"></a><span class="k">def</span> <span class="nf">sieve_of_eratosthenes</span><span class="p">():</span>
-<a name="rest_code_ff65ff2109324e67910708a9b3b14fdc-2"></a>    <span class="n">factors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
-<a name="rest_code_ff65ff2109324e67910708a9b3b14fdc-3"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-<a name="rest_code_ff65ff2109324e67910708a9b3b14fdc-4"></a>        <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
-<a name="rest_code_ff65ff2109324e67910708a9b3b14fdc-5"></a>            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<a name="rest_code_ff65ff2109324e67910708a9b3b14fdc-6"></a>                <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<a name="rest_code_ff65ff2109324e67910708a9b3b14fdc-7"></a>        <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_ff65ff2109324e67910708a9b3b14fdc-8"></a>            <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<a name="rest_code_ff65ff2109324e67910708a9b3b14fdc-9"></a>            <span class="k">yield</span> <span class="n">n</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/restructuredtext-demo/#rest_code_eed6aa98548f4188bf28dc8475157de4-1">1</a>
+<a href="posts/restructuredtext-demo/#rest_code_eed6aa98548f4188bf28dc8475157de4-2">2</a>
+<a href="posts/restructuredtext-demo/#rest_code_eed6aa98548f4188bf28dc8475157de4-3">3</a>
+<a href="posts/restructuredtext-demo/#rest_code_eed6aa98548f4188bf28dc8475157de4-4">4</a>
+<a href="posts/restructuredtext-demo/#rest_code_eed6aa98548f4188bf28dc8475157de4-5">5</a>
+<a href="posts/restructuredtext-demo/#rest_code_eed6aa98548f4188bf28dc8475157de4-6">6</a>
+<a href="posts/restructuredtext-demo/#rest_code_eed6aa98548f4188bf28dc8475157de4-7">7</a>
+<a href="posts/restructuredtext-demo/#rest_code_eed6aa98548f4188bf28dc8475157de4-8">8</a>
+<a href="posts/restructuredtext-demo/#rest_code_eed6aa98548f4188bf28dc8475157de4-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_eed6aa98548f4188bf28dc8475157de4-1"></a><span class="k">def</span> <span class="nf">sieve_of_eratosthenes</span><span class="p">():</span>
+<a name="rest_code_eed6aa98548f4188bf28dc8475157de4-2"></a>    <span class="n">factors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+<a name="rest_code_eed6aa98548f4188bf28dc8475157de4-3"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_eed6aa98548f4188bf28dc8475157de4-4"></a>        <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
+<a name="rest_code_eed6aa98548f4188bf28dc8475157de4-5"></a>            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_eed6aa98548f4188bf28dc8475157de4-6"></a>                <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<a name="rest_code_eed6aa98548f4188bf28dc8475157de4-7"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_eed6aa98548f4188bf28dc8475157de4-8"></a>            <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a name="rest_code_eed6aa98548f4188bf28dc8475157de4-9"></a>            <span class="k">yield</span> <span class="n">n</span>
 </pre></td>
 </tr></table>
 </div>
