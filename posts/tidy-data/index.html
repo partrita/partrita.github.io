@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy_data | Biohacker</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#083551">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://partrita.github.io/posts/tidy-data/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="../../assets/css/tipuesearch.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<meta name="naver-site-verification" content="d38b92eb0fc0075616e5ff8008f707087bfee65e">
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-111815051-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111815051-1');
+</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NHHK2BF');</script><meta name="author" content="Taeyoon">
+<link rel="prev" href="../frequency-of-amino-acid/" title="Frequency of Amino acid" type="text/html">
+<link rel="next" href="../ML-by-Keras/" title="당뇨병 예측하기" type="text/html">
+<meta property="og:site_name" content="Biohacker">
+<meta property="og:title" content="Tidy_data">
+<meta property="og:url" content="https://partrita.github.io/posts/tidy-data/">
+<meta property="og:description" content="Tidy data란?¶우리는 데이터 분석을 수행하면서 다양한 데이터 변환 작업을 수행하게 된다. 이는 데이터가 원래 특정 분석을 염두에 두고 만들어지는 경우가 거의 없기 때문이며, 사실 애초 데이터 설계를 할 때 분석 목적을 알기도 불가능하다는 게 가장 큰 원인이 아닐까 한다. 이런 연유로 전체 데이터 분석 작업에서 70% 혹은 80% 이상이 이런 데이터 ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-01-19T08:21:32+09:00">
+<meta property="article:tag" content="clean data">
+<meta property="article:tag" content="data">
+<meta property="article:tag" content="tidy data">
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-default navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://partrita.github.io/">
+
+                <span id="blog-title">Biohacker</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/about/">About</a>
+                </li>
+<li>
+<a href="../../pages/resume/index.html">Resume</a>
+                </li>
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<span class="navbar-form navbar-right">
+<input type="text" id="tipue_search_input" class="form-control" placeholder="Search"></span>
+
+            <ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Tidy_data</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Taeyoon
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2018-01-19T08:21:32+09:00" itemprop="datePublished" title="2018-01-19 08:21">2018-01-19 08:21</time></a></p>
+            
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Tidy-data란?">Tidy data란?<a class="anchor-link" href="#Tidy-data%EB%9E%80?">¶</a>
+</h2>
+<blockquote>
+<p>우리는 데이터 분석을 수행하면서 다양한 데이터 변환 작업을 수행하게 된다. 이는 데이터가 원래 특정 분석을 염두에 두고 만들어지는 경우가 거의 없기 때문이며, 사실 애초 데이터 설계를 할 때 분석 목적을 알기도 불가능하다는 게 가장 큰 원인이 아닐까 한다. 이런 연유로 전체 데이터 분석 작업에서 70% 혹은 80% 이상이 이런 데이터 변환 및 전처리 작업에서 소모된다. <a href="http://freesearch.pe.kr/archives/3942">1</a></p>
+</blockquote>
+<p>다른 사람들과 데이터(예를 들면 엑셀파일)를 주고 받다 보면 깨닫게 됩니다. 모든 사람의 생각은 다르다는 것을요.
+사람마다 (좋게 말하면) 각양각색으로 정리를 하다보니, 여러명이 작성한 엑셀 파일을 하나의 파일로 합치려 보면 결국에는 누군가가 새로 정리를 해야 하는 상황이 됩니다.</p>
+<p>Tidy data의 개념은 그런 상황을 방지하기 위해 <strong>Jeff Leek</strong>이 
+만들었습니다. 데이터 처리에 가장 많은 시간이 소요되는 전처리 과정을 줄여 보자, 그러기 위해 처음부터 데이터를 표준화해서 만들자는 것입니다. 처음부터 기본적인 규칙을 가지고 데이터를 만들면, 모두의 시간을 아낄 수 있으니까요.</p>
+<p>위키피디아에 따르면 Tidy data의 정의는 다음와 같습니다. "밑바닥 부터 시작할 필요 없는 데이터"</p>
+<blockquote>
+<p>Tidy data there’s no need to start from scratch. -from wiki</p>
+</blockquote>
+<h3 id="더-알아-보기">더 알아 보기<a class="anchor-link" href="#%EB%8D%94-%EC%95%8C%EC%95%84-%EB%B3%B4%EA%B8%B0">¶</a>
+</h3>
+<ul>
+<li>2014년도에 출판된 <a href="http://vita.had.co.nz/papers/tidy-data.pdf">논문</a> 입니다.</li>
+<li>데이터의 출처는 <a href="https://github.com/nickhould/tidy-data-python">이곳</a>입니다. </li>
+</ul>
+<h3 id="Tidy-data의-특징">Tidy data의 특징<a class="anchor-link" href="#Tidy-data%EC%9D%98-%ED%8A%B9%EC%A7%95">¶</a>
+</h3>
+<p><strong>Jeff Leek</strong>가 쓴 책 <strong>The Elements of Data Analytic Style</strong>에서 정의한 깔끔한 데이터는 아래와 같은 특징을 가집니다.</p>
+<ol>
+<li>각 변수는 개별의 열(column)으로 존재한다.</li>
+<li>각 관측치는 행(row)를 구성한다.</li>
+<li>각 표는 단 하나의 관측기준에 의해서 조직된 데이터를 저장한다.</li>
+<li>만약 여러개의 표가 존재한다면, 적어도 하나이상의 열(column)이 공유되어야 한다.</li>
+</ol>
+<ul>
+<li>변수(Variable): 예를 들면 <em>키, 몸무게, 성별</em>
+</li>
+<li>값(Value): 예를 들자면 <em>152 cm, 80 kg, 여성</em>
+</li>
+<li>관측치(Observation): 값을 측정한 단위, 여기서는 <em>각각의 사람</em>
+</li>
+</ul>
+<p>너무 복잡하다고 생각되신다면 아래 예시를 확인하세요.</p>
+<h4 id="지저분한-데이터의-예:">지저분한 데이터의 예:<a class="anchor-link" href="#%EC%A7%80%EC%A0%80%EB%B6%84%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%98%88:">¶</a>
+</h4>
+<div>
+
+<table border="1" class="dataframe">
+<thead><tr style="text-align: left;">
+<th></th>
+
+<th>Treatment A</th>
+
+<th>Treatment B</th>
+
+</tr></thead>
+<tbody>
+<tr>
+<th>John Smith</th>
+
+<td>-</td>
+
+<td>2</td>
+
+</tr>
+<tr>
+<th>Jane Doe</th>
+
+<td>16</td>
+
+<td>11</td>
+
+</tr>
+<tr>
+<th>Mary Johnson</th>
+
+<td>3</td>
+
+<td>1</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="깔끔한-데이터(Tidy-data)의-예:">깔끔한 데이터(Tidy data)의 예:<a class="anchor-link" href="#%EA%B9%94%EB%81%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(Tidy-data)%EC%9D%98-%EC%98%88:">¶</a>
+</h4>
+<div>
+
+<table border="1" class="dataframe">
+<thead><tr style="text-align: left;">
+<th>Name</th>
+
+<th>Treatment</th>
+
+<th>Result</th>
+
+</tr></thead>
+<tbody>
+<tr>
+<th>John Smith</th>
+
+<td>a</td>
+
+<td>-</td>
+
+</tr>
+<tr>
+<th>Jane Doe</th>
+
+<td>a</td>
+
+<td>16</td>
+
+</tr>
+<tr>
+<th>Mary Johnson</th>
+
+<td>a</td>
+
+<td>3</td>
+
+</tr>
+<tr>
+<th>John Smith</th>
+
+<td>b</td>
+
+<td>2</td>
+
+</tr>
+<tr>
+<th>Jane Doe</th>
+
+<td>b</td>
+
+<td>11</td>
+
+</tr>
+<tr>
+<th>Mary Johnson</th>
+
+<td>b</td>
+
+<td>1</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="지저분한-데이터-처리하기">지저분한 데이터 처리하기<a class="anchor-link" href="#%EC%A7%80%EC%A0%80%EB%B6%84%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0">¶</a>
+</h2>
+<p><strong>Wickham</strong>의 <a href="http://vita.had.co.nz/papers/tidy-data.pdf">논문</a>에 있던 데이터를 가지고 아래의 문제를 해결해 보도록 하겠습니다. 
+여기서 우리의 목표는 데이터 분석이 아니고 깔끔한 데이터를 만드는 것임을 명심하세요.</p>
+<p>지저분한 데이터의 일반적인 모습은 다음과 같습니다.</p>
+<ol>
+<li>열 이름(Column header)이 변수 이름이 아니고 값인 경우</li>
+<li>같은 표에 다양한 관측 단위(observational units)가 있는 경우</li>
+<li>하나의 열(column)에 여러 값이 들어 있는 경우</li>
+<li>변수가 행과 열에 모두 포함되어 있는 경우 </li>
+<li>하나의 관측 단위(observational units)가 여러 파일로 나누어져 있는 경우</li>
+</ol>
+<blockquote>
+<p>우리는 <code>Python</code>의 대표적인 라이브러리인 <code>Pandas</code>를 사용하도록 할게요.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 필요한 라이브러리 불러들이기</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">listdir</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">join</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">re</span> <span class="c1"># 정규식</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.-열-이름(Column-header)이-변수-이름이-아니고-값인-경우">1. 열 이름(Column header)이 변수 이름이 아니고 값인 경우<a class="anchor-link" href="#1.-%EC%97%B4-%EC%9D%B4%EB%A6%84(Column-header)%EC%9D%B4-%EB%B3%80%EC%88%98-%EC%9D%B4%EB%A6%84%EC%9D%B4-%EC%95%84%EB%8B%88%EA%B3%A0-%EA%B0%92%EC%9D%B8-%EA%B2%BD%EC%9A%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Pew-Research-Center-Dataset">Pew Research Center Dataset<a class="anchor-link" href="#Pew-Research-Center-Dataset">¶</a>
+</h4>
+<p>종교에 따른 개인의 수입의 관한 데이터입니다. 먼저 <code>pandas</code>의 <code>read_csv</code>기능을 사용해 파일을 읽어옵니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/pew-raw.csv"</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>religion</th>
+      <th>&lt;$10k</th>
+      <th>$10-20k</th>
+      <th>$20-30k</th>
+      <th>$30-40k</th>
+      <th>$40-50k</th>
+      <th>$50-75k</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>Agnostic</td>
+      <td>27</td>
+      <td>34</td>
+      <td>60</td>
+      <td>81</td>
+      <td>76</td>
+      <td>137</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>Atheist</td>
+      <td>12</td>
+      <td>27</td>
+      <td>37</td>
+      <td>52</td>
+      <td>35</td>
+      <td>70</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>Buddhist</td>
+      <td>27</td>
+      <td>21</td>
+      <td>30</td>
+      <td>34</td>
+      <td>33</td>
+      <td>58</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>Catholic</td>
+      <td>418</td>
+      <td>617</td>
+      <td>732</td>
+      <td>670</td>
+      <td>638</td>
+      <td>1116</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>Dont know/refused</td>
+      <td>15</td>
+      <td>14</td>
+      <td>15</td>
+      <td>11</td>
+      <td>10</td>
+      <td>35</td>
+    </tr>
+<tr>
+<th>5</th>
+      <td>Evangelical Prot</td>
+      <td>575</td>
+      <td>869</td>
+      <td>1064</td>
+      <td>982</td>
+      <td>881</td>
+      <td>1486</td>
+    </tr>
+<tr>
+<th>6</th>
+      <td>Hindu</td>
+      <td>1</td>
+      <td>9</td>
+      <td>7</td>
+      <td>9</td>
+      <td>11</td>
+      <td>34</td>
+    </tr>
+<tr>
+<th>7</th>
+      <td>Historically Black Prot</td>
+      <td>228</td>
+      <td>244</td>
+      <td>236</td>
+      <td>238</td>
+      <td>197</td>
+      <td>223</td>
+    </tr>
+<tr>
+<th>8</th>
+      <td>Jehovahs Witness</td>
+      <td>20</td>
+      <td>27</td>
+      <td>24</td>
+      <td>24</td>
+      <td>21</td>
+      <td>30</td>
+    </tr>
+<tr>
+<th>9</th>
+      <td>Jewish</td>
+      <td>19</td>
+      <td>19</td>
+      <td>25</td>
+      <td>25</td>
+      <td>30</td>
+      <td>95</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Evangelical Prot는 기독교 종파중에 하나로 '개신교'입니다.</li>
+</ul>
+<p><strong>문제점</strong>: 이 데이터들의 문제는 열 이름(columns headers)이 개인소득의 범위로 되어 있다는 것이죠.</p>
+<blockquote>
+<p>다시 말해서 보기에는 좋아보일지는 몰라도 분석하기에는 어려운 형식입니다.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>이러한 데이터를 Tidy data 형태로 변환하기 위해서 <code>pandas</code>라이브러리에서는 아주 쉬운 기능을 제공해 줍니다.
+바로 <code>melt</code>라는 기능이지요. <strong>pivot table</strong>의 반대되는 개념으로 행이 많은 데이터를 열이 많은 데이터로 바꿔줍니다. 
+<code>melt</code>는 아주 유용하기 때문에 앞으로도 자주 언급 됩니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">formatted_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,[</span><span class="s2">"religion"</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">"income"</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">"freq"</span><span class="p">)</span>
+<span class="n">formatted_df</span> <span class="o">=</span> <span class="n">formatted_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">"religion"</span><span class="p">])</span> <span class="c1"># 종교 이름순으로 정렬</span>
+<span class="n">formatted_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># 너무 길기 때문에 윗쪽 10개만 보겠습니다.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>religion</th>
+      <th>income</th>
+      <th>freq</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>Agnostic</td>
+      <td>&lt;$10k</td>
+      <td>27</td>
+    </tr>
+<tr>
+<th>30</th>
+      <td>Agnostic</td>
+      <td>$30-40k</td>
+      <td>81</td>
+    </tr>
+<tr>
+<th>40</th>
+      <td>Agnostic</td>
+      <td>$40-50k</td>
+      <td>76</td>
+    </tr>
+<tr>
+<th>50</th>
+      <td>Agnostic</td>
+      <td>$50-75k</td>
+      <td>137</td>
+    </tr>
+<tr>
+<th>10</th>
+      <td>Agnostic</td>
+      <td>$10-20k</td>
+      <td>34</td>
+    </tr>
+<tr>
+<th>20</th>
+      <td>Agnostic</td>
+      <td>$20-30k</td>
+      <td>60</td>
+    </tr>
+<tr>
+<th>41</th>
+      <td>Atheist</td>
+      <td>$40-50k</td>
+      <td>35</td>
+    </tr>
+<tr>
+<th>21</th>
+      <td>Atheist</td>
+      <td>$20-30k</td>
+      <td>37</td>
+    </tr>
+<tr>
+<th>11</th>
+      <td>Atheist</td>
+      <td>$10-20k</td>
+      <td>27</td>
+    </tr>
+<tr>
+<th>31</th>
+      <td>Atheist</td>
+      <td>$30-40k</td>
+      <td>52</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>이것이 <em>Pew Research Center Dataset</em> 의 Tidy data 형태 입니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Billboard-Top-100-Dataset">Billboard Top 100 Dataset<a class="anchor-link" href="#Billboard-Top-100-Dataset">¶</a>
+</h4>
+<p>이 데이터는 아주 오래전 같은 1999년부터 2000년까지의 빌보드차트 주간 순위 변동을 포함하고 있는 데이터 입니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [69]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/billboard.csv"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"mac_latin2"</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[69]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>year</th>
+      <th>artist.inverted</th>
+      <th>track</th>
+      <th>time</th>
+      <th>genre</th>
+      <th>date.entered</th>
+      <th>date.peaked</th>
+      <th>x1st.week</th>
+      <th>x2nd.week</th>
+      <th>x3rd.week</th>
+      <th>...</th>
+      <th>x67th.week</th>
+      <th>x68th.week</th>
+      <th>x69th.week</th>
+      <th>x70th.week</th>
+      <th>x71st.week</th>
+      <th>x72nd.week</th>
+      <th>x73rd.week</th>
+      <th>x74th.week</th>
+      <th>x75th.week</th>
+      <th>x76th.week</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>2000</td>
+      <td>Destiny's Child</td>
+      <td>Independent Women Part I</td>
+      <td>3:38</td>
+      <td>Rock</td>
+      <td>2000-09-23</td>
+      <td>2000-11-18</td>
+      <td>78</td>
+      <td>63.0</td>
+      <td>49.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>2000</td>
+      <td>Santana</td>
+      <td>Maria, Maria</td>
+      <td>4:18</td>
+      <td>Rock</td>
+      <td>2000-02-12</td>
+      <td>2000-04-08</td>
+      <td>15</td>
+      <td>8.0</td>
+      <td>6.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>2000</td>
+      <td>Savage Garden</td>
+      <td>I Knew I Loved You</td>
+      <td>4:07</td>
+      <td>Rock</td>
+      <td>1999-10-23</td>
+      <td>2000-01-29</td>
+      <td>71</td>
+      <td>48.0</td>
+      <td>43.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>2000</td>
+      <td>Madonna</td>
+      <td>Music</td>
+      <td>3:45</td>
+      <td>Rock</td>
+      <td>2000-08-12</td>
+      <td>2000-09-16</td>
+      <td>41</td>
+      <td>23.0</td>
+      <td>18.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>2000</td>
+      <td>Aguilera, Christina</td>
+      <td>Come On Over Baby (All I Want Is You)</td>
+      <td>3:38</td>
+      <td>Rock</td>
+      <td>2000-08-05</td>
+      <td>2000-10-14</td>
+      <td>57</td>
+      <td>47.0</td>
+      <td>45.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>5</th>
+      <td>2000</td>
+      <td>Janet</td>
+      <td>Doesn't Really Matter</td>
+      <td>4:17</td>
+      <td>Rock</td>
+      <td>2000-06-17</td>
+      <td>2000-08-26</td>
+      <td>59</td>
+      <td>52.0</td>
+      <td>43.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>6</th>
+      <td>2000</td>
+      <td>Destiny's Child</td>
+      <td>Say My Name</td>
+      <td>4:31</td>
+      <td>Rock</td>
+      <td>1999-12-25</td>
+      <td>2000-03-18</td>
+      <td>83</td>
+      <td>83.0</td>
+      <td>44.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>7</th>
+      <td>2000</td>
+      <td>Iglesias, Enrique</td>
+      <td>Be With You</td>
+      <td>3:36</td>
+      <td>Latin</td>
+      <td>2000-04-01</td>
+      <td>2000-06-24</td>
+      <td>63</td>
+      <td>45.0</td>
+      <td>34.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>8</th>
+      <td>2000</td>
+      <td>Sisqo</td>
+      <td>Incomplete</td>
+      <td>3:52</td>
+      <td>Rock</td>
+      <td>2000-06-24</td>
+      <td>2000-08-12</td>
+      <td>77</td>
+      <td>66.0</td>
+      <td>61.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>9</th>
+      <td>2000</td>
+      <td>Lonestar</td>
+      <td>Amazed</td>
+      <td>4:25</td>
+      <td>Country</td>
+      <td>1999-06-05</td>
+      <td>2000-03-04</td>
+      <td>81</td>
+      <td>54.0</td>
+      <td>44.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+</tbody>
+</table>
+<p>10 rows × 83 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>문제점:</strong></p>
+<ul>
+<li>열 이름(columns headers)이 값으로 구성되어 있다: <code>x1st.week</code>, <code>x2st.week</code> 등등</li>
+<li>순위가 100위권 밖으로 밀려나게 되면 <code>Nan</code> 값을 가지고, 따라서 필요없는 부수적인 값이 많아진다.</li>
+</ul>
+<p>위 데이터의 깔끔한 데이터를 만들기 위해서는 다시 <code>melt</code> 기능을 사용하겠습니다. 각각의 열이 행이 되도록 하고, 순위가 100위 밖으로 밀려난 경우(<code>Nan</code>값을 갖는경우)에는 행을 삭제할게요.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [70]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Melting</span>
+<span class="n">id_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"artist.inverted"</span><span class="p">,</span><span class="s2">"track"</span><span class="p">,</span><span class="s2">"time"</span><span class="p">,</span><span class="s2">"genre"</span><span class="p">,</span><span class="s2">"date.entered"</span><span class="p">,</span><span class="s2">"date.peaked"</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">id_vars</span><span class="o">=</span><span class="n">id_vars</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">"week"</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">"rank"</span><span class="p">)</span>
+
+<span class="c1"># Formatting </span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"week"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'week'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">'(\d+)'</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># 정규식으로 x1st.week 에서 숫자 1만 추출</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"rank"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"rank"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># 필요없는 행을 삭제합니다.</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Create "date" columns</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'date.entered'</span><span class="p">])</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'week'</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s1">'w'</span><span class="p">)</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">"year"</span><span class="p">,</span> <span class="s2">"artist.inverted"</span><span class="p">,</span> <span class="s2">"track"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">,</span> <span class="s2">"genre"</span><span class="p">,</span> <span class="s2">"week"</span><span class="p">,</span> <span class="s2">"rank"</span><span class="p">,</span> <span class="s2">"date"</span><span class="p">]]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"artist.inverted"</span><span class="p">,</span><span class="s2">"track"</span><span class="p">,</span><span class="s2">"week"</span><span class="p">,</span><span class="s2">"rank"</span><span class="p">])</span>
+
+<span class="c1"># Assigning the tidy dataset to a variable for future usage</span>
+<span class="n">billboard</span> <span class="o">=</span> <span class="n">df</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[70]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>year</th>
+      <th>artist.inverted</th>
+      <th>track</th>
+      <th>time</th>
+      <th>genre</th>
+      <th>week</th>
+      <th>rank</th>
+      <th>date</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>246</th>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>1</td>
+      <td>87</td>
+      <td>2000-02-26</td>
+    </tr>
+<tr>
+<th>563</th>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>2</td>
+      <td>82</td>
+      <td>2000-03-04</td>
+    </tr>
+<tr>
+<th>880</th>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>3</td>
+      <td>72</td>
+      <td>2000-03-11</td>
+    </tr>
+<tr>
+<th>1197</th>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>4</td>
+      <td>77</td>
+      <td>2000-03-18</td>
+    </tr>
+<tr>
+<th>1514</th>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>5</td>
+      <td>87</td>
+      <td>2000-03-25</td>
+    </tr>
+<tr>
+<th>1831</th>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>6</td>
+      <td>94</td>
+      <td>2000-04-01</td>
+    </tr>
+<tr>
+<th>2148</th>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>7</td>
+      <td>99</td>
+      <td>2000-04-08</td>
+    </tr>
+<tr>
+<th>287</th>
+      <td>2000</td>
+      <td>2Ge+her</td>
+      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
+      <td>3:15</td>
+      <td>R&amp;B</td>
+      <td>1</td>
+      <td>91</td>
+      <td>2000-09-02</td>
+    </tr>
+<tr>
+<th>604</th>
+      <td>2000</td>
+      <td>2Ge+her</td>
+      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
+      <td>3:15</td>
+      <td>R&amp;B</td>
+      <td>2</td>
+      <td>87</td>
+      <td>2000-09-09</td>
+    </tr>
+<tr>
+<th>921</th>
+      <td>2000</td>
+      <td>2Ge+her</td>
+      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
+      <td>3:15</td>
+      <td>R&amp;B</td>
+      <td>3</td>
+      <td>92</td>
+      <td>2000-09-16</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>위와 같이 데이터를 깔끔하게 만들었습니다. 하지만 <em>track, time, genre</em> 열을 보시면 아주 많은 중복이 있는 것을 알 수 있습니다. 이러한 점을 해결 하는 방법은 다음 예제에서 다루어 보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.-하나의-표에-여러가지-타입">2. 하나의 표에 여러가지 타입<a class="anchor-link" href="#2.-%ED%95%98%EB%82%98%EC%9D%98-%ED%91%9C%EC%97%90-%EC%97%AC%EB%9F%AC%EA%B0%80%EC%A7%80-%ED%83%80%EC%9E%85">¶</a>
+</h3>
+<p>위에서 다루었던 빌보드차트 데이터를 가지고 데이터가 반복되는 문제를 해결해 보겠습니다.</p>
+<p><strong>묹제점:</strong></p>
+<ul>
+<li>다양한 관측 단위(observational units), 여기서는 <code>song</code> 과 <code>rank</code>가 하나의 표에 들어 있습니다. 이를 위해서는 표를 나눌 필요가 있습니다.  </li>
+</ul>
+<p>먼저, 각각의 노래의 자세한 내용을 담고 있는 표를 만들어 보겠습니다. 그런다음 각각의 <code>song_id</code>를 부여합니다. 그런다음 순위 값을 가지고 있는 표를 <code>song_id</code>로 정리합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">songs_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"year"</span><span class="p">,</span> <span class="s2">"artist.inverted"</span><span class="p">,</span> <span class="s2">"track"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">,</span> <span class="s2">"genre"</span><span class="p">]</span>
+<span class="n">songs</span> <span class="o">=</span> <span class="n">billboard</span><span class="p">[</span><span class="n">songs_cols</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">songs</span> <span class="o">=</span> <span class="n">songs</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">songs</span><span class="p">[</span><span class="s2">"song_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">songs</span><span class="o">.</span><span class="n">index</span>
+<span class="n">songs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>year</th>
+      <th>artist.inverted</th>
+      <th>track</th>
+      <th>time</th>
+      <th>genre</th>
+      <th>song_id</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>0</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>2000</td>
+      <td>2Ge+her</td>
+      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
+      <td>3:15</td>
+      <td>R&amp;B</td>
+      <td>1</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>2000</td>
+      <td>3 Doors Down</td>
+      <td>Kryptonite</td>
+      <td>3:53</td>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>2000</td>
+      <td>3 Doors Down</td>
+      <td>Loser</td>
+      <td>4:24</td>
+      <td>Rock</td>
+      <td>3</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>2000</td>
+      <td>504 Boyz</td>
+      <td>Wobble Wobble</td>
+      <td>3:35</td>
+      <td>Rap</td>
+      <td>4</td>
+    </tr>
+<tr>
+<th>5</th>
+      <td>2000</td>
+      <td>98°</td>
+      <td>Give Me Just One Night (Una Noche)</td>
+      <td>3:24</td>
+      <td>Rock</td>
+      <td>5</td>
+    </tr>
+<tr>
+<th>6</th>
+      <td>2000</td>
+      <td>A*Teens</td>
+      <td>Dancing Queen</td>
+      <td>3:44</td>
+      <td>Pop</td>
+      <td>6</td>
+    </tr>
+<tr>
+<th>7</th>
+      <td>2000</td>
+      <td>Aaliyah</td>
+      <td>I Don't Wanna</td>
+      <td>4:15</td>
+      <td>Rock</td>
+      <td>7</td>
+    </tr>
+<tr>
+<th>8</th>
+      <td>2000</td>
+      <td>Aaliyah</td>
+      <td>Try Again</td>
+      <td>4:03</td>
+      <td>Rock</td>
+      <td>8</td>
+    </tr>
+<tr>
+<th>9</th>
+      <td>2000</td>
+      <td>Adams, Yolanda</td>
+      <td>Open My Heart</td>
+      <td>5:30</td>
+      <td>Gospel</td>
+      <td>9</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>위 와같은 새로운 표를 분리하고, 아래와 같이 순위를 포함하고 있는 표를 새로 만들어줍니다.</p>
+<blockquote>
+<p>두개의 표를 연결하기 위해 <code>song_id</code>열을 만드는 것을 주의하세요</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ranks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">billboard</span><span class="p">,</span> <span class="n">songs</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"artist.inverted"</span><span class="p">,</span> <span class="s2">"track"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">,</span> <span class="s2">"genre"</span><span class="p">])</span>
+<span class="n">ranks</span> <span class="o">=</span> <span class="n">ranks</span><span class="p">[[</span><span class="s2">"song_id"</span><span class="p">,</span> <span class="s2">"date"</span><span class="p">,</span><span class="s2">"rank"</span><span class="p">]]</span>
+<span class="n">ranks</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>song_id</th>
+      <th>date</th>
+      <th>rank</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>0</td>
+      <td>2000-02-26</td>
+      <td>87</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>0</td>
+      <td>2000-03-04</td>
+      <td>82</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>0</td>
+      <td>2000-03-11</td>
+      <td>72</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>0</td>
+      <td>2000-03-18</td>
+      <td>77</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>0</td>
+      <td>2000-03-25</td>
+      <td>87</td>
+    </tr>
+<tr>
+<th>5</th>
+      <td>0</td>
+      <td>2000-04-01</td>
+      <td>94</td>
+    </tr>
+<tr>
+<th>6</th>
+      <td>0</td>
+      <td>2000-04-08</td>
+      <td>99</td>
+    </tr>
+<tr>
+<th>7</th>
+      <td>1</td>
+      <td>2000-09-02</td>
+      <td>91</td>
+    </tr>
+<tr>
+<th>8</th>
+      <td>1</td>
+      <td>2000-09-09</td>
+      <td>87</td>
+    </tr>
+<tr>
+<th>9</th>
+      <td>1</td>
+      <td>2000-09-16</td>
+      <td>92</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.-다양한-변수가-하나의-열에-있는-경우-Multiple-variables-stored-in-one-column">3. 다양한 변수가 하나의 열에 있는 경우 Multiple variables stored in one column<a class="anchor-link" href="#3.-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%B3%80%EC%88%98%EA%B0%80-%ED%95%98%EB%82%98%EC%9D%98-%EC%97%B4%EC%97%90-%EC%9E%88%EB%8A%94-%EA%B2%BD%EC%9A%B0-Multiple-variables-stored-in-one-column">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Tubercolosis-Example">Tubercolosis Example<a class="anchor-link" href="#Tubercolosis-Example">¶</a>
+</h4>
+<p>WHO(World Health Organization)에서 수집한 결핵환자의 기록입니다. 이 데이터에는 확인된 결핵환자의 국가, 연도, 나이, 성별이 포함되어 있습니다.</p>
+<p><strong>문제점:</strong></p>
+<ul>
+<li>몇개의 열(columns)에 다양한 변수가 포함되어 있습니다.(성별과 나이)</li>
+<li>값이 존재하지 않는 곳에 <code>NaN</code>과 0 이 혼재되어 있습니다.</li>
+</ul>
+<p>미리 알아둘 점:</p>
+<ul>
+<li>열의 이름에 적혀있는 "m"이나 "f"는 성별을 뜻합니다.</li>
+<li>열의 이름에 적혀있는 숫자는 나이대("0-14","15-24", "25-34", "45-54", "55-64", "65", "unknown")를 나타냅니다.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/tb-raw.csv"</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[49]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>country</th>
+      <th>year</th>
+      <th>m014</th>
+      <th>m1524</th>
+      <th>m2534</th>
+      <th>m3544</th>
+      <th>m4554</th>
+      <th>m5564</th>
+      <th>m65</th>
+      <th>mu</th>
+      <th>f014</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>AE</td>
+      <td>2000</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>5</td>
+      <td>12</td>
+      <td>10.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>AF</td>
+      <td>2000</td>
+      <td>52.0</td>
+      <td>228.0</td>
+      <td>183.0</td>
+      <td>149.0</td>
+      <td>129</td>
+      <td>94</td>
+      <td>80.0</td>
+      <td>NaN</td>
+      <td>93.0</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>AG</td>
+      <td>2000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>AL</td>
+      <td>2000</td>
+      <td>2.0</td>
+      <td>19.0</td>
+      <td>21.0</td>
+      <td>14.0</td>
+      <td>24</td>
+      <td>19</td>
+      <td>16.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+    </tr>
+<tr>
+<th>5</th>
+      <td>AM</td>
+      <td>2000</td>
+      <td>2.0</td>
+      <td>152.0</td>
+      <td>130.0</td>
+      <td>131.0</td>
+      <td>63</td>
+      <td>26</td>
+      <td>21.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+<tr>
+<th>6</th>
+      <td>AN</td>
+      <td>2000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+<tr>
+<th>7</th>
+      <td>AO</td>
+      <td>2000</td>
+      <td>186.0</td>
+      <td>999.0</td>
+      <td>1003.0</td>
+      <td>912.0</td>
+      <td>482</td>
+      <td>312</td>
+      <td>194.0</td>
+      <td>NaN</td>
+      <td>247.0</td>
+    </tr>
+<tr>
+<th>8</th>
+      <td>AR</td>
+      <td>2000</td>
+      <td>97.0</td>
+      <td>278.0</td>
+      <td>594.0</td>
+      <td>402.0</td>
+      <td>419</td>
+      <td>368</td>
+      <td>330.0</td>
+      <td>NaN</td>
+      <td>121.0</td>
+    </tr>
+<tr>
+<th>9</th>
+      <td>AS</td>
+      <td>2000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>이 데이터를 정리하기 위해서는 먼저 <code>melt</code>를 이용해 <code>sex</code> + <code>age group</code> 를 합쳐서 하나의 행으로 만들겠습니다.
+그런 다음에 다시 행을 <code>sex</code>, <code>age</code>로 구분해서 정리하도록 하죠.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"country"</span><span class="p">,</span><span class="s2">"year"</span><span class="p">],</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">"cases"</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">"sex_and_age"</span><span class="p">)</span>
+
+<span class="c1"># Extract Sex, Age lower bound and Age upper bound group</span>
+<span class="n">tmp_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"sex_and_age"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">"(\D)(\d+)(\d</span><span class="si">{2}</span><span class="s2">)"</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>    
+
+<span class="c1"># Name columns</span>
+<span class="n">tmp_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"age_lower"</span><span class="p">,</span> <span class="s2">"age_upper"</span><span class="p">]</span>
+
+<span class="c1"># Create `age`column based on `age_lower` and `age_upper`</span>
+<span class="n">tmp_df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s2">"age_lower"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s2">"age_upper"</span><span class="p">]</span>
+
+<span class="c1"># Merge </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">tmp_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Drop unnecessary columns and rows</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'sex_and_age'</span><span class="p">,</span><span class="s2">"age_lower"</span><span class="p">,</span><span class="s2">"age_upper"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">"country"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">,</span> <span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"age"</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[50]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>country</th>
+      <th>year</th>
+      <th>cases</th>
+      <th>sex</th>
+      <th>age</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0.0</td>
+      <td>m</td>
+      <td>0-14</td>
+    </tr>
+<tr>
+<th>10</th>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0.0</td>
+      <td>m</td>
+      <td>15-24</td>
+    </tr>
+<tr>
+<th>20</th>
+      <td>AD</td>
+      <td>2000</td>
+      <td>1.0</td>
+      <td>m</td>
+      <td>25-34</td>
+    </tr>
+<tr>
+<th>30</th>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0.0</td>
+      <td>m</td>
+      <td>35-44</td>
+    </tr>
+<tr>
+<th>40</th>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0.0</td>
+      <td>m</td>
+      <td>45-54</td>
+    </tr>
+<tr>
+<th>50</th>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0.0</td>
+      <td>m</td>
+      <td>55-64</td>
+    </tr>
+<tr>
+<th>81</th>
+      <td>AE</td>
+      <td>2000</td>
+      <td>3.0</td>
+      <td>f</td>
+      <td>0-14</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>AE</td>
+      <td>2000</td>
+      <td>2.0</td>
+      <td>m</td>
+      <td>0-14</td>
+    </tr>
+<tr>
+<th>11</th>
+      <td>AE</td>
+      <td>2000</td>
+      <td>4.0</td>
+      <td>m</td>
+      <td>15-24</td>
+    </tr>
+<tr>
+<th>21</th>
+      <td>AE</td>
+      <td>2000</td>
+      <td>4.0</td>
+      <td>m</td>
+      <td>25-34</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>이것이 정리된 결과 입니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.-변수가-행과-열에(rows-and-columns)-모두-포함되어-있는-경우">4. 변수가 행과 열에(rows and columns) 모두 포함되어 있는 경우<a class="anchor-link" href="#4.-%EB%B3%80%EC%88%98%EA%B0%80-%ED%96%89%EA%B3%BC-%EC%97%B4%EC%97%90(rows-and-columns)-%EB%AA%A8%EB%91%90-%ED%8F%AC%ED%95%A8%EB%90%98%EC%96%B4-%EC%9E%88%EB%8A%94-%EA%B2%BD%EC%9A%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Global-Historical-Climatology-Network-Dataset">Global Historical Climatology Network Dataset<a class="anchor-link" href="#Global-Historical-Climatology-Network-Dataset">¶</a>
+</h4>
+<p>이것은 2010년도 멕시코 기상청(MX17004)에서 5개월 동안 측정한 기상 데이터입니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/weather-raw.csv"</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>문제점:</strong></p>
+<ul>
+<li>변수들이 행(<code>tmin</code>, <code>tmax</code>) 과 열(<code>days</code>)에 존재합니다.</li>
+</ul>
+<p>깔끔한 데이터를 만들기 위해 <code>melt</code>기능을 사용해 <code>day_raw</code>를 각각의 열로 만들겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">,</span><span class="s2">"month"</span><span class="p">,</span><span class="s2">"element"</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">"day_raw"</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>id</th>
+      <th>year</th>
+      <th>month</th>
+      <th>element</th>
+      <th>day_raw</th>
+      <th>value</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmax</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmin</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmax</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmin</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>3</td>
+      <td>tmax</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>5</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>3</td>
+      <td>tmin</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>6</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>4</td>
+      <td>tmax</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>7</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>4</td>
+      <td>tmin</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>8</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>5</td>
+      <td>tmax</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+<tr>
+<th>9</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>5</td>
+      <td>tmin</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>그럼에도 아직 불필요한 것들이 보이는 군요. 좀 더 깔끔한 데이터를 만들기 위해 <code>tmin</code>, <code>tmax</code>를 각각의 열로 만들겠습니다. 그리고 날짜 정보들을 합쳐서 <code>date</code>로 통합하겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extracting day</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"day"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"day_raw"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">"d(\d+)"</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
+<span class="n">df</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"MX17004"</span>
+
+<span class="c1"># To numeric values</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"month"</span><span class="p">,</span><span class="s2">"day"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"month"</span><span class="p">,</span><span class="s2">"day"</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">'ignore'</span><span class="p">))</span>
+
+<span class="c1"># Creating a date from the different columns</span>
+<span class="k">def</span> <span class="nf">create_date_from_year_month_day</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"year"</span><span class="p">],</span> <span class="n">month</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]),</span> <span class="n">day</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"day"</span><span class="p">])</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">"date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">create_date_from_year_month_day</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'year'</span><span class="p">,</span><span class="s2">"month"</span><span class="p">,</span><span class="s2">"day"</span><span class="p">,</span> <span class="s2">"day_raw"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Unmelting column "element"</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"id"</span><span class="p">,</span><span class="s2">"date"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"element"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"value"</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th>element</th>
+      <th>id</th>
+      <th>date</th>
+      <th>tmax</th>
+      <th>tmin</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>MX17004</td>
+      <td>2010-02-02</td>
+      <td>27.3</td>
+      <td>14.4</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>MX17004</td>
+      <td>2010-02-03</td>
+      <td>24.1</td>
+      <td>14.4</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>MX17004</td>
+      <td>2010-03-05</td>
+      <td>32.1</td>
+      <td>14.2</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>충분히 깔끔한 모양새가 되었습니다.</p>
+<h3 id="5.-하나의-관측-단위(observational-units)가-여러-파일로-나누어져-있는-경우">5. 하나의 관측 단위(observational units)가 여러 파일로 나누어져 있는 경우<a class="anchor-link" href="#5.-%ED%95%98%EB%82%98%EC%9D%98-%EA%B4%80%EC%B8%A1-%EB%8B%A8%EC%9C%84(observational-units)%EA%B0%80-%EC%97%AC%EB%9F%AC-%ED%8C%8C%EC%9D%BC%EB%A1%9C-%EB%82%98%EB%88%84%EC%96%B4%EC%A0%B8-%EC%9E%88%EB%8A%94-%EA%B2%BD%EC%9A%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Baby-Names-in-Illinois">Baby Names in Illinois<a class="anchor-link" href="#Baby-Names-in-Illinois">¶</a>
+</h4>
+<p>2014, 2015년도 미국 일리노이 주(Illinois)의 신생아의 (남자)이름을 수집한 데이터 입니다.</p>
+<p><strong>문제점:</strong></p>
+<ul>
+<li>여러 표와 파일에 데이터가 흩어져 있다.</li>
+<li>연도(Year)”가 파일 이름에 적혀져 있다.</li>
+</ul>
+<p>서로 다른 파일에 데이터가 흩어져 있어 조금 복잡한 과정이 필요합니다.
+먼저 아래의 코드로 파일 리스트를 만들고 거기에서 <em>연도</em> 값을 뽑아냅니다. 그런 다음 각각의 파일에서 표를 만들어내고 마지막으로 <code>concat</code>기능으로 사용해 하나의 표로 합치겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">extract_year</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">".+(\d</span><span class="si">{4}</span><span class="s2">)"</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">match</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="n">path</span> <span class="o">=</span> <span class="s1">'./data'</span>
+<span class="n">allFiles</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">"/201*-baby-names-illinois.csv"</span><span class="p">)</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_list</span><span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">allFiles</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">"year"</span><span class="p">]</span> <span class="o">=</span> <span class="n">extract_year</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span>
+    <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>rank</th>
+      <th>name</th>
+      <th>frequency</th>
+      <th>sex</th>
+      <th>year</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>1</td>
+      <td>Noah</td>
+      <td>837</td>
+      <td>Male</td>
+      <td>2014</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>2</td>
+      <td>Alexander</td>
+      <td>747</td>
+      <td>Male</td>
+      <td>2014</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>3</td>
+      <td>William</td>
+      <td>687</td>
+      <td>Male</td>
+      <td>2014</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>4</td>
+      <td>Michael</td>
+      <td>680</td>
+      <td>Male</td>
+      <td>2014</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>5</td>
+      <td>Liam</td>
+      <td>670</td>
+      <td>Male</td>
+      <td>2014</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="마치며">마치며<a class="anchor-link" href="#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+</h3>
+<p>이 글에서 가장 중점으로 둔것은 파이썬으로 지저분한 데이터를 깔끔하게 만드는 것이 었습니다. 그걸을 위해 <strong>Wickham</strong>의 논문에서 사용된 데이터를 살펴 보았죠. 깔끔한 데이터(Tidy data)의 최고의 장점은 <strong>시각화</strong>(Visualization)이 쉽다는 것에 있습니다. 그것은 다음에 다루어 보도록 하겠습니다.</p>
+<p>앞으로는 <strong>Tidy data</strong>를 고려해서 데이터를 수집하도록 하세요. 우리 모두의 시간은 소중하니까요.</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/clean-data/" rel="tag">clean data</a></li>
+            <li><a class="tag p-category" href="../../categories/data/" rel="tag">data</a></li>
+            <li><a class="tag p-category" href="../../categories/tidy-data/" rel="tag">tidy data</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../frequency-of-amino-acid/" rel="prev" title="Frequency of Amino acid">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../ML-by-Keras/" rel="next" title="당뇨병 예측하기">Next post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2018         <a href="mailto:partrita@gmail.com">Taeyoon</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Search Results:</h4>
+      </div>
+      <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var siteUrl = "https://partrita.github.io/"
+$(document).ready(function() {
+    $.when(
+        $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
+        $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
+        $.Deferred(function( deferred ){
+            $( deferred.resolve );
+        })
+    ).done(function() {
+        $('#tipue_search_input').tipuesearch({
+            'mode': 'json',
+            'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
+        });
+        $('#tipue_search_input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $('#search-results').modal()
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

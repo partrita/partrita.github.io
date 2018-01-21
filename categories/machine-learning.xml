@@ -1,0 +1,1894 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about machine learning)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/machine-learning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Sun, 21 Jan 2018 23:00:47 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>당뇨병 예측하기</title><link>https://partrita.github.io/posts/ML-by-Keras/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="https://www.reddit.com/r/Python/comments/7rppky/learn_how_to_create_a_neural_network_that/"&gt;Reddit&lt;/a&gt; 에서 흥미로운 글을 봤어요. 인공신경망을 이용해서 당뇨를 예측하는 튜토리얼이었죠. &lt;strong&gt;파이썬&lt;/strong&gt;을 이용해서 &lt;strong&gt;15줄&lt;/strong&gt;의 코드가 전부였습니다.&lt;/p&gt;
+&lt;h2 id="기계학습이라고?"&gt;기계학습이라고?&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9D%BC%EA%B3%A0?"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;2016년도 이세돌을 이겼던 &lt;strong&gt;AlphaGO&lt;/strong&gt;를 기억하시나요? AlphaGO라는 인공지능을 바로 기계학습으로 만들었습니다.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;기계 학습 또는 머신 러닝(영어: machine learning)은 인공 지능의 한 분야로, 컴퓨터가 학습할 수 있도록 하는 알고리즘과 기술을 개발하는 분야를 말한다. 가령, 기계 학습을 통해서 수신한 이메일이 스팸인지 아닌지를 구분할 수 있도록 훈련할 수 있다.    - wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;모든 경우의 수를 사람이 코딩할 필요가 없이 최소한의 것만 해주면, 인공 지능이 알아서 한다. 그것이 기계학습의 매력이죠. 기계학습에도 여러 종류가 있습니다. 우리가 이번에 사용할 것은 인공 신경망이라는 것입니다.&lt;/p&gt;
+&lt;h3 id="인공신경망"&gt;인공신경망&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Colored_neural_network.svg/300px-Colored_neural_network.svg.png" alt=""&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;인공신경망(artificial neural network, ANN)은 기계학습과 인지과학에서 생물학의 신경망(동물의 중추신경계중 특히 뇌)에서 영감을 얻은 통계학적 학습 알고리즘이다. - wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;어떻게 인공신경망을 만드냐고요? 파이썬에는 이미 기계학습에 사용되는 프레임워크(예를 들면 &lt;em&gt;TensorFlow&lt;/em&gt;)가 존재해서, 우리는 그냥 쓰기만 하면되요!&lt;/p&gt;
+&lt;h2 id="Keras를-사용할-거에요."&gt;Keras를 사용할 거에요.&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#Keras%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%A0-%EA%B1%B0%EC%97%90%EC%9A%94."&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://s3.amazonaws.com/keras.io/img/keras-logo-2018-large-1200.png" alt="keras"&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano. It was developed with a focus on enabling fast experimentation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Keras는 다음과 같은 특징이 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;쉽게 그리고 빠르게 코딩이 가능&lt;/li&gt;
+&lt;li&gt;CPU 와 GPU 자원을 문제없이 사용&lt;/li&gt;
+&lt;li&gt;파이썬 2.7 - 3.6을 지원&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;자세한 내용은 &lt;a href="https://partrita.github.io/posts/ML-by-Keras/Keras.io."&gt;공식 사이트&lt;/a&gt;를 방문하세요.&lt;/p&gt;
+&lt;h2 id="데이터-세트-설명"&gt;데이터 세트 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%B8%ED%8A%B8-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;사용한 데이터 세트는 &lt;strong&gt;Pima Indians Diabetes Data Set&lt;/strong&gt; 입니다. 출처는 &lt;a href="http://rexa.info/paper/04587c10a7c92baa01948f71f2513d5928fe8e81"&gt;링크&lt;/a&gt;를 확인하세요.&lt;/p&gt;
+&lt;p&gt;미국 원주민 중 &lt;em&gt;Pima&lt;/em&gt; 족은 원래는 당뇨병의 유병율이 적었는데, 서구식 식습관에 의해 급속도로 당뇨병에 걸렸습니다. 그래서 당뇨병을 연구하는데 귀중한 데이터로 사용되고 있습니다.&lt;/p&gt;
+&lt;p&gt;데이터 세트는 &lt;strong&gt;CSV&lt;/strong&gt; 포멧이고 총 &lt;strong&gt;9가지&lt;/strong&gt;의 속성으로 구성되어 있습니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;임신횟수&lt;/li&gt;
+&lt;li&gt;글루코스 내성(glucose tolerance)실험 후의 혈당수치 &lt;/li&gt;
+&lt;li&gt;확장기 혈압(mm Hg)&lt;/li&gt;
+&lt;li&gt;상완 삼두근 피부 두께 (mm)&lt;/li&gt;
+&lt;li&gt;혈액내 인슐린 수치 (mu U/ml)&lt;/li&gt;
+&lt;li&gt;BMI(비만도) 수치 (weight in kg/(height in m)^2)&lt;/li&gt;
+&lt;li&gt;당뇨병 가족력: 계산식은 데이터세트의 출처에서 확인하세요.&lt;/li&gt;
+&lt;li&gt;나이 (years)&lt;/li&gt;
+&lt;li&gt;당뇨병 여부 (0 or 1; 1은 발병)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="출처"&gt;출처&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EC%B6%9C%EC%B2%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;원작자의 코드를 확인하고 싶다면 다음 &lt;a href="https://github.com/jg-fisher/diabetesNeuralNetwork"&gt;링크&lt;/a&gt;를 확인하세요.&lt;/p&gt;
+&lt;h2 id="이제-실습을-해봅시다."&gt;이제 실습을 해봅시다.&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EC%9D%B4%EC%A0%9C-%EC%8B%A4%EC%8A%B5%EC%9D%84-%ED%95%B4%EB%B4%85%EC%8B%9C%EB%8B%A4."&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 필요한 모듈을 불러들입니다.&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;keras.models&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Sequential&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;keras.layers&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Dense&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;urllib&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline 
+
+&lt;span class="c1"&gt;# 데이터 세트의 URL을 설정&lt;/span&gt;
+&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"http://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/pima-indians-diabetes.data"&lt;/span&gt;
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urlopen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# random seed for reproducibility&lt;/span&gt;
+&lt;span class="n"&gt;numpy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 데이터 세트를 불러옵니다. &lt;/span&gt;
+&lt;span class="n"&gt;dataset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;numpy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loadtxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;","&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stderr output_text"&gt;
+&lt;pre&gt;Using TensorFlow backend.
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;이걸로 데이터 세트는 준비가 되었습니다.&lt;/p&gt;
+&lt;h3 id="모델-만들기"&gt;모델 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다음으로 &lt;strong&gt;Keras&lt;/strong&gt;를 이용해 간단한 모델을 만들고, 800번의 학습(epochs)을 해보겠습니다.
+800번 정도 실행시키면 시간이 좀 걸립니다. 기다려 주세요.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 데이터세트를 두 가지 원인(X) 과 결과(Y)로 나누어 줍니다. &lt;/span&gt;
+&lt;span class="n"&gt;X&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;Y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# create model, add dense layers one by one specifying activation function&lt;/span&gt;
+&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Sequential&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_dim&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'relu'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# input layer requires input_dim param&lt;/span&gt;
+&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'relu'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'relu'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'relu'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'sigmoid'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# sigmoid instead of relu for final probability between 0 and 1&lt;/span&gt;
+
+&lt;span class="c1"&gt;# compile the model, adam gradient descent (optimized)&lt;/span&gt;
+&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"binary_crossentropy"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;optimizer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"adam"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'accuracy'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="c1"&gt;# call the function to fit to the data (training the network)&lt;/span&gt;
+&lt;span class="n"&gt;history&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;epochs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;800&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;batch_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 모델의 정확도를 계산합니다.&lt;/span&gt;
+&lt;span class="n"&gt;scores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;: &lt;/span&gt;&lt;span class="si"&gt;%.2f%%&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;metrics_names&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;scores&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;Epoch 1/800
+768/768 [==============================] - 0s 464us/step - loss: 1.4698 - acc: 0.6432
+Epoch 2/800
+768/768 [==============================] - 0s 224us/step - loss: 0.6966 - acc: 0.6797
+Epoch 3/800
+768/768 [==============================] - 0s 206us/step - loss: 0.6424 - acc: 0.6914
+Epoch 4/800
+768/768 [==============================] - 0s 210us/step - loss: 0.6295 - acc: 0.6914
+Epoch 5/800
+768/768 [==============================] - 0s 218us/step - loss: 0.6070 - acc: 0.7188
+Epoch 6/800
+768/768 [==============================] - 0s 236us/step - loss: 0.6124 - acc: 0.7083
+Epoch 7/800
+768/768 [==============================] - 0s 221us/step - loss: 0.6104 - acc: 0.6966
+Epoch 8/800
+768/768 [==============================] - 0s 223us/step - loss: 0.5925 - acc: 0.7057
+Epoch 9/800
+768/768 [==============================] - 0s 224us/step - loss: 0.5843 - acc: 0.7005
+Epoch 10/800
+768/768 [==============================] - 0s 235us/step - loss: 0.5795 - acc: 0.7070
+Epoch 11/800
+768/768 [==============================] - 0s 233us/step - loss: 0.5767 - acc: 0.7135
+Epoch 12/800
+768/768 [==============================] - 0s 185us/step - loss: 0.5706 - acc: 0.7187
+Epoch 13/800
+768/768 [==============================] - 0s 196us/step - loss: 0.5727 - acc: 0.7122
+Epoch 14/800
+768/768 [==============================] - 0s 223us/step - loss: 0.5678 - acc: 0.7122
+Epoch 15/800
+768/768 [==============================] - 0s 219us/step - loss: 0.5629 - acc: 0.7188
+Epoch 16/800
+768/768 [==============================] - 0s 220us/step - loss: 0.5558 - acc: 0.7448
+Epoch 17/800
+768/768 [==============================] - 0s 211us/step - loss: 0.5675 - acc: 0.7148
+Epoch 18/800
+768/768 [==============================] - 0s 219us/step - loss: 0.5520 - acc: 0.7240
+Epoch 19/800
+768/768 [==============================] - 0s 209us/step - loss: 0.5639 - acc: 0.7266
+Epoch 20/800
+768/768 [==============================] - 0s 225us/step - loss: 0.5689 - acc: 0.7122
+Epoch 21/800
+768/768 [==============================] - 0s 214us/step - loss: 0.5516 - acc: 0.7305
+Epoch 22/800
+768/768 [==============================] - 0s 182us/step - loss: 0.5522 - acc: 0.7396
+Epoch 23/800
+768/768 [==============================] - 0s 215us/step - loss: 0.5368 - acc: 0.7461
+Epoch 24/800
+768/768 [==============================] - 0s 213us/step - loss: 0.5540 - acc: 0.7344
+Epoch 25/800
+768/768 [==============================] - 0s 215us/step - loss: 0.5443 - acc: 0.7279
+Epoch 26/800
+768/768 [==============================] - 0s 222us/step - loss: 0.5411 - acc: 0.7383
+Epoch 27/800
+768/768 [==============================] - 0s 244us/step - loss: 0.5384 - acc: 0.7396
+Epoch 28/800
+768/768 [==============================] - 0s 214us/step - loss: 0.5467 - acc: 0.7201
+Epoch 29/800
+768/768 [==============================] - 0s 224us/step - loss: 0.5415 - acc: 0.7253
+Epoch 30/800
+768/768 [==============================] - 0s 229us/step - loss: 0.5394 - acc: 0.7279
+Epoch 31/800
+768/768 [==============================] - 0s 218us/step - loss: 0.5400 - acc: 0.7240
+Epoch 32/800
+768/768 [==============================] - 0s 222us/step - loss: 0.5486 - acc: 0.7201
+Epoch 33/800
+768/768 [==============================] - 0s 200us/step - loss: 0.5373 - acc: 0.7305
+Epoch 34/800
+768/768 [==============================] - 0s 173us/step - loss: 0.5327 - acc: 0.7201
+Epoch 35/800
+768/768 [==============================] - 0s 164us/step - loss: 0.5238 - acc: 0.7409
+Epoch 36/800
+768/768 [==============================] - 0s 198us/step - loss: 0.5319 - acc: 0.7305
+Epoch 37/800
+768/768 [==============================] - 0s 240us/step - loss: 0.5292 - acc: 0.7370
+Epoch 38/800
+768/768 [==============================] - 0s 231us/step - loss: 0.5288 - acc: 0.7318
+Epoch 39/800
+768/768 [==============================] - 0s 233us/step - loss: 0.5250 - acc: 0.7409
+Epoch 40/800
+768/768 [==============================] - 0s 232us/step - loss: 0.5242 - acc: 0.7370
+Epoch 41/800
+768/768 [==============================] - 0s 233us/step - loss: 0.5244 - acc: 0.7396
+Epoch 42/800
+768/768 [==============================] - 0s 230us/step - loss: 0.5290 - acc: 0.7344
+Epoch 43/800
+768/768 [==============================] - 0s 228us/step - loss: 0.5271 - acc: 0.7305
+Epoch 44/800
+768/768 [==============================] - 0s 246us/step - loss: 0.5185 - acc: 0.7357
+Epoch 45/800
+768/768 [==============================] - 0s 234us/step - loss: 0.5398 - acc: 0.7292
+Epoch 46/800
+768/768 [==============================] - 0s 226us/step - loss: 0.5239 - acc: 0.7279
+Epoch 47/800
+768/768 [==============================] - 0s 218us/step - loss: 0.5196 - acc: 0.7487
+Epoch 48/800
+768/768 [==============================] - 0s 224us/step - loss: 0.5400 - acc: 0.7409
+Epoch 49/800
+768/768 [==============================] - 0s 222us/step - loss: 0.5236 - acc: 0.7552
+Epoch 50/800
+768/768 [==============================] - 0s 197us/step - loss: 0.5151 - acc: 0.7357
+Epoch 51/800
+768/768 [==============================] - 0s 199us/step - loss: 0.5192 - acc: 0.7331
+Epoch 52/800
+768/768 [==============================] - 0s 225us/step - loss: 0.5128 - acc: 0.7409
+Epoch 53/800
+768/768 [==============================] - 0s 224us/step - loss: 0.5162 - acc: 0.7500
+Epoch 54/800
+768/768 [==============================] - 0s 194us/step - loss: 0.5126 - acc: 0.7435
+Epoch 55/800
+768/768 [==============================] - 0s 222us/step - loss: 0.5092 - acc: 0.7591
+Epoch 56/800
+768/768 [==============================] - 0s 192us/step - loss: 0.5143 - acc: 0.7461
+Epoch 57/800
+768/768 [==============================] - 0s 173us/step - loss: 0.5085 - acc: 0.7565
+Epoch 58/800
+768/768 [==============================] - 0s 191us/step - loss: 0.5045 - acc: 0.7487
+Epoch 59/800
+768/768 [==============================] - 0s 194us/step - loss: 0.5079 - acc: 0.7474
+Epoch 60/800
+768/768 [==============================] - 0s 196us/step - loss: 0.5216 - acc: 0.7422
+Epoch 61/800
+768/768 [==============================] - 0s 197us/step - loss: 0.5047 - acc: 0.7565
+Epoch 62/800
+768/768 [==============================] - 0s 214us/step - loss: 0.5032 - acc: 0.7474
+Epoch 63/800
+768/768 [==============================] - 0s 217us/step - loss: 0.5327 - acc: 0.7422
+Epoch 64/800
+768/768 [==============================] - 0s 223us/step - loss: 0.5027 - acc: 0.7409
+Epoch 65/800
+768/768 [==============================] - 0s 228us/step - loss: 0.5031 - acc: 0.7448
+Epoch 66/800
+768/768 [==============================] - 0s 214us/step - loss: 0.5173 - acc: 0.7279
+Epoch 67/800
+768/768 [==============================] - 0s 232us/step - loss: 0.5066 - acc: 0.7526
+Epoch 68/800
+768/768 [==============================] - 0s 235us/step - loss: 0.5039 - acc: 0.7448
+Epoch 69/800
+768/768 [==============================] - 0s 216us/step - loss: 0.5043 - acc: 0.7435
+Epoch 70/800
+768/768 [==============================] - 0s 226us/step - loss: 0.4995 - acc: 0.7513
+Epoch 71/800
+768/768 [==============================] - 0s 233us/step - loss: 0.5002 - acc: 0.7448
+Epoch 72/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4878 - acc: 0.7656
+Epoch 73/800
+768/768 [==============================] - 0s 234us/step - loss: 0.4970 - acc: 0.7630
+Epoch 74/800
+768/768 [==============================] - 0s 244us/step - loss: 0.4972 - acc: 0.7513
+Epoch 75/800
+768/768 [==============================] - 0s 205us/step - loss: 0.5007 - acc: 0.7630
+Epoch 76/800
+768/768 [==============================] - 0s 215us/step - loss: 0.5017 - acc: 0.7448
+Epoch 77/800
+768/768 [==============================] - 0s 204us/step - loss: 0.4965 - acc: 0.7526
+Epoch 78/800
+768/768 [==============================] - 0s 211us/step - loss: 0.5004 - acc: 0.7552
+Epoch 79/800
+768/768 [==============================] - 0s 182us/step - loss: 0.5110 - acc: 0.7461
+Epoch 80/800
+768/768 [==============================] - 0s 212us/step - loss: 0.4938 - acc: 0.7552
+Epoch 81/800
+768/768 [==============================] - 0s 195us/step - loss: 0.4992 - acc: 0.7643
+Epoch 82/800
+768/768 [==============================] - 0s 222us/step - loss: 0.4887 - acc: 0.7617
+Epoch 83/800
+768/768 [==============================] - 0s 224us/step - loss: 0.4970 - acc: 0.7578
+Epoch 84/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4890 - acc: 0.7552
+Epoch 85/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4883 - acc: 0.7487
+Epoch 86/800
+768/768 [==============================] - 0s 211us/step - loss: 0.4809 - acc: 0.7682
+Epoch 87/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4841 - acc: 0.7630
+Epoch 88/800
+768/768 [==============================] - 0s 230us/step - loss: 0.4848 - acc: 0.7539
+Epoch 89/800
+768/768 [==============================] - 0s 206us/step - loss: 0.4758 - acc: 0.7682
+Epoch 90/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4820 - acc: 0.7708
+Epoch 91/800
+768/768 [==============================] - 0s 182us/step - loss: 0.4845 - acc: 0.7695
+Epoch 92/800
+768/768 [==============================] - 0s 158us/step - loss: 0.4782 - acc: 0.7630
+Epoch 93/800
+768/768 [==============================] - 0s 165us/step - loss: 0.4889 - acc: 0.7656
+Epoch 94/800
+768/768 [==============================] - 0s 182us/step - loss: 0.4774 - acc: 0.7721
+Epoch 95/800
+768/768 [==============================] - 0s 176us/step - loss: 0.4799 - acc: 0.7669
+Epoch 96/800
+768/768 [==============================] - 0s 209us/step - loss: 0.4874 - acc: 0.7826
+Epoch 97/800
+768/768 [==============================] - 0s 195us/step - loss: 0.4822 - acc: 0.7656
+Epoch 98/800
+768/768 [==============================] - 0s 224us/step - loss: 0.4747 - acc: 0.7747
+Epoch 99/800
+768/768 [==============================] - 0s 232us/step - loss: 0.4772 - acc: 0.7656
+Epoch 100/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4780 - acc: 0.7695
+Epoch 101/800
+768/768 [==============================] - 0s 235us/step - loss: 0.4724 - acc: 0.7630
+Epoch 102/800
+768/768 [==============================] - 0s 239us/step - loss: 0.4700 - acc: 0.7669
+Epoch 103/800
+768/768 [==============================] - 0s 226us/step - loss: 0.4733 - acc: 0.7578
+Epoch 104/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4713 - acc: 0.7721
+Epoch 105/800
+768/768 [==============================] - 0s 230us/step - loss: 0.4655 - acc: 0.7708
+Epoch 106/800
+768/768 [==============================] - 0s 224us/step - loss: 0.4704 - acc: 0.7630
+Epoch 107/800
+768/768 [==============================] - 0s 231us/step - loss: 0.4709 - acc: 0.7617
+Epoch 108/800
+768/768 [==============================] - 0s 221us/step - loss: 0.4706 - acc: 0.7734
+Epoch 109/800
+768/768 [==============================] - 0s 209us/step - loss: 0.4693 - acc: 0.7773
+Epoch 110/800
+768/768 [==============================] - 0s 233us/step - loss: 0.4827 - acc: 0.7604
+Epoch 111/800
+768/768 [==============================] - 0s 239us/step - loss: 0.4680 - acc: 0.7826
+Epoch 112/800
+768/768 [==============================] - 0s 225us/step - loss: 0.4696 - acc: 0.7865
+Epoch 113/800
+768/768 [==============================] - 0s 216us/step - loss: 0.4794 - acc: 0.7773
+Epoch 114/800
+768/768 [==============================] - 0s 175us/step - loss: 0.4750 - acc: 0.7786
+Epoch 115/800
+768/768 [==============================] - 0s 181us/step - loss: 0.4819 - acc: 0.7682
+Epoch 116/800
+768/768 [==============================] - 0s 202us/step - loss: 0.4759 - acc: 0.7708
+Epoch 117/800
+768/768 [==============================] - 0s 200us/step - loss: 0.4668 - acc: 0.7747
+Epoch 118/800
+768/768 [==============================] - 0s 213us/step - loss: 0.4701 - acc: 0.7630
+Epoch 119/800
+768/768 [==============================] - 0s 235us/step - loss: 0.4706 - acc: 0.7734
+Epoch 120/800
+768/768 [==============================] - 0s 241us/step - loss: 0.4631 - acc: 0.7760
+Epoch 121/800
+768/768 [==============================] - 0s 240us/step - loss: 0.4650 - acc: 0.7643
+Epoch 122/800
+768/768 [==============================] - 0s 236us/step - loss: 0.4662 - acc: 0.7786
+Epoch 123/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4635 - acc: 0.7826
+Epoch 124/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4678 - acc: 0.7682
+Epoch 125/800
+768/768 [==============================] - 0s 242us/step - loss: 0.4548 - acc: 0.7747
+Epoch 126/800
+768/768 [==============================] - 0s 209us/step - loss: 0.4672 - acc: 0.7812
+Epoch 127/800
+768/768 [==============================] - 0s 226us/step - loss: 0.4812 - acc: 0.7669
+Epoch 128/800
+768/768 [==============================] - 0s 234us/step - loss: 0.4671 - acc: 0.7669
+Epoch 129/800
+768/768 [==============================] - 0s 236us/step - loss: 0.4733 - acc: 0.7695
+Epoch 130/800
+768/768 [==============================] - 0s 226us/step - loss: 0.4643 - acc: 0.7878
+Epoch 131/800
+768/768 [==============================] - 0s 176us/step - loss: 0.4645 - acc: 0.7786
+Epoch 132/800
+768/768 [==============================] - 0s 225us/step - loss: 0.4512 - acc: 0.7799
+Epoch 133/800
+768/768 [==============================] - 0s 239us/step - loss: 0.4637 - acc: 0.7826
+Epoch 134/800
+768/768 [==============================] - 0s 221us/step - loss: 0.4626 - acc: 0.7721
+Epoch 135/800
+768/768 [==============================] - 0s 232us/step - loss: 0.4636 - acc: 0.7656
+Epoch 136/800
+768/768 [==============================] - 0s 234us/step - loss: 0.4650 - acc: 0.7773
+Epoch 137/800
+768/768 [==============================] - 0s 217us/step - loss: 0.4606 - acc: 0.7826
+Epoch 138/800
+768/768 [==============================] - 0s 213us/step - loss: 0.4667 - acc: 0.7786
+Epoch 139/800
+768/768 [==============================] - 0s 201us/step - loss: 0.4708 - acc: 0.7656
+Epoch 140/800
+768/768 [==============================] - 0s 216us/step - loss: 0.4651 - acc: 0.7852
+Epoch 141/800
+768/768 [==============================] - 0s 247us/step - loss: 0.4610 - acc: 0.7917
+Epoch 142/800
+768/768 [==============================] - 0s 230us/step - loss: 0.4481 - acc: 0.7904
+Epoch 143/800
+768/768 [==============================] - 0s 227us/step - loss: 0.4545 - acc: 0.7669
+Epoch 144/800
+768/768 [==============================] - 0s 230us/step - loss: 0.4516 - acc: 0.7852
+Epoch 145/800
+768/768 [==============================] - 0s 229us/step - loss: 0.4522 - acc: 0.7917
+Epoch 146/800
+768/768 [==============================] - 0s 216us/step - loss: 0.4593 - acc: 0.7865
+Epoch 147/800
+768/768 [==============================] - 0s 223us/step - loss: 0.4644 - acc: 0.7812
+Epoch 148/800
+768/768 [==============================] - 0s 226us/step - loss: 0.4514 - acc: 0.7878
+Epoch 149/800
+768/768 [==============================] - 0s 229us/step - loss: 0.4628 - acc: 0.7682
+Epoch 150/800
+768/768 [==============================] - 0s 232us/step - loss: 0.4519 - acc: 0.7786
+Epoch 151/800
+768/768 [==============================] - 0s 224us/step - loss: 0.4530 - acc: 0.7734
+Epoch 152/800
+768/768 [==============================] - 0s 211us/step - loss: 0.4441 - acc: 0.7943
+Epoch 153/800
+768/768 [==============================] - 0s 218us/step - loss: 0.4714 - acc: 0.7760
+Epoch 154/800
+768/768 [==============================] - 0s 227us/step - loss: 0.4568 - acc: 0.7839
+Epoch 155/800
+768/768 [==============================] - 0s 223us/step - loss: 0.4497 - acc: 0.7917
+Epoch 156/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4596 - acc: 0.7734
+Epoch 157/800
+768/768 [==============================] - 0s 240us/step - loss: 0.4497 - acc: 0.7891
+Epoch 158/800
+768/768 [==============================] - 0s 236us/step - loss: 0.4497 - acc: 0.7891
+Epoch 159/800
+768/768 [==============================] - 0s 241us/step - loss: 0.4480 - acc: 0.7878
+Epoch 160/800
+768/768 [==============================] - 0s 235us/step - loss: 0.4453 - acc: 0.7891
+Epoch 161/800
+768/768 [==============================] - 0s 217us/step - loss: 0.4432 - acc: 0.7891
+Epoch 162/800
+768/768 [==============================] - 0s 215us/step - loss: 0.4470 - acc: 0.7839
+Epoch 163/800
+768/768 [==============================] - 0s 240us/step - loss: 0.4454 - acc: 0.7826
+Epoch 164/800
+768/768 [==============================] - 0s 235us/step - loss: 0.4521 - acc: 0.7943
+Epoch 165/800
+768/768 [==============================] - 0s 232us/step - loss: 0.4512 - acc: 0.7760
+Epoch 166/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4513 - acc: 0.7865
+Epoch 167/800
+768/768 [==============================] - 0s 238us/step - loss: 0.4432 - acc: 0.7852
+Epoch 168/800
+768/768 [==============================] - 0s 222us/step - loss: 0.4546 - acc: 0.7878
+Epoch 169/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4534 - acc: 0.7891
+Epoch 170/800
+768/768 [==============================] - 0s 196us/step - loss: 0.4448 - acc: 0.7865
+Epoch 171/800
+768/768 [==============================] - 0s 217us/step - loss: 0.4495 - acc: 0.7956
+Epoch 172/800
+768/768 [==============================] - 0s 231us/step - loss: 0.4446 - acc: 0.7812
+Epoch 173/800
+768/768 [==============================] - 0s 227us/step - loss: 0.4414 - acc: 0.7852
+Epoch 174/800
+768/768 [==============================] - 0s 231us/step - loss: 0.4571 - acc: 0.7878
+Epoch 175/800
+768/768 [==============================] - 0s 239us/step - loss: 0.4541 - acc: 0.7799
+Epoch 176/800
+768/768 [==============================] - 0s 238us/step - loss: 0.4473 - acc: 0.7878
+Epoch 177/800
+768/768 [==============================] - 0s 238us/step - loss: 0.4405 - acc: 0.7878
+Epoch 178/800
+768/768 [==============================] - 0s 213us/step - loss: 0.4431 - acc: 0.7891
+Epoch 179/800
+768/768 [==============================] - 0s 189us/step - loss: 0.4496 - acc: 0.8008
+Epoch 180/800
+768/768 [==============================] - 0s 151us/step - loss: 0.4367 - acc: 0.7917
+Epoch 181/800
+768/768 [==============================] - 0s 152us/step - loss: 0.4412 - acc: 0.7917
+Epoch 182/800
+768/768 [==============================] - 0s 151us/step - loss: 0.4490 - acc: 0.7878
+Epoch 183/800
+768/768 [==============================] - 0s 210us/step - loss: 0.4398 - acc: 0.7773
+Epoch 184/800
+768/768 [==============================] - 0s 219us/step - loss: 0.4314 - acc: 0.8021
+Epoch 185/800
+768/768 [==============================] - 0s 224us/step - loss: 0.4587 - acc: 0.7878
+Epoch 186/800
+768/768 [==============================] - 0s 216us/step - loss: 0.4350 - acc: 0.8112
+Epoch 187/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4494 - acc: 0.7982
+Epoch 188/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4385 - acc: 0.7891
+Epoch 189/800
+768/768 [==============================] - 0s 213us/step - loss: 0.4372 - acc: 0.7982
+Epoch 190/800
+768/768 [==============================] - 0s 229us/step - loss: 0.4329 - acc: 0.7930
+Epoch 191/800
+768/768 [==============================] - 0s 205us/step - loss: 0.4322 - acc: 0.7982
+Epoch 192/800
+768/768 [==============================] - 0s 215us/step - loss: 0.4524 - acc: 0.7943
+Epoch 193/800
+768/768 [==============================] - 0s 244us/step - loss: 0.4501 - acc: 0.7904
+Epoch 194/800
+768/768 [==============================] - 0s 242us/step - loss: 0.4393 - acc: 0.7917
+Epoch 195/800
+768/768 [==============================] - 0s 235us/step - loss: 0.4376 - acc: 0.7982
+Epoch 196/800
+768/768 [==============================] - 0s 218us/step - loss: 0.4346 - acc: 0.8112
+Epoch 197/800
+768/768 [==============================] - 0s 217us/step - loss: 0.4363 - acc: 0.7982
+Epoch 198/800
+768/768 [==============================] - 0s 224us/step - loss: 0.4353 - acc: 0.7956
+Epoch 199/800
+768/768 [==============================] - 0s 235us/step - loss: 0.4385 - acc: 0.8021
+Epoch 200/800
+768/768 [==============================] - 0s 229us/step - loss: 0.4389 - acc: 0.8073
+Epoch 201/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4486 - acc: 0.7812
+Epoch 202/800
+768/768 [==============================] - 0s 223us/step - loss: 0.4276 - acc: 0.8060
+Epoch 203/800
+768/768 [==============================] - 0s 208us/step - loss: 0.4336 - acc: 0.7917
+Epoch 204/800
+768/768 [==============================] - 0s 223us/step - loss: 0.4321 - acc: 0.8034
+Epoch 205/800
+768/768 [==============================] - 0s 243us/step - loss: 0.4336 - acc: 0.7969
+Epoch 206/800
+768/768 [==============================] - 0s 219us/step - loss: 0.4305 - acc: 0.8047
+Epoch 207/800
+768/768 [==============================] - 0s 229us/step - loss: 0.4291 - acc: 0.7969
+Epoch 208/800
+768/768 [==============================] - 0s 233us/step - loss: 0.4296 - acc: 0.7956
+Epoch 209/800
+768/768 [==============================] - 0s 212us/step - loss: 0.4320 - acc: 0.7917
+Epoch 210/800
+768/768 [==============================] - 0s 227us/step - loss: 0.4261 - acc: 0.8008
+Epoch 211/800
+768/768 [==============================] - 0s 202us/step - loss: 0.4333 - acc: 0.7943
+Epoch 212/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4294 - acc: 0.7969
+Epoch 213/800
+768/768 [==============================] - 0s 179us/step - loss: 0.4334 - acc: 0.7904
+Epoch 214/800
+768/768 [==============================] - 0s 168us/step - loss: 0.4354 - acc: 0.7943
+Epoch 215/800
+768/768 [==============================] - 0s 226us/step - loss: 0.4304 - acc: 0.8008
+Epoch 216/800
+768/768 [==============================] - 0s 225us/step - loss: 0.4399 - acc: 0.7930
+Epoch 217/800
+768/768 [==============================] - 0s 212us/step - loss: 0.4265 - acc: 0.7865
+Epoch 218/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4271 - acc: 0.8008
+Epoch 219/800
+768/768 [==============================] - 0s 218us/step - loss: 0.4376 - acc: 0.7917
+Epoch 220/800
+768/768 [==============================] - 0s 222us/step - loss: 0.4299 - acc: 0.7982
+Epoch 221/800
+768/768 [==============================] - 0s 230us/step - loss: 0.4440 - acc: 0.7930
+Epoch 222/800
+768/768 [==============================] - 0s 233us/step - loss: 0.4320 - acc: 0.8021
+Epoch 223/800
+768/768 [==============================] - 0s 215us/step - loss: 0.4168 - acc: 0.8216
+Epoch 224/800
+768/768 [==============================] - 0s 231us/step - loss: 0.4209 - acc: 0.8047
+Epoch 225/800
+768/768 [==============================] - 0s 206us/step - loss: 0.4230 - acc: 0.8060
+Epoch 226/800
+768/768 [==============================] - 0s 201us/step - loss: 0.4190 - acc: 0.8060
+Epoch 227/800
+768/768 [==============================] - 0s 167us/step - loss: 0.4387 - acc: 0.8086
+Epoch 228/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4239 - acc: 0.7956
+Epoch 229/800
+768/768 [==============================] - 0s 235us/step - loss: 0.4271 - acc: 0.8008
+Epoch 230/800
+768/768 [==============================] - 0s 230us/step - loss: 0.4295 - acc: 0.7995
+Epoch 231/800
+768/768 [==============================] - 0s 221us/step - loss: 0.4234 - acc: 0.7930
+Epoch 232/800
+768/768 [==============================] - 0s 223us/step - loss: 0.4197 - acc: 0.7995
+Epoch 233/800
+768/768 [==============================] - 0s 210us/step - loss: 0.4160 - acc: 0.7995
+Epoch 234/800
+768/768 [==============================] - 0s 211us/step - loss: 0.4205 - acc: 0.8060
+Epoch 235/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4195 - acc: 0.8021
+Epoch 236/800
+768/768 [==============================] - 0s 211us/step - loss: 0.4215 - acc: 0.8060
+Epoch 237/800
+768/768 [==============================] - 0s 235us/step - loss: 0.4246 - acc: 0.8112
+Epoch 238/800
+768/768 [==============================] - 0s 206us/step - loss: 0.4126 - acc: 0.8177
+Epoch 239/800
+768/768 [==============================] - 0s 198us/step - loss: 0.4128 - acc: 0.8073
+Epoch 240/800
+768/768 [==============================] - 0s 221us/step - loss: 0.4203 - acc: 0.7969
+Epoch 241/800
+768/768 [==============================] - 0s 217us/step - loss: 0.4309 - acc: 0.8021
+Epoch 242/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4154 - acc: 0.8086
+Epoch 243/800
+768/768 [==============================] - 0s 221us/step - loss: 0.4071 - acc: 0.7969
+Epoch 244/800
+768/768 [==============================] - 0s 216us/step - loss: 0.4103 - acc: 0.8021
+Epoch 245/800
+768/768 [==============================] - 0s 204us/step - loss: 0.4131 - acc: 0.8099
+Epoch 246/800
+768/768 [==============================] - 0s 228us/step - loss: 0.4382 - acc: 0.8021
+Epoch 247/800
+768/768 [==============================] - 0s 218us/step - loss: 0.4158 - acc: 0.7982
+Epoch 248/800
+768/768 [==============================] - 0s 210us/step - loss: 0.4158 - acc: 0.8021
+Epoch 249/800
+768/768 [==============================] - 0s 176us/step - loss: 0.4127 - acc: 0.8021
+Epoch 250/800
+768/768 [==============================] - 0s 194us/step - loss: 0.4299 - acc: 0.7995
+Epoch 251/800
+768/768 [==============================] - 0s 192us/step - loss: 0.4114 - acc: 0.8164
+Epoch 252/800
+768/768 [==============================] - 0s 221us/step - loss: 0.4185 - acc: 0.8047
+Epoch 253/800
+768/768 [==============================] - 0s 209us/step - loss: 0.4224 - acc: 0.8008
+Epoch 254/800
+768/768 [==============================] - 0s 162us/step - loss: 0.4237 - acc: 0.8151
+Epoch 255/800
+768/768 [==============================] - 0s 208us/step - loss: 0.4015 - acc: 0.8255
+Epoch 256/800
+768/768 [==============================] - 0s 223us/step - loss: 0.4188 - acc: 0.8034
+Epoch 257/800
+768/768 [==============================] - 0s 218us/step - loss: 0.4148 - acc: 0.8047
+Epoch 258/800
+768/768 [==============================] - 0s 225us/step - loss: 0.4167 - acc: 0.8164
+Epoch 259/800
+768/768 [==============================] - 0s 209us/step - loss: 0.3957 - acc: 0.8229
+Epoch 260/800
+768/768 [==============================] - 0s 207us/step - loss: 0.4082 - acc: 0.8112
+Epoch 261/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4162 - acc: 0.8190
+Epoch 262/800
+768/768 [==============================] - 0s 207us/step - loss: 0.4094 - acc: 0.8047
+Epoch 263/800
+768/768 [==============================] - 0s 189us/step - loss: 0.4158 - acc: 0.8008
+Epoch 264/800
+768/768 [==============================] - 0s 200us/step - loss: 0.4120 - acc: 0.8060
+Epoch 265/800
+768/768 [==============================] - 0s 224us/step - loss: 0.4080 - acc: 0.8125
+Epoch 266/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3992 - acc: 0.8164
+Epoch 267/800
+768/768 [==============================] - 0s 222us/step - loss: 0.4227 - acc: 0.8112
+Epoch 268/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4078 - acc: 0.8138
+Epoch 269/800
+768/768 [==============================] - 0s 232us/step - loss: 0.4017 - acc: 0.8164
+Epoch 270/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3959 - acc: 0.8164
+Epoch 271/800
+768/768 [==============================] - 0s 230us/step - loss: 0.4017 - acc: 0.8060
+Epoch 272/800
+768/768 [==============================] - 0s 221us/step - loss: 0.4087 - acc: 0.8060
+Epoch 273/800
+768/768 [==============================] - 0s 218us/step - loss: 0.4020 - acc: 0.8190
+Epoch 274/800
+768/768 [==============================] - 0s 202us/step - loss: 0.4056 - acc: 0.8229
+Epoch 275/800
+768/768 [==============================] - 0s 205us/step - loss: 0.4008 - acc: 0.8190
+Epoch 276/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3960 - acc: 0.8151
+Epoch 277/800
+768/768 [==============================] - 0s 222us/step - loss: 0.4056 - acc: 0.8138
+Epoch 278/800
+768/768 [==============================] - 0s 212us/step - loss: 0.4029 - acc: 0.8151
+Epoch 279/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3993 - acc: 0.8125
+Epoch 280/800
+768/768 [==============================] - 0s 226us/step - loss: 0.4089 - acc: 0.8138
+Epoch 281/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3900 - acc: 0.8242
+Epoch 282/800
+768/768 [==============================] - 0s 223us/step - loss: 0.4253 - acc: 0.7982
+Epoch 283/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3944 - acc: 0.8164
+Epoch 284/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3970 - acc: 0.8086
+Epoch 285/800
+768/768 [==============================] - 0s 220us/step - loss: 0.4022 - acc: 0.8086
+Epoch 286/800
+768/768 [==============================] - 0s 213us/step - loss: 0.4003 - acc: 0.8190
+Epoch 287/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3972 - acc: 0.8047
+Epoch 288/800
+768/768 [==============================] - 0s 213us/step - loss: 0.4037 - acc: 0.7982
+Epoch 289/800
+768/768 [==============================] - 0s 197us/step - loss: 0.3967 - acc: 0.8177
+Epoch 290/800
+768/768 [==============================] - 0s 194us/step - loss: 0.4105 - acc: 0.8099
+Epoch 291/800
+768/768 [==============================] - 0s 188us/step - loss: 0.3961 - acc: 0.8281
+Epoch 292/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3965 - acc: 0.8255
+Epoch 293/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3903 - acc: 0.8203
+Epoch 294/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3993 - acc: 0.8203
+Epoch 295/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3900 - acc: 0.8190
+Epoch 296/800
+768/768 [==============================] - 0s 181us/step - loss: 0.3969 - acc: 0.8112
+Epoch 297/800
+768/768 [==============================] - 0s 214us/step - loss: 0.4020 - acc: 0.8112
+Epoch 298/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3935 - acc: 0.8268
+Epoch 299/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3924 - acc: 0.8294
+Epoch 300/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3968 - acc: 0.8242
+Epoch 301/800
+768/768 [==============================] - 0s 216us/step - loss: 0.3954 - acc: 0.8008
+Epoch 302/800
+768/768 [==============================] - 0s 210us/step - loss: 0.3954 - acc: 0.8216
+Epoch 303/800
+768/768 [==============================] - 0s 206us/step - loss: 0.4026 - acc: 0.8034
+Epoch 304/800
+768/768 [==============================] - 0s 201us/step - loss: 0.3922 - acc: 0.8229
+Epoch 305/800
+768/768 [==============================] - 0s 208us/step - loss: 0.3883 - acc: 0.8216
+Epoch 306/800
+768/768 [==============================] - 0s 198us/step - loss: 0.3929 - acc: 0.8268
+Epoch 307/800
+768/768 [==============================] - 0s 209us/step - loss: 0.3960 - acc: 0.8229
+Epoch 308/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3968 - acc: 0.8099
+Epoch 309/800
+768/768 [==============================] - 0s 212us/step - loss: 0.3938 - acc: 0.8242
+Epoch 310/800
+768/768 [==============================] - 0s 209us/step - loss: 0.3881 - acc: 0.8177
+Epoch 311/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3806 - acc: 0.8268
+Epoch 312/800
+768/768 [==============================] - 0s 210us/step - loss: 0.3849 - acc: 0.8177
+Epoch 313/800
+768/768 [==============================] - 0s 230us/step - loss: 0.4026 - acc: 0.7982
+Epoch 314/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3904 - acc: 0.8112
+Epoch 315/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3847 - acc: 0.8229
+Epoch 316/800
+768/768 [==============================] - 0s 239us/step - loss: 0.3766 - acc: 0.8346
+Epoch 317/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3879 - acc: 0.8242
+Epoch 318/800
+768/768 [==============================] - 0s 224us/step - loss: 0.4012 - acc: 0.8112
+Epoch 319/800
+768/768 [==============================] - 0s 244us/step - loss: 0.3821 - acc: 0.8294
+Epoch 320/800
+768/768 [==============================] - 0s 225us/step - loss: 0.4285 - acc: 0.7969
+Epoch 321/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3949 - acc: 0.8216
+Epoch 322/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3850 - acc: 0.8229
+Epoch 323/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3903 - acc: 0.8268
+Epoch 324/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3880 - acc: 0.8177
+Epoch 325/800
+768/768 [==============================] - 0s 227us/step - loss: 0.4002 - acc: 0.8138
+Epoch 326/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3891 - acc: 0.8190
+Epoch 327/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3893 - acc: 0.8216
+Epoch 328/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3943 - acc: 0.8112
+Epoch 329/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3853 - acc: 0.8268
+Epoch 330/800
+768/768 [==============================] - 0s 191us/step - loss: 0.3837 - acc: 0.8255
+Epoch 331/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3842 - acc: 0.8255
+Epoch 332/800
+768/768 [==============================] - 0s 218us/step - loss: 0.4003 - acc: 0.8229
+Epoch 333/800
+768/768 [==============================] - 0s 203us/step - loss: 0.3777 - acc: 0.8294
+Epoch 334/800
+768/768 [==============================] - 0s 204us/step - loss: 0.3767 - acc: 0.8307
+Epoch 335/800
+768/768 [==============================] - 0s 189us/step - loss: 0.3995 - acc: 0.8190
+Epoch 336/800
+768/768 [==============================] - 0s 197us/step - loss: 0.3871 - acc: 0.8164
+Epoch 337/800
+768/768 [==============================] - 0s 179us/step - loss: 0.3836 - acc: 0.8151
+Epoch 338/800
+768/768 [==============================] - 0s 164us/step - loss: 0.3773 - acc: 0.8177
+Epoch 339/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3785 - acc: 0.8177
+Epoch 340/800
+768/768 [==============================] - 0s 204us/step - loss: 0.3765 - acc: 0.8372
+Epoch 341/800
+768/768 [==============================] - 0s 191us/step - loss: 0.3771 - acc: 0.8203
+Epoch 342/800
+768/768 [==============================] - 0s 192us/step - loss: 0.3838 - acc: 0.8242
+Epoch 343/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3900 - acc: 0.8255
+Epoch 344/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3891 - acc: 0.8255
+Epoch 345/800
+768/768 [==============================] - 0s 209us/step - loss: 0.3771 - acc: 0.8242
+Epoch 346/800
+768/768 [==============================] - 0s 177us/step - loss: 0.3797 - acc: 0.8294
+Epoch 347/800
+768/768 [==============================] - 0s 149us/step - loss: 0.3725 - acc: 0.8281
+Epoch 348/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3806 - acc: 0.8151
+Epoch 349/800
+768/768 [==============================] - 0s 216us/step - loss: 0.4040 - acc: 0.8333
+Epoch 350/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3893 - acc: 0.8216
+Epoch 351/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3856 - acc: 0.8268
+Epoch 352/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3909 - acc: 0.8229
+Epoch 353/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3739 - acc: 0.8359
+Epoch 354/800
+768/768 [==============================] - 0s 195us/step - loss: 0.3772 - acc: 0.8333
+Epoch 355/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3864 - acc: 0.8255
+Epoch 356/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3721 - acc: 0.8281
+Epoch 357/800
+768/768 [==============================] - 0s 235us/step - loss: 0.3876 - acc: 0.8268
+Epoch 358/800
+768/768 [==============================] - 0s 237us/step - loss: 0.3825 - acc: 0.8229
+Epoch 359/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3969 - acc: 0.8190
+Epoch 360/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3797 - acc: 0.8268
+Epoch 361/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3843 - acc: 0.8242
+Epoch 362/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3750 - acc: 0.8294
+Epoch 363/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3882 - acc: 0.8255
+Epoch 364/800
+768/768 [==============================] - 0s 216us/step - loss: 0.3747 - acc: 0.8359
+Epoch 365/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3727 - acc: 0.8255
+Epoch 366/800
+768/768 [==============================] - 0s 201us/step - loss: 0.3744 - acc: 0.8307
+Epoch 367/800
+768/768 [==============================] - 0s 202us/step - loss: 0.3751 - acc: 0.8294
+Epoch 368/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3765 - acc: 0.8255
+Epoch 369/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3764 - acc: 0.8229
+Epoch 370/800
+768/768 [==============================] - 0s 235us/step - loss: 0.3800 - acc: 0.8203
+Epoch 371/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3719 - acc: 0.8307
+Epoch 372/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3729 - acc: 0.8346
+Epoch 373/800
+768/768 [==============================] - 0s 212us/step - loss: 0.3774 - acc: 0.8268
+Epoch 374/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3799 - acc: 0.8151
+Epoch 375/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3758 - acc: 0.8385
+Epoch 376/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3760 - acc: 0.8255
+Epoch 377/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3847 - acc: 0.8190
+Epoch 378/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3841 - acc: 0.8268
+Epoch 379/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3902 - acc: 0.8138
+Epoch 380/800
+768/768 [==============================] - 0s 202us/step - loss: 0.3850 - acc: 0.8281
+Epoch 381/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3736 - acc: 0.8268
+Epoch 382/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3811 - acc: 0.8281
+Epoch 383/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3754 - acc: 0.8216
+Epoch 384/800
+768/768 [==============================] - 0s 184us/step - loss: 0.3655 - acc: 0.8385
+Epoch 385/800
+768/768 [==============================] - 0s 212us/step - loss: 0.3788 - acc: 0.8294
+Epoch 386/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3856 - acc: 0.8190
+Epoch 387/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3758 - acc: 0.8281
+Epoch 388/800
+768/768 [==============================] - 0s 241us/step - loss: 0.3798 - acc: 0.8138
+Epoch 389/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3740 - acc: 0.8164
+Epoch 390/800
+768/768 [==============================] - 0s 184us/step - loss: 0.3806 - acc: 0.8177
+Epoch 391/800
+768/768 [==============================] - 0s 174us/step - loss: 0.3662 - acc: 0.8294
+Epoch 392/800
+768/768 [==============================] - 0s 162us/step - loss: 0.3698 - acc: 0.8307
+Epoch 393/800
+768/768 [==============================] - 0s 164us/step - loss: 0.3754 - acc: 0.8255
+Epoch 394/800
+768/768 [==============================] - 0s 171us/step - loss: 0.3820 - acc: 0.8268
+Epoch 395/800
+768/768 [==============================] - 0s 198us/step - loss: 0.3739 - acc: 0.8307
+Epoch 396/800
+768/768 [==============================] - 0s 179us/step - loss: 0.3779 - acc: 0.8229
+Epoch 397/800
+768/768 [==============================] - 0s 176us/step - loss: 0.3605 - acc: 0.8320
+Epoch 398/800
+768/768 [==============================] - 0s 197us/step - loss: 0.3851 - acc: 0.8255
+Epoch 399/800
+768/768 [==============================] - 0s 216us/step - loss: 0.3684 - acc: 0.8372
+Epoch 400/800
+768/768 [==============================] - 0s 206us/step - loss: 0.3750 - acc: 0.8307
+Epoch 401/800
+768/768 [==============================] - 0s 204us/step - loss: 0.3775 - acc: 0.8398
+Epoch 402/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3683 - acc: 0.8203
+Epoch 403/800
+768/768 [==============================] - 0s 236us/step - loss: 0.3713 - acc: 0.8138
+Epoch 404/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3592 - acc: 0.8359
+Epoch 405/800
+768/768 [==============================] - 0s 209us/step - loss: 0.3603 - acc: 0.8346
+Epoch 406/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3842 - acc: 0.8307
+Epoch 407/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3703 - acc: 0.8320
+Epoch 408/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3732 - acc: 0.8281
+Epoch 409/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3557 - acc: 0.8385
+Epoch 410/800
+768/768 [==============================] - 0s 208us/step - loss: 0.3659 - acc: 0.8385
+Epoch 411/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3670 - acc: 0.8268
+Epoch 412/800
+768/768 [==============================] - 0s 236us/step - loss: 0.3613 - acc: 0.8437
+Epoch 413/800
+768/768 [==============================] - 0s 236us/step - loss: 0.3638 - acc: 0.8281
+Epoch 414/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3623 - acc: 0.8307
+Epoch 415/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3789 - acc: 0.8229
+Epoch 416/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3659 - acc: 0.8307
+Epoch 417/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3548 - acc: 0.8411
+Epoch 418/800
+768/768 [==============================] - 0s 236us/step - loss: 0.3702 - acc: 0.8333
+Epoch 419/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3647 - acc: 0.8346
+Epoch 420/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3619 - acc: 0.8307
+Epoch 421/800
+768/768 [==============================] - 0s 236us/step - loss: 0.3747 - acc: 0.8372
+Epoch 422/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3505 - acc: 0.8490
+Epoch 423/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3610 - acc: 0.8320
+Epoch 424/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3631 - acc: 0.8268
+Epoch 425/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3663 - acc: 0.8346
+Epoch 426/800
+768/768 [==============================] - 0s 208us/step - loss: 0.3641 - acc: 0.8411
+Epoch 427/800
+768/768 [==============================] - 0s 205us/step - loss: 0.3600 - acc: 0.8385
+Epoch 428/800
+768/768 [==============================] - 0s 192us/step - loss: 0.3584 - acc: 0.8385
+Epoch 429/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3614 - acc: 0.8333
+Epoch 430/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3837 - acc: 0.8216
+Epoch 431/800
+768/768 [==============================] - 0s 201us/step - loss: 0.3791 - acc: 0.8164
+Epoch 432/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3558 - acc: 0.8359
+Epoch 433/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3680 - acc: 0.8346
+Epoch 434/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3546 - acc: 0.8294
+Epoch 435/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3554 - acc: 0.8346
+Epoch 436/800
+768/768 [==============================] - 0s 197us/step - loss: 0.3643 - acc: 0.8255
+Epoch 437/800
+768/768 [==============================] - 0s 216us/step - loss: 0.3811 - acc: 0.8216
+Epoch 438/800
+768/768 [==============================] - 0s 240us/step - loss: 0.3638 - acc: 0.8372
+Epoch 439/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3657 - acc: 0.8333
+Epoch 440/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3623 - acc: 0.8294
+Epoch 441/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3575 - acc: 0.8346
+Epoch 442/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3588 - acc: 0.8281
+Epoch 443/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3507 - acc: 0.8359
+Epoch 444/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3548 - acc: 0.8411
+Epoch 445/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3750 - acc: 0.8281
+Epoch 446/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3745 - acc: 0.8294
+Epoch 447/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3573 - acc: 0.8424
+Epoch 448/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3685 - acc: 0.8268
+Epoch 449/800
+768/768 [==============================] - 0s 184us/step - loss: 0.3733 - acc: 0.8294
+Epoch 450/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3814 - acc: 0.8281
+Epoch 451/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3714 - acc: 0.8307
+Epoch 452/800
+768/768 [==============================] - 0s 195us/step - loss: 0.3589 - acc: 0.8385
+Epoch 453/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3545 - acc: 0.8437
+Epoch 454/800
+768/768 [==============================] - 0s 192us/step - loss: 0.3522 - acc: 0.8424
+Epoch 455/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3621 - acc: 0.8229
+Epoch 456/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3690 - acc: 0.8333
+Epoch 457/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3728 - acc: 0.8307
+Epoch 458/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3421 - acc: 0.8464
+Epoch 459/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3631 - acc: 0.8385
+Epoch 460/800
+768/768 [==============================] - 0s 201us/step - loss: 0.3498 - acc: 0.8346
+Epoch 461/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3626 - acc: 0.8112
+Epoch 462/800
+768/768 [==============================] - 0s 206us/step - loss: 0.3592 - acc: 0.8294
+Epoch 463/800
+768/768 [==============================] - 0s 196us/step - loss: 0.3465 - acc: 0.8372
+Epoch 464/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3546 - acc: 0.8333
+Epoch 465/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3534 - acc: 0.8464
+Epoch 466/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3581 - acc: 0.8268
+Epoch 467/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3541 - acc: 0.8307
+Epoch 468/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3490 - acc: 0.8477
+Epoch 469/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3696 - acc: 0.8281
+Epoch 470/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3579 - acc: 0.8385
+Epoch 471/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3518 - acc: 0.8372
+Epoch 472/800
+768/768 [==============================] - 0s 201us/step - loss: 0.3540 - acc: 0.8385
+Epoch 473/800
+768/768 [==============================] - 0s 188us/step - loss: 0.3647 - acc: 0.8451
+Epoch 474/800
+768/768 [==============================] - 0s 169us/step - loss: 0.3488 - acc: 0.8307
+Epoch 475/800
+768/768 [==============================] - 0s 178us/step - loss: 0.3469 - acc: 0.8437
+Epoch 476/800
+768/768 [==============================] - 0s 205us/step - loss: 0.3483 - acc: 0.8477
+Epoch 477/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3491 - acc: 0.8451
+Epoch 478/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3773 - acc: 0.8216
+Epoch 479/800
+768/768 [==============================] - 0s 194us/step - loss: 0.3475 - acc: 0.8503
+Epoch 480/800
+768/768 [==============================] - 0s 205us/step - loss: 0.3456 - acc: 0.8490
+Epoch 481/800
+768/768 [==============================] - 0s 187us/step - loss: 0.3527 - acc: 0.8464
+Epoch 482/800
+768/768 [==============================] - 0s 184us/step - loss: 0.3685 - acc: 0.8294
+Epoch 483/800
+768/768 [==============================] - 0s 159us/step - loss: 0.3606 - acc: 0.8437
+Epoch 484/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3631 - acc: 0.8255
+Epoch 485/800
+768/768 [==============================] - 0s 239us/step - loss: 0.3496 - acc: 0.8424
+Epoch 486/800
+768/768 [==============================] - 0s 242us/step - loss: 0.3562 - acc: 0.8281
+Epoch 487/800
+768/768 [==============================] - 0s 241us/step - loss: 0.3483 - acc: 0.8464
+Epoch 488/800
+768/768 [==============================] - 0s 237us/step - loss: 0.3422 - acc: 0.8320
+Epoch 489/800
+768/768 [==============================] - 0s 239us/step - loss: 0.3705 - acc: 0.8268
+Epoch 490/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3627 - acc: 0.8346
+Epoch 491/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3555 - acc: 0.8281
+Epoch 492/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3444 - acc: 0.8437
+Epoch 493/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3568 - acc: 0.8320
+Epoch 494/800
+768/768 [==============================] - 0s 210us/step - loss: 0.3598 - acc: 0.8359
+Epoch 495/800
+768/768 [==============================] - 0s 210us/step - loss: 0.3524 - acc: 0.8464
+Epoch 496/800
+768/768 [==============================] - 0s 215us/step - loss: 0.3707 - acc: 0.8203
+Epoch 497/800
+768/768 [==============================] - 0s 184us/step - loss: 0.3489 - acc: 0.8451
+Epoch 498/800
+768/768 [==============================] - 0s 191us/step - loss: 0.3489 - acc: 0.8385
+Epoch 499/800
+768/768 [==============================] - 0s 189us/step - loss: 0.3442 - acc: 0.8424
+Epoch 500/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3548 - acc: 0.8320
+Epoch 501/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3445 - acc: 0.8529
+Epoch 502/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3400 - acc: 0.8503
+Epoch 503/800
+768/768 [==============================] - 0s 208us/step - loss: 0.3546 - acc: 0.8385
+Epoch 504/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3397 - acc: 0.8437
+Epoch 505/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3463 - acc: 0.8372
+Epoch 506/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3590 - acc: 0.8490
+Epoch 507/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3445 - acc: 0.8411
+Epoch 508/800
+768/768 [==============================] - 0s 239us/step - loss: 0.3442 - acc: 0.8451
+Epoch 509/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3568 - acc: 0.8242
+Epoch 510/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3467 - acc: 0.8372
+Epoch 511/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3498 - acc: 0.8385
+Epoch 512/800
+768/768 [==============================] - 0s 201us/step - loss: 0.3452 - acc: 0.8398
+Epoch 513/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3407 - acc: 0.8424
+Epoch 514/800
+768/768 [==============================] - 0s 202us/step - loss: 0.3390 - acc: 0.8424
+Epoch 515/800
+768/768 [==============================] - 0s 216us/step - loss: 0.3472 - acc: 0.8516
+Epoch 516/800
+768/768 [==============================] - 0s 209us/step - loss: 0.3512 - acc: 0.8398
+Epoch 517/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3331 - acc: 0.8385
+Epoch 518/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3513 - acc: 0.8372
+Epoch 519/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3371 - acc: 0.8451
+Epoch 520/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3481 - acc: 0.8424
+Epoch 521/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3523 - acc: 0.8320
+Epoch 522/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3509 - acc: 0.8372
+Epoch 523/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3515 - acc: 0.8359
+Epoch 524/800
+768/768 [==============================] - 0s 210us/step - loss: 0.3487 - acc: 0.8451
+Epoch 525/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3577 - acc: 0.8503
+Epoch 526/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3620 - acc: 0.8268
+Epoch 527/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3507 - acc: 0.8333
+Epoch 528/800
+768/768 [==============================] - 0s 161us/step - loss: 0.3399 - acc: 0.8424
+Epoch 529/800
+768/768 [==============================] - 0s 215us/step - loss: 0.3468 - acc: 0.8320
+Epoch 530/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3391 - acc: 0.8424
+Epoch 531/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3384 - acc: 0.8437
+Epoch 532/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3419 - acc: 0.8320
+Epoch 533/800
+768/768 [==============================] - 0s 208us/step - loss: 0.3362 - acc: 0.8451
+Epoch 534/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3369 - acc: 0.8411
+Epoch 535/800
+768/768 [==============================] - 0s 239us/step - loss: 0.3444 - acc: 0.8385
+Epoch 536/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3366 - acc: 0.8451
+Epoch 537/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3393 - acc: 0.8464
+Epoch 538/800
+768/768 [==============================] - 0s 215us/step - loss: 0.3348 - acc: 0.8372
+Epoch 539/800
+768/768 [==============================] - 0s 176us/step - loss: 0.3388 - acc: 0.8490
+Epoch 540/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3539 - acc: 0.8464
+Epoch 541/800
+768/768 [==============================] - 0s 206us/step - loss: 0.3479 - acc: 0.8333
+Epoch 542/800
+768/768 [==============================] - 0s 198us/step - loss: 0.3394 - acc: 0.8451
+Epoch 543/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3552 - acc: 0.8242
+Epoch 544/800
+768/768 [==============================] - 0s 215us/step - loss: 0.3631 - acc: 0.8203
+Epoch 545/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3585 - acc: 0.8359
+Epoch 546/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3534 - acc: 0.8346
+Epoch 547/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3342 - acc: 0.8411
+Epoch 548/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3318 - acc: 0.8372
+Epoch 549/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3542 - acc: 0.8411
+Epoch 550/800
+768/768 [==============================] - 0s 206us/step - loss: 0.3263 - acc: 0.8451
+Epoch 551/800
+768/768 [==============================] - 0s 176us/step - loss: 0.3465 - acc: 0.8346
+Epoch 552/800
+768/768 [==============================] - 0s 193us/step - loss: 0.3361 - acc: 0.8411
+Epoch 553/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3376 - acc: 0.8359
+Epoch 554/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3337 - acc: 0.8451
+Epoch 555/800
+768/768 [==============================] - 0s 238us/step - loss: 0.3416 - acc: 0.8359
+Epoch 556/800
+768/768 [==============================] - 0s 189us/step - loss: 0.3573 - acc: 0.8372
+Epoch 557/800
+768/768 [==============================] - 0s 169us/step - loss: 0.3349 - acc: 0.8372
+Epoch 558/800
+768/768 [==============================] - 0s 212us/step - loss: 0.3215 - acc: 0.8529
+Epoch 559/800
+768/768 [==============================] - 0s 194us/step - loss: 0.3370 - acc: 0.8437
+Epoch 560/800
+768/768 [==============================] - 0s 212us/step - loss: 0.3359 - acc: 0.8464
+Epoch 561/800
+768/768 [==============================] - 0s 197us/step - loss: 0.3437 - acc: 0.8385
+Epoch 562/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3301 - acc: 0.8607
+Epoch 563/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3376 - acc: 0.8346
+Epoch 564/800
+768/768 [==============================] - 0s 215us/step - loss: 0.3377 - acc: 0.8451
+Epoch 565/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3336 - acc: 0.8490
+Epoch 566/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3385 - acc: 0.8437
+Epoch 567/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3366 - acc: 0.8385
+Epoch 568/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3197 - acc: 0.8490
+Epoch 569/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3256 - acc: 0.8516
+Epoch 570/800
+768/768 [==============================] - 0s 197us/step - loss: 0.3417 - acc: 0.8385
+Epoch 571/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3451 - acc: 0.8346
+Epoch 572/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3411 - acc: 0.8490
+Epoch 573/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3263 - acc: 0.8437
+Epoch 574/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3362 - acc: 0.8516
+Epoch 575/800
+768/768 [==============================] - 0s 235us/step - loss: 0.3469 - acc: 0.8424
+Epoch 576/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3293 - acc: 0.8464
+Epoch 577/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3143 - acc: 0.8607
+Epoch 578/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3334 - acc: 0.8490
+Epoch 579/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3359 - acc: 0.8437
+Epoch 580/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3383 - acc: 0.8385
+Epoch 581/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3274 - acc: 0.8385
+Epoch 582/800
+768/768 [==============================] - 0s 242us/step - loss: 0.3399 - acc: 0.8294
+Epoch 583/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3312 - acc: 0.8437
+Epoch 584/800
+768/768 [==============================] - 0s 212us/step - loss: 0.3332 - acc: 0.8490
+Epoch 585/800
+768/768 [==============================] - 0s 235us/step - loss: 0.3481 - acc: 0.8255
+Epoch 586/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3406 - acc: 0.8320
+Epoch 587/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3240 - acc: 0.8424
+Epoch 588/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3320 - acc: 0.8477
+Epoch 589/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3547 - acc: 0.8333
+Epoch 590/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3271 - acc: 0.8555
+Epoch 591/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3336 - acc: 0.8398
+Epoch 592/800
+768/768 [==============================] - 0s 210us/step - loss: 0.3315 - acc: 0.8398
+Epoch 593/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3208 - acc: 0.8411
+Epoch 594/800
+768/768 [==============================] - 0s 182us/step - loss: 0.3276 - acc: 0.8516
+Epoch 595/800
+768/768 [==============================] - 0s 194us/step - loss: 0.3292 - acc: 0.8437
+Epoch 596/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3378 - acc: 0.8346 0s - loss: 0.3398 - acc: 0.83
+Epoch 597/800
+768/768 [==============================] - 0s 237us/step - loss: 0.3274 - acc: 0.8437
+Epoch 598/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3337 - acc: 0.8398
+Epoch 599/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3230 - acc: 0.8385
+Epoch 600/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3316 - acc: 0.8542
+Epoch 601/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3362 - acc: 0.8437
+Epoch 602/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3324 - acc: 0.8424
+Epoch 603/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3231 - acc: 0.8555
+Epoch 604/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3528 - acc: 0.8281
+Epoch 605/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3319 - acc: 0.8477
+Epoch 606/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3428 - acc: 0.8372
+Epoch 607/800
+768/768 [==============================] - 0s 170us/step - loss: 0.3200 - acc: 0.8490
+Epoch 608/800
+768/768 [==============================] - 0s 153us/step - loss: 0.3256 - acc: 0.8503
+Epoch 609/800
+768/768 [==============================] - 0s 188us/step - loss: 0.3327 - acc: 0.8451
+Epoch 610/800
+768/768 [==============================] - 0s 167us/step - loss: 0.3151 - acc: 0.8385
+Epoch 611/800
+768/768 [==============================] - 0s 197us/step - loss: 0.3382 - acc: 0.8477
+Epoch 612/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3332 - acc: 0.8542
+Epoch 613/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3312 - acc: 0.8372
+Epoch 614/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3209 - acc: 0.8477
+Epoch 615/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3250 - acc: 0.8490
+Epoch 616/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3192 - acc: 0.8503
+Epoch 617/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3206 - acc: 0.8451
+Epoch 618/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3189 - acc: 0.8555
+Epoch 619/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3105 - acc: 0.8607
+Epoch 620/800
+768/768 [==============================] - 0s 239us/step - loss: 0.3283 - acc: 0.8503
+Epoch 621/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3479 - acc: 0.8294
+Epoch 622/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3387 - acc: 0.8333
+Epoch 623/800
+768/768 [==============================] - 0s 206us/step - loss: 0.3282 - acc: 0.8372
+Epoch 624/800
+768/768 [==============================] - 0s 165us/step - loss: 0.3256 - acc: 0.8503
+Epoch 625/800
+768/768 [==============================] - 0s 209us/step - loss: 0.3172 - acc: 0.8542
+Epoch 626/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3147 - acc: 0.8516
+Epoch 627/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3395 - acc: 0.8490
+Epoch 628/800
+768/768 [==============================] - 0s 238us/step - loss: 0.3225 - acc: 0.8568
+Epoch 629/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3256 - acc: 0.8437
+Epoch 630/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3346 - acc: 0.8411
+Epoch 631/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3247 - acc: 0.8385
+Epoch 632/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3295 - acc: 0.8255
+Epoch 633/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3197 - acc: 0.8516
+Epoch 634/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3320 - acc: 0.8542
+Epoch 635/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3306 - acc: 0.8451
+Epoch 636/800
+768/768 [==============================] - 0s 205us/step - loss: 0.3409 - acc: 0.8372
+Epoch 637/800
+768/768 [==============================] - 0s 209us/step - loss: 0.3273 - acc: 0.8411
+Epoch 638/800
+768/768 [==============================] - 0s 173us/step - loss: 0.3230 - acc: 0.8437
+Epoch 639/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3216 - acc: 0.8555
+Epoch 640/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3202 - acc: 0.8581
+Epoch 641/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3179 - acc: 0.8555
+Epoch 642/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3194 - acc: 0.8490
+Epoch 643/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3354 - acc: 0.8503
+Epoch 644/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3260 - acc: 0.8359
+Epoch 645/800
+768/768 [==============================] - 0s 205us/step - loss: 0.3200 - acc: 0.8555
+Epoch 646/800
+768/768 [==============================] - 0s 241us/step - loss: 0.3114 - acc: 0.8581
+Epoch 647/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3110 - acc: 0.8542
+Epoch 648/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3273 - acc: 0.8464
+Epoch 649/800
+768/768 [==============================] - 0s 174us/step - loss: 0.3151 - acc: 0.8594
+Epoch 650/800
+768/768 [==============================] - 0s 203us/step - loss: 0.3148 - acc: 0.8529
+Epoch 651/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3208 - acc: 0.8542
+Epoch 652/800
+768/768 [==============================] - 0s 235us/step - loss: 0.3129 - acc: 0.8503
+Epoch 653/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3248 - acc: 0.8490
+Epoch 654/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3098 - acc: 0.8581
+Epoch 655/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3216 - acc: 0.8398
+Epoch 656/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3103 - acc: 0.8529
+Epoch 657/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3181 - acc: 0.8568
+Epoch 658/800
+768/768 [==============================] - 0s 206us/step - loss: 0.3253 - acc: 0.8424
+Epoch 659/800
+768/768 [==============================] - 0s 215us/step - loss: 0.3352 - acc: 0.8451
+Epoch 660/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3348 - acc: 0.8464
+Epoch 661/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3243 - acc: 0.8503
+Epoch 662/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3168 - acc: 0.8568
+Epoch 663/800
+768/768 [==============================] - 0s 208us/step - loss: 0.3321 - acc: 0.8437
+Epoch 664/800
+768/768 [==============================] - 0s 193us/step - loss: 0.3263 - acc: 0.8411
+Epoch 665/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3089 - acc: 0.8437
+Epoch 666/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3074 - acc: 0.8659
+Epoch 667/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3117 - acc: 0.8542
+Epoch 668/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3109 - acc: 0.8581
+Epoch 669/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3396 - acc: 0.8477
+Epoch 670/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3248 - acc: 0.8372
+Epoch 671/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3295 - acc: 0.8346
+Epoch 672/800
+768/768 [==============================] - 0s 201us/step - loss: 0.3179 - acc: 0.8477
+Epoch 673/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3366 - acc: 0.8359
+Epoch 674/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3125 - acc: 0.8542
+Epoch 675/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3104 - acc: 0.8607
+Epoch 676/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3179 - acc: 0.8490
+Epoch 677/800
+768/768 [==============================] - 0s 236us/step - loss: 0.3121 - acc: 0.8568
+Epoch 678/800
+768/768 [==============================] - 0s 215us/step - loss: 0.3225 - acc: 0.8516
+Epoch 679/800
+768/768 [==============================] - 0s 239us/step - loss: 0.3239 - acc: 0.8398
+Epoch 680/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3259 - acc: 0.8346
+Epoch 681/800
+768/768 [==============================] - 0s 249us/step - loss: 0.3102 - acc: 0.8555
+Epoch 682/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3130 - acc: 0.8581
+Epoch 683/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3174 - acc: 0.8529
+Epoch 684/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3111 - acc: 0.8659
+Epoch 685/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3137 - acc: 0.8503
+Epoch 686/800
+768/768 [==============================] - 0s 219us/step - loss: 0.3111 - acc: 0.8529
+Epoch 687/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3317 - acc: 0.8437
+Epoch 688/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3115 - acc: 0.8607
+Epoch 689/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3066 - acc: 0.8633
+Epoch 690/800
+768/768 [==============================] - 0s 192us/step - loss: 0.3123 - acc: 0.8555
+Epoch 691/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3381 - acc: 0.8464
+Epoch 692/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3366 - acc: 0.8529
+Epoch 693/800
+768/768 [==============================] - 0s 239us/step - loss: 0.3128 - acc: 0.8516
+Epoch 694/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3140 - acc: 0.8464
+Epoch 695/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3234 - acc: 0.8437
+Epoch 696/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3138 - acc: 0.8516
+Epoch 697/800
+768/768 [==============================] - 0s 235us/step - loss: 0.3081 - acc: 0.8581
+Epoch 698/800
+768/768 [==============================] - 0s 206us/step - loss: 0.3189 - acc: 0.8451
+Epoch 699/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3178 - acc: 0.8503
+Epoch 700/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3214 - acc: 0.8398
+Epoch 701/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3088 - acc: 0.8503
+Epoch 702/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3019 - acc: 0.8581
+Epoch 703/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3117 - acc: 0.8646
+Epoch 704/800
+768/768 [==============================] - 0s 211us/step - loss: 0.3193 - acc: 0.8411
+Epoch 705/800
+768/768 [==============================] - 0s 228us/step - loss: 0.3105 - acc: 0.8646
+Epoch 706/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3107 - acc: 0.8555
+Epoch 707/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3190 - acc: 0.8451
+Epoch 708/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3058 - acc: 0.8594
+Epoch 709/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3071 - acc: 0.8594
+Epoch 710/800
+768/768 [==============================] - 0s 230us/step - loss: 0.3063 - acc: 0.8607
+Epoch 711/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3101 - acc: 0.8620
+Epoch 712/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3160 - acc: 0.8516
+Epoch 713/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3218 - acc: 0.8437
+Epoch 714/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3250 - acc: 0.8398
+Epoch 715/800
+768/768 [==============================] - 0s 203us/step - loss: 0.3612 - acc: 0.8346
+Epoch 716/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3106 - acc: 0.8620
+Epoch 717/800
+768/768 [==============================] - 0s 196us/step - loss: 0.3206 - acc: 0.8437
+Epoch 718/800
+768/768 [==============================] - 0s 179us/step - loss: 0.3072 - acc: 0.8464
+Epoch 719/800
+768/768 [==============================] - 0s 149us/step - loss: 0.3092 - acc: 0.8594
+Epoch 720/800
+768/768 [==============================] - 0s 157us/step - loss: 0.3145 - acc: 0.8555
+Epoch 721/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3125 - acc: 0.8503
+Epoch 722/800
+768/768 [==============================] - 0s 227us/step - loss: 0.3132 - acc: 0.8633
+Epoch 723/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3216 - acc: 0.8516
+Epoch 724/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3024 - acc: 0.8711
+Epoch 725/800
+768/768 [==============================] - 0s 188us/step - loss: 0.3187 - acc: 0.8451
+Epoch 726/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3543 - acc: 0.8255
+Epoch 727/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3144 - acc: 0.8503
+Epoch 728/800
+768/768 [==============================] - 0s 215us/step - loss: 0.3181 - acc: 0.8516
+Epoch 729/800
+768/768 [==============================] - 0s 224us/step - loss: 0.2974 - acc: 0.8659
+Epoch 730/800
+768/768 [==============================] - 0s 237us/step - loss: 0.3048 - acc: 0.8633
+Epoch 731/800
+768/768 [==============================] - 0s 240us/step - loss: 0.3087 - acc: 0.8698
+Epoch 732/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3086 - acc: 0.8503
+Epoch 733/800
+768/768 [==============================] - 0s 203us/step - loss: 0.3056 - acc: 0.8568
+Epoch 734/800
+768/768 [==============================] - 0s 171us/step - loss: 0.2986 - acc: 0.8555
+Epoch 735/800
+768/768 [==============================] - 0s 224us/step - loss: 0.2983 - acc: 0.8581
+Epoch 736/800
+768/768 [==============================] - 0s 226us/step - loss: 0.3106 - acc: 0.8581
+Epoch 737/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3036 - acc: 0.8542
+Epoch 738/800
+768/768 [==============================] - 0s 214us/step - loss: 0.3256 - acc: 0.8385
+Epoch 739/800
+768/768 [==============================] - 0s 214us/step - loss: 0.2990 - acc: 0.8659
+Epoch 740/800
+768/768 [==============================] - 0s 232us/step - loss: 0.3158 - acc: 0.8398
+Epoch 741/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3238 - acc: 0.8464
+Epoch 742/800
+768/768 [==============================] - 0s 240us/step - loss: 0.3022 - acc: 0.8516
+Epoch 743/800
+768/768 [==============================] - 0s 224us/step - loss: 0.3064 - acc: 0.8555
+Epoch 744/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3107 - acc: 0.8490
+Epoch 745/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3062 - acc: 0.8529
+Epoch 746/800
+768/768 [==============================] - 0s 222us/step - loss: 0.3186 - acc: 0.8490
+Epoch 747/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3202 - acc: 0.8633
+Epoch 748/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3050 - acc: 0.8529
+Epoch 749/800
+768/768 [==============================] - 0s 241us/step - loss: 0.3145 - acc: 0.8477
+Epoch 750/800
+768/768 [==============================] - 0s 236us/step - loss: 0.3116 - acc: 0.8594
+Epoch 751/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3073 - acc: 0.8607
+Epoch 752/800
+768/768 [==============================] - 0s 226us/step - loss: 0.2964 - acc: 0.8568
+Epoch 753/800
+768/768 [==============================] - 0s 225us/step - loss: 0.2939 - acc: 0.8724
+Epoch 754/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3179 - acc: 0.8503
+Epoch 755/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3037 - acc: 0.8529
+Epoch 756/800
+768/768 [==============================] - 0s 233us/step - loss: 0.3042 - acc: 0.8568
+Epoch 757/800
+768/768 [==============================] - 0s 241us/step - loss: 0.2940 - acc: 0.8581
+Epoch 758/800
+768/768 [==============================] - 0s 242us/step - loss: 0.3058 - acc: 0.8607
+Epoch 759/800
+768/768 [==============================] - 0s 221us/step - loss: 0.3151 - acc: 0.8555
+Epoch 760/800
+768/768 [==============================] - 0s 223us/step - loss: 0.2998 - acc: 0.8594
+Epoch 761/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3177 - acc: 0.8516
+Epoch 762/800
+768/768 [==============================] - 0s 229us/step - loss: 0.2996 - acc: 0.8659
+Epoch 763/800
+768/768 [==============================] - 0s 191us/step - loss: 0.2892 - acc: 0.8776
+Epoch 764/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3011 - acc: 0.8477
+Epoch 765/800
+768/768 [==============================] - 0s 231us/step - loss: 0.3095 - acc: 0.8516
+Epoch 766/800
+768/768 [==============================] - 0s 225us/step - loss: 0.2998 - acc: 0.8555
+Epoch 767/800
+768/768 [==============================] - 0s 218us/step - loss: 0.3118 - acc: 0.8516
+Epoch 768/800
+768/768 [==============================] - 0s 226us/step - loss: 0.2942 - acc: 0.8581
+Epoch 769/800
+768/768 [==============================] - 0s 223us/step - loss: 0.3089 - acc: 0.8620
+Epoch 770/800
+768/768 [==============================] - 0s 235us/step - loss: 0.3049 - acc: 0.8490
+Epoch 771/800
+768/768 [==============================] - 0s 207us/step - loss: 0.3127 - acc: 0.8359
+Epoch 772/800
+768/768 [==============================] - 0s 214us/step - loss: 0.2962 - acc: 0.8620
+Epoch 773/800
+768/768 [==============================] - 0s 202us/step - loss: 0.2922 - acc: 0.8724
+Epoch 774/800
+768/768 [==============================] - 0s 203us/step - loss: 0.2984 - acc: 0.8646
+Epoch 775/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3090 - acc: 0.8607
+Epoch 776/800
+768/768 [==============================] - 0s 229us/step - loss: 0.3171 - acc: 0.8437
+Epoch 777/800
+768/768 [==============================] - 0s 220us/step - loss: 0.2990 - acc: 0.8594
+Epoch 778/800
+768/768 [==============================] - 0s 225us/step - loss: 0.3280 - acc: 0.8477
+Epoch 779/800
+768/768 [==============================] - 0s 234us/step - loss: 0.2902 - acc: 0.8711
+Epoch 780/800
+768/768 [==============================] - 0s 224us/step - loss: 0.2955 - acc: 0.8659
+Epoch 781/800
+768/768 [==============================] - 0s 202us/step - loss: 0.2919 - acc: 0.8581
+Epoch 782/800
+768/768 [==============================] - 0s 238us/step - loss: 0.2883 - acc: 0.8724
+Epoch 783/800
+768/768 [==============================] - 0s 220us/step - loss: 0.3064 - acc: 0.8477
+Epoch 784/800
+768/768 [==============================] - 0s 234us/step - loss: 0.3044 - acc: 0.8594
+Epoch 785/800
+768/768 [==============================] - 0s 212us/step - loss: 0.3011 - acc: 0.8529
+Epoch 786/800
+768/768 [==============================] - 0s 194us/step - loss: 0.2992 - acc: 0.8607
+Epoch 787/800
+768/768 [==============================] - 0s 217us/step - loss: 0.3129 - acc: 0.8542
+Epoch 788/800
+768/768 [==============================] - 0s 181us/step - loss: 0.3046 - acc: 0.8672
+Epoch 789/800
+768/768 [==============================] - 0s 197us/step - loss: 0.3146 - acc: 0.8385
+Epoch 790/800
+768/768 [==============================] - 0s 173us/step - loss: 0.3015 - acc: 0.8581
+Epoch 791/800
+768/768 [==============================] - 0s 179us/step - loss: 0.3022 - acc: 0.8542
+Epoch 792/800
+768/768 [==============================] - 0s 215us/step - loss: 0.2997 - acc: 0.8659
+Epoch 793/800
+768/768 [==============================] - 0s 205us/step - loss: 0.2839 - acc: 0.8685
+Epoch 794/800
+768/768 [==============================] - 0s 196us/step - loss: 0.2955 - acc: 0.8503
+Epoch 795/800
+768/768 [==============================] - 0s 213us/step - loss: 0.3125 - acc: 0.8477
+Epoch 796/800
+768/768 [==============================] - 0s 238us/step - loss: 0.3042 - acc: 0.8633
+Epoch 797/800
+768/768 [==============================] - 0s 196us/step - loss: 0.3295 - acc: 0.8477
+Epoch 798/800
+768/768 [==============================] - 0s 218us/step - loss: 0.2919 - acc: 0.8607
+Epoch 799/800
+768/768 [==============================] - 0s 216us/step - loss: 0.3079 - acc: 0.8633
+Epoch 800/800
+768/768 [==============================] - 0s 227us/step - loss: 0.2973 - acc: 0.8542
+768/768 [==============================] - 0s 74us/step
+
+acc: 87.24%
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;우리의 모델이 학습결과 &lt;strong&gt;87.24%&lt;/strong&gt; 라는 정확도를 가지게 되었습니다.&lt;/p&gt;
+&lt;h3 id="시각화하기"&gt;시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이제 다 끝났습니다. 다음으로는 &lt;strong&gt;Keras&lt;/strong&gt;가 학습을 반복할 때마다 정확도가 얼마나 올라가는지 시각화를 해보겠습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Get the figure and the axes&lt;/span&gt;
+&lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ax0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ax1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subplots&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nrows&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ncols&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sharey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;figsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 모델의 정확도를 그립니다.&lt;/span&gt;
+&lt;span class="n"&gt;ax0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;history&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;history&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'acc'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; 
+&lt;span class="n"&gt;ax0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'model accuracy'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'epoch'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'accuracy'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 모델의 오차를 그립니다.&lt;/span&gt;
+&lt;span class="n"&gt;ax1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;history&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;history&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'loss'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;ax1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'model loss'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'epoch'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'loss'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;[Text(0,0.5,'loss'), Text(0.5,0,'epoch'), Text(0.5,1,'model loss')]&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_png output_subarea "&gt;
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAmsAAAFNCAYAAABfUShSAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4xLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvAOZPmwAAIABJREFUeJzs3XeYXGX5//H3PVuzyW7apkAKCSEhhB5CpEPoEIogPxAQRVEUAf0iIqCICCLYsFGkiihFBMQISO+QACEhCQkJpJHee9l+//6YsjOzs7uzm5nd2T2f13Xl4pTnnPNsgLP3uZ9m7o6IiIiI5KZQe1dARERERBqnYE1EREQkhylYExEREclhCtZEREREcpiCNREREZEcpmBNREREJIcpWJM2YWYPmtkv0iy70MyOzXadRESyLVPvvpbcRzofBWsiIiIiOUzBmkgLmFl+e9dBRESCRcGaxERS8FeZ2XQz22pm95tZPzP7n5ltNrOXzaxnXPnTzGymmW0ws9fNbI+4c/ub2ZTIdf8EipOedYqZfRS59l0z2yfNOo43s6lmtsnMFpvZDUnnD4vcb0Pk/IWR413M7Hdm9rmZbTSztyPHjjKzJSn+Ho6NbN9gZk+Y2T/MbBNwoZmNNbOJkWcsN7Pbzaww7vo9zewlM1tnZivN7Mdm1t/MtplZ77hyo81stZkVpPOzi0h2dIR3X4o6f8vM5kbeMxPMbOfIcTOz35vZqsh7coaZ7RU5d7KZzYrUbamZ/bBVf2HS5hSsSbIvAccBI4BTgf8BPwb6EP7v5XsAZjYCeBT4v8i554D/mllhJHB5Gvg70Av4V+S+RK7dH3gA+DbQG7gbmGBmRWnUbyvwVaAHMB64xMy+GLnvLpH6/jlSp/2AjyLX/RY4ADgkUqcfAXVp/p2cDjwReebDQC1wBVAOHAwcA3w3UodS4GXgeWBnYDfgFXdfAbwOnB133wuAx9y9Os16iEj25Pq7L8bMjgZuIfw+2Qn4HHgscvp44IjIz9E9UmZt5Nz9wLfdvRTYC3i1Jc+V9qNgTZL92d1XuvtS4C3gPXef6u4VwL+B/SPlzgGedfeXIsHGb4EuhIOhg4AC4A/uXu3uTwAfxD3jYuBud3/P3Wvd/W9AZeS6Jrn76+4+w93r3H064ZfmkZHT5wEvu/ujkeeudfePzCwEfAP4vrsvjTzzXXevTPPvZKK7Px155nZ3/9DdJ7l7jbsvJPzCjdbhFGCFu//O3SvcfbO7vxc59zfgKwBmlgecS/ilLiLtL6fffUnOBx5w9ymR99i1wMFmNgSoBkqBkYC5+yfuvjxyXTUwyszK3H29u09p4XOlnShYk2Qr47a3p9jvFtnemfDXHADuXgcsBgZEzi11d4+79vO47V2AKyPNABvMbAMwKHJdk8zsC2b2WqT5cCPwHcIZLiL3mJfisnLCTRGpzqVjcVIdRpjZM2a2ItI0+ss06gDwH8IvyqGEv+A3uvv7rayTiGRWTr/7kiTXYQvh7NkAd38VuB24A1hlZveYWVmk6JeAk4HPzewNMzu4hc+VdqJgTVprGeEXDxDuJ0H4pbMUWA4MiByLGhy3vRi42d17xP0pcfdH03juI8AEYJC7dwf+AkSfsxgYluKaNUBFI+e2AiVxP0ce4aaNeJ60fxcwGxju7mWEm0ri67BrqopHvtAfJ5xduwBl1UQ6ovZ69zVVh66Em1WXArj7n9z9AGAU4ebQqyLHP3D304G+hJtrH2/hc6WdKFiT1nocGG9mx0Q6yF9JOJ3/LjARqAG+Z2YFZnYmMDbu2nuB70SyZGZmXS08cKA0jeeWAuvcvcLMxhJu+ox6GDjWzM42s3wz621m+0W+fB8AbjOznc0sz8wOjvQT+RQojjy/ALgOaK7/SCmwCdhiZiOBS+LOPQPsZGb/Z2ZFZlZqZl+IO/8QcCFwGgrWRDqi9nr3xXsU+LqZ7Rd5j/2ScLPtQjM7MHL/AsIfoxVAXaRP3flm1j3SfLuJ9PvtSjtTsCat4u5zCGeI/kw4c3UqcKq7V7l7FXAm4aBkHeE+Hk/FXTsZ+BbhVP16YG6kbDq+C9xoZpuB64n7MnT3RYRT/FdGnvsRsG/k9A+BGYT7j6wDfgWE3H1j5J73Ef4q3QokjA5N4YeEg8TNhF++/4yrw2bCTZynAiuAz4BxceffIfyCnOLu8c0jItIBtOO7L74OLwM/BZ4knM0bBnw5crqM8HtpPeGm0rXAbyLnLgAWRrpvfIdw3zfpACyxaV1Ess3MXgUecff72rsuIiKS+xSsibQhMzsQeIlwn7vN7V0fERHJfWoGFWkjZvY3wnOw/Z8CNRERSZcyayIiIiI5TJk1ERERkRymYE1EREQkh+W3dwUypby83IcMGdLe1RCRNvThhx+ucffkSYw7JL3DRIKlJe+vThOsDRkyhMmTJ7d3NUSkDZlZp5mrTu8wkWBpyftLzaAiIiIiOUzBmoiIiEgOU7AmIiIiksMUrImIiIjkMAVrIiIiIjlMwZqIiIhIDlOwJiIiIpLDFKyJiIiI5DAFayIiIiI5TMGaiGTV7BWbWLmpor2r0Wl8tnIzj7y3iO1Vte1dFRFpIwrWRCSrTvzDWxx8yyvtXY1OY9KCdfz43zPYUlnT3lURkTaiYE1Esq7O27sGnY+jv1SRoFCwJiLSgVh7V0BE2pyCNRGRjkiJNZHAULAmItKBmFJrIoGjYE1EMu7ap6Zz3dMzGhw/+Y9v8eSHS5g4by1f+OXLbFUneRGRZilYE5EWcXce/2AxmyuqGy3z6PuL+cekRbjXt9XV1Tmzlm/iyn9N49x7J7FyUyVzVm5uiyp3SmoFFQkOBWsi0iLTlmzkR09O58f//pgtlTUJAVmy6tr6c1W1dQ3Oh9Sm12KmIQYigaNgTURaZFuk6XLm0o3s9bMXuP/tBY2WrY4L0FIHa5mvX1A0ESOLSCejYE1EWiQaI3y+bhsAL8xc0WjZmvjMWk3qzNrG7dVc+vAUVm+uzGg9OyslI0WCR8GaiLRKbWSm28L8xl8j1XX1AVp1iszaio0V/OTfM3h2xnL++k7jGTppSJPiigSHgjURaZHk5rfCvCaCtfhm0BSZtW8+NJlnpi8HoHe3osxUMMvM7AEzW2VmHzdT7kAzqzGzszL6/EzeTEQ6BAVrIgGzzw0vcOkjUxKOXfTgB3zhly+36n5F+Xkc9ZvXOPeeSQ3ONdcMGq+8W2Grnt8OHgRObKqAmeUBvwJezFYl1GdNJDgUrIkEzKaKGp6NZLOiXpm9ipWbEvuMVdfWcdZd73LPm/MSjic3vxXmh1i4dhsT569t8Kz4zFplM8FaRxkZ6u5vAuuaKXY58CSwKtPP7yB/TSKSQQrWRCRm9opNsak4Jny0jMmfr+eXz81OKLNua1XCfvyIzorqWhau2Rrbj5+6I1WftXjTFm9gQdy1HZWZDQDOAO7K5nOUWBMJDgVrIhJz4h/eivUh21qVenWB7z/2UcJ+t+L82PZlj0zlqN++Httvrs9avPveXsC4377ebFDXAfwBuNrdm/1BzOxiM5tsZpNXr16d1s01z5pI8OQ3X0REgmRRZEqOyur6WOOC+9+jts75dOWWBuV7da0fGPDmp4kBR01dff7nnBR92lKprKmjoIlBCx3AGOAxC7dXlgMnm1mNuz+dXNDd7wHuARgzZkyLkmVNTUYsIp1Lh34jinRkr81exZwV9cstLVyzlec/Xt7EFYnWbKnk8cmLW/38qpo6HnxnATVJmaweJQXh83HH3/psDe/OW8uaLQ3nQquNm54juT/VfW/Nb1W9OjJ3H+ruQ9x9CPAE8N1UgVqrKbEmEjjKrIm0k68/+AEAC28dD8Dxf3iTqpq62H5zvvP3D5n8+XoO3a2cAT26pCxTUV0LQHFBXoNz9741n9+8MIfC/MRz0ak4KiPXNic+1ksO1p6Znn7wGVVZk95z24uZPQocBZSb2RLgZ0ABgLv/pR2rJiKdlII1kRzR0ozSkvXbmy0z6vrn6VqYz4yfn9DgXDRLti2pb1o0o9bc6M2o+MxaJkZ0xje/5iJ3P7cFZS/MXj2ydWcRyTVqBhXJMXV16f0WjgZVtbWJ5eev3sKlD0/hiQ+XUOewubKGC//6PlsrE4Oy9ZFRnZsqEo9XVNdxw4SZaWfF7n2rfuWBTARrqdYQlXpqBRUJHmXWRHJMdV0dRaGGzZbJopm4qtpaZi3bRLeifAb3LuG6pz/m3XlreXZGfbD1+pzV/OLZWZy274DYsac/WgbAn175LOG+lTW1PPjuwlbVPROBRK5n1kRE2pqCNZEcU13rFKXxf2Y0WKusqWP8n94Gwv3f6hppH3v0/cU8+n79gIT8kCWM1ozakWApExO25nqftfZmmhVXJHDUDCqSY6ojQdjBt7zCl+56FwgPFBhyzbMJqwlEmwuT+7ql2xTZ2ALsWypTz6+WjuQm1dbo6KNB24r6rIkEhzJrIjkmOins8o0VLN9YAcDtr84Fwv3DjhvVn39PXRor//zMFbHtXz0/mxWbKtJ6TmMZuA3bqltV70xJd2BDUCmvJhI8CtZEWmh7VS1LN2xnt77dWn2PuasaTi4blaqD/e2vhYO1PDMuuP+9hJGgd79RP5fZXa/Pa3BtYyoaae6clGKNz7aUapoRaSh5jVYR6byy2gxqZiea2Rwzm2tm16Q4P9jMXjOzqWY23cxOjhwfYmbbzeyjyB/NXSQ546onpnHsbW80mPIiXRXVtRx72xuNnq+ubfyXcF7IdqiZMh1LNzQ/JUi29C0t4uBhvdvt+R2BuqyJBE/WMmtmlgfcARwHLAE+MLMJ7j4rrth1wOPufpeZjQKeA4ZEzs1z9/2yVT+R1vpo8QYAVm2qZEh5Ps/NWM41T07ng+uOpSg/jVGcSZmzc+6emBCAJa+NefbdE2PbZg2n6uhMFIikT33WRIIjm5m1scBcd5/v7lXAY8DpSWUcKItsdweWZbE+Ii3y2pxVTF20vsHx8m7htTBXRvqG/eKZWWyqqGH15krmrd7CM9Ob/s84eR619xasY+ayTbH95A727y9YF9tesn47m7OcWcukJy85uEXltUh58xTQigRPNoO1AUD8woVLIsfi3QB8JbJky3PA5XHnhkaaR98ws8NTPcDMLjazyWY2efXq1amKSICtTbGOZUt8/a8fcMad7zY43r1LeO3MhWu3UlvnRGMvM+OY373BZY9MjZWtrq1jY1KH/VTTZcTbXl3Lxu3t28k/Xd27FDC4V0nKczt1L2afgT1adD8FIulTYk0kONp76o5zgQfdfSBwMvB3MwsBy4HB7r4/8APgETMrS77Y3e9x9zHuPqZPnz5tWnHJbc9/vIIDfvEy72Wgs7wntTflhcIRxdVPzuCGCTNjoypTrTxw7VMz2PfGFxPO1TTTjHnxQ5PZ9+cv7mi1sya6dijAAxceyI2n75my3MRrj6Egr71fMZ2Pso8iwZPNN+lSYFDc/sDIsXgXAY8DuPtEoBgod/dKd18bOf4hMA8YkcW6SicTHdH4cVzzYnPcne8+/CFvfbaaR99fFDu+aXtis2P8PGZPT10ay6wl9zUDeDayZNPayNJOADV1TU9Nsb6dp85oVlysEDISArLxe++0Q7fuUqiRoOlK/ogQkc4rm1N3fAAMN7OhhIO0LwPnJZVZBBwDPGhmexAO1labWR9gnbvXmtmuwHBgPiJpiv4iC6WRhJiyaD19S4tYuamC52as4PmPVxCfJJu5bCNmxkG79uL5j1cQ3wBV5x57Vqrmze3V4dn4V26qoE9puK9bc5m1XBf/d5oXslimEeD4Pftx0LDejNqpPhH+1HcP4eOlG7n+PzMT7nPZuN14ZfYqPlm+iW8cOpQXZq7grxcemPX6d3RqKhYJnqwFa+5eY2aXAS8AecAD7j7TzG4EJrv7BOBK4F4zu4Lwb8AL3d3N7AjgRjOrBuqA77j7ukYeJdJANBxKZzb/M5P6pZlZwlC78+57D4A/n7s/lz86NaFsrXusGTR5YMD0JRti24mZtbYN1r5+6BD++s7CjN2vIBSigvDPGrLEYK1rYT6n75fYNXX04J6MHtwzIVgbs0tPfnjC7sxavolPlm/ikGG9uf7UURmro4hIZ5LVSXHd/TnCAwfij10ftz0LODTFdU8CT2azbtK51bUgs5astpFgasXGhisDVFTXkRcJCE/589ux49MWb+D0O96J7X/tgfe56/zRXPLwlJZXKA0FeZZyfrZLjhrGeWMHZzRY692tMDYiNS+U2IOqpKhlzZjRrKSyRS3XsfOzItIS6v0rnUZ1bR03TJjJmi2VCSM0G7NqcwXX/+fjtO9/83OfpDwebeqMl5yBA3j0g8UNjmVKl0Zm/XeH/Lwdj4R+fdY+se1ocy5EgjVLzKylI3pJ9N9TuuuZiogEkZabkk7jlU9W8uC7C1m7tYpukQxPY0HAJ8s38dj7i3ho4uc7/NxUibhF67Y1OLYtw/Oj7TOwO9OXbASgZ9fChEXU80JGbZ3jeCzz15yrTxxJr64F7NqnG79/6VPenVc/krZ/WXFs+9dn7cu4374OhDOX8dnLkjQGCBw3qh9Xn7g7EJcdUqzWYhpfIBIcCtak04gOxqypraOuLhqsNSy3dkslJ/3xrTasWdi2qoYZuB0RP4XGwJ5d+HxtfYBY3q2QlZsqcSehT1lTLjlqWGz7V1/ah8N//Vpsv7S4/lUxtLxrbDtklhAQlxQ1/0q5+ysHEIrUKdYMmlYNBZrOFotI56RmUOl0/vfxCv45OdzkeM1TM3jj08QJk8fc/HJ7VItZy5ueRuTG0/dk17hAqDnxU2YM6pk4MW10lQV3jwVrIYOxQ3q1+N4ApcUFKcvlhRKDta5pZNZCKYJHBSCtodSaSFAoWJMObXNFNfe+OZ+6Om+0k/pvXpidsJ+rzUc9SwrpVpx+sju+L9rAnl0SzvWOBGt1Xv/zdu9SwB3nj+a3/2/fFtXr5R8cQVkj9QqZJfy9l6TZZy0qWjeFaunT35VI8ChYk5y3qaKa7ZEmxFWbE0dk3vjfWdz83Ce88dlqlm3YnvL6eau2xrYbG+mZCwryjG5pNCNG5cdlqAb1Ss6sFca2S4vzGdSrCzefsTd9Sos464CBzd67d7dCBvXqwt0XHMBufUsp65JeZq0wv2WvFCc6alchSEvl6keHiGSegjXJefvc8CLH3vYGb366mrE3v8LLs1bGzq2LzF9WUVXLL55tfrRmRYqRm7kiPxSKTTkS1VQMEx/gRJs9o/rEmkEhPy/EWz86mpNbsLpAQeSaE/bsD0BRI0FYyIzekcDwwkOGpH3/qAN2CTfL9u9e1ExJiVJcKxI8Ctak3Vz2yBT+O21ZWmWXbtjOjKXhkY9TFq2PHX9l9ioAqpvJmNXWOf+Y9DlXPzm9lbVtXGMLmadrUK9wE2YoBMfu0S/hXFNra8YvzZRcrlfXcACVHPy1VmN9ykIh6FdWzGs/PIqfjN+jxff9/jHDeeXKI9mtb+mOVjFwlFgTCQ4Fa9Junpm+PDYfmbszYdqy2CoAb3y6mrVbKhPKR+OF2hQByKufrGxwLN5TU5Zw3dMf80xkrc5MiPYT619WzFPfPSRlmZsaWeQ83l47dwfCo0X7dy9OOFcQaeqMBnQAU396HJeOG8aNp+8VO9Y1bjLan54yqs0WUI9OCzK0vGurnpkXMob16ZbpanVqWshdJHgUrElOeOuzNXzv0an87qU5VNbU8rUH3uerD7yfsFh1NDCoS5FFe/qjpjN0Vz2R+YzaNSeNBMJB5OjBPVOWOXN06v5hZ46uX5Kpa6Sf2tbKGoryG5/cNqpn10KuOmFkLHsG0KOkfvuiw4ZyxIhyAMbvk7rpszTyzAN2SV3vdKU7LQjANw4dukPPkkTqsyYSHArWJKuGXPMsX33g/WbLRZvrZi3bFFs2ae6qLQnzoUUDg9q6hte3h/zYlBiNByypVg8Yt3sfbjt7P3qUhDvtj+wfbgLs3qWwQQf94sjKBHvuXEZTeiQNANitbykLbx3PgY1M1XHIbr0B+MtXDmjyvs1JNQ1HY64/dRQLbx2/Q88T9VkTCSJNiitZ92bSPGfJVm2q4Nb/hafXWLulKmFB9NkrNse264O18Hlv59RCNEgLNfHJUxB3slfXQu6+4AD22CkceL14xRGs2lTJqJ3K2K1vN44c0Sdh1YDoNXeeP5q9BnRnz5+90Ohz0lk5IN7vz9mPaYs30qe0iBevOCKt69+46qgGi9BrFKeISPYpWJN2Ed+U+bMJM2NB2baqmliwlhyKxYK1SJC2YVt19ivahLw0MmvxmacDh/RMyHT1LS2mb2m4j9pRu/cFGmZN7jh/NCP6Nd/5vqWTypYU5nPwsHB2LZ37A+zSu+GEvekuZSWZ5xpiIBIYagaVdhGfoYkfsVhT51Q30s4ZDYqip7/xtw+yV8FmlHcrigVi0UApfhBAvB9F1sFMp2N4fPBz+PDytAOp9tJUVlGyQ+GxSPDoVStt7of/msZXH3gvth+fmaqrcyojmbX45lCoz2S5Owfc9BJTF21og9qmNvHao2PNsNHk2atXHsUNp44C4NR9d2b2TScC9QFYOkmo+A77hW00onNHKLPWfjTAQCQ4cv+3gXQYr81Zxbtz16Q8t3BN/SoCT3y4hEnz18X2//fxith2TZ3z0eKmg7ClG7azNjIZbmOOG9WvyfPNOaWRUZRRBXkhIl3nYsFmQV6IaMKwd9fC2OCAvFD6wVp8s2lRQe7/79mS0aCSGYqPRYIn938bSM5bsbGC2jrn63/9gPPuq8+YxQ8A+NJd76Z1r1WbK/nhv6alPDdzWXhS3PcXrEt5Pt64SB+w1jpv7OBmy9QlZdaAWFYwfsb/WLCWRgNWdGRo+B7Nd/o/bd+d+cFxI5otly1agL39KLMmEhwaYCA7ZP3WKg665RUuOqzhHFrRKTgA1m8LZ8KSmzZb4h+TFgH1AVFTUk2Z0SJpXB7NosUHLFVNBWtp3LOkMJ9fnrE3P/73jEaXeIr3p3P3b/6m0skoQBYJGgVrskOigdMj7y2KHbvtxTnMX7OV6Us2xo7VOdzz5jwmpLm81A5rJOvQv6yYhy4ay/G/f7PRS6f89Dhmr9jU/CNSZNai292K6//XyksaiNCcqprw+qXJwdrUnx6X1vWSXWb2AHAKsMrd90px/nzgasJR1WbgEndPnS7eARoNKhIcagaVlNZuqeSVZpZwgvqmwPjF0v/06lyemb6cReu2JZT95XOz+Xhp80FQa731o3EJ9frHRV/gF19M/F2aFzJG9Cvl3q+O4cGvH9jgHr/60t706lrYoMnyS6MH8uz3Dks4Fs2sxQ+Q+Obhu3LpuGF8LW5R89gAgzR/jmgAnDxBbs+uhfSMW7VA2s2DwIlNnF8AHOnuewM3Afdk8uFqeRYJHgVrktLX/vo+F/1tMturalOer61z3J3aZhZQb0uDepVw9pjw8k4OHDa8nFP33TmhTHRakONG9YvNbRbvnANT91W7bvwe7BlZwzMq1mctLrXWpTCPq04YmdDfLNSCZlCon3PttH0HNFMy0Ul79WdYn4ZzoWXDpeOGBTZocPc3gUY7Trr7u+6+PrI7CUi95tgO1yMbdxWRXKRmUElp3qrw6M3GmlqG/fg5zh07iIuPGJa1OuzcvZhlGytadE00Ixb9RZY8/cXWypr07hMJRMYO7cXj3z44ZZk+pUUA7NbMQuT5LRwxuXv/0lYty3TXDi4d1RJXnTCSq04Y2WbP68AuAv6XyRsGNEYWCTRl1iSl6CoBV/1rOhVxTZy/fn42UxeFkwaPvr84tvRTpt3/tTGUFhc0XzBJdJLWaJBZkDTQYGsjmcJGNZG9OGjX3jzyrS9w+dG7NXmLksLwN9G2lj5bOjQzG0c4WLu6iTIXm9lkM5u8enXTy7KJSHApWAugZRu2s2jttibLRJeDenbGcl6YGZ4HrbKmljtfn8cZd9ZPw5G8VmSmDOpVQvcuTQdr3z9mOD89ZVTCsSuP350z9x/AGfuHmxCbmwfs12ftw7eP2BVIbKZMN3txyLBy8puZvLZbUThY21KRXlZPOj4z2we4Dzjd3dc2Vs7d73H3Me4+pk+fPuneO0O1FJGOQsFaAB1y66sc8ZvXmiwTvwRUtAP9xhRrcbamz9phu5WnPP69Y4bHtovz8+jZtelg7WuHDOGs0Yndgcq7FXHbOfvFslnJv9jOHJ3YD+zsMYP4f2MGhcvGHY+ug3nKvk1PjpuO6MjQrVUK1oLAzAYDTwEXuPun7V0fEen41GdNUoqPwaJNiRu2ZyZYi87sn+yKY4dzx2tzqa1zigpCjOhXygszGx+RWpBnLcoyfPqLk1L2H0s1tUb/7sV8+ouTGjSjhsul/UggvJpB/D+lYzOzR4GjgHIzWwL8DCgAcPe/ANcDvYE7I/9N1bj7mEzXQwMMRIJDwZo06+25azhxr53YkCKz9veJn7f4fl0K64O1bx+xK3e/OR8IB0vF+SG2VtVSmBfi8qOHM2vZJl6ZvSrlfQryQi1a7ih5KoyoxqbWSFX+oW+MZUjvlo24HNSrhDvOG80hw3q36DrJTe5+bjPnvwl8M1vPVyOoSPCoGVSoq3MWr2u8D1t05YBUIyn/9eGSFj+vR1xftIOTApjbzx/N6ME9KOtSQGF+iHMOHJRwfnzcmp0FeSEKMrDYeXRQQjoZsyNG9GFw75IWP2P8PjtpjjTJKE2KKxIcCtaEP786l8N//Vqzgw6ic5TtqAE9u8S2k0d8jtu9L09999BYxiw5c/a9o+v7tWVqEfGWrN0p0t40vkAkeNQMKrzxabiZcfWWCgb3LuH+txc0KDPkmmcz9ryBccHa6ME9miwbSgrIdnjNzxSizaCK1aQjUZ81keBQsCaxQQJ5kfbAm56ZldXn7dKrvs9XcwME8pLOF4Rangx+7OKDUva3i4qtMNDiO4u0PWXWRIJHwZrE5krLUKtis4oLQowd2ovhfcMz/587djAT561JWXbPncsS9qOxWq8W9P86aNemO/bHBhjol6B0IEqsiQSHgjWJZdYy1SctHfFLON1y5t6NluvdrYiFt46PNcNGBxQcMTz1XG2tkdzUKpLL1LdSJHgUrEkss1ZZ0zbBWm0rOttMuvYYKqpr6Vf2P1RsAAAgAElEQVRWzFPfPSQh4/bWj8btUFZMAwykI3J1WhMJDI0G7SQqa2p5f8E6ADZur2ba4g1pX1ufWUvv5X/PBa1bMHxk/1IAWrOcaP/uxQwpD/d1Gz24J0X59XO1DepVwsCeLZ9OI5maQaVD0H+nIoGjYK2T+MUzn3D23RP5dOVmvv7X9zn9jndi63s2J9r8WZVmZu3QFMtFDevT/ESxZ0eWderfvTit57SVosjkt189eEj7VkSkBZRXEwkONYN2EnNWbgZg7ZYqpiwKZ9Wq6+ooCqVe2ileRXU4SHv+4xV866HJKcsM6tWFxeu2A6SciPb35+zH+wvW8YtnP2n0OV8/dAhfO2RIxuZHy5SCvBDzfnlymw2wENkR+s9UJHiUWeskoiMa4xdgr2mmWfMfk8JLRVVW1wLw5JTGVyMoi5u8NtV6mfsM7JFQ5g/n7NegjJnlXKAWlRdq2TqjIu1NXdZEgkPBWicRDYLiF1b/bNWWJq+57umPgfQGFnQrqk/CJgc1O0WaNeOXv/ni/gOavaeItJw+KkSCR8FaJ5EqWPviHe8we8WmZq+tSmPKjvhgLVmdPvFFRESyRsFaJ5EqWAO49OEpTV73VBNNn/GKCxvv+xaN1RSzibQl/Q8nEhQaYNBJhCJNI8lzmM1bvZU3P13NESP6pLzuB49PS+v+xfl5/P6cfdlaWdvgXJqDTkUkA9QIKhI8yqx1EvmNZNYAvvrA+xm5/xn7D+QrB+3S4JyaQUXanv63EwmOrAZrZnaimc0xs7lmdk2K84PN7DUzm2pm083s5Lhz10aum2NmJ2Sznp1BY82gqRTkWWxuseb0KysC6lc5SKU6MkBBvztEsk/jC0SCJ2vBmpnlAXcAJwGjgHPNbFRSseuAx919f+DLwJ2Ra0dF9vcETgTujNxPGvHsjOVAelmu2jqnuCC9v86rThgZuabxQQjJo0nHDu2V1r1FpPX0cSQSHNnsszYWmOvu8wHM7DHgdGBWXBkHoos8dgeWRbZPBx5z90pggZnNjdxvYhbr2yFVVNcydVH90lKNLRn13vy15OcZyzZUUOfQtTCPjdurKS4IxSbFTTa4V0lsTrXqJjJryaNJh/ZufjUDEWkdrWErEjzZDNYGAIvj9pcAX0gqcwPwopldDnQFjo27dlLStZq4K4Uf/3sGT01ZGtuvaWQajnPumZSwXxKZiqOiuo7Ddivn7blrGlxz7tjB7DeoBwCn7rNTs3UZPbgnACfu1T+9yotIq6nPmkhwtPdo0HOBB939d2Z2MPB3M9sr3YvN7GLgYoDBgwdnqYq5bc6KzQn76cyZBvUDEgDyU6xI0L1LAZccNQyABbecnNZEnLv3L2XhrePTer6ItI76rIkETzYHGCwFBsXtD4wci3cR8DiAu08EioHyNK/F3e9x9zHuPqZPn9RTU3R2oaQ39/X/mZnWdfFf5aN2Kmtw/tnvHRbb1ozpIrnHlVoTCYxsZtY+AIab2VDCgdaXgfOSyiwCjgEeNLM9CAdrq4EJwCNmdhuwMzAc2PH5JzqhTMRR+wzskbD/45NHMrBnSZPX/PSUUSzbsJ2VmyoYv3fqJtIfHj+Cypo6/vzq3B2vpIgAmmdNJIiyFqy5e42ZXQa8AOQBD7j7TDO7EZjs7hOAK4F7zewKwoMNLvTw5+JMM3uc8GCEGuBSd284G6u0OusVP2q0JG51goN37c3FRwxr9vqLDhvabJnLjh4OwH1vLWB7tf71iWSS8moiwZHVPmvu/hzwXNKx6+O2ZwGHNnLtzcDN2axfR3bDhJls3F5NqJWf2fHNpyWFecy44Xg2V9TQu1thhmpY78OfHqtVDkQyRak1kcDRCgY5rq7O+fukz6mIZKamLFrP5IXrePDdhfx76tIGfdbS9ZWD6gdkFOSFKC0uYOceXSjKz/x0diWF+U0uBC8iIiKNU7CW456dsZyfPv0xf3j5MwDOvPNdzvpL/XRzjYVqhw8vb/rGZuw9oHt0U0Q6GI0vEAkOBWs5bktlDQDrt1alPN9YZq1rYdOZrIE9u3DALuF50XqWZL7pU0SyQ5PiigSP2qZy0PzVW/j5f2dR586BQ8JLN/1z8mJuOG3PBmUby4oVFzQdh4/bvS+HDivnrAMGMqhX0yM/RST3uIYYiASGMms56PZX5/LGp6t567M13PFa/bQXr85e1aBseWlRynt071IQ2/7zufsnnLvh1PASrYX5IfaKNIWKSMegbgsiwaNgLQf1LSuObcf3S0m1SHtjE2OOG9kXgH5lRZy6786cOXpAg3Mi0oEpsSYSGArWclBtXf2SUfEB2uWPTm1QdntVw/nLFtxyMoMjTZvR/i23nb0fpcXhVu/8PP1rF+molFgTCR791s4RM5Zs5P63FwBQWVMfrNU0M0HZa3NWJ+y/cuWRmBl5KSZgK4gEafmtnZxNRDCzB8xslZl93Mh5M7M/mdlcM5tuZqOzUQ8l1kSCQ8FaO1i9uZJVmysSjp16+9vc9MwsAKpq0luMPVm/siKG9ekGpB4lGg3SNORfZIc8CJzYxPmTCC+RNxy4GLgrkw/XWr0iwaNgrR0cePPLjL35lZTn3D0hs5aOEf3CAdo1J42MHQulyJ59cf9wv7WSosxPfCsSFO7+JrCuiSKnAw952CSgh5mlXkB3h+qR6TuKSK7S1B05prKmjsqalq2j2TWyOkBcV7eU/VquPnEk3z1qGGXFBSnOikiGDAAWx+0viRxbnombK7EmEjzKrOWYqto6alu4kGZ0Kaf461K90PNCRg9NgCuSM8zsYjObbGaTV69e3fwFcTTPmkhwKFjLMndnw7bUqw9AuH/a5orq2P6azZVs2l7T7H27FNQ3ZUZXK4gfjKAmEpF2sxQYFLc/MHKsAXe/x93HuPuYPn36pHVzJdZEgkfBWpY9NPFz9rvxJRas2Qo0HDzwzYcms/cNL8b2j/7dG0ycv7bZ+26vrm8q7RrLrDXs66YmE5E2NwH4amRU6EHARnfPSBOoiAST+qxl2SuRVQcWrt3K0PKu1CQFVG9+mn7TR2lxPturaqmpc/JDFsuklRSGs2w1KZpBC/MVj4tkkpk9ChwFlJvZEuBnQAGAu/8FeA44GZgLbAO+no16KHsuEhwK1tpYS/ujJRtS3pW5q7Zw+3mj+c4/PgTq50+Lv3f/smK+f8xwzth/QMr7iEjruPu5zZx34NJsPV/ZcpHgUdqljaVoqUybAXWRgGy3vl356sG7AJCfF357Jw4wMK44bgRDyru2/oEikrOUWBMJjrSCNTN7yszGm5mCu1aKfgzXxrVdvD6n4cLszYlenx8KcePpe7Hw1vGxCXCbW+1ARDoDpdZEgibd4OtO4DzgMzO71cx2z2KdOpXkhdbfmbsmtv3q7JYFa2YWWys0fjmp6MoENbUK1kSCIvndIiKdV1rBmru/7O7nA6OBhcDLZvaumX3dzDTDahqiS8TEL8a+awubKM3qm1HjVyj4+qFDOGJEHy6INIuKSOelPmsiwZN2s6aZ9QYuBL4JTAX+SDh4eykrNQuAG/47q8XXnLrvzgB071IfI/fuVsRD3xhLr66a8FYkKJRXEwmOdPus/Rt4CygBTnX309z9n+5+OdAtmxXsLK7617QdvocBPzphd6bfcHxs1QIRCRYl1kSCJ93f+H9y99dSnXD3MRmsT6e1anNlRu4TCpnW9hQRpdZEAiTdZtBRZtYjumNmPc3su1mqU6eycXvcUlJbWh+w9Ssr4qYv7pWJKolIB2bqtCYSOOkGa99y9w3RHXdfD3wrO1XqXKYv2RjbHvOLl1t1jx4lBbz342M5ZZ+dM1UtEengtJC7SHCkG6zlWdznnJnlAerN3oSqmjq+/ffJLbqmsQ/mPH1Ji0iE3gYiwZNun7XngX+a2d2R/W9HjkkjFq7dygszV7bomsK8EJU1DZc4iJ+mQ0QEtDaoSJCkG6xdTThAuySy/xJwX1Zq1EmsbsWAguKCvJTBWr6CNRGJUKJdJHjSCtbcvQ64K/JHmjFt8QbOv++9Fl9X3q0wYUBC1J47l2WiWiIiItIBpTvP2nAze8LMZpnZ/OifbFeuo5o0f22zZb64X8PBAv3Kihsce+zig/jDl/fPSL1EpPNQM6hIcKQ7wOCvhLNqNcA44CHgH9mqVEfj7kxdtD6236Uwr9lr9hkYmwmF/mXFHDKsN6cnBXC//tI+HLRrb02AK5IlZvZ9MyuzsPvNbIqZHd/e9WqKaYiBSOCkG6x1cfdXAHP3z939BmB89qrVsTw5ZSln3Pku/5uxHIDi/OaDtYK8+hfuyJ1KeeRbBzFuZN/YsZP26s/ZBw7KfGVFJN433H0TcDzQE7gAuLV9q5QeJdZEgiPdlE2lmYWAz8zsMmApWmYqZuWmCgCmLt7AO/PW8I9JixLOP/XdQzjzzncTjuWF6uPk8m5FAPQtLWbmz08gZEZhftrLtopI60W/mk4G/u7uMy3HZ53N7dqJSDakG6x9n/C6oN8DbiLcFPq1bFWqo+lTGg627nkzdTe+YX0axrXxIzxvOG3P2HZXNXmKtKUPzexFYChwrZmVAg2HZOcgV6c1kcBoNjKITIB7jrv/ENgCfD3rtepgmupTNmqnMsqKG57PzzNG9OvGpeN2U580kfZzEbAfMN/dt5lZL/SOE5Ec02yU4O61ZnZYW1Smo6qta/wL99nvHYaZcfjwct76bE3suBm8eMWRbVE9EWncwcBH7r7VzL4CjAb+2M51SovyaiLBkW5KZ6qZTQD+BWyNHnT3p7JSqw6mronmiGj3l1BSR5P4Pmsi0m7uAvY1s32BKwlP9v0QkLNfUuqzJhI86QZrxcBa4Oi4Yw4ELlhzdyZMW8ZJe+0UGwTQVGYtKtpH7baz92Xe6i2cvFf/rNZTRNJS4+5uZqcDt7v7/WZ2UXtXKh3qsiYSHOmuYKA+HBEvf7KK7z/2EZ+O28xVJ4wEoCaNYC26vmdJYX7sOhFpd5vN7FrCU3YcHhn1XtDOdWqS5lkTCZ60gjUz+yspuki4+zcyXqMct2FbFQDLN1bEjtWlEayN6NeNl2atpLxbYdbqJiItdg5wHuH51laY2WDgN+1cpzQptSYSFOk2gz4Tt10MnAEsy3x1cl+0D9pTU5ZS3q2Ia08aSW0a7RFXHDuCQ4aVM2ZIr2xXUUTSFAnQHgYONLNTgPfd/aH2rldT1GdNJHjS6uXu7k/G/XkYOBsYk92q5Z7PVm6OZdYgPK/ami1V6fVZywtx6G7l2ayeiLSQmZ0NvA/8P8LvtffM7Kz2rZWISKLWTvA1HOjbbKlO5rjfv9ngWJ17WsGaiOSknwAHuvsqADPrA7wMPNGutUqDBhiIBEe6fdY2k9hBYgVwdVZq1MFU19YpWBPpuELRQC1iLemvmdwu1AwqEjzpjgYtbc3NzexEwhNM5gH3ufutSed/T3jpKggvZ9XX3XtEztUCMyLnFrn7aa2pQ7a9Pmc1r85elfLcQ98Y28a1EZEWet7MXgAejeyfAzzXjvVJmz4RRYIj3czaGcCr7r4xst8DOMrdn27imjzgDuA4YAnwgZlNcPdZ0TLufkVc+cuB/eNusd3d92vJD9Mernv640bPHTysdxvWRERayt2vMrMvAYdGDt3j7v9uzzo1R1N3iARPun3Wfhb/AnP3DWb2M6DRYA0YC8x19/kAZvYYcDowq5Hy5wI/S7M+ba41iybnqb1CJOe5+5PAk+1dj5ZSnzWR4Eg3WEvVh6O5awcAi+P2lwBfSFXQzHYBhgKvxh0uNrPJQA1wa1NZvLaQzsS3yaIT4YpIbknRDzd2CnB3L2vjKqVN34AiwZNusDbZzG4j3KwJcCnwYQbr8WXgCXevjTu2i7svNbNdgVfNbIa7z4u/yMwuBi4GGDx4cAar09DyDRXNFxKRDqG1/XBziavXmkhgpDvq6XKgCvgn8BhQQThga8pSYFDc/sDIsVS+TH0HXwDcfWnkn/OB10nszxYtc4+7j3H3MX369Gn+p9gBZ989Me2yRfmh2LqhItL5mNmJZjbHzOaa2TUpzg82s9fMbKqZTTezkzP27EzdSEQ6jHRHg24FGryQmvEBMNzMhhIO0r5MeFmXBGY2EugJTIw71hPY5u6VZlZOuPPvr1v4/IxasSn9zNr3jhnOpeN2y2JtRKS9pDN4CrgOeNzd7zKzUYRHmA7JZD3UZ00kONJK/5jZS5ERoNH9npHh7o1y9xrgMuAF4BPCL66ZZnajmcVPw/Fl4DFP7MG/B+Gm12nAa4T7rDU2MCFj5q7awvX/+TittT5FJLBig6fcvYpwa8PpSWUciPZ7604Gl+dTnzWR4Em3z1q5u2+I7rj7ejNrdgUDd3+OpDmL3P36pP0bUlz3LrB3mnXbYduqavh05Rau+OdHLFizla8dMoRhfbq1+n5fPXiXDNZORHJMOoOnbgBejExJ1BU4NtOV0CelSHCk27GqzsxiPfjNbAid6F1xxT8/4ot3vMPqzZXAjk25ccuZe1NaXJCpqolIx3Qu8KC7DwROBv5uZg3et2Z2sZlNNrPJq1evTvPWSq2JBE26mbWfAG+b2RuE3xSHExmF2RlMW7wRgK1VNa2+xyVHDeMHx42gIE8DC0Q6uXQGT10EnAjg7hPNrBgoBxKWO3H3e4B7AMaMGdNpPoBFJLPSiizc/XlgDDCH8KjNK4HtWaxXu4j2mqupq2uy3L4Duzc4dtm43RSoiQRDbPCUmRUS7nc7IanMIuAYADPbAygG0k2dpaU1E3WLSMeU7nJT3wS+T/gL8iPgIMKjN4/OXtXaT1VN+CW4YmMFde50LUr8axq/z04cPKycv7wRnvatT2lRgzIi0jm5e42ZRQdP5QEPRAdPAZPdfQLhD9p7zewKwl1GLvQMRVcaYCASPOlGGN8HDgQmufu4yHQbv8xetdpW8uSS1bXhzNpBt7wCQGFeiKHlXVmwZisARfl5XHPSsFiwpg9ckWBpbvBUZPT6ocnXiYi0RrrtdhXuXgFgZkXuPhvYPXvVal+n3/EOa7ZUxvarauvoV1YU2y+KTHj7yDejA8AUrYlI21BiTSR40s2sLYnMs/Y08JKZrQc+z1612t87c9ck7E+avy62XVyQB0C34vBfnzJrItLW9N4RCY50VzA4I7J5g5m9RniSx+ezVqs2luql16dbUcODEdHMWl5koXa9M0WkrZg6rYkETot7xbv7G9moSK6pqm18RGhRQThYyw+F/1mnT1wRaWNayF0kODTXRCOqapoI1vLDzaCxzJremSLSRpRXEwkeBWukbsZsKrNWHMusRYM1RWsi0rb02hEJDgVrjWgqsxZ9SebnKbMmIm1LXdZEgkfBGqmDraaCtejLMtpnTbGaiLQ1fSSKBIeCtUY01gz6p3P3Z/TgnkB8nzW9NUWkbZh6rYkEjtZIasSm7dUpj5+2786x7XxN3SEi7UTvHZHgUGYNSPXa++2LnzZ7VV6kz5qm7hCRtqI+ayLBo2CtGdeN34M3rxqX8ly+pu4QERGRLFOw1ozS4nwG9OyS8lzI1AwqIu1DfWVFgkN91mg6M1ZbFx5IcPjwcnYt75pwrjAvRFF+iJ+eMirLNRQREZGgUrCW5NJxw7jjtXmx/dpIJPf3i77QoGwoZMz5xUltVjcRkSjl1USCQ82gSaJLSUXVNrGSgYhIW9MAA5HgUbBG4hdqYX7iX0mtPl9FJIeYaX5HkaBRsJakMC/xr6SuTi9EEckdBZEpg6r0JSkSGArWkiRn1moUrIlIDinKC3fVqG5iSTwR6VwUrJHYnBD9ao3ShLcikksK8qOZNQVrIkGhYC1J8rp7tcqsiUgOiXbVUGZNJDgUrJE4wMCTBsTvM7B721ZGRKQJeSHDTJk1kSAJ7Dxrf37lM96au4ajR/Zlw7b6Rdvd4aPrjwNgS2UNA3uWtFcVRUQaMDMK80IK1kQCJLDB2u9eCi/U/v6CdQnHHehRUghx/xQRySWFeSGq1AwqEhhqBk2i8QQikusK80NUK7MmEhgK1pIk91kTEck1BcqsiQSKgrUkyqyJSK4LZ9b0shIJCgVrSfT6E5FcV5gforKmtr2rISJtRMFaMqXWRCTH9epayJotVe1dDRFpIwrWkvTuVtTeVRARaVL/smJWbKxo72qISBsJ7NQd8UqL8nnlh0cyddEGjh/Vr72rIyLSpH5lRazarGBNJCiUWQMuPHQIfUuLOWHP/phZ8xeIiLSj7l0KqKiuU781kYBQsAaUFCrBKCIdR1mXAgA2V9S0c01EpC0oWANKCvPauwoi0oGY2YlmNsfM5prZNY2UOdvMZpnZTDN7JJPPLysOB2v/+WhZJm8rIjlKwRoK1kQkfWaWB9wBnASMAs41s1FJZYYD1wKHuvuewP9lsg5bq8IZtZuemZXJ24pIjlKwhppBRaRFxgJz3X2+u1cBjwGnJ5X5FnCHu68HcPdVmazAcXtoIJRIkChYA0qKlFkTkbQNABbH7S+JHIs3AhhhZu+Y2SQzOzGTFehbVsyl44aRFzJcc0OKdHpKKQElBQrWRCSj8oHhwFHAQOBNM9vb3TfEFzKzi4GLAQYPHtyiB/QsKaS2ztlUUUP3yIADEemclFkDuhYpZhWRtC0FBsXtD4wci7cEmODu1e6+APiUcPCWwN3vcfcx7j6mT58+LapE/+7F4cqs396i60Sk48lqsNbciCkz+72ZfRT586mZbYg79zUz+yzy52vZrGcXDTAQkfR9AAw3s6FmVgh8GZiQVOZpwlk1zKyccLPo/ExWYnjfUgDmrNyUyduKSA7KWrCWzogpd7/C3fdz9/2APwNPRa7tBfwM+ALhzrw/M7Oemaxffqh+8tuuGmAgImly9xrgMuAF4BPgcXefaWY3mtlpkWIvAGvNbBbwGnCVu6/NZD2G9elKWXE+b8xZncnbikgOymZmLZ0RU/HOBR6NbJ8AvOTu6yKjqV4CMtpBNy8uWCsuUGuwiKTP3Z9z9xHuPszdb44cu97dJ0S23d1/4O6j3H1vd38s03XIzwtx6r478/RHy5izYnOmby8iOSSbUUo6I6YAMLNdgKHAqy29trXiM2vRCSZFRDqSI0eE+7md8Ic3+enTHzN54bp2rpGIZEOupJS+DDzh7i1a6M7MLjazyWY2efXqljUFRDNrZcX5hEJaD1REOp5j9uhHYV74Nf73SZ9zwf3vt3ONRCQbshmspTNiKurL1DeBpn3tjoykigZrWrhdRDqqvJDxq7P2ju3n68NTpFPKZrCWzogpzGwk0BOYGHf4BeB4M+sZGVhwfORYxkSnkVSsJiId2R47lcW2N1fWMHFeRscxiEgOyFqwluaIKQgHcY953DTc7r4OuIlwwPcBcGPkWMZER4DecsbezZQUEcldu/crTdg/995JrN9axWuzM7rClYi0o6zOWeHuzwHPJR27Pmn/hkaufQB4IFt1C4XgzP0HcNLeO2XrESIiWWdmzPz5Cfzplc+4+83wVG773/QSAB9dfxw9Sgrbs3oikgG5MsCgzdXVqb+aiHQOXYvyOWN0wwHzSyKrG7z92Rq+9dBk3vpMc7KJdETBDdbcyQvsTy8inU2vFBm0BWu2AvCV+9/jpVkrE0aL1tU5FdUtGoAvIu0ksFP3b62sIaTMmoh0En3Lirnr/NHsPbA75d2KGPnT57n80amNjhD98b9n8NgHi1lwy8lqZRDJcYEM1pZu2M6mihqqa735wiIiHUSqPriXPDwlZdnHPgjPO15VW0dRvtZHFsllgWwIXLmpAoADh2R0uVERkZxxyLDeKY9v3F7NzGUbY/vbq9QUKpLrAplZq66pA2BQr5J2romISHY8cOGBVFTXUl3rHHjzy7Hj+/78RQrz67/Tz757Ii9ecWR7VFFE0hTIzFq0+bNAIwxEpJMqLsijR0khfUqLeOXKI3nykkNi56oiH6wAn67cQnSay39NXsxHize0eV1FpGmBjFaqa8MvqoI8daoVkc5vWJ9uHLBLT/572WEpzy9cuw1356onpvPFO95p49qJSHMCGaxVxYK1QP74IhJQew/szqRrj2lwfNxvX+fW52e3Q41EJB2BjFaimbX4fhsiIkHQv3sx7//kGO6+4ACOGdmX4oLwe/DuN+bHytz6PwVuIrkkkNFKtTJrIhJgfUuLOWHP/tx/4YG8cuVRDc7/5Y15bV8pEWlUIKOV6proAAP1WRORYNuprDi2/Z9LD41tvzd/LV/45csMueZZpixa3x5VE5GIQAZr0T5rhcqsiUjAhULGT07eg39efBD7DurB1SeOBOCceyaxclMlAGfe+W6s/G0vzuHxyYv51+TFsWPvzF3Dporqtq24SIAEc541NYOKiMR864hdY9uXHDWMX6UYbPDfacs4ca/+/OnVubFj40b2JWTG+fe9x7jd+/DXr49tk/qKBE0go5VYsKYBBiIiDUy7/vgGxy5/dCq/eWFOwrHnP17Bqs3hFWFem7OaujpnW1VNbJUYgPVbq/h46UZEpPUCmllTnzURkcZ0Lylgyk+Po6w4n23VtVxw33tMW7KRe96cn1Duuqc/pqy4/tfI0g3bufrJ6bw7by1zbz6J/LwQ5947idkrNmvBeJEdEMjUUk0kWMvTi0NEJKVeXQvJzwtRVlzAE5ccwuC45fnO3H9AbHtTRU1s+/Bfv8a789YC8OSUJQy55llmr9gcLre9vpyItEwggzUnEqyFFKyJiDSnIC/Eyz84kqcvPZSFt47ntnP2Y/ZNJ7LXgLJGr7n6yRkJ++fdNylhf+O2aj5YuA6ANVsqufqJ6VRUa1F5kVQCGazVhWM1peRFRNJUmB9iv0E9YvvFBXk8c/nhDcr9/aLUgwxmLttETW0dE6Yt44w73+GMu97h//1lInNXbea3L8zhn5MX89SUpbw0ayW10Ze0iAAB7bPm7iipJiKy4/572WEsWb+NX/7vExav287hw/s0Wnb8n95mzsrNCceOve3N2PaP/x3Oxn3/mOGMHdqLzSKTJEAAABmTSURBVBXVnLjXTtmpuEgHEshgrc6dkLJqIiI7bO+B3dl7YHcOHtabDdvCc61dcNAuTJy/lr98ZXRCMJYcqDVmyqL1/PGVzwBYeOv4hHN/e3chew0o44BdemXoJxDJfQEN1lCwJiKSQT1KCulRUgjATV/cK3b8qhN2Z0CPLgzr041Tb3+bPqVFrN5c2eS9Pl+7rcGxuau2cP1/Po4NYPjJyXtw/kGDKSnMjyuzmYrqOvYa0D0TP5JIzghosOYoVhMRyb5Lx+0W247Pki1Ys5XZyzdxycNTGlyzaF19sPbIe4voW1rENx+anFDm5uc+YdnG7fzs1D1jx6JZvORsnEhHF8gBBq7MmohIuxpa3pWT9t6Jd645OuF4YX6IQ3frHdv/8b9nNAjUov76zkIqqmtZt7WKA256KXb8z5Em1EyoqK7lxZkrMnY/kdYIZmatTgMMRERywYAeXXjnmqNZsbGCoeVd2VZVw8CeJdzx2twGKyakMmHaMm5/dS5rt1bFjv3upU/ZrW83Tto7PDhha2UNlTV19OoabqZdsbGCXzw7i1+ftU9CM2oqv35+Dg+8s4B/fedgDhyifnLSPoIZrCmzJiKSMwb06MKAHl0AYgHVt4/YldP23ZmBPbvw0MTPOXnvnXh/wTpemb2Sp6YsjV37oyemp7znJQ9P4fFvH8zYob045c9vs2DN1ljz6K+en80z05czbve+fOmAgU3WbfH6cJPsurhgUKStBTRYU581EWk9MzsR+COQB9zn7rc2Uu5LwBPAge6eui1PUsrPCzEosmrC1w4ZAsD4fXZi/uotsTL9y4pZEbcOabKz756Y8nj09V/nzc/nFl3ppk5zv0k7CmSw5u6aEFdEWsXM8oA7gOOAJcAHZjbB3WcllSsFvg+81/a17LwuOnwoO/Xowpn7D2De6i08Pnkx9761IK1r3523hoN37c28SMDnDn98+TOO37Mfe+yUejWG6Eo3tWkEdiLZEswBBqA+ayLSWmOBue4+392rgMeA01OUuwn4FdB46kdarKQwn7MOGEgoZAzvV8pPxo/iX985mJLCPADuPH80I/uXprz2vHvfY+i1zzFtyUYAlm+s4Pcvf8p5905KWR6ItcI0tarCpys3s6VSa59K9gQys6ZJcUVkBwwAFsftLwG+EF/AzEYDg9z9WTO7qi0rF0QHDunFs987nE9XbuaEPfszqGcJp97+drPX/f7lTwFYv62aY297g2P26Mvdb8znue8dzqJ12/jOPz6MlX1x5kr23Lk781ZvYfXmSk7bb2fKigtwd47//ZuM2aUnT1xySNZ+Rgm2gAZrWhdURLLDzELAbcCFaZS9GLgYYPDgwdmtWCc3tLwrQ8u7AjBq5zK+edhQ7ns7veZRCE+6O3dVuHn05D+91eD8szOW8+yM5bH9CR8t4/HvHMzWqvDi85M/X09FdS3fePADrj5xJPvGraMqsqOC2QyqtUFFpPWWAoPi9gdGjkWVAnsBr5vZQuAgYIKZjUm+kbvf4+5j3H1Mnz6Nr6kpLZMXMq47ZRRHjujDr8/ah5k/P4HvHTOca04ayfi9M7PW6PsL17FgzVbe/mxN7Nhbn63h3XlrY2ucRlXW1PLfactw9XuTVgpmZq1OU3eISKt9AAw3s6GEg7QvA+dFT7r7RqA8um9mrwM/1GjQtve3b4yNbf/guBGxbXtkCs9MX86CW05m1eZKvvDLVwC44dRR3PDfWQ3u05hv/u0D5q3eGtv/VmTy3pnLNnHL/z7h2pP2AOCqf01nwrRlmMG2qlrOGh3uczdnxWZKi/Mp71bElsqa2LQl8dyd6lqnMD+QuRWJCGawpsyaiLSSu9eY2WXAC4Sn7njA3Wea2Y3AZHef0L41lObcft5obo+E1/3Kill46/jwZOkh48jd+/LJ8k18N8UyWD1KCmKL1QMJgVqyu9+Yz5dGD6Sm1pkwbRkAlz0yFYAnP1zCsL7deOS9RQCcvHd/npuxggW3nExtXbhPdSjyS+rqJ6fz+OQlvPB/RzB/9ZbYRL//nbaMPqVFHLRr7xRPl84moMGa+qyJSOu5+3PAc0nHrm+k7FFtUSfZMdHgaGh5V4b0LmFQry4sXrcdgMvG7cb3jx3O1soa9rvxpaZuk+D437+Z8vh7C9bx3oJ1sf3nZoSXs9q0vYZ9b3yRM/cfwJUn7M7O3Yt5fPISAE74Q/heC245melLNnL5o+HAr7F1UB9+73NCZpw7Vn0hO4NA5lXdnVAgf3IREWmOmfHWj47m/q+N4aS9+nPl8SMoyAvRo6SQxy4+iIN37U3vroWxAQ2Zcucbc/9/e3ceHnV173H8/SUJgbATIQKBsG8XJSwiSFUQqbi0eFuwWkqt0vrYR1trb7VwxdaFx3rdqK1exdu6YK1UKFpEBREoLmwBWWQLhMgSlC2EnYQs5/7x+00yEwKyZJjJzOf1PPM4v/M7mTknJx6/nvM75wAwfcUOBj4+r3zqNNhnOfkMf/6z8us/fLCeN5ZsBbz/th0s9Eb+Hnh7DeOme8/OFRw5zqZdh9h7uIjVefurtcxyfsTpyJq27hARkVMb0i2NId3SQtL6t0+l/x0VU4+LNuezODefId2a89SHG/nZ5e2onVCLD9bsJL1JXVbnHfAWOXx1gO+/UPWJCgGTFuSGXE94bz2V1ySs2FZQ5c+MujSDqcvzuH/aamb+4lvl938waREHjhWzYechWjWuy479x046GifRK06DNS0wEBGRczegQyoDOnjB2+SgBQ2XVnqWrE+Gdwj8pe2aUuYcG3Ye4lDhqTfS3XOo6IS0p+dsrDLvY++vZ0eBN217w58r9pgLnm7dsd+7X1xaRlJC1dNLb6/Io1PzBvRo1ag87fVFW9h3pJh7ru50yvJGs6KSUhbn7uPKzjVz1XVcTgaWOYdCNREROZ/WPHwNk8f0Y+qdlzHjbm/0a9Sl1fNM2Usf54bsA3cqB48V88i767j4odms//pgefqBo8Xc+49V3PxS6IkOD/5rLRM/2khhcSmFxaX8ee4mCotLq6Xc58sf3t/ArS8vrbHTwHEZrDmHDnIXEZHzqn5yIsmJ3rFY7S6ox6JxV/Ho8B68+KPe1E/2JrpuG9g25Gd++q125e+DFwt8r1ersy5Hnwkf8fJnX3KwsIRrn/2E7fuOMmXpNka/7B1jG3x01rjpq8vfd31wFg+/u5an52zk9UVbT/kd333uU654Yn759Vf7j/HErA2UneLYrnDauOsQ4C3iyCs4Stux77E0aNQx2sXlNKhDz6yJiEhktWhUF4BhPVpwRedmFJc46tZO4MrOzfjJK1m0v6Ae42/ozugBGazKO8ANF7XgzaXbSGuYzDM/yCQlOYG/Ld52zuW4PCioCjhYWEzDOkm8uXR7SHrguqikYmStrMyRs+cwtQw6Nm/Aawu3sNo/fzXgvmmr+Cwnn6Hd0+jVpgngnRoxb8MufnZ5+7Dv0BA427VWLVi4OR+AKVnb6NeuaVi/t7rEZbCmTXFFRCSapNROBH9P3EFdmvPJ/YNpnJIEQEZqPTJSvZWnS/57CHX9Q+sn3HhRSLB2dbfmfKdnSxZtzmdKlhdU3dKvDW8uPfOA7uKHPqRlozonvT950VYubFSXGzNbctnj89jtP1+35fHr+f2MtSfkLyouA7xAKRCsjXkti635R/l+73RS6ycD3srVxilJ1R68lfkrNWqZgT+4ZzXogai4nAYtc07ToCIiErVaN02hQZ2kE9LTGtahYVD6nVd2AGD9I8P4vx/3ZXhmK/7wvYvIfew6/vnzy5hwYw9S69WmS1oDJt/ej1dvu+SU33v34I7l7786UHjSfLsPFfGbqavIfGROeaAG0HbseyH5Vm7fz8KcveQfOQ7Ak7OzeW7eJkpKy8qfe/vp5GU88u46Nu06RK9H5zB1ed4py/i//85h1F8Wk7vncEj6wcJinpmzkQNBGxcHBEbWypzD+dFaTYoD4nNkTatBRUQkBoy9titjr+0akmZmmEGfDG8Ea/mDQ0Puvz6mHzNWfsWE/+zBl3uPMOyP3sH1V3dL467BHVmcm8+yrRVbhAzq0ox/Z++p8vuDn2+ryo1Be8IFPPXhRtKbpNCobhK7DhaxYtt+Vmzbz9wNuwDvhIf7p63mhVG9y09seCtrOxPeW8eDN3TniVnZAFz19AKyJwwjOTGB4yVlvJW1nT/N3cSOgmM8fVPPkO8MPCp3vKSsfDuUmhQFhHVkzcyGmVm2meWY2diT5LnJzNaZ2Voz+3tQeqmZrfRf1Xp8izbFFRGReHV5p2Y8ObInyYkJdL2wIU+N7EnrpnV5aXQf6tZOYNrPL+PT3w7mr7f2Zfz13XjlJ5fQOa1+tZZh+ood5YsqArbmHwXga39Eb/w7a9jmp/196TYOFpZw37TVIT9zuLCE0jLHw++uZcJ76wHYd+TELU8C06DHS8oCs6BnNbLmnGP653khz+wBvLZwCxNPsq1KdQjbyJqZJQDPA0OBPCDLzGY459YF5ekEjAMGOucKzKx50Eccc85lhqNs2hRXRETEM6JPOiP6pIekpTdJIb1JSvn1e7+8nE4PfEBm68as3O5tf/HszZncM2XlWX3nxxv3kOI/e1fZtn1egJZ/5DhXPDmf/u2bhmwxEuzet1bxRd5+EoIO/J6fvYe9h4toWCeJ2oneyEzgmbnjpWUUHPWmZAPPrN32ylLmZ+9h6p0DuKTtqRcczNuwm1+/tYqNuw6HjGgGntO7d2jnb6z72Qjn+FI/IMc5l+ucOw5MAYZXyvMz4HnnXAGAc253GMtTTmeDioiInL6khFrM/tUVTB5TsfHv8MyK7UNG+sHe8MyWLBx7FYO6VGw+2+IkCxWOHj+9vdoW5+6jqKSsynsfb9xDwdFi9h4+HpLed8JHdB7/AaP/uoR/rdxBtr91x91/X1E+jbrcPw1ivj/FO/LFRYx8cSFf5B1gYc5eCotLWbl9f8ieclv8kb7dh07+PF84hPOZtVZA8JrfPODSSnk6A5jZZ0AC8JBzbpZ/r46ZLQNKgMedc+9U/gIzuwO4A6BNm9PfWNAbWTvt7CIiInGvy4UNAG9FaiDQemLExSQn1qKouIypy/NIqGW0bFyXV2/rx/Z9R8nde6T81IB1Xx3kuj99UuVnD+2eRrsL6nH9RS146sNsPtm0t1rK/MmmvSf9rJzdh09Iy9pSwHee+zQk7aa+6Tx6Yw827TrMozO9ycEEM/IPF/HA22u4+6qOJ3xOdYv0AoNEoBMwCEgHPjazi5xz+4EM59wOM2sPzDOzL5xzm4N/2Dn3EvASQN++fU97pz2nBQYiIiJnJa1hxUjZTX1bA3DgWDHTV+Rxz5CKI6laN02hddOKqdTuLRvy2u392HWwkMzWjfn2xI/p3aYxHZvX50f9M7g4vTEAr97WjznrdnLn3z4P+d4XRvXm5294ab3aNGbFtnM/jeAvn+R+Y563luXx1rLQFaoJtYyhEz9m35HjzFq7szy9pLSMxJMc5XUuwhms7QBaB12n+2nB8oAlzrli4Esz24gXvGU553YAOOdyzezfQC9gM9VAI2siIiLVp1HdJKbcMeAb8wVG2Zxz3HdNF77bs2VIQAdeIDSoS3N+d0N3Bndtzu9nrGXfkSKGdk/jkrZNyNpSwPjru5G1pYDSMkfO7sNs23eU5f4K1qHd05izblfIZ9ZPTqxy5WpgUcKZCuxjV9mTs7MZd123s/rMUwlnsJYFdDKzdnhB2s3ADyvleQe4BXjFzC7AmxbNNbMmwFHnXJGfPhB4oroK5p0NqmhNREQkEsyMuwaffPqwTlICt/tHbU2+veI5udfHXMqeQ0W0bppCn4zQxQBZW/aRWq82Gan1WLl9P99/YSFXd0ujfnICowe0pXNafbbmHw056L6y3m0a8/k5jNjNz95ds4I151yJmd0NzMZ7Hu1l59xaM3sEWOacm+Hf+7aZrQNKgfucc/lmdhkwyczK8BZBPB68ivTcy1azNsMTERERL4irPBIXELySs09GE175ySX0b59afuIDQI9WjVg8bgivLtzCiwtCJ+sCq0Erb+x7Kt1bNGRd0ErVfUdO3JC3OoT1mTXn3PvA+5XSfhf03gG/9l/BeRYCF4WvXIQs8xUREZHYMrhr8yrTL2xUh/uu6cKVnZtxcXojSsocjepWnArx66GdeeY09ky7ulsaz4/qRZfxs8rTfhGmxQaRXmAQEWXOkaRgTUREJC4l1DIGdEit8t4vh3Tizis7UDuxFk/Nzua5+Tlsfuw68gqOsvtQEZMW5PLR+l20uyCF5MSKUbtnb84M2c6kOsVtsKbVoCIiIlKVwGa6v7mmC7+5pgsAGan1yEitxyVtm7I1/0jIqtguaQ3CFqhBnAZrT47sqWBNREREzkpGar3y91889G2SwrBdR7C4DNY6NKveM85EREQkPjWok/TNmc6RjjMXERERiWIK1kRERESimII1ERERkSimYE1EREQkiilYExEREYliCtZEREREopiCNREREZEopmBNREREJIopWBMRERGJYgrWRERERKKYOeciXYZqYWZ7gK1n8CMXAHvDVJxoEg/1jIc6gupZlQznXLNwFuZ8OcM+TH8LsSUe6hkPdYQw9V8xE6ydKTNb5pzrG+lyhFs81DMe6giqp1SIl9+R6hk74qGOEL56ahpUREREJIopWBMRERGJYvEcrL0U6QKcJ/FQz3ioI6ieUiFefkeqZ+yIhzpCmOoZt8+siYiIiNQE8TyyJiIiIhL14i5YM7NhZpZtZjlmNjbS5TkXZtbazOab2TozW2tm9/jpTc1sjplt8v/ZxE83M/uTX/fVZtY7sjU4fWaWYGYrzGymf93OzJb4dfmHmdX205P96xz/fttIlvtMmFljM5tmZhvMbL2ZDYjRtrzX/3tdY2ZvmlmdWGzPcImVPiye+i9QHxYr7Rmp/iuugjUzSwCeB64FugO3mFn3yJbqnJQA/+Wc6w70B+7y6zMWmOuc6wTM9a/Bq3cn/3UH8ML5L/JZuwdYH3T9P8BE51xHoAAY46ePAQr89Il+vpriWWCWc64r0BOvvjHVlmbWCvgl0Nc51wNIAG4mNtuz2sVYHxZP/ReoD6vx7RnR/ss5FzcvYAAwO+h6HDAu0uWqxvr9CxgKZAMt/LQWQLb/fhJwS1D+8nzR/ALS8f4lvwqYCRjepoOJldsVmA0M8N8n+vks0nU4jTo2Ar6sXNYYbMtWwHagqd8+M4FrYq09w/j7i9k+LFb7L7+s6sNioD0j2X/F1cgaFb/ogDw/rcbzh1d7AUuANOfc1/6tnUCa/76m1v+PwP1AmX+dCux3zpX418H1KK+jf/+Anz/atQP2AK/4UyV/MbN6xFhbOud2AE8B24Cv8dpnObHXnuFSI9v9m8R4/wXqw2KiPSPZf8VbsBaTzKw+8E/gV865g8H3nBfS19glv2Z2A7DbObc80mUJs0SgN/CCc64XcISK6QKg5rclgP+8ynC8jr0lUA8YFtFCSUTFcv8F6sOCM9T09oxk/xVvwdoOoHXQdbqfVmOZWRJeR/eGc266n7zLzFr491sAu/30mlj/gcB3zWwLMAVvGuFZoLGZJfp5gutRXkf/fiMg/3wW+CzlAXnOuSX+9TS8ji+W2hLgauBL59we51wxMB2vjWOtPcOlprZ7leKg/wL1YbHUnhHrv+ItWMsCOvkrN2rjPRg4I8JlOmtmZsBfgfXOuWeCbs0AbvXf34r3LEgg/cf+Kpz+wIGg4emo5Jwb55xLd861xWuvec65UcB8YISfrXIdA3Uf4eeP+v+Tc87tBLabWRc/aQiwjhhqS982oL+Zpfh/v4F6xlR7hlHM9GHx0H+B+jBiqz0j139F+oG98/0CrgM2ApuBByJdnnOsy7fwhpRXAyv913V4c+JzgU3AR0BTP7/hrSTbDHyBt6Il4vU4g/oOAmb679sDS4EcYCqQ7KfX8a9z/PvtI13uM6hfJrDMb893gCax2JbAw8AGYA3wOpAci+0Zxt9fTPRh8dZ/+XVQH1bD2zNS/ZdOMBARERGJYvE2DSoiIiJSoyhYExEREYliCtZEREREopiCNREREZEopmBNREREJIopWJO4YGaDzGxmpMshInKm1H+JgjURERGRKKZgTaKKmf3IzJaa2Uozm2RmCWZ22MwmmtlaM5trZs38vJlmttjMVpvZ2/65bZhZRzP7yMxWmdnnZtbB//j6ZjbNzDaY2Rv+DtQiItVC/ZeEi4I1iRpm1g34ATDQOZcJlAKj8A7LXeac+w9gAfB7/0cmA791zl2MtwN2IP0N4HnnXE/gMiBwhEkv4FdAd7wdpweGvVIiEhfUf0k4JX5zFpHzZgjQB8jy/6exLt6hv2XAP/w8fwOmm1kjoLFzboGf/how1cwaAK2cc28DOOcKAfzPW+qcy/OvVwJtgU/DXy0RiQPqvyRsFKxJNDHgNefcuJBEswcr5TvbM9KKgt6Xor9/Eak+6r8kbDQNKtFkLjDCzJoDmFlTM8vA+zsd4ef5IfCpc+4AUGBml/vpo4EFzrlDQJ6Z3eh/RrKZpZzXWohIPFL/JWGjyFyihnNunZmNBz40s1pAMXAXcATo59/bjfdcCMCtwIt+Z5YL3OanjwYmmdkj/meMPI/VEJE4pP5LwsmcO9sRWZHzw8wOO+fqR7ocIiJnSv2XVAdNg4qIiIhEMY2siYiIiEQxjayJiIiIRDEFayIiIiJRTMGaiIiISBRTsCYiIiISxRSsiYiIiEQxBWsiIiIiUez/AXo2Olqp0/0vAAAAAElFTkSuQmCC"&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;결과를 보니, 한 800번 정도 학습하면 꽤 정확한 모델을 얻을 수 있네요.&lt;/p&gt;
+&lt;h2 id="마치며,"&gt;마치며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;모델을 만들었다면, 이제 모델을 유용하게 사용할 시간입니다. 가상의 환자 데이터를 만들어 그 환자가 당뇨에 걸릴 확률을 알아보겠습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;patient_1&lt;/code&gt; 는&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;임신한 적 없음&lt;/li&gt;
+&lt;li&gt;글루코스 내성(glucose tolerance)실험 후의 혈당수치는 137 &lt;/li&gt;
+&lt;li&gt;확장기 혈압은 90(mm Hg)&lt;/li&gt;
+&lt;li&gt;상완 삼두근 피부 두께는 35(mm)&lt;/li&gt;
+&lt;li&gt;혈액내 인슐린 수치는 168 (mu U/ml)&lt;/li&gt;
+&lt;li&gt;BMI(비만도) 수치는 43.1&lt;/li&gt;
+&lt;li&gt;당뇨병 가족력은 2.288 &lt;/li&gt;
+&lt;li&gt;나이 (years)는 33살&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;이라고 가정합니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 가상의 환자 데이터 입력&lt;/span&gt;
+&lt;span class="n"&gt;patient_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;numpy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;137&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;43.1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;2.288&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 모델로 예측하기&lt;/span&gt;
+&lt;span class="n"&gt;prediction&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;patient_1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 예측결과 출력하기&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prediction&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;[[30.039745]]
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;우리의 모델에 따르면, &lt;code&gt;patient_1&lt;/code&gt;는 당뇨병에 걸릴 확률이 &lt;strong&gt;30%&lt;/strong&gt; 입니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</description><category>machine learning</category><category>prediction</category><guid>https://partrita.github.io/posts/ML-by-Keras/</guid><pubDate>Sun, 21 Jan 2018 09:07:20 GMT</pubDate></item></channel></rss>
