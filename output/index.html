@@ -105,25 +105,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="제목">제목<a class="anchor-link" href="posts/matplotlib-examples/#%EC%A0%9C%EB%AA%A9">¶</a>
+<h2 id="소개">소개<a class="anchor-link" href="posts/matplotlib-examples/#%EC%86%8C%EA%B0%9C">¶</a>
 </h2>
-<p>서문</p>
-<h3 id="Parts-of-a-Figure">Parts of a Figure<a class="anchor-link" href="posts/matplotlib-examples/#Parts-of-a-Figure">¶</a>
+<p>Matplotlib는 파이썬에서 자료를 차트(chart)나 플롯(plot)으로 시각화(visulaization)하는 패키지입니다.</p>
+<p>주피터(Jupyter) 노트북을 사용하는 경우에는 다음처럼 매직(magic) 명령으로 노트북 내부에 그림을 표시하도록 지정해야 합니다.</p>
+<div class="highlight"><pre><span></span>%matplotlib inline
+</pre></div>
+<h3 id="그림의-구조">그림의 구조<a class="anchor-link" href="posts/matplotlib-examples/#%EA%B7%B8%EB%A6%BC%EC%9D%98-%EA%B5%AC%EC%A1%B0">¶</a>
 </h3>
+<p><code>Matplotlib</code>의 그림은 Figure 객체, Axes 객체, Axis 객체 등으로 구성되어 있습니다. Figure 객체는 한 개 이상의 Axes 객체를 포함하고 Axes 객체는 다시 두 개 이상의 Axis 객체를 포함합니다. 말로 하면 이해하기 힘드니 그림으로 보겠습니다.</p>
 <p><img src="https://matplotlib.org/_images/anatomy.png" alt=""></p>
+<p>Figure는 그림이 그려지는 캔버스나 종이를 뜻하고 Axes는 하나의 그림, 그리고 Axis는 가로축이나 세로축 등의 축입니다.</p>
 <h3 id="참고">참고<a class="anchor-link" href="posts/matplotlib-examples/#%EC%B0%B8%EA%B3%A0">¶</a>
 </h3>
 <ul>
 <li>효과적으로 <code>matplotlib</code>사용하기 <a href="http://pbpython.com/effective-matplotlib.html">링크</a>
 </li>
-<li>아무거나</li>
+<li>Matplotlib를 사용한 시각화 예제들을 보고 싶다면 Matplotlib <a href="http://matplotlib.org/gallery.html">갤러리</a>를 방문하세요.</li>
+<li>데이터 사이언스 스쿨의 Matplotlib <a href="https://datascienceschool.net/view-notebook/d0b1637803754bb083b5722c9f2209d0/">소개</a>
+</li>
 </ul>
+<h2 id="테스트하기">테스트하기<a class="anchor-link" href="posts/matplotlib-examples/#%ED%85%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EA%B8%B0">¶</a>
+</h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 필요한 모듈을 불러옵니다.</span>
@@ -161,7 +170,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt output_prompt">Out[1]:</div>
 
 
 
@@ -282,7 +291,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [17]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -346,7 +355,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [13]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -358,6 +367,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -370,13 +380,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x8467c88&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x8524400&gt;]</pre>
 </div>
 
 </div>
@@ -403,14 +413,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Box-plot">Box plot<a class="anchor-link" href="posts/matplotlib-examples/#Box-plot">¶</a>
+<h2 id="박스-그래프(Box-plot)">박스 그래프(Box plot)<a class="anchor-link" href="posts/matplotlib-examples/#%EB%B0%95%EC%8A%A4-%EA%B7%B8%EB%9E%98%ED%94%84(Box-plot)">¶</a>
 </h2>
+<p>정확한 명칭은 box-and-whisker plot입니다. 통계학적으로 유용한 여러값을 한번에 시각화 해줍니다.</p>
+<ul>
+<li>중앙값(Median)</li>
+<li>박스(Box): 25~75%의 값을 표현, 가장 아래가 Q1이고 가장 위가 Q3입니다.</li>
+<li>수염(Whiskers): 박스의 위아래로 Q1~Q3으로 부터 1.5배 내에 있는 가장 떨어진 데이터</li>
+<li>이상치(Outlier): 수염보다 멀리있는 값</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -433,6 +450,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <span class="c1">## Custom x-axis labels</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">'Sample1'</span><span class="p">,</span> <span class="s1">'Sample2'</span><span class="p">,</span> <span class="s1">'Sample3'</span><span class="p">,</span> <span class="s1">'Sample4'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -445,7 +463,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -475,6 +493,76 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="히스토그램(Histogram)">히스토그램(Histogram)<a class="anchor-link" href="posts/matplotlib-examples/#%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8(Histogram)">¶</a>
+</h2>
+<blockquote>
+<p>히스토그램(histogram)은 표로 되어 있는 도수 분포를 정보 그림으로 나타낸 것이다. 더 간단하게 말하면, 도수분포표를 그래프로 나타낸 것이다</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">N_points</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">n_bins</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># Generate a normal distribution, center at x=0 and y=5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N_points</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="o">.</span><span class="mi">4</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># We can set the number of bins with the `bins` kwarg</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">n_bins</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>내용은 계속해서 추가하겠습니다.</p>
+</blockquote>
+
+</div>
+</div>
 </div>
     </div>
   </div>
