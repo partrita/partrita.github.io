@@ -1,5 +1,551 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker</title><link>https://partrita.github.io/</link><description>Basically, all about my interest but something useful.</description><atom:link href="https://partrita.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Mon, 29 Jan 2018 07:55:41 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬 시각화 예제</title><link>https://partrita.github.io/posts/matplotlib-examples/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker</title><link>https://partrita.github.io/</link><description>Basically, all about my interest but something useful.</description><atom:link href="https://partrita.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Tue, 30 Jan 2018 08:05:57 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R로 서열분석하기</title><link>https://partrita.github.io/posts/R-bio/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;code&gt;R&lt;/code&gt;을 이용해서 간단한 생물정보학(bioinformatics) 분석을 해보도록 할게요. 여기서 우리가 초점을 맞출 것은 단백질의 서열입니다.&lt;/p&gt;
+&lt;p&gt;생물학에 대한 기초적인 이해가 있다고 가정하고 &lt;code&gt;R&lt;/code&gt;로 분석하는 것 위주로 설명을 할 겁니다. &lt;code&gt;R&lt;/code&gt;을 사용하기 위해서는 일단 컴퓨터에 설치를 해야 할텐데요. 설치가 되어 있지 않다면 다음 &lt;a href="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/src/installr.html"&gt;링크&lt;/a&gt;를 참고해서 설치하도록 하세요.&lt;/p&gt;
+&lt;h2 id="생물정보학-위한-R-packages:"&gt;생물정보학 위한 R packages:&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두 가지의 유명한 패키지가 알려져있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bioconductor &lt;/li&gt;
+&lt;li&gt;SeqinR&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;각각의 특징을 간략하게 알아보자면 &lt;a href="https://partrita.github.io/posts/R-bio/www.bioconductor.org"&gt;Bioconductor&lt;/a&gt;는 마이크로 어레이 데이터 같은 비교적 큰 데이터 분석을 위한 툴들을 제공합니다. 
+반면에, &lt;a href="https://partrita.github.io/posts/R-bio/pbil.univ-lyon1.fr/software/seqinr/home.php?lang=eng"&gt;SeqinR&lt;/a&gt;은 DNA나 단백질 서열을 분석하는데 중점을 두고 있습니다. 여기서는 &lt;strong&gt;SeqinR&lt;/strong&gt;을 사용해볼 겁니다.&lt;/p&gt;
+&lt;p&gt;SeqinR을 사용하기 위해서는 먼저 설치부터 해야겠죠. 다음 명령어를 통해 설치를 하고, 실행을 해봅시다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# package 설치하기&lt;/span&gt;
+install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'seqinr'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# package 실행&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'seqinr'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stderr output_text"&gt;
+&lt;pre&gt;Updating HTML index of packages in '.Library'
+Making 'packages.html' ... done
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="FASTA-형식(format)"&gt;FASTA 형식(format)&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#FASTA-%ED%98%95%EC%8B%9D(format)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FASTA 형식은 간단하고 많이 사용되는 형태의 파일입니다. sequence alignment용 FASTA라는 프로그램에서 처음으로 사용되었죠. 아래에 예시가 있습니다. 시퀀스에 대한 설명은 &lt;code&gt;&amp;gt;&lt;/code&gt; 꺽쇄로 시작한 첫번째 줄에 적혀 있고, 다음 줄에는 서열 정보가 들어갑니다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; A06852 183 residues
+MPRLFSYLLGVWLLLSQLPREIPGQSTNDFIKACGRELVRLWVEICGSVSWGRTALSLEE
+PQLETGPPAETMPSSITKDAEILKMMLEFVPNLPQELKATLSERQPSLRELQQSASKDSN
+LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="서열-정보를-R로-읽어오기"&gt;서열 정보를 R로 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지를 사용해서 파스타(FASTA) 파일을 읽어 보도록 해보겠습니다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/_images/P1_image3.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;NCBI에 &lt;strong&gt;NC_001477&lt;/strong&gt;로 accession 되어 있는 &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 파스타 파일을 다운받아 주세요. 파일명은 &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;로 하겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;&lt;code&gt;getncbiseq()&lt;/code&gt;을 이용해 한번에 불러오는 방법도 있어요.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;다운받은 파스타 파일이 있는 폴더에서 아래의 명령어를 입력합니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"seqinr"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+dengue &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.fasta&lt;span class="p"&gt;(&lt;/span&gt;file &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# In fact, the first element of the list object dengue contains the the DNA sequence&lt;/span&gt;
+dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="DNA-서열의-길이"&gt;DNA 서열의 길이&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA 서열을 불러온 다음에는 제대로 불어왔는지를 확인하기 위해 총 서열의 길이를 알아 보도록 하겠습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea "&gt;
+10735
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;총 &lt;strong&gt;10735&lt;/strong&gt;개의 DNA 서열로 구성되어있다는 것을 알 수 있군요.&lt;/p&gt;
+&lt;h3 id="원하는-부분의-서열만-얻기"&gt;원하는 부분의 서열만 얻기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DNA 서열에서도 특정 부분만 필요할 때가 있습니다. &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 처음부터 50번째 까지의 서열을 확인해보겠습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt; [1] "a" "g" "t" "t" "g" "t" "t" "a" "g" "t" "c" "t" "a" "c" "g" "t" "g" "g" "a"
+[20] "c" "c" "g" "a" "c" "a" "a" "g" "a" "a" "c" "a" "g" "t" "t" "t" "c" "g" "a"
+[39] "a" "t" "c" "g" "g" "a" "a" "g" "c" "t" "t" "g"
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="DNA-서열상의-염기-구성"&gt;DNA 서열상의 염기 구성&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA는 4가지의 nucleotides (“A”, “C”, “G”, “T”) 로 구성되어 있습니다. &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;에 각각이 몇개나 있는지 알아 보도록 하죠.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea "&gt;
+&lt;pre&gt;dengueseq
+   a    c    g    t 
+3426 2240 2770 2299 &lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;에는 3426개의 A, 2240개의 C, 2770개의 G and 그리고 2299개의 T로 구성되어 있군요.&lt;/p&gt;
+&lt;h2 id="GC-Content-of-DNA"&gt;GC Content of DNA&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#GC-Content-of-DNA"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;genome sequene에서 가장 기초적인 분석은 GC content 입니다. DNA 서열상에 G와 C의 비율이 얼마나 되는지를 표현하죠. &lt;code&gt;SeqinR&lt;/code&gt;에서는 &lt;code&gt;GC()&lt;/code&gt; 기능을 제공하기 때문에 손쉽게 알아 볼 수 있습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [6]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;GC&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea "&gt;
+0.466697717745692
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;GC content는 총 46.66977%입니다. 약간 적은 편이네요.&lt;/p&gt;
+&lt;h2 id="특정-부분의-GC-content"&gt;특정 부분의 GC content&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;좀전의 분석은 전체 서열상에서 평균 GC content이었습니다. 하지만 DNA서열상의 특정부분에서의 GC content는 어떻게 알 수 있을까요?&lt;/p&gt;
+&lt;p&gt;전체서열을 여러개의 조각으로 나누어 &lt;code&gt;GC()&lt;/code&gt;기능을 사용해보겠습니다.
+예시로 여기서는 300개씩 잘라보았습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;slidingwindowplot &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;windowsize&lt;span class="p"&gt;,&lt;/span&gt; inputseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+   starts &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;inputseq&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;windowsize&lt;span class="p"&gt;,&lt;/span&gt; by &lt;span class="o"&gt;=&lt;/span&gt; windowsize&lt;span class="p"&gt;)&lt;/span&gt;
+   n &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;starts&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;# Find the length of the vector "starts"&lt;/span&gt;
+   chunkGCs &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# Make a vector of the same length as vector "starts", but just containing zeroes&lt;/span&gt;
+   &lt;span class="kr"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;i &lt;span class="kr"&gt;in&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;n&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        chunk &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; inputseq&lt;span class="p"&gt;[&lt;/span&gt;starts&lt;span class="p"&gt;[&lt;/span&gt;i&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;starts&lt;span class="p"&gt;[&lt;/span&gt;i&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;windowsize&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+        chunkGC &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; GC&lt;span class="p"&gt;(&lt;/span&gt;chunk&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# print(chunkGC)&lt;/span&gt;
+        chunkGCs&lt;span class="p"&gt;[&lt;/span&gt;i&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; chunkGC
+   &lt;span class="p"&gt;}&lt;/span&gt;
+   plot&lt;span class="p"&gt;(&lt;/span&gt;starts&lt;span class="p"&gt;,&lt;/span&gt;chunkGCs&lt;span class="p"&gt;,&lt;/span&gt;type&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;xlab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"Nucleotide start position"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;ylab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GC content"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 300개씩 서열을 나누어서 GC() 기능을 사용합니다.&lt;/span&gt;
+slidingwindowplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_png output_subarea "&gt;
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAADAFBMVEUAAAABAQECAgIDAwME%0ABAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUW%0AFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJyco%0AKCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6%0AOjo7Ozs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tM%0ATExNTU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1e%0AXl5fX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29w%0AcHBxcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGC%0AgoKDg4OEhISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OU%0AlJSVlZWWlpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWm%0Apqanp6eoqKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4%0AuLi5ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnK%0AysrLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc%0A3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u%0A7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7////i%0AsF19AAAACXBIWXMAABJ0AAASdAHeZh94AAAgAElEQVR4nOydd4DURBvGZ69zHBwc5WjSQem9%0A915EepUmKEUQaR8oCp6AIEVBiqLSRBQRpIkogkgRpCqKAkoRkCq9t7vbfLftbksyJZlkkr33%0A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"&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;전체적인 서열상에서 GC contents가 특별하게 낮은 구역은 4000번(40%) 즈음이군요.&lt;/p&gt;
+&lt;h3 id="파스타(FASTA)-파일-쓰기"&gt;파스타(FASTA) 파일 쓰기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파스타 파일을 불러들여 간단히 분석을 해보았는데, 이제는 편집한 서열을 파스타 파일로 저장하는 방법을 알아보겠습니다.&lt;/p&gt;
+&lt;p&gt;아래와 같이 작성해주면, &lt;strong&gt;den1.fasta&lt;/strong&gt;라는 파일이 폴더에 생긴것을 확인 할수 있어요.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;write.fasta&lt;span class="p"&gt;(&lt;/span&gt;names&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"DEN-1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; sequences&lt;span class="o"&gt;=&lt;/span&gt;dengueseq&lt;span class="p"&gt;,&lt;/span&gt; file.out&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="파스타-파일에서-단백질-서열을-불러오기"&gt;파스타 파일에서 단백질 서열을 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt;을 사용하면 DNA 서열과 동일한 방법으로 단백질 서열도 읽을수 있습니다. &lt;strong&gt;Uniprot&lt;/strong&gt; 에 각각 &lt;strong&gt;Q9CD83&lt;/strong&gt; , &lt;strong&gt;A0PQ23&lt;/strong&gt;으로 저장되어 있는 단백질 서열의 파스타 파일을 다운받으세요.&lt;/p&gt;
+&lt;h3 id="예시로-사용한-Q9CD83,-A0PQ23-?"&gt;예시로 사용한 Q9CD83, A0PQ23 ?&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Q9CD83&lt;/strong&gt; 과 &lt;strong&gt;A0PQ23&lt;/strong&gt; 는 Chorismate pyruvate-lyase라는 효소입니다. 차이점은 서로 다른 균주에서 발현된다는 것입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Q9CD83은 &lt;em&gt;Mycobacterium leprae&lt;/em&gt; &lt;/li&gt;
+&lt;li&gt;A0PQ23은 &lt;em&gt;Mycobacterium ulcerans&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;R에서 아래와 같이 입력하세요.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;leprae &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.fasta&lt;span class="p"&gt;(&lt;/span&gt;file &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"Q9CD83.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+lepraeseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; leprae&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+
+ulcerans &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.fasta&lt;span class="p"&gt;(&lt;/span&gt;file &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"A0PQ23.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ulceransseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ulcerans&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+
+lepraeseq &lt;span class="c1"&gt;# Display the contents of "lepraeseq"&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea "&gt;
+&lt;pre&gt;  [1] "m" "t" "n" "r" "t" "l" "s" "r" "e" "e" "i" "r" "k" "l" "d" "r" "d" "l"
+ [19] "r" "i" "l" "v" "a" "t" "n" "g" "t" "l" "t" "r" "v" "l" "n" "v" "v" "a"
+ [37] "n" "e" "e" "i" "v" "v" "d" "i" "i" "n" "q" "q" "l" "l" "d" "v" "a" "p"
+ [55] "k" "i" "p" "e" "l" "e" "n" "l" "k" "i" "g" "r" "i" "l" "q" "r" "d" "i"
+ [73] "l" "l" "k" "g" "q" "k" "s" "g" "i" "l" "f" "v" "a" "a" "e" "s" "l" "i"
+ [91] "v" "i" "d" "l" "l" "p" "t" "a" "i" "t" "t" "y" "l" "t" "k" "t" "h" "h"
+[109] "p" "i" "g" "e" "i" "m" "a" "a" "s" "r" "i" "e" "t" "y" "k" "e" "d" "a"
+[127] "q" "v" "w" "i" "g" "d" "l" "p" "c" "w" "l" "a" "d" "y" "g" "y" "w" "d"
+[145] "l" "p" "k" "r" "a" "v" "g" "r" "r" "y" "r" "i" "i" "a" "g" "g" "q" "p"
+[163] "v" "i" "i" "t" "t" "e" "y" "f" "l" "r" "s" "v" "f" "q" "d" "t" "p" "r"
+[181] "e" "e" "l" "d" "r" "c" "q" "y" "s" "n" "d" "i" "d" "t" "r" "s" "g" "d"
+[199] "r" "f" "v" "l" "h" "g" "r" "v" "f" "k" "n" "l"
+attr(,"name")
+[1] "sp|Q9CD83|PHBS_MYCLE"
+attr(,"Annot")
+[1] "&amp;gt;sp|Q9CD83|PHBS_MYCLE Chorismate pyruvate-lyase OS=Mycobacterium leprae (strain TN) GN=ML0133 PE=3 SV=1"
+attr(,"class")
+[1] "SeqFastadna"&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;파스타 파일이 아미노산 서열을 담고 있는것을 확인할 수 있고, 서열으 정보(균주, 이름)등을 알수 있군요.&lt;/p&gt;
+&lt;h2 id="두-서열을-점도표로-비교하기"&gt;두 서열을 점도표로 비교하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두가지의 서열을 비교할때는 먼저 점도표(dotplot)을 그려보는것은 언제나 좋은 생각입니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;dotPlot()&lt;/code&gt;이라는 기능으로 쉽게 그려 볼 수 있죠. 위에서 예로 들었던 &lt;em&gt;Mycobacterium leprae&lt;/em&gt; 과 &lt;em&gt;Mycobacterium ulcerans&lt;/em&gt;의 Chorismate pyruvate-lyase를 비교해보도록 하죠.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dotPlot&lt;span class="p"&gt;(&lt;/span&gt;lepraeseq&lt;span class="p"&gt;,&lt;/span&gt; ulceransseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_png output_subarea "&gt;
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAAC2VBMVEUAAAABAQECAgIDAwME%0ABAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUW%0AFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJyco%0AKCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6Ojo7%0AOzs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tMTExN%0ATU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1eXl5f%0AX19gYGBhYWFiYmJkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29wcHBxcXFy%0AcnJzc3N1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGCgoKDg4OEhISF%0AhYWGhoaHh4eIiIiJiYmMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OUlJSVlZWXl5eYmJiZmZmb%0Am5ucnJydnZ2fn5+goKChoaGioqKjo6OkpKSlpaWmpqanp6eoqKiqqqqsrKytra2urq6vr6+w%0AsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHC%0AwsLDw8PExMTFxcXHx8fIyMjJycnKysrLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLU1NTV1dXW%0A1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLk5OTl5eXm5ubn5+fo6Ojp%0A6enq6urr6+vs7Ozt7e3u7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7%0A+/v8/Pz9/f3+/v7///+V1U7dAAAACXBIWXMAABJ0AAASdAHeZh94AAAgAElEQVR4nO2d+6Nc%0AVX3oV4QC5sG5JCiSRAXzAFQIISS8NKAJiNWqkHABeQhiKWoB0WuvF+nDi9Trq9So7QVqW7yl%0AhXqrtopoC9r2YgMoVYRUpAKKJBoe57H/gjtzZs6ZmT17rb0e37X32jOfzw85M2t/9/f73Wvv%0A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"&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;위의 점도표에서, &lt;em&gt;M. leprae&lt;/em&gt;의 서열은 x축에, &lt;em&gt;M. ulcerans&lt;/em&gt;의 서열은 y축으로 표현되어 있습니다. 두개의 서열이 동일하면 점으로 표시됩니다. 예를 들어 x축의 아미노산 50번과 y축의 53번째 아미노산이 동일하기때문에 점이 찍혀 있습니다.&lt;/p&gt;
+&lt;p&gt;두개의 서열이 유사할수록 대각선이 선명하게 나타납니다. 우리가 사용한 단백질 서열은 서로 유사한 효소(homologues)이기 때문에 예상한것 처럼 선명한 대각선을 볼 수 있죠.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="코돈표"&gt;코돈표&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%BD%94%EB%8F%88%ED%91%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지에는 &lt;code&gt;tablecode()&lt;/code&gt; 라는 기능으로 표준 코돈표를 제공하고 있습니다. 아래와 같이 확인할 수 있죠.&lt;/p&gt;
+&lt;p&gt;보통 인터넷에서 쉽게 확인 할 수 있는것이라 큰 쓸모는 없을 수도 있겠습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [11]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tablecode&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_png output_subarea "&gt;
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAADAFBMVEUAAAABAQECAgIDAwME%0ABAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUW%0AFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJyco%0AKCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6%0AOjo7Ozs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tM%0ATExNTU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1e%0AXl5fX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29w%0AcHBxcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGC%0AgoKDg4OEhISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OU%0AlJSVlZWWlpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWm%0Apqanp6eoqKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4%0AuLi5ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnK%0AysrLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc%0A3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u%0A7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7////i%0AsF19AAAACXBIWXMAABJ0AAASdAHeZh94AAAgAElEQVR4nO3de6BVdZ338e8BJASPIAwQF0HF%0ACyRSmhcM1LyUODZiYN4H7OqTmNZQmvUUTc5TM5Wo6cT0pJOOk840Js9oVs9oZVOPjlaDNpqm%0A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%0A3yK986hswUf0dfnCj+ir8pUwoq/Kx4i+m98ivWuKPVMJI/qafGWM6CvylTKir8jHiD6wlTCi%0ADxhgRB+wwIg+YIERfWCbRpEAAxQJMECRAAMUCTBAkQADFAkwQJEAAxQJMNAlRfLb/taNPYff%0A/lblK2H7WzuW3TTOfZa8YpyvbftbPebN9ncLv+1v5dhz8O1vXb7w29/K69cyzl2kSH7b3+ox%0Ab7a/W/ltfyvHnoNvf+vyhd/+Vl6/lnHuIkXy2/5Wj3mz/d3Cb/s7Uo49h97+VuYLvv2tzNc6%0Azl2gSH7b38p8+sO3qq4okt/2t2POuqPQ29/KfMG3v5X5Wse5kyKdO3LTX04ZNlP7uajf9rf2%0A+WX7u43f9rdjzrqj0NvfynzBt7+V+VrHuWtFevek884dId8qnq99+1v7/LL93cpv+ztqn7Pu%0ALPD2tzZf6O1vZb62ce5qkWTfuBJ3yemF87VvfyvzRWx/t/Hb/nbMWXcWePtbmy/09rcyX9s4%0Ad61I18d3VUYcWzhf+/a3+vll+7uV3/a3Y866s8Db39p8obe/lfnaxrlrRap+tBijK5Lf9neO%0A55ft7xZ+29+OOeuOQm9/K/MF3/7W5Wsb564VqfrFjrJIntvf2ueX7e82ftvfjjnrjkJvfyvz%0ABd/+VuZrHeeuFan6lGiL5Lf9rczH9nc7v+1vx5x1R6G3v5X5gm9/K/O1jnMXKJLf9rcyH9vf%0ADl7b3645605Cb38r8wXf/tZev5Zx7gJF8tv+VuZj+9vBZ/vbOWfdSeDtb22+0Nvf6uvXMs5d%0ApEg+29/KfGx/uw28/Z0xZ50t8Pa3Nl/o7W/19WsZ5y5SJJ/tb2U+tr+BrYTtb8AA29+ABba/%0AAQtsfwPbNIoEGKBIgAGKBBigSIABigQYoEiAAYoEGKBIgAGKBBjokiL5jug7dtczlTGir8hX%0Ayoi+5vqVMaKvy8eIfivPEX3X7nq28CP6qnwljOjrrl/4EX1dPkb023mO6Lt217OFH9FX5Sth%0ARF93/cKP6OvyMaLfxnNE31DPfZUAAB26SURBVLm7ni34iL4uX/gRfV2+8CP6yueXEf02niP6%0Art31DoKP6OvyhR/R1+ULP6KvfH4Z0W/jOaLv2l3vIPiIvi5f+BF9Xb7wI/rK55cR/VaeI/rO%0A3fUOQo/oK/MFH9HX5Qs/oq99fhnRb+U5ou/aXe8k9Ii+Ml/wEX1dvvAj+trnlxH9Vp4j+q7d%0A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%0ASU3pF8znGNFX5ms6vHbVHpd3Jvd8b4ctkt+Ivvsop1JG9BX5GoKO6CvzNf2F7OGDq39fk5rS%0AL5jPMaKvzNd0eO2qVY7p+XYUPf/mHbVIfiP6GUc5lTGir8nXEHJEX5tvhcxcWJX8QbFc5In4%0ATWpKv1i+qH1EX5mv+fD6Vbu/d9AxZ0x418i3qfKZ6IYi+Y3oZ02xu5Qxoq/J1xByRF+bb0Xj%0Aa/nT4p88LG+t3rllSr9YvqrmEX1lvubDG1ft16eM2/eiDYPPUuUz0Q1FQtf7qlxbdgQPm3/4%0AYPJmdcHP5HOhSBjYxv2HvVh2Bg+VqXuui388X3L825CiKBIGtGB69S+Rut81stfFnzpK5pfw%0A0BQJAzps4kc8/6e4ZVs5d/SouZdvLuGRKRJggCIBBigSYIAiAQYoEmCAIgEGKBJggCIBBigS%0AYKBriuS3/e2Yi862TORH9ZuXFF1t8Nz+9s9Xzva34vqVsv2ten7Z/nbw2v52zUV3EBepvuFZ%0A2be1SLfJDQXyRe7tb02+Mra/VdevhO1v5fPL9reD1/a3ay66g2Wyy4Taf9jyX9JbsEhe29/K%0AfMG3v1X5Stj+1l4/tr/b+Wx/O+eiO1gmZ8i/V299Rk4rWCSf7W9tvtDb37p84be/1deP7e82%0AXtvfrrnoTpbJPw3+UPXWAbOXVovUvwR+fPK1iWL3ymv7W5sv9Pa3Ll/47W/t9WP7u53X9rdr%0ALrqTZXLH2ycmn9s9Kl+qFmnLEvi/XSjv/7riPw3w2v7W5gu9/a3LF377W3v92P5u57P97ZyL%0A7iQu0v+WZD7/8/KbapFSS+DKT+18tr/V+QJvfyvzBd/+Vl8/tr/beG1/u+aiO4qL9Mzg5D/t%0APPigqFqk1BK4rkhe29/qfIG3v5X5gm9/a68f29/tvLa/XXPRHcVFio6d1Bf9Nv48OilSeglc%0AVySv7W91vsDb38p8wbe/tdeP7e92XtvfrrnojpIirZD/Fy2XX1WLlF4C1xXJa/tbnS/w9rcy%0AX/Dtb+31Y/u7jd/2t2MuurOkSL/v+XA0Z2ZULVJ6CVxVJL/tb3W+wNvfynzBt7+V+dj+bue3%0A/e2Yi+4sKVJ01OT/7vlMrUjpJXBVkfy2v9X5Am9/K/MF3/5W5mP7u53f9rdjLrqzapGulkXy%0AX/UipZbAb5NriuVr3/5W5wu8/a3MF3z7W5mP7e82ftvfUftc9ACqRfrvHtm3Ui9Sagn8Tpl1%0A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"&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;R&lt;/code&gt;의 &lt;code&gt;SeqinR&lt;/code&gt;이라는 패키지를 사용해 생물학적 서열정보를 간략하게 분석해보았습니다. &lt;code&gt;R&lt;/code&gt;에서 기본적으로 제공하는 다음의 기능과&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;벡터(vector)나 리스트(list)의 길이를 알 수 있는 &lt;code&gt;length()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;벡터(vector)나 리스트(list)의 구성성분의 갯수를 알려주는 &lt;code&gt;table()&lt;/code&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지에서 제공하는 기능&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DNA 서열의 GC content를 계산해주는 &lt;code&gt;GC()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;를 기억해주세요.&lt;/p&gt;
+&lt;h2 id="Source"&gt;Source&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#Source"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://a-little-book-of-r-for-bioinformatics.readthedocs.io"&gt;https://a-little-book-of-r-for-bioinformatics.readthedocs.io&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</description><category>Bioinformatics</category><category>R</category><category>SeqinR</category><guid>https://partrita.github.io/posts/R-bio/</guid><pubDate>Mon, 29 Jan 2018 08:56:47 GMT</pubDate></item><item><title>파이썬 시각화 예제</title><link>https://partrita.github.io/posts/matplotlib-examples/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -2850,7 +3396,7 @@ acc: 87.89%
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</description><category>clean data</category><category>data</category><category>tidy data</category><guid>https://partrita.github.io/posts/tidy-data/</guid><pubDate>Thu, 18 Jan 2018 23:21:32 GMT</pubDate></item><item><title>Frequency of Amino acid</title><link>https://partrita.github.io/posts/frequency-of-amino-acid/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+</description><category>clean data</category><category>data</category><category>tidy data</category><guid>https://partrita.github.io/posts/tidy-data/</guid><pubDate>Thu, 18 Jan 2018 23:21:32 GMT</pubDate></item><item><title>아미노산 빈도 계산하기</title><link>https://partrita.github.io/posts/frequency-of-amino-acid/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -3267,7 +3813,7 @@ In humans, factor 8 is encoded by the F8 gene. Defects in this gene result in he
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</description><category>python</category><guid>https://partrita.github.io/posts/frequency-of-amino-acid/</guid><pubDate>Wed, 20 Dec 2017 08:27:02 GMT</pubDate></item><item><title>Statistics in Python</title><link>https://partrita.github.io/posts/statistics-in-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+</description><category>Amino acid</category><category>Python</category><guid>https://partrita.github.io/posts/frequency-of-amino-acid/</guid><pubDate>Wed, 20 Dec 2017 08:27:02 GMT</pubDate></item><item><title>Statistics in Python</title><link>https://partrita.github.io/posts/statistics-in-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -5335,7 +5881,7 @@ MKWVTFISLLFLFSSAYSRGVQRVRREAEAHKSEIAHRFNDLGEEHFRGLVLVAFSQYLQQCPFEDHVKLVNEVTEFAKA
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</description><category>bioinformatics</category><guid>https://partrita.github.io/posts/Ancestral-reconstruction/</guid><pubDate>Thu, 14 Dec 2017 23:07:20 GMT</pubDate></item><item><title>Nikola for jupyer blog</title><link>https://partrita.github.io/posts/nikola-for-jupyer-blog/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+</description><category>Bioinformatics</category><category>Python</category><guid>https://partrita.github.io/posts/Ancestral-reconstruction/</guid><pubDate>Thu, 14 Dec 2017 23:07:20 GMT</pubDate></item><item><title>Nikola for jupyer blog</title><link>https://partrita.github.io/posts/nikola-for-jupyer-blog/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -5414,193 +5960,4 @@ git push origin -u
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</description><guid>https://partrita.github.io/posts/nikola-for-jupyer-blog/</guid><pubDate>Thu, 14 Dec 2017 02:57:23 GMT</pubDate></item><item><title>환경설정(Environment_setup)</title><link>https://partrita.github.io/posts/setup/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;img src="https://www.python.org/static/img/python-logo.png" alt="python_logo"&gt;&lt;/p&gt;
-&lt;h2 id="1.-파이썬-설치"&gt;1. 파이썬 설치&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#1.-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%84%A4%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;파이썬은 아주 인기있는 프로그래밍 언어로, 웹 사이트는 물론 게임, 과학용 소프트웨어, 그래픽 소프트웨어 등 다양한 것을 만들 수 있습니다. 파이썬은 1980년대 후반에 &lt;strong&gt;귀도 반 로썸&lt;/strong&gt; 프로그래밍 언어를 기계 뿐만 아니라 인간도 읽을 수 있도록 만들고자 탄생한 언어입니다. 파이썬이 다른 프로그래밍 언어보다 훨씬 간단하게 보이고, 배우기도 쉬운 이유도 그 때문이죠. 이를 바탕으로 과거 15년 동안 &lt;strong&gt;numpy&lt;/strong&gt;,&lt;strong&gt;scipy&lt;/strong&gt;,&lt;strong&gt;matplotlib&lt;/strong&gt;,&lt;strong&gt;jupyter&lt;/strong&gt; 같이 널리 사용되는 라이브러리가 개발되어있습니다. 
-파이썬은 사용중인 OS의 종류에 따라서 설치방법이 다릅니다.&lt;/p&gt;
-&lt;h4 id="Windows"&gt;Windows&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Windows"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;사용 중인 컴퓨터 윈도우 운영체제가 32비트인지 64비트인지 확인하세요.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.python.org/downloads/windows/"&gt;공식 웹사이트&lt;/a&gt;에서 다운로드 할 수 있습니다. &lt;ul&gt;
-&lt;li&gt;64 비트 버전의 Windows인 경우 &lt;em&gt;Windows x86-64 executable installer&lt;/em&gt;를 다운로드하세요.&lt;/li&gt;
-&lt;li&gt;32 비트 버전은 &lt;em&gt;Windows x86 executable installer&lt;/em&gt;을 다운로드하세요.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;설치 프로그램을 다운로드 한 후에 실행(더블 클릭)하고 지시 사항을 따르세요.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id="OSX"&gt;OSX&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#OSX"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;a href="https://www.python.org/downloads/release/python-351/"&gt;웹 사이트&lt;/a&gt;로 가서 파이썬 설치 파일을 다운 받으세요.&lt;/p&gt;
-&lt;h4 id="Linux"&gt;Linux&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Linux"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;이미 파이썬이 설치되었을 겁니다. 설치된 버전을 확인하려면 콘솔을 열고 다음 명령을 입력하세요.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python3 --version
-&lt;/pre&gt;&lt;/div&gt;
-&lt;blockquote&gt;&lt;p&gt;하지만 위의 방법보다는 저는 Anaconda를 사용하는것을 추천합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;img src="https://www.anaconda.com/wp-content/themes/anaconda/images/logo-dark.png" alt="anaconda"&gt;&lt;/p&gt;
-&lt;h2 id="2.-Anaconda-설치"&gt;2. Anaconda 설치&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#2.-Anaconda-%EC%84%A4%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;파이썬 기반의 데이터 분석에 특화된 각종 OpenSource 라이브러리를 모아놓은 개발 플랫폼입니다. 무엇보다도 &lt;strong&gt;Panda, Numpy, Numba, Scipy, IPython, GPGPU, 과학, 수학, 데이터 분석&lt;/strong&gt;등과 관련된 수많은 라이브러리 한번에 그리고 &lt;strong&gt;의존성&lt;/strong&gt;(dependency)문제 없이 설치 할 수 있습니다. 또한 &lt;strong&gt;conda&lt;/strong&gt;라는 관리 라이브러리 매니저가 있어서 편리 합니다.&lt;a href="https://www.anaconda.com/"&gt;Anaconda 홈페이지&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id="Anaconda"&gt;Anaconda&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Anaconda"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;공식 홈페이지에서 &lt;strong&gt;OS&lt;/strong&gt;에 맞는 파일을 다운받아 "Next"만 누르면 해결되므로 별도의 설명은 서술하지 않습니다.&lt;/p&gt;
-&lt;h4 id="Miniconda"&gt;Miniconda&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Miniconda"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Anaconda&lt;/strong&gt;에서 라이브러리 관리 메니저인 &lt;strong&gt;conda&lt;/strong&gt;만을 설치 하고 싶다면 &lt;a href="https://conda.io/miniconda.html"&gt;miniconda&lt;/a&gt;를 다운받아 설치 하면 됩니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;개인적으로 &lt;strong&gt;Miniconda&lt;/strong&gt;를 추천합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.-Conda-명령어-사용법"&gt;3. Conda 명령어 사용법&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#3.-Conda-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%82%AC%EC%9A%A9%EB%B2%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;conda&lt;/strong&gt;는 라이브러리 관리를 위해 제공되는 애플리케이션입니다. 파이썬 생태계의 라이브러리는 서로에 대해 아무 많이 의존적이기 때문에 각각의 버전이 너무 많은 문제가 발생하기도 합니다. 하지만 conda를 사용하면 이 모든 고민을 신경쓰지 않을 수 있습니다. 다시 말해, &lt;strong&gt;conda&lt;/strong&gt;는 파이썬 라이브러리의 교통정리를 해줍니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;conda 외에도 virtualenv을 사용하는 방법이 있습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="주요기능"&gt;주요기능&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;conda는 자동으로 의존성을 해결해 줍니다. 자주 사용하는 conda 명령어는 기억해 두세요.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;numpy를 기준으로 설명하겠습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;
-&lt;th&gt;기능&lt;/th&gt;
-&lt;th&gt;명령어&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;라이브러리 설치&lt;/td&gt;
-&lt;td&gt;conda install numpy &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;동시에 여러 라이브러리를 설치&lt;/td&gt;
-&lt;td&gt;conda install numpy scipy pandas&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;특정 버전 설치&lt;/td&gt;
-&lt;td&gt;conda install numpy=1.10&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;라이브러리 제거&lt;/td&gt;
-&lt;td&gt;conda remove numpy&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;라이브러리 업데이트&lt;/td&gt;
-&lt;td&gt;conda update numpy&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;모든 라이브러리 업데이트&lt;/td&gt;
-&lt;td&gt;conda update –all&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;설치된 목록 출력&lt;/td&gt;
-&lt;td&gt;conda list&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;설치하려는 라이브러리 검색&lt;/td&gt;
-&lt;td&gt;conda search numpy&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;blockquote&gt;&lt;p&gt;찾는 라이브러리가 없다면 &lt;strong&gt;pip&lt;/strong&gt;를 사용해보세요&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="가상환경-만들기"&gt;가상환경 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파이썬 라이브러리들의 의존성 문제를 피하기 위해 새로운 프로젝트를 시작할때면 가상환경을 만들어 작업하는것이 좋습니다. 여기서는 &lt;strong&gt;virtualenv&lt;/strong&gt; 대신에 &lt;strong&gt;conda&lt;/strong&gt;를 사용해서 간단히 만들어 보겠습니다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;새로운 가상환경 이름은 ENV_NAME&lt;/li&gt;
-&lt;li&gt;사용할 Python 버전은 3이상으로 하겠습니다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;터미널에 다음과 같이 입력하면 새로운 가상환경이 만들어 집니다.&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda create -n ENV_NAME &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;가상환경을 사용하기 위해서는 &lt;em&gt;activate&lt;/em&gt; 시켜줘야 합니다. 활성화되면 터미널에 (ENV_NAME)이 표시됩니다.&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; activate ENV_NAME
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;필요한 라이브러리들을 설치합니다.&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda install numpy pandas
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id="가상환경-확인-및-제거"&gt;가상환경 확인 및 제거&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%ED%99%95%EC%9D%B8-%EB%B0%8F-%EC%A0%9C%EA%B1%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;가상환경의 목록을 확인하려면 아래와 같이 입력하세요.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda env list
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;가상환경을 삭제하려면 아래와 같이 입력하세요.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda env remove -n ENV_NAME
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="Conda-제거하기"&gt;Conda 제거하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Conda-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h5 id="Windows"&gt;Windows&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Windows"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;제어판에 들어가서 &lt;em&gt;Python (Anaconda)&lt;/em&gt; 혹은 &lt;em&gt;“Python (Miniconda)&lt;/em&gt;를 제거합니다.&lt;/p&gt;
-&lt;h5 id="Linux,-OSX"&gt;Linux, OSX&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Linux,-OSX"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;디렉토리만 삭제하면 됩니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rm -rf ~/miniconda
-rm -rf ~/anaconda
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="4.-코드-에디터"&gt;4. 코드 에디터&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#4.-%EC%BD%94%EB%93%9C-%EC%97%90%EB%94%94%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;코드 에디터는 종류가 많고 다양해 자신의 취향에 따라 선택할 수 있습니다. 간단하지만 강력한 기능을 갖춘 에디터 프로그램을 아래에 추천합니다.&lt;/p&gt;
-&lt;h3 id="Gedit"&gt;Gedit&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Gedit"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Gedit는 모든 운영체제에서 사용 가능한 무료 오픈소스에요.&lt;/p&gt;
-&lt;h3 id="Sublime-Text-3"&gt;Sublime Text 3&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Sublime-Text-3"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Sublime Text는 가장 널리 알려진 프로그램으로 상용프로그램이지만, 무료로 사용할 수 있고 속도가 빨라요. 
-물론 모든 운영체제에서 쓸 수 있어요.&lt;/p&gt;
-&lt;h3 id="Atom"&gt;Atom&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Atom"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Atom은 GitHub에서 만든 무료로 제공되는 오픈소스이며, 설치나 사용이 쉬워요. 모든 운영체제에서 쓸 수 있어요.&lt;/p&gt;
-&lt;h3 id="VScode"&gt;VScode&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#VScode"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Microsoft에서 만든 무료 에디터에요. 설치와 사용이 쉽고 안정적입니다.&lt;/p&gt;
-&lt;h3 id="왜-코드-에디터를-설치해야-하나요?"&gt;왜 코드 에디터를 설치해야 하나요?&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EC%99%9C-%EC%BD%94%EB%93%9C-%EC%97%90%EB%94%94%ED%84%B0%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%B4%EC%95%BC-%ED%95%98%EB%82%98%EC%9A%94?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;워드나 노트패드가 있는데도, 굳이 코드 에디터 소프트웨어를 설치해야 하는 이유가 궁금할 거에요.&lt;br&gt;
-첫 번째로 코드는 일반 텍스트여야 하는데, 워드나 텍스트에딧(Textedit)과 같은 프로그램에서는 일반 텍스트가 아닌 RTF(Rich Text Format)와 같은 사용자 서식을 쓴 리치 텍스트(폰트와 서식이 있는 텍스트)가 생성되기 때문입니다. 
-두 번째는 코드 에디터 프로그램은 개발에 유용한 여러 기능을 제공하기 때문입니다. 대표적인 예로, 코드를 해석해 문법을 하이라이팅해주는 기능이라든가 큰따옴표("")를 자동으로 닫아주는 기능이지요. 앞으로 코드 에디터가 어떻게 작동하는지 알아볼 거에요. 곧 여러분은 내가 사용하는 코드 에디터를 제일 좋아하게 될 거랍니다.&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="5.-추천-라이브러리"&gt;5. 추천 라이브러리&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#5.-%EC%B6%94%EC%B2%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="Biopython"&gt;Biopython&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Biopython"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="http://biopython.org/assets/images/biopython_logo_white.png" alt="logo"&gt;
-생물정보 데이터 분석을 하다 보면 공통적으로 사용되는 기능들이 많습니다. 예를 들어&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://partrita.github.io/NCBI"&gt;NCBI&lt;/a&gt;에서 많은 수의 nucleotide 서열을 ID만 가지고 &lt;a href="https://partrita.github.io/GenBank"&gt;GenBank&lt;/a&gt; 형식 또는 &lt;a href="https://partrita.github.io/FASTA"&gt;FASTA&lt;/a&gt; 형식으로 다운 받는다든지, &lt;/li&gt;
-&lt;li&gt;다운로드 받은 서열들을 protein 서열로 translation한 후 multiple alignment를 수행하고자 할 경우 NCBI에서 서열을 다운로드하기 &lt;/li&gt;
-&lt;li&gt;GenBank 혹은 FASTA 포맷의 서열을 형식에 맞게 id, description, 서열 부분을 구분하여 따로따로 읽어들이는 기능, 읽어들인 서열을 translation 하는 기능 그리고 multiple alignment를 수행이 있겠습니다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;이렇게 &lt;a href="https://partrita.github.io/Python"&gt;Python&lt;/a&gt;으로 생물정보 데이터를 분석하고자 할 때 많이 사용되는 코드를 모아둔 라이브러리가 &lt;a href="http://www.biopython.org/"&gt;Biopython&lt;/a&gt; 입니다.&lt;a href="http://www.incodom.kr/Biopython"&gt;1&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id="설치하기"&gt;설치하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;다른 라이브러리와 마찬가지로 &lt;code&gt;pip install&lt;/code&gt; 혹은 &lt;code&gt;conda install&lt;/code&gt;로 설치합니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda install biopython
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="사용하기"&gt;사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Bio.Seq&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Seq&lt;/span&gt;
-
-&lt;span class="c1"&gt;#create a sequence object&lt;/span&gt;
-&lt;span class="n"&gt;my_seq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'CATGTAGACTAG'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;#print out some details about it&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;'seq &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt; is &lt;/span&gt;&lt;span class="si"&gt;%i&lt;/span&gt;&lt;span class="s1"&gt; bases long'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_seq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_seq&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;'reverse complement is &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;my_seq&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reverse_complement&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;'protein translation is &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;my_seq&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;translate&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="Pandas"&gt;Pandas&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Pandas"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://pandas.pydata.org/_static/pandas_logo.png" alt=""&gt;
-데이터로 표를 만들고 편집하는것을 아주 편리하게 해주는 필수 라이브러리입니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;pandas 는 BSD 라이센스를 따르는 오픈 소스입니다. pandas는 빠르고 쉽게 데이터를 분석하는 도구로 파이썬으로 쓰여졌습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id="설치하기"&gt;설치하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda install pandas
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="사용하기"&gt;사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="Matplotlib"&gt;Matplotlib&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#Matplotlib"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://matplotlib.org/_static/logo2.svg" alt="matplotlib"&gt;
-Matplotlib은 파이썬의 시각화 라이브러리입니다. 출판용 품질의 그림부터 상호작용 가능한 시각화까지 다양한 도구를 제공합니다.&lt;/p&gt;
-&lt;h4 id="설치하기"&gt;설치하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda install matplotlib
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="사용하기"&gt;사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/setup/#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>setup</category><guid>https://partrita.github.io/posts/setup/</guid><pubDate>Thu, 14 Dec 2017 00:37:59 GMT</pubDate></item></channel></rss>
+</description><guid>https://partrita.github.io/posts/nikola-for-jupyer-blog/</guid><pubDate>Thu, 14 Dec 2017 02:57:23 GMT</pubDate></item></channel></rss>
