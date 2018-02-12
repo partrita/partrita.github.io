@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about sklearn)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/sklearn.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Mon, 12 Feb 2018 07:40:47 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 랜덤 포레스트 분석</title><link>https://partrita.github.io/posts/random-forest-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about sklearn)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/sklearn.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Mon, 12 Feb 2018 08:41:35 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 랜덤 포레스트 분석</title><link>https://partrita.github.io/posts/random-forest-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="파이썬을-이용해-Random-Forest-분석하기"&gt;파이썬을 이용해 &lt;code&gt;Random Forest&lt;/code&gt; 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/random-forest-python/#%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%B4-Random-Forest-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="http://www.blopig.com/blog/2017/07/using-random-forests-in-python-with-scikit-learn/"&gt;원문 출처&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;이 글에서는 기계학습의 알고리즘 중의 하나인 &lt;strong&gt;Random forest&lt;/strong&gt;에 대하여 간략하게 설명하겠습니다. 그래서 구체적으로 왜 &lt;strong&gt;Random forest&lt;/strong&gt;를 사용해야 하는지는 생략하도록 할게요. 대신에 저와 같이 기계학습을 배우려는 초보자가 흥미를 느낄 방법론 위주로 작성했습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;파이썬의 유명 라이브러리인 &lt;code&gt;Scikit-learn&lt;/code&gt;을 이용할게요.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.blopig.com/blog/2017/07/using-random-forests-in-python-with-scikit-learn/"&gt;원문 출처&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;이 글에서는 기계학습의 알고리즘 중의 하나인 &lt;strong&gt;Random forest&lt;/strong&gt;을 간략하게 사용해보도록 하겠습니다. 그래서 구체적인 &lt;strong&gt;Random forest&lt;/strong&gt;의 이론은 생략하도록 할게요. 대신에 저와 같이 기계학습을 배우려는 초보자가 흥미를 느낄 방법론 위주로 작성했습니다.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;파이썬의 유명 라이브러리인 &lt;code&gt;Scikit-learn&lt;/code&gt;을 이용할거에요.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="예제-데이터"&gt;예제 데이터&lt;a class="anchor-link" href="https://partrita.github.io/posts/random-forest-python/#%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Scikit-learn&lt;/code&gt;에는 예제로 사용할 수 있는 데이터가 이미 포함되어 있습니다. 가짜가 아닌 진짜 데이터들이고, 몇몇은 아주 유명한 것이죠. 여기서는 &lt;code&gt;Iris&lt;/code&gt; 데이터를 써볼거에요.&lt;/p&gt;
 
@@ -40,7 +40,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Random-forest으로-데이터-분류하기"&gt;&lt;code&gt;Random forest&lt;/code&gt;으로 데이터 분류하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/random-forest-python/#Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;첫번째로 우리는 아주 간단한 분류작업을 해보겠습니다. &lt;code&gt;Iris&lt;/code&gt;데이터를 &lt;code&gt;pandas&lt;/code&gt;의 &lt;code&gt;dataframe&lt;/code&gt;으로 만들고 시각화 라이브러리인 &lt;code&gt;seaborn&lt;/code&gt;으로 그림을 그려볼게요.&lt;/p&gt;
+&lt;h3 id="Random-forest으로-데이터-분류하기"&gt;Random forest으로 데이터 분류하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/random-forest-python/#Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;첫번째로 우리는 아주 간단한 분류작업을 해보겠습니다. &lt;code&gt;Iris&lt;/code&gt;데이터를 &lt;code&gt;pandas&lt;/code&gt;의 &lt;code&gt;dataframe&lt;/code&gt;으로 만들고 시각화 라이브러리인 &lt;code&gt;seaborn&lt;/code&gt;으로 그림을 그려볼게요.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
