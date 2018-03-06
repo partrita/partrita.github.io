@@ -9,7 +9,7 @@
 
 
 .. image:: https://pictogram-illustration.com/material/069-pictogram-illustration.jpg 
-   :alt: Image source: pictogram-illustration.com
+Image source: pictogram-illustration.com
 
 짧은 소개
 -----------
@@ -51,6 +51,8 @@
 제가 다른 곳(주로 인터넷)에서 얻은 정보들을 제멋대로 편집 해놓은 것이지요.
 그래서 제가 쓴 글에 저작권 보호를 받는 자료가 포함되어 있을 수도 있어요.
 만약 저작권을 침해한 것이 있다면 이메일 [#]_ 으로 연락 주세요
+
+
 
 -----------------------------------------------
 
