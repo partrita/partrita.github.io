@@ -8,8 +8,11 @@
 .. type: text
 
 
-.. image:: https://pictogram-illustration.com/material/069-pictogram-illustration.jpg 
-Image source: pictogram-illustration.com
+.. image:: https://pictogram-illustration.com/material/069-pictogram-illustration.jpg
+
+
+Image from pictogram-illustration.com
+
 
 짧은 소개
 -----------
