@@ -89,7 +89,180 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/ANOVA-python/" class="u-url">파이썬으로 분산분석(ANOVA)</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/kakao_api/" class="u-url">카카오의 REST API 사용하기</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Taeyoon
+            </span></p>
+            <p class="dateline"><a href="posts/kakao_api/" rel="bookmark"><time class="published dt-published" datetime="2018-03-16T15:35:54+09:00" title="2018-03-16 15:35">2018-03-16 15:35</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="카카오-비전-API">카카오 비전 API<a class="anchor-link" href="posts/kakao_api/#%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API">¶</a>
+</h2>
+<p>카카오에서 최근에 흥미로운 서비스를 시작했습니다. 컴퓨터 비전(Computer Vision)으로 이미지 분석을 해주는 API를 <strong>카카오 비전</strong>을 공개한 것입니다. 카카오 비전은 이미지를 분석해서 콘텐츠 형태와 의미를 이해하고, 이미지를 활용할 수 있게 도와주는 API입니다. 현재 제공되는 API의 종류는 다음과 같습니다.</p>
+<ul>
+<li>얼굴 검출</li>
+<li>상품 검출</li>
+<li>썸네일 생성</li>
+<li>성인 이미지 판별</li>
+</ul>
+<p>얼굴 인식은 컴퓨터 비전에서 특별히 새로운 기술은 아닙니다만, 저는 카카오에서 공개한 API의 성능을 한번 확인하고자 시도해 봤습니다. 카카오 비전에 대한 자세한 것은 <a href="https://developers.kakao.com/docs/restapi/vision">이곳</a>를 참고하세요.</p>
+<h2 id="카카오-비전-API-준수사항">카카오 비전 API 준수사항<a class="anchor-link" href="posts/kakao_api/#%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API-%EC%A4%80%EC%88%98%EC%82%AC%ED%95%AD">¶</a>
+</h2>
+<p>API 사용시 다음과 같은 사항을 준수해야 합니다.</p>
+<ul>
+<li>서버에서 호출하는 경우 REST API 키를 사용해 호출합니다.</li>
+<li>모든 API는 file 또는 image_url 중 하나의 값을 지정해야 합니다.</li>
+<li>file에 업로드되는 이미지와 image_url에 지정되는 이미지는 png 또는 jpg 포맷만 지원합니다.</li>
+</ul>
+<h2 id="활용-예제-살펴보기">활용 예제 살펴보기<a class="anchor-link" href="posts/kakao_api/#%ED%99%9C%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">¶</a>
+</h2>
+<p>카카오에서 간단한 <code>파이썬</code> 예제 코드를 제공하고 있습니다. 저는 거기에서 <strong>얼굴을 추출해 모자이크 처리하는 예제</strong>를 테스트 해보겠습니다. 작동원리를 간단하게 서술해 보면, 먼저 카카오 API로 사진상의 얼굴의 좌표를 인식하고 <code>pillow</code> 라이브러리를 이용해서 얼굴 부분의 이미지를 잘라냅니다. 그리고 리사이즈를 한뒤 원본 사진에 다시 붙여(모자이크처리) 넣습니다.</p>
+<p>예제로 사용할 사진은 아래와 같이 준비했습니다.</p>
+<ol>
+<li>원숭이 사진  </li>
+</ol>
+<p><img src="https://i.imgur.com/HIp4WAQ.jpg" alt="monkey"></p>
+<ol>
+<li>단체사진  </li>
+</ol>
+<p><img src="https://i.imgur.com/9n0fVoI.jpg" alt="peoples"></p>
+<p>사용한 코드는 아래와 같습니다. 몇가지 설명을 덧붙이자면,</p>
+<ul>
+<li>본인의 API 키를 넣어야 작동합니다.</li>
+<li>변환할 사진 파일은 jpg 혹은 png 포멧이어야 합니다.</li>
+<li>사진 파일의 위치는 기본적으로 같은 폴더에 있으면 바로 작동하게 만들었습니다.</li>
+<li>모자이크 처리된 파일은 파일명에 <em>mosaic_</em>를 붙여서 생성됩니다.</li>
+</ul>
+<p>코드를 <code>kakao_api.py</code>로 저장하고 터미널에서</p>
+<div class="highlight"><pre><span></span>python kakao_api.py -f ./.
+</pre></div>
+<p>라고 입력합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageFilter</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">API_URL</span> <span class="o">=</span> <span class="s1">'https://kapi.kakao.com/v1/vision/face/detect'</span>
+<span class="c1"># My Kakao api key, 본인 계정의 API 키로 변경해서 사용하세요.</span>
+<span class="n">MYAPP_KEY</span> <span class="o">=</span> <span class="s1">'b5f1dde7995c36168408b69308ef2186'</span>
+
+<span class="k">def</span> <span class="nf">detect_face</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'KakaoAK </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">MYAPP_KEY</span><span class="p">)}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'file'</span> <span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)}</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">API_URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+        <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">mosaic</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">detection_result</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">detection_result</span><span class="p">[</span><span class="s1">'result'</span><span class="p">][</span><span class="s1">'faces'</span><span class="p">]:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'w'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'h'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">crop</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
+        <span class="c1"># 모자이크 강도를 조절하려면 사이즈를 조절하세요.</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">NEAREST</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">NEAREST</span><span class="p">)</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">image</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">'Mosaic all of faces.'</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'-f'</span><span class="p">,</span> <span class="s1">'--folder'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">"./."</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">'image file to hide faces'</span><span class="p">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="c1"># Make files lists</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.jpg'</span><span class="p">)</span> <span class="o">+</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.jpeg'</span><span class="p">)</span> <span class="o">+</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.png'</span><span class="p">)</span>
+    <span class="c1"># make loop</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">head</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">detection_result</span> <span class="o">=</span> <span class="n">detect_face</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">mosaic</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">detection_result</span><span class="p">)</span>           
+            <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">head</span><span class="o">+</span><span class="s1">'mosaic_'</span><span class="o">+</span><span class="n">tail</span><span class="p">,</span><span class="s1">'JPEG'</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'! Add mosaic on : '</span> <span class="o">+</span> <span class="n">tail</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'! Face does not detected on : '</span> <span class="o">+</span> <span class="n">tail</span><span class="p">)</span> 
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'!!  All process finished  !!'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>!!  All process finished  !!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="결과-확인">결과 확인<a class="anchor-link" href="posts/kakao_api/#%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8">¶</a>
+</h2>
+<ol>
+<li>원숭이 사진  </li>
+</ol>
+<p><img src="https://i.imgur.com/SMNZSM4.jpg" alt=""></p>
+<ol>
+<li>단체사진  </li>
+</ol>
+<p><img src="https://i.imgur.com/DwBjyNp.jpg" alt=""></p>
+<p>얼굴을 인식해서 모자이크 처리가 되는것을 볼수 있습니다. 첫 번째 원숭이 사진은 물론이고 단체사진의 얼굴도 인식을 잘 하는 것을 확인할 수 있습니다. 물론 모든 사진에서 성공적인 결과를 얻지는 못했습니다만, 얼굴 인식의 경우는 상당히 잘 작동합니다. 다른 API들도 테스트를 해보니 상품 검출 API는 아직 인식률과 오작동이 많습니다. 아마도 기술적으로 좀 더 어렵기 때문이겠죠. 테스트중에 알아낸 또 다른것은 사진 용량의 제한입니다. 사진 파일의 용량이 10MB 이상이면 에러메세지가 나오는데 아마도 제한을 걸어둔것 같습니다.</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/ANOVA-python/" class="u-url">파이썬으로 분산분석(ANOVA)</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
