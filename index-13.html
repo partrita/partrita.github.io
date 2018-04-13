@@ -89,7 +89,1285 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/CNN-with-KERAS/" class="u-url">케라스로 딥러닝하기</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/algorithms4every1/" class="u-url">파이썬으로 알고리즘 배우기</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Taeyoon
+            </span></p>
+            <p class="dateline"><a href="posts/algorithms4every1/" rel="bookmark"><time class="published dt-published" datetime="2018-04-06T07:56:47+09:00" title="2018-04-06 07:56">2018-04-06 07:56</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="0.-시작하기전에">0. 시작하기전에<a class="anchor-link" href="posts/algorithms4every1/#0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90">¶</a>
+</h2>
+<p>책 <em>이승찬, 모두의 알고리즘 with 파이썬, 길벗, 2017</em> 을 읽고 복습을 위해 정리한 것입니다. 자세한 내용은 <a href="https://www.gilbut.co.kr/book/bookView.aspx?bookcode=BN001731&amp;page=1&amp;TF=T">책</a>을 읽어주세요.</p>
+<h2 id="1.-알고리즘-기초">1. 알고리즘 기초<a class="anchor-link" href="posts/algorithms4every1/#1.-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B8%B0%EC%B4%88">¶</a>
+</h2>
+<p>알고리즘이란 간단히 말해 <strong>어떤 문제를 풀기 위한 절차나 방법</strong> 입니다. 간단한 문제를 풀어 보면서 알고리즘에 대해 살펴 보겠습니다.</p>
+<h3 id="문제.1-1부터-n까지의-합구하기">문제.1 1부터 n까지의 합구하기<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C.1-1%EB%B6%80%ED%84%B0-n%EA%B9%8C%EC%A7%80%EC%9D%98-%ED%95%A9%EA%B5%AC%ED%95%98%EA%B8%B0">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법1</span>
+<span class="k">def</span> <span class="nf">sum_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">s</span>
+
+<span class="n">sum_n</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>500500</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법 2</span>
+<span class="k">def</span> <span class="nf">sum_n2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+<span class="n">sum_n2</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>500500</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="입력-크기와-계산-횟수">입력 크기와 계산 횟수<a class="anchor-link" href="posts/algorithms4every1/#%EC%9E%85%EB%A0%A5-%ED%81%AC%EA%B8%B0%EC%99%80-%EA%B3%84%EC%82%B0-%ED%9A%9F%EC%88%98">¶</a>
+</h4>
+<p>입력의 크기(n)에 따라서 해법에 차이가 생깁니다.</p>
+<ol>
+<li>해법1의 경우는: 덧셈 n 번</li>
+<li>해법2의 경우 덧셈, 곱셈, 나눗셈 총 3번
+입력의 크기가 작을때는 큰 차이가 없지만, n의 크기가 커질수록 속도에 엄청난 차이가 납니다.</li>
+</ol>
+<h3 id="O-표기법">O 표기법<a class="anchor-link" href="posts/algorithms4every1/#O-%ED%91%9C%EA%B8%B0%EB%B2%95">¶</a>
+</h3>
+<p>계산복잡도를 표헌하는 방법 중 가장 많이 사용되는 방법입니다. <strong>빅 오</strong>표기법이라고도 부릅니다. 간단한 예를 들면, 입력 크기 n에 대해 계산을 n번 한다면, 계산 복잡도를 O(n)이라고 표현합니다.</p>
+<ul>
+<li>O(n) : 필요한 계산 횟수가 입력크기 n과 비례할 때</li>
+<li>O(1): 필요한 계산 횟수가 입력크기와 무관할 때 </li>
+<li>O(n^2) : n의 제곱에 비례하여 계산 시간이 증가함</li>
+<li>O(2^n) : 2의 n 제곱에 비례하여 계산 시간이 증가함</li>
+</ul>
+<p>Jupyter notebook의 <code>%%time</code> 기능을 사용해 위의 두가지 해법의 속도를 비교해보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+sum_n(100000)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 12 ms, sys: 0 ns, total: 12 ms
+Wall time: 12.3 ms
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5000050000</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+sum_n2(100000)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 0 ns, sys: 0 ns, total: 0 ns
+Wall time: 10.5 µs
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5000050000</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>위의 두가지 알고리즘은 같은 문제를 해결하지만 시간에서 약 열배의 차이를 보여 주고 있습니다. 더 많은 양의 입력이 들어오면 차이는 더욱더 커지게 될겁니다. 
+문제를 해결하는데 있어서 다양한 방법이 존재할 수 있지만 우리가 가능하면 빠른 알고리즘을 짜야할 이유는 이 때문입니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제2.-최댓값-찾기">문제2. 최댓값 찾기<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C2.-%EC%B5%9C%EB%8C%93%EA%B0%92-%EC%B0%BE%EA%B8%B0">¶</a>
+</h3>
+<p>주어진 숫자 n개 중 가장 큰 숫자를 찾는 알고리즘을 만들어 보세요</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_max</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">max_v</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_v</span><span class="p">:</span>
+            <span class="n">max_v</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">max_v</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">find_max</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="최댓값의-위치를-구하는-알고리즘">최댓값의 위치를 구하는 알고리즘<a class="anchor-link" href="posts/algorithms4every1/#%EC%B5%9C%EB%8C%93%EA%B0%92%EC%9D%98-%EC%9C%84%EC%B9%98%EB%A5%BC-%EA%B5%AC%ED%95%98%EB%8A%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_index</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">max_index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">[</span><span class="n">max_index</span><span class="p">]:</span>
+            <span class="n">max_index</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">max_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># 0부터 시작되기때문에 1을 더해줌</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">find_index</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제3.-같은-값-찾기">문제3. 같은 값 찾기<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C3.-%EA%B0%99%EC%9D%80-%EA%B0%92-%EC%B0%BE%EA%B8%B0">¶</a>
+</h3>
+<p>n개의 데이터 중에서 같은 이름을 찾아 집함으로 돌려주는 알고리즘</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_same_data</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># 결과 저장용 빈 집합</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'C'</span><span class="p">,</span><span class="s1">'Cm'</span><span class="p">,</span><span class="s1">'D7'</span><span class="p">,</span><span class="s1">'E'</span><span class="p">,</span><span class="s1">'Cm'</span><span class="p">]</span>
+<span class="n">find_same_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{'Cm'}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-재귀호출">2. 재귀호출<a class="anchor-link" href="posts/algorithms4every1/#2.-%EC%9E%AC%EA%B7%80%ED%98%B8%EC%B6%9C">¶</a>
+</h2>
+<p>재귀호출은 함수가 자기 자신을 다시 호출 하는 것을 뜻합니다.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">'hi'</span><span class="p">)</span>
+    <span class="n">hi</span><span class="p">()</span> <span class="c1"># hi함수를 다시 호출</span>
+</pre></div>
+<p>이것이 바로 재귀 호출입니다. 'hi'라는 문장을 출력한 다음 다시 자기 자신인 <code>hi()</code>를 호출 하므로 영원히 반복하는 것입니다.</p>
+<h3 id="문제4.-팩토리얼-구하기">문제4. 팩토리얼 구하기<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C4.-%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%96%BC-%EA%B5%AC%ED%95%98%EA%B8%B0">¶</a>
+</h3>
+<p>1부터 n까지 연속한 정수의 곱을 구하는 알고리즘을 만들어 보세요.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법 1 </span>
+<span class="k">def</span> <span class="nf">fact1</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="n">fact1</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3628800</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법2, 재귀 호출 사용</span>
+<span class="k">def</span> <span class="nf">fact2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">fact2</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fact2</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3628800</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>1부터 n까지 합을 구하는 문제1을 재귀호출로 다시 한번 풀어보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sum_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">sum_n</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">n</span>
+<span class="n">sum_n</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5050</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제5.-최대공약수-구하기">문제5. 최대공약수 구하기<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C5.-%EC%B5%9C%EB%8C%80%EA%B3%B5%EC%95%BD%EC%88%98-%EA%B5%AC%ED%95%98%EA%B8%B0">¶</a>
+</h3>
+<p>두 자연수 a와 b의 최대공약수를 구하는 알고리즘을 만들어 보세요.</p>
+<blockquote>
+<p>최대공약수는 두 개 이상의 정수의 공통약수중에서 가장 큰 값을 의미 합니다.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법1</span>
+<span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">a</span><span class="o">%</span><span class="k">i</span> == 0 and b%i == 0:
+            <span class="k">return</span> <span class="n">i</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">gcd</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span><span class="mi">414</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법2, 유클리드 알고리즘을 이용해 최대 공약수를 구하는 알고리즘</span>
+<span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">gcd</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span><span class="mi">414</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제6.-하노이-탑-옮기기">문제6. 하노이 탑 옮기기<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C6.-%ED%95%98%EB%85%B8%EC%9D%B4-%ED%83%91-%EC%98%AE%EA%B8%B0%EA%B8%B0">¶</a>
+</h3>
+<p>원반이 n개인 하노이 탑을 옮기기 위한 이동순서를 출력해보세요.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">hanoi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">from_pos</span><span class="p">,</span> <span class="n">to_pos</span><span class="p">,</span> <span class="n">aux_pos</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">i</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">from_pos</span><span class="p">,</span> <span class="s1">' &gt;&gt; '</span><span class="p">,</span> <span class="n">to_pos</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">from_pos</span><span class="p">,</span> <span class="n">aux_pos</span><span class="p">,</span> <span class="n">to_pos</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">from_pos</span><span class="p">,</span> <span class="s1">' &gt;&gt; '</span><span class="p">,</span> <span class="n">to_pos</span><span class="p">)</span>
+    <span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">aux_pos</span><span class="p">,</span> <span class="n">to_pos</span><span class="p">,</span> <span class="n">from_pos</span><span class="p">)</span>
+    
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-탐색과-정렬">3. 탐색과 정렬<a class="anchor-link" href="posts/algorithms4every1/#3.-%ED%83%90%EC%83%89%EA%B3%BC-%EC%A0%95%EB%A0%AC">¶</a>
+</h2>
+<p>탐색은 여러 개의 자료 중에서 원하는 것을 찾아내는 것이고 정렬은 주어진 자료를 순서에 맞춰 나열하는 것입니다.</p>
+<h3 id="문제7.-순차탐색">문제7. 순차탐색<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C7.-%EC%88%9C%EC%B0%A8%ED%83%90%EC%83%89">¶</a>
+</h3>
+<p>리스트에 있는 첫 번째 자료부터 하나하나 비교하면서 탐색합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법 1</span>
+<span class="k">def</span> <span class="nf">search_list</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">return</span> <span class="s1">'None'</span> <span class="c1"># 없으면 None을 출력합니다.</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">search_list</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법2: 리스트에 같은 값이 여러개 있을 경우 </span>
+<span class="c1"># 모든 위치를 리스트로 돌려주는 알고리즘</span>
+<span class="k">def</span> <span class="nf">search_list</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">result</span> 
+
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">search_list</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[4, 8]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제8.-선택-정렬">문제8. 선택 정렬<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C8.-%EC%84%A0%ED%83%9D-%EC%A0%95%EB%A0%AC">¶</a>
+</h3>
+<p>리스트 안의 자료를 한 번씩 비교하는 방법과 거의 같습니다. 비교횟수가 입력 크기의 제곱에 비례하는 O(n^2) 알고리즘이므로 시간이 굉장히 오래 걸립니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sel_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">min_index</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">min_index</span><span class="p">]:</span>
+                <span class="n">min_index</span> <span class="o">=</span> <span class="n">j</span>
+                <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">min_index</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">sel_sort</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 4, 5, 7]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제9.-삽입-정렬">문제9. 삽입 정렬<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C9.-%EC%82%BD%EC%9E%85-%EC%A0%95%EB%A0%AC">¶</a>
+</h3>
+<p>삽입 정렬은 특정 굥우를 제외하면 선택정렬과 같인 O(n^2)알고리즘 입니다. 그래서 시간이 굉장히 오래 걸립니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ins_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+        
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">ins_sort</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 4, 5, 7]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제10.-병합-정렬">문제10. 병합 정렬<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C10.-%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC">¶</a>
+</h3>
+<p>주어진 문제를 절반으로 나눈 다음 각각을 재귀 호출로 풀어가는 방식입니다. 이런 기법을 <strong>분할 정복</strong> 이라고 부릅니다. 계산의 복잡도는 O(n*logn)으로 선택정렬이나 삽입정렬보다 빠릅니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> 
+    <span class="n">mid</span> <span class="o">=</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span>
+    <span class="n">group1</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="n">mid</span><span class="p">]</span>
+    <span class="n">group2</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">:]</span>
+    <span class="n">merge_sort</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span>
+    <span class="n">merge_sort</span><span class="p">(</span><span class="n">group2</span><span class="p">)</span>
+    <span class="n">i1</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">i2</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ia</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">i2</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">group2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">group1</span><span class="p">[</span><span class="n">i1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">group2</span><span class="p">[</span><span class="n">i2</span><span class="p">]:</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">ia</span><span class="p">]</span> <span class="o">=</span> <span class="n">group1</span><span class="p">[</span><span class="n">i1</span><span class="p">]</span>
+            <span class="n">i1</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">ia</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">ia</span><span class="p">]</span> <span class="o">=</span> <span class="n">group2</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span>
+            <span class="n">i2</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">ia</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+    <span class="k">while</span> <span class="n">i1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">group1</span><span class="p">):</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">ia</span><span class="p">]</span> <span class="o">=</span> <span class="n">group1</span><span class="p">[</span><span class="n">i1</span><span class="p">]</span>
+        <span class="n">i1</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">ia</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">i2</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">group2</span><span class="p">):</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">ia</span><span class="p">]</span> <span class="o">=</span> <span class="n">group2</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span>
+        <span class="n">i2</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">ia</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">merge_sort</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 3, 6, 6, 10, 23]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제11.-퀵-정렬">문제11. 퀵 정렬<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C11.-%ED%80%B5-%EC%A0%95%EB%A0%AC">¶</a>
+</h3>
+<p>그룹을 둘로 나눠 재귀호출을하는 방식으로 앞서본 병랍 정렬과 유사하지만, 그룹을 나눌 떄 미리 기준과 비교해서 나누는 것이 다릅니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">end</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">quick_sort_</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">quick_sort_</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 3, 4, 6, 8, 9, 10]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="기준값의-중요성">기준값의 중요성<a class="anchor-link" href="posts/algorithms4every1/#%EA%B8%B0%EC%A4%80%EA%B0%92%EC%9D%98-%EC%A4%91%EC%9A%94%EC%84%B1">¶</a>
+</h4>
+<p>퀵 정렬에서 좋은 기준을 정하는 것이 굉장히 중요합니다.</p>
+<h3 id="문제12.-이분-탐색">문제12. 이분 탐색<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C12.-%EC%9D%B4%EB%B6%84-%ED%83%90%EC%83%89">¶</a>
+</h3>
+<p>자료가 크기 순서대로 정렬된 리스트에서 특정한값이 있는지 찾아 위치를 돌려주는 알고리즘을 만들어보세요.</p>
+<blockquote>
+<p>이분 담색은 '둘로 나눈다'는 뜻입니다.</p>
+</blockquote>
+<p>탐색할 자료를 둘로 나누어 찾는 것이라 순차 탐색보다 훨씬 빨리 찾을 수 있습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">start</span><span class="o">+</span><span class="n">end</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span> <span class="c1"># 숫자1을 더해서 알기쉽게</span>
+        <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="kc">None</span> <span class="c1"># 찾지 못했을때</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-자료구조">4. 자료구조<a class="anchor-link" href="posts/algorithms4every1/#4.-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0">¶</a>
+</h2>
+<p>여러가지 자료와 정보를 컴퓨터 안에 저장하고 보관하는 방식</p>
+<h3 id="문제13.-회문-찾기">문제13. 회문 찾기<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C13.-%ED%9A%8C%EB%AC%B8-%EC%B0%BE%EA%B8%B0">¶</a>
+</h3>
+<blockquote>
+<p>회문은 거꾸로 읽어도 내용이 같은 문장를 뜻합니다.</p>
+</blockquote>
+<p>예를 들면 '기러기', '일요일' 등이 있죠.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">que</span> <span class="o">=</span><span class="p">[]</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+            <span class="n">que</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+    <span class="k">while</span> <span class="n">que</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">que</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">palindrome</span><span class="p">(</span><span class="s1">'Kayak'</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제14.-딕셔너리로-같은-이름-찾기">문제14. 딕셔너리로 같은 이름 찾기<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C14.-%EB%94%95%EC%85%94%EB%84%88%EB%A6%AC%EB%A1%9C-%EA%B0%99%EC%9D%80-%EC%9D%B4%EB%A6%84-%EC%B0%BE%EA%B8%B0">¶</a>
+</h3>
+<p>파이썬의 딕셔너리라는 자료 구조를 사용해 풀어보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_name</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">name_dic</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_dic</span><span class="p">:</span>
+            <span class="n">name_dic</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name_dic</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_dic</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name_dic</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="n">name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Jake'</span><span class="p">,</span><span class="s1">'Jim'</span><span class="p">,</span><span class="s1">'Jake'</span><span class="p">]</span>
+<span class="n">find_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[22]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{'Jake'}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="문제15.-친구의-친구찾기">문제15. 친구의 친구찾기<a class="anchor-link" href="posts/algorithms4every1/#%EB%AC%B8%EC%A0%9C15.-%EC%B9%9C%EA%B5%AC%EC%9D%98-%EC%B9%9C%EA%B5%AC%EC%B0%BE%EA%B8%B0">¶</a>
+</h3>
+<p>친구관계를 이용해 직간접적으로 아는 모든 사람을 출력하는 알고리즘을 만들어 보세요.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_all_friends</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+    <span class="n">que</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">que</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+    <span class="n">done</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">que</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">que</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">g</span><span class="p">[</span><span class="n">p</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">done</span><span class="p">:</span>
+                <span class="n">que</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="n">done</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">friends</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'Summer'</span><span class="p">:[</span><span class="s1">'John'</span><span class="p">,</span><span class="s1">'Jake'</span><span class="p">,</span><span class="s1">'Mike'</span><span class="p">],</span>
+    <span class="s1">'John'</span><span class="p">:[</span><span class="s1">'Summer'</span><span class="p">,</span><span class="s1">'Mike'</span><span class="p">],</span>
+    <span class="s1">'June'</span><span class="p">:[</span><span class="s1">'Jake'</span><span class="p">,</span><span class="s1">'Tom'</span><span class="p">],</span>
+    <span class="s1">'Jake'</span><span class="p">:[</span><span class="s1">'Tom'</span><span class="p">],</span>
+    <span class="s1">'Tom'</span><span class="p">:[</span><span class="s1">'Summer'</span><span class="p">],</span>
+    <span class="s1">'Mike'</span><span class="p">:[</span><span class="s1">'Summer'</span><span class="p">]</span>
+    
+<span class="p">}</span>
+<span class="n">print_all_friends</span><span class="p">(</span><span class="n">friends</span><span class="p">,</span> <span class="s1">'Summer'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Summer
+John
+Jake
+Mike
+Tom
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="끝으로">끝으로<a class="anchor-link" href="posts/algorithms4every1/#%EB%81%9D%EC%9C%BC%EB%A1%9C">¶</a>
+</h2>
+<p><strong>알고리즘이란 무엇인가?</strong> 라는 질문에서 시작해 15가지의 문제를 통해 알아보았습니다. 풀어 본 문제들은 쉬운 문제지만 알고리즘에 대한 접근법은 동일합니다. 앞으로도 여러분들이 더 많은 문제와 해답을 위한 노력을 기울이길 기원합니다.</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/CNN-with-KERAS/" class="u-url">케라스로 딥러닝하기</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
