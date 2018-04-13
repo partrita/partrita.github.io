@@ -11,7 +11,7 @@
 .. image:: https://pictogram-illustration.com/material/069-pictogram-illustration.jpg
 
 
-Image from pictogram-illustration.com
+*Image from pictogram-illustration.com*
 
 
 짧은 소개
@@ -53,7 +53,7 @@ Image from pictogram-illustration.com
 이 곳에 올리는 글의 대부분은 저의 **독창** 적인 내용이 아닙니다.
 제가 다른 곳(주로 인터넷)에서 얻은 정보들을 제멋대로 편집 해놓은 것이지요.
 그래서 제가 쓴 글에 저작권 보호를 받는 자료가 포함되어 있을 수도 있어요.
-만약 저작권을 침해한 것이 있다면 이메일 [#]_ 으로 연락 주세요
+만약 저작권을 침해한 것이 있다면 이메일 [#]_ 으로 연락 주시면 바로 처리하겠습니다.
 
 
 
