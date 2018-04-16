@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Bioinformatics)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/bioinformatics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Mon, 26 Mar 2018 06:18:11 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R로 서열분석하기</title><link>https://partrita.github.io/posts/R-bio/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Bioinformatics)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/bioinformatics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Mon, 16 Apr 2018 02:53:13 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R로 서열분석하기</title><link>https://partrita.github.io/posts/R-bio/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -8,7 +8,7 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;R&lt;/code&gt;을 이용해서 간단한 생물정보학(bioinformatics) 분석을 해보도록 할게요. 여기서 우리가 초점을 맞출 것은 단백질의 서열입니다.&lt;/p&gt;
 &lt;p&gt;생물학에 대한 기초적인 이해가 있다고 가정하고 &lt;code&gt;R&lt;/code&gt;로 분석하는 것 위주로 설명을 할 겁니다. &lt;code&gt;R&lt;/code&gt;을 사용하기 위해서는 일단 컴퓨터에 설치를 해야 할텐데요. 설치가 되어 있지 않다면 다음 &lt;a href="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/src/installr.html"&gt;링크&lt;/a&gt;를 참고해서 설치하도록 하세요.&lt;/p&gt;
-&lt;h2 id="생물정보학-위한-R-packages:"&gt;생물정보학 위한 R packages:&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두 가지의 유명한 패키지가 알려져있습니다.&lt;/p&gt;
+&lt;h2 id="0.-생물정보학-위한-R-packages:"&gt;0. 생물정보학 위한 R packages:&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두 가지의 유명한 패키지가 알려져있습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Bioconductor &lt;/li&gt;
 &lt;li&gt;SeqinR&lt;/li&gt;
@@ -73,7 +73,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="서열-정보를-R로-읽어오기"&gt;서열 정보를 R로 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지를 사용해서 파스타(FASTA) 파일을 읽어 보도록 해보겠습니다.&lt;/p&gt;
+&lt;h2 id="1.-서열-정보를-R로-읽어오기"&gt;1. 서열 정보를 R로 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지를 사용해서 파스타(FASTA) 파일을 읽어 보도록 해보겠습니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/_images/P1_image3.png" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;NCBI에 &lt;strong&gt;NC_001477&lt;/strong&gt;로 accession 되어 있는 &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 파스타 파일을 다운받아 주세요. 파일명은 &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;로 하겠습니다.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;&lt;code&gt;getncbiseq()&lt;/code&gt;을 이용해 한번에 불러오는 방법도 있어요.&lt;/p&gt;

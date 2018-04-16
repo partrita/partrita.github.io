@@ -89,12 +89,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/nikola-for-jupyer-blog/" class="u-url">Nikola for jupyer blog</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/matplotlib-tutorial/" class="u-url">matplotlib_tutorial</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/nikola-for-jupyer-blog/" rel="bookmark"><time class="published dt-published" datetime="2017-12-14T11:57:23+09:00" title="2017-12-14 11:57">2017-12-14 11:57</time></a></p>
+            <p class="dateline"><a href="posts/matplotlib-tutorial/" rel="bookmark"><time class="published dt-published" datetime="2017-12-12T08:07:20+09:00" title="2017-12-12 08:07">2017-12-12 08:07</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
@@ -105,94 +105,151 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>몇 년전부터 <strong>Jupyter notebook</strong>작성한 것을 언젠가는 블로그에 올려야지 라는 생각은 하고 있었습니다. 하지만 기존에 가지고 있던 워드프레스 <a href="http://partrita.wordpress.com">블로그</a>에는 편집을 해서 올려야 했기에 너무나도 귀찮았습니다. 그러다가 최근에 <a href="https://getnikola.com/">Nikola</a>라는 툴을 알게 되면서 다시 블로깅을 하게 되었습니다. <strong>Nikola</strong>는 간단하게 말해서 HTML 페이지를 자동으로 만들어 줍니다. 제가 할일은 Jupyter notebook을 작성하기만 하면 되는거죠.</p>
-<h2 id="0.-환경-설정">0. 환경 설정<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#0.-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95">¶</a>
+<h2 id="Matplotlib">Matplotlib<a class="anchor-link" href="posts/matplotlib-tutorial/#Matplotlib">¶</a>
 </h2>
-<p>먼저, <a href="https://anaconda.org/">Anaconda</a>가 이미 설치 되어있다고 가정하겠습니다. 설치되어 있지 않다면 검색을 통해 설치해주세요.</p>
-<h3 id="가상환경-만들고-실행하기">가상환경 만들고 실행하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
+<p>Matplotlib는 파이썬 자료를 <strong>시각화(visulaization)</strong> 하는 라이브러리입니다. <strong>MATLAB</strong>과 유사한 인터페이스로 복잡하지만 강력한 기능을 제공하죠. 아마도 파이썬 라이브러리 중에 가장 유용하고 따라서 가장 유명합니다. Matplotlib는 막대 그래프나 선 그래프 이외에도 다양한 시각화 기능을 제공합니다. 자세한건 <a href="https://matplotlib.org/gallery.html">Gallery</a>를 참고 하세요.</p>
+<p><a href="https://matplotlib.org/users/beginner.html">튜토리얼 가이드</a></p>
+<h3 id="기본적인-정보">기본적인 정보<a class="anchor-link" href="posts/matplotlib-tutorial/#%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EC%A0%95%EB%B3%B4">¶</a>
 </h3>
-<p><strong>nikola_blog</strong>라는 이름의 가상환경을 생성합니다.</p>
-<div class="highlight"><pre><span></span>conda create -n nikola_blog <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
-</pre></div>
-<blockquote>
-<p>이름은 원하는것으로 수정하시면 되고, 파이썬3를 권장합니다.</p>
-</blockquote>
-<p>터미널에 명령어를 입력하면 몇가지 패키지를 설치 할 것인지 물어보고, 모두 <strong>Yes</strong>해주시면 됩니다.</p>
-<div class="highlight"><pre><span></span><span class="nb">source</span> activate nikola_blog
-pip install nikola<span class="o">[</span>extras<span class="o">]</span>
-</pre></div>
-<p>가상환경을 실행하고, <strong>nikola</strong>를 설치 합니다.</p>
-<h2 id="1.-블로그-만들기">1. 블로그 만들기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#1.-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
-</h2>
-<p>Nikola가 설치가 되었다면 이제 블로그를 만들어 보겠습니다. 원하는 폴더에서 터미널을 열고 아래의 명령어를 입력하세요.</p>
-<div class="highlight"><pre><span></span>nikola init
-</pre></div>
-<p>여러가지 질문들이 나오면서 사이트의 이름, 저자, 설명과 URL을 물어봅니다. 나중에 모두 <strong>conf.py</strong> 파일에서 수정이 가능하니까 너무 고민하지말고 넘어가주세요.
-질문이 끝나면 폴더안에 여러 파일과 다른 폴더가 생긴것을 확인 할 수 있습니다.</p>
-<h3 id="Jupyter-notebook-확장자-추가하기">Jupyter notebook 확장자 추가하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#Jupyter-notebook-%ED%99%95%EC%9E%A5%EC%9E%90-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
-</h3>
-<p>Nikola가 Jupyter notebook을 처리하기 위해서는 확장자를 추가해 줘야합니다.
-폴더안의 <strong>conf.py</strong> 파일을 열어서 아래와 비슷한 코드를 찾고 다음과 같이 <strong>("pages/*.ipynb", "", "story.tmpl"),</strong> 를 추가합니다.</p>
-<div class="highlight"><pre><span></span><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="s2">"posts/*.ipynb"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"posts/*.md"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"posts/*.rst"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"posts/*.txt"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
-<span class="p">)</span>
-<span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="s2">"pages/*.md"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"pages/*.ipynb"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"pages/*.rst"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"pages/*.txt"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
-<span class="p">)</span>
-</pre></div>
-<h2 id="2.-새-포스트-작성하기">2. 새 포스트 작성하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#2.-%EC%83%88-%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0">¶</a>
-</h2>
-<p>이제 새로운 포스트를 작성해보겠습니다. 다음과 같이 터미널에 입력을 하세요.</p>
-<div class="highlight"><pre><span></span>nikola new_post -f ipynb
-</pre></div>
-<p>제목을 물어보고는 알아서 새 Jupyter notebook을 만들어줍니다. 폴더에 새로운 파일이 생성된것을 확인하셨다면, 모든 준비가 되었습니다.</p>
-<h2 id="3.-블로그-실행하기">3. 블로그 실행하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#3.-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
-</h2>
-<p>터미널에서 아래 명령어를 입력하고 웹브라우저에서 <em>localhost:8000</em>에 접속하세요.</p>
-<div class="highlight"><pre><span></span>nikola auto
-</pre></div>
-<p>블로그 생성된것을 확인 하셨나요?</p>
-<h2 id="4.-Github-page에-올리기">4. Github page에 올리기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#4.-Github-page%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B8%B0">¶</a>
-</h2>
-<h3 id="git-시작하기">git 시작하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#git-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">¶</a>
-</h3>
-<p>깃허브(Github)는 너무나도 유명하기 때문에 따로 설명드리지는 않을게요. 블로그를 인터넷에 올리기 위해서 깃허브에서 제공하는 서비스를 이용할 거에요. 깃(git)을 어느정도 이해한다는 전제하에 간략하게 설명하겠습니다.</p>
+<p>사용하기 앞서, 다음 그림을 통해 구조를 알아 보겠습니다.
+<img src="https://datascienceschool.net/upfiles/4e20efe6352e4f4fac65c26cb660f522.png" alt="figure"></p>
+<p>Matplotlib가 그리는 그림은 Figure, Axes, Axis으로 이어지는 구조를 가지고 있습니다. 따라서 아래와 같은 순서로 그림을 그리게 됩니다.</p>
 <ol>
-<li>먼저 깃허브에서 새로운 저장소(repository)를 생성합니다. 이때 이름은 <strong>USERNAME.github.io</strong>로 하세요. USERNAME은 본인의 ID입니다.</li>
-<li>새로운 저장소가 생성 되면 아래와 같이 터미널에 입력하세요.<div class="highlight"><pre><span></span>git init
-git add *
-git commit -am <span class="s2">"Initial commit"</span>
-git remote add origin https://github.com/USERNAME/UsERNAME.github.io.git
-git push origin -u
-</pre></div>
-</li>
-<li>만약 push 오류가 발생한다면 새로운 파일을 다음과 같이 작성하고 다시 push 하세요<div class="highlight"><pre><span></span>touch readme.md
-</pre></div>
-깃허브에 접속해보면 파일들이 정상적으로 업로드 되어있는것을 확인 하실 수 있습니다.</li>
+<li>Figure를 먼저 생성합니다.</li>
+<li>Figure에 원하는 갯수의 Axes를 생성합니다.</li>
+<li>각각의 Axes에 그래프를 그리고 label과 title을 지정해 줍니다.</li>
 </ol>
-<h3 id="블로깅하기">블로깅하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#%EB%B8%94%EB%A1%9C%EA%B9%85%ED%95%98%EA%B8%B0">¶</a>
-</h3>
-<p>이제 모든 단계가 끝났습니다. 로컬에 있는 블로그 폴더에서 작업을 하고 github에 올리기만 하면 되는 것이지요. Nikola에서 보다 편하게 포스팅할 수 있도록 아래의 명령어를 지원합니다.</p>
-<div class="highlight"><pre><span></span>nikola github_deploy
-</pre></div>
-<p>깃허브에 푸쉬하고 브랜치를 나누는 작업도 알아서 해주는 강력한 기능입니다. 변경사항이 적용되는데는 몇분이 걸리지만 이제, <a href="http://USERNAME.github.io">http://USERNAME.github.io</a> 에 접속하면 블로그를 확인할 수 있을 겁니다.</p>
+<p>예를 들어보겠습니다.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># 그래프를 그릴 X, Y 값을 입력합니다.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> <span class="c1"># Figure를 생성합니다.</span>
+<span class="n">axis1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="c1"># (2, 1, 1)은 2x1(행x열)의 subplot을 생성한다는 의미이고</span>
+<span class="c1"># 세번째 인자 1은 생성된 두 개 중 첫 번째를 의미합니다.</span>
+<span class="n">axis1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="c1"># 기본 그래프는 선그래프 입니다.</span>
+
+<span class="n">axis2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">axis2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="c1"># 바 그래프</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;Container object of 10 artists&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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">
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.">5.<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#5.">¶</a>
-</h2>
+<h3 id="실험-데이터로-그려보기">실험 데이터로 그려보기<a class="anchor-link" href="posts/matplotlib-tutorial/#%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C-%EA%B7%B8%EB%A0%A4%EB%B3%B4%EA%B8%B0">¶</a>
+</h3>
+<p>실제 실험에서 얻은 데이터를 가지고 에러바가 있는 선 그래프를 그려보도록 하겠습니다. 이미 간단하게 평균값과 표준편차를 구해 놓은 데이터를 사용했습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Data to draw</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.083</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mf">523.11</span><span class="p">,</span> <span class="mf">62.32</span><span class="p">,</span> <span class="mf">37.93</span><span class="p">,</span> <span class="mf">24.85</span><span class="p">,</span> <span class="mf">13.81</span><span class="p">]</span>
+<span class="n">std</span> <span class="o">=</span> <span class="p">[</span><span class="mf">101.62</span><span class="p">,</span> <span class="mf">22.61</span><span class="p">,</span> <span class="mf">13.00</span><span class="p">,</span> <span class="mf">4.64</span><span class="p">,</span> <span class="mf">3.56</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> <span class="c1"># figure setting</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Get the figure and the axes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s2">"ro-"</span> <span class="p">,</span><span class="n">capsize</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span> <span class="c1"># 에러바가 있는 선 그래프를 그려줍니다.</span>
+
+<span class="c1"># Label과 Title을 정해줍니다.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'Pharmacokinetics '</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">'Hours'</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">'Protein conc.'</span><span class="p">)</span>
+<span class="c1"># Y축을 log로 바꾸어 줍니다. </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">'log'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="마치며">마치며<a class="anchor-link" href="posts/matplotlib-tutorial/#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+</h3>
+<p>이렇게 matplotlib을 사용하면 간단하게 실험 결과를 시각화 할 수 있습니다. 무엇보다도 <strong>공짜</strong>로 말이죠.</p>
+
 </div>
 </div>
 </div>
@@ -200,12 +257,12 @@ git push origin -u
   </div>
 
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/setup/" class="u-url">환경설정(Environment_setup)</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/Pandas-tutorial/" class="u-url">Pandas tutorial</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/setup/" rel="bookmark"><time class="published dt-published" datetime="2017-12-14T09:37:59+09:00" title="2017-12-14 09:37">2017-12-14 09:37</time></a></p>
+            <p class="dateline"><a href="posts/Pandas-tutorial/" rel="bookmark"><time class="published dt-published" datetime="2017-12-11T19:52:05Z" title="2017-12-11 19:52">2017-12-11 19:52</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
@@ -216,256 +273,821 @@ git push origin -u
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://www.python.org/static/img/python-logo.png" alt="python_logo"></p>
-<h2 id="1.-파이썬-설치">1. 파이썬 설치<a class="anchor-link" href="posts/setup/#1.-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%84%A4%EC%B9%98">¶</a>
-</h2>
-<p>파이썬은 아주 인기있는 프로그래밍 언어로, 웹 사이트는 물론 게임, 과학용 소프트웨어, 그래픽 소프트웨어 등 다양한 것을 만들 수 있습니다. 파이썬은 1980년대 후반에 <strong>귀도 반 로썸</strong> 프로그래밍 언어를 기계 뿐만 아니라 인간도 읽을 수 있도록 만들고자 탄생한 언어입니다. 파이썬이 다른 프로그래밍 언어보다 훨씬 간단하게 보이고, 배우기도 쉬운 이유도 그 때문이죠. 이를 바탕으로 과거 15년 동안 <strong>numpy</strong>,<strong>scipy</strong>,<strong>matplotlib</strong>,<strong>jupyter</strong> 같이 널리 사용되는 라이브러리가 개발되어있습니다. 
-파이썬은 사용중인 OS의 종류에 따라서 설치방법이 다릅니다.</p>
-<h4 id="Windows">Windows<a class="anchor-link" href="posts/setup/#Windows">¶</a>
-</h4>
-<ol>
-<li>사용 중인 컴퓨터 윈도우 운영체제가 32비트인지 64비트인지 확인하세요.</li>
-<li>
-<a href="https://www.python.org/downloads/windows/">공식 웹사이트</a>에서 다운로드 할 수 있습니다. <ul>
-<li>64 비트 버전의 Windows인 경우 <em>Windows x86-64 executable installer</em>를 다운로드하세요.</li>
-<li>32 비트 버전은 <em>Windows x86 executable installer</em>을 다운로드하세요.</li>
-</ul>
-</li>
-<li>설치 프로그램을 다운로드 한 후에 실행(더블 클릭)하고 지시 사항을 따르세요.</li>
-</ol>
-<h4 id="OSX">OSX<a class="anchor-link" href="posts/setup/#OSX">¶</a>
-</h4>
-<p><a href="https://www.python.org/downloads/release/python-351/">웹 사이트</a>로 가서 파이썬 설치 파일을 다운 받으세요.</p>
-<h4 id="Linux">Linux<a class="anchor-link" href="posts/setup/#Linux">¶</a>
-</h4>
-<p>이미 파이썬이 설치되었을 겁니다. 설치된 버전을 확인하려면 콘솔을 열고 다음 명령을 입력하세요.</p>
-<div class="highlight"><pre><span></span>$ python3 --version
+<p>Pandas 라이브러리를 사용하는 방법을 정리했습니다.</p>
+<div class="highlight"><pre><span></span>pip install pandas numpy xlrd
 </pre></div>
+<p>필요한 모듈을 터미널에서 위의 명령어로 먼저 설치합니다.</p>
+<ul>
+<li>pandas: <strong>raw Data</strong>를 불러들여 편집하는데 사용</li>
+<li>numpy: <strong>pandas</strong>의 <strong>aggfunc</strong>으로 평균과 분산값을 구하는데 사용 </li>
+<li>xlrd : excel 파일을 읽어들이는데 필요</li>
+</ul>
 <blockquote>
-<p>하지만 위의 방법보다는 저는 Anaconda를 사용하는것을 추천합니다.</p>
+<p>출처 : <a href="http://pinkwink.kr/977">pinkwink</a></p>
 </blockquote>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import modules</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://www.anaconda.com/wp-content/themes/anaconda/images/logo-dark.png" alt="anaconda"></p>
-<h2 id="2.-Anaconda-설치">2. Anaconda 설치<a class="anchor-link" href="posts/setup/#2.-Anaconda-%EC%84%A4%EC%B9%98">¶</a>
-</h2>
-<p>파이썬 기반의 데이터 분석에 특화된 각종 OpenSource 라이브러리를 모아놓은 개발 플랫폼입니다. 무엇보다도 <strong>Panda, Numpy, Numba, Scipy, IPython, GPGPU, 과학, 수학, 데이터 분석</strong>등과 관련된 수많은 라이브러리 한번에 그리고 <strong>의존성</strong>(dependency)문제 없이 설치 할 수 있습니다. 또한 <strong>conda</strong>라는 관리 라이브러리 매니저가 있어서 편리 합니다.<a href="https://www.anaconda.com/">Anaconda 홈페이지</a></p>
-<h4 id="Anaconda">Anaconda<a class="anchor-link" href="posts/setup/#Anaconda">¶</a>
-</h4>
-<p>공식 홈페이지에서 <strong>OS</strong>에 맞는 파일을 다운받아 "Next"만 누르면 해결되므로 별도의 설명은 서술하지 않습니다.</p>
-<h4 id="Miniconda">Miniconda<a class="anchor-link" href="posts/setup/#Miniconda">¶</a>
-</h4>
-<p><strong>Anaconda</strong>에서 라이브러리 관리 메니저인 <strong>conda</strong>만을 설치 하고 싶다면 <a href="https://conda.io/miniconda.html">miniconda</a>를 다운받아 설치 하면 됩니다.</p>
-<blockquote>
-<p>개인적으로 <strong>Miniconda</strong>를 추천합니다.</p>
-</blockquote>
+<p>사용한 데이터는 깃허브에 공개되어 있는 엑셀파일 사용합니다.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Conda-명령어-사용법">3. Conda 명령어 사용법<a class="anchor-link" href="posts/setup/#3.-Conda-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%82%AC%EC%9A%A9%EB%B2%95">¶</a>
-</h2>
-<p><strong>conda</strong>는 라이브러리 관리를 위해 제공되는 애플리케이션입니다. 파이썬 생태계의 라이브러리는 서로에 대해 아무 많이 의존적이기 때문에 각각의 버전이 너무 많은 문제가 발생하기도 합니다. 하지만 conda를 사용하면 이 모든 고민을 신경쓰지 않을 수 있습니다. 다시 말해, <strong>conda</strong>는 파이썬 라이브러리의 교통정리를 해줍니다.</p>
-<blockquote>
-<p>conda 외에도 virtualenv을 사용하는 방법이 있습니다.</p>
-</blockquote>
-<h3 id="주요기능">주요기능<a class="anchor-link" href="posts/setup/#%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5">¶</a>
-</h3>
-<p>conda는 자동으로 의존성을 해결해 줍니다. 자주 사용하는 conda 명령어는 기억해 두세요.</p>
-<blockquote>
-<p>numpy를 기준으로 설명하겠습니다.</p>
-</blockquote>
-<table>
-<thead><tr>
-<th>기능</th>
-<th>명령어</th>
-</tr></thead>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read data from web</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">'https://github.com/chris1610/pbpython/raw/master/data/salesfunnel.xlsx'</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># 매니저나 도매상별 매출 집계 데이터 입니다. pd.read_excel 로 읽었구요</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>Account</th>
+      <th>Name</th>
+      <th>Rep</th>
+      <th>Manager</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Status</th>
+    </tr></thead>
 <tbody>
 <tr>
-<td>라이브러리 설치</td>
-<td>conda install numpy </td>
-</tr>
+<th>0</th>
+      <td>714466</td>
+      <td>Trantow-Barrows</td>
+      <td>Craig Booker</td>
+      <td>Debra Henley</td>
+      <td>CPU</td>
+      <td>1</td>
+      <td>30000</td>
+      <td>presented</td>
+    </tr>
 <tr>
-<td>동시에 여러 라이브러리를 설치</td>
-<td>conda install numpy scipy pandas</td>
-</tr>
+<th>1</th>
+      <td>714466</td>
+      <td>Trantow-Barrows</td>
+      <td>Craig Booker</td>
+      <td>Debra Henley</td>
+      <td>Software</td>
+      <td>1</td>
+      <td>10000</td>
+      <td>presented</td>
+    </tr>
 <tr>
-<td>특정 버전 설치</td>
-<td>conda install numpy=1.10</td>
-</tr>
+<th>2</th>
+      <td>714466</td>
+      <td>Trantow-Barrows</td>
+      <td>Craig Booker</td>
+      <td>Debra Henley</td>
+      <td>Maintenance</td>
+      <td>2</td>
+      <td>5000</td>
+      <td>pending</td>
+    </tr>
 <tr>
-<td>라이브러리 제거</td>
-<td>conda remove numpy</td>
-</tr>
+<th>3</th>
+      <td>737550</td>
+      <td>Fritsch, Russel and Anderson</td>
+      <td>Craig Booker</td>
+      <td>Debra Henley</td>
+      <td>CPU</td>
+      <td>1</td>
+      <td>35000</td>
+      <td>declined</td>
+    </tr>
 <tr>
-<td>라이브러리 업데이트</td>
-<td>conda update numpy</td>
-</tr>
-<tr>
-<td>모든 라이브러리 업데이트</td>
-<td>conda update –all</td>
-</tr>
-<tr>
-<td>설치된 목록 출력</td>
-<td>conda list</td>
-</tr>
-<tr>
-<td>설치하려는 라이브러리 검색</td>
-<td>conda search numpy</td>
-</tr>
+<th>4</th>
+      <td>146832</td>
+      <td>Kiehn-Spinka</td>
+      <td>Daniel Hilton</td>
+      <td>Debra Henley</td>
+      <td>CPU</td>
+      <td>2</td>
+      <td>65000</td>
+      <td>won</td>
+    </tr>
 </tbody>
 </table>
-<blockquote>
-<p>찾는 라이브러리가 없다면 <strong>pip</strong>를 사용해보세요</p>
-</blockquote>
-<h3 id="가상환경-만들기">가상환경 만들기<a class="anchor-link" href="posts/setup/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
-</h3>
-<p>파이썬 라이브러리들의 의존성 문제를 피하기 위해 새로운 프로젝트를 시작할때면 가상환경을 만들어 작업하는것이 좋습니다. 여기서는 <strong>virtualenv</strong> 대신에 <strong>conda</strong>를 사용해서 간단히 만들어 보겠습니다.</p>
-<ul>
-<li>새로운 가상환경 이름은 ENV_NAME</li>
-<li>사용할 Python 버전은 3이상으로 하겠습니다.</li>
-</ul>
-<ol>
-<li>터미널에 다음과 같이 입력하면 새로운 가상환경이 만들어 집니다.<div class="highlight"><pre><span></span>conda create -n ENV_NAME <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
-</pre></div>
-</li>
-<li>가상환경을 사용하기 위해서는 <em>activate</em> 시켜줘야 합니다. 활성화되면 터미널에 (ENV_NAME)이 표시됩니다.<div class="highlight"><pre><span></span><span class="nb">source</span> activate ENV_NAME
-</pre></div>
-</li>
-<li>필요한 라이브러리들을 설치합니다.<div class="highlight"><pre><span></span>conda install numpy pandas
-</pre></div>
-</li>
-</ol>
-<h3 id="가상환경-확인-및-제거">가상환경 확인 및 제거<a class="anchor-link" href="posts/setup/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%ED%99%95%EC%9D%B8-%EB%B0%8F-%EC%A0%9C%EA%B1%B0">¶</a>
-</h3>
-<p>가상환경의 목록을 확인하려면 아래와 같이 입력하세요.</p>
-<div class="highlight"><pre><span></span>conda env list
-</pre></div>
-<p>가상환경을 삭제하려면 아래와 같이 입력하세요.</p>
-<div class="highlight"><pre><span></span>conda env remove -n ENV_NAME
-</pre></div>
-<h3 id="Conda-제거하기">Conda 제거하기<a class="anchor-link" href="posts/setup/#Conda-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0">¶</a>
-</h3>
-<h5 id="Windows">Windows<a class="anchor-link" href="posts/setup/#Windows">¶</a>
-</h5>
-<p>제어판에 들어가서 <em>Python (Anaconda)</em> 혹은 <em>“Python (Miniconda)</em>를 제거합니다.</p>
-<h5 id="Linux,-OSX">Linux, OSX<a class="anchor-link" href="posts/setup/#Linux,-OSX">¶</a>
-</h5>
-<p>디렉토리만 삭제하면 됩니다.</p>
-<div class="highlight"><pre><span></span>rm -rf ~/miniconda
-rm -rf ~/anaconda
-</pre></div>
+</div>
+</div>
+
+</div>
 
 </div>
 </div>
+
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-코드-에디터">4. 코드 에디터<a class="anchor-link" href="posts/setup/#4.-%EC%BD%94%EB%93%9C-%EC%97%90%EB%94%94%ED%84%B0">¶</a>
-</h2>
-<p>코드 에디터는 종류가 많고 다양해 자신의 취향에 따라 선택할 수 있습니다. 간단하지만 강력한 기능을 갖춘 에디터 프로그램을 아래에 추천합니다.</p>
-<h3 id="Gedit">Gedit<a class="anchor-link" href="posts/setup/#Gedit">¶</a>
-</h3>
-<p>Gedit는 모든 운영체제에서 사용 가능한 무료 오픈소스에요.</p>
-<h3 id="Sublime-Text-3">Sublime Text 3<a class="anchor-link" href="posts/setup/#Sublime-Text-3">¶</a>
-</h3>
-<p>Sublime Text는 가장 널리 알려진 프로그램으로 상용프로그램이지만, 무료로 사용할 수 있고 속도가 빨라요. 
-물론 모든 운영체제에서 쓸 수 있어요.</p>
-<h3 id="Atom">Atom<a class="anchor-link" href="posts/setup/#Atom">¶</a>
-</h3>
-<p>Atom은 GitHub에서 만든 무료로 제공되는 오픈소스이며, 설치나 사용이 쉬워요. 모든 운영체제에서 쓸 수 있어요.</p>
-<h3 id="VScode">VScode<a class="anchor-link" href="posts/setup/#VScode">¶</a>
-</h3>
-<p>Microsoft에서 만든 무료 에디터에요. 설치와 사용이 쉽고 안정적입니다.</p>
-<h3 id="왜-코드-에디터를-설치해야-하나요?">왜 코드 에디터를 설치해야 하나요?<a class="anchor-link" href="posts/setup/#%EC%99%9C-%EC%BD%94%EB%93%9C-%EC%97%90%EB%94%94%ED%84%B0%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%B4%EC%95%BC-%ED%95%98%EB%82%98%EC%9A%94?">¶</a>
-</h3>
-<p>워드나 노트패드가 있는데도, 굳이 코드 에디터 소프트웨어를 설치해야 하는 이유가 궁금할 거에요.<br>
-첫 번째로 코드는 일반 텍스트여야 하는데, 워드나 텍스트에딧(Textedit)과 같은 프로그램에서는 일반 텍스트가 아닌 RTF(Rich Text Format)와 같은 사용자 서식을 쓴 리치 텍스트(폰트와 서식이 있는 텍스트)가 생성되기 때문입니다. 
-두 번째는 코드 에디터 프로그램은 개발에 유용한 여러 기능을 제공하기 때문입니다. 대표적인 예로, 코드를 해석해 문법을 하이라이팅해주는 기능이라든가 큰따옴표("")를 자동으로 닫아주는 기능이지요. 앞으로 코드 에디터가 어떻게 작동하는지 알아볼 거에요. 곧 여러분은 내가 사용하는 코드 에디터를 제일 좋아하게 될 거랍니다.</p>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'Status'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Status'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'category'</span><span class="p">)</span> <span class="c1"># 데이터 타입을 변경</span>
+<span class="c1"># Status 컬럼을 .cat.set_categories로 카테고리형으로 변경합니다.</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'Status'</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">set_categories</span><span class="p">([</span><span class="s1">'won'</span><span class="p">,</span><span class="s1">'pending'</span><span class="p">,</span><span class="s1">'presented'</span><span class="p">,</span><span class="s1">'declined'</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>Account</th>
+      <th>Name</th>
+      <th>Rep</th>
+      <th>Manager</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Status</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>714466</td>
+      <td>Trantow-Barrows</td>
+      <td>Craig Booker</td>
+      <td>Debra Henley</td>
+      <td>CPU</td>
+      <td>1</td>
+      <td>30000</td>
+      <td>presented</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>714466</td>
+      <td>Trantow-Barrows</td>
+      <td>Craig Booker</td>
+      <td>Debra Henley</td>
+      <td>Software</td>
+      <td>1</td>
+      <td>10000</td>
+      <td>presented</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>714466</td>
+      <td>Trantow-Barrows</td>
+      <td>Craig Booker</td>
+      <td>Debra Henley</td>
+      <td>Maintenance</td>
+      <td>2</td>
+      <td>5000</td>
+      <td>pending</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>737550</td>
+      <td>Fritsch, Russel and Anderson</td>
+      <td>Craig Booker</td>
+      <td>Debra Henley</td>
+      <td>CPU</td>
+      <td>1</td>
+      <td>35000</td>
+      <td>declined</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>146832</td>
+      <td>Kiehn-Spinka</td>
+      <td>Daniel Hilton</td>
+      <td>Debra Henley</td>
+      <td>CPU</td>
+      <td>2</td>
+      <td>65000</td>
+      <td>won</td>
+    </tr>
+</tbody>
+</table>
 </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.-추천-라이브러리">5. 추천 라이브러리<a class="anchor-link" href="posts/setup/#5.-%EC%B6%94%EC%B2%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">¶</a>
-</h2>
-<h3 id="Biopython">Biopython<a class="anchor-link" href="posts/setup/#Biopython">¶</a>
-</h3>
-<p><img src="http://biopython.org/assets/images/biopython_logo_white.png" alt="logo">
-생물정보 데이터 분석을 하다 보면 공통적으로 사용되는 기능들이 많습니다. 예를 들어</p>
-<ul>
-<li>
-<a href="NCBI">NCBI</a>에서 많은 수의 nucleotide 서열을 ID만 가지고 <a href="GenBank">GenBank</a> 형식 또는 <a href="FASTA">FASTA</a> 형식으로 다운 받는다든지, </li>
-<li>다운로드 받은 서열들을 protein 서열로 translation한 후 multiple alignment를 수행하고자 할 경우 NCBI에서 서열을 다운로드하기 </li>
-<li>GenBank 혹은 FASTA 포맷의 서열을 형식에 맞게 id, description, 서열 부분을 구분하여 따로따로 읽어들이는 기능, 읽어들인 서열을 translation 하는 기능 그리고 multiple alignment를 수행이 있겠습니다.</li>
-</ul>
-<p>이렇게 <a href="Python">Python</a>으로 생물정보 데이터를 분석하고자 할 때 많이 사용되는 코드를 모아둔 라이브러리가 <a href="http://www.biopython.org/">Biopython</a> 입니다.<a href="http://www.incodom.kr/Biopython">1</a></p>
-<h4 id="설치하기">설치하기<a class="anchor-link" href="posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
-</h4>
-<p>다른 라이브러리와 마찬가지로 <code>pip install</code> 혹은 <code>conda install</code>로 설치합니다.</p>
-<div class="highlight"><pre><span></span>conda install biopython
-</pre></div>
-<h4 id="사용하기">사용하기<a class="anchor-link" href="posts/setup/#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
-</h4>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
-
-<span class="c1">#create a sequence object</span>
-<span class="n">my_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s1">'CATGTAGACTAG'</span><span class="p">)</span>
-
-<span class="c1">#print out some details about it</span>
-<span class="k">print</span> <span class="s1">'seq </span><span class="si">%s</span><span class="s1"> is </span><span class="si">%i</span><span class="s1"> bases long'</span> <span class="o">%</span> <span class="p">(</span><span class="n">my_seq</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_seq</span><span class="p">))</span>
-<span class="k">print</span> <span class="s1">'reverse complement is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span>
-<span class="k">print</span> <span class="s1">'protein translation is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
-</pre></div>
-<h3 id="Pandas">Pandas<a class="anchor-link" href="posts/setup/#Pandas">¶</a>
-</h3>
-<p><img src="https://pandas.pydata.org/_static/pandas_logo.png" alt="">
-데이터로 표를 만들고 편집하는것을 아주 편리하게 해주는 필수 라이브러리입니다.</p>
-<blockquote>
-<p>pandas 는 BSD 라이센스를 따르는 오픈 소스입니다. pandas는 빠르고 쉽게 데이터를 분석하는 도구로 파이썬으로 쓰여졌습니다.</p>
-</blockquote>
-<h4 id="설치하기">설치하기<a class="anchor-link" href="posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
-</h4>
-<div class="highlight"><pre><span></span>conda install pandas
-</pre></div>
-<h4 id="사용하기">사용하기<a class="anchor-link" href="posts/setup/#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
-</h4>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-</pre></div>
-<h3 id="Matplotlib">Matplotlib<a class="anchor-link" href="posts/setup/#Matplotlib">¶</a>
-</h3>
-<p><img src="https://matplotlib.org/_static/logo2.svg" alt="matplotlib">
-Matplotlib은 파이썬의 시각화 라이브러리입니다. 출판용 품질의 그림부터 상호작용 가능한 시각화까지 다양한 도구를 제공합니다.</p>
-<h4 id="설치하기">설치하기<a class="anchor-link" href="posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
-</h4>
-<div class="highlight"><pre><span></span>conda install matplotlib
-</pre></div>
-<h4 id="사용하기">사용하기<a class="anchor-link" href="posts/setup/#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
-</h4>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 그리고... pd.pivot_table 명령을 Name 컬럼을 기준으로 적용합니다. 그러면 중복된 Name들을 모두 하나로 표현해서 위 그림과 같은 결과가 나타납니다. 중복된 항목의 숫자들은 모두 평균으로 처리됩니다.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Name'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">,</span> <span class="s1">'Manager'</span><span class="p">])</span>
 </pre></div>
 
 </div>
 </div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+      <th></th>
+      <th></th>
+      <th>Account</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+<tr>
+<th>Name</th>
+      <th>Rep</th>
+      <th>Manager</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<th>Barton LLC</th>
+      <th>John Smith</th>
+      <th>Debra Henley</th>
+      <td>740150.0</td>
+      <td>35000.0</td>
+      <td>1.000000</td>
+    </tr>
+<tr>
+<th>Fritsch, Russel and Anderson</th>
+      <th>Craig Booker</th>
+      <th>Debra Henley</th>
+      <td>737550.0</td>
+      <td>35000.0</td>
+      <td>1.000000</td>
+    </tr>
+<tr>
+<th>Herman LLC</th>
+      <th>Cedric Moss</th>
+      <th>Fred Anderson</th>
+      <td>141962.0</td>
+      <td>65000.0</td>
+      <td>2.000000</td>
+    </tr>
+<tr>
+<th>Jerde-Hilpert</th>
+      <th>John Smith</th>
+      <th>Debra Henley</th>
+      <td>412290.0</td>
+      <td>5000.0</td>
+      <td>2.000000</td>
+    </tr>
+<tr>
+<th>Kassulke, Ondricka and Metz</th>
+      <th>Wendy Yule</th>
+      <th>Fred Anderson</th>
+      <td>307599.0</td>
+      <td>7000.0</td>
+      <td>3.000000</td>
+    </tr>
+<tr>
+<th>Keeling LLC</th>
+      <th>Wendy Yule</th>
+      <th>Fred Anderson</th>
+      <td>688981.0</td>
+      <td>100000.0</td>
+      <td>5.000000</td>
+    </tr>
+<tr>
+<th>Kiehn-Spinka</th>
+      <th>Daniel Hilton</th>
+      <th>Debra Henley</th>
+      <td>146832.0</td>
+      <td>65000.0</td>
+      <td>2.000000</td>
+    </tr>
+<tr>
+<th>Koepp Ltd</th>
+      <th>Wendy Yule</th>
+      <th>Fred Anderson</th>
+      <td>729833.0</td>
+      <td>35000.0</td>
+      <td>2.000000</td>
+    </tr>
+<tr>
+<th>Kulas Inc</th>
+      <th>Daniel Hilton</th>
+      <th>Debra Henley</th>
+      <td>218895.0</td>
+      <td>25000.0</td>
+      <td>1.500000</td>
+    </tr>
+<tr>
+<th>Purdy-Kunde</th>
+      <th>Cedric Moss</th>
+      <th>Fred Anderson</th>
+      <td>163416.0</td>
+      <td>30000.0</td>
+      <td>1.000000</td>
+    </tr>
+<tr>
+<th>Stokes LLC</th>
+      <th>Cedric Moss</th>
+      <th>Fred Anderson</th>
+      <td>239344.0</td>
+      <td>7500.0</td>
+      <td>1.000000</td>
+    </tr>
+<tr>
+<th>Trantow-Barrows</th>
+      <th>Craig Booker</th>
+      <th>Debra Henley</th>
+      <td>714466.0</td>
+      <td>15000.0</td>
+      <td>1.333333</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#이번에는 Name, Rep, Manager를 모두 사용하는것입니다.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'Manager'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+      <th></th>
+      <th>Account</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+<tr>
+<th>Manager</th>
+      <th>Rep</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="3" valign="top">Debra Henley</th>
+      <th>Craig Booker</th>
+      <td>720237.0</td>
+      <td>20000.000000</td>
+      <td>1.250000</td>
+    </tr>
+<tr>
+<th>Daniel Hilton</th>
+      <td>194874.0</td>
+      <td>38333.333333</td>
+      <td>1.666667</td>
+    </tr>
+<tr>
+<th>John Smith</th>
+      <td>576220.0</td>
+      <td>20000.000000</td>
+      <td>1.500000</td>
+    </tr>
+<tr>
+<th rowspan="2" valign="top">Fred Anderson</th>
+      <th>Cedric Moss</th>
+      <td>196016.5</td>
+      <td>27500.000000</td>
+      <td>1.250000</td>
+    </tr>
+<tr>
+<th>Wendy Yule</th>
+      <td>614061.5</td>
+      <td>44250.000000</td>
+      <td>3.000000</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Name은 빼고, Manager와 Rep만 사용하면, 먼저 언급한 Manger를 중복된 것을 정리하면 위와 같이 되고, 그 안에 Rep을 각각 표현해주고 있습니다.</span>
+<span class="c1"># values 옵션을 사용해서 Price만 표현되도록 할 수 있습니다.</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Manager'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">],</span> <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Price'</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+      <th></th>
+      <th>Price</th>
+    </tr>
+<tr>
+<th>Manager</th>
+      <th>Rep</th>
+      <th></th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="3" valign="top">Debra Henley</th>
+      <th>Craig Booker</th>
+      <td>20000.000000</td>
+    </tr>
+<tr>
+<th>Daniel Hilton</th>
+      <td>38333.333333</td>
+    </tr>
+<tr>
+<th>John Smith</th>
+      <td>20000.000000</td>
+    </tr>
+<tr>
+<th rowspan="2" valign="top">Fred Anderson</th>
+      <th>Cedric Moss</th>
+      <td>27500.000000</td>
+    </tr>
+<tr>
+<th>Wendy Yule</th>
+      <td>44250.000000</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 이제 aggfunc 옵션을 사용해서 기본적으로 평균값을 표현하던 것을 np.sum을 이용해서 합계를 표현하도록 할 수 있습니다.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Manager'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">],</span> <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Price'</span><span class="p">],</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span> <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+      <th></th>
+      <th>Price</th>
+    </tr>
+<tr>
+<th>Manager</th>
+      <th>Rep</th>
+      <th></th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="3" valign="top">Debra Henley</th>
+      <th>Craig Booker</th>
+      <td>80000</td>
+    </tr>
+<tr>
+<th>Daniel Hilton</th>
+      <td>115000</td>
+    </tr>
+<tr>
+<th>John Smith</th>
+      <td>40000</td>
+    </tr>
+<tr>
+<th rowspan="2" valign="top">Fred Anderson</th>
+      <th>Cedric Moss</th>
+      <td>110000</td>
+    </tr>
+<tr>
+<th>Wendy Yule</th>
+      <td>177000</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 또한 이제 aggfunc 옵션을 사용해서 기본적으로 평균값을 표현하던 것을 np.sum을 이용해서 합계를 표현하도록 할 수 있습니다.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Manager'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">],</span> <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Price'</span><span class="p">],</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr>
+<th></th>
+      <th></th>
+      <th>sum</th>
+      <th>mean</th>
+    </tr>
+<tr>
+<th></th>
+      <th></th>
+      <th>Price</th>
+      <th>Price</th>
+    </tr>
+<tr>
+<th>Manager</th>
+      <th>Rep</th>
+      <th></th>
+      <th></th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="3" valign="top">Debra Henley</th>
+      <th>Craig Booker</th>
+      <td>80000</td>
+      <td>20000.000000</td>
+    </tr>
+<tr>
+<th>Daniel Hilton</th>
+      <td>115000</td>
+      <td>38333.333333</td>
+    </tr>
+<tr>
+<th>John Smith</th>
+      <td>40000</td>
+      <td>20000.000000</td>
+    </tr>
+<tr>
+<th rowspan="2" valign="top">Fred Anderson</th>
+      <th>Cedric Moss</th>
+      <td>110000</td>
+      <td>27500.000000</td>
+    </tr>
+<tr>
+<th>Wendy Yule</th>
+      <td>177000</td>
+      <td>44250.000000</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     </div>
   </div>

@@ -25,6 +25,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NHHK2BF');</script><meta name="author" content="Taeyoon">
+<link rel="prev" href="../linux-trouble-shooting/" title="Linux trouble shooting" type="text/html">
 <link rel="next" href="../PCR/" title="PCR(polymerase chain reaction)" type="text/html">
 <meta property="og:site_name" content="Biohacker">
 <meta property="og:title" content="ReStructuredText Demo">
@@ -978,24 +979,24 @@ Double-dashes - - "- -" - - must be escaped somehow in HTML output. -->
 <h3><a class="toc-backref" href="#id61">3.1   Code Blocks</a></h3>
 <p>Here's a neat implementation of the Sieve of Eratosthenes.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_cfa740570e6249f8b7d9be594329c043-1">1</a>
-<a href="#rest_code_cfa740570e6249f8b7d9be594329c043-2">2</a>
-<a href="#rest_code_cfa740570e6249f8b7d9be594329c043-3">3</a>
-<a href="#rest_code_cfa740570e6249f8b7d9be594329c043-4">4</a>
-<a href="#rest_code_cfa740570e6249f8b7d9be594329c043-5">5</a>
-<a href="#rest_code_cfa740570e6249f8b7d9be594329c043-6">6</a>
-<a href="#rest_code_cfa740570e6249f8b7d9be594329c043-7">7</a>
-<a href="#rest_code_cfa740570e6249f8b7d9be594329c043-8">8</a>
-<a href="#rest_code_cfa740570e6249f8b7d9be594329c043-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_cfa740570e6249f8b7d9be594329c043-1"></a><span class="k">def</span> <span class="nf">sieve_of_eratosthenes</span><span class="p">():</span>
-<a name="rest_code_cfa740570e6249f8b7d9be594329c043-2"></a>    <span class="n">factors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
-<a name="rest_code_cfa740570e6249f8b7d9be594329c043-3"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-<a name="rest_code_cfa740570e6249f8b7d9be594329c043-4"></a>        <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
-<a name="rest_code_cfa740570e6249f8b7d9be594329c043-5"></a>            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<a name="rest_code_cfa740570e6249f8b7d9be594329c043-6"></a>                <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<a name="rest_code_cfa740570e6249f8b7d9be594329c043-7"></a>        <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_cfa740570e6249f8b7d9be594329c043-8"></a>            <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<a name="rest_code_cfa740570e6249f8b7d9be594329c043-9"></a>            <span class="k">yield</span> <span class="n">n</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_94359916841a42498b99ff5b775fe2a1-1">1</a>
+<a href="#rest_code_94359916841a42498b99ff5b775fe2a1-2">2</a>
+<a href="#rest_code_94359916841a42498b99ff5b775fe2a1-3">3</a>
+<a href="#rest_code_94359916841a42498b99ff5b775fe2a1-4">4</a>
+<a href="#rest_code_94359916841a42498b99ff5b775fe2a1-5">5</a>
+<a href="#rest_code_94359916841a42498b99ff5b775fe2a1-6">6</a>
+<a href="#rest_code_94359916841a42498b99ff5b775fe2a1-7">7</a>
+<a href="#rest_code_94359916841a42498b99ff5b775fe2a1-8">8</a>
+<a href="#rest_code_94359916841a42498b99ff5b775fe2a1-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_94359916841a42498b99ff5b775fe2a1-1"></a><span class="k">def</span> <span class="nf">sieve_of_eratosthenes</span><span class="p">():</span>
+<a name="rest_code_94359916841a42498b99ff5b775fe2a1-2"></a>    <span class="n">factors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+<a name="rest_code_94359916841a42498b99ff5b775fe2a1-3"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_94359916841a42498b99ff5b775fe2a1-4"></a>        <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
+<a name="rest_code_94359916841a42498b99ff5b775fe2a1-5"></a>            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_94359916841a42498b99ff5b775fe2a1-6"></a>                <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<a name="rest_code_94359916841a42498b99ff5b775fe2a1-7"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_94359916841a42498b99ff5b775fe2a1-8"></a>            <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a name="rest_code_94359916841a42498b99ff5b775fe2a1-9"></a>            <span class="k">yield</span> <span class="n">n</span>
 </pre></td>
 </tr></table>
 </div>
@@ -1072,7 +1073,10 @@ Duplicate target name, cannot be used as a unique reference: "duplicate target n
 <li><a class="tag p-category" href="../../categories/demo/" rel="tag">demo</a></li>
         </ul>
 <ul class="pager hidden-print">
-<li class="next">
+<li class="previous">
+                <a href="../linux-trouble-shooting/" rel="prev" title="Linux trouble shooting">Previous post</a>
+            </li>
+            <li class="next">
                 <a href="../PCR/" rel="next" title="PCR(polymerase chain reaction)">Next post</a>
             </li>
         </ul></nav></aside></article>

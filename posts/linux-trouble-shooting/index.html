@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="리눅스 문제 해결">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux trouble shooting | Biohacker</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#083551">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://partrita.github.io/posts/linux-trouble-shooting/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="../../assets/css/tipuesearch.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<meta name="naver-site-verification" content="d38b92eb0fc0075616e5ff8008f707087bfee65e">
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-111815051-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111815051-1');
+</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NHHK2BF');</script><meta name="author" content="Taeyoon">
+<link rel="prev" href="../python-pow/" title="파이썬으로 제곱근 계산" type="text/html">
+<link rel="next" href="../restructuredtext-demo/" title="ReStructuredText Demo" type="text/html">
+<meta property="og:site_name" content="Biohacker">
+<meta property="og:title" content="Linux trouble shooting">
+<meta property="og:url" content="https://partrita.github.io/posts/linux-trouble-shooting/">
+<meta property="og:description" content="리눅스 문제 해결">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-10-11T11:11:03+09:00">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="trouble">
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-default navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://partrita.github.io/">
+
+                <span id="blog-title">Biohacker</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/about/">About</a>
+                </li>
+<li>
+<a href="../../pages/resume/index.html">Resume</a>
+                </li>
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<span class="navbar-form navbar-right">
+<input type="text" id="tipue_search_input" class="form-control" placeholder="Search"></span>
+
+            <ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Linux trouble shooting</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Taeyoon
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2015-10-11T11:11:03+09:00" itemprop="datePublished" title="2015-10-11 11:11">2015-10-11 11:11</time></a></p>
+            
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<h2>리눅스 해상도 문제 해결하기</h2>
+<p>구형 컴퓨터에 리눅스(리눅스 민트)를 설치하였습니다. 저해상도로 고정되는 경우는 처음이었는데, 검색을 통해 아래와 같은 방법으로 해결했습니다.</p>
+<ol>
+<li>먼저 아래와 터미널에 아래와 같은 명령어를 칩니다. (예시로 1600×900을 사용했는데, 원하는 비율로 변경하시면 됩니다.)</li>
+</ol>
+<pre class="code literal-block"><span></span>cvt <span class="m">1600</span> <span class="m">900</span>
+</pre>
+
+
+<pre class="code literal-block"><span></span><span class="nt">1600x900</span> <span class="nt">59</span><span class="p">.</span><span class="nc">95</span> <span class="nt">Hz</span> <span class="o">(</span><span class="nt">CVT</span> <span class="nt">1</span><span class="p">.</span><span class="nc">44M9</span><span class="o">)</span> <span class="nt">hsync</span><span class="o">:</span> <span class="nt">55</span><span class="p">.</span><span class="nc">99</span> <span class="nt">kHz</span><span class="o">;</span> <span class="nt">pclk</span><span class="o">:</span> <span class="nt">118</span><span class="p">.</span><span class="nc">25</span> <span class="nt">MHz</span>
+<span class="nt">Modeline</span> <span class="s2">"1600x900_60.00"</span> <span class="nt">118</span><span class="p">.</span><span class="nc">25</span> <span class="nt">1600</span> <span class="nt">1696</span> <span class="nt">1856</span> <span class="nt">2112</span> <span class="nt">900</span> <span class="nt">903</span> <span class="nt">908</span> <span class="nt">934</span> <span class="nt">-hsync</span> <span class="o">+</span><span class="nt">vsync</span>
+</pre>
+
+
+<ol>
+<li>위에서 얻은 결과를 참고해 모니터 설정을 추가 합니다. 위의 결과의 뒷부분을 복사해서 붙여넣으면 됩니다.<ul>
+<li>모니터 마다 결과가 다르니 꼭 1번단계를 통해 직접 명령어를 만들어야 합니다.</li>
+</ul>
+</li>
+</ol>
+<pre class="code literal-block"><span></span>xrandr --newmode <span class="s2">"1600x900_60.00"</span> <span class="m">118</span>.25 <span class="m">1600</span> <span class="m">1696</span> <span class="m">1856</span> <span class="m">2112</span> <span class="m">900</span> <span class="m">903</span> <span class="m">908</span> <span class="m">934</span> -hsync +vsync
+<span class="c1"># 새로운 모드를 만들고 아래와 같이 추가해줍니다.</span>
+xrandr --addmode VGA1 <span class="s2">"1600x900_60.00"</span>
+</pre>
+
+
+<p>면이 깜박이면서 1600×900해상도가 새롭게 생깁니다. 하지만 재부팅을하면 다시 복구가 되므로 매번 명령어를 입력하는 불편이 있습니다.</p>
+<ol>
+<li>쉘 스크립트(fix-resolution.sh)를 작성합니다. 텍스트에디터로 만들어서 확장자만 변경하시면 됩니다.</li>
+</ol>
+<pre class="code literal-block"><span></span><span class="ch">#!/bin/sh</span>
+<span class="c1"># fix-resolution.sh</span>
+xrandr --newmode <span class="s2">"1600x900_60.00"</span> <span class="m">118</span>.25 <span class="m">1600</span> <span class="m">1696</span> <span class="m">1856</span> <span class="m">2112</span> <span class="m">900</span> <span class="m">903</span> <span class="m">908</span> <span class="m">934</span> -hsync +vsync
+xrandr --addmode VGA1 <span class="s2">"1600x900_60.00"</span>
+xrandr --output VGA1 --mode <span class="s2">"1600x900_60.00"</span>
+</pre>
+
+
+<ol>
+<li>fix-resolution.desktop라는 파일도 만들어 줍니다.</li>
+</ol>
+<pre class="code literal-block"><span></span><span class="c1"># fix-resolution.desktop</span>
+<span class="o">[</span>Desktop Entry<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>Application
+<span class="nv">Name</span><span class="o">=</span>fix-resolution.desktop
+<span class="nv">Exec</span><span class="o">=</span>/usr/local/bin/fix-resolution.sh
+</pre>
+
+
+<ol>
+<li>두개의 파일이 들어있는 디렉토리에서 터미널을 열고 다음의 명령어를 입력 합니다.</li>
+</ol>
+<pre class="code literal-block"><span></span>cp fix-resolution.sh /usr/local/bin
+chmod +x /usr/local/bin/fix-resolution.sh
+cp fix-resolution.desktop /etc/xdg/autostart
+</pre>
+
+
+<p>파일을 복사해서 옮겨주는 것이라서, 생성하신 파일은 이제 삭제하셔도 됩니다.</p>
+<h2>자주 사용하는 커맨드 Alias 만들기</h2>
+<p>터미널을 자주 사용하다보면 명령어 입력이 번거로울 때가 있습니다. 이럴 때를 위해서 Bash shell에서는 <code>Alias</code>라는 기능을 제공하고 있습니다. 기능을 사용하기 위해서는 <code>~/.bashrc</code> 파일의 수정이 필요합니다.</p>
+<ol>
+<li>bashrc 파일 열기</li>
+</ol>
+<pre class="code literal-block"><span></span>nano ~/.bashrc
+</pre>
+
+
+<p>nano 에디터로 파일을 열어줍니다.</p>
+<ol>
+<li>Alias 명령어 추가하기
+Alias 사용법은 다음과 같습니다. </li>
+</ol>
+<pre class="code literal-block"><span></span>alias l="ls -a"
+</pre>
+
+
+<p>‘l’을 치면 ‘ls -a’랑 같은 효과가 나도록 설정하였습니다. 이제 Ctrl+x를 눌러 파일을 저장합니다.</p>
+<ol>
+<li>Bash shell 재실행
+저장한 내용을 적용하기 위해 shell을 다시 실행 해야합니다.</li>
+</ol>
+<pre class="code literal-block"><span></span><span class="nb">source</span> .bashrc
+</pre>
+
+
+<p>이제 'l'을 누르면 적용이 된것을 확인 할 수 있습니다.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/linux/" rel="tag">Linux</a></li>
+            <li><a class="tag p-category" href="../../categories/trouble/" rel="tag">trouble</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../python-pow/" rel="prev" title="파이썬으로 제곱근 계산">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../restructuredtext-demo/" rel="next" title="ReStructuredText Demo">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2018         <a href="mailto:partrita@gmail.com">Taeyoon</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Search Results:</h4>
+      </div>
+      <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var siteUrl = "https://partrita.github.io/"
+$(document).ready(function() {
+    $.when(
+        $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
+        $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
+        $.Deferred(function( deferred ){
+            $( deferred.resolve );
+        })
+    ).done(function() {
+        $('#tipue_search_input').tipuesearch({
+            'mode': 'json',
+            'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
+        });
+        $('#tipue_search_input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $('#search-results').modal()
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about prediction)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/prediction.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Mon, 22 Jan 2018 09:37:57 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>당뇨병 예측하기</title><link>https://partrita.github.io/posts/ML-by-Keras/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about prediction)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/prediction.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Mon, 16 Apr 2018 02:53:13 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>당뇨병 예측하기</title><link>https://partrita.github.io/posts/ML-by-Keras/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -7,7 +7,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;a href="https://www.reddit.com/r/Python/comments/7rppky/learn_how_to_create_a_neural_network_that/"&gt;Reddit&lt;/a&gt; 에서 흥미로운 글을 봤어요. 인공신경망을 이용해서 당뇨를 예측하는 튜토리얼이었죠. &lt;strong&gt;파이썬&lt;/strong&gt;을 이용해서 &lt;strong&gt;15줄&lt;/strong&gt;의 코드가 전부였습니다.&lt;/p&gt;
-&lt;h2 id="기계학습이라고?"&gt;기계학습이라고?&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9D%BC%EA%B3%A0?"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;2016년도 이세돌을 이겼던 &lt;strong&gt;AlphaGO&lt;/strong&gt;를 기억하시나요? AlphaGO라는 인공지능을 바로 기계학습으로 만들었습니다.&lt;/p&gt;
+&lt;h2 id="0.-기계학습이라고?"&gt;0. 기계학습이라고?&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#0.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9D%BC%EA%B3%A0?"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;2016년도 이세돌을 이겼던 &lt;strong&gt;AlphaGO&lt;/strong&gt;를 기억하시나요? AlphaGO라는 인공지능을 바로 기계학습으로 만들었습니다.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;기계 학습 또는 머신 러닝(영어: machine learning)은 인공 지능의 한 분야로, 컴퓨터가 학습할 수 있도록 하는 알고리즘과 기술을 개발하는 분야를 말한다. 가령, 기계 학습을 통해서 수신한 이메일이 스팸인지 아닌지를 구분할 수 있도록 훈련할 수 있다.    - wikipedia&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;모든 경우의 수를 사람이 코딩할 필요가 없이 최소한의 것만 해주면, 인공 지능이 알아서 한다. 그것이 기계학습의 매력이죠. 기계학습에도 여러 종류가 있습니다. 우리가 이번에 사용할 것은 인공 신경망이라는 것입니다.&lt;/p&gt;
@@ -15,7 +15,7 @@
 &lt;blockquote&gt;&lt;p&gt;인공신경망(artificial neural network, ANN)은 기계학습과 인지과학에서 생물학의 신경망(동물의 중추신경계중 특히 뇌)에서 영감을 얻은 통계학적 학습 알고리즘이다. - wikipedia&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;어떻게 인공신경망을 만드냐고요? 파이썬에는 이미 기계학습에 사용되는 프레임워크(예를 들면 &lt;em&gt;TensorFlow&lt;/em&gt;)가 존재해서, 우리는 그냥 쓰기만 하면되요!&lt;/p&gt;
-&lt;h2 id="Keras를-사용할-거에요."&gt;Keras를 사용할 거에요.&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#Keras%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%A0-%EA%B1%B0%EC%97%90%EC%9A%94."&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://s3.amazonaws.com/keras.io/img/keras-logo-2018-large-1200.png" alt="keras"&gt;&lt;/p&gt;
+&lt;h2 id="1.-Keras를-사용할-거에요."&gt;1. Keras를 사용할 거에요.&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#1.-Keras%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%A0-%EA%B1%B0%EC%97%90%EC%9A%94."&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://s3.amazonaws.com/keras.io/img/keras-logo-2018-large-1200.png" alt="keras"&gt;&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano. It was developed with a focus on enabling fast experimentation.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Keras는 다음과 같은 특징이 있습니다.&lt;/p&gt;
@@ -40,7 +40,7 @@
 &lt;li&gt;당뇨병 여부 (0 or 1; 1은 발병)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id="출처"&gt;출처&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EC%B6%9C%EC%B2%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;원작자의 코드를 확인하고 싶다면 다음 &lt;a href="https://github.com/jg-fisher/diabetesNeuralNetwork"&gt;링크&lt;/a&gt;를 확인하세요.&lt;/p&gt;
-&lt;h2 id="이제-실습을-해봅시다."&gt;이제 실습을 해봅시다.&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EC%9D%B4%EC%A0%9C-%EC%8B%A4%EC%8A%B5%EC%9D%84-%ED%95%B4%EB%B4%85%EC%8B%9C%EB%8B%A4."&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="2.-이제-실습을-해봅시다."&gt;2. 이제 실습을 해봅시다.&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#2.-%EC%9D%B4%EC%A0%9C-%EC%8B%A4%EC%8A%B5%EC%9D%84-%ED%95%B4%EB%B4%85%EC%8B%9C%EB%8B%A4."&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -161,7 +161,7 @@ acc: 87.89%
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;우리의 모델이 학습결과 &lt;strong&gt;87.89%&lt;/strong&gt; 라는 정확도를 가지게 되었습니다.&lt;/p&gt;
-&lt;h3 id="시각화하기"&gt;시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이제 다 끝났습니다. 다음으로는 &lt;strong&gt;Keras&lt;/strong&gt;가 학습을 반복할 때마다 정확도가 얼마나 올라가는지 시각화를 해보겠습니다.&lt;/p&gt;
+&lt;h2 id="2.-시각화하기"&gt;2. 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이제 다 끝났습니다. 다음으로는 &lt;strong&gt;Keras&lt;/strong&gt;가 학습을 반복할 때마다 정확도가 얼마나 올라가는지 시각화를 해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -226,7 +226,7 @@ acc: 87.89%
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;결과를 보니, 한 800번 정도 학습하면 꽤 정확한 모델을 얻을 수 있네요.&lt;/p&gt;
-&lt;h2 id="마치며,"&gt;마치며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;모델을 만들었다면, 이제 모델을 유용하게 사용할 시간입니다. 가상의 환자 데이터를 만들어 그 환자가 당뇨에 걸릴 확률을 알아보겠습니다.&lt;/p&gt;
+&lt;h2 id="3.-마치며,"&gt;3. 마치며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#3.-%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;모델을 만들었다면, 이제 모델을 유용하게 사용할 시간입니다. 가상의 환자 데이터를 만들어 그 환자가 당뇨에 걸릴 확률을 알아보겠습니다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;patient_1&lt;/code&gt; 는&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;임신한 적 없음&lt;/li&gt;
@@ -292,7 +292,7 @@ acc: 87.89%
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</description><category>machine learning</category><category>prediction</category><guid>https://partrita.github.io/posts/ML-by-Keras/</guid><pubDate>Sun, 21 Jan 2018 09:07:20 GMT</pubDate></item><item><title>Prediction of peptide-MHC class I binding</title><link>https://partrita.github.io/posts/netMHC/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+</description><category>KERAS</category><category>machine learning</category><category>prediction</category><category>Python</category><category>당뇨병</category><guid>https://partrita.github.io/posts/ML-by-Keras/</guid><pubDate>Sun, 21 Jan 2018 09:07:20 GMT</pubDate></item><item><title>면역원성(Immunogenicity) 예측하기</title><link>https://partrita.github.io/posts/netMHC/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -628,8 +628,7 @@ acc: 87.89%
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;blockquote&gt;&lt;p&gt;실제로는 아래와 같이 하드코딩을 통해서 진행을 해버렸습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;실제로는 아래와 같이 하드코딩을 통해서 진행을 해버렸습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
