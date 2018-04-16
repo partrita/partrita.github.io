@@ -5,5 +5,6 @@
 - [ x ] CSS 수정
 - [ ] Wordpress migration
 - [ x ] Title 바꾸기
-- [ ] Tag 수정
-- [ ] category 수정
+- [ x ] Tag 수정
+- [ x ] category 수정
+  + 좀 더 다듬어야 할 것 같다

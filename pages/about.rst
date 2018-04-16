@@ -9,7 +9,9 @@
 
 
 .. image:: https://pictogram-illustration.com/material/069-pictogram-illustration.jpg
-
+   :align: center
+   :height: 350 px
+   :width: 500 px
 
 *Image from pictogram-illustration.com*
 
@@ -40,10 +42,31 @@
 
 제가 사용하는 환경에 대해서 간략히 적어볼게요.
 
-- 사용하는 OS는 ``Windows`` 와 ``Linux (Ubuntu)`` 입니다. Linux 중에서도 Ubuntu를 좀 더 선호하죠, 이쁘잖아요. 
+- 사용하는 OS는 Windows [#]_ 와 Linux [#]_ 입니다. Linux 중 에서도 Ubuntu를 좀 더 선호하죠, 이쁘잖아요. 
 - 코딩할 때는 `Visual studio code <https://code.visualstudio.com/>`_ 를 쓰고, 파이펫팅 할 때는 `Eppendorf 파이펫 <https://www.pipette.com/eppendorfpipettes>`_ 을 씁니다, 가볍거든요.  
 - 주로 쓰는 프로그래밍 언어는 `Python <https://www.python.org/>`_ 이고 `R <https://www.r-project.org/>`_ 과 `Julia <https://julialang.org/>`_ 를 공부하고 있습니다.
-- 이 블로그는 ``Github`` 에서 호스팅되고, Static site generator 인 ``Nikola`` 를 사용했습니다. 자세한 것은 `링크 <http://partrita.github.io/posts/nikola-for-jupyer-blog/>`_ 를 참고 하세요.
+- 이 블로그는 Github 에서 **무료** 호스팅되고, Static site generator 인 **Nikola** 를 사용했습니다. 
+
+---------------------------------------
+
+왜 블로그를 하는가?
+-------------------
+
+오래전부터(아마도 2006년) 존재감 없는 블로깅을 계속해 왔습니다. 제가 기억하는 선에서 한번 나열해보죠.
+
+- http://netsphere.codex.kr/ : 호스팅 업체가 망해버렸습니다.
+- http://partrita.posterous.com/ : 서비스가 종료되었습니다.
+- https://partrita.blogspot.kr/ : 구글검색어 노출에 유리 [#]_ 했지만, 제약이 많아서 워드프레스로 이사
+- https://partrita.wordpress.com/ : 처음에는 설치형을 사용하다. 무료호스팅을 제공하는 *wordpress.com* 으로 이사했습니다.
+- https://partrita.github.io/ : 워드프레스가 시들해지고, 게으른 블로깅을 위해 이전했습니다.
+
+여러번 이전을 하면서 과거의 글은 소실(나중에 보니 부끄러워 삭제)되었네요. 뭐 괜찮습니다, 제가 블로그를 하는 이유도 명확하지 않거든요. 그냥 재미로 하는 겁니다.
+
+Nikola 블로그
+-----------------------
+Static site generator 중에 가장 유명한건 'Jekyll <https://jekyllrb-ko.github.io/>'_ 입니다. 저도 처음에는 Jekyll을 사용했습니다. 그러다 'Nikola <https://getnikola.com/>'_ 를 발견했고 Jupyter notebook 포스팅을 제공 한다는 사실을 알았죠. 저는 주로 Jupyter notebook에 코딩을 하기 때문에 이점은 너무나도 편리했습니다.  
+
+저처럼 Jupyter notebook으로 블로그 포스트를 작성하고 싶으신 분들은 `설치 가이드 <http://partrita.github.io/posts/nikola-for-jupyer-blog/>`_ 를 참고 하세요.
 
 ---------------------------------------
 
@@ -56,8 +79,10 @@
 만약 저작권을 침해한 것이 있다면 이메일 [#]_ 으로 연락 주시면 바로 처리하겠습니다.
 
 
-
 -----------------------------------------------
 
+.. [#] 거의 반강제적으로 사용하는거라 좋아하진 않습니다. 보통 업무용입니다.
+.. [#] 리누스 토발즈가 개발한 컴퓨터 운영 체제.
+.. [#] 블로거 서비스가 구글에 인수되었습니다.
 .. [#] partrita@gmail.com
 
