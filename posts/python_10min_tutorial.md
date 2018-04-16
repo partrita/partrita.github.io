@@ -164,134 +164,165 @@ while rangelist[1] == 1:
 
 함수는 `def` 키워드를 이용하여 선언한다. 함수의 인자중, 반드시 필요한 인자를 먼저 나열하고, 선택적 인자들을 그 후에 나열한다. 선택적 인자들에게는 기본값을 설정한다. 여러개의 값을 한꺼번에 tuple 로 리턴할 수 있다. Lambda 함수는 선언없이, 필요할 때 정의해서 사용하는 함수다. 인자는 레퍼런스 (참조) 로 전달된다. (역주: C++ 의 포인터가 카피되어 전달된다고 보면 된다, 전달된 변수를 수정하는 것이아니라, 새로운 값을 할당하면, 함수 바깥쪽에서는 이 변화는 인지하지 못한다.) 하지만 전달 받은 immutable 타입들 (튜플, int, string 등등) 은 참조로 전달되었다고 하더라도, 수정할 수 없다.
 
-```bash
+```python
 # 다음 문장은 def funcvar(x): return x + 1 와 같다.
 funcvar = lambda x: x + 1
->>> print funcvar(1)
-2
+print funcvar(1)
+```
+    2
 
+```python
 # an_int 와 a_string 은 선택적 인자로 기본값을 가진다.
 def passing_example(a_list, an_int=2, a_string="A default string"):
-a_list.append("A new item")
-an_int = 4
-return a_list, an_int, a_string
+    a_list.append("A new item")
+    an_int = 4
+    return a_list, an_int, a_string
 
->>> my_list = [1, 2, 3]
->>> my_int = 10
->>> print passing_example(my_list, my_int)
-([1, 2, 3, 'A new item'], 4, "A default string")
->>> my_list
-[1, 2, 3, 'A new item']
->>> my_int
-10
-
+my_list = [1, 2, 3]
+my_int = 10
+print passing_example(my_list, my_int)
 ```
+    ([1, 2, 3, 'A new item'], 4, "A default string")
 
-## Classes
+```python
+my_list
+```
+    [1, 2, 3, 'A new item']
+
+```python
+my_int
+```
+    10
+
+# 클래스(Classes)
 
 파이썬은 제한적으로 다중 상속을 지원한다. private 변수와, 함수는 앞에 __ 을 붙인다. 관습일 뿐이며, python 언어 자체는 private 이란 개념이 없다.
 
-```bash
+```python
 # 클래스 객체를 만든다.
 class MyClass(object):
-common = 10
-def __init__(self):
-self.myvariable = 3
-def myfunction(self, arg1, arg2):
-return self.myvariable
+    common = 10
+    def __init__(self):
+        self.myvariable = 3
+    def myfunction(self, arg1, arg2):
+        return self.myvariable
+classinstance = MyClass()
+classinstance.myfunction(1, 2)
+```
+    3
 
->>> classinstance = MyClass()
-
->>> classinstance.myfunction(1, 2)
-3
+```python
 # 객체에서도 common 속성을 사용할 수 있다.
->>> classinstance2 = MyClass()
->>> classinstance.common
-10
->>> classinstance2.common
-10
-# 클래스 변수를 변경한다
->>> MyClass.common = 30
->>> classinstance.common
-30
->>> classinstance2.common
-30
-# classinstance 객체에 common 이라는 속성을 생성하고, 값을 준다
->>> classinstance.common = 10
->>> classinstance.common
-10
->>> classinstance2.common
-30
->>> MyClass.common = 50
-# classinstance.common 은 객체의 속성이기 때문에 변하지 않는다.
->>> classinstance.common
-10
->>> classinstance2.common
-50
+classinstance2 = MyClass()
+classinstance.common
+```
+    10
 
+```python
+classinstance2.common
+```
+    10
+
+```python
+# 클래스 변수를 변경한다
+MyClass.common = 30
+classinstance.common
+```
+    30
+
+```python
+classinstance2.common
+```
+    30
+
+```python
+# classinstance 객체에 common 이라는 속성을 생성하고, 값을 준다
+classinstance.common = 10
+classinstance.common
+```
+    10
+```python
+classinstance2.common
+```
+    30
+```python
+MyClass.common = 50
+# classinstance.common 은 객체의 속성이기 때문에 변하지 않는다.
+classinstance.common
+```
+    10
+```python
+classinstance2.common
+```
+    50
+
+```python
 # MyClass 클래스를 상속받는다.
 # class OtherClass(MyClass1, MyClass2, MyClassN) 형태로 다중상속 받을 수 있다.
 class OtherClass(MyClass):
-# "self" 인자는 자동으로 넘어오는 인자로 객체 자신을 가리킨다.
-# 즉 self 를 이용하여 다음처럼 객체를 변경할 수 있다.
-def __init__(self, arg1):
-self.myvariable = 3
-print arg1
+    # "self" 인자는 자동으로 넘어오는 인자로 객체 자신을 가리킨다.
+    # 즉 self 를 이용하여 다음처럼 객체를 변경할 수 있다.
+    def __init__(self, arg1):
+        self.myvariable = 3
+        print arg1
 
->>> classinstance = OtherClass("hello")
-hello
->>> classinstance.myfunction(1, 2)
-3
+classinstance = OtherClass("hello")
+```
+    hello
+
+```python
+classinstance.myfunction(1, 2)
+```
+    3
+
+```python
 # 이 클래스는 test 라는 변수를 정의한적이 없다.
 # 하지만 다음 처럼 그냥 만들수 있다.
->>> classinstance.test = 10
->>> classinstance.test
-10
-
+classinstance.test = 10
+classinstance.test
 ```
+    10
 
-## Exceptions
 
-try-exept [exceptionname] 형태로 exception 을 처리한다:
+## 예외 처리(Exceptions)
+`try-exept [exceptionname]` 형태로 처리합니다.
 
-```bash
+```python
 def some_function():
-try:
-# 0 으로 나눠서 exception 을 발생시킨다.
-10 / 0
-except ZeroDivisionError:
-print "Oops, invalid."
-else:
-# Exception 이 발생하지 않으면 일로 온다.
-pass
-finally:
-# 위 코드들이 실행된 후에, 여기 finally 안의 코드들이 실행된다.
-print "We're done with that."
+    try:
+        # 0 으로 나눠서 exception 을 발생시킨다.
+        10 / 0
+    except ZeroDivisionError:
+        print "Oops, invalid."
+    else:
+        # Exception 이 발생하지 않으면 다음을 실행.
+        pass
+    finally:
+        # 위 코드들이 실행된 후에, 여기 finally 안의 코드들이 실행된다.
+        print "We're done with that."
 
->>> some_function()
-Oops, invalid.
-We're done with that.
-Importing
-
+some_function()
 ```
+    Oops, invalid.
+    We're done with that.
+    Importing
 
-라이브러리를 import [library_name] 으로 불러와 사용할 수 있다. from [library_name] import [name] 으로 라이브러리의 특정 이름만 가져올 수 있다:
+라이브러리를 `import [library_name]` 으로 불러와 사용할 수 있다. `from [library_name] import [name]` 으로 라이브러리의 특정 이름만 가져올 수 있습니다.
 
-```bash
+```python
 import random # random library 를 불러온다
 from time import clock # time 라이브러리의 clock 함수를 가져온다.
 
 randomint = random.randint(1, 100)
->>> print randomint
-64
-
+print randomint
 ```
+    64
 
-## File I/O
+## 파일 입출력(File I/O)
 
 파이썬은 다수의 내장 라이브러리를 제공한다. 다음 예제는 pickle 라이브러리를 이용하여 데이터를 serialize 하여 파일로 저장하는 것을 보여준다.
 
-```bash
+```python
 import pickle
 mylist = ["This", "is", 4, 13327]
 # C:binary.dat 파일을 쓰기 모드로 연다.
@@ -304,9 +335,12 @@ myfile.close()
 myfile = open(r"C:binary.dat")
 loadedlist = pickle.load(myfile)
 myfile.close()
->>> print loadedlist
-['This', 'is', 4, 13327]
 
+print loadedlist
+```
+    ['This', 'is', 4, 13327]
+
+```python
 # 텍스트 파일에 데이터를 저장한다
 myfile = open(r"C:text.txt", "w")
 myfile.write("This is a sample string")
@@ -316,34 +350,40 @@ myfile = open(r"C:text.txt")
 >>> print myfile.read()
 'This is a sample string'
 myfile.close()
-
 ```
 
-## Miscellaneous
+## 기타기능(Miscellaneous)
 
-1 < a < 3 같은 조건을 사용할 수 있다. del 키워드를 이용하여, 변수를 삭제하거나, 배열의 아이템을 삭제한다. list comprehension 을 이용하여 리스트를 만들 수 있다. list comprehension 은 for 와 if 문을 내부에 사용한다.
+1 < a < 3 같은 조건을 사용할 수 있다. `del` 키워드를 이용하여, 변수를 삭제하거나, 배열의 아이템을 삭제한다. list comprehension 을 이용하여 리스트를 만들 수 있다. list comprehension 은 `for` 와 `if` 문을 내부에 사용합니다.
 
-```bash
->>> lst1 = [1, 2, 3]
->>> lst2 = [3, 4, 5]
->>> print [x * y for x in lst1 for y in lst2]
-[3, 4, 5, 6, 8, 10, 9, 12, 15]
->>> print [x for x in lst1 if 4 > x > 1]
-[2, 3]
+```python
+lst1 = [1, 2, 3]
+lst2 = [3, 4, 5]
+print [x * y for x in lst1 for y in lst2]
+```
+    [3, 4, 5, 6, 8, 10, 9, 12, 15]
 
+```python
+print [x for x in lst1 if 4 > x > 1]
+```
+    [2, 3]
+
+```python
 # 원소 하나라도 true 인지 확인한다.
->>> any([i % 3 for i in [3, 3, 4, 4, 3]]) # any(0,0,1,1,0)
-True
-
-# Check for how many items a condition is true.
->>> sum(1 for i in [3, 3, 4, 4, 3] if i == 4)
-2
->>> del lst1[0]
->>> print lst1
-[2, 3]
->>> del lst1
-
+any([i % 3 for i in [3, 3, 4, 4, 3]]) # any(0,0,1,1,0)
 ```
+    True
+
+```python
+# Check for how many items a condition is true.
+sum(1 for i in [3, 3, 4, 4, 3] if i == 4)
+```
+    2
+```python
+del lst1[0]
+print lst1
+```
+    [2, 3]
 
 함수 바깥에 정의하는 변수는 글로벌 변수이다. 어디서도 이 변수를 접근할 수 있지만, 이 값을 함수내에서 변경할 때에는 global 키워드를 사용하여 선언해줘야 한다. 그렇지 않으면, 파이썬은 같은 이름의 새로운 로컬 변수를 만든다.
 
@@ -351,23 +391,22 @@ True
 number = 5
 
 def myfunc():
-# 5 를 출력한다.
-print number
+    # 5 를 출력한다.
+    print number
 
 def anotherfunc():
-# execption 을 발생시킨다:
-# 파이썬은 이 함수에서 number 가 사용될 것을 알고, 로컬 객체를 만든다.
-# 그런데 이 변수에 값을 설정하기 전에 print 하려고 해서 에러가 발생한다.
-print number
-number = 3
+    # execption 을 발생시킨다:
+    # 파이썬은 이 함수에서 number 가 사용될 것을 알고, 로컬 객체를 만든다.
+    # 그런데 이 변수에 값을 설정하기 전에 print 하려고 해서 에러가 발생한다.
+    print number
+    number = 3
 
 def yetanotherfunc():
-global number
-# global 변수를 수정한다.
-number = 3
-
+    global number
+    # global 변수를 수정한다.
+    number = 3
 ```
 
-## Epilogue
+# 마치며
 
-파이썬의 모든 것을 다룬 것은 물론 아니다. 파이썬은 방대한 라이브러리를 제공하며, 더 많은 내용을 배우려면 Dive Into Python 같이 좋은 책을 이용하기 바란다. python 을 접하는데 도움이 되었으면 한다.
+이 글은 파이썬의 모든 것을 다룬 것은 물론 아닙니다. 파이썬은 방대한 라이브러리를 제공하며, 더 많은 내용을 배우려면 *Dive Into Python* 같은 좋은 책을 이용하기 바랍니다. 다만 이 글이 파이썬 공부를 시작하는데 도움이 되었으면 합니다.

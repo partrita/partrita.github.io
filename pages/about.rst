@@ -66,6 +66,16 @@ Nikola 블로그
 -----------------------
 Static site generator 중에 가장 유명한건 'Jekyll <https://jekyllrb-ko.github.io/>'_ 입니다. 저도 처음에는 Jekyll을 사용했습니다. 그러다 'Nikola <https://getnikola.com/>'_ 를 발견했고 Jupyter notebook 포스팅을 제공 한다는 사실을 알았죠. 저는 주로 Jupyter notebook에 코딩을 하기 때문에 이점은 너무나도 편리했습니다.  
 
+장점:
+    - Jupyter notebook 포멧(*.ipynb)을 변경하지 않고 사용
+    - Python으로 작성되어 있어 가독성이 좋고 (내가) 편집이 쉽다 
+    - 여러가지 편리한 명령어를 지원한다. 예를 들면 `github_deploy`
+
+단점:
+    - 변환 속도가 상대적으로 느리다.(Hugo가 너무 빠른거 아닐까?)
+    - 많은 사람들이 사용하는 툴이 아니다.
+    - 점점 덩치가 커지고 있다.
+
 저처럼 Jupyter notebook으로 블로그 포스트를 작성하고 싶으신 분들은 `설치 가이드 <http://partrita.github.io/posts/nikola-for-jupyer-blog/>`_ 를 참고 하세요.
 
 ---------------------------------------
