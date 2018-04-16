@@ -89,12 +89,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/tidy-data/" class="u-url">깔끔한 데이터(Tidy data)</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/nikola-for-jupyer-blog/" class="u-url">Nikola for jupyer blog</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/tidy-data/" rel="bookmark"><time class="published dt-published" datetime="2018-01-19T08:21:32+09:00" title="2018-01-19 08:21">2018-01-19 08:21</time></a></p>
+            <p class="dateline"><a href="posts/nikola-for-jupyer-blog/" rel="bookmark"><time class="published dt-published" datetime="2017-12-14T11:57:23+09:00" title="2017-12-14 11:57">2017-12-14 11:57</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
@@ -105,377 +105,83 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="깔끔한-데이터(Tidy-data)란?">깔끔한 데이터(Tidy data)란?<a class="anchor-link" href="posts/tidy-data/#%EA%B9%94%EB%81%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(Tidy-data)%EB%9E%80?">¶</a>
+<p>몇 년전부터 <strong>Jupyter notebook</strong>작성한 것을 언젠가는 블로그에 올려야지 라는 생각은 하고 있었습니다. 하지만 기존에 가지고 있던 워드프레스 <a href="http://partrita.wordpress.com">블로그</a>에는 편집을 해서 올려야 했기에 너무나도 귀찮았습니다. 그러다가 최근에 <a href="https://getnikola.com/">Nikola</a>라는 툴을 알게 되면서 다시 블로깅을 하게 되었습니다. <strong>Nikola</strong>는 간단하게 말해서 HTML 페이지를 자동으로 만들어 줍니다. 제가 할일은 Jupyter notebook을 작성하기만 하면 되는거죠.</p>
+<h2 id="0.-환경-설정">0. 환경 설정<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#0.-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95">¶</a>
 </h2>
-<blockquote>
-<p>우리는 데이터 분석을 수행하면서 다양한 데이터 변환 작업을 수행하게 된다. 이는 데이터가 원래 특정 분석을 염두에 두고 만들어지는 경우가 거의 없기 때문이며, 사실 애초 데이터 설계를 할 때 분석 목적을 알기도 불가능하다는 게 가장 큰 원인이 아닐까 한다. 이런 연유로 전체 데이터 분석 작업에서 70% 혹은 80% 이상이 이런 데이터 변환 및 전처리 작업에서 소모된다. <a href="http://freesearch.pe.kr/archives/3942">1</a></p>
-</blockquote>
-<p>다른 사람들과 데이터(예를 들면 엑셀파일)를 주고 받다 보면 깨닫게 됩니다. 모든 사람의 생각은 다르다는 것을요.
-사람마다 (좋게 말하면) 각양각색으로 정리를 하다보니, 여러명이 작성한 엑셀 파일을 하나의 파일로 합치려 보면 결국에는 누군가가 새로 정리를 해야 하는 상황이 됩니다.</p>
-<p>Tidy data의 개념은 그런 상황을 방지하기 위해 <strong>Jeff Leek</strong>이 
-만들었습니다. 데이터 처리에 가장 많은 시간이 소요되는 전처리 과정을 줄여 보자, 그러기 위해 처음부터 데이터를 표준화해서 만들자는 것입니다. 처음부터 기본적인 규칙을 가지고 데이터를 만들면, 모두의 시간을 아낄 수 있으니까요.</p>
-<p>위키피디아에 따르면 Tidy data의 정의는 다음와 같습니다. "밑바닥 부터 시작할 필요 없는 데이터"</p>
-<blockquote>
-<p>Tidy data there’s no need to start from scratch. -from wiki</p>
-</blockquote>
-<h3 id="더-알아-보기">더 알아 보기<a class="anchor-link" href="posts/tidy-data/#%EB%8D%94-%EC%95%8C%EC%95%84-%EB%B3%B4%EA%B8%B0">¶</a>
+<p>먼저, <a href="https://anaconda.org/">Anaconda</a>가 이미 설치 되어있다고 가정하겠습니다. 설치되어 있지 않다면 검색을 통해 설치해주세요.</p>
+<h3 id="가상환경-만들고-실행하기">가상환경 만들고 실행하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
 </h3>
-<ul>
-<li>2014년도에 출판된 <a href="http://vita.had.co.nz/papers/tidy-data.pdf">논문</a> 입니다.</li>
-<li>데이터의 출처는 <a href="https://github.com/nickhould/tidy-data-python">이곳</a> 입니다. </li>
-</ul>
-<h3 id="깔끔한-데이터(Tidy-data)의-특징">깔끔한 데이터(Tidy data)의 특징<a class="anchor-link" href="posts/tidy-data/#%EA%B9%94%EB%81%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(Tidy-data)%EC%9D%98-%ED%8A%B9%EC%A7%95">¶</a>
-</h3>
-<p><strong>Jeff Leek</strong>가 쓴 책 <strong>The Elements of Data Analytic Style</strong>에서 정의한 깔끔한 데이터는 아래와 같은 특징을 가집니다.</p>
-<ol>
-<li>각 변수는 개별의 열(column)으로 존재한다.</li>
-<li>각 관측치는 행(row)를 구성한다.</li>
-<li>각 표는 단 하나의 관측기준에 의해서 조직된 데이터를 저장한다.</li>
-<li>만약 여러개의 표가 존재한다면, 적어도 하나이상의 열(column)이 공유되어야 한다.</li>
-</ol>
-<ul>
-<li>변수(Variable): 예를 들면 <em>키, 몸무게, 성별</em>
-</li>
-<li>값(Value): 예를 들자면 <em>152 cm, 80 kg, 여성</em>
-</li>
-<li>관측치(Observation): 값을 측정한 단위, 여기서는 <em>각각의 사람</em>
-</li>
-</ul>
-<p>너무 복잡하다고 생각되신다면 아래 예시를 확인하세요.</p>
-<h4 id="지저분한-데이터의-예:">지저분한 데이터의 예:<a class="anchor-link" href="posts/tidy-data/#%EC%A7%80%EC%A0%80%EB%B6%84%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%98%88:">¶</a>
-</h4>
-<div>
-
-<table border="1" class="dataframe">
-<thead><tr style="text-align: left;">
-<th></th>
-
-<th>Treatment A</th>
-
-<th>Treatment B</th>
-
-</tr></thead>
-<tbody>
-<tr>
-<th>John Smith</th>
-
-<td>-</td>
-
-<td>2</td>
-
-</tr>
-<tr>
-<th>Jane Doe</th>
-
-<td>16</td>
-
-<td>11</td>
-
-</tr>
-<tr>
-<th>Mary Johnson</th>
-
-<td>3</td>
-
-<td>1</td>
-
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="깔끔한-데이터(Tidy-data)의-예:">깔끔한 데이터(Tidy data)의 예:<a class="anchor-link" href="posts/tidy-data/#%EA%B9%94%EB%81%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(Tidy-data)%EC%9D%98-%EC%98%88:">¶</a>
-</h4>
-<div>
-
-<table border="1" class="dataframe">
-<thead><tr style="text-align: left;">
-<th>Name</th>
-
-<th>Treatment</th>
-
-<th>Result</th>
-
-</tr></thead>
-<tbody>
-<tr>
-<th>John Smith</th>
-
-<td>a</td>
-
-<td>-</td>
-
-</tr>
-<tr>
-<th>Jane Doe</th>
-
-<td>a</td>
-
-<td>16</td>
-
-</tr>
-<tr>
-<th>Mary Johnson</th>
-
-<td>a</td>
-
-<td>3</td>
-
-</tr>
-<tr>
-<th>John Smith</th>
-
-<td>b</td>
-
-<td>2</td>
-
-</tr>
-<tr>
-<th>Jane Doe</th>
-
-<td>b</td>
-
-<td>11</td>
-
-</tr>
-<tr>
-<th>Mary Johnson</th>
-
-<td>b</td>
-
-<td>1</td>
-
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="지저분한-데이터-처리하기">지저분한 데이터 처리하기<a class="anchor-link" href="posts/tidy-data/#%EC%A7%80%EC%A0%80%EB%B6%84%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0">¶</a>
+<p><strong>nikola_blog</strong>라는 이름의 가상환경을 생성합니다.</p>
+<div class="highlight"><pre><span></span>conda create -n nikola_blog <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
+</pre></div>
+<blockquote>
+<p>이름은 원하는것으로 수정하시면 되고, 파이썬3를 권장합니다.</p>
+</blockquote>
+<p>터미널에 명령어를 입력하면 몇가지 패키지를 설치 할 것인지 물어보고, 모두 <strong>Yes</strong>해주시면 됩니다.</p>
+<div class="highlight"><pre><span></span><span class="nb">source</span> activate nikola_blog
+pip install nikola<span class="o">[</span>extras<span class="o">]</span>
+</pre></div>
+<p>가상환경을 실행하고, <strong>nikola</strong>를 설치 합니다.</p>
+<h2 id="1.-블로그-만들기">1. 블로그 만들기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#1.-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
 </h2>
-<p><strong>Wickham</strong>의 <a href="http://vita.had.co.nz/papers/tidy-data.pdf">논문</a>에 있던 데이터를 가지고 아래의 문제를 해결해 보도록 하겠습니다. 
-여기서 우리의 목표는 데이터 분석이 아니고 깔끔한 데이터를 만드는 것임을 명심하세요.</p>
-<p>지저분한 데이터의 일반적인 모습은 다음과 같습니다.</p>
+<p>Nikola가 설치가 되었다면 이제 블로그를 만들어 보겠습니다. 원하는 폴더에서 터미널을 열고 아래의 명령어를 입력하세요.</p>
+<div class="highlight"><pre><span></span>nikola init
+</pre></div>
+<p>여러가지 질문들이 나오면서 사이트의 이름, 저자, 설명과 URL을 물어봅니다. 나중에 모두 <strong>conf.py</strong> 파일에서 수정이 가능하니까 너무 고민하지말고 넘어가주세요.
+질문이 끝나면 폴더안에 여러 파일과 다른 폴더가 생긴것을 확인 할 수 있습니다.</p>
+<h3 id="Jupyter-notebook-확장자-추가하기">Jupyter notebook 확장자 추가하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#Jupyter-notebook-%ED%99%95%EC%9E%A5%EC%9E%90-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
+</h3>
+<p>Nikola가 Jupyter notebook을 처리하기 위해서는 확장자를 추가해 줘야합니다.
+폴더안의 <strong>conf.py</strong> 파일을 열어서 아래와 비슷한 코드를 찾고 다음과 같이 <strong>("pages/*.ipynb", "", "story.tmpl"),</strong> 를 추가합니다.</p>
+<div class="highlight"><pre><span></span><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s2">"posts/*.ipynb"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"posts/*.md"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"posts/*.rst"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"posts/*.txt"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"post.tmpl"</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s2">"pages/*.md"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"pages/*.ipynb"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"pages/*.rst"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"pages/*.txt"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"story.tmpl"</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+<h2 id="2.-새-포스트-작성하기">2. 새 포스트 작성하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#2.-%EC%83%88-%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0">¶</a>
+</h2>
+<p>이제 새로운 포스트를 작성해보겠습니다. 다음과 같이 터미널에 입력을 하세요.</p>
+<div class="highlight"><pre><span></span>nikola new_post -f ipynb
+</pre></div>
+<p>제목을 물어보고는 알아서 새 Jupyter notebook을 만들어줍니다. 폴더에 새로운 파일이 생성된것을 확인하셨다면, 모든 준비가 되었습니다.</p>
+<h2 id="3.-블로그-실행하기">3. 블로그 실행하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#3.-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
+</h2>
+<p>터미널에서 아래 명령어를 입력하고 웹브라우저에서 <em>localhost:8000</em>에 접속하세요.</p>
+<div class="highlight"><pre><span></span>nikola auto
+</pre></div>
+<p>블로그 생성된것을 확인 하셨나요?</p>
+<h2 id="4.-Github-page에-올리기">4. Github page에 올리기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#4.-Github-page%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B8%B0">¶</a>
+</h2>
+<h3 id="git-시작하기">git 시작하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#git-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">¶</a>
+</h3>
+<p>깃허브(Github)는 너무나도 유명하기 때문에 따로 설명드리지는 않을게요. 블로그를 인터넷에 올리기 위해서 깃허브에서 제공하는 서비스를 이용할 거에요. 깃(git)을 어느정도 이해한다는 전제하에 간략하게 설명하겠습니다.</p>
 <ol>
-<li>열 이름(Column header)이 변수 이름이 아니고 값인 경우</li>
-<li>같은 표에 다양한 관측 단위(observational units)가 있는 경우</li>
-<li>하나의 열(column)에 여러 값이 들어 있는 경우</li>
-<li>변수가 행과 열에 모두 포함되어 있는 경우 </li>
-<li>하나의 관측 단위(observational units)가 여러 파일로 나누어져 있는 경우</li>
+<li>먼저 깃허브에서 새로운 저장소(repository)를 생성합니다. 이때 이름은 <strong>USERNAME.github.io</strong>로 하세요. USERNAME은 본인의 ID입니다.</li>
+<li>새로운 저장소가 생성 되면 아래와 같이 터미널에 입력하세요.<div class="highlight"><pre><span></span>git init
+git add *
+git commit -am <span class="s2">"Initial commit"</span>
+git remote add origin https://github.com/USERNAME/UsERNAME.github.io.git
+git push origin -u
+</pre></div>
+</li>
+<li>만약 push 오류가 발생한다면 새로운 파일을 다음과 같이 작성하고 다시 push 하세요<div class="highlight"><pre><span></span>touch readme.md
+</pre></div>
+깃허브에 접속해보면 파일들이 정상적으로 업로드 되어있는것을 확인 하실 수 있습니다.</li>
 </ol>
-<blockquote>
-<p>우리는 <code>Python</code>의 대표적인 라이브러리인 <code>Pandas</code>를 사용하도록 할게요.</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 필요한 라이브러리 불러들이기</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">listdir</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">join</span>
-<span class="kn">import</span> <span class="nn">glob</span>
-<span class="kn">import</span> <span class="nn">re</span> <span class="c1"># 정규식</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.-열-이름(Column-header)이-변수-이름이-아니고-값인-경우">1. 열 이름(Column header)이 변수 이름이 아니고 값인 경우<a class="anchor-link" href="posts/tidy-data/#1.-%EC%97%B4-%EC%9D%B4%EB%A6%84(Column-header)%EC%9D%B4-%EB%B3%80%EC%88%98-%EC%9D%B4%EB%A6%84%EC%9D%B4-%EC%95%84%EB%8B%88%EA%B3%A0-%EA%B0%92%EC%9D%B8-%EA%B2%BD%EC%9A%B0">¶</a>
+<h3 id="블로깅하기">블로깅하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#%EB%B8%94%EB%A1%9C%EA%B9%85%ED%95%98%EA%B8%B0">¶</a>
 </h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Pew-Research-Center-Dataset">Pew Research Center Dataset<a class="anchor-link" href="posts/tidy-data/#Pew-Research-Center-Dataset">¶</a>
-</h4>
-<p>종교에 따른 개인의 수입의 관한 데이터입니다. 먼저 <code>pandas</code>의 <code>read_csv</code>기능을 사용해 파일을 읽어옵니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/pew-raw.csv"</span><span class="p">)</span>
-<span class="n">df</span>
+<p>이제 모든 단계가 끝났습니다. 로컬에 있는 블로그 폴더에서 작업을 하고 github에 올리기만 하면 되는 것이지요. Nikola에서 보다 편하게 포스팅할 수 있도록 아래의 명령어를 지원합니다.</p>
+<div class="highlight"><pre><span></span>nikola github_deploy
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[7]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>religion</th>
-      <th>&lt;$10k</th>
-      <th>$10-20k</th>
-      <th>$20-30k</th>
-      <th>$30-40k</th>
-      <th>$40-50k</th>
-      <th>$50-75k</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>Agnostic</td>
-      <td>27</td>
-      <td>34</td>
-      <td>60</td>
-      <td>81</td>
-      <td>76</td>
-      <td>137</td>
-    </tr>
-<tr>
-<th>1</th>
-      <td>Atheist</td>
-      <td>12</td>
-      <td>27</td>
-      <td>37</td>
-      <td>52</td>
-      <td>35</td>
-      <td>70</td>
-    </tr>
-<tr>
-<th>2</th>
-      <td>Buddhist</td>
-      <td>27</td>
-      <td>21</td>
-      <td>30</td>
-      <td>34</td>
-      <td>33</td>
-      <td>58</td>
-    </tr>
-<tr>
-<th>3</th>
-      <td>Catholic</td>
-      <td>418</td>
-      <td>617</td>
-      <td>732</td>
-      <td>670</td>
-      <td>638</td>
-      <td>1116</td>
-    </tr>
-<tr>
-<th>4</th>
-      <td>Dont know/refused</td>
-      <td>15</td>
-      <td>14</td>
-      <td>15</td>
-      <td>11</td>
-      <td>10</td>
-      <td>35</td>
-    </tr>
-<tr>
-<th>5</th>
-      <td>Evangelical Prot</td>
-      <td>575</td>
-      <td>869</td>
-      <td>1064</td>
-      <td>982</td>
-      <td>881</td>
-      <td>1486</td>
-    </tr>
-<tr>
-<th>6</th>
-      <td>Hindu</td>
-      <td>1</td>
-      <td>9</td>
-      <td>7</td>
-      <td>9</td>
-      <td>11</td>
-      <td>34</td>
-    </tr>
-<tr>
-<th>7</th>
-      <td>Historically Black Prot</td>
-      <td>228</td>
-      <td>244</td>
-      <td>236</td>
-      <td>238</td>
-      <td>197</td>
-      <td>223</td>
-    </tr>
-<tr>
-<th>8</th>
-      <td>Jehovahs Witness</td>
-      <td>20</td>
-      <td>27</td>
-      <td>24</td>
-      <td>24</td>
-      <td>21</td>
-      <td>30</td>
-    </tr>
-<tr>
-<th>9</th>
-      <td>Jewish</td>
-      <td>19</td>
-      <td>19</td>
-      <td>25</td>
-      <td>25</td>
-      <td>30</td>
-      <td>95</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Evangelical Prot는 기독교 종파중에 하나로 '개신교'입니다.</li>
-</ul>
-<p><strong>문제점</strong>: 이 데이터들의 문제는 열 이름(columns headers)이 개인소득의 범위로 되어 있다는 것이죠.</p>
-<blockquote>
-<p>다시 말해서 보기에는 좋아보일지는 몰라도 분석하기에는 어려운 형식입니다.</p>
-</blockquote>
+<p>깃허브에 푸쉬하고 브랜치를 나누는 작업도 알아서 해주는 강력한 기능입니다. 변경사항이 적용되는데는 몇분이 걸리지만 이제, <a href="http://USERNAME.github.io">http://USERNAME.github.io</a> 에 접속하면 블로그를 확인할 수 있을 겁니다.</p>
 
 </div>
 </div>
@@ -485,1727 +191,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>이러한 데이터를 Tidy data 형태로 변환하기 위해서 <code>pandas</code>라이브러리에서는 아주 쉬운 기능을 제공해 줍니다.
-바로 <code>melt</code>라는 기능이지요. <strong>pivot table</strong>의 반대되는 개념으로 행이 많은 데이터를 열이 많은 데이터로 바꿔줍니다. 
-<code>melt</code>는 아주 유용하기 때문에 앞으로도 자주 언급 됩니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">formatted_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,[</span><span class="s2">"religion"</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">"income"</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">"freq"</span><span class="p">)</span>
-<span class="n">formatted_df</span> <span class="o">=</span> <span class="n">formatted_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">"religion"</span><span class="p">])</span> <span class="c1"># 종교 이름순으로 정렬</span>
-<span class="n">formatted_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># 너무 길기 때문에 윗쪽 10개만 보겠습니다.</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[8]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>religion</th>
-      <th>income</th>
-      <th>freq</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>Agnostic</td>
-      <td>&lt;$10k</td>
-      <td>27</td>
-    </tr>
-<tr>
-<th>30</th>
-      <td>Agnostic</td>
-      <td>$30-40k</td>
-      <td>81</td>
-    </tr>
-<tr>
-<th>40</th>
-      <td>Agnostic</td>
-      <td>$40-50k</td>
-      <td>76</td>
-    </tr>
-<tr>
-<th>50</th>
-      <td>Agnostic</td>
-      <td>$50-75k</td>
-      <td>137</td>
-    </tr>
-<tr>
-<th>10</th>
-      <td>Agnostic</td>
-      <td>$10-20k</td>
-      <td>34</td>
-    </tr>
-<tr>
-<th>20</th>
-      <td>Agnostic</td>
-      <td>$20-30k</td>
-      <td>60</td>
-    </tr>
-<tr>
-<th>41</th>
-      <td>Atheist</td>
-      <td>$40-50k</td>
-      <td>35</td>
-    </tr>
-<tr>
-<th>21</th>
-      <td>Atheist</td>
-      <td>$20-30k</td>
-      <td>37</td>
-    </tr>
-<tr>
-<th>11</th>
-      <td>Atheist</td>
-      <td>$10-20k</td>
-      <td>27</td>
-    </tr>
-<tr>
-<th>31</th>
-      <td>Atheist</td>
-      <td>$30-40k</td>
-      <td>52</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>이것이 <em>Pew Research Center Dataset</em> 의 Tidy data 형태 입니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Billboard-Top-100-Dataset">Billboard Top 100 Dataset<a class="anchor-link" href="posts/tidy-data/#Billboard-Top-100-Dataset">¶</a>
-</h4>
-<p>이 데이터는 아주 오래전 같은 1999년부터 2000년까지의 빌보드차트 주간 순위 변동을 포함하고 있는 데이터 입니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [69]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/billboard.csv"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"mac_latin2"</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[69]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>year</th>
-      <th>artist.inverted</th>
-      <th>track</th>
-      <th>time</th>
-      <th>genre</th>
-      <th>date.entered</th>
-      <th>date.peaked</th>
-      <th>x1st.week</th>
-      <th>x2nd.week</th>
-      <th>x3rd.week</th>
-      <th>...</th>
-      <th>x67th.week</th>
-      <th>x68th.week</th>
-      <th>x69th.week</th>
-      <th>x70th.week</th>
-      <th>x71st.week</th>
-      <th>x72nd.week</th>
-      <th>x73rd.week</th>
-      <th>x74th.week</th>
-      <th>x75th.week</th>
-      <th>x76th.week</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>2000</td>
-      <td>Destiny's Child</td>
-      <td>Independent Women Part I</td>
-      <td>3:38</td>
-      <td>Rock</td>
-      <td>2000-09-23</td>
-      <td>2000-11-18</td>
-      <td>78</td>
-      <td>63.0</td>
-      <td>49.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>1</th>
-      <td>2000</td>
-      <td>Santana</td>
-      <td>Maria, Maria</td>
-      <td>4:18</td>
-      <td>Rock</td>
-      <td>2000-02-12</td>
-      <td>2000-04-08</td>
-      <td>15</td>
-      <td>8.0</td>
-      <td>6.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>2</th>
-      <td>2000</td>
-      <td>Savage Garden</td>
-      <td>I Knew I Loved You</td>
-      <td>4:07</td>
-      <td>Rock</td>
-      <td>1999-10-23</td>
-      <td>2000-01-29</td>
-      <td>71</td>
-      <td>48.0</td>
-      <td>43.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>3</th>
-      <td>2000</td>
-      <td>Madonna</td>
-      <td>Music</td>
-      <td>3:45</td>
-      <td>Rock</td>
-      <td>2000-08-12</td>
-      <td>2000-09-16</td>
-      <td>41</td>
-      <td>23.0</td>
-      <td>18.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>4</th>
-      <td>2000</td>
-      <td>Aguilera, Christina</td>
-      <td>Come On Over Baby (All I Want Is You)</td>
-      <td>3:38</td>
-      <td>Rock</td>
-      <td>2000-08-05</td>
-      <td>2000-10-14</td>
-      <td>57</td>
-      <td>47.0</td>
-      <td>45.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>5</th>
-      <td>2000</td>
-      <td>Janet</td>
-      <td>Doesn't Really Matter</td>
-      <td>4:17</td>
-      <td>Rock</td>
-      <td>2000-06-17</td>
-      <td>2000-08-26</td>
-      <td>59</td>
-      <td>52.0</td>
-      <td>43.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>6</th>
-      <td>2000</td>
-      <td>Destiny's Child</td>
-      <td>Say My Name</td>
-      <td>4:31</td>
-      <td>Rock</td>
-      <td>1999-12-25</td>
-      <td>2000-03-18</td>
-      <td>83</td>
-      <td>83.0</td>
-      <td>44.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>7</th>
-      <td>2000</td>
-      <td>Iglesias, Enrique</td>
-      <td>Be With You</td>
-      <td>3:36</td>
-      <td>Latin</td>
-      <td>2000-04-01</td>
-      <td>2000-06-24</td>
-      <td>63</td>
-      <td>45.0</td>
-      <td>34.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>8</th>
-      <td>2000</td>
-      <td>Sisqo</td>
-      <td>Incomplete</td>
-      <td>3:52</td>
-      <td>Rock</td>
-      <td>2000-06-24</td>
-      <td>2000-08-12</td>
-      <td>77</td>
-      <td>66.0</td>
-      <td>61.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>9</th>
-      <td>2000</td>
-      <td>Lonestar</td>
-      <td>Amazed</td>
-      <td>4:25</td>
-      <td>Country</td>
-      <td>1999-06-05</td>
-      <td>2000-03-04</td>
-      <td>81</td>
-      <td>54.0</td>
-      <td>44.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-</tbody>
-</table>
-<p>10 rows × 83 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>문제점:</strong></p>
-<ul>
-<li>열 이름(columns headers)이 값으로 구성되어 있다: <code>x1st.week</code>, <code>x2st.week</code> 등등</li>
-<li>순위가 100위권 밖으로 밀려나게 되면 <code>Nan</code> 값을 가지고, 따라서 필요없는 부수적인 값이 많아진다.</li>
-</ul>
-<p>위 데이터의 깔끔한 데이터를 만들기 위해서는 다시 <code>melt</code> 기능을 사용하겠습니다. 각각의 열이 행이 되도록 하고, 순위가 100위 밖으로 밀려난 경우(<code>Nan</code>값을 갖는경우)에는 행을 삭제할게요.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [70]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Melting</span>
-<span class="n">id_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"artist.inverted"</span><span class="p">,</span><span class="s2">"track"</span><span class="p">,</span><span class="s2">"time"</span><span class="p">,</span><span class="s2">"genre"</span><span class="p">,</span><span class="s2">"date.entered"</span><span class="p">,</span><span class="s2">"date.peaked"</span><span class="p">]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">id_vars</span><span class="o">=</span><span class="n">id_vars</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">"week"</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">"rank"</span><span class="p">)</span>
-
-<span class="c1"># Formatting </span>
-<span class="n">df</span><span class="p">[</span><span class="s2">"week"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'week'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">'(\d+)'</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># 정규식으로 x1st.week 에서 숫자 1만 추출</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">"rank"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"rank"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-<span class="c1"># 필요없는 행을 삭제합니다.</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-<span class="c1"># Create "date" columns</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'date.entered'</span><span class="p">])</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'week'</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s1">'w'</span><span class="p">)</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">"year"</span><span class="p">,</span> <span class="s2">"artist.inverted"</span><span class="p">,</span> <span class="s2">"track"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">,</span> <span class="s2">"genre"</span><span class="p">,</span> <span class="s2">"week"</span><span class="p">,</span> <span class="s2">"rank"</span><span class="p">,</span> <span class="s2">"date"</span><span class="p">]]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"artist.inverted"</span><span class="p">,</span><span class="s2">"track"</span><span class="p">,</span><span class="s2">"week"</span><span class="p">,</span><span class="s2">"rank"</span><span class="p">])</span>
-
-<span class="c1"># Assigning the tidy dataset to a variable for future usage</span>
-<span class="n">billboard</span> <span class="o">=</span> <span class="n">df</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[70]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>year</th>
-      <th>artist.inverted</th>
-      <th>track</th>
-      <th>time</th>
-      <th>genre</th>
-      <th>week</th>
-      <th>rank</th>
-      <th>date</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>246</th>
-      <td>2000</td>
-      <td>2 Pac</td>
-      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
-      <td>4:22</td>
-      <td>Rap</td>
-      <td>1</td>
-      <td>87</td>
-      <td>2000-02-26</td>
-    </tr>
-<tr>
-<th>563</th>
-      <td>2000</td>
-      <td>2 Pac</td>
-      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
-      <td>4:22</td>
-      <td>Rap</td>
-      <td>2</td>
-      <td>82</td>
-      <td>2000-03-04</td>
-    </tr>
-<tr>
-<th>880</th>
-      <td>2000</td>
-      <td>2 Pac</td>
-      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
-      <td>4:22</td>
-      <td>Rap</td>
-      <td>3</td>
-      <td>72</td>
-      <td>2000-03-11</td>
-    </tr>
-<tr>
-<th>1197</th>
-      <td>2000</td>
-      <td>2 Pac</td>
-      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
-      <td>4:22</td>
-      <td>Rap</td>
-      <td>4</td>
-      <td>77</td>
-      <td>2000-03-18</td>
-    </tr>
-<tr>
-<th>1514</th>
-      <td>2000</td>
-      <td>2 Pac</td>
-      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
-      <td>4:22</td>
-      <td>Rap</td>
-      <td>5</td>
-      <td>87</td>
-      <td>2000-03-25</td>
-    </tr>
-<tr>
-<th>1831</th>
-      <td>2000</td>
-      <td>2 Pac</td>
-      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
-      <td>4:22</td>
-      <td>Rap</td>
-      <td>6</td>
-      <td>94</td>
-      <td>2000-04-01</td>
-    </tr>
-<tr>
-<th>2148</th>
-      <td>2000</td>
-      <td>2 Pac</td>
-      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
-      <td>4:22</td>
-      <td>Rap</td>
-      <td>7</td>
-      <td>99</td>
-      <td>2000-04-08</td>
-    </tr>
-<tr>
-<th>287</th>
-      <td>2000</td>
-      <td>2Ge+her</td>
-      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
-      <td>3:15</td>
-      <td>R&amp;B</td>
-      <td>1</td>
-      <td>91</td>
-      <td>2000-09-02</td>
-    </tr>
-<tr>
-<th>604</th>
-      <td>2000</td>
-      <td>2Ge+her</td>
-      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
-      <td>3:15</td>
-      <td>R&amp;B</td>
-      <td>2</td>
-      <td>87</td>
-      <td>2000-09-09</td>
-    </tr>
-<tr>
-<th>921</th>
-      <td>2000</td>
-      <td>2Ge+her</td>
-      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
-      <td>3:15</td>
-      <td>R&amp;B</td>
-      <td>3</td>
-      <td>92</td>
-      <td>2000-09-16</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>위와 같이 데이터를 깔끔하게 만들었습니다. 하지만 <em>track, time, genre</em> 열을 보시면 아주 많은 중복이 있는 것을 알 수 있습니다. 이러한 점을 해결 하는 방법은 다음 예제에서 다루어 보겠습니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.-하나의-표에-여러가지-타입">2. 하나의 표에 여러가지 타입<a class="anchor-link" href="posts/tidy-data/#2.-%ED%95%98%EB%82%98%EC%9D%98-%ED%91%9C%EC%97%90-%EC%97%AC%EB%9F%AC%EA%B0%80%EC%A7%80-%ED%83%80%EC%9E%85">¶</a>
-</h3>
-<p>위에서 다루었던 빌보드차트 데이터를 가지고 데이터가 반복되는 문제를 해결해 보겠습니다.</p>
-<p><strong>묹제점:</strong></p>
-<ul>
-<li>다양한 관측 단위(observational units), 여기서는 <code>song</code> 과 <code>rank</code>가 하나의 표에 들어 있습니다. 이를 위해서는 표를 나눌 필요가 있습니다.  </li>
-</ul>
-<p>먼저, 각각의 노래의 자세한 내용을 담고 있는 표를 만들어 보겠습니다. 그런다음 각각의 <code>song_id</code>를 부여합니다. 그런다음 순위 값을 가지고 있는 표를 <code>song_id</code>로 정리합니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">songs_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"year"</span><span class="p">,</span> <span class="s2">"artist.inverted"</span><span class="p">,</span> <span class="s2">"track"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">,</span> <span class="s2">"genre"</span><span class="p">]</span>
-<span class="n">songs</span> <span class="o">=</span> <span class="n">billboard</span><span class="p">[</span><span class="n">songs_cols</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-<span class="n">songs</span> <span class="o">=</span> <span class="n">songs</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">songs</span><span class="p">[</span><span class="s2">"song_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">songs</span><span class="o">.</span><span class="n">index</span>
-<span class="n">songs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[11]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>year</th>
-      <th>artist.inverted</th>
-      <th>track</th>
-      <th>time</th>
-      <th>genre</th>
-      <th>song_id</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>2000</td>
-      <td>2 Pac</td>
-      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
-      <td>4:22</td>
-      <td>Rap</td>
-      <td>0</td>
-    </tr>
-<tr>
-<th>1</th>
-      <td>2000</td>
-      <td>2Ge+her</td>
-      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
-      <td>3:15</td>
-      <td>R&amp;B</td>
-      <td>1</td>
-    </tr>
-<tr>
-<th>2</th>
-      <td>2000</td>
-      <td>3 Doors Down</td>
-      <td>Kryptonite</td>
-      <td>3:53</td>
-      <td>Rock</td>
-      <td>2</td>
-    </tr>
-<tr>
-<th>3</th>
-      <td>2000</td>
-      <td>3 Doors Down</td>
-      <td>Loser</td>
-      <td>4:24</td>
-      <td>Rock</td>
-      <td>3</td>
-    </tr>
-<tr>
-<th>4</th>
-      <td>2000</td>
-      <td>504 Boyz</td>
-      <td>Wobble Wobble</td>
-      <td>3:35</td>
-      <td>Rap</td>
-      <td>4</td>
-    </tr>
-<tr>
-<th>5</th>
-      <td>2000</td>
-      <td>98°</td>
-      <td>Give Me Just One Night (Una Noche)</td>
-      <td>3:24</td>
-      <td>Rock</td>
-      <td>5</td>
-    </tr>
-<tr>
-<th>6</th>
-      <td>2000</td>
-      <td>A*Teens</td>
-      <td>Dancing Queen</td>
-      <td>3:44</td>
-      <td>Pop</td>
-      <td>6</td>
-    </tr>
-<tr>
-<th>7</th>
-      <td>2000</td>
-      <td>Aaliyah</td>
-      <td>I Don't Wanna</td>
-      <td>4:15</td>
-      <td>Rock</td>
-      <td>7</td>
-    </tr>
-<tr>
-<th>8</th>
-      <td>2000</td>
-      <td>Aaliyah</td>
-      <td>Try Again</td>
-      <td>4:03</td>
-      <td>Rock</td>
-      <td>8</td>
-    </tr>
-<tr>
-<th>9</th>
-      <td>2000</td>
-      <td>Adams, Yolanda</td>
-      <td>Open My Heart</td>
-      <td>5:30</td>
-      <td>Gospel</td>
-      <td>9</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>위 와같은 새로운 표를 분리하고, 아래와 같이 순위를 포함하고 있는 표를 새로 만들어줍니다.</p>
-<blockquote>
-<p>두개의 표를 연결하기 위해 <code>song_id</code>열을 만드는 것을 주의하세요</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ranks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">billboard</span><span class="p">,</span> <span class="n">songs</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"artist.inverted"</span><span class="p">,</span> <span class="s2">"track"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">,</span> <span class="s2">"genre"</span><span class="p">])</span>
-<span class="n">ranks</span> <span class="o">=</span> <span class="n">ranks</span><span class="p">[[</span><span class="s2">"song_id"</span><span class="p">,</span> <span class="s2">"date"</span><span class="p">,</span><span class="s2">"rank"</span><span class="p">]]</span>
-<span class="n">ranks</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>song_id</th>
-      <th>date</th>
-      <th>rank</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>0</td>
-      <td>2000-02-26</td>
-      <td>87</td>
-    </tr>
-<tr>
-<th>1</th>
-      <td>0</td>
-      <td>2000-03-04</td>
-      <td>82</td>
-    </tr>
-<tr>
-<th>2</th>
-      <td>0</td>
-      <td>2000-03-11</td>
-      <td>72</td>
-    </tr>
-<tr>
-<th>3</th>
-      <td>0</td>
-      <td>2000-03-18</td>
-      <td>77</td>
-    </tr>
-<tr>
-<th>4</th>
-      <td>0</td>
-      <td>2000-03-25</td>
-      <td>87</td>
-    </tr>
-<tr>
-<th>5</th>
-      <td>0</td>
-      <td>2000-04-01</td>
-      <td>94</td>
-    </tr>
-<tr>
-<th>6</th>
-      <td>0</td>
-      <td>2000-04-08</td>
-      <td>99</td>
-    </tr>
-<tr>
-<th>7</th>
-      <td>1</td>
-      <td>2000-09-02</td>
-      <td>91</td>
-    </tr>
-<tr>
-<th>8</th>
-      <td>1</td>
-      <td>2000-09-09</td>
-      <td>87</td>
-    </tr>
-<tr>
-<th>9</th>
-      <td>1</td>
-      <td>2000-09-16</td>
-      <td>92</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.-다양한-변수가-하나의-열에-있는-경우-Multiple-variables-stored-in-one-column">3. 다양한 변수가 하나의 열에 있는 경우 Multiple variables stored in one column<a class="anchor-link" href="posts/tidy-data/#3.-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%B3%80%EC%88%98%EA%B0%80-%ED%95%98%EB%82%98%EC%9D%98-%EC%97%B4%EC%97%90-%EC%9E%88%EB%8A%94-%EA%B2%BD%EC%9A%B0-Multiple-variables-stored-in-one-column">¶</a>
-</h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Tubercolosis-Example">Tubercolosis Example<a class="anchor-link" href="posts/tidy-data/#Tubercolosis-Example">¶</a>
-</h4>
-<p>WHO(World Health Organization)에서 수집한 결핵환자의 기록입니다. 이 데이터에는 확인된 결핵환자의 국가, 연도, 나이, 성별이 포함되어 있습니다.</p>
-<p><strong>문제점:</strong></p>
-<ul>
-<li>몇개의 열(columns)에 다양한 변수가 포함되어 있습니다.(성별과 나이)</li>
-<li>값이 존재하지 않는 곳에 <code>NaN</code>과 0 이 혼재되어 있습니다.</li>
-</ul>
-<p>미리 알아둘 점:</p>
-<ul>
-<li>열의 이름에 적혀있는 "m"이나 "f"는 성별을 뜻합니다.</li>
-<li>열의 이름에 적혀있는 숫자는 나이대("0-14","15-24", "25-34", "45-54", "55-64", "65", "unknown")를 나타냅니다.</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [49]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/tb-raw.csv"</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[49]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>country</th>
-      <th>year</th>
-      <th>m014</th>
-      <th>m1524</th>
-      <th>m2534</th>
-      <th>m3544</th>
-      <th>m4554</th>
-      <th>m5564</th>
-      <th>m65</th>
-      <th>mu</th>
-      <th>f014</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>AD</td>
-      <td>2000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>1</th>
-      <td>AE</td>
-      <td>2000</td>
-      <td>2.0</td>
-      <td>4.0</td>
-      <td>4.0</td>
-      <td>6.0</td>
-      <td>5</td>
-      <td>12</td>
-      <td>10.0</td>
-      <td>NaN</td>
-      <td>3.0</td>
-    </tr>
-<tr>
-<th>2</th>
-      <td>AF</td>
-      <td>2000</td>
-      <td>52.0</td>
-      <td>228.0</td>
-      <td>183.0</td>
-      <td>149.0</td>
-      <td>129</td>
-      <td>94</td>
-      <td>80.0</td>
-      <td>NaN</td>
-      <td>93.0</td>
-    </tr>
-<tr>
-<th>3</th>
-      <td>AG</td>
-      <td>2000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1.0</td>
-      <td>NaN</td>
-      <td>1.0</td>
-    </tr>
-<tr>
-<th>4</th>
-      <td>AL</td>
-      <td>2000</td>
-      <td>2.0</td>
-      <td>19.0</td>
-      <td>21.0</td>
-      <td>14.0</td>
-      <td>24</td>
-      <td>19</td>
-      <td>16.0</td>
-      <td>NaN</td>
-      <td>3.0</td>
-    </tr>
-<tr>
-<th>5</th>
-      <td>AM</td>
-      <td>2000</td>
-      <td>2.0</td>
-      <td>152.0</td>
-      <td>130.0</td>
-      <td>131.0</td>
-      <td>63</td>
-      <td>26</td>
-      <td>21.0</td>
-      <td>NaN</td>
-      <td>1.0</td>
-    </tr>
-<tr>
-<th>6</th>
-      <td>AN</td>
-      <td>2000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>0.0</td>
-    </tr>
-<tr>
-<th>7</th>
-      <td>AO</td>
-      <td>2000</td>
-      <td>186.0</td>
-      <td>999.0</td>
-      <td>1003.0</td>
-      <td>912.0</td>
-      <td>482</td>
-      <td>312</td>
-      <td>194.0</td>
-      <td>NaN</td>
-      <td>247.0</td>
-    </tr>
-<tr>
-<th>8</th>
-      <td>AR</td>
-      <td>2000</td>
-      <td>97.0</td>
-      <td>278.0</td>
-      <td>594.0</td>
-      <td>402.0</td>
-      <td>419</td>
-      <td>368</td>
-      <td>330.0</td>
-      <td>NaN</td>
-      <td>121.0</td>
-    </tr>
-<tr>
-<th>9</th>
-      <td>AS</td>
-      <td>2000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>이 데이터를 정리하기 위해서는 먼저 <code>melt</code>를 이용해 <code>sex</code> + <code>age group</code> 를 합쳐서 하나의 행으로 만들겠습니다.
-그런 다음에 다시 행을 <code>sex</code>, <code>age</code>로 구분해서 정리하도록 하죠.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [50]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"country"</span><span class="p">,</span><span class="s2">"year"</span><span class="p">],</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">"cases"</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">"sex_and_age"</span><span class="p">)</span>
-
-<span class="c1"># Extract Sex, Age lower bound and Age upper bound group</span>
-<span class="n">tmp_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"sex_and_age"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">"(\D)(\d+)(\d</span><span class="si">{2}</span><span class="s2">)"</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>    
-
-<span class="c1"># Name columns</span>
-<span class="n">tmp_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"age_lower"</span><span class="p">,</span> <span class="s2">"age_upper"</span><span class="p">]</span>
-
-<span class="c1"># Create `age`column based on `age_lower` and `age_upper`</span>
-<span class="n">tmp_df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s2">"age_lower"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s2">"age_upper"</span><span class="p">]</span>
-
-<span class="c1"># Merge </span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">tmp_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Drop unnecessary columns and rows</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'sex_and_age'</span><span class="p">,</span><span class="s2">"age_lower"</span><span class="p">,</span><span class="s2">"age_upper"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">"country"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">,</span> <span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"age"</span><span class="p">])</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[50]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>country</th>
-      <th>year</th>
-      <th>cases</th>
-      <th>sex</th>
-      <th>age</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>AD</td>
-      <td>2000</td>
-      <td>0.0</td>
-      <td>m</td>
-      <td>0-14</td>
-    </tr>
-<tr>
-<th>10</th>
-      <td>AD</td>
-      <td>2000</td>
-      <td>0.0</td>
-      <td>m</td>
-      <td>15-24</td>
-    </tr>
-<tr>
-<th>20</th>
-      <td>AD</td>
-      <td>2000</td>
-      <td>1.0</td>
-      <td>m</td>
-      <td>25-34</td>
-    </tr>
-<tr>
-<th>30</th>
-      <td>AD</td>
-      <td>2000</td>
-      <td>0.0</td>
-      <td>m</td>
-      <td>35-44</td>
-    </tr>
-<tr>
-<th>40</th>
-      <td>AD</td>
-      <td>2000</td>
-      <td>0.0</td>
-      <td>m</td>
-      <td>45-54</td>
-    </tr>
-<tr>
-<th>50</th>
-      <td>AD</td>
-      <td>2000</td>
-      <td>0.0</td>
-      <td>m</td>
-      <td>55-64</td>
-    </tr>
-<tr>
-<th>81</th>
-      <td>AE</td>
-      <td>2000</td>
-      <td>3.0</td>
-      <td>f</td>
-      <td>0-14</td>
-    </tr>
-<tr>
-<th>1</th>
-      <td>AE</td>
-      <td>2000</td>
-      <td>2.0</td>
-      <td>m</td>
-      <td>0-14</td>
-    </tr>
-<tr>
-<th>11</th>
-      <td>AE</td>
-      <td>2000</td>
-      <td>4.0</td>
-      <td>m</td>
-      <td>15-24</td>
-    </tr>
-<tr>
-<th>21</th>
-      <td>AE</td>
-      <td>2000</td>
-      <td>4.0</td>
-      <td>m</td>
-      <td>25-34</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>이것이 정리된 결과 입니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4.-변수가-행과-열에(rows-and-columns)-모두-포함되어-있는-경우">4. 변수가 행과 열에(rows and columns) 모두 포함되어 있는 경우<a class="anchor-link" href="posts/tidy-data/#4.-%EB%B3%80%EC%88%98%EA%B0%80-%ED%96%89%EA%B3%BC-%EC%97%B4%EC%97%90(rows-and-columns)-%EB%AA%A8%EB%91%90-%ED%8F%AC%ED%95%A8%EB%90%98%EC%96%B4-%EC%9E%88%EB%8A%94-%EA%B2%BD%EC%9A%B0">¶</a>
-</h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Global-Historical-Climatology-Network-Dataset">Global Historical Climatology Network Dataset<a class="anchor-link" href="posts/tidy-data/#Global-Historical-Climatology-Network-Dataset">¶</a>
-</h4>
-<p>이것은 2010년도 멕시코 기상청(MX17004)에서 5개월 동안 측정한 기상 데이터입니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/weather-raw.csv"</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>문제점:</strong></p>
-<ul>
-<li>변수들이 행(<code>tmin</code>, <code>tmax</code>) 과 열(<code>days</code>)에 존재합니다.</li>
-</ul>
-<p>깔끔한 데이터를 만들기 위해 <code>melt</code>기능을 사용해 <code>day_raw</code>를 각각의 열로 만들겠습니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"year"</span><span class="p">,</span><span class="s2">"month"</span><span class="p">,</span><span class="s2">"element"</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">"day_raw"</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[25]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>id</th>
-      <th>year</th>
-      <th>month</th>
-      <th>element</th>
-      <th>day_raw</th>
-      <th>value</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>1</td>
-      <td>tmax</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>1</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>1</td>
-      <td>tmin</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>2</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>2</td>
-      <td>tmax</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>3</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>2</td>
-      <td>tmin</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>4</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>3</td>
-      <td>tmax</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>5</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>3</td>
-      <td>tmin</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>6</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>4</td>
-      <td>tmax</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>7</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>4</td>
-      <td>tmin</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>8</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>5</td>
-      <td>tmax</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-<tr>
-<th>9</th>
-      <td>MX17004</td>
-      <td>2010</td>
-      <td>5</td>
-      <td>tmin</td>
-      <td>d1</td>
-      <td>NaN</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>그럼에도 아직 불필요한 것들이 보이는 군요. 좀 더 깔끔한 데이터를 만들기 위해 <code>tmin</code>, <code>tmax</code>를 각각의 열로 만들겠습니다. 그리고 날짜 정보들을 합쳐서 <code>date</code>로 통합하겠습니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extracting day</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">"day"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"day_raw"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">"d(\d+)"</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
-<span class="n">df</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"MX17004"</span>
-
-<span class="c1"># To numeric values</span>
-<span class="n">df</span><span class="p">[[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"month"</span><span class="p">,</span><span class="s2">"day"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">"year"</span><span class="p">,</span><span class="s2">"month"</span><span class="p">,</span><span class="s2">"day"</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">'ignore'</span><span class="p">))</span>
-
-<span class="c1"># Creating a date from the different columns</span>
-<span class="k">def</span> <span class="nf">create_date_from_year_month_day</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"year"</span><span class="p">],</span> <span class="n">month</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]),</span> <span class="n">day</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"day"</span><span class="p">])</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s2">"date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">create_date_from_year_month_day</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'year'</span><span class="p">,</span><span class="s2">"month"</span><span class="p">,</span><span class="s2">"day"</span><span class="p">,</span> <span class="s2">"day_raw"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-<span class="c1"># Unmelting column "element"</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"id"</span><span class="p">,</span><span class="s2">"date"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"element"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"value"</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[26]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th>element</th>
-      <th>id</th>
-      <th>date</th>
-      <th>tmax</th>
-      <th>tmin</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>MX17004</td>
-      <td>2010-02-02</td>
-      <td>27.3</td>
-      <td>14.4</td>
-    </tr>
-<tr>
-<th>1</th>
-      <td>MX17004</td>
-      <td>2010-02-03</td>
-      <td>24.1</td>
-      <td>14.4</td>
-    </tr>
-<tr>
-<th>2</th>
-      <td>MX17004</td>
-      <td>2010-03-05</td>
-      <td>32.1</td>
-      <td>14.2</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>충분히 깔끔한 모양새가 되었습니다.</p>
-<h3 id="5.-하나의-관측-단위(observational-units)가-여러-파일로-나누어져-있는-경우">5. 하나의 관측 단위(observational units)가 여러 파일로 나누어져 있는 경우<a class="anchor-link" href="posts/tidy-data/#5.-%ED%95%98%EB%82%98%EC%9D%98-%EA%B4%80%EC%B8%A1-%EB%8B%A8%EC%9C%84(observational-units)%EA%B0%80-%EC%97%AC%EB%9F%AC-%ED%8C%8C%EC%9D%BC%EB%A1%9C-%EB%82%98%EB%88%84%EC%96%B4%EC%A0%B8-%EC%9E%88%EB%8A%94-%EA%B2%BD%EC%9A%B0">¶</a>
-</h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Baby-Names-in-Illinois">Baby Names in Illinois<a class="anchor-link" href="posts/tidy-data/#Baby-Names-in-Illinois">¶</a>
-</h4>
-<p>2014, 2015년도 미국 일리노이 주(Illinois)의 신생아의 (남자)이름을 수집한 데이터 입니다.</p>
-<p><strong>문제점:</strong></p>
-<ul>
-<li>여러 표와 파일에 데이터가 흩어져 있다.</li>
-<li>연도(Year)”가 파일 이름에 적혀져 있다.</li>
-</ul>
-<p>서로 다른 파일에 데이터가 흩어져 있어 조금 복잡한 과정이 필요합니다.
-먼저 아래의 코드로 파일 리스트를 만들고 거기에서 <em>연도</em> 값을 뽑아냅니다. 그런 다음 각각의 파일에서 표를 만들어내고 마지막으로 <code>concat</code>기능으로 사용해 하나의 표로 합치겠습니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">extract_year</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
-    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">".+(\d</span><span class="si">{4}</span><span class="s2">)"</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span> 
-    <span class="k">if</span> <span class="n">match</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    
-<span class="n">path</span> <span class="o">=</span> <span class="s1">'./data'</span>
-<span class="n">allFiles</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">"/201*-baby-names-illinois.csv"</span><span class="p">)</span>
-<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">df_list</span><span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">allFiles</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">"year"</span><span class="p">]</span> <span class="o">=</span> <span class="n">extract_year</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span>
-    <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-    
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[5]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>rank</th>
-      <th>name</th>
-      <th>frequency</th>
-      <th>sex</th>
-      <th>year</th>
-    </tr></thead>
-<tbody>
-<tr>
-<th>0</th>
-      <td>1</td>
-      <td>Noah</td>
-      <td>837</td>
-      <td>Male</td>
-      <td>2014</td>
-    </tr>
-<tr>
-<th>1</th>
-      <td>2</td>
-      <td>Alexander</td>
-      <td>747</td>
-      <td>Male</td>
-      <td>2014</td>
-    </tr>
-<tr>
-<th>2</th>
-      <td>3</td>
-      <td>William</td>
-      <td>687</td>
-      <td>Male</td>
-      <td>2014</td>
-    </tr>
-<tr>
-<th>3</th>
-      <td>4</td>
-      <td>Michael</td>
-      <td>680</td>
-      <td>Male</td>
-      <td>2014</td>
-    </tr>
-<tr>
-<th>4</th>
-      <td>5</td>
-      <td>Liam</td>
-      <td>670</td>
-      <td>Male</td>
-      <td>2014</td>
-    </tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="마치며">마치며<a class="anchor-link" href="posts/tidy-data/#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
-</h3>
-<p>이 글에서 가장 중점으로 둔것은 파이썬으로 지저분한 데이터를 깔끔하게 만드는 것이 었습니다. 그걸을 위해 <strong>Wickham</strong>의 논문에서 사용된 데이터를 살펴 보았죠. 깔끔한 데이터(Tidy data)의 최고의 장점은 <strong>시각화</strong>(Visualization)이 쉽다는 것에 있습니다. 그것은 다음에 다루어 보도록 하겠습니다.</p>
-<p>앞으로는 <strong>Tidy data</strong>를 고려해서 데이터를 수집하도록 하세요. 모두의 시간은 소중하니까요.</p>
-
+<h2 id="5.">5.<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#5.">¶</a>
+</h2>
 </div>
 </div>
 </div>
@@ -2213,12 +200,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/frequency-of-amino-acid/" class="u-url">아미노산 빈도 계산하기</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/setup/" class="u-url">환경설정(Environment_setup)</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/frequency-of-amino-acid/" rel="bookmark"><time class="published dt-published" datetime="2017-12-20T17:27:02+09:00" title="2017-12-20 17:27">2017-12-20 17:27</time></a></p>
+            <p class="dateline"><a href="posts/setup/" rel="bookmark"><time class="published dt-published" datetime="2017-12-14T09:37:59+09:00" title="2017-12-14 09:37">2017-12-14 09:37</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
@@ -2229,431 +216,253 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="아미노산-빈도-계산하기">아미노산 빈도 계산하기<a class="anchor-link" href="posts/frequency-of-amino-acid/#%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0-%EB%B9%88%EB%8F%84-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0">¶</a>
+<p><img src="https://www.python.org/static/img/python-logo.png" alt="python_logo"></p>
+<h2 id="1.-파이썬-설치">1. 파이썬 설치<a class="anchor-link" href="posts/setup/#1.-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%84%A4%EC%B9%98">¶</a>
 </h2>
-<p>이번에는 파이썬을 이용해서 단백질에서 아미노산의 서열 빈도를 계산하겠습니다.</p>
-<h3 id="Protein?">Protein?<a class="anchor-link" href="posts/frequency-of-amino-acid/#Protein?">¶</a>
-</h3>
+<p>파이썬은 아주 인기있는 프로그래밍 언어로, 웹 사이트는 물론 게임, 과학용 소프트웨어, 그래픽 소프트웨어 등 다양한 것을 만들 수 있습니다. 파이썬은 1980년대 후반에 <strong>귀도 반 로썸</strong> 프로그래밍 언어를 기계 뿐만 아니라 인간도 읽을 수 있도록 만들고자 탄생한 언어입니다. 파이썬이 다른 프로그래밍 언어보다 훨씬 간단하게 보이고, 배우기도 쉬운 이유도 그 때문이죠. 이를 바탕으로 과거 15년 동안 <strong>numpy</strong>,<strong>scipy</strong>,<strong>matplotlib</strong>,<strong>jupyter</strong> 같이 널리 사용되는 라이브러리가 개발되어있습니다. 
+파이썬은 사용중인 OS의 종류에 따라서 설치방법이 다릅니다.</p>
+<h4 id="Windows">Windows<a class="anchor-link" href="posts/setup/#Windows">¶</a>
+</h4>
+<ol>
+<li>사용 중인 컴퓨터 윈도우 운영체제가 32비트인지 64비트인지 확인하세요.</li>
+<li>
+<a href="https://www.python.org/downloads/windows/">공식 웹사이트</a>에서 다운로드 할 수 있습니다. <ul>
+<li>64 비트 버전의 Windows인 경우 <em>Windows x86-64 executable installer</em>를 다운로드하세요.</li>
+<li>32 비트 버전은 <em>Windows x86 executable installer</em>을 다운로드하세요.</li>
+</ul>
+</li>
+<li>설치 프로그램을 다운로드 한 후에 실행(더블 클릭)하고 지시 사항을 따르세요.</li>
+</ol>
+<h4 id="OSX">OSX<a class="anchor-link" href="posts/setup/#OSX">¶</a>
+</h4>
+<p><a href="https://www.python.org/downloads/release/python-351/">웹 사이트</a>로 가서 파이썬 설치 파일을 다운 받으세요.</p>
+<h4 id="Linux">Linux<a class="anchor-link" href="posts/setup/#Linux">¶</a>
+</h4>
+<p>이미 파이썬이 설치되었을 겁니다. 설치된 버전을 확인하려면 콘솔을 열고 다음 명령을 입력하세요.</p>
+<div class="highlight"><pre><span></span>$ python3 --version
+</pre></div>
 <blockquote>
-<p>Protein(단백질)은 생물의 몸을 구성하는 고분자 유기 물질이다. 그리스어의 proteios에서 유래된 것이다. 수많은 아미노산의 연결체로 20가지의 서로 다른 아미노산들이 펩타이드 결합이라고 하는 화학 결합으로 길게 연결된 것을 폴리펩타이드라고 한다. - 위키백과</p>
+<p>하지만 위의 방법보다는 저는 Anaconda를 사용하는것을 추천합니다.</p>
 </blockquote>
-<p>위키백과에 서술되어 있듯이, 단백질은 20가지의 아미노산으로 구성되어 있어요. 아미노산의 서열이 어떻게 다르냐에 따라서 다른 단백질이 되죠.</p>
-<h3 id="예제">예제<a class="anchor-link" href="posts/frequency-of-amino-acid/#%EC%98%88%EC%A0%9C">¶</a>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://www.anaconda.com/wp-content/themes/anaconda/images/logo-dark.png" alt="anaconda"></p>
+<h2 id="2.-Anaconda-설치">2. Anaconda 설치<a class="anchor-link" href="posts/setup/#2.-Anaconda-%EC%84%A4%EC%B9%98">¶</a>
+</h2>
+<p>파이썬 기반의 데이터 분석에 특화된 각종 OpenSource 라이브러리를 모아놓은 개발 플랫폼입니다. 무엇보다도 <strong>Panda, Numpy, Numba, Scipy, IPython, GPGPU, 과학, 수학, 데이터 분석</strong>등과 관련된 수많은 라이브러리 한번에 그리고 <strong>의존성</strong>(dependency)문제 없이 설치 할 수 있습니다. 또한 <strong>conda</strong>라는 관리 라이브러리 매니저가 있어서 편리 합니다.<a href="https://www.anaconda.com/">Anaconda 홈페이지</a></p>
+<h4 id="Anaconda">Anaconda<a class="anchor-link" href="posts/setup/#Anaconda">¶</a>
+</h4>
+<p>공식 홈페이지에서 <strong>OS</strong>에 맞는 파일을 다운받아 "Next"만 누르면 해결되므로 별도의 설명은 서술하지 않습니다.</p>
+<h4 id="Miniconda">Miniconda<a class="anchor-link" href="posts/setup/#Miniconda">¶</a>
+</h4>
+<p><strong>Anaconda</strong>에서 라이브러리 관리 메니저인 <strong>conda</strong>만을 설치 하고 싶다면 <a href="https://conda.io/miniconda.html">miniconda</a>를 다운받아 설치 하면 됩니다.</p>
+<blockquote>
+<p>개인적으로 <strong>Miniconda</strong>를 추천합니다.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Conda-명령어-사용법">3. Conda 명령어 사용법<a class="anchor-link" href="posts/setup/#3.-Conda-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%82%AC%EC%9A%A9%EB%B2%95">¶</a>
+</h2>
+<p><strong>conda</strong>는 라이브러리 관리를 위해 제공되는 애플리케이션입니다. 파이썬 생태계의 라이브러리는 서로에 대해 아무 많이 의존적이기 때문에 각각의 버전이 너무 많은 문제가 발생하기도 합니다. 하지만 conda를 사용하면 이 모든 고민을 신경쓰지 않을 수 있습니다. 다시 말해, <strong>conda</strong>는 파이썬 라이브러리의 교통정리를 해줍니다.</p>
+<blockquote>
+<p>conda 외에도 virtualenv을 사용하는 방법이 있습니다.</p>
+</blockquote>
+<h3 id="주요기능">주요기능<a class="anchor-link" href="posts/setup/#%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5">¶</a>
 </h3>
-<p><strong>Factor8</strong> 이라고 하는 혈우병에 관련된 단백질을 가지고 예를 들어 보겠습니다.</p>
-
-<pre><code>Factor 8 (FVIII) is an essential blood-clotting protein, also known as anti-hemophilic factor (AHF). 
-In humans, factor 8 is encoded by the F8 gene. Defects in this gene result in hemophilia A.</code></pre>
-<p>아미노산은 대문자 알파벳으로 표현되어 있습니다. 각각의 약어가 뜻하는 아미노산은 <a href="https://ko.wikipedia.org/wiki/%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0">링크</a> 에서 확인하세요.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="c1"># 필요한 라이브러리를 불러들입니다.</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>단백질의 서열을 문자열로 넣어줬습니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">protein_seq</span> <span class="o">=</span> <span class="s1">'''MQIELSTCFFLCLLRFCFSATRRYYLGAVELSWDYMQSDLGELPVDARFPPRVPKSFPFN</span>
-<span class="s1">TSVVYKKTLFVEFTDHLFNIAKPRPPWMGLLGPTIQAEVYDTVVITLKNMASHPVSLHAV</span>
-<span class="s1">GVSYWKASEGAEYDDQTSQREKEDDKVFPGGSHTYVWQVLKENGPMASDPLCLTYSYLSH</span>
-<span class="s1">VDLVKDLNSGLIGALLVCREGSLAKEKTQTLHKFILLFAVFDEGKSWHSETKNSLMQDRD</span>
-<span class="s1">AASARAWPKMHTVNGYVNRSLPGLIGCHRKSVYWHVIGMGTTPEVHSIFLEGHTFLVRNH</span>
-<span class="s1">RQASLEISPITFLTAQTLLMDLGQFLLFCHISSHQHDGMEAYVKVDSCPEEPQLRMKNNE</span>
-<span class="s1">EAEDYDDDLTDSEMDVVRFDDDNSPSFIQIRSVAKKHPKTWVHYIAAEEEDWDYAPLVLA</span>
-<span class="s1">PDDRSYKSQYLNNGPQRIGRKYKKVRFMAYTDETFKTREAIQHESGILGPLLYGEVGDTL</span>
-<span class="s1">LIIFKNQASRPYNIYPHGITDVRPLYSRRLPKGVKHLKDFPILPGEIFKYKWTVTVEDGP</span>
-<span class="s1">TKSDPRCLTRYYSSFVNMERDLASGLIGPLLICYKESVDQRGNQIMSDKRNVILFSVFDE</span>
-<span class="s1">NRSWYLTENIQRFLPNPAGVQLEDPEFQASNIMHSINGYVFDSLQLSVCLHEVAYWYILS</span>
-<span class="s1">IGAQTDFLSVFFSGYTFKHKMVYEDTLTLFPFSGETVFMSMENPGLWILGCHNSDFRNRG</span>
-<span class="s1">MTALLKVSSCDKNTGDYYEDSYEDISAYLLSKNNAIEPRSFSQNSRHPSTRQKQFNATTI</span>
-<span class="s1">PENDIEKTDPWFAHRTPMPKIQNVSSSDLLMLLRQSPTPHGLSLSDLQEAKYETFSDDPS</span>
-<span class="s1">PGAIDSNNSLSEMTHFRPQLHHSGDMVFTPESGLQLRLNEKLGTTAATELKKLDFKVSST</span>
-<span class="s1">SNNLISTIPSDNLAAGTDNTSSLGPPSMPVHYDSQLDTTLFGKKSSPLTESGGPLSLSEE</span>
-<span class="s1">NNDSKLLESGLMNSQESSWGKNVSSTESGRLFKGKRAHGPALLTKDNALFKVSISLLKTN</span>
-<span class="s1">KTSNNSATNRKTHIDGPSLLIENSPSVWQNILESDTEFKKVTPLIHDRMLMDKNATALRL</span>
-<span class="s1">NHMSNKTTSSKNMEMVQQKKEGPIPPDAQNPDMSFFKMLFLPESARWIQRTHGKNSLNSG</span>
-<span class="s1">QGPSPKQLVSLGPEKSVEGQNFLSEKNKVVVGKGEFTKDVGLKEMVFPSSRNLFLTNLDN</span>
-<span class="s1">LHENNTHNQEKKIQEEIEKKETLIQENVVLPQIHTVTGTKNFMKNLFLLSTRQNVEGSYD</span>
-<span class="s1">GAYAPVLQDFRSLNDSTNRTKKHTAHFSKKGEEENLEGLGNQTKQIVEKYACTTRISPNT</span>
-<span class="s1">SQQNFVTQRSKRALKQFRLPLEETELEKRIIVDDTSTQWSKNMKHLTPSTLTQIDYNEKE</span>
-<span class="s1">KGAITQSPLSDCLTRSHSIPQANRSPLPIAKVSSFPSIRPIYLTRVLFQDNSSHLPAASY</span>
-<span class="s1">RKKDSGVQESSHFLQGAKKNNLSLAILTLEMTGDQREVGSLGTSATNSVTYKKVENTVLP</span>
-<span class="s1">KPDLPKTSGKVELLPKVHIYQKDLFPTETSNGSPGHLDLVEGSLLQGTEGAIKWNEANRP</span>
-<span class="s1">GKVPFLRVATESSAKTPSKLLDPLAWDNHYGTQIPKEEWKSQEKSPEKTAFKKKDTILSL</span>
-<span class="s1">NACESNHAIAAINEGQNKPEIEVTWAKQGRTERLCSQNPPVLKRHQREITRTTLQSDQEE</span>
-<span class="s1">IDYDDTISVEMKKEDFDIYDEDENQSPRSFQKKTRHYFIAAVERLWDYGMSSSPHVLRNR</span>
-<span class="s1">AQSGSVPQFKKVVFQEFTDGSFTQPLYRGELNEHLGLLGPYIRAEVEDNIMVTFRNQASR</span>
-<span class="s1">PYSFYSSLISYEEDQRQGAEPRKNFVKPNETKTYFWKVQHHMAPTKDEFDCKAWAYFSDV</span>
-<span class="s1">DLEKDVHSGLIGPLLVCHTNTLNPAHGRQVTVQEFALFFTIFDETKSWYFTENMERNCRA</span>
-<span class="s1">PCNIQMEDPTFKENYRFHAINGYIMDTLPGLVMAQDQRIRWYLLSMGSNENIHSIHFSGH</span>
-<span class="s1">VFTVRKKEEYKMALYNLYPGVFETVEMLPSKAGIWRVECLIGEHLHAGMSTLFLVYSNKC</span>
-<span class="s1">QTPLGMASGHIRDFQITASGQYGQWAPKLARLHYSGSINAWSTKEPFSWIKVDLLAPMII</span>
-<span class="s1">HGIKTQGARQKFSSLYISQFIIMYSLDGKKWQTYRGNSTGTLMVFFGNVDSSGIKHNIFN</span>
-<span class="s1">PPIIARYIRLHPTHYSIRSTLRMELMGCDLNSCSMPLGMESKAISDAQITASSYFTNMFA</span>
-<span class="s1">TWSPSKARLHLQGRSNAWRPQVNNPKEWLQVDFQKTMKVTGVTTQGVKSLLTSMYVKEFL</span>
-<span class="s1">ISSSQDGHQWTLFFQNGKVKVFQGNQDSFTPVVNSLDPPLLTRYLRIHPQSWVHQIALRM</span>
-<span class="s1">EVLGCEAQDLY'''</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>단백질 서열에 줄바꿈이 있는지를 확인하고, 그리고 총 2351개의 아미노산 갯수가 세보겠습니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># data check</span>
-<span class="n">protein_seq</span> <span class="o">=</span> <span class="n">protein_seq</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">protein_seq</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>2351</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><code>len</code> 기능을 이용해서 간단하게 갯수가 2351개임을 알 수 있어요</p>
-<h3 id="빈도-계산하기">빈도 계산하기<a class="anchor-link" href="posts/frequency-of-amino-acid/#%EB%B9%88%EB%8F%84-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0">¶</a>
-</h3>
-<p>파이썬 기본 라이브러리인 <code>counter</code>에는 <code>collections</code>이라는 기능이 이미 들어있습니다. 이 기능을 이용해서 아미노산의 갯수를 세어 보겠습니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
-<span class="n">table</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">protein_seq</span><span class="p">)</span>
-<span class="n">table</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Counter({'A': 110,
-         'C': 26,
-         'D': 121,
-         'E': 148,
-         'F': 109,
-         'G': 129,
-         'H': 75,
-         'I': 110,
-         'K': 158,
-         'L': 222,
-         'M': 61,
-         'N': 125,
-         'P': 128,
-         'Q': 110,
-         'R': 104,
-         'S': 219,
-         'T': 155,
-         'V': 125,
-         'W': 37,
-         'Y': 79})</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>이제 <strong>factor8</strong>이라는 단백질의 아미노산 빈도를 알 수 있어요. A(알라닌)은 110개 이군요.</p>
-<h3 id="시각화">시각화<a class="anchor-link" href="posts/frequency-of-amino-acid/#%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
-</h3>
-<p>좀 더 편하게 시각화하기 위해 <code>pandas</code>의 <code>dataframe</code>으로 데이터를 변환 하겠습니다.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">'index'</span><span class="p">)</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'index'</span><span class="p">:</span><span class="s1">'AA'</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="s1">'count'</span><span class="p">})</span> <span class="c1"># column의 label을 변경해줍니다.</span>
-<span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[5]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead><tr style="text-align: right;">
-<th></th>
-      <th>count</th>
-    </tr></thead>
+<p>conda는 자동으로 의존성을 해결해 줍니다. 자주 사용하는 conda 명령어는 기억해 두세요.</p>
+<blockquote>
+<p>numpy를 기준으로 설명하겠습니다.</p>
+</blockquote>
+<table>
+<thead><tr>
+<th>기능</th>
+<th>명령어</th>
+</tr></thead>
 <tbody>
 <tr>
-<th>A</th>
-      <td>110</td>
-    </tr>
+<td>라이브러리 설치</td>
+<td>conda install numpy </td>
+</tr>
 <tr>
-<th>C</th>
-      <td>26</td>
-    </tr>
+<td>동시에 여러 라이브러리를 설치</td>
+<td>conda install numpy scipy pandas</td>
+</tr>
 <tr>
-<th>E</th>
-      <td>148</td>
-    </tr>
+<td>특정 버전 설치</td>
+<td>conda install numpy=1.10</td>
+</tr>
 <tr>
-<th>D</th>
-      <td>121</td>
-    </tr>
+<td>라이브러리 제거</td>
+<td>conda remove numpy</td>
+</tr>
 <tr>
-<th>G</th>
-      <td>129</td>
-    </tr>
+<td>라이브러리 업데이트</td>
+<td>conda update numpy</td>
+</tr>
+<tr>
+<td>모든 라이브러리 업데이트</td>
+<td>conda update –all</td>
+</tr>
+<tr>
+<td>설치된 목록 출력</td>
+<td>conda list</td>
+</tr>
+<tr>
+<td>설치하려는 라이브러리 검색</td>
+<td>conda search numpy</td>
+</tr>
 </tbody>
 </table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="막대-그래프-그리기">막대 그래프 그리기<a class="anchor-link" href="posts/frequency-of-amino-acid/#%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
-</h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># [::-1]은 순서를 맞추기 위함입니다</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'frequency of amino acid '</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5,1,u'frequency of amino acid ')</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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%0AnX+GlFAtswAAAABJRU5ErkJggg==">
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="파이차트-그리기">파이차트 그리기<a class="anchor-link" href="posts/frequency-of-amino-acid/#%ED%8C%8C%EC%9D%B4%EC%B0%A8%ED%8A%B8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
-</h4>
-<p>상대적인 아미노산의 빈도를 알아보기에는 파이차트가 좀 더 나을 것 같네요.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">colormap</span> <span class="o">=</span> <span class="s1">'tab20'</span><span class="p">)</span> <span class="c1"># 20가지의 색상을 표현하기 위해 color map을 변경했습니다.</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'frequency of amino acid '</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5,1,u'frequency of amino acid ')</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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%0Agg==">
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="결론">결론<a class="anchor-link" href="posts/frequency-of-amino-acid/#%EA%B2%B0%EB%A1%A0">¶</a>
+<blockquote>
+<p>찾는 라이브러리가 없다면 <strong>pip</strong>를 사용해보세요</p>
+</blockquote>
+<h3 id="가상환경-만들기">가상환경 만들기<a class="anchor-link" href="posts/setup/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
 </h3>
-<p>확실히, 막대 그래프보다는 파이차트가 눈에 잘 들어옵니다. 하지만 정확한 값은 알기 어렵군요.
-위의 예를 보면 Leucine과 Serine의 빈도가 높고 반면에 Cysteine은 매우 적은 것을 확인 할 수 있습니다.</p>
-<p>이것을 응용해서 다음 번에는 여러개의 서열을 읽고 파이차트를 그려보도록 하겠습니다.</p>
+<p>파이썬 라이브러리들의 의존성 문제를 피하기 위해 새로운 프로젝트를 시작할때면 가상환경을 만들어 작업하는것이 좋습니다. 여기서는 <strong>virtualenv</strong> 대신에 <strong>conda</strong>를 사용해서 간단히 만들어 보겠습니다.</p>
+<ul>
+<li>새로운 가상환경 이름은 ENV_NAME</li>
+<li>사용할 Python 버전은 3이상으로 하겠습니다.</li>
+</ul>
+<ol>
+<li>터미널에 다음과 같이 입력하면 새로운 가상환경이 만들어 집니다.<div class="highlight"><pre><span></span>conda create -n ENV_NAME <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
+</pre></div>
+</li>
+<li>가상환경을 사용하기 위해서는 <em>activate</em> 시켜줘야 합니다. 활성화되면 터미널에 (ENV_NAME)이 표시됩니다.<div class="highlight"><pre><span></span><span class="nb">source</span> activate ENV_NAME
+</pre></div>
+</li>
+<li>필요한 라이브러리들을 설치합니다.<div class="highlight"><pre><span></span>conda install numpy pandas
+</pre></div>
+</li>
+</ol>
+<h3 id="가상환경-확인-및-제거">가상환경 확인 및 제거<a class="anchor-link" href="posts/setup/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%ED%99%95%EC%9D%B8-%EB%B0%8F-%EC%A0%9C%EA%B1%B0">¶</a>
+</h3>
+<p>가상환경의 목록을 확인하려면 아래와 같이 입력하세요.</p>
+<div class="highlight"><pre><span></span>conda env list
+</pre></div>
+<p>가상환경을 삭제하려면 아래와 같이 입력하세요.</p>
+<div class="highlight"><pre><span></span>conda env remove -n ENV_NAME
+</pre></div>
+<h3 id="Conda-제거하기">Conda 제거하기<a class="anchor-link" href="posts/setup/#Conda-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0">¶</a>
+</h3>
+<h5 id="Windows">Windows<a class="anchor-link" href="posts/setup/#Windows">¶</a>
+</h5>
+<p>제어판에 들어가서 <em>Python (Anaconda)</em> 혹은 <em>“Python (Miniconda)</em>를 제거합니다.</p>
+<h5 id="Linux,-OSX">Linux, OSX<a class="anchor-link" href="posts/setup/#Linux,-OSX">¶</a>
+</h5>
+<p>디렉토리만 삭제하면 됩니다.</p>
+<div class="highlight"><pre><span></span>rm -rf ~/miniconda
+rm -rf ~/anaconda
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-코드-에디터">4. 코드 에디터<a class="anchor-link" href="posts/setup/#4.-%EC%BD%94%EB%93%9C-%EC%97%90%EB%94%94%ED%84%B0">¶</a>
+</h2>
+<p>코드 에디터는 종류가 많고 다양해 자신의 취향에 따라 선택할 수 있습니다. 간단하지만 강력한 기능을 갖춘 에디터 프로그램을 아래에 추천합니다.</p>
+<h3 id="Gedit">Gedit<a class="anchor-link" href="posts/setup/#Gedit">¶</a>
+</h3>
+<p>Gedit는 모든 운영체제에서 사용 가능한 무료 오픈소스에요.</p>
+<h3 id="Sublime-Text-3">Sublime Text 3<a class="anchor-link" href="posts/setup/#Sublime-Text-3">¶</a>
+</h3>
+<p>Sublime Text는 가장 널리 알려진 프로그램으로 상용프로그램이지만, 무료로 사용할 수 있고 속도가 빨라요. 
+물론 모든 운영체제에서 쓸 수 있어요.</p>
+<h3 id="Atom">Atom<a class="anchor-link" href="posts/setup/#Atom">¶</a>
+</h3>
+<p>Atom은 GitHub에서 만든 무료로 제공되는 오픈소스이며, 설치나 사용이 쉬워요. 모든 운영체제에서 쓸 수 있어요.</p>
+<h3 id="VScode">VScode<a class="anchor-link" href="posts/setup/#VScode">¶</a>
+</h3>
+<p>Microsoft에서 만든 무료 에디터에요. 설치와 사용이 쉽고 안정적입니다.</p>
+<h3 id="왜-코드-에디터를-설치해야-하나요?">왜 코드 에디터를 설치해야 하나요?<a class="anchor-link" href="posts/setup/#%EC%99%9C-%EC%BD%94%EB%93%9C-%EC%97%90%EB%94%94%ED%84%B0%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%B4%EC%95%BC-%ED%95%98%EB%82%98%EC%9A%94?">¶</a>
+</h3>
+<p>워드나 노트패드가 있는데도, 굳이 코드 에디터 소프트웨어를 설치해야 하는 이유가 궁금할 거에요.<br>
+첫 번째로 코드는 일반 텍스트여야 하는데, 워드나 텍스트에딧(Textedit)과 같은 프로그램에서는 일반 텍스트가 아닌 RTF(Rich Text Format)와 같은 사용자 서식을 쓴 리치 텍스트(폰트와 서식이 있는 텍스트)가 생성되기 때문입니다. 
+두 번째는 코드 에디터 프로그램은 개발에 유용한 여러 기능을 제공하기 때문입니다. 대표적인 예로, 코드를 해석해 문법을 하이라이팅해주는 기능이라든가 큰따옴표("")를 자동으로 닫아주는 기능이지요. 앞으로 코드 에디터가 어떻게 작동하는지 알아볼 거에요. 곧 여러분은 내가 사용하는 코드 에디터를 제일 좋아하게 될 거랍니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-추천-라이브러리">5. 추천 라이브러리<a class="anchor-link" href="posts/setup/#5.-%EC%B6%94%EC%B2%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">¶</a>
+</h2>
+<h3 id="Biopython">Biopython<a class="anchor-link" href="posts/setup/#Biopython">¶</a>
+</h3>
+<p><img src="http://biopython.org/assets/images/biopython_logo_white.png" alt="logo">
+생물정보 데이터 분석을 하다 보면 공통적으로 사용되는 기능들이 많습니다. 예를 들어</p>
+<ul>
+<li>
+<a href="NCBI">NCBI</a>에서 많은 수의 nucleotide 서열을 ID만 가지고 <a href="GenBank">GenBank</a> 형식 또는 <a href="FASTA">FASTA</a> 형식으로 다운 받는다든지, </li>
+<li>다운로드 받은 서열들을 protein 서열로 translation한 후 multiple alignment를 수행하고자 할 경우 NCBI에서 서열을 다운로드하기 </li>
+<li>GenBank 혹은 FASTA 포맷의 서열을 형식에 맞게 id, description, 서열 부분을 구분하여 따로따로 읽어들이는 기능, 읽어들인 서열을 translation 하는 기능 그리고 multiple alignment를 수행이 있겠습니다.</li>
+</ul>
+<p>이렇게 <a href="Python">Python</a>으로 생물정보 데이터를 분석하고자 할 때 많이 사용되는 코드를 모아둔 라이브러리가 <a href="http://www.biopython.org/">Biopython</a> 입니다.<a href="http://www.incodom.kr/Biopython">1</a></p>
+<h4 id="설치하기">설치하기<a class="anchor-link" href="posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<p>다른 라이브러리와 마찬가지로 <code>pip install</code> 혹은 <code>conda install</code>로 설치합니다.</p>
+<div class="highlight"><pre><span></span>conda install biopython
+</pre></div>
+<h4 id="사용하기">사용하기<a class="anchor-link" href="posts/setup/#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+
+<span class="c1">#create a sequence object</span>
+<span class="n">my_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s1">'CATGTAGACTAG'</span><span class="p">)</span>
+
+<span class="c1">#print out some details about it</span>
+<span class="k">print</span> <span class="s1">'seq </span><span class="si">%s</span><span class="s1"> is </span><span class="si">%i</span><span class="s1"> bases long'</span> <span class="o">%</span> <span class="p">(</span><span class="n">my_seq</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_seq</span><span class="p">))</span>
+<span class="k">print</span> <span class="s1">'reverse complement is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span>
+<span class="k">print</span> <span class="s1">'protein translation is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+</pre></div>
+<h3 id="Pandas">Pandas<a class="anchor-link" href="posts/setup/#Pandas">¶</a>
+</h3>
+<p><img src="https://pandas.pydata.org/_static/pandas_logo.png" alt="">
+데이터로 표를 만들고 편집하는것을 아주 편리하게 해주는 필수 라이브러리입니다.</p>
+<blockquote>
+<p>pandas 는 BSD 라이센스를 따르는 오픈 소스입니다. pandas는 빠르고 쉽게 데이터를 분석하는 도구로 파이썬으로 쓰여졌습니다.</p>
+</blockquote>
+<h4 id="설치하기">설치하기<a class="anchor-link" href="posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span>conda install pandas
+</pre></div>
+<h4 id="사용하기">사용하기<a class="anchor-link" href="posts/setup/#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</pre></div>
+<h3 id="Matplotlib">Matplotlib<a class="anchor-link" href="posts/setup/#Matplotlib">¶</a>
+</h3>
+<p><img src="https://matplotlib.org/_static/logo2.svg" alt="matplotlib">
+Matplotlib은 파이썬의 시각화 라이브러리입니다. 출판용 품질의 그림부터 상호작용 가능한 시각화까지 다양한 도구를 제공합니다.</p>
+<h4 id="설치하기">설치하기<a class="anchor-link" href="posts/setup/#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span>conda install matplotlib
+</pre></div>
+<h4 id="사용하기">사용하기<a class="anchor-link" href="posts/setup/#%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</pre></div>
 
 </div>
 </div>

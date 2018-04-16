@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BeautifulSoup을 사용해 웹 스크래핑하기 | Biohacker</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#083551">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://partrita.github.io/posts/python_beutifulsoup/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="../../assets/css/tipuesearch.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<meta name="naver-site-verification" content="d38b92eb0fc0075616e5ff8008f707087bfee65e">
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-111815051-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111815051-1');
+</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NHHK2BF');</script><meta name="author" content="Taeyoon">
+<link rel="prev" href="../python_10min_tutorial/" title="10분안에 배우는 파이썬" type="text/html">
+<link rel="next" href="../linux-trouble-shooting/" title="Linux trouble shooting" type="text/html">
+<meta property="og:site_name" content="Biohacker">
+<meta property="og:title" content="BeautifulSoup을 사용해 웹 스크래핑하기">
+<meta property="og:url" content="https://partrita.github.io/posts/python_beutifulsoup/">
+<meta property="og:description" content="시사용어 모음집은 유료 서비스(예를 들면 에듀스)를 이용할 수 밖에 없었는데 단비뉴스라는 곳에서 감사하게도 시사용어를 소개하고 있는 페이지가 있어 파이썬을 사용해 초간단 웹 스크래핑을 했습니다.
+1. 필요한 것
+
+python 2.7+
+BeautifulSoup 모듈
+
+2. Code
+# -*- coding: utf-8 -*-
+import urllib
+from ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-09-13T17:36:21+09:00">
+<meta property="article:tag" content="BeautifulSoup">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="Web Scraping">
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-default navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://partrita.github.io/">
+
+                <span id="blog-title">Biohacker</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/about/">About</a>
+                </li>
+<li>
+<a href="../../pages/resume/index.html">Resume</a>
+                </li>
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<span class="navbar-form navbar-right">
+<input type="text" id="tipue_search_input" class="form-control" placeholder="Search"></span>
+
+            <ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">BeautifulSoup을 사용해 웹 스크래핑하기</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Taeyoon
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2015-09-13T17:36:21+09:00" itemprop="datePublished" title="2015-09-13 17:36">2015-09-13 17:36</time></a></p>
+            
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>시사용어 모음집은 유료 서비스(예를 들면 <em>에듀스</em>)를 이용할 수 밖에 없었는데 <a href="http://www.danbinews.com/">단비뉴스</a>라는 곳에서 감사하게도 시사용어를 소개하고 있는 페이지가 있어 파이썬을 사용해 초간단 웹 스크래핑을 했습니다.</p>
+<h2>1. 필요한 것</h2>
+<ul>
+<li>python 2.7+</li>
+<li>BeautifulSoup 모듈</li>
+</ul>
+<h2>2. Code</h2>
+<pre class="code literal-block"><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="c1">#결과는 results.txt파일에 저장</span>
+<span class="n">results</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'results.txt'</span><span class="p">,</span><span class="s1">'a'</span><span class="p">)</span>
+<span class="c1">#스크래핑 실패한 페이지 리스트</span>
+<span class="n">fail_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#가장 최근 페이지가 6013, 숫자를 1씩 줄이면서 스크래핑</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6013</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="c1">#스크래핑 할 페이지 주소</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.danbinews.com/news/articleView.html?idxno='</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s2">"lxml"</span><span class="p">)</span>
+        <span class="c1">#아티클의 제목: class가 view_t인것</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'td'</span><span class="p">,</span><span class="n">class_</span><span class="o">=</span><span class="s1">'view_t'</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="c1"># '##'를 제목 앞에 추가해서 마크다운 포멧으로 바꾸고 인코딩 변환</span>
+        <span class="n">title2</span> <span class="o">=</span> <span class="s1">'## '</span><span class="o">+</span> <span class="n">title</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="o">+</span><span class="s1">'n'</span>
+        <span class="c1">#아티클의 내용 찾기 : class id가 view_r 인것</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'td'</span><span class="p">,</span><span class="n">class_</span> <span class="o">=</span><span class="s1">'view_r'</span><span class="p">)</span>
+        <span class="c1">#불필요한 광고를 제거 하기 위해 p tag안 내용만 선택</span>
+        <span class="n">text2</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find_next</span><span class="p">(</span><span class="s1">'p'</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+        <span class="c1">#인코딩과 마지막에 줄바꿈 추가</span>
+        <span class="n">text3</span> <span class="o">=</span> <span class="n">text2</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'n'</span>
+        <span class="c1">#결과 파일에 제목 쓰기</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">title2</span><span class="p">)</span>
+        <span class="c1">#결과 파일에 내용 쓰기</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text3</span><span class="p">)</span>
+        <span class="c1">#스크래핑 성공 메시지 출력</span>
+        <span class="k">print</span> <span class="s1">'Success : '</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'th article'</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1">#URL이 없는 경우 스크래핑 실패 출력</span>
+        <span class="k">print</span> <span class="s1">'Fail : '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'th article'</span>
+        <span class="c1">#실패 리스트에 추가</span>
+        <span class="n">fail_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1">#close the results file</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1">#스크래핑 끝나면 출력</span>
+<span class="k">print</span> <span class="s1">'Finished'</span><span class="err">기</span>
+<span class="k">print</span> <span class="s1">'Fail list : '</span>
+<span class="k">print</span> <span class="n">fail_list</span> <span class="c1"># 실패한 페이지 출력</span>
+</pre>
+
+
+<h2>3. 결과 확인</h2>
+<p>결과는 <strong>result.txt</strong> 파일에 저장됩니다.</p>
+<blockquote>
+<p>파일은 금방 만들었는데 언제 다 읽나.</p>
+</blockquote>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/beautifulsoup/" rel="tag">BeautifulSoup</a></li>
+            <li><a class="tag p-category" href="../../categories/python/" rel="tag">Python</a></li>
+            <li><a class="tag p-category" href="../../categories/web/" rel="tag">Web</a></li>
+            <li><a class="tag p-category" href="../../categories/web-scraping/" rel="tag">Web Scraping</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../python_10min_tutorial/" rel="prev" title="10분안에 배우는 파이썬">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../linux-trouble-shooting/" rel="next" title="Linux trouble shooting">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2018         <a href="mailto:partrita@gmail.com">Taeyoon</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Search Results:</h4>
+      </div>
+      <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var siteUrl = "https://partrita.github.io/"
+$(document).ready(function() {
+    $.when(
+        $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
+        $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
+        $.Deferred(function( deferred ){
+            $( deferred.resolve );
+        })
+    ).done(function() {
+        $('#tipue_search_input').tipuesearch({
+            'mode': 'json',
+            'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
+        });
+        $('#tipue_search_input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $('#search-results').modal()
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
