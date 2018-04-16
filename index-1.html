@@ -88,61 +88,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/walking-the-file-tree/" class="u-url">Walking the file tree</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/regular-exp_blank/" class="u-url">정규직으로 줄바꿈 제거하기</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/walking-the-file-tree/" rel="bookmark"><time class="published dt-published" datetime="2015-04-16T16:10:58+09:00" title="2015-04-16 16:10">2015-04-16 16:10</time></a></p>
+            <p class="dateline"><a href="posts/regular-exp_blank/" rel="bookmark"><time class="published dt-published" datetime="2015-04-14T18:40:03+09:00" title="2015-04-14 18:40">2015-04-14 18:40</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div>
-<p>현재 디렉토리 아래의 모든 파일(서브디렉토리 포함) 목록을 얻고자 할 때는 <code>os.walk('./')</code>를 호출해서 이터레이션 하면서 튜플의 3번째 리스트만 살펴보면 됩니다. 아래의 예제 코드와 확인하세요. </p>
-<pre class="code literal-block"><span></span><span class="c1"># python 2.7 버전</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">'./'</span><span class="p">):</span>
-    <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-        <span class="k">print</span> <span class="nb">file</span>
-</pre>
-
-
-<p>이런 식으로 호출하면 모든 파일 이름이 표시됩니다.</p>
-<h2>os.walk</h2>
-<p><code>os.walk</code>는 특정 디렉토리 아래의 모든 디렉토리와 파일의 목록을 얻어 올 수 있도록 도와줍니다. for 루프에서 3개의 아이템으로 구성된 튜플로 분해가 가능한데 이름만으로도 무엇인지 알 수 있습니다. <strong>root</strong>는 어떤 디렉토리인지, <strong>dirs</strong>는 root 아래의 디렉토리 목록, 그리고 <strong>files</strong>는 root 아래의 파일 목록이다. 모든 목록은 리스트 형태입니다. 좀 더 많은 기능은 <a href="https://docs.python.org/2/library/os.html">공식 문서</a>를 참고하세요.</p>
-<h2>스크립트 파일 예제</h2>
-<p>아래와 같이 스크립트 파일을 만들어 사용해 보았습니다.</p>
-<pre class="code literal-block"><span></span><span class="c1">#-*- coding: utf-8 -*-</span>
-<span class="c1"># sub_dir_search.py</span>
-<span class="c1"># python 2.7 버전</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-<span class="n">nowDate</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span> <span class="c1"># 오늘날짜</span>
-
-<span class="k">def</span> <span class="nf">allfiles2</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-        <span class="n">rootpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">root</span><span class="p">)</span>
-        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-            <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootpath</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
-            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nowDate</span><span class="o">+</span><span class="s1">'_list.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="c1"># 오늘날짜_list.txt 파일을 생성합니다.</span>
-            <span class="k">for</span> <span class="n">ress</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
-                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ress</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s1">'where to search? : '</span><span class="p">)</span>
-    <span class="c1"># 검색할 곳의 위치를 물어봅니다.</span>
-    <span class="n">allfiles2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
-</pre>
-
-
-<p>루트 폴더('C:\')를 넣었더니 엄청나게 큰 파일 생성되었습니다.</p>
+<p>간혹보면 가독성을 위해 엔터키를 마구쳐 내려간 글들이 있습니다.보기엔 좋지만, 출력할때는 많이 불편합니다. 그럴땐 '찾아 바꾸기' 기능을 이용해 해결할 수 있습니다. 물론 정규식을 지원하는 에디터에서 말입니다. Sublimetext, visual studio code, atom 등등의 에디터에서 다음을 실행해 보세요.</p>
+<img alt="http://i1.wp.com/blog.singihae.com/wp-content/uploads/sites/2/2014/02/sublime-text.png" class="align-center" src="http://i1.wp.com/blog.singihae.com/wp-content/uploads/sites/2/2014/02/sublime-text.png"><ol class="arabic">
+<li>
+<p class="first"><a href="posts/regular-exp_blank/#id1"><span class="problematic" id="id2">`</span></a>Ctrl + H`를 누른 후 (or Find &gt; Replace)에 입력 창에 <a href="posts/regular-exp_blank/#id3"><span class="problematic" id="id4">`</span></a>^n`을 입력한다.</p>
+<div class="system-message" id="id1">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 6); <em><a href="posts/regular-exp_blank/#id2">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</div>
+<div class="system-message" id="id3">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 6); <em><a href="posts/regular-exp_blank/#id4">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</div>
+</li>
+<li>
+<p class="first">“regular expression”을 선택한다. (Alt + R을 누르거나 [.*] 아이콘을 클릭)</p>
+</li>
+<li>
+<p class="first">그리고 Replace All를 누르면 모든 줄 바꿈이 삭제 됩니다.</p>
+</li>
+</ol>
 </div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/python-pow/" class="u-url">파이썬으로 제곱근 계산</a></h1>
