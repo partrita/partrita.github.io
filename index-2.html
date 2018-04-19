@@ -89,98 +89,71 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/python_randomseq/" class="u-url">랜덤하게 단백질 서열만들기</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/python-pow/" class="u-url">파이썬으로 제곱근 계산</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/python_randomseq/" rel="bookmark"><time class="published dt-published" datetime="2015-05-11T17:28:23+09:00" title="2015-05-11 17:28">2015-05-11 17:28</time></a></p>
+            <p class="dateline"><a href="posts/python-pow/" rel="bookmark"><time class="published dt-published" datetime="2015-04-02T10:41:05+09:00" title="2015-04-02 10:41">2015-04-02 10:41</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div>
-<p>랜덤으로 원하는 길이의 단백질 서열을 원하는 만큼 만드는 파이썬 스크립트 입니다.</p>
-<pre class="code literal-block"><span></span><span class="c1"># python 2.7 버전</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">Random</span>
-
-<span class="k">def</span> <span class="nf">AminoacidGenerator</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s1">'***generate random aminoacid sequence ***'</span>
-    <span class="n">codeFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'codes.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s1">'invalid number of protein'</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">aminoacid</span> <span class="o">=</span> <span class="s1">'ACDEFGHIKLMNPQRSTVWY'</span>      
-        <span class="n">random</span> <span class="o">=</span> <span class="n">Random</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="nb">str</span> <span class="o">=</span> <span class="s1">''</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-                <span class="n">index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">aminoacid</span><span class="p">))</span>
-                <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span> <span class="o">+</span> <span class="n">aminoacid</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">codeFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="c1"># 100개 길이의 단백질 서열을 100개 만들어 봅니다. </span>
-<span class="k">print</span> <span class="n">AminoacidGenerator</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<p>엑셀에서 사용하던 <code>^</code>기호는 파이썬에서 작동 하지않습니다. 몇가지 대안이 있는데 <code>pow()</code> 함수를 사용하거나 <code>**</code> 연산자로 제곱근을 구할 수 있습니다. 혹은 <code>math.pow()</code>를 사용하는 것입니다.</p>
+<h2>1. pow() 함수</h2>
+<p><code>pow(밑, 지수)</code> 의 형식으로 사용합니다.</p>
+<p>예를 들어, 3의 제곱을 구하려면 아래와 같이 입력합니다.</p>
+<pre class="code literal-block"><span></span><span class="nb">pow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre>
 
 
-<p>그냥 재미로 만들어 보았습니다. 만들어진 서열을 <strong>NCBI</strong>의 <strong>BLAST!</strong> 검색에 넣어보았는데, 비슷한 서열이 검색되지는 않더군요. 그 방대한 데이터베이스에서 겹치는 서열이 없다니 진화의 놀라움에 대해 다시 생각해보게 되는군요.</p>
+<p>다음으로, 3의 거듭제곱근을 구하는 방법입니다.</p>
+<pre class="code literal-block"><span></span><span class="c1"># 파이썬 2.7</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+  <span class="k">print</span> <span class="s2">"</span><span class="si">%d</span><span class="s2"> 의 </span><span class="si">%2d</span><span class="s2"> 제곱 = </span><span class="si">%.0f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</pre>
+
+
+<h2>2. <code>**</code> 연산자</h2>
+<p><code>**</code>을 사용해서 거듭제곱을 구해보겠습니다.</p>
+<pre class="code literal-block"><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s2">"</span><span class="si">%d</span><span class="s2"> 의 </span><span class="si">%2d</span><span class="s2"> 제곱 = </span><span class="si">%.0f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="o">**</span><span class="n">i</span><span class="p">)</span>  
+</pre>
+
+
+<p>사실상 파이썬에 기본적으로 들어있는 <code>**</code>과 <code>pow()</code>함수는 거의 유사합니다. 둘다 <code>__pow__</code> 혹은 <code>__rpow__</code> 방법을 호출하기 때문입니다. </p>
+<h2>3. <code>math.pow()</code> 함수</h2>
+<p>사용법은 위에 서술한 내장 함수 <code>pow()</code>와 동일합니다. 하지만 <code>math.pow()</code>에는 큰 차이점이 있습니다. 결과를 <code>float</code>로 되돌려 주는 것이지요. 반면에 내장함수들은 <code>int</code>로 돌려줍니다. </p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/walking-the-file-tree/" class="u-url">Walking the file tree</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/python_duplicate_list/" class="u-url">파이썬 리스트 중복 아이템 제거</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/walking-the-file-tree/" rel="bookmark"><time class="published dt-published" datetime="2015-04-16T16:10:58+09:00" title="2015-04-16 16:10">2015-04-16 16:10</time></a></p>
+            <p class="dateline"><a href="posts/python_duplicate_list/" rel="bookmark"><time class="published dt-published" datetime="2013-05-06T17:30:49+09:00" title="2013-05-06 17:30">2013-05-06 17:30</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div>
-<p>현재 디렉토리 아래의 모든 파일(서브디렉토리 포함) 목록을 얻고자 할 때는 <code>os.walk('./')</code>를 호출해서 이터레이션 하면서 튜플의 3번째 리스트만 살펴보면 됩니다. 아래의 예제 코드와 확인하세요. </p>
-<pre class="code literal-block"><span></span><span class="c1"># python 2.7 버전</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">'./'</span><span class="p">):</span>
-    <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-        <span class="k">print</span> <span class="nb">file</span>
+<p>Python의 리스트에 중복된 아이템은 아래와 같은 방법으로 쉽게 제거할 수 있습니다.</p>
+<pre class="code literal-block"><span></span><span class="c1">#리스트 생성과 확인</span>
+<span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"d"</span><span class="p">,</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">'li'</span><span class="p">)</span>
 </pre>
 
 
-<p>이런 식으로 호출하면 모든 파일 이름이 표시됩니다.</p>
-<h2>os.walk</h2>
-<p><code>os.walk</code>는 특정 디렉토리 아래의 모든 디렉토리와 파일의 목록을 얻어 올 수 있도록 도와줍니다. for 루프에서 3개의 아이템으로 구성된 튜플로 분해가 가능한데 이름만으로도 무엇인지 알 수 있습니다. <strong>root</strong>는 어떤 디렉토리인지, <strong>dirs</strong>는 root 아래의 디렉토리 목록, 그리고 <strong>files</strong>는 root 아래의 파일 목록이다. 모든 목록은 리스트 형태입니다. 좀 더 많은 기능은 <a href="https://docs.python.org/2/library/os.html">공식 문서</a>를 참고하세요.</p>
-<h2>스크립트 파일 예제</h2>
-<p>아래와 같이 스크립트 파일을 만들어 사용해 보았습니다.</p>
-<pre class="code literal-block"><span></span><span class="c1">#-*- coding: utf-8 -*-</span>
-<span class="c1"># sub_dir_search.py</span>
-<span class="c1"># python 2.7 버전</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-<span class="n">nowDate</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span> <span class="c1"># 오늘날짜</span>
-
-<span class="k">def</span> <span class="nf">allfiles2</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-        <span class="n">rootpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">root</span><span class="p">)</span>
-        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-            <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootpath</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
-            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nowDate</span><span class="o">+</span><span class="s1">'_list.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="c1"># 오늘날짜_list.txt 파일을 생성합니다.</span>
-            <span class="k">for</span> <span class="n">ress</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
-                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ress</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s1">'where to search? : '</span><span class="p">)</span>
-    <span class="c1"># 검색할 곳의 위치를 물어봅니다.</span>
-    <span class="n">allfiles2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+<pre class="code literal-block"><span></span>["a","b","c","d","a","b"]
 </pre>
 
 
-<p>루트 폴더('C:\')를 넣었더니 엄청나게 큰 파일 생성되었습니다.</p>
+<pre class="code literal-block"><span></span><span class="c1">#리스트에 중복 아이템 제거</span>
+<span class="n">li</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">li</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
+</pre>
+
+
+<pre class="code literal-block"><span></span>['a', 'c', 'b', 'd']
+</pre>
 </div>
     </div>
     </article>

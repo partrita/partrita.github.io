@@ -320,6 +320,88 @@ IMPORTANT: Residual wash buffer will inhibit subsequent enzymatic reactions. </l
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="DNA-ligation">DNA ligation<a class="anchor-link" href="#DNA-ligation">¶</a>
+</h2>
+<h3 id="Standard-Protocol:-Insert-+-Vector-DNA-Ligation">Standard Protocol: Insert + Vector DNA Ligation<a class="anchor-link" href="#Standard-Protocol:-Insert-+-Vector-DNA-Ligation">¶</a>
+</h3>
+<p>대부분의 경우 3 insert : 1 vector 비율을 추천한다. 또한 ligation 반응 시 총 DNA의 양은 100ng 정도가 권장 된다.</p>
+<ol>
+<li>Combine the following in a PCR or Eppendorf tube:<ul>
+<li>25ng Vector DNA</li>
+<li>75ng Insert DNA</li>
+<li>Ligase Buffer (1μL/10μL reaction for 10X buffer, and 2μL/10μL reaction for 5X buffer) 0.5-1μL T4 DNA Ligase</li>
+<li>DW 를 넣어 total 10μL</li>
+<li>만약 DNA 농도가 너무 낮다면 total volume을 증가 시켜서 진행한다.</li>
+<li>항상 Vector만 넣은 control실험을 하고 다양한 vector : insert 비율을 시도 한다.</li>
+</ul>
+</li>
+<li>RT에서 2시간 혹은 16°C에서 overnight 반응 시킨다.<ul>
+<li>"high concentration" ligase를 사용하는 경우 RT 5분이면 충분하다. </li>
+</ul>
+</li>
+<li>transformation을 진행한다.</li>
+</ol>
+<h3 id="Vector:Insert-비율">Vector:Insert 비율<a class="anchor-link" href="#Vector:Insert-%EB%B9%84%EC%9C%A8">¶</a>
+</h3>
+<p>보통 3:1 비율로 넣어줄 경우 충분하지만 안될 경우 vector: insert 비율을 조절 해 줄 필요가 있다. 자동으로 계산해주는 <a href="http://www.insilico.uni-duesseldorf.de/Lig_Input.html">도구</a> 이 있으니 참고한다.</p>
+<h3 id="Tips-and-FAQ">Tips and FAQ<a class="anchor-link" href="#Tips-and-FAQ">¶</a>
+</h3>
+<p>ligation 단계는 실험의 성공 여부를 알기 힘들기 때문에 항상 컨트롤을 같이 해야 한다.</p>
+<table>
+<thead><tr>
+<th>Control</th>
+<th>Ligase</th>
+<th>Interpretation</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Uncut vector</td>
+<td>-</td>
+<td>Checks viability of competent cells and verifies the antibiotic resistance of the plasmid</td>
+</tr>
+<tr>
+<td>Cut vector</td>
+<td>-</td>
+<td>Background due to uncut vector</td>
+</tr>
+<tr>
+<td>Cut vector</td>
+<td>+</td>
+<td>Background due to vector re-circularization - most useful for phosphatase treated vector</td>
+</tr>
+<tr>
+<td>Insert or water</td>
+<td>+</td>
+<td>Any colonies indicate contamination of intact plasmid in ligation or transformation reagents</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="PCR-Annealing-온도">PCR Annealing 온도<a class="anchor-link" href="#PCR-Annealing-%EC%98%A8%EB%8F%84">¶</a>
+</h2>
+<p>Tm은 DNA 두 가닥이 반쯤 풀어졌을때 또는 두 가닥 ssDNA가 반쯤 annealing됬을떄의 온도를 말합니다. "반 쯤" 이라는 표현은 "반쯤 풀어졌을때" 와 "반쯤 붙었을때" 가 같은 의미로 사용됩니다. 긴 template와 고농도의 짧은 primer들이 같이 있을때 프라이머가 적당한 온도가 되면 서서히 유사한 서열에 붙기 시작합니다. 하지만 Tm에서는 반 밖에 붙지 못하므로, 특히 프라이머의 3' 쪽이 붙지 못한 상태라면 PCR 이 일어나지 않습니다. 그래서 온도를 좀 더 내려서 프라이머가 template에 더 붙도록 합니다. DNA의 Tm 값은 다음과 같이 계산할 수 있습니다.</p>
+<p>$$ Tm = 4*(G+C)+2*(A+T) $$</p>
+<p>Primer를 디자인할때 가능하면 같은 Tm 값의 forward,reverse primer를 주문하는 하는것이 좋습니다. 그렇지 못한 경우 낮은 Tm값의 primer를 기준으로 약 5도 정도 낮은 온도에서 PCR을 수행합니다. 만약 원하는 사이즈의 PCR 밴드와 잡밴드가 같이 뜨면 annealing 온도를 2도씩 올려 가면서 PCR 실행합니다.</p>
+<p>만약 실험실에 gradient PCR기가 있으면 낮은 Tm-5도와 높은 Tm-5도로해서 한번에 하는 방법도 있습니다. 보통 20~30 mer사이는 보통 55도 근처에서 하면 잘 나오는경우가 많습니다.</p>
+<h3 id="잘-안되는-경우">잘 안되는 경우<a class="anchor-link" href="#%EC%9E%98-%EC%95%88%EB%90%98%EB%8A%94-%EA%B2%BD%EC%9A%B0">¶</a>
+</h3>
+<p>primer의 길이가 50~60mer를 넘어간다던가 GC비율이 현저하게 높거나 낮을때에는 annealing temperature를 찾아야 하는 경우가 많습니다. 그럴때는 바로 gradient PCR을 최저 온도(보통 48~50도)에서 윗쪽으로 해보는것이 좋습니다. 잡밴드를 감수하고 원하는 밴드를 PCR 하기 위함입니다.</p>
+
+</div>
+</div>
+</div>
     </div>
   </div>
 

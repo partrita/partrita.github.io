@@ -89,1025 +89,482 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/notebook-fancontrol/" class="u-url">노트북 팬 소음 줄이기</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/linux-trouble-shooting/" class="u-url">Linux trouble shooting</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/notebook-fancontrol/" rel="bookmark"><time class="published dt-published" datetime="2016-11-30T17:15:52+09:00" title="2016-11-30 17:15">2016-11-30 17:15</time></a></p>
+            <p class="dateline"><a href="posts/linux-trouble-shooting/" rel="bookmark"><time class="published dt-published" datetime="2015-10-11T11:11:03+09:00" title="2015-10-11 11:11">2015-10-11 11:11</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div>
-<blockquote>
-<p>Asus X540la에서 작동하는 것을 확인하였습니다.</p>
-</blockquote>
-<p><img alt="NoteBook FanControl" src="https://github.com/hirschmann/nbfc/wiki/images/banner.png"></p>
-<p>Notebook Fancontrol(이하 NBFC)는 크로스 플랫폼으로 윈도우즈와 리눅스에서 노트북의 팬 속도를 조절합니다. 아주 강력하고 다양한 <strong>설정</strong> 시스템이 함께 제공합니다.</p>
-<h3>다운로드</h3>
-<table>
-<thead><tr>
-<th>Source</th>
-<th></th>
-<th></th>
-</tr></thead>
-<tbody>
-<tr>
-<td>깃허브에 다운로드</td>
-<td><a href="https://github.com/hirschmann/nbfc/releases">NBFC releases</a></td>
-<td><a href="posts/notebook-fancontrol/"><img alt="Github All Releases" src="https://img.shields.io/github/downloads/hirschmann/nbfc/total.svg"></a></td>
-</tr>
-<tr>
-<td>chocolatey로 인스톨</td>
-<td><a href="https://chocolatey.org/packages/nbfc">NBFC package info</a></td>
-<td><a href="posts/notebook-fancontrol/"><img alt="Chocolatey" src="https://img.shields.io/chocolatey/dt/nbfc.svg"></a></td>
-</tr>
-</tbody>
-</table>
-<p>현재는 미리 컴파일된 리눅스 버전은 제공 되지 않고 있습니다. 하지만 손쉽게 컴파일이 가능하므로 다음 링크를 참조하세요. <a href="https://github.com/hirschmann/nbfc/wiki/How-to-build-NBFC">How to build NBFC</a></p>
-<h3>시작하기</h3>
-<ul>
-<li><a href="https://github.com/hirschmann/nbfc/wiki/First-steps">첫번째 단계</a></li>
-<li>
-<a href="https://github.com/hirschmann/nbfc/wiki/FAQ">자주하는 질문</a> (새로운 이슈를 제기하기 전에 읽어주세요)</li>
-<li>
-<a href="https://github.com/hirschmann/nbfc/wiki/Structure-of-a-NBFC-config-file">설정파일 구조</a> (만약에 새로운 설정파일을 만드시겠다면)</li>
+<h2>리눅스 해상도 문제 해결하기</h2>
+<p>구형 컴퓨터에 리눅스(리눅스 민트)를 설치하였습니다. 저해상도로 고정되는 경우는 처음이었는데, 검색을 통해 아래와 같은 방법으로 해결했습니다.</p>
+<ol>
+<li>먼저 아래와 터미널에 아래와 같은 명령어를 칩니다. (예시로 1600×900을 사용했는데, 원하는 비율로 변경하시면 됩니다.)</li>
+</ol>
+<pre class="code literal-block"><span></span>cvt <span class="m">1600</span> <span class="m">900</span>
+</pre>
+
+
+<pre class="code literal-block"><span></span><span class="nt">1600x900</span> <span class="nt">59</span><span class="p">.</span><span class="nc">95</span> <span class="nt">Hz</span> <span class="o">(</span><span class="nt">CVT</span> <span class="nt">1</span><span class="p">.</span><span class="nc">44M9</span><span class="o">)</span> <span class="nt">hsync</span><span class="o">:</span> <span class="nt">55</span><span class="p">.</span><span class="nc">99</span> <span class="nt">kHz</span><span class="o">;</span> <span class="nt">pclk</span><span class="o">:</span> <span class="nt">118</span><span class="p">.</span><span class="nc">25</span> <span class="nt">MHz</span>
+<span class="nt">Modeline</span> <span class="s2">"1600x900_60.00"</span> <span class="nt">118</span><span class="p">.</span><span class="nc">25</span> <span class="nt">1600</span> <span class="nt">1696</span> <span class="nt">1856</span> <span class="nt">2112</span> <span class="nt">900</span> <span class="nt">903</span> <span class="nt">908</span> <span class="nt">934</span> <span class="nt">-hsync</span> <span class="o">+</span><span class="nt">vsync</span>
+</pre>
+
+
+<ol>
+<li>위에서 얻은 결과를 참고해 모니터 설정을 추가 합니다. 위의 결과의 뒷부분을 복사해서 붙여넣으면 됩니다.<ul>
+<li>모니터 마다 결과가 다르니 꼭 1번단계를 통해 직접 명령어를 만들어야 합니다.</li>
 </ul>
-<h3>Build 상황</h3>
-<table>
-<thead><tr>
-<th>Platform</th>
-<th>CI service</th>
-<th>Status</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Linux</td>
-<td>Travis</td>
-<td><a href="https://travis-ci.org/hirschmann/nbfc"><img alt="Travis" src="https://img.shields.io/travis/hirschmann/nbfc.svg"></a></td>
-</tr>
-<tr>
-<td>Windows</td>
-<td>AppVeyor</td>
-<td><a href="https://ci.appveyor.com/project/hirschmann/nbfc"><img alt="AppVeyor" src="https://img.shields.io/appveyor/ci/gruntjs/grunt.svg"></a></td>
-</tr>
-</tbody>
-</table>
-<h3>Credits</h3>
-<p><a href="https://github.com/hirschmann">@Stefan Hirschmann</a></p>
+</li>
+</ol>
+<pre class="code literal-block"><span></span>xrandr --newmode <span class="s2">"1600x900_60.00"</span> <span class="m">118</span>.25 <span class="m">1600</span> <span class="m">1696</span> <span class="m">1856</span> <span class="m">2112</span> <span class="m">900</span> <span class="m">903</span> <span class="m">908</span> <span class="m">934</span> -hsync +vsync
+<span class="c1"># 새로운 모드를 만들고 아래와 같이 추가해줍니다.</span>
+xrandr --addmode VGA1 <span class="s2">"1600x900_60.00"</span>
+</pre>
+
+
+<p>면이 깜박이면서 1600×900해상도가 새롭게 생깁니다. 하지만 재부팅을하면 다시 복구가 되므로 매번 명령어를 입력하는 불편이 있습니다.</p>
+<ol>
+<li>쉘 스크립트(fix-resolution.sh)를 작성합니다. 텍스트에디터로 만들어서 확장자만 변경하시면 됩니다.</li>
+</ol>
+<pre class="code literal-block"><span></span><span class="ch">#!/bin/sh</span>
+<span class="c1"># fix-resolution.sh</span>
+xrandr --newmode <span class="s2">"1600x900_60.00"</span> <span class="m">118</span>.25 <span class="m">1600</span> <span class="m">1696</span> <span class="m">1856</span> <span class="m">2112</span> <span class="m">900</span> <span class="m">903</span> <span class="m">908</span> <span class="m">934</span> -hsync +vsync
+xrandr --addmode VGA1 <span class="s2">"1600x900_60.00"</span>
+xrandr --output VGA1 --mode <span class="s2">"1600x900_60.00"</span>
+</pre>
+
+
+<ol>
+<li>fix-resolution.desktop라는 파일도 만들어 줍니다.</li>
+</ol>
+<pre class="code literal-block"><span></span><span class="c1"># fix-resolution.desktop</span>
+<span class="o">[</span>Desktop Entry<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>Application
+<span class="nv">Name</span><span class="o">=</span>fix-resolution.desktop
+<span class="nv">Exec</span><span class="o">=</span>/usr/local/bin/fix-resolution.sh
+</pre>
+
+
+<ol>
+<li>두개의 파일이 들어있는 디렉토리에서 터미널을 열고 다음의 명령어를 입력 합니다.</li>
+</ol>
+<pre class="code literal-block"><span></span>cp fix-resolution.sh /usr/local/bin
+chmod +x /usr/local/bin/fix-resolution.sh
+cp fix-resolution.desktop /etc/xdg/autostart
+</pre>
+
+
+<p>파일을 복사해서 옮겨주는 것이라서, 생성하신 파일은 이제 삭제하셔도 됩니다.</p>
+<hr>
+<h2>자주 사용하는 커맨드 Alias 만들기</h2>
+<p>터미널을 자주 사용하다보면 명령어 입력이 번거로울 때가 있습니다. 이럴 때를 위해서 Bash shell에서는 <code>Alias</code>라는 기능을 제공하고 있습니다. 기능을 사용하기 위해서는 <code>~/.bashrc</code> 파일의 수정이 필요합니다.</p>
+<ol>
+<li>bashrc 파일 열기</li>
+</ol>
+<pre class="code literal-block"><span></span>nano ~/.bashrc
+</pre>
+
+
+<p>nano 에디터로 파일을 열어줍니다.</p>
+<ol>
+<li>Alias 명령어 추가하기
+Alias 사용법은 다음과 같습니다. </li>
+</ol>
+<pre class="code literal-block"><span></span>alias l="ls -a"
+</pre>
+
+
+<p>‘l’을 치면 ‘ls -a’랑 같은 효과가 나도록 설정하였습니다. 이제 Ctrl+x를 눌러 파일을 저장합니다.</p>
+<ol>
+<li>Bash shell 재실행
+저장한 내용을 적용하기 위해 shell을 다시 실행 해야합니다.</li>
+</ol>
+<pre class="code literal-block"><span></span><span class="nb">source</span> .bashrc
+</pre>
+
+
+<p>이제 'l'을 누르면 적용이 된것을 확인 할 수 있습니다.</p>
+<hr>
+<h2>한글로 된 압축파일명이 깨지는 경우</h2>
+<p>윈도우에 많이 사용 되는 압축파일인 <code>.zip</code>포멧은 리눅스에서 인코딩 문제로 자주 파일명이 깨집니다. 이러한 문제를 해결하려면 터미널 명령어 <code>unzip</code>에 인코딩 옵션을 줘야 합니다.</p>
+<ol>
+<li>unzip 사용법
+명령어의 사용법은 다음과 같습니다.</li>
+</ol>
+<pre class="code literal-block"><span></span><span class="nv">$unzip</span> -O <span class="o">[</span>인코딩<span class="o">]</span> <span class="o">[</span>파일명<span class="o">]</span>
+</pre>
+
+
+<p>윈도우에서 많이 사용되는 인코딩은 cp949이므로, 아래와 같이 쓰면 됩니다.</p>
+<blockquote>
+<p>물론 인코딩을 미리 확인하고 사용하는게 좋습니다.</p>
+</blockquote>
+<p>터미널에 아래와 같이 입력하세요.</p>
+<pre class="code literal-block"><span></span><span class="nv">$unzip</span> -O cp949 한글.zip
+</pre>
+
+
+<p>위 방법을 이용하면 인코딩 깨짐 없이 무사히 압축을 해제할 수 있습니다.</p>
+<ol>
+<li>이 모든 삽질의 원인
+zip파일은 거의 모든 압축포맷 중에 단연 최고의 사용률을 자랑하는 포맷입니다. 하지만 치명적인 단점이 있는데 바로 Unicode가 지원되지 않는 다는 것이죠. 그래서 인코딩이 깨지는 현상이 발생하게 되는 것입니다. 앞으로는 <code>7z</code>와 같은 새로운 압축 포맷을 사용하는게 좋겠습니다.</li>
+</ol>
+<hr>
+<h2>터미널에서 컴퓨터 하드웨어 정보 확인하기</h2>
+<ol>
+<li>리눅스 버전확인</li>
+</ol>
+<pre class="code literal-block"><span></span>~$ cat /etc/issue
+</pre>
+
+
+<pre class="code literal-block"><span></span>Ubuntu 15.04
+</pre>
+
+
+<p>사용중인 리눅스의 버전을 확인합니다.</p>
+<ol>
+<li>하드디스크 용량 확인</li>
+</ol>
+<pre class="code literal-block"><span></span>~$ df -h
+</pre>
+
+
+<pre class="code literal-block"><span></span>Filesystem Size Used Avail Use% Mounted on
+udev 3.8G 0 3.8G 0% /dev
+tmpfs 771M 26M 746M 4% /run
+/dev/sda5 33G 15G 17G 46% /
+tmpfs 3.8G 604K 3.8G 1% /dev/shm
+tmpfs 5.0M 4.0K 5.0M 1% /run/lock
+tmpfs 3.8G 0 3.8G 0% /sys/fs/cgroup
+cgmfs 100K 0 100K 0% /run/cgmanager/fs
+tmpfs 771M 48K 771M 1% /run/user/1000
+</pre>
+
+
+<p>3번째 줄에서 총 공간이 총 33G이고 15G를 사용하고 있음을 확인합니다.</p>
+<ol>
+<li>CPU 코어 갯수 확인</li>
+</ol>
+<pre class="code literal-block"><span></span>~$ cat /proc/cpuinfo <span class="p">|</span> grep processor <span class="p">|</span> wc -l
+</pre>
+
+
+<pre class="code literal-block"><span></span>8
+</pre>
+
+
+<p>코어의 갯수가 8개 임을 알수 있습니다.</p>
+<ol>
+<li>램 사용량 확인</li>
+</ol>
+<pre class="code literal-block"><span></span>~$ free -m
+</pre>
+
+
+<pre class="code literal-block"><span></span>total used free shared buffers cached
+Mem: 7708 2690 5017 161 351 669
+-/+ buffers/cache: 1669 6038
+Swap: 0 0 0
+</pre>
+
+
+<p>전체 7708Mb에서 2618Mb를 사용하고 있습니다.</p>
+<hr>
+<h2>헐리우드 해커 터미널</h2>
+<p>영화에 나오는 해커처럼 터미널에 복잡한것을 띄워 봅시다. 아래 코드를 터미널에 입력하면 랜덤하게 hex dump가 시작됩니다. </p>
+<pre class="code literal-block"><span></span>hexdump -C /dev/urandom <span class="p">|</span> <span class="nv">GREP_COLOR</span><span class="o">=</span><span class="s1">'1;32'</span> grep --color<span class="o">=</span>auto <span class="s1">'ca fe'</span>
+</pre>
+
+
+<blockquote>
+<p>hex dump는 램 또는 파일이나 저장장치에 있는 컴퓨터 데이터의 십육진법적인 보임새이다. 데이터의 hex dump를 보는 것은 주로 디버깅이나 리버스 엔지니어링의 한 부분이다.  -- 위키피디아</p>
+</blockquote>
+<p>이와 비슷한 것으로 영화 <strong>메트릭스</strong>에 나오는 화면도 시도해 보겠습니다.</p>
+<pre class="code literal-block"><span></span><span class="c1"># 먼저 cmatrix를 설치해야 합니다.</span>
+sudo apt-get install cmatrix
+<span class="c1"># 실행합니다.</span>
+cmatrix
+</pre>
+
+
+<p>별 의미는 없지만 흥미롭습니다.</p>
+<hr>
+<h2>죽은 프로세서 되살리기</h2>
+<p>서버 관리를 하다 보면, 죽으면 안되는 데몬이 갑자기 죽는 경우가 있다. 이런 경우를 대비해 데몬이 죽었으면 재 실행 시켜 주는 스크립트를 만들어 보겠습니다.</p>
+<ol>
+<li>쉘 스크립트 작성
+아파치 데몬이 죽었을 경우 자동 재 시작하는 스크립트를 작성해보겠습니다. 아래와 같은 내용의 쉘 스크립트 파일을 만듭니다. 파일명은 <code>revive.sh</code>로 하겠습니다.</li>
+</ol>
+<pre class="code literal-block"><span></span><span class="c1"># revive.sh</span>
+<span class="c1">#!/bin/bash</span>
+<span class="nv">http</span><span class="o">=</span><span class="s2">"`pgrep http  | wc -l`"</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$http</span><span class="s2">"</span> -eq <span class="s2">"0"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+/usr/local/apache/bin/apachectl restart
+<span class="k">fi</span>
+</pre>
+
+
+<p><code>http</code>라는 변수에 <code>pgrep http</code>로 아파치 프로세서의 갯수를 세어 저장합니다. 그리고, <code>if</code>문에서 <code>http</code>변수에 들어 있는 값이 0이라면 아파치를 재시작 합니다. 위의 스크립트를 <code>revive.sh</code> 로 저장하고, 터미널에 다음과 같이 입력합니다.</p>
+<pre class="code literal-block"><span></span>$ chmod -x revive.sh
+</pre>
+
+
+<p>이는 퍼미션을 주기 위한 것입니다.</p>
+<ol>
+<li>크론(cron)에 등록해서 1분마다 확인하기
+리눅스에서는 정기적으로 반복되는 작업을 위한 <code>cron</code>이라는 서비스가 있습니다. 크론으로 1분에 한번씩 위의 스크립트가 작동되도록 하겠습니다. </li>
+</ol>
+<pre class="code literal-block"><span></span>crontab -e
+</pre>
+
+
+<p>으로 크론을 실행한뒤 아래와 같이 입력합니다.</p>
+<pre class="code literal-block"><span></span>* * * * * su - root -c '/root/revive.sh /dev/null'
+</pre>
+
+
+<p>파일을 저장한뒤 적용을 위해서는 로그오프가 필요합니다. </p>
+<hr>
+<h2>우분투 단축키 모음</h2>
+<ol>
+<li>General keyboard shortcuts <ul>
+<li>Ctrl + A = Select all</li>
+<li>Ctrl + C = Copy the highlighted content to clipboard</li>
+<li>Ctrl + V = Paste the clipboard content</li>
+<li>Ctrl + N = New (Create a new document, not in terminal)</li>
+<li>Ctrl + O = Open a document</li>
+<li>Ctrl + S = Save the current document</li>
+<li>Ctrl + P = Print the current document</li>
+<li>Ctrl + W = Close the close document</li>
+<li>Ctrl + Q = Quit the current application</li>
+</ul>
+</li>
+<li>Keyboard shortcuts for GNOME desktop<ul>
+<li>Ctrl + Alt + F1 = Switch to the first virtual terminal</li>
+<li>Ctrl + Alt + F2(F3)(F4)(F5)(F6) = Select the different virtual terminals</li>
+<li>Ctrl + Alt + F7 = Restore back to the current terminal session with X</li>
+<li>Ctrl + Alt + Backspace = Restart GNOME</li>
+<li>Ctrl + Alt + L = Lock the screen.</li>
+<li>Alt + Tab = Switch between open programs</li>
+<li>Alt + F1 = opens the Applications menu</li>
+<li>Alt + F2 = opens the Run Application dialog box.</li>
+<li>Alt + F3 = opens the Deskbar Applet</li>
+<li>Alt + F4 = closes the current window.</li>
+<li>Alt + F5 = unmaximizes the current window.</li>
+<li>Alt + F7 = move the current window</li>
+<li>Alt + F8 = resizes the current window.</li>
+<li>Alt + F9 = minimizes the current window.</li>
+<li>Alt + F10 = maximizes the current window. </li>
+<li>Alt + Space = opens the window menu.</li>
+<li>Ctrl + Alt + + = Switch to next X resolution</li>
+<li>Ctrl + Alt + - = Switch to previous X resolution</li>
+<li>Ctrl + Alt + Left/Right = move to the next/previous workspace</li>
+</ul>
+</li>
+<li>Keyboard shortcuts for Terminal<ul>
+<li>Ctrl + A = Move cursor to beginning of line</li>
+<li>Ctrl + E = Move cursor to end of line</li>
+<li>Ctrl + C = kills the current process.</li>
+<li>Ctrl + Z = sends the current process to the background.</li>
+<li>Ctrl + D = logs you out.</li>
+<li>Ctrl + R = finds the last command matching the entered letters.</li>
+<li>Enter a letter, followed by Tab + Tab = lists the available commands beginning with those letters.</li>
+<li>Ctrl + U = deletes the current line.</li>
+<li>Ctrl + K = deletes the command from the cursor right.</li>
+<li>Ctrl + W = deletes the word before the cursor.</li>
+<li>Ctrl + L = clears the terminal output</li>
+<li>Shift + Ctrl + C = copy the highlighted command to the clipboard.</li>
+<li>Shift + Ctrl + V (or Shift + Insert) = pastes the contents of the clipboard.</li>
+<li>Alt + F = moves forward one word.</li>
+<li>Alt + B = moves backward one word.</li>
+<li>Arrow Up/Down = browse command history</li>
+<li>Shift + PageUp / PageDown = Scroll terminal output </li>
+</ul>
+</li>
+<li>Keyboard shortcuts for Compiz<ul>
+<li>Alt + Tab = switch between open windows</li>
+<li>Win + Tab = switch between open windows with Shift Switcher or Ring Switcher effect</li>
+<li>Win + E = Expo, show all workspace</li>
+<li>Ctrl + Alt + Down = Film Effect</li>
+<li>Ctrl + Alt + Left mouse button = Rotate Desktop Cube</li>
+<li>Alt + Shift + Up = Scale Windows</li>
+<li>Ctrl + Alt + D = Show Desktop</li>
+<li>Win + Left mouse button = take screenshot on selected area</li>
+<li>Win + Mousewheel = Zoom In/Out</li>
+<li>Alt + Mousewheel = Transparent Window</li>
+<li>Alt + F8 = Resize Window</li>
+<li>Alt + F7 = Move Window</li>
+<li>Win + P = Add Helper</li>
+<li>F9 = show widget layer</li>
+<li>Shift + F9 = show water effects</li>
+<li>Win + Shift + Left mouse button = Fire Effects</li>
+<li>Win + Shift + C = Clear Fire Effects</li>
+<li>Win + Left mouse button = Annotate: Draw</li>
+<li>Win + 1 = Start annotation</li>
+<li>Win + 3 = End annotation</li>
+<li>Win + S = selects windows for grouping</li>
+<li>Win + T = Group Windows together</li>
+<li>Win + U = Ungroup Windows</li>
+<li>Win + Left/Right = Flip Windows</li>
+</ul>
+</li>
+<li>Keyboard shortcut for Nautilus<ul>
+<li>Shift + Ctrl + N = Create New Folder</li>
+<li>Ctrl + T = Delete selected file(s) to trash</li>
+<li>Alt + ENTER = Show File/Folder Properties</li>
+<li>Ctrl + 1 = Toggle View As Icons</li>
+<li>Ctrl + 2 = Toggle View As List</li>
+<li>Shift + Right = Open Directory (Only in List View)</li>
+<li>Shift + Left = Close Directory (Only in List View)</li>
+<li>Ctrl + S = Select Pattern</li>
+<li>F2 = Rename File</li>
+<li>Ctrl + A = Select all files and folders</li>
+<li>Ctrl + W = Close Window</li>
+<li>Ctrl + Shift + W = Close All Nautilus Windows</li>
+<li>Ctrl + R = Reload Nautilus Window</li>
+<li>Alt + Up = Open parent directory</li>
+<li>Alt + Left = Back</li>
+<li>Alt + Right = Forward</li>
+<li>Alt + Home = go to Home folder</li>
+<li>Ctrl + L = go to location bar</li>
+<li>F9 = Show sidepane</li>
+<li>Ctrl + H = Show Hidden Files</li>
+<li>Ctrl + + = Zoom In</li>
+<li>Ctrl + - = Zoom Out</li>
+<li>Ctrl + 0 = Normal Size </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>리눅스를 노트북에 사용할때</h2>
+<p>리눅스를 노트북에 최적화 시키는 툴에 <a href="http://linrunner.de/en/tlp/tlp.html">TLP</a>가 있습니다. TLP 는 리눅스 배포판과 하드웨어를 자동으로 인식해 노트북의 전원관리와 여러 트윅을 적용 시켜주기 때문에 아주 편리합니다. 다음과 같은 기능이 있습니다.</p>
+<ol>
+<li>배터리와 AC전원 유무에 따라 변경되는 효과<ul>
+<li>Kernel laptop mode and dirty buffer timeouts;</li>
+<li>Processor frequency scaling including "turbo boost" / "turbo core";</li>
+<li>Power aware process scheduler for multi-core/hyper-threading;</li>
+<li>Hard disk advanced power management level and spin down timeout (per disk);</li>
+<li>SATA aggressive link power management (ALPM);</li>
+<li>PCI Express active state power management (PCIe ASPM) – Linux 2.6.35 and above;</li>
+<li>Runtime power management for PCI(e) bus devices – Linux 2.6.35 and above;</li>
+<li>Radeon KMS power management – Linux 2.6.35 and above, not fglrx;</li>
+<li>Wifi power saving mode – depending on kernel/driver;</li>
+<li>Power off optical drive in drive bay (on battery).</li>
+</ul>
+</li>
+<li>추가적인 TLP 기능:<ul>
+<li>I/O scheduler (per disk);</li>
+<li>USB autosuspend with blacklist;</li>
+<li>Audio power saving mode – hda_intel, ac97;</li>
+<li>Enable or disable integrated wifi, bluetooth or wwan devices upon system startup and shutdown;</li>
+<li>Restore radio device state on system startup (from previous shutdown);</li>
+<li>Radio device wizard: switch radios upon network connect/disconnect and dock/undock;</li>
+<li>Disable Wake On LAN;</li>
+<li>WWAN state is restored after suspend/hibernate;</li>
+<li>Undervolting of Intel processors – requires kernel with PHC-Patch;</li>
+<li>Battery charge thresholds – ThinkPads only;</li>
+<li>Recalibrate battery – ThinkPads only.</li>
+</ul>
+</li>
+</ol>
+<h3>설치법</h3>
+<ol>
+<li>충돌을 일으킬 수 있는 laptop-mode 제거</li>
+</ol>
+<pre class="code literal-block"><span></span>sudo apt-get purge laptop-mode-tools
+</pre>
+
+
+<ol>
+<li>TLP설치</li>
+</ol>
+<pre class="code literal-block"><span></span>sudo add-apt-repository ppa:linrunner/tlp
+sudo apt-get update
+sudo apt-get install tlp
+</pre>
+
+
+<ol>
+<li>처음 실행후에는 부팅시 자동 실행된다.</li>
+</ol>
+<pre class="code literal-block"><span></span>sudo tlp start
+</pre>
+
+
+<hr>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/restructuredtext-demo/" class="u-url">ReStructuredText Demo</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/python_beutifulsoup/" class="u-url">BeautifulSoup을 사용해 웹 스크래핑하기</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/restructuredtext-demo/" rel="bookmark"><time class="published dt-published" datetime="2016-11-16T15:01:39+11:00" title="2016-11-16 15:01">2016-11-16 15:01</time></a></p>
+            <p class="dateline"><a href="posts/python_beutifulsoup/" rel="bookmark"><time class="published dt-published" datetime="2015-09-13T17:36:21+09:00" title="2015-09-13 17:36">2015-09-13 17:36</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div>
-<table class="docinfo" frame="void" rules="none">
-<col class="docinfo-name">
-<col class="docinfo-content">
-<tbody valign="top">
-<tr>
-<th class="docinfo-name">Author:</th>
-<td>David Goodger</td>
-</tr>
-<tr>
-<th class="docinfo-name">Address:</th>
-<td>
-<pre class="address">
-123 Example Street
-Example, EX  Canada
-A1B 2C3
-</pre>
-</td>
-</tr>
-<tr>
-<th class="docinfo-name">Contact:</th>
-<td><a class="first last reference external" href="mailto:docutils-develop@lists.sourceforge.net">docutils-develop@lists.sourceforge.net</a></td>
-</tr>
-<tr>
-<th class="docinfo-name">Authors:</th>
-<td>Me
-<br>Myself
-<br>I</td>
-</tr>
-<tr>
-<th class="docinfo-name">Organization:</th>
-<td>humankind</td>
-</tr>
-<tr>
-<th class="docinfo-name">Date:</th>
-<td>2016-11-03</td>
-</tr>
-<tr>
-<th class="docinfo-name">Status:</th>
-<td>This is a "work in progress"</td>
-</tr>
-<tr>
-<th class="docinfo-name">Revision:</th>
-<td>7302</td>
-</tr>
-<tr>
-<th class="docinfo-name">Version:</th>
-<td>1</td>
-</tr>
-<tr>
-<th class="docinfo-name">Copyright:</th>
-<td>This document has been placed in the public domain. You
-may do with it as you wish. You may copy, modify,
-redistribute, reattribute, sell, buy, rent, lease,
-destroy, or improve it, quote it at length, excerpt,
-incorporate, collate, fold, staple, or mutilate it, or do
-anything else to it that your or anyone else's heart
-desires.</td>
-</tr>
-<tr class="field-name field">
-<th class="docinfo-name">field name:</th>
-<td class="field-body">This is a generic bibliographic field.</td>
-</tr>
-<tr class="field-name-2 field">
-<th class="docinfo-name">field name 2:</th>
-<td class="field-body">
-<p class="first">Generic bibliographic fields may contain multiple body elements.</p>
-<p class="last">Like this.</p>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="dedication topic">
-<p class="topic-title first">Dedication</p>
-<p>For Docutils users &amp; co-developers.</p>
-</div>
-<div class="abstract topic">
-<p class="topic-title first">Abstract</p>
-<p>This document is a demonstration of the reStructuredText markup
-language, containing examples of all basic reStructuredText
-constructs and many advanced constructs.</p>
-</div>
-<!-- This is a comment. Note how any initial comments are moved by
-transforms to after the document title, subtitle, and docinfo. -->
-<!-- Above is the document title, and below is the subtitle.
-They are transformed from section titles after parsing. -->
-<!-- bibliographic fields (which also require a transform): -->
-<div class="contents topic" id="table-of-contents">
-<p class="topic-title first">Table of Contents</p>
-<ul class="auto-toc simple">
-<li>
-<a class="reference internal" href="posts/restructuredtext-demo/#structural-elements" id="id29">1   Structural Elements</a><ul class="auto-toc">
-<li><a class="reference internal" href="posts/restructuredtext-demo/#section-title" id="id30">1.1   Section Title</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#transitions" id="id31">1.2   Transitions</a></li>
-</ul>
-</li>
-<li>
-<a class="reference internal" href="posts/restructuredtext-demo/#body-elements" id="id32">2   Body Elements</a><ul class="auto-toc">
-<li>
-<a class="reference internal" href="posts/restructuredtext-demo/#paragraphs" id="id33">2.1   Paragraphs</a><ul class="auto-toc">
-<li><a class="reference internal" href="posts/restructuredtext-demo/#inline-markup" id="id34">2.1.1   Inline Markup</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#bullet-lists" id="id35">2.2   Bullet Lists</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#enumerated-lists" id="id36">2.3   Enumerated Lists</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#definition-lists" id="id37">2.4   Definition Lists</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#field-lists" id="id38">2.5   Field Lists</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#option-lists" id="id39">2.6   Option Lists</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#literal-blocks" id="id40">2.7   Literal Blocks</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#line-blocks" id="id41">2.8   Line Blocks</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#block-quotes" id="id42">2.9   Block Quotes</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#doctest-blocks" id="id43">2.10   Doctest Blocks</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#tables" id="id44">2.11   Tables</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#footnotes" id="id45">2.12   Footnotes</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#citations" id="id46">2.13   Citations</a></li>
-<li>
-<a class="reference internal" href="posts/restructuredtext-demo/#targets" id="id47">2.14   Targets</a><ul class="auto-toc">
-<li><a class="reference internal" href="posts/restructuredtext-demo/#duplicate-target-names" id="id48">2.14.1   Duplicate Target Names</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#id18" id="id49">2.14.2   Duplicate Target Names</a></li>
-</ul>
-</li>
-<li>
-<a class="reference internal" href="posts/restructuredtext-demo/#directives" id="id50">2.15   Directives</a><ul class="auto-toc">
-<li><a class="reference internal" href="posts/restructuredtext-demo/#document-parts" id="id51">2.15.1   Document Parts</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#images" id="id52">2.15.2   Images</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#admonitions" id="id53">2.15.3   Admonitions</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#topics-sidebars-and-rubrics" id="id54">2.15.4   Topics, Sidebars, and Rubrics</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#target-footnotes" id="id55">2.15.5   Target Footnotes</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#replacement-text" id="id56">2.15.6   Replacement Text</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#compound-paragraph" id="id57">2.15.7   Compound Paragraph</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#substitution-definitions" id="id58">2.16   Substitution Definitions</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#comments" id="id59">2.17   Comments</a></li>
-</ul>
-</li>
-<li>
-<a class="reference internal" href="posts/restructuredtext-demo/#extensions" id="id60">3   Extensions</a><ul class="auto-toc">
-<li><a class="reference internal" href="posts/restructuredtext-demo/#code-blocks" id="id61">3.1   Code Blocks</a></li>
-<li>
-<a class="reference internal" href="posts/restructuredtext-demo/#mathematics" id="id62">3.2   Mathematics</a><ul class="auto-toc">
-<li><a class="reference internal" href="posts/restructuredtext-demo/#an-identity-of-ramanujan" id="id63">3.2.1   An Identity of Ramanujan</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#maxwell-s-equations" id="id64">3.2.2   Maxwell's Equations</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#doc" id="id65">3.3   Doc</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#error-handling" id="id66">4   Error Handling</a></li>
-</ul>
-</div>
-<div class="section" id="structural-elements">
-<h2><a class="toc-backref" href="posts/restructuredtext-demo/#id29">1   Structural Elements</a></h2>
-<div class="section" id="section-title">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id30">1.1   Section Title</a></h3>
-<p>That's it, the text just above this line.</p>
-</div>
-<div class="section" id="transitions">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id31">1.2   Transitions</a></h3>
-<p>Here's a transition:</p>
-<hr class="docutils">
-<p>It divides the section.</p>
-</div>
-</div>
-<div class="section" id="body-elements">
-<h2><a class="toc-backref" href="posts/restructuredtext-demo/#id32">2   Body Elements</a></h2>
-<div class="section" id="paragraphs">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id33">2.1   Paragraphs</a></h3>
-<p>A paragraph.</p>
-<div class="section" id="inline-markup">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id34">2.1.1   Inline Markup</a></h4>
-<p>Paragraphs contain text and may contain inline markup: <em>emphasis</em>,
-<strong>strong emphasis</strong>, <tt class="docutils literal">inline literals</tt>, standalone hyperlinks
-(<a class="reference external" href="http://www.python.org">http://www.python.org</a>), external hyperlinks (<a class="reference external" href="http://www.python.org/">Python</a> <a class="footnote-reference" href="posts/restructuredtext-demo/#id25" id="id26">[5]</a>), internal
-cross-references (<a class="reference internal" href="posts/restructuredtext-demo/#example">example</a>), external hyperlinks with embedded URIs
-(<a class="reference external" href="http://www.python.org">Python web site</a>), footnote references
-(manually numbered <a class="footnote-reference" href="posts/restructuredtext-demo/#id6" id="id1">[1]</a>, anonymous auto-numbered <a class="footnote-reference" href="posts/restructuredtext-demo/#id9" id="id2">[3]</a>, labeled
-auto-numbered <a class="footnote-reference" href="posts/restructuredtext-demo/#label" id="id3">[2]</a>, or symbolic <a class="footnote-reference" href="posts/restructuredtext-demo/#id10" id="id4">[*]</a>), citation references
-(<a class="citation-reference" href="posts/restructuredtext-demo/#cit2002" id="id5">[CIT2002]</a>), substitution references (<img alt="EXAMPLE" src="posts/images/rest_demo/biohazard.png">), and <span class="target" id="inline-hyperlink-targets">inline
-hyperlink targets</span> (see <a class="reference internal" href="posts/restructuredtext-demo/#targets">Targets</a> below for a reference back to here).
-Character-level inline markup is also possible (although exceedingly
-ugly!) in <em>re</em><tt class="docutils literal">Structured</tt><em>Text</em>.  Problems are indicated by
-<a href="posts/restructuredtext-demo/#id21"><span class="problematic" id="id22">|problematic|</span></a> text (generated by processing errors; this one is
-intentional).</p>
-<p>The default role for interpreted text is <cite>Title Reference</cite>.  Here are
-some explicit interpreted text roles: a PEP reference (<a class="reference external" href="http://www.python.org/dev/peps/pep-0287">PEP 287</a>); an
-RFC reference (<a class="reference external" href="http://tools.ietf.org/html/rfc2822.html">RFC 2822</a>); a <sub>subscript</sub>; a <sup>superscript</sup>;
-and explicit roles for <em>standard</em> <strong>inline</strong>
-<tt class="docutils literal">markup</tt>.</p>
-<!-- DO NOT RE-WRAP THE FOLLOWING PARAGRAPH! -->
-<p>Let's test wrapping and whitespace significance in inline literals:
-<tt class="docutils literal">This is an example of <span class="pre">--inline-literal</span> <span class="pre">--text,</span> <span class="pre">--including</span> <span class="pre">some--</span>
-<span class="pre">strangely--hyphenated-words.</span>  <span class="pre">Adjust-the-width-of-your-browser-window</span>
-to see how the text is wrapped.  <span class="pre">--</span> <span class="pre">----</span> <span class="pre">--------</span>  Now note    the
-spacing    between the    words of    this sentence    (words
-should    be grouped    in pairs).</tt></p>
-<p>If the <tt class="docutils literal"><span class="pre">--pep-references</span></tt> option was supplied, there should be a
-live link to PEP 258 here.</p>
-</div>
-</div>
-<div class="section" id="bullet-lists">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id35">2.2   Bullet Lists</a></h3>
+<p>시사용어 모음집은 유료 서비스(예를 들면 <em>에듀스</em>)를 이용할 수 밖에 없었는데 <a href="http://www.danbinews.com/">단비뉴스</a>라는 곳에서 감사하게도 시사용어를 소개하고 있는 페이지가 있어 파이썬을 사용해 초간단 웹 스크래핑을 했습니다.</p>
+<h2>1. 필요한 것</h2>
 <ul>
-<li>
-<p class="first">A bullet list</p>
-<ul class="simple">
-<li>Nested bullet list.</li>
-<li>Nested item 2.</li>
+<li>python 2.7+</li>
+<li>BeautifulSoup 모듈</li>
 </ul>
-</li>
-<li>
-<p class="first">Item 2.</p>
-<p>Paragraph 2 of item 2.</p>
-<ul class="simple">
-<li>Nested bullet list.</li>
-<li>Nested item 2.<ul>
-<li>Third level.</li>
-<li>Item 2.</li>
-</ul>
-</li>
-<li>Nested item 3.</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="enumerated-lists">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id36">2.3   Enumerated Lists</a></h3>
-<ol class="arabic">
-<li>
-<p class="first">Arabic numerals.</p>
-<ol class="loweralpha simple">
-<li>lower alpha)<ol class="lowerroman">
-<li>(lower roman)<ol class="upperalpha">
-<li>upper alpha.<ol class="upperroman">
-<li>upper roman)</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>
-<p class="first">Lists that don't start at 1:</p>
-<ol class="arabic simple" start="3">
-<li>Three</li>
-<li>Four</li>
-</ol>
-<ol class="upperalpha simple" start="3">
-<li>C</li>
-<li>D</li>
-</ol>
-<ol class="lowerroman simple" start="3">
-<li>iii</li>
-<li>iv</li>
-</ol>
-</li>
-<li>
-<p class="first">List items may also be auto-enumerated.</p>
-</li>
-</ol>
-</div>
-<div class="section" id="definition-lists">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id37">2.4   Definition Lists</a></h3>
-<dl class="docutils">
-<dt>Term</dt>
-<dd>Definition</dd>
-<dt>Term <span class="classifier-delimiter">:</span> <span class="classifier">classifier</span>
-</dt>
-<dd>
-<p class="first">Definition paragraph 1.</p>
-<p class="last">Definition paragraph 2.</p>
-</dd>
-<dt>Term</dt>
-<dd>Definition</dd>
-</dl>
-</div>
-<div class="section" id="field-lists">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id38">2.5   Field Lists</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name">
-<col class="field-body">
-<tbody valign="top">
-<tr class="field">
-<th class="field-name">what:</th>
-<td class="field-body">
-<p class="first">Field lists map field names to field bodies, like database
-records.  They are often part of an extension syntax.  They are
-an unambiguous variant of RFC 2822 fields.</p>
-</td>
-</tr>
-<tr class="field">
-<th class="field-name">how arg1 arg2:</th>
-<td class="field-body">
-<p class="first">The field marker is a colon, the field name, and a colon.</p>
-<p class="last">The field body may contain one or more body elements, indented
-relative to the field marker.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="option-lists">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id39">2.6   Option Lists</a></h3>
-<p>For listing command-line options:</p>
-<table class="docutils option-list" frame="void" rules="none">
-<col class="option">
-<col class="description">
-<tbody valign="top">
-<tr>
-<td class="option-group">
-<kbd><span class="option">-a</span></kbd>
-</td>
-<td>command-line option "a"</td>
-</tr>
-<tr>
-<td class="option-group">
-<kbd><span class="option">-b <var>file</var></span></kbd>
-</td>
-<td>options can have arguments
-and long descriptions</td>
-</tr>
-<tr>
-<td class="option-group">
-<kbd><span class="option">--long</span></kbd>
-</td>
-<td>options can be long also</td>
-</tr>
-<tr>
-<td class="option-group">
-<kbd><span class="option">--input=<var>file</var></span></kbd>
-</td>
-<td>long options can also have
-arguments</td>
-</tr>
-<tr>
-<td class="option-group" colspan="2">
-<kbd><span class="option">--very-long-option</span></kbd>
-</td>
-</tr>
-<tr>
-<td> </td>
-<td>
-<p class="first">The description can also start on the next line.</p>
-<p class="last">The description may contain multiple body elements,
-regardless of where it starts.</p>
-</td>
-</tr>
-<tr>
-<td class="option-group">
-<kbd><span class="option">-x</span>, <span class="option">-y</span>, <span class="option">-z</span></kbd>
-</td>
-<td>Multiple options are an "option group".</td>
-</tr>
-<tr>
-<td class="option-group">
-<kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd>
-</td>
-<td>Commonly-seen: short &amp; long options.</td>
-</tr>
-<tr>
-<td class="option-group" colspan="2">
-<kbd><span class="option">-1 <var>file</var></span>, <span class="option">--one=<var>file</var></span>, <span class="option">--two <var>file</var></span></kbd>
-</td>
-</tr>
-<tr>
-<td> </td>
-<td>Multiple options with arguments.</td>
-</tr>
-<tr>
-<td class="option-group">
-<kbd><span class="option">/V</span></kbd>
-</td>
-<td>DOS/VMS-style options too</td>
-</tr>
-</tbody>
-</table>
-<p>There must be at least two spaces between the option and the
-description.</p>
-</div>
-<div class="section" id="literal-blocks">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id40">2.7   Literal Blocks</a></h3>
-<p>Literal blocks are indicated with a double-colon ("::") at the end of
-the preceding paragraph (over there <tt class="docutils literal"><span class="pre">--&gt;</span></tt>).  They can be indented:</p>
-<pre class="literal-block">
-if literal_block:
-    text = 'is left as-is'
-    spaces_and_linebreaks = 'are preserved'
-    markup_processing = None
-</pre>
-<p>Or they can be quoted without indentation:</p>
-<pre class="literal-block">
-&gt;&gt; Great idea!
-&gt;
-&gt; Why didn't I think of that?
-</pre>
-</div>
-<div class="section" id="line-blocks">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id41">2.8   Line Blocks</a></h3>
-<div class="line-block">
-<div class="line">This is a line block.  It ends with a blank line.</div>
-<div class="line-block">
-<div class="line">Each new line begins with a vertical bar ("|").</div>
-<div class="line">Line breaks and initial indents are preserved.</div>
-</div>
-<div class="line">Continuation lines are wrapped portions of long lines;
-they begin with a space in place of the vertical bar.</div>
-<div class="line-block">
-<div class="line">The left edge of a continuation line need not be aligned with
-the left edge of the text above it.</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">This is a second line block.</div>
-<div class="line"><br></div>
-<div class="line">Blank lines are permitted internally, but they must begin with a "|".</div>
-</div>
-<p>Take it away, Eric the Orchestra Leader!</p>
-<blockquote>
-<div class="line-block">
-<div class="line">A one, two, a one two three four</div>
-<div class="line"><br></div>
-<div class="line">Half a bee, philosophically,</div>
-<div class="line-block">
-<div class="line">must, <em>ipso facto</em>, half not be.</div>
-</div>
-<div class="line">But half the bee has got to be,</div>
-<div class="line-block">
-<div class="line">
-<em>vis a vis</em> its entity.  D'you see?</div>
-<div class="line"><br></div>
-</div>
-<div class="line">But can a bee be said to be</div>
-<div class="line-block">
-<div class="line">or not to be an entire bee,</div>
-<div class="line-block">
-<div class="line">when half the bee is not a bee,</div>
-<div class="line-block">
-<div class="line">due to some ancient injury?</div>
-<div class="line"><br></div>
-</div>
-</div>
-</div>
-<div class="line">Singing...</div>
-</div>
-</blockquote>
-</div>
-<div class="section" id="block-quotes">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id42">2.9   Block Quotes</a></h3>
-<p>Block quotes consist of indented body elements:</p>
-<blockquote>
-<p>My theory by A. Elk.  Brackets Miss, brackets.  This theory goes
-as follows and begins now.  All brontosauruses are thin at one
-end, much much thicker in the middle and then thin again at the
-far end.  That is my theory, it is mine, and belongs to me and I
-own it, and what it is too.</p>
-<p class="attribution">—Anne Elk (Miss)</p>
-</blockquote>
-</div>
-<div class="section" id="doctest-blocks">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id43">2.10   Doctest Blocks</a></h3>
-<pre class="doctest-block">
-&gt;&gt;&gt; print 'Python-specific usage examples; begun with "&gt;&gt;&gt;"'
-Python-specific usage examples; begun with "&gt;&gt;&gt;"
-&gt;&gt;&gt; print '(cut and pasted from interactive Python sessions)'
-(cut and pasted from interactive Python sessions)
-</pre>
-</div>
-<div class="section" id="tables">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id44">2.11   Tables</a></h3>
-<p>Here's a grid table followed by a simple table:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="43%">
-<col width="21%">
-<col width="18%">
-<col width="18%">
-</colgroup>
-<thead valign="bottom"><tr>
-<th class="head">Header row, column 1
-(header rows optional)</th>
-<th class="head">Header 2</th>
-<th class="head">Header 3</th>
-<th class="head">Header 4</th>
-</tr></thead>
-<tbody valign="top">
-<tr>
-<td>body row 1, column 1</td>
-<td>column 2</td>
-<td>column 3</td>
-<td>column 4</td>
-</tr>
-<tr>
-<td>body row 2</td>
-<td colspan="3">Cells may span columns.</td>
-</tr>
-<tr>
-<td>body row 3</td>
-<td rowspan="2">Cells may
-span rows.</td>
-<td colspan="2" rowspan="2"><ul class="first last simple">
-<li>Table cells</li>
-<li>contain</li>
-<li>body elements.</li>
-</ul></td>
-</tr>
-<tr>
-<td>body row 4</td>
-</tr>
-<tr>
-<td>body row 5</td>
-<td colspan="2">Cells may also be
-empty: <tt class="docutils literal"><span class="pre">--&gt;</span></tt>
-</td>
-<td> </td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
-<colgroup>
-<col width="31%">
-<col width="31%">
-<col width="38%">
-</colgroup>
-<thead valign="bottom">
-<tr>
-<th class="head" colspan="2">Inputs</th>
-<th class="head">Output</th>
-</tr>
-<tr>
-<th class="head">A</th>
-<th class="head">B</th>
-<th class="head">A or B</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr>
-<td>False</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-</tr>
-<tr>
-<td>False</td>
-<td>True</td>
-<td>True</td>
-</tr>
-<tr>
-<td>True</td>
-<td>True</td>
-<td>True</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="footnotes">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id45">2.12   Footnotes</a></h3>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label">[1]</td>
-<td>
-<em>(<a class="fn-backref" href="posts/restructuredtext-demo/#id1">1</a>, <a class="fn-backref" href="posts/restructuredtext-demo/#id7">2</a>)</em> <p>A footnote contains body elements, consistently indented by at
-least 3 spaces.</p>
-<p class="last">This is the footnote's second paragraph.</p>
-</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="label" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label">[2]</td>
-<td>
-<em>(<a class="fn-backref" href="posts/restructuredtext-demo/#id3">1</a>, <a class="fn-backref" href="posts/restructuredtext-demo/#id8">2</a>)</em> Footnotes may be numbered, either manually (as in <a class="footnote-reference" href="posts/restructuredtext-demo/#id6" id="id7">[1]</a>) or
-automatically using a "#"-prefixed label.  This footnote has a
-label so it can be referred to from multiple places, both as a
-footnote reference (<a class="footnote-reference" href="posts/restructuredtext-demo/#label" id="id8">[2]</a>) and as a hyperlink reference
-(<a class="reference internal" href="posts/restructuredtext-demo/#label">label</a>).</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="posts/restructuredtext-demo/#id2">[3]</a></td>
-<td>This footnote is numbered automatically and anonymously using a
-label of "#" only.</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="posts/restructuredtext-demo/#id4">[*]</a></td>
-<td>Footnotes may also use symbols, specified with a "*" label.
-Here's a reference to the next footnote: <a class="footnote-reference" href="posts/restructuredtext-demo/#id12" id="id11">[†]</a>.</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="posts/restructuredtext-demo/#id11">[†]</a></td>
-<td>This footnote shows the next symbol in the sequence.</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id13" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label">[4]</td>
-<td>Here's an unreferenced footnote, with a reference to a
-nonexistent footnote: <a href="posts/restructuredtext-demo/#id74"><span class="problematic" id="id14">[5]_</span></a>.</td>
-</tr></tbody>
-</table>
-</div>
-<div class="section" id="citations">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id46">2.13   Citations</a></h3>
-<table class="docutils citation" frame="void" id="cit2002" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label">[CIT2002]</td>
-<td>
-<em>(<a class="fn-backref" href="posts/restructuredtext-demo/#id5">1</a>, <a class="fn-backref" href="posts/restructuredtext-demo/#id15">2</a>)</em> Citations are text-labeled footnotes. They may be
-rendered separately and differently from footnotes.</td>
-</tr></tbody>
-</table>
-<p>Here's a reference to the above, <a class="citation-reference" href="posts/restructuredtext-demo/#cit2002" id="id15">[CIT2002]</a>, and a <a href="posts/restructuredtext-demo/#id75"><span class="problematic" id="id16">[nonexistent]_</span></a>
-citation.</p>
-</div>
-<div class="section" id="targets">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id47">2.14   Targets</a></h3>
-<p id="example">This paragraph is pointed to by the explicit "example" target. A
-reference can be found under <a class="reference internal" href="posts/restructuredtext-demo/#inline-markup">Inline Markup</a>, above. <a class="reference internal" href="posts/restructuredtext-demo/#inline-hyperlink-targets">Inline
-hyperlink targets</a> are also possible.</p>
-<p>Section headers are implicit targets, referred to by name. See
-<a class="reference internal" href="posts/restructuredtext-demo/#targets">Targets</a>, which is a subsection of <a class="reference internal" href="posts/restructuredtext-demo/#body-elements">Body Elements</a>.</p>
-<p>Explicit external targets are interpolated into references such as
-"<a class="reference external" href="http://www.python.org/">Python</a> <a class="footnote-reference" href="posts/restructuredtext-demo/#id25" id="id27">[5]</a>".</p>
-<p>Targets may be indirect and anonymous.  Thus <a class="reference internal" href="posts/restructuredtext-demo/#targets">this phrase</a> may also
-refer to the <a class="reference internal" href="posts/restructuredtext-demo/#targets">Targets</a> section.</p>
-<p>Here's a <a href="posts/restructuredtext-demo/#id76"><span class="problematic" id="id77">`hyperlink reference without a target`_</span></a>, which generates an
-error.</p>
-<div class="section" id="duplicate-target-names">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id48">2.14.1   Duplicate Target Names</a></h4>
-<p>Duplicate names in section headers or other implicit targets will
-generate "info" (level-1) system messages.  Duplicate names in
-explicit targets will generate "warning" (level-2) system messages.</p>
-</div>
-<div class="section" id="id18">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id49">2.14.2   Duplicate Target Names</a></h4>
-<p>Since there are two "Duplicate Target Names" section headers, we
-cannot uniquely refer to either of them by name.  If we try to (like
-this: <a href="posts/restructuredtext-demo/#id78"><span class="problematic" id="id79">`Duplicate Target Names`_</span></a>), an error is generated.</p>
-</div>
-</div>
-<div class="section" id="directives">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id50">2.15   Directives</a></h3>
-<div class="contents local topic" id="contents">
-<ul class="auto-toc simple">
-<li><a class="reference internal" href="posts/restructuredtext-demo/#document-parts" id="id67">2.15.1   Document Parts</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#images" id="id68">2.15.2   Images</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#admonitions" id="id69">2.15.3   Admonitions</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#topics-sidebars-and-rubrics" id="id70">2.15.4   Topics, Sidebars, and Rubrics</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#target-footnotes" id="id71">2.15.5   Target Footnotes</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#replacement-text" id="id72">2.15.6   Replacement Text</a></li>
-<li><a class="reference internal" href="posts/restructuredtext-demo/#compound-paragraph" id="id73">2.15.7   Compound Paragraph</a></li>
-</ul>
-</div>
-<p>These are just a sample of the many reStructuredText Directives.  For
-others, please see
-<a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html">http://docutils.sourceforge.net/docs/ref/rst/directives.html</a>.</p>
-<div class="section" id="document-parts">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id67">2.15.1   Document Parts</a></h4>
-<p>An example of the "contents" directive can be seen above this section
-(a local, untitled table of <a class="reference internal" href="posts/restructuredtext-demo/#contents">contents</a>) and at the beginning of the
-document (a document-wide <a class="reference internal" href="posts/restructuredtext-demo/#table-of-contents">table of contents</a>).</p>
-</div>
-<div class="section" id="images">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id68">2.15.2   Images</a></h4>
-<p>An image directive (also clickable -- a hyperlink reference):</p>
-<a class="reference internal image-reference" href="posts/restructuredtext-demo/#directives"><img alt="../images/rest_demo/title.png" src="posts/images/rest_demo/title.png"></a>
-<p>A figure directive:</p>
-<div class="figure">
-<img alt="reStructuredText, the markup syntax" src="posts/images/rest_demo/title.png"><p class="caption">A figure is an image with a caption and/or a legend:</p>
-<div class="legend">
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%">
-<col width="80%">
-</colgroup>
-<tbody valign="top">
-<tr>
-<td>re</td>
-<td>Revised, revisited, based on 're' module.</td>
-</tr>
-<tr>
-<td>Structured</td>
-<td>Structure-enhanced text, structuredtext.</td>
-</tr>
-<tr>
-<td>Text</td>
-<td>Well it is, isn't it?</td>
-</tr>
-</tbody>
-</table>
-<p>This paragraph is also part of the legend.</p>
-</div>
-</div>
-</div>
-<div class="section" id="admonitions">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id69">2.15.3   Admonitions</a></h4>
-<div class="admonition attention">
-<p class="first admonition-title">Attention!</p>
-<p class="last">Directives at large.</p>
-</div>
-<div class="admonition caution">
-<p class="first admonition-title">Caution!</p>
-<p class="last">Don't take any wooden nickels.</p>
-</div>
-<div class="admonition danger">
-<p class="first admonition-title">!DANGER!</p>
-<p class="last">Mad scientist at work!</p>
-</div>
-<div class="admonition error">
-<p class="first admonition-title">Error</p>
-<p class="last">Does not compute.</p>
-</div>
-<div class="admonition hint">
-<p class="first admonition-title">Hint</p>
-<p class="last">It's bigger than a bread box.</p>
-</div>
-<div class="admonition important">
-<p class="first admonition-title">Important</p>
-<ul class="last simple">
-<li>Wash behind your ears.</li>
-<li>Clean up your room.</li>
-<li>Call your mother.</li>
-<li>Back up your data.</li>
-</ul>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This is a note.</p>
-</div>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">15% if the service is good.</p>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Strong prose may provoke extreme mental exertion.
-Reader discretion is strongly advised.</p>
-</div>
-<div class="admonition admonition-and-by-the-way">
-<p class="first admonition-title">And, by the way...</p>
-<p class="last">You can make up your own admonition too.</p>
-</div>
-</div>
-<div class="section" id="topics-sidebars-and-rubrics">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id70">2.15.4   Topics, Sidebars, and Rubrics</a></h4>
-<div class="sidebar">
-<p class="first sidebar-title">Sidebar Title</p>
-<p class="sidebar-subtitle">Optional Subtitle</p>
-<p>This is a sidebar.  It is for text outside the flow of the main
-text.</p>
-<p class="rubric">This is a rubric inside a sidebar</p>
-<p class="last">Sidebars often appears beside the main text with a border and
-background color.</p>
-</div>
-<div class="topic">
-<p class="topic-title first">Topic Title</p>
-<p>This is a topic.</p>
-</div>
-<p class="rubric">This is a rubric</p>
-</div>
-<div class="section" id="target-footnotes">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id71">2.15.5   Target Footnotes</a></h4>
-<table class="docutils footnote" frame="void" id="id25" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label">[5]</td>
-<td>
-<em>(<a class="fn-backref" href="posts/restructuredtext-demo/#id26">1</a>, <a class="fn-backref" href="posts/restructuredtext-demo/#id27">2</a>, <a class="fn-backref" href="posts/restructuredtext-demo/#id28">3</a>)</em> <a class="reference external" href="http://www.python.org/">http://www.python.org/</a>
-</td>
-</tr></tbody>
-</table>
-</div>
-<div class="section" id="replacement-text">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id72">2.15.6   Replacement Text</a></h4>
-<p>I recommend you try <a class="reference external" href="http://www.python.org/">Python, <em>the</em> best language around</a> <a class="footnote-reference" href="posts/restructuredtext-demo/#id25" id="id28">[5]</a>.</p>
-</div>
-<div class="section" id="compound-paragraph">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id73">2.15.7   Compound Paragraph</a></h4>
-<div class="compound">
-<p class="compound-first">This paragraph contains a literal block:</p>
-<pre class="compound-middle literal-block">
-Connecting... OK
-Transmitting data... OK
-Disconnecting... OK
-</pre>
-<p class="compound-last">and thus consists of a simple paragraph, a literal block, and
-another simple paragraph.  Nonetheless it is semantically <em>one</em>
-paragraph.</p>
-</div>
-<p>This construct is called a <em>compound paragraph</em> and can be produced
-with the "compound" directive.</p>
-</div>
-</div>
-<div class="section" id="substitution-definitions">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id58">2.16   Substitution Definitions</a></h3>
-<p>An inline image (<img alt="EXAMPLE" src="posts/images/rest_demo/biohazard.png">) example:</p>
-<p>(Substitution definitions are not visible in the HTML source.)</p>
-</div>
-<div class="section" id="comments">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id59">2.17   Comments</a></h3>
-<p>Here's one:</p>
-<!-- Comments begin with two dots and a space. Anything may
-follow, except for the syntax of footnotes, hyperlink
-targets, directives, or substitution definitions.
+<h2>2. Code</h2>
+<pre class="code literal-block"><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
-Double-dashes - - "- -" - - must be escaped somehow in HTML output. -->
-<p>(View the HTML source to see the comment.)</p>
-</div>
-</div>
-<div class="section" id="extensions">
-<h2><a class="toc-backref" href="posts/restructuredtext-demo/#id60">3   Extensions</a></h2>
-<div class="section" id="code-blocks">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id61">3.1   Code Blocks</a></h3>
-<p>Here's a neat implementation of the Sieve of Eratosthenes.</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/restructuredtext-demo/#rest_code_94359916841a42498b99ff5b775fe2a1-1">1</a>
-<a href="posts/restructuredtext-demo/#rest_code_94359916841a42498b99ff5b775fe2a1-2">2</a>
-<a href="posts/restructuredtext-demo/#rest_code_94359916841a42498b99ff5b775fe2a1-3">3</a>
-<a href="posts/restructuredtext-demo/#rest_code_94359916841a42498b99ff5b775fe2a1-4">4</a>
-<a href="posts/restructuredtext-demo/#rest_code_94359916841a42498b99ff5b775fe2a1-5">5</a>
-<a href="posts/restructuredtext-demo/#rest_code_94359916841a42498b99ff5b775fe2a1-6">6</a>
-<a href="posts/restructuredtext-demo/#rest_code_94359916841a42498b99ff5b775fe2a1-7">7</a>
-<a href="posts/restructuredtext-demo/#rest_code_94359916841a42498b99ff5b775fe2a1-8">8</a>
-<a href="posts/restructuredtext-demo/#rest_code_94359916841a42498b99ff5b775fe2a1-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_94359916841a42498b99ff5b775fe2a1-1"></a><span class="k">def</span> <span class="nf">sieve_of_eratosthenes</span><span class="p">():</span>
-<a name="rest_code_94359916841a42498b99ff5b775fe2a1-2"></a>    <span class="n">factors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
-<a name="rest_code_94359916841a42498b99ff5b775fe2a1-3"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-<a name="rest_code_94359916841a42498b99ff5b775fe2a1-4"></a>        <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
-<a name="rest_code_94359916841a42498b99ff5b775fe2a1-5"></a>            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<a name="rest_code_94359916841a42498b99ff5b775fe2a1-6"></a>                <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<a name="rest_code_94359916841a42498b99ff5b775fe2a1-7"></a>        <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_94359916841a42498b99ff5b775fe2a1-8"></a>            <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<a name="rest_code_94359916841a42498b99ff5b775fe2a1-9"></a>            <span class="k">yield</span> <span class="n">n</span>
-</pre></td>
-</tr></table>
-</div>
-<div class="section" id="mathematics">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id62">3.2   Mathematics</a></h3>
-<p>Here are some remarkable equations</p>
-<p>While displaying equations look good for a page of samples, the
-ability to mix math and text in a paragraph is also important.
-This expression <span class="math">\(\sqrt{3x-1}+(1+x)^2\)</span> is an example of an
-inline equation. As you see, MathJax equations can be used this
-way as well, without unduly disturbing the spacing between lines.</p>
-<div class="section" id="an-identity-of-ramanujan">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id63">3.2.1   An Identity of Ramanujan</a></h4>
-<div class="math">
-\begin{equation*}
-\frac{1}{(\sqrt{\phi \sqrt{5}}-\phi) e^{\frac25 \pi}} =
-1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}
-{1+\frac{e^{-8\pi}} {1+\ldots} } } }
-\end{equation*}
-</div>
-</div>
-<div class="section" id="maxwell-s-equations">
-<h4><a class="toc-backref" href="posts/restructuredtext-demo/#id64">3.2.2   Maxwell's Equations</a></h4>
-<div class="math">
-\begin{align*}
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp; = \frac{4\pi}{c}\vec{\mathbf{j}} \\
-\nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \\
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \\
-\nabla \cdot \vec{\mathbf{B}} &amp; = 0
-\end{align*}
-</div>
-</div>
-</div>
-<div class="section" id="doc">
-<h3><a class="toc-backref" href="posts/restructuredtext-demo/#id65">3.3   Doc</a></h3>
-<p>This post is a demo for <a href="posts/restructuredtext-demo/#id19"><span class="problematic" id="id20">:doc:`how-i-customized-my-nikola-powered-site`</span></a>.</p>
-<div class="system-message" id="id19">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 596); <em><a href="posts/restructuredtext-demo/#id20">backlink</a></em></p>
-"how-i-customized-my-nikola-powered-site" slug doesn't exist.</div>
-</div>
-</div>
-<div class="section" id="error-handling">
-<h2><a class="toc-backref" href="posts/restructuredtext-demo/#id66">4   Error Handling</a></h2>
-<p>Any errors caught during processing will generate system messages.</p>
-<p><a href="posts/restructuredtext-demo/#id23"><span class="problematic" id="id24">|*** Expect 6 errors (including this one). ***|</span></a></p>
-<p>There should be six messages in the following, auto-generated
-section, "Docutils System Messages":</p>
-<!-- section should be added by Docutils automatically -->
-</div>
-<div class="system-messages section">
-<h2>Docutils System Messages</h2>
-<div class="system-message" id="id21">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 89); <em><a href="posts/restructuredtext-demo/#id22">backlink</a></em></p>
-Undefined substitution referenced: "problematic".</div>
-<div class="system-message" id="id23">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 603); <em><a href="posts/restructuredtext-demo/#id24">backlink</a></em></p>
-Undefined substitution referenced: "*** Expect 6 errors (including this one). ***".</div>
-<div class="system-message" id="id74">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 346); <em><a href="posts/restructuredtext-demo/#id14">backlink</a></em></p>
-Unknown target name: "5".</div>
-<div class="system-message" id="id75">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 355); <em><a href="posts/restructuredtext-demo/#id16">backlink</a></em></p>
-Unknown target name: "nonexistent".</div>
-<div class="system-message" id="id76">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 380); <em><a href="posts/restructuredtext-demo/#id77">backlink</a></em></p>
-Unknown target name: "hyperlink reference without a target".</div>
-<div class="system-message" id="id78">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 393); <em><a href="posts/restructuredtext-demo/#id79">backlink</a></em></p>
-Duplicate target name, cannot be used as a unique reference: "duplicate target names".</div>
-</div>
+<span class="c1">#결과는 results.txt파일에 저장</span>
+<span class="n">results</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'results.txt'</span><span class="p">,</span><span class="s1">'a'</span><span class="p">)</span>
+<span class="c1">#스크래핑 실패한 페이지 리스트</span>
+<span class="n">fail_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#가장 최근 페이지가 6013, 숫자를 1씩 줄이면서 스크래핑</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6013</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="c1">#스크래핑 할 페이지 주소</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.danbinews.com/news/articleView.html?idxno='</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s2">"lxml"</span><span class="p">)</span>
+        <span class="c1">#아티클의 제목: class가 view_t인것</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'td'</span><span class="p">,</span><span class="n">class_</span><span class="o">=</span><span class="s1">'view_t'</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="c1"># '##'를 제목 앞에 추가해서 마크다운 포멧으로 바꾸고 인코딩 변환</span>
+        <span class="n">title2</span> <span class="o">=</span> <span class="s1">'## '</span><span class="o">+</span> <span class="n">title</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="o">+</span><span class="s1">'n'</span>
+        <span class="c1">#아티클의 내용 찾기 : class id가 view_r 인것</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'td'</span><span class="p">,</span><span class="n">class_</span> <span class="o">=</span><span class="s1">'view_r'</span><span class="p">)</span>
+        <span class="c1">#불필요한 광고를 제거 하기 위해 p tag안 내용만 선택</span>
+        <span class="n">text2</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find_next</span><span class="p">(</span><span class="s1">'p'</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+        <span class="c1">#인코딩과 마지막에 줄바꿈 추가</span>
+        <span class="n">text3</span> <span class="o">=</span> <span class="n">text2</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'n'</span>
+        <span class="c1">#결과 파일에 제목 쓰기</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">title2</span><span class="p">)</span>
+        <span class="c1">#결과 파일에 내용 쓰기</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text3</span><span class="p">)</span>
+        <span class="c1">#스크래핑 성공 메시지 출력</span>
+        <span class="k">print</span> <span class="s1">'Success : '</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'th article'</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1">#URL이 없는 경우 스크래핑 실패 출력</span>
+        <span class="k">print</span> <span class="s1">'Fail : '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'th article'</span>
+        <span class="c1">#실패 리스트에 추가</span>
+        <span class="n">fail_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1">#close the results file</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1">#스크래핑 끝나면 출력</span>
+<span class="k">print</span> <span class="s1">'Finished'</span><span class="err">기</span>
+<span class="k">print</span> <span class="s1">'Fail list : '</span>
+<span class="k">print</span> <span class="n">fail_list</span> <span class="c1"># 실패한 페이지 출력</span>
+</pre>
+
+
+<h2>3. 결과 확인</h2>
+<p>결과는 <strong>result.txt</strong> 파일에 저장됩니다.</p>
+<blockquote>
+<p>파일은 금방 만들었는데 언제 다 읽나.</p>
+</blockquote>
 </div>
     </div>
     </article>

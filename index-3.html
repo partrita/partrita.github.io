@@ -89,580 +89,92 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/python_beutifulsoup/" class="u-url">BeautifulSoup을 사용해 웹 스크래핑하기</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/walking-the-file-tree/" class="u-url">Walking the file tree</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/python_beutifulsoup/" rel="bookmark"><time class="published dt-published" datetime="2015-09-13T17:36:21+09:00" title="2015-09-13 17:36">2015-09-13 17:36</time></a></p>
+            <p class="dateline"><a href="posts/walking-the-file-tree/" rel="bookmark"><time class="published dt-published" datetime="2015-04-16T16:10:58+09:00" title="2015-04-16 16:10">2015-04-16 16:10</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div>
-<p>시사용어 모음집은 유료 서비스(예를 들면 <em>에듀스</em>)를 이용할 수 밖에 없었는데 <a href="http://www.danbinews.com/">단비뉴스</a>라는 곳에서 감사하게도 시사용어를 소개하고 있는 페이지가 있어 파이썬을 사용해 초간단 웹 스크래핑을 했습니다.</p>
-<h2>1. 필요한 것</h2>
-<ul>
-<li>python 2.7+</li>
-<li>BeautifulSoup 모듈</li>
-</ul>
-<h2>2. Code</h2>
-<pre class="code literal-block"><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">import</span> <span class="nn">urllib</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-
-<span class="c1">#결과는 results.txt파일에 저장</span>
-<span class="n">results</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'results.txt'</span><span class="p">,</span><span class="s1">'a'</span><span class="p">)</span>
-<span class="c1">#스크래핑 실패한 페이지 리스트</span>
-<span class="n">fail_list</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1">#가장 최근 페이지가 6013, 숫자를 1씩 줄이면서 스크래핑</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6013</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-<span class="c1">#스크래핑 할 페이지 주소</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.danbinews.com/news/articleView.html?idxno='</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">html</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s2">"lxml"</span><span class="p">)</span>
-        <span class="c1">#아티클의 제목: class가 view_t인것</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'td'</span><span class="p">,</span><span class="n">class_</span><span class="o">=</span><span class="s1">'view_t'</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="c1"># '##'를 제목 앞에 추가해서 마크다운 포멧으로 바꾸고 인코딩 변환</span>
-        <span class="n">title2</span> <span class="o">=</span> <span class="s1">'## '</span><span class="o">+</span> <span class="n">title</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="o">+</span><span class="s1">'n'</span>
-        <span class="c1">#아티클의 내용 찾기 : class id가 view_r 인것</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'td'</span><span class="p">,</span><span class="n">class_</span> <span class="o">=</span><span class="s1">'view_r'</span><span class="p">)</span>
-        <span class="c1">#불필요한 광고를 제거 하기 위해 p tag안 내용만 선택</span>
-        <span class="n">text2</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find_next</span><span class="p">(</span><span class="s1">'p'</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
-        <span class="c1">#인코딩과 마지막에 줄바꿈 추가</span>
-        <span class="n">text3</span> <span class="o">=</span> <span class="n">text2</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'n'</span>
-        <span class="c1">#결과 파일에 제목 쓰기</span>
-        <span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">title2</span><span class="p">)</span>
-        <span class="c1">#결과 파일에 내용 쓰기</span>
-        <span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text3</span><span class="p">)</span>
-        <span class="c1">#스크래핑 성공 메시지 출력</span>
-        <span class="k">print</span> <span class="s1">'Success : '</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'th article'</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="c1">#URL이 없는 경우 스크래핑 실패 출력</span>
-        <span class="k">print</span> <span class="s1">'Fail : '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'th article'</span>
-        <span class="c1">#실패 리스트에 추가</span>
-        <span class="n">fail_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-    <span class="c1">#close the results file</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="c1">#스크래핑 끝나면 출력</span>
-<span class="k">print</span> <span class="s1">'Finished'</span><span class="err">기</span>
-<span class="k">print</span> <span class="s1">'Fail list : '</span>
-<span class="k">print</span> <span class="n">fail_list</span> <span class="c1"># 실패한 페이지 출력</span>
+<p>현재 디렉토리 아래의 모든 파일(서브디렉토리 포함) 목록을 얻고자 할 때는 <code>os.walk('./')</code>를 호출해서 이터레이션 하면서 튜플의 3번째 리스트만 살펴보면 됩니다. 아래의 예제 코드와 확인하세요. </p>
+<pre class="code literal-block"><span></span><span class="c1"># python 2.7 버전</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">'./'</span><span class="p">):</span>
+    <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">print</span> <span class="nb">file</span>
 </pre>
 
 
-<h2>3. 결과 확인</h2>
-<p>결과는 <strong>result.txt</strong> 파일에 저장됩니다.</p>
-<blockquote>
-<p>파일은 금방 만들었는데 언제 다 읽나.</p>
-</blockquote>
+<p>이런 식으로 호출하면 모든 파일 이름이 표시됩니다.</p>
+<h2>os.walk</h2>
+<p><code>os.walk</code>는 특정 디렉토리 아래의 모든 디렉토리와 파일의 목록을 얻어 올 수 있도록 도와줍니다. for 루프에서 3개의 아이템으로 구성된 튜플로 분해가 가능한데 이름만으로도 무엇인지 알 수 있습니다. <strong>root</strong>는 어떤 디렉토리인지, <strong>dirs</strong>는 root 아래의 디렉토리 목록, 그리고 <strong>files</strong>는 root 아래의 파일 목록이다. 모든 목록은 리스트 형태입니다. 좀 더 많은 기능은 <a href="https://docs.python.org/2/library/os.html">공식 문서</a>를 참고하세요.</p>
+<h2>스크립트 파일 예제</h2>
+<p>아래와 같이 스크립트 파일을 만들어 사용해 보았습니다.</p>
+<pre class="code literal-block"><span></span><span class="c1">#-*- coding: utf-8 -*-</span>
+<span class="c1"># sub_dir_search.py</span>
+<span class="c1"># python 2.7 버전</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">nowDate</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span> <span class="c1"># 오늘날짜</span>
+
+<span class="k">def</span> <span class="nf">allfiles2</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">rootpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">root</span><span class="p">)</span>
+        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootpath</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nowDate</span><span class="o">+</span><span class="s1">'_list.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="c1"># 오늘날짜_list.txt 파일을 생성합니다.</span>
+            <span class="k">for</span> <span class="n">ress</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ress</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s1">'where to search? : '</span><span class="p">)</span>
+    <span class="c1"># 검색할 곳의 위치를 물어봅니다.</span>
+    <span class="n">allfiles2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre>
+
+
+<p>루트 폴더('C:\')를 넣었더니 엄청나게 큰 파일 생성되었습니다.</p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/python_10min_tutorial/" class="u-url">10분안에 배우는 파이썬</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/regular-exp_blank/" class="u-url">정규직으로 줄바꿈 제거하기</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
             </span></p>
-            <p class="dateline"><a href="posts/python_10min_tutorial/" rel="bookmark"><time class="published dt-published" datetime="2015-06-16T16:25:18+09:00" title="2015-06-16 16:25">2015-06-16 16:25</time></a></p>
+            <p class="dateline"><a href="posts/regular-exp_blank/" rel="bookmark"><time class="published dt-published" datetime="2015-04-14T18:40:03+09:00" title="2015-04-14 18:40">2015-04-14 18:40</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div>
-<blockquote>
-<p>파이썬 2.7 버전 기준입니다.</p>
-</blockquote>
-<p>Python을 배우고 싶고, 간략하면서도 내용이 알찬 튜토리얼을 찾고 있는가? 이 튜토리얼은 Python 을 10분 만에 가르쳐줄 것이다. 기본 개념들을 설명해서, 여러분이 파이썬 프로그래밍을 시작할 수 있게 도와줄 것이다. 물론 제대로 배우려면, 실제로 파이썬으로 프로그래밍을 꽤 해봐야 할 것이다. 여러분이 이미 다른 프로그래밍 언어를 사용해 본적이 있다고 생각하고, 아주 기본적인 내용들은 다루지 않고, 파이썬의 특징들을 주로 다룰 것이다. 주의 깊게 보기 바란다.</p>
-<h2>Properties</h2>
-<p>파이썬은 strongly-typed (역주: 즉 타입을 확인한다, 인터프리터가 타입을 알고 있다), dynamically-typed (역주: 변수의 타입을 실시간으로 변경할 수 있다, 변수자체가 타입을 갖는 것이 아니라 변수의 값이 타입을 갖는다), implicitly typed (변수에 타입을 정해서 선언하지 않는다. String myString = "a" 가 아닌, my_string = "a" 이라고 선언한다) 타입을 갖는다.
-또한, case sensitive (Var 와 var 는 다른 변수이다) 하고, 객체 지향적 (모든것이 객체이다) 이다.</p>
-<h2>도움 얻기</h2>
-<p>인터프리터에서 도움을 받을 수 있다. 어떤 객체에 대해 알고 싶으면, 인터프리터에서 help() 와 dir() 을 이용한다, dir() 은 객체의 속성,메써드들을 보여준다. 그리고 .<strong>doc</strong> 으로 객체의 문서를 볼 수 있다:</p>
-<pre class="code literal-block"><span></span><span class="n">help</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># int 객체의 help 메시지를 보여준다: (etc etc)</span>
-<span class="nb">dir</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># 객체의 속성, 메써드들을 보여준다</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>['__abs__', '__add__', ...]
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="nb">abs</span><span class="o">.</span><span class="vm">__doc__</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>'abs(number) -&gt; number
-인자의 절대값을 리턴한다.'
-</pre>
-
-
-<h2>문법(Syntax)</h2>
-<p>파이썬은 코드의 끝을 <strong> ; </strong> 등으로 특별히 표시하지 않는다. block 은 줄맞춤 (indentation) 으로 표현한다. block 을 사용하는 문장 (if, else 등) 은 : 을 끝에 붙인다. 한줄짜리 주석은 # 을 사용하고, 여러줄에 걸친 주석은 """ 주석 """ 을 사용한다. 객체에 값을 할당할 때에는 = 을 사용하고, 두 객체를 비교할 때에는 == 을 사용한다. += 와 -= 으로 값을 증가/감소할 수 있다.</p>
-<pre class="code literal-block"><span></span><span class="n">myvar</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">myvar</span> <span class="o">+=</span> <span class="mi">2</span>
-<span class="n">myvar</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>5
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">myvar</span> <span class="o">-=</span> <span class="mi">1</span>
-<span class="n">myvar</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>4
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="sd">"""여러줄짜리 주석이다.</span>
-<span class="sd">어쩌고 저쩌고..."""</span>
-<span class="n">mystring</span> <span class="o">=</span> <span class="s2">"Hello"</span>
-<span class="n">mystring</span> <span class="o">+=</span> <span class="s2">" world."</span>
-<span class="k">print</span> <span class="n">mystring</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>Hello world.
-</pre>
-
-
-<p>변수 두개를 서로 바꿔준다!</p>
-<pre class="code literal-block"><span></span><span class="n">myvar</span><span class="p">,</span> <span class="n">mystring</span> <span class="o">=</span> <span class="n">mystring</span><span class="p">,</span> <span class="n">myvar</span>
-</pre>
-
-
-<h2>데이터형(Data types)</h2>
-<p>파이썬은 리스트, tuple (튜플), dictionary, set 데이터 타입을 제공한다. list 는 여러개의 원소를 가지고, 다른 리스트를 원소로 가질 수도 있다. dictionary 는 연관배열 (associative array, hash table 로 key/value 를 저장함) 이고, tuple 은 변경이 불가능한 배열이다. 이들 컨테이너에 여러개 타입의 객체들을 섞어서 넣을 수 있다. list 나 tuple 등의 배열 형식의 컨테이너에서 첫번재 인자의 인덱스는 0 이다. -1 은 배열의 마지막 원소의 인덱스이며, -2 는 마지막에서 두번째 인덱스이다. 그리고 파이썬에서는, 변수에 함수를 지정할 수 있다.</p>
-<pre class="code literal-block"><span></span><span class="n">sample</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"another"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">],</span> <span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"tuple"</span><span class="p">)]</span>
-<span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"List item 1"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
-<span class="n">mylist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"List item 1 again"</span> <span class="c1"># 첫번째 원소를 변경한다</span>
-<span class="n">mylist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.21</span> <span class="c1"># 마지막 원소를 변경한다.</span>
-<span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Key 1"</span><span class="p">:</span> <span class="s2">"Value 1"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"pi"</span><span class="p">:</span> <span class="mf">3.14</span><span class="p">}</span>
-<span class="n">mydict</span><span class="p">[</span><span class="s2">"pi"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.15</span> <span class="c1"># dictionary 값을 변경한다</span>
-<span class="n">mytuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">myfunction</span> <span class="o">=</span> <span class="nb">len</span> <span class="c1"># myfunction 변수가 len 이라는 함수를 가리키도록 한다</span>
-<span class="k">print</span> <span class="n">myfunction</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>3
-</pre>
-
-
-<p><code>:</code> 을 이용하여 배열의 구간을 표현한다. <code>:</code> 을 사용할 때 앞의 index 가 없으면 0 인덱스 을 사용하고, 마지막 인덱스가 없으면 배열의 길이를 사용한다.
-[a:b] 는 [a, b) 즉 a 는 포함하고 b 는 포함하지 않는다.</p>
-<pre class="code literal-block"><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"List item 1"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">mylist</span><span class="p">[:]</span> <span class="c1"># [0:3] 과 같다</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>['List item 1', 2, 3.1400000000000001]
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="k">print</span> <span class="n">mylist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>['List item 1', 2]
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="k">print</span> <span class="n">mylist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>['List item 1', 2]
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">mylist</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>[2, 3.14]
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># 3 번재 인자로, 건너 띄면서 원소를 가지고 올 수도 있다.</span>
-<span class="c1"># [::] == [::1] 가 기본이고, [::2] 로 step 이 2 이면 하나씩 건너뛴다.</span>
-<span class="k">print</span> <span class="n">mylist</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>['List item 1', 3.14]
-</pre>
-
-
-<h2>문자열(Strings)</h2>
-<p>string 은 "hello" 또는 'hello' 처럼, " 와 ' 를 아무것이나 사용해도 된다. "say 'hello'" 처럼 하나를 스트링 안쪽에 사용할 수도 있다. 여러줄에 걸친 string 은 따옴표 세개 (""") 를 사용한다. 파이썬은 u"이것은 unicode 문자열입니다" 의 형태로 Unicode 문자열을 기본 지원한다. % 연산자와 tuple 을 사용하여 문자열의 한 부분을 치환할 수 있다.</p>
-<pre class="code literal-block"><span></span><span class="k">print</span> <span class="s2">"Name: </span><span class="si">%s</span><span class="s2"> Number: </span><span class="si">%s</span><span class="s2"> String: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">myclass</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="s2">"-"</span><span class="p">)</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">Name</span><span class="o">:</span> <span class="n">Poromenos</span> <span class="n">Number</span><span class="o">:</span> <span class="mi">3</span> <span class="n">String</span><span class="o">:</span> <span class="o">---</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># 다음처럼 dictionary 를 사용하여 치환할 수도 있다.</span>
-<span class="k">print</span> <span class="s2">"This </span><span class="si">%(verb)s</span><span class="s2"> a </span><span class="si">%(noun)s</span><span class="s2">."</span> <span class="o">%</span> <span class="p">{</span><span class="s2">"noun"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span> <span class="s2">"verb"</span><span class="p">:</span> <span class="s2">"is"</span><span class="p">}</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>This is a test.
-Flow control statements
-</pre>
-
-
-<p>if, for, while 을 이용하여 흐름을 제어한다. range() 를 이용하여 숫자 배열을 얻을 수 있다:</p>
-<pre class="code literal-block"><span></span><span class="n">rangelist</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">rangelist</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">rangelist</span><span class="p">:</span>
-    <span class="c1"># number 가 tuple 안에 들어 있는지 확인한다</span>
-    <span class="k">if</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
-        <span class="c1"># "break" 로 "else" 문을 실행하지 않고 for 문을 나온다.</span>
-        <span class="k">break</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">pass</span>  <span class="c1"># 아무것도 하지 않는다</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="k">if</span> <span class="n">rangelist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s2">"두번째 아이템이 2 이다"</span>
-<span class="k">elif</span> <span class="n">rangelist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s2">"두번째 아이템이 3 이다"</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s2">"Dunno"</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="k">while</span> <span class="n">rangelist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="k">pass</span>
-</pre>
-
-
-<h3>함수(Functions)</h3>
-<p>함수는 <code>def</code> 키워드를 이용하여 선언한다. 함수의 인자중, 반드시 필요한 인자를 먼저 나열하고, 선택적 인자들을 그 후에 나열한다. 선택적 인자들에게는 기본값을 설정한다. 여러개의 값을 한꺼번에 tuple 로 리턴할 수 있다. Lambda 함수는 선언없이, 필요할 때 정의해서 사용하는 함수다. 인자는 레퍼런스 (참조) 로 전달된다. (역주: C++ 의 포인터가 카피되어 전달된다고 보면 된다, 전달된 변수를 수정하는 것이아니라, 새로운 값을 할당하면, 함수 바깥쪽에서는 이 변화는 인지하지 못한다.) 하지만 전달 받은 immutable 타입들 (튜플, int, string 등등) 은 참조로 전달되었다고 하더라도, 수정할 수 없다.</p>
-<pre class="code literal-block"><span></span><span class="c1"># 다음 문장은 def funcvar(x): return x + 1 와 같다.</span>
-<span class="n">funcvar</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="k">print</span> <span class="n">funcvar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>2
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># an_int 와 a_string 은 선택적 인자로 기본값을 가진다.</span>
-<span class="k">def</span> <span class="nf">passing_example</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="n">an_int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a_string</span><span class="o">=</span><span class="s2">"A default string"</span><span class="p">):</span>
-    <span class="n">a_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"A new item"</span><span class="p">)</span>
-    <span class="n">an_int</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="k">return</span> <span class="n">a_list</span><span class="p">,</span> <span class="n">an_int</span><span class="p">,</span> <span class="n">a_string</span>
-
-<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">my_int</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">print</span> <span class="n">passing_example</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">my_int</span><span class="p">)</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>([1, 2, 3, 'A new item'], 4, "A default string")
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">my_list</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>[1, 2, 3, 'A new item']
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">my_int</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>10
-</pre>
-
-
-<h2>클래스(Classes)</h2>
-<p>파이썬은 제한적으로 다중 상속을 지원한다. private 변수와, 함수는 앞에 __ 을 붙인다. 관습일 뿐이며, python 언어 자체는 private 이란 개념이 없다.</p>
-<pre class="code literal-block"><span></span><span class="c1"># 클래스 객체를 만든다.</span>
-<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">common</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">myvariable</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="k">def</span> <span class="nf">myfunction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">myvariable</span>
-<span class="n">classinstance</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
-<span class="n">classinstance</span><span class="o">.</span><span class="n">myfunction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>3
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># 객체에서도 common 속성을 사용할 수 있다.</span>
-<span class="n">classinstance2</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
-<span class="n">classinstance</span><span class="o">.</span><span class="n">common</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>10
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>10
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># 클래스 변수를 변경한다</span>
-<span class="n">MyClass</span><span class="o">.</span><span class="n">common</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">classinstance</span><span class="o">.</span><span class="n">common</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>30
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>30
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># classinstance 객체에 common 이라는 속성을 생성하고, 값을 준다</span>
-<span class="n">classinstance</span><span class="o">.</span><span class="n">common</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">classinstance</span><span class="o">.</span><span class="n">common</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>10
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>30
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">MyClass</span><span class="o">.</span><span class="n">common</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="c1"># classinstance.common 은 객체의 속성이기 때문에 변하지 않는다.</span>
-<span class="n">classinstance</span><span class="o">.</span><span class="n">common</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>10
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>50
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># MyClass 클래스를 상속받는다.</span>
-<span class="c1"># class OtherClass(MyClass1, MyClass2, MyClassN) 형태로 다중상속 받을 수 있다.</span>
-<span class="k">class</span> <span class="nc">OtherClass</span><span class="p">(</span><span class="n">MyClass</span><span class="p">):</span>
-    <span class="c1"># "self" 인자는 자동으로 넘어오는 인자로 객체 자신을 가리킨다.</span>
-    <span class="c1"># 즉 self 를 이용하여 다음처럼 객체를 변경할 수 있다.</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg1</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">myvariable</span> <span class="o">=</span> <span class="mi">3</span>
-        <span class="k">print</span> <span class="n">arg1</span>
-
-<span class="n">classinstance</span> <span class="o">=</span> <span class="n">OtherClass</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">)</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>hello
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="n">classinstance</span><span class="o">.</span><span class="n">myfunction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>3
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># 이 클래스는 test 라는 변수를 정의한적이 없다.</span>
-<span class="c1"># 하지만 다음 처럼 그냥 만들수 있다.</span>
-<span class="n">classinstance</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">classinstance</span><span class="o">.</span><span class="n">test</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>10
-</pre>
-
-
-<h3>예외 처리(Exceptions)</h3>
-<p><code>try-exept [exceptionname]</code> 형태로 처리합니다.</p>
-<pre class="code literal-block"><span></span><span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># 0 으로 나눠서 exception 을 발생시킨다.</span>
-        <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
-    <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">"Oops, invalid."</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># Exception 이 발생하지 않으면 다음을 실행.</span>
-        <span class="k">pass</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="c1"># 위 코드들이 실행된 후에, 여기 finally 안의 코드들이 실행된다.</span>
-        <span class="k">print</span> <span class="s2">"We're done with that."</span>
-
-<span class="n">some_function</span><span class="p">()</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>Oops, invalid.
-We're done with that.
-Importing
-</pre>
-
-
-<p>라이브러리를 <code>import [library_name]</code> 으로 불러와 사용할 수 있다. <code>from [library_name] import [name]</code> 으로 라이브러리의 특정 이름만 가져올 수 있습니다.</p>
-<pre class="code literal-block"><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1"># random library 를 불러온다</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">clock</span> <span class="c1"># time 라이브러리의 clock 함수를 가져온다.</span>
-
-<span class="n">randomint</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">randomint</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>64
-</pre>
-
-
-<h3>파일 입출력(File I/O)</h3>
-<p>파이썬은 다수의 내장 라이브러리를 제공한다. 다음 예제는 pickle 라이브러리를 이용하여 데이터를 serialize 하여 파일로 저장하는 것을 보여준다.</p>
-<pre class="code literal-block"><span></span><span class="kn">import</span> <span class="nn">pickle</span>
-<span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"This"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">13327</span><span class="p">]</span>
-<span class="c1"># C:binary.dat 파일을 쓰기 모드로 연다.</span>
-<span class="c1"># 'r' 은 raw 라는 뜻으로, 가 escaping 을 의미하지 않도록 한다.</span>
-<span class="n">myfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s2">"C:binary.dat"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span>
-<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mylist</span><span class="p">,</span> <span class="n">myfile</span><span class="p">)</span>
-<span class="n">myfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1"># 파일을 읽어서 데이터를 로드한다</span>
-<span class="n">myfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s2">"C:binary.dat"</span><span class="p">)</span>
-<span class="n">loadedlist</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">myfile</span><span class="p">)</span>
-<span class="n">myfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="k">print</span> <span class="n">loadedlist</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>['This', 'is', 4, 13327]
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># 텍스트 파일에 데이터를 저장한다</span>
-<span class="n">myfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s2">"C:text.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span>
-<span class="n">myfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"This is a sample string"</span><span class="p">)</span>
-<span class="n">myfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="n">myfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s2">"C:text.txt"</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">myfile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="s1">'This is a sample string'</span>
-<span class="n">myfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre>
-
-
-<h3>기타기능(Miscellaneous)</h3>
-<p>1 &lt; a &lt; 3 같은 조건을 사용할 수 있다. <code>del</code> 키워드를 이용하여, 변수를 삭제하거나, 배열의 아이템을 삭제한다. list comprehension 을 이용하여 리스트를 만들 수 있다. list comprehension 은 <code>for</code> 와 <code>if</code> 문을 내부에 사용합니다.</p>
-<pre class="code literal-block"><span></span><span class="n">lst1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">lst2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="k">print</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">lst2</span><span class="p">]</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>[3, 4, 5, 6, 8, 10, 9, 12, 15]
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="k">print</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst1</span> <span class="k">if</span> <span class="mi">4</span> <span class="o">&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>[2, 3]
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># 원소 하나라도 true 인지 확인한다.</span>
-<span class="nb">any</span><span class="p">([</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="c1"># any(0,0,1,1,0)</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>True
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1"># Check for how many items a condition is true.</span>
-<span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>2
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="k">del</span> <span class="n">lst1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">lst1</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span>[2, 3]
-</pre>
-
-
-<p>함수 바깥에 정의하는 변수는 글로벌 변수이다. 어디서도 이 변수를 접근할 수 있지만, 이 값을 함수내에서 변경할 때에는 global 키워드를 사용하여 선언해줘야 한다. 그렇지 않으면, 파이썬은 같은 이름의 새로운 로컬 변수를 만든다.</p>
-<pre class="code literal-block"><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="k">def</span> <span class="nf">myfunc</span><span class="p">():</span>
-    <span class="c1"># 5 를 출력한다.</span>
-    <span class="k">print</span> <span class="n">number</span>
-
-<span class="k">def</span> <span class="nf">anotherfunc</span><span class="p">():</span>
-    <span class="c1"># execption 을 발생시킨다:</span>
-    <span class="c1"># 파이썬은 이 함수에서 number 가 사용될 것을 알고, 로컬 객체를 만든다.</span>
-    <span class="c1"># 그런데 이 변수에 값을 설정하기 전에 print 하려고 해서 에러가 발생한다.</span>
-    <span class="k">print</span> <span class="n">number</span>
-    <span class="n">number</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="k">def</span> <span class="nf">yetanotherfunc</span><span class="p">():</span>
-    <span class="k">global</span> <span class="n">number</span>
-    <span class="c1"># global 변수를 수정한다.</span>
-    <span class="n">number</span> <span class="o">=</span> <span class="mi">3</span>
-</pre>
-
-
-<h2>마치며</h2>
-<p>이 글은 파이썬의 모든 것을 다룬 것은 물론 아닙니다. 파이썬은 방대한 라이브러리를 제공하며, 더 많은 내용을 배우려면 <em>Dive Into Python</em> 같은 좋은 책을 이용하기 바랍니다. 다만 이 글이 파이썬 공부를 시작하는데 도움이 되었으면 합니다.</p>
+<p>간혹보면 가독성을 위해 엔터키를 마구쳐 내려간 글들이 있습니다.보기엔 좋지만, 출력할때는 많이 불편합니다. 그럴땐 '찾아 바꾸기' 기능을 이용해 해결할 수 있습니다. 물론 정규식을 지원하는 에디터에서 말입니다. Sublimetext, visual studio code, atom 등등의 에디터에서 다음을 실행해 보세요.</p>
+<img alt="http://i1.wp.com/blog.singihae.com/wp-content/uploads/sites/2/2014/02/sublime-text.png" class="align-center" src="http://i1.wp.com/blog.singihae.com/wp-content/uploads/sites/2/2014/02/sublime-text.png"><ol class="arabic">
+<li>
+<p class="first"><a href="posts/regular-exp_blank/#id1"><span class="problematic" id="id2">`</span></a>Ctrl + H`를 누른 후 (or Find &gt; Replace)에 입력 창에 <a href="posts/regular-exp_blank/#id3"><span class="problematic" id="id4">`</span></a>^n`을 입력한다.</p>
+<div class="system-message" id="id1">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 6); <em><a href="posts/regular-exp_blank/#id2">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</div>
+<div class="system-message" id="id3">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 6); <em><a href="posts/regular-exp_blank/#id4">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</div>
+</li>
+<li>
+<p class="first">“regular expression”을 선택한다. (Alt + R을 누르거나 [.*] 아이콘을 클릭)</p>
+</li>
+<li>
+<p class="first">그리고 Replace All를 누르면 모든 줄 바꿈이 삭제 됩니다.</p>
+</li>
+</ol>
 </div>
     </div>
     </article>
