@@ -1,5 +1,5 @@
 <!--
-.. title: Linux trouble shooting
+.. title: 리눅스 문제 해결
 .. slug: linux-trouble-shooting
 .. date: 2015-10-11 11:11:03 UTC+09:00
 .. tags: Linux, trouble
