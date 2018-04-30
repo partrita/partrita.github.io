@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="R에서 데이터 다루기(dplyr)">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R에서 데이터 다루기(dplyr) | Biohacker</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#083551">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://partrita.github.io/posts/dplyr/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="../../assets/css/tipuesearch.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<meta name="naver-site-verification" content="d38b92eb0fc0075616e5ff8008f707087bfee65e">
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-111815051-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111815051-1');
+</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NHHK2BF');</script><meta name="author" content="Taeyoon">
+<link rel="prev" href="../PK/" title="파이썬으로 PK 분석하기" type="text/html">
+<meta property="og:site_name" content="Biohacker">
+<meta property="og:title" content="R에서 데이터 다루기(dplyr)">
+<meta property="og:url" content="https://partrita.github.io/posts/dplyr/">
+<meta property="og:description" content="R에서 데이터 다루기(dplyr)">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-04-30T07:56:47+09:00">
+<meta property="article:tag" content="dataframe">
+<meta property="article:tag" content="dplyr">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="데이터 프레임">
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-default navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://partrita.github.io/">
+
+                <span id="blog-title">Biohacker</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/about/">About</a>
+                </li>
+<li>
+<a href="../../pages/resume/index.html">Resume</a>
+                </li>
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<span class="navbar-form navbar-right">
+<input type="text" id="tipue_search_input" class="form-control" placeholder="Search"></span>
+
+            <ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">R에서 데이터 다루기(dplyr)</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Taeyoon
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2018-04-30T07:56:47+09:00" itemprop="datePublished" title="2018-04-30 07:56">2018-04-30 07:56</time></a></p>
+            
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="0.-시작하기-앞서">0. 시작하기 앞서<a class="anchor-link" href="#0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C">¶</a>
+</h2>
+<p>이 글은 <a href="http://www.datacarpentry.org/R-ecology-lesson/">Data Carpentry for data analysis</a>을 공부하고 정리한 것입니다. 목표는 프로그래밍 경험이 없는 과학자들이 <strong>R</strong>을 가지고 작업하는데 필요한 기본적인 개념, 기술, 사용법을 가르치는데 있습니다.간략한 목차는 다음과 같습니다.</p>
+<ul>
+<li>R 기초 문법</li>
+<li>CSV 파일 불러오는 방법과 데이터프레임 구조</li>
+<li>요인 처리방법, 행과 열 추가/삭제</li>
+<li>요약 통계 계산법, 시각화에 대한 간단한 소개</li>
+</ul>
+<h2 id="1.-R-소개">1. R 소개<a class="anchor-link" href="#1.-R-%EC%86%8C%EA%B0%9C">¶</a>
+</h2>
+<h3 id="1.1.-객체-만들기">1.1. 객체 만들기<a class="anchor-link" href="#1.1.-%EA%B0%9D%EC%B2%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
+</h3>
+<p>R에서는 다음과 같이 객체를 생성합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>mass <span class="o">&lt;-</span> <span class="m">47.5</span>            <span class="c1"># mass?</span>
+age  <span class="o">&lt;-</span> <span class="m">122</span>             <span class="c1"># age?</span>
+mass <span class="o">&lt;-</span> mass <span class="o">*</span> <span class="m">2.0</span>      <span class="c1"># mass?</span>
+age  <span class="o">&lt;-</span> age <span class="o">-</span> <span class="m">20</span>        <span class="c1"># age?</span>
+mass_index <span class="o">&lt;-</span> mass<span class="o">/</span>age  <span class="c1"># mass_index?</span>
+mass_index
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+0.931372549019608
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.-벡터와-자료형">1.2. 벡터와 자료형<a class="anchor-link" href="#1.2.-%EB%B2%A1%ED%84%B0%EC%99%80-%EC%9E%90%EB%A3%8C%ED%98%95">¶</a>
+</h3>
+<p>벡터는 R에서 가장 기본적인 자료구조입니다. 예를 들어, 다음과 같이 벡터를 생성할 수 있습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>num_char <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="s">'a'</span><span class="p">)</span>
+num_logical <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">)</span>
+char_logical <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">)</span>
+tricky <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="s">'4'</span><span class="p">)</span>
+num_char <span class="c1"># 벡터값 확인하기</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<ol class="list-inline">
+<li>'1'</li>
+	<li>'2'</li>
+	<li>'3'</li>
+	<li>'a'</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="1.2.1.-벡터-부분집합-뽑아내기">1.2.1. 벡터 부분집합 뽑아내기<a class="anchor-link" href="#1.2.1.-%EB%B2%A1%ED%84%B0-%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9-%EB%BD%91%EC%95%84%EB%82%B4%EA%B8%B0">¶</a>
+</h4>
+<p>벡터에서 값을 하나 혹은 다수 값을 추출하려면, 꺾쇠 괄호 내부에 인덱스를 넣어 줍니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>animals <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">"mouse"</span><span class="p">,</span> <span class="s">"rat"</span><span class="p">,</span> <span class="s">"dog"</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">)</span>
+animals<span class="p">[</span><span class="m">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+'rat'
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-데이터-불러오기">2. 데이터 불러오기<a class="anchor-link" href="#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+</h2>
+<ul>
+<li>외부 데이터(CSV 파일)를 불러와</li>
+<li>R에서 데이터프레임 구조와 내용물을 탐색해 봅니다.</li>
+</ul>
+<p>R함수 <code>download.file()</code>를 사용해서 <strong>CSV</strong>파일을 다운로드합니다. 그리고 <code>read.csv()</code>기능을 이용해 파일을 불러오겠습니다. 아래의 명령어를 실행해 파일을 다운로드 하세요.</p>
+<div class="highlight"><pre><span></span>download.file<span class="p">(</span><span class="s">"https://ndownloader.figshare.com/files/2292169"</span><span class="p">,</span>
+              <span class="s">"portal_data_joined.csv"</span><span class="p">)</span>
+</pre></div>
+<p>그런다음 파일을 읽어오도록 하겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>surveys <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">'portal_data_joined.csv'</span><span class="p">)</span>
+<span class="kp">head</span><span class="p">(</span>surveys<span class="p">)</span> <span class="c1"># 파일 확인하기</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">record_id</th>
+<th scope="col">month</th>
+<th scope="col">day</th>
+<th scope="col">year</th>
+<th scope="col">plot_id</th>
+<th scope="col">species_id</th>
+<th scope="col">sex</th>
+<th scope="col">hindfoot_length</th>
+<th scope="col">weight</th>
+<th scope="col">genus</th>
+<th scope="col">species</th>
+<th scope="col">taxa</th>
+<th scope="col">plot_type</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>  1     </td>
+<td> 7      </td>
+<td>16      </td>
+<td>1977    </td>
+<td>2       </td>
+<td>NL      </td>
+<td>M       </td>
+<td>32      </td>
+<td>NA      </td>
+<td>Neotoma </td>
+<td>albigula</td>
+<td>Rodent  </td>
+<td>Control </td>
+</tr>
+<tr>
+<td> 72     </td>
+<td> 8      </td>
+<td>19      </td>
+<td>1977    </td>
+<td>2       </td>
+<td>NL      </td>
+<td>M       </td>
+<td>31      </td>
+<td>NA      </td>
+<td>Neotoma </td>
+<td>albigula</td>
+<td>Rodent  </td>
+<td>Control </td>
+</tr>
+<tr>
+<td>224     </td>
+<td> 9      </td>
+<td>13      </td>
+<td>1977    </td>
+<td>2       </td>
+<td>NL      </td>
+<td>        </td>
+<td>NA      </td>
+<td>NA      </td>
+<td>Neotoma </td>
+<td>albigula</td>
+<td>Rodent  </td>
+<td>Control </td>
+</tr>
+<tr>
+<td>266     </td>
+<td>10      </td>
+<td>16      </td>
+<td>1977    </td>
+<td>2       </td>
+<td>NL      </td>
+<td>        </td>
+<td>NA      </td>
+<td>NA      </td>
+<td>Neotoma </td>
+<td>albigula</td>
+<td>Rodent  </td>
+<td>Control </td>
+</tr>
+<tr>
+<td>349     </td>
+<td>11      </td>
+<td>12      </td>
+<td>1977    </td>
+<td>2       </td>
+<td>NL      </td>
+<td>        </td>
+<td>NA      </td>
+<td>NA      </td>
+<td>Neotoma </td>
+<td>albigula</td>
+<td>Rodent  </td>
+<td>Control </td>
+</tr>
+<tr>
+<td>363     </td>
+<td>11      </td>
+<td>12      </td>
+<td>1977    </td>
+<td>2       </td>
+<td>NL      </td>
+<td>        </td>
+<td>NA      </td>
+<td>NA      </td>
+<td>Neotoma </td>
+<td>albigula</td>
+<td>Rodent  </td>
+<td>Control </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.1.-Dataframe">2.1. Dataframe<a class="anchor-link" href="#2.1.-Dataframe">¶</a>
+</h3>
+<p>Dataframe은 엑셀의 테이블을 생각하시면 됩니다. 각각의 행이 백터로 구성되고 모여서 테이블 형태로 표현한 것입니다. <code>str()</code> 함수를 사용하면 각각의 행이 어떠한 자료형인지 확인 할 수 있습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>str<span class="p">(</span>surveys<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>'data.frame':	34786 obs. of  13 variables:
+ $ record_id      : int  1 72 224 266 349 363 435 506 588 661 ...
+ $ month          : int  7 8 9 10 11 11 12 1 2 3 ...
+ $ day            : int  16 19 13 16 12 12 10 8 18 11 ...
+ $ year           : int  1977 1977 1977 1977 1977 1977 1977 1978 1978 1978 ...
+ $ plot_id        : int  2 2 2 2 2 2 2 2 2 2 ...
+ $ species_id     : Factor w/ 48 levels "AB","AH","AS",..: 16 16 16 16 16 16 16 16 16 16 ...
+ $ sex            : Factor w/ 3 levels "","F","M": 3 3 1 1 1 1 1 1 3 1 ...
+ $ hindfoot_length: int  32 31 NA NA NA NA NA NA NA NA ...
+ $ weight         : int  NA NA NA NA NA NA NA NA 218 NA ...
+ $ genus          : Factor w/ 26 levels "Ammodramus","Ammospermophilus",..: 13 13 13 13 13 13 13 13 13 13 ...
+ $ species        : Factor w/ 40 levels "albigula","audubonii",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ taxa           : Factor w/ 4 levels "Bird","Rabbit",..: 4 4 4 4 4 4 4 4 4 4 ...
+ $ plot_type      : Factor w/ 5 levels "Control","Long-term Krat Exclosure",..: 1 1 1 1 1 1 1 1 1 1 ...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>위 결과에서 볼 수 있듯이, 다수 칼럼은 정수형 벡터로 구성되지만, species 와 sex는 요인(factor)으로 불리는 특수한 클래스로 입니다. 데이터프레임 클래스에 대해 추가적인 내용을 알아 보기 전에, 요인에 대해 먼저 살펴보겠습니다.</p>
+<h3 id="2.2.-요인(Factors)">2.2. 요인(Factors)<a class="anchor-link" href="#2.2.-%EC%9A%94%EC%9D%B8(Factors)">¶</a>
+</h3>
+<p>범주형 데이터를 표현할때 사용됩니다. 요인은 순서가 있거나 순서가 없는 것으로 구분되는데, 이를 정확히 이해하는 것이 통계분석과 시각화에 필요합니다.</p>
+<blockquote>
+<p>요인은 정수형으로 저장되고, 유일무이한 정수값과 연관된 표식이 붙여진다. 요인은 마치 문자형 벡터처럼 보이고 흔히 그렇게 동작하지만, 실제로 내부를 들여다 보면 정수값이다. 그래서 주의가 요구된다.</p>
+</blockquote>
+<p>요인형 벡터를 생성시키게 되면, 요인벡터에는 수준(level)으로 미리 정의된 값이 집합으로 담겨집니다. 기본 설정으로은 알파벳 순으로 정렬이 됩니다. 예를 들어, 수준 2개를 갖는 요인이 있다고 가정하면:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>sex <span class="o">&lt;-</span> <span class="kp">factor</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="s">"male"</span><span class="p">,</span> <span class="s">"female"</span><span class="p">,</span> <span class="s">"female"</span><span class="p">,</span> <span class="s">"male"</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R은 정수 1을 "female" 수준, 정수 2를 "male" 수준에 대입한다. 벡터 첫번째 원소로 "male"이 왔지만, 알파벳순으로 보면 f가 m보다 순서가 앞서기 때문이다. <code>levels()</code> 함수를 사용해서 이런 사실을 확인할 수 있고, <code>nlevels()</code> 함수를 사용해서 수준 갯수도 확인할 수 있습니다:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="kp">levels</span><span class="p">(</span>sex<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<ol class="list-inline">
+<li>'female'</li>
+	<li>'male'</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="kp">nlevels</span><span class="p">(</span>sex<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+2
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.2.-요인-자료형-변경">2.2. 요인 자료형 변경<a class="anchor-link" href="#2.2.-%EC%9A%94%EC%9D%B8-%EC%9E%90%EB%A3%8C%ED%98%95-%EB%B3%80%EA%B2%BD">¶</a>
+</h3>
+<ol>
+<li>요인 벡터를 문자형 벡터로 변경시킬 때는 <code>as.character()</code> 함수를 사용합니다.</li>
+<li>요인 벡터를 숫자형 벡터로 변경시키는 것 <code>as.numeric()</code>을 사용하는데 두가지 방법이 있습니다. <ul>
+<li>문자형으로 바꾸고나서 다시 숫자로 전환시키거나 </li>
+<li>또다른 방법은 <code>levels()</code> 함수를 사용하는 것입니다.</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>f <span class="o">&lt;-</span> <span class="kp">factor</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">2</span><span class="p">))</span>
+f2 <span class="o">&lt;-</span> <span class="kp">as.character</span><span class="p">(</span>f<span class="p">)</span>
+f2
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<ol class="list-inline">
+<li>'1'</li>
+	<li>'5'</li>
+	<li>'10'</li>
+	<li>'2'</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="kp">as.numeric</span><span class="p">(</span>f2<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<ol class="list-inline">
+<li>1</li>
+	<li>5</li>
+	<li>10</li>
+	<li>2</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="kp">as.numeric</span><span class="p">(</span><span class="kp">levels</span><span class="p">(</span>f<span class="p">))[</span>f<span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<ol class="list-inline">
+<li>1</li>
+	<li>5</li>
+	<li>10</li>
+	<li>2</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>levels()</code> 방법을 사용하면 아래 세가지 절차가 내부적으로 실행됩니다.</p>
+<ol>
+<li>
+<code>levels(f)</code>를 실행시켜 요인에 대한 모든 수준을 얻어온다.</li>
+<li>
+<code>as.numeric(levels(f))</code>을 실행시켜 앞서 받아온 수준을 숫자값으로 전환시킨다.</li>
+<li>그리고 나서, 꺾쇠 괄호 내부 f 벡터 정수값을 사용해서 숫자값에 접근한다.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Dataframe-설명">3. Dataframe 설명<a class="anchor-link" href="#3.-Dataframe-%EC%84%A4%EB%AA%85">¶</a>
+</h2>
+<p>앞서 알아본 Dataframe에 대하여 자세히 알아 보겠습니다.</p>
+<h3 id="3.1.-데이터프레임은-무엇인가?">3.1. 데이터프레임은 무엇인가?<a class="anchor-link" href="#3.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?">¶</a>
+</h3>
+<p>데이터프레임(dataframe)은 가장 대중적인 표형식 데이터에 대한 <strong>사실상 표준(de facto)</strong> 으로, 통계 및 시각화에 활용하는 자료구조입니다. 동일한 길이를 갖는 벡터 집합이며, 벡터 각각은 행을 표현하지만 각 벡터는 서로 다른 자료형이 될 수 있다(예를 들어, 문자형, 정수형, 요인형). 우리는 앞에서  <code>str()</code> 함수를 사용해서 각 칼럼별 자료형을 조사했었습니다. 데이터프레임은 일일이 생성할 수도 있지만, 일반적으로 ead.csv() 혹은 read.table() 함수로 만들어 냅니다.</p>
+<p>기본 설정으로 데이터프레임이 생성될때 문자열이 담긴 행은 요인(factor) 자료형으로 변환됩니다. 따라서 작업하려는 의도에 따라 문자형(character)으로 칼럼을 그대로 두고자 하는 경우에는 <strong>stringsAsFactors = FALSE</strong>로 설정하면 요인형이 아닌 문자형 그대로 사용할 수 있습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>example_data <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>animal<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">"dog"</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">,</span> <span class="s">"sea cucumber"</span><span class="p">,</span> <span class="s">"sea urchin"</span><span class="p">),</span>
+                           feel<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">"furry"</span><span class="p">,</span> <span class="s">"furry"</span><span class="p">,</span> <span class="s">"squishy"</span><span class="p">,</span> <span class="s">"spiny"</span><span class="p">),</span>
+                           weight<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">45</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">1.1</span><span class="p">,</span> <span class="m">0.8</span><span class="p">),</span>
+                           stringsAsFactors <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+str<span class="p">(</span>example_data<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>'data.frame':	4 obs. of  3 variables:
+ $ animal: chr  "dog" "cat" "sea cucumber" "sea urchin"
+ $ feel  : chr  "furry" "furry" "squishy" "spiny"
+ $ weight: num  45 8 1.1 0.8
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.2.-Dataframe-살펴보기">3.2. Dataframe 살펴보기<a class="anchor-link" href="#3.2.-Dataframe-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">¶</a>
+</h3>
+<p><code>head()</code>와 <code>str()</code> 함수를 사용해서 Dataframe 구조와 내용물을 살펴볼수 있습니다. 그 외에도 아래와 같이 유용한 명령어가 존재 합니다.</p>
+<ul>
+<li>데이터프레임 크기:<ul>
+<li>dim() - 첫번째 원소는 행의 갯수, 두번째 원소는 열의 갯수를 갖는 벡터를 반환 (객체에 대한 차원, dimensions)</li>
+<li>nrow() - 행 갯수를 반환</li>
+<li>ncol() - 열 갯수를 반환</li>
+</ul>
+</li>
+<li>콘텐츠/내용:<ul>
+<li>head() - 첫번째 5 행</li>
+<li>tail() - 마지막 5 행</li>
+</ul>
+</li>
+<li>명칭:<ul>
+<li>names() - 데이터프레임의 칼럼명을 반환(data.frame 객체에 대한 colnames()과 동의어)</li>
+<li>rownames() - 행명칭을 반환</li>
+</ul>
+</li>
+<li>요약:<ul>
+<li>str() - 객체의 구조와 클래스, 길이, 각 칼럼별 내용에 대한 정보를 제공 structure of the object and information about the class, length and content of each column</li>
+<li>summary() - 각 칼럼별 요약 통계량</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="kp">summary</span><span class="p">(</span>example_data<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>          animal       feel       weight      
+ cat         :1   furry  :2   Min.   : 0.800  
+ dog         :1   spiny  :1   1st Qu.: 1.025  
+ sea cucumber:1   squishy:1   Median : 4.550  
+ sea urchin  :1               Mean   :13.725  
+                              3rd Qu.:17.250  
+                              Max.   :45.000  </pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-dplyr로-데이터-편집과-분석하기">4. dplyr로 데이터 편집과 분석하기<a class="anchor-link" href="#4.-dplyr%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91%EA%B3%BC-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">¶</a>
+</h2>
+<h3 id="4.1.-dplyr-설명">4.1. dplyr 설명<a class="anchor-link" href="#4.1.-dplyr-%EC%84%A4%EB%AA%85">¶</a>
+</h3>
+<p><code>dplyr</code> 패키지에는 흔히 데이터를 조작하는데 필요한 도구가 포함되어 있습니다. dplyr 패키지는 그전에 폭넓게 사용된 plyr 패키지에서 영감을 받았는데, plyr 팩키지는 속도가 떨어지는 성능문제가 있었습니다. 하지만 dplyr은 연산의 상당부분을 <strong>C++</strong> 을 이용해 연산 속도가 매우 빠릅니다. dplyr에 대해 더 많이 배우고자 하는 경우, <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">dplyr cheatsheet</a>를 참조하세요.</p>
+<h3 id="4.2.-dplyr-패키지를-활용한-데이터-편집">4.2. dplyr 패키지를 활용한 데이터 편집<a class="anchor-link" href="#4.2.-dplyr-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91">¶</a>
+</h3>
+<p>dplyr은 데이터조작을 더 쉽고 데이터 분석을 즐겁도록 개발되었습니다. 아래의 방법으로 설치하고 불러옵니다.</p>
+<div class="highlight"><pre><span></span>install.packages<span class="p">(</span><span class="s">"dplyr"</span><span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span><span class="s">"dplyr"</span><span class="p">)</span>    <span class="c1">## 팩키지 불러오기</span>
+</pre></div>
+<h3 id="4.3.-행을-뽑아내고-필터링한다.">4.3. 행을 뽑아내고 필터링한다.<a class="anchor-link" href="#4.3.-%ED%96%89%EC%9D%84-%EB%BD%91%EC%95%84%EB%82%B4%EA%B3%A0-%ED%95%84%ED%84%B0%EB%A7%81%ED%95%9C%EB%8B%A4.">¶</a>
+</h3>
+<p>dplyr 함수중에서 가장 활용도가 높은 <code>select()</code>, <code>filter()</code>, <code>mutate()</code>, <code>summarize()</code>함수를 학습하겠습니다.<br>
+먼저 데이터에서 행을 뽑아낼 때 <code>select()</code>를 사용합니다. <code>select()</code> 함수에 넣은 첫번째 인자는 데이터프레임(surveys), 그리고 후속 인자는 뽑아낼 행이 들어간다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span> <span class="c1"># dplyr을 불러옵니다.</span>
+surveys <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">'surveys.csv'</span><span class="p">)</span> <span class="c1"># 데이터를 불러옵니다.</span>
+select_df <span class="o">&lt;-</span> select<span class="p">(</span>surveys<span class="p">,</span> plot_id<span class="p">,</span> species_id<span class="p">,</span> weight<span class="p">)</span> <span class="c1"># plot_id, species_id, weight 행만 추출합니다.</span>
+<span class="kp">tail</span><span class="p">(</span>select_df<span class="p">)</span> <span class="c1"># 테이블 확인</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th></th>
+<th scope="col">plot_id</th>
+<th scope="col">species_id</th>
+<th scope="col">weight</th>
+</tr></thead>
+<tbody>
+<tr>
+<th scope="row">35544</th>
+<td>15</td>
+<td>US</td>
+<td>NA</td>
+</tr>
+<tr>
+<th scope="row">35545</th>
+<td>15</td>
+<td>AH</td>
+<td>NA</td>
+</tr>
+<tr>
+<th scope="row">35546</th>
+<td>15</td>
+<td>AH</td>
+<td>NA</td>
+</tr>
+<tr>
+<th scope="row">35547</th>
+<td>10</td>
+<td>RM</td>
+<td>14</td>
+</tr>
+<tr>
+<th scope="row">35548</th>
+<td> 7</td>
+<td>DO</td>
+<td>51</td>
+</tr>
+<tr>
+<th scope="row">35549</th>
+<td> 5</td>
+<td>  </td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>filter<span class="p">(</span>surveys<span class="p">,</span> year <span class="o">==</span> <span class="m">1995</span><span class="p">)</span> <span class="o">%&gt;%</span> head <span class="c1"># 1995년 데이터만 필터합니다.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">record_id</th>
+<th scope="col">month</th>
+<th scope="col">day</th>
+<th scope="col">year</th>
+<th scope="col">plot_id</th>
+<th scope="col">species_id</th>
+<th scope="col">sex</th>
+<th scope="col">hindfoot_length</th>
+<th scope="col">weight</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>21993</td>
+<td>1    </td>
+<td>11   </td>
+<td>1995 </td>
+<td>18   </td>
+<td>PF   </td>
+<td>F    </td>
+<td>16   </td>
+<td> 7   </td>
+</tr>
+<tr>
+<td>21994</td>
+<td>1    </td>
+<td>11   </td>
+<td>1995 </td>
+<td>12   </td>
+<td>DO   </td>
+<td>M    </td>
+<td>36   </td>
+<td>47   </td>
+</tr>
+<tr>
+<td>21995</td>
+<td>1    </td>
+<td>11   </td>
+<td>1995 </td>
+<td> 2   </td>
+<td>DO   </td>
+<td>M    </td>
+<td>36   </td>
+<td>51   </td>
+</tr>
+<tr>
+<td>21996</td>
+<td>1    </td>
+<td>11   </td>
+<td>1995 </td>
+<td>21   </td>
+<td>PF   </td>
+<td>F    </td>
+<td>14   </td>
+<td> 7   </td>
+</tr>
+<tr>
+<td>21997</td>
+<td>1    </td>
+<td>11   </td>
+<td>1995 </td>
+<td>24   </td>
+<td>RM   </td>
+<td>M    </td>
+<td>15   </td>
+<td>10   </td>
+</tr>
+<tr>
+<td>21998</td>
+<td>1    </td>
+<td>11   </td>
+<td>1995 </td>
+<td> 1   </td>
+<td>DM   </td>
+<td>M    </td>
+<td>38   </td>
+<td>46   </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.4.-파이프(Pipes)-사용하기">4.4. 파이프(Pipes) 사용하기<a class="anchor-link" href="#4.4.-%ED%8C%8C%EC%9D%B4%ED%94%84(Pipes)-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+</h3>
+<p>한번에 행을 뽑아내고 필터링을 해야 한다면, 파이프를 사용해야 합니다. 파이프는 함수 출력값을 받아 다음번 함수에 곧바로 전송하는 것으로 <strong>Shell</strong> script의 그것과 동일합니다. 이는 수많은 작업을 수행할 때 매우 유용합니다. R에서 파이프는 <code>%&gt;%</code> 모양입니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>surveys <span class="o">%&gt;%</span>
+  filter<span class="p">(</span>weight <span class="o">&lt;</span> <span class="m">5</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  select<span class="p">(</span>species_id<span class="p">,</span> sex<span class="p">,</span> weight<span class="p">)</span> <span class="o">%&gt;%</span> <span class="kp">head</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">species_id</th>
+<th scope="col">sex</th>
+<th scope="col">weight</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>PF</td>
+<td>M </td>
+<td>4 </td>
+</tr>
+<tr>
+<td>PF</td>
+<td>F </td>
+<td>4 </td>
+</tr>
+<tr>
+<td>PF</td>
+<td>  </td>
+<td>4 </td>
+</tr>
+<tr>
+<td>PF</td>
+<td>F </td>
+<td>4 </td>
+</tr>
+<tr>
+<td>PF</td>
+<td>F </td>
+<td>4 </td>
+</tr>
+<tr>
+<td>RM</td>
+<td>M </td>
+<td>4 </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>상기 예제에서 파이프를 사용해서 survyes 데이터셋을 filter로 먼저 보내서 체중이 5보다 작은 행만 뽑아내고 나서, select로 species, sex, weight 칼럼을 뽑아냈습니다. 파이프를 사용하면 이처럼 간결하게 코딩을 할 수 있습니다.</p>
+<p>파이프를 사용해서, 데이터의 부분집합을 만들어내는데, 1995년 이전 포획된 개체로 year, sex, weight 칼럼만 포함되도록 해보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>small_df <span class="o">&lt;-</span> surveys <span class="o">%&gt;%</span> filter<span class="p">(</span>year <span class="o">&lt;</span> <span class="m">1995</span><span class="p">)</span> <span class="o">%&gt;%</span> select<span class="p">(</span>year<span class="p">,</span> sex<span class="p">,</span> weight<span class="p">)</span>
+<span class="kp">tail</span><span class="p">(</span>small_df<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th></th>
+<th scope="col">year</th>
+<th scope="col">sex</th>
+<th scope="col">weight</th>
+</tr></thead>
+<tbody>
+<tr>
+<th scope="row">21987</th>
+<td>1994</td>
+<td>M   </td>
+<td>46  </td>
+</tr>
+<tr>
+<th scope="row">21988</th>
+<td>1994</td>
+<td>F   </td>
+<td>38  </td>
+</tr>
+<tr>
+<th scope="row">21989</th>
+<td>1994</td>
+<td>F   </td>
+<td>40  </td>
+</tr>
+<tr>
+<th scope="row">21990</th>
+<td>1994</td>
+<td>    </td>
+<td>NA  </td>
+</tr>
+<tr>
+<th scope="row">21991</th>
+<td>1994</td>
+<td>    </td>
+<td>NA  </td>
+</tr>
+<tr>
+<th scope="row">21992</th>
+<td>1994</td>
+<td>    </td>
+<td>NA  </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.5.-mutate()-함수">4.5. mutate() 함수<a class="anchor-link" href="#4.5.-mutate()-%ED%95%A8%EC%88%98">¶</a>
+</h3>
+<p>종종, 기존 칼럼값을 활용하여 새로운 칼럼을 생성할때가 있습니다. 예를 들어, 단위를 전환하거나, 두 칼럼을 활용하여 비율을 계산할 때 말이죠.이런 작업을 위해서 <code>mutate()</code> 함수를 사용합니다. 예시로 무게를 킬로그램 단위로 표시된 새로운 칼럼을 생성해보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>surveys <span class="o">%&gt;%</span>
+  mutate<span class="p">(</span>weight_kg <span class="o">=</span> weight <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="kp">head</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">record_id</th>
+<th scope="col">month</th>
+<th scope="col">day</th>
+<th scope="col">year</th>
+<th scope="col">plot_id</th>
+<th scope="col">species_id</th>
+<th scope="col">sex</th>
+<th scope="col">hindfoot_length</th>
+<th scope="col">weight</th>
+<th scope="col">weight_kg</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1   </td>
+<td>7   </td>
+<td>16  </td>
+<td>1977</td>
+<td>2   </td>
+<td>NL  </td>
+<td>M   </td>
+<td>32  </td>
+<td>NA  </td>
+<td>NA  </td>
+</tr>
+<tr>
+<td>2   </td>
+<td>7   </td>
+<td>16  </td>
+<td>1977</td>
+<td>3   </td>
+<td>NL  </td>
+<td>M   </td>
+<td>33  </td>
+<td>NA  </td>
+<td>NA  </td>
+</tr>
+<tr>
+<td>3   </td>
+<td>7   </td>
+<td>16  </td>
+<td>1977</td>
+<td>2   </td>
+<td>DM  </td>
+<td>F   </td>
+<td>37  </td>
+<td>NA  </td>
+<td>NA  </td>
+</tr>
+<tr>
+<td>4   </td>
+<td>7   </td>
+<td>16  </td>
+<td>1977</td>
+<td>7   </td>
+<td>DM  </td>
+<td>M   </td>
+<td>36  </td>
+<td>NA  </td>
+<td>NA  </td>
+</tr>
+<tr>
+<td>5   </td>
+<td>7   </td>
+<td>16  </td>
+<td>1977</td>
+<td>3   </td>
+<td>DM  </td>
+<td>M   </td>
+<td>35  </td>
+<td>NA  </td>
+<td>NA  </td>
+</tr>
+<tr>
+<td>6   </td>
+<td>7   </td>
+<td>16  </td>
+<td>1977</td>
+<td>1   </td>
+<td>PF  </td>
+<td>M   </td>
+<td>14  </td>
+<td>NA  </td>
+<td>NA  </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>NA 값으로 가득차 있기 때문에 파이프 체인에 filter() 함수를 이용해 없는 값을 제거해 봅니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>surveys <span class="o">%&gt;%</span>
+  filter<span class="p">(</span><span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>weight<span class="p">))</span> <span class="o">%&gt;%</span>
+  mutate<span class="p">(</span>weight_kg <span class="o">=</span> weight <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="kp">head</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">record_id</th>
+<th scope="col">month</th>
+<th scope="col">day</th>
+<th scope="col">year</th>
+<th scope="col">plot_id</th>
+<th scope="col">species_id</th>
+<th scope="col">sex</th>
+<th scope="col">hindfoot_length</th>
+<th scope="col">weight</th>
+<th scope="col">weight_kg</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>63   </td>
+<td>8    </td>
+<td>19   </td>
+<td>1977 </td>
+<td>3    </td>
+<td>DM   </td>
+<td>M    </td>
+<td>35   </td>
+<td>40   </td>
+<td>0.040</td>
+</tr>
+<tr>
+<td>64   </td>
+<td>8    </td>
+<td>19   </td>
+<td>1977 </td>
+<td>7    </td>
+<td>DM   </td>
+<td>M    </td>
+<td>37   </td>
+<td>48   </td>
+<td>0.048</td>
+</tr>
+<tr>
+<td>65   </td>
+<td>8    </td>
+<td>19   </td>
+<td>1977 </td>
+<td>4    </td>
+<td>DM   </td>
+<td>F    </td>
+<td>34   </td>
+<td>29   </td>
+<td>0.029</td>
+</tr>
+<tr>
+<td>66   </td>
+<td>8    </td>
+<td>19   </td>
+<td>1977 </td>
+<td>4    </td>
+<td>DM   </td>
+<td>F    </td>
+<td>35   </td>
+<td>46   </td>
+<td>0.046</td>
+</tr>
+<tr>
+<td>67   </td>
+<td>8    </td>
+<td>19   </td>
+<td>1977 </td>
+<td>7    </td>
+<td>DM   </td>
+<td>M    </td>
+<td>35   </td>
+<td>36   </td>
+<td>0.036</td>
+</tr>
+<tr>
+<td>68   </td>
+<td>8    </td>
+<td>19   </td>
+<td>1977 </td>
+<td>8    </td>
+<td>DO   </td>
+<td>F    </td>
+<td>32   </td>
+<td>52   </td>
+<td>0.052</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>is.na()</code> 함수는 NA가 있는지 없는지 판단하는 함수입니다. <code>!</code> 기호는 부정하는 기호로 NA가 아닌것을 의미합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>다음 기준을 만족하는 survey 데이터에서 데이터프레임을 새로 생성시켜보겠습니다. species_id 칼럼과 hindfoot_length을 반으로 나누는 값을 포함하는 칼럼만 포함시킨다. 새로운 칼럼명은 hindfoot_half이다. hindfoot_half 칼럼에는 NA 값이 없고 모든 값은 30 보다 작아야 한다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>new_df <span class="o">&lt;-</span> surveys <span class="o">%&gt;%</span> filter<span class="p">(</span><span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>hindfoot_length<span class="p">))</span> <span class="o">%&gt;%</span>
+        mutate<span class="p">(</span>hindfoot_half <span class="o">=</span> hindfoot_length<span class="o">/</span><span class="m">2</span><span class="p">)</span> <span class="o">%&gt;%</span>
+        select<span class="p">(</span>species_id<span class="p">,</span> hindfoot_half<span class="p">)</span> <span class="o">%&gt;%</span>
+        filter<span class="p">(</span>hindfoot_half <span class="o">&lt;</span> <span class="m">30</span><span class="p">)</span>
+<span class="kp">head</span><span class="p">(</span>new_df<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">species_id</th>
+<th scope="col">hindfoot_half</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>NL  </td>
+<td>16.0</td>
+</tr>
+<tr>
+<td>NL  </td>
+<td>16.5</td>
+</tr>
+<tr>
+<td>DM  </td>
+<td>18.5</td>
+</tr>
+<tr>
+<td>DM  </td>
+<td>18.0</td>
+</tr>
+<tr>
+<td>DM  </td>
+<td>17.5</td>
+</tr>
+<tr>
+<td>PF  </td>
+<td> 7.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.6.-분할-적용-병합과-summarize()-함수">4.6. 분할-적용-병합과 summarize() 함수<a class="anchor-link" href="#4.6.-%EB%B6%84%ED%95%A0-%EC%A0%81%EC%9A%A9-%EB%B3%91%ED%95%A9%EA%B3%BC-summarize()-%ED%95%A8%EC%88%98">¶</a>
+</h3>
+<p>데이터분석 상당수 작업은 “split-apply-combine(분할-적용-병합)” 으로 해결됩니다. 데이터를 쪼개고, 각 집단별로 분석을 적용시키고 나서, 결과를 병합하는 것이죠. <code>dplyr</code> 패키지는 이런 유형의 작업을 매우 쉽게 구현합니다. <code>group_by()</code>, <code>summarize()</code> 함수로 각 집단을 한줄로 요약해서 축약해 보겠습니다.</p>
+<p>예시로 성별로 구별되는 체중을 계산해보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>surveys <span class="o">%&gt;%</span>
+    filter<span class="p">(</span>sex <span class="o">==</span> <span class="s">"M"</span> <span class="o">|</span> sex <span class="o">==</span> <span class="s">"F"</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    group_by<span class="p">(</span>sex<span class="p">)</span> <span class="o">%&gt;%</span>
+    summarize<span class="p">(</span>mean_weight <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>weight<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="c1"># na.rm는 NA 값을 제거합니다</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">sex</th>
+<th scope="col">mean_weight</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>F       </td>
+<td>42.17055</td>
+</tr>
+<tr>
+<td>M       </td>
+<td>42.99538</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>다수의 행을 group_by()에 넣어 사용하는 것도 가능합니다. <strong>sex</strong> 와 <strong>species_id</strong> 모두를 집단으로 묶고 계산 해보도록 하겠습니다. 체중에 대한 요약 통계량을 산출하기 전에 체중에 대한 결측값(NA)을 제거했기 때문에 평균을 계산할 때 <strong>na.rm=TRUE</strong>를 생략해도 됩니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>surveys <span class="o">%&gt;%</span>
+    filter<span class="p">(</span>sex <span class="o">==</span> <span class="s">"M"</span> <span class="o">|</span> sex <span class="o">==</span> <span class="s">"F"</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    filter<span class="p">(</span><span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>weight<span class="p">))</span> <span class="o">%&gt;%</span> 
+    group_by<span class="p">(</span>sex<span class="p">,</span> year<span class="p">,</span> species_id <span class="p">)</span> <span class="o">%&gt;%</span>
+    summarize<span class="p">(</span>mean_weight <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>weight<span class="p">))</span> <span class="o">%&gt;%</span> <span class="kp">head</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">sex</th>
+<th scope="col">year</th>
+<th scope="col">species_id</th>
+<th scope="col">mean_weight</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>F         </td>
+<td>1977      </td>
+<td>DM        </td>
+<td> 40.250000</td>
+</tr>
+<tr>
+<td>F         </td>
+<td>1977      </td>
+<td>DO        </td>
+<td> 41.900000</td>
+</tr>
+<tr>
+<td>F         </td>
+<td>1977      </td>
+<td>DS        </td>
+<td>117.285714</td>
+</tr>
+<tr>
+<td>F         </td>
+<td>1977      </td>
+<td>OL        </td>
+<td> 22.000000</td>
+</tr>
+<tr>
+<td>F         </td>
+<td>1977      </td>
+<td>OX        </td>
+<td> 21.000000</td>
+</tr>
+<tr>
+<td>F         </td>
+<td>1977      </td>
+<td>PF        </td>
+<td>  7.266667</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.7.-총-합계--구하기와-갯수-세기(Tallying)">4.7. 총 합계  구하기와 갯수 세기(Tallying)<a class="anchor-link" href="#4.7.-%EC%B4%9D-%ED%95%A9%EA%B3%84--%EA%B5%AC%ED%95%98%EA%B8%B0%EC%99%80-%EA%B0%AF%EC%88%98-%EC%84%B8%EA%B8%B0(Tallying)">¶</a>
+</h3>
+<p>각 요인별로 관측점 갯수가 몇개나 되는지 확인하는 작업할 때는 <code>tally()</code> 함수를 사용합니다. 예를 들어, 성별로 집단을 묶어 각 행의 갯수를 세어 총계를 기록하고자 하는 경우, 다음과 같이 작성합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>surveys <span class="o">%&gt;%</span>
+    filter<span class="p">(</span>sex <span class="o">==</span> <span class="s">"M"</span> <span class="o">|</span> sex <span class="o">==</span> <span class="s">"F"</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    group_by<span class="p">(</span>sex<span class="p">)</span> <span class="o">%&gt;%</span>
+    tally<span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">sex</th>
+<th scope="col">n</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>F    </td>
+<td>15690</td>
+</tr>
+<tr>
+<td>M    </td>
+<td>17348</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>group_by()</code> 와 <code>summarize()</code> 함수를 사용해서, <strong>hindfoot_length</strong>에 대한 평균, 최소값, 최대값을 각 종별(species_id)로 묶어 구하도록 하겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [69]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>surveys <span class="o">%&gt;%</span> group_by<span class="p">(</span>species_id<span class="p">)</span> <span class="o">%&gt;%</span> filter<span class="p">(</span><span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>hindfoot_length<span class="p">))</span> <span class="o">%&gt;%</span>
+        summarize<span class="p">(</span>mean_hindfoot_length <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>hindfoot_length<span class="p">),</span>
+                 min_hindfoot_length <span class="o">=</span> <span class="kp">min</span><span class="p">(</span>hindfoot_length<span class="p">),</span>
+                 max_hindfoot_length <span class="o">=</span> <span class="kp">max</span><span class="p">(</span>hindfoot_length<span class="p">))</span> <span class="o">%&gt;%</span> <span class="kp">head</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">species_id</th>
+<th scope="col">mean_hindfoot_length</th>
+<th scope="col">min_hindfoot_length</th>
+<th scope="col">max_hindfoot_length</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>AH      </td>
+<td>33.00000</td>
+<td>31      </td>
+<td>35      </td>
+</tr>
+<tr>
+<td>BA      </td>
+<td>13.00000</td>
+<td> 6      </td>
+<td>16      </td>
+</tr>
+<tr>
+<td>DM      </td>
+<td>35.98235</td>
+<td>16      </td>
+<td>50      </td>
+</tr>
+<tr>
+<td>DO      </td>
+<td>35.60755</td>
+<td>26      </td>
+<td>64      </td>
+</tr>
+<tr>
+<td>DS      </td>
+<td>49.94887</td>
+<td>39      </td>
+<td>58      </td>
+</tr>
+<tr>
+<td>NL      </td>
+<td>32.29423</td>
+<td>21      </td>
+<td>70      </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.8.-데이터-내보내기">4.8. 데이터 내보내기<a class="anchor-link" href="#4.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0">¶</a>
+</h3>
+<p>지금까지 dplyr 패키지를 사용해서 데이터에서 필요한 정보를 추출하고, 요약하는 방법을 학습했습니다. 이제 데이터를 내보내는 방법을 알아 보겠습니다. CSV 파일을 R로 불러오는데 사용된 <code>read.csv()</code> 함수와 비슷하게, 데이터프레임에서 CSV 파일을 생성시키는데 <code>write.csv()</code> 함수가 사용됩니다.</p>
+<p>원본 데이터(surveys)에 결측값이 없이 정제된 데이터셋(survey_complete)를 만들어 보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [70]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>surveys_complete <span class="o">&lt;-</span> surveys <span class="o">%&gt;%</span>
+  filter<span class="p">(</span>species_id <span class="o">!=</span> <span class="s">""</span><span class="p">,</span>         <span class="c1"># 빈문자열을 갖는 species_id 제거</span>
+         <span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>weight<span class="p">),</span>           <span class="c1"># weight 결측값 제거</span>
+             <span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>hindfoot_length<span class="p">),</span>  <span class="c1"># hindfoot_length 결측값 제거</span>
+             sex <span class="o">!=</span> <span class="s">""</span><span class="p">)</span>                <span class="c1"># 빈문자열을 갖는 sex 제거</span>
+<span class="kp">dim</span><span class="p">(</span>surveys_complete<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<ol class="list-inline">
+<li>30676</li>
+	<li>9</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>dim(surveys_complete)</code>을 통해 확인 해보니 surveys_complete 데이터프레임은 행갯수가 30676, 열갯수가 9입니다. 이제 CSV 파일로 저장합니다. 기본 설정으로, write.csv() 함수는 행명칭(row names)이 포함된 칼럼을 포함하여 저장합니다. 이번 경우에는 행명칭이 행번호임으로 <strong>row.names = FALSE</strong>로 설정합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>write.csv<span class="p">(</span>surveys_complete<span class="p">,</span> file<span class="o">=</span><span class="s">"surveys_complete.csv"</span><span class="p">,</span>
+          row.names<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-마무리하며,">5. 마무리하며,<a class="anchor-link" href="#5.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,">¶</a>
+</h2>
+<p>R에서 데이터를 불러오고 전처리하는 과정을 <code>dplyr</code> 패키지를 이용해 해보았습니다. 이러한 과정은 필수적이면서도 노동집약적이기 때문에 평소에 잘 기억해 두는것이 좋습니다.</p>
+<blockquote>
+<p>파이썬에서는 <code>pandas</code>, R에는 <code>dplyr</code></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/dataframe/" rel="tag">dataframe</a></li>
+            <li><a class="tag p-category" href="../../categories/dplyr/" rel="tag">dplyr</a></li>
+            <li><a class="tag p-category" href="../../categories/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../categories/deiteo-peureim/" rel="tag">데이터 프레임</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../PK/" rel="prev" title="파이썬으로 PK 분석하기">Previous post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2018         <a href="mailto:partrita@gmail.com">Taeyoon</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Search Results:</h4>
+      </div>
+      <div class="modal-body" id="tipue_search_content" style="max-height: 600px; overflow-y: auto;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var siteUrl = "https://partrita.github.io/"
+$(document).ready(function() {
+    $.when(
+        $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
+        $.getScript( siteUrl + "/assets/js/tipuesearch.js" ),
+        $.Deferred(function( deferred ){
+            $( deferred.resolve );
+        })
+    ).done(function() {
+        $('#tipue_search_input').tipuesearch({
+            'mode': 'json',
+            'contentLocation': siteUrl + '/assets/js/tipuesearch_content.json'
+        });
+        $('#tipue_search_input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $('#search-results').modal()
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
