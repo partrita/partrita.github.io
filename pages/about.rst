@@ -69,7 +69,7 @@ Static site generator 중에 가장 유명한건 'Jekyll <https://jekyllrb-ko.gi
 장점:
     - **Jupyter notebook 포멧(ipynb)의 변경이 필요하지 않습니다.**
     - Python으로 작성되어 있어 가독성이 좋고 (내가) 편집이 쉽죠. 
-    - 여러가지 편리한 명령어를 지원합니다. 예를 들면 `github_deploy`로 한방에 올리기!
+    - 여러가지 편리한 명령어를 지원합니다. 예를 들면 `github_deploy` 로 한방에 올리기!
 
 단점:
     - 사용자 수가 적어 정보가 적습니다..
@@ -77,14 +77,17 @@ Static site generator 중에 가장 유명한건 'Jekyll <https://jekyllrb-ko.gi
 
 저처럼 Jupyter notebook으로 블로그 포스트를 작성하고 싶으신 분들은 `설치 가이드 <http://partrita.github.io/posts/nikola-for-jupyer-blog/>`_ 를 참고 하세요.
 
-라즈베리파이
+----------------------------
+
+라즈베리파이 [#]_
 -----------------------
-최근에 웹 프로그래밍에 관심이 생겨서 개인프로젝트용으로 서버로 사용하고 있습니다.
-접속 주소는 https://partrita.iptime.org <https://partrita.iptime.org/>' 입니다.
+최근에 웹 프로그래밍에 관심이 생겨서 개인프로젝트용으로 서버로 사용하고 있습니다. 접속 주소는 https://partrita.iptime.org <https://partrita.iptime.org/>'_ 입니다.
 
 - 라즈베리안 OS를 사용 중입니다.
-- Django + Nginx + celery를 굴리고 있습니다.
+- Django + Nginx + celery를 같이 굴리고 있습니다.
 - 간이 NAS로 더 유용하게 쓰고 있습니다.
+
+라즈베리에 대해서도 정리해서 올려놓도록 하겠습니다.
 
 ---------------------------------------
 
@@ -99,8 +102,9 @@ Static site generator 중에 가장 유명한건 'Jekyll <https://jekyllrb-ko.gi
 
 -----------------------------------------------
 
-.. [#] 거의 반강제적으로 사용하는거라 좋아하진 않습니다. 보통 업무용입니다.
+.. [#] 거의 반강제적으로 사용하는거라 좋아하진 않습니다.
 .. [#] 리누스 토발즈가 개발한 컴퓨터 운영 체제.
 .. [#] 블로거 서비스가 구글에 인수되었습니다.
+.. [#] 영국 라즈베리 파이(Raspberry Pi) 재단에서 만든 초소형/초저가 PC
 .. [#] partrita@gmail.com
 
