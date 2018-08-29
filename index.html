@@ -1758,7 +1758,7 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
   </div>
 
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/seaborn-pokemon/" class="u-url">Pokemon data for seaborn</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/seaborn-pokemon/" class="u-url">포켓몬스터 데이터로 배우는 seaborn</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon
@@ -1774,28 +1774,25 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="설명">설명<a class="anchor-link" href="posts/seaborn-pokemon/#%EC%84%A4%EB%AA%85">¶</a>
+<p>자세한 내용은 <a href="https://elitedatascience.com/python-seaborn-tutorial">출처</a>를 확인해주세요.</p>
+<h2 id="Seaborn-소개">Seaborn 소개<a class="anchor-link" href="posts/seaborn-pokemon/#Seaborn-%EC%86%8C%EA%B0%9C">¶</a>
 </h2>
-<p>뭐라도
-<a href="https://elitedatascience.com/python-seaborn-tutorial">원본글</a></p>
-<p>Introduction to Seaborn</p>
-<p>Seaborn provides a high-level interface to Matplotlib, a powerful but sometimes unwieldy Python visualization library.</p>
-<p>On Seaborn's official website, they state:</p>
-
-<pre><code>If matplotlib “tries to make easy things easy and hard things possible”, seaborn tries to make a well-defined set of hard things easy too.
-
-</code></pre>
-<p>We've found this to be a pretty good summary of Seaborn's strengths. In practice, the "well-defined set of hard things" includes:</p>
-
-<pre><code>Using default themes that are aesthetically pleasing.
-Setting custom color palettes.
-Making attractive statistical plots.
-Easily and flexibly displaying distributions.
-Visualizing information from matrices and DataFrames.
-
-</code></pre>
-<p>Those last three points are why Seaborn is our tool of choice for Exploratory Analysis. It makes it very easy to "get to know" your data quickly and efficiently.</p>
-<p>However, Seaborn is a complement, not a substitute, for Matplotlib. There are some tweaks that still require Matplotlib, and we'll cover how to do that as well.</p>
+<p><code>Seaborn</code>은 강력하지만 다루기 힘든 시각화 라이브러리인 <code>Matplotlib</code>에 좀 더 나은 환경을 제공하기 위해 만들어졌습니다. <a href="https://seaborn.pydata.org/">공식 웹페이지</a>는 다음과 같이 <code>Seaborn</code>을 소개하고 있습니다.</p>
+<blockquote>
+<p>Matplotlib이 쉬운 일을 쉽게, 어려운 일은 가능하게 만들때, Seaborn은 어려운 일도 쉽게 만드려고 합니다.</p>
+</blockquote>
+<p>Seaborn은 아래와 같은 기능을 제공합니다.</p>
+<ul>
+<li>기본 테마가 아름답습니다.</li>
+<li>색상 표를 사용자가 정의할 수 있습니다.</li>
+<li>매력적인 통계 도표 만들기.</li>
+<li>쉽고 유연하게 결과물을 출력합니다.</li>
+</ul>
+<p>강조하고 싶은 점은 Seaborn이 탐색적 분석을 위한 최선의 도구라는 것입니다. Seaborn을 사용한다면 원본 데이터를 빠르고 효율적으로 파악할 수있습니다.</p>
+<p>다만 Seaborn은 Matplotlib의 대체품이 아닌 보완품입니다. Matplotlib 위에서 작동하기 때문에 Matplotlib를 다루는 방법도 알고 있어야 합니다.</p>
+<h3 id="시작하기-앞서">시작하기 앞서<a class="anchor-link" href="posts/seaborn-pokemon/#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C">¶</a>
+</h3>
+<p>필요한 라이브러리를 불러옵니다.</p>
 
 </div>
 </div>
@@ -1805,7 +1802,7 @@ Visualizing information from matrices and DataFrames.
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#step2 importing libraries and dataset</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#importing libraries and dataset</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1822,11 +1819,10 @@ Visualizing information from matrices and DataFrames.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>This is a Python library slash pile of data containing a whole lot of data scraped from Pokémon games. It's the primary guts of veekun.</p>
-</blockquote>
-<p><a href="https://github.com/veekun/pokedex/blob/master/pokedex/data/csv/pokemon.csv">Pokemon.csv</a></p>
-<p><code>read_csv</code>기능을 사용해 CSV형식으로 저장된 데이터를 불러옵니다.</p>
+<h2 id="포켓몬스터-데이터">포켓몬스터 데이터<a class="anchor-link" href="posts/seaborn-pokemon/#%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0">¶</a>
+</h2>
+<p>포켓몬스터 게임에서 수집한 데이터인 <a href="https://github.com/veekun/pokedex/blob/master/pokedex/data/csv/pokemon.csv">Pokemon.csv</a>파일을 사용하겠습니다.</p>
+<p>먼저 <code>read_csv</code>기능을 사용해 CSV형식으로 저장된 데이터를 불러옵니다.</p>
 
 </div>
 </div>
@@ -1977,6 +1973,18 @@ Visualizing information from matrices and DataFrames.
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="선형-회귀-시각화">선형 회귀 시각화<a class="anchor-link" href="posts/seaborn-pokemon/#%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
+</h3>
+<p>공격력과 방어력간에 선형의 관계가 있는지 시각화를 통해 살펴봅니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
@@ -2024,6 +2032,19 @@ Visualizing information from matrices and DataFrames.
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>다수의 포켓몬들의 공격력과 방어력은 명백한 선형의 관계가 있는것을 볼 수 있습니다. 유령형 포켓몬들은 공격력이 늘면 오히려 방어력이 줄어드는 경향이 있네요.</p>
+<h3 id="상자-그림-그리기">상자 그림 그리기<a class="anchor-link" href="posts/seaborn-pokemon/#%EC%83%81%EC%9E%90-%EA%B7%B8%EB%A6%BC-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+</h3>
+<p>모든 포켓몬의 스텟(공격력, 방어력, 체력 등등)의 상자그림을 그려보겠습니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
@@ -2070,13 +2091,22 @@ Visualizing information from matrices and DataFrames.
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>필요없는 값들을 빼고 다시 그려보겠습니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#We can remove the Total since we have individual stats. We can remove the Stage and Legendary columns because they aren't combat stats.</span>
-<span class="n">stats_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'Total'</span><span class="p">,</span><span class="s1">'Stage'</span><span class="p">,</span><span class="s1">'Legendary'</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'Total'</span><span class="p">,</span><span class="s1">'Stage'</span><span class="p">,</span><span class="s1">'Legendary'</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">stats_df</span><span class="p">)</span>
 </pre></div>
 
@@ -2118,14 +2148,25 @@ Visualizing information from matrices and DataFrames.
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>모든 값들이 비슷비슷하네요. 다만 체력(hp)의 경우는 아주높은 값의 특이값(outlier)가 존재 합니다.</p>
+<h3 id="바이올린-도표-그리기">바이올린 도표 그리기<a class="anchor-link" href="posts/seaborn-pokemon/#%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0-%EB%8F%84%ED%91%9C-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+</h3>
+<p>공격력을 각각의 포켓몬 유형에 따라서 바이올린 도표를 그려봅니다. 기본적으로 상자그림과 동일한 유형입니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Step 6: Seaborn themes.</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Type 1'</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">'Attack'</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
@@ -2166,6 +2207,17 @@ Visualizing information from matrices and DataFrames.
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>격투(fighting)타입의 포켓몬들이 공격력이 높은것을 확인 할 수 있습니다.</p>
+<p>각각의 유형들을 원하는 색상으로 지정해줄수도 있습니다. 아래와 같이 색상표를 정의합니다.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2229,6 +2281,18 @@ Visualizing information from matrices and DataFrames.
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="산포도(Scatter-plot)">산포도(Scatter plot)<a class="anchor-link" href="posts/seaborn-pokemon/#%EC%82%B0%ED%8F%AC%EB%8F%84(Scatter-plot)">¶</a>
+</h3>
+<p>산포도로 표현할 수 도 있습니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [14]:</div>
@@ -2277,14 +2341,24 @@ Visualizing information from matrices and DataFrames.
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="산포도와-바이올린-도표-겹치기">산포도와 바이올린 도표 겹치기<a class="anchor-link" href="posts/seaborn-pokemon/#%EC%82%B0%ED%8F%AC%EB%8F%84%EC%99%80-%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0-%EB%8F%84%ED%91%9C-%EA%B2%B9%EC%B9%98%EA%B8%B0">¶</a>
+</h3>
+<p>각각의 도표를 겹쳐서 더많은 정보를 표현 할 수도 있습니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#step8 overlaying plot</span>
-<span class="c1">#Overlaying swarm and violin plotsPython</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
  
 <span class="c1"># Create plot</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Type 1'</span><span class="p">,</span>
@@ -2346,13 +2420,10 @@ Visualizing information from matrices and DataFrames.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Step 9: Putting it all together.
-Well, we could certainly repeat that chart for each stat. But we can also combine the information into one chart... we just have to do some data wrangling with Pandas beforehand.
-As you can see, all of our stats are in separate columns. Instead, we want to "melt" them into one column.</p>
-<p>To do so, we'll use Pandas's melt() function. It takes 3 arguments:</p>
-<p>First, the DataFrame to melt.
-Second, ID variables to keep (Pandas will melt all of the other ones).
-Finally, a name for the new, melted variable.</p>
+<h2 id="함께-모아서">함께 모아서<a class="anchor-link" href="posts/seaborn-pokemon/#%ED%95%A8%EA%BB%98-%EB%AA%A8%EC%95%84%EC%84%9C">¶</a>
+</h2>
+<p>각각의 특성에 대한 그림을 반복해서 그릴수도 있습니다. 하지만 하나의 그림에 정보를 표현하려면 어떻게 해야 할까요? 이런 상황에서 우리는 <code>Pandas</code>의 <code>melt()</code>기능을 사용합니다.</p>
+<p>아래의 예를 확인하세요.</p>
 
 </div>
 </div>
@@ -2394,6 +2465,18 @@ Finally, a name for the new, melted variable.</p>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="산포도-그리기">산포도 그리기<a class="anchor-link" href="posts/seaborn-pokemon/#%EC%82%B0%ED%8F%AC%EB%8F%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+</h3>
+<p>복잡한 정보를 표현할때는 아래와 같은 산포도가 좋습니다.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2446,14 +2529,24 @@ Finally, a name for the new, melted variable.</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="히트맵-그리기">히트맵 그리기<a class="anchor-link" href="posts/seaborn-pokemon/#%ED%9E%88%ED%8A%B8%EB%A7%B5-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+</h3>
+<p>각각의 스텟들 사이에 상관관계가 있는지 히트맵을 그려서 확인해보겠습니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#step 10: pokedex</span>
-<span class="c1"># Calculate correlations</span>
-<span class="n">corr</span> <span class="o">=</span> <span class="n">stats_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">stats_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
  
 <span class="c1"># Heatmap</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
@@ -2496,6 +2589,18 @@ Finally, a name for the new, melted variable.</p>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="히스토그램-그리기">히스토그램 그리기<a class="anchor-link" href="posts/seaborn-pokemon/#%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+</h3>
+<p>공격력에 대한 히스토그램을 그려봅니다.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2544,13 +2649,24 @@ Finally, a name for the new, melted variable.</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="카운트-플롯(Count-Plot)">카운트 플롯(Count Plot)<a class="anchor-link" href="posts/seaborn-pokemon/#%EC%B9%B4%EC%9A%B4%ED%8A%B8-%ED%94%8C%EB%A1%AF(Count-Plot)">¶</a>
+</h2>
+<p>각각의 값들의 갯수를 표현하는 도표입니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Count Plot (a.k.a. Bar Plot)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Type 1'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">pkmn_type_colors</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Type 1'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">pkmn_type_colors</span><span class="p">)</span>
  
 <span class="c1"># Rotate x-labels</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=-</span><span class="mi">45</span><span class="p">)</span>
@@ -2595,13 +2711,22 @@ Finally, a name for the new, melted variable.</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="요인-플롯(Factor-Plot)">요인 플롯(Factor Plot)<a class="anchor-link" href="posts/seaborn-pokemon/#%EC%9A%94%EC%9D%B8-%ED%94%8C%EB%A1%AF(Factor-Plot)">¶</a>
+</h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Factor Plot</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">factorplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Type 1'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">factorplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Type 1'</span><span class="p">,</span> 
                    <span class="n">y</span><span class="o">=</span><span class="s1">'Attack'</span><span class="p">,</span> 
                    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> 
                    <span class="n">hue</span><span class="o">=</span><span class="s1">'Stage'</span><span class="p">,</span>  <span class="c1"># Color by stage</span>
@@ -2653,13 +2778,24 @@ Finally, a name for the new, melted variable.</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="밀도-플롯(Density-Plot)">밀도 플롯(Density Plot)<a class="anchor-link" href="posts/seaborn-pokemon/#%EB%B0%80%EB%8F%84-%ED%94%8C%EB%A1%AF(Density-Plot)">¶</a>
+</h2>
+<p>공격력와 방어력을 축으로 각각의 포켓몬들의 밀도를 표현합니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Density Plot</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Attack</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Defense</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Attack</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Defense</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2700,13 +2836,24 @@ Finally, a name for the new, melted variable.</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="분포도(Joint-Distribution-Plot)">분포도(Joint Distribution Plot)<a class="anchor-link" href="posts/seaborn-pokemon/#%EB%B6%84%ED%8F%AC%EB%8F%84(Joint-Distribution-Plot)">¶</a>
+</h2>
+<p>공격력과 방어력을 축으로 각각의 분포를 하나의 그림에서 확인하는 방법입니다.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Joint Distribution Plot</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Attack'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Defense'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Attack'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Defense'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2746,6 +2893,18 @@ Finally, a name for the new, melted variable.</p>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="마치며,">마치며,<a class="anchor-link" href="posts/seaborn-pokemon/#%EB%A7%88%EC%B9%98%EB%A9%B0,">¶</a>
+</h2>
+<p>Seaborn은 Matplotlib을 기반으로 다양한 색상 테마와 통계용 차트등의 기능을 추가해 좀 더 멋있게 시각화를 해주는 도구 입니다. 더 멋있는 도표는 <a href="https://seaborn.pydata.org/examples/index.html">예제 갤러리</a>에서 확인하세요.</p>
+
+</div>
+</div>
 </div>
     </div>
   </div>
