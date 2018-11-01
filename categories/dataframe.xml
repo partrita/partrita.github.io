@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about dataframe)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/dataframe.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Wed, 29 Aug 2018 06:33:50 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R에서 데이터 다루기(dplyr)</title><link>https://partrita.github.io/posts/dplyr/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about dataframe)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/dataframe.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Thu, 01 Nov 2018 09:52:24 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R에서 데이터 다루기(dplyr)</title><link>https://partrita.github.io/posts/dplyr/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="0.-시작하기-앞서"&gt;0. 시작하기 앞서&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이 글은 &lt;a href="http://www.datacarpentry.org/R-ecology-lesson/"&gt;Data Carpentry for data analysis&lt;/a&gt;을 공부하고 정리한 것입니다. 목표는 프로그래밍 경험이 없는 과학자들이 &lt;strong&gt;R&lt;/strong&gt;을 가지고 작업하는데 필요한 기본적인 개념, 기술, 사용법을 가르치는데 있습니다.간략한 목차는 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -31,7 +30,7 @@ mass_index &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; mass&lt;span class="o"&g
 mass_index
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -41,7 +40,7 @@ mass_index
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -56,8 +55,7 @@ mass_index
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="1.2.-벡터와-자료형"&gt;1.2. 벡터와 자료형&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.2.-%EB%B2%A1%ED%84%B0%EC%99%80-%EC%9E%90%EB%A3%8C%ED%98%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;벡터는 R에서 가장 기본적인 자료구조입니다. 예를 들어, 다음과 같이 벡터를 생성할 수 있습니다.&lt;/p&gt;
 
@@ -76,7 +74,7 @@ tricky &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;
 num_char &lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -86,7 +84,7 @@ num_char &lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -107,8 +105,7 @@ num_char &lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="1.2.1.-벡터-부분집합-뽑아내기"&gt;1.2.1. 벡터 부분집합 뽑아내기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.2.1.-%EB%B2%A1%ED%84%B0-%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9-%EB%BD%91%EC%95%84%EB%82%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;벡터에서 값을 하나 혹은 다수 값을 추출하려면, 꺾쇠 괄호 내부에 인덱스를 넣어 줍니다.&lt;/p&gt;
 
@@ -124,7 +121,7 @@ num_char &lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
 animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -134,7 +131,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -149,8 +146,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="2.-데이터-불러오기"&gt;2. 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;외부 데이터(CSV 파일)를 불러와&lt;/li&gt;
@@ -174,7 +170,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;surveys&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 파일 확인하기&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -184,7 +180,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -210,8 +206,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="2.1.-Dataframe"&gt;2.1. Dataframe&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.1.-Dataframe"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Dataframe은 엑셀의 테이블을 생각하시면 됩니다. 각각의 행이 백터로 구성되고 모여서 테이블 형태로 표현한 것입니다. &lt;code&gt;str()&lt;/code&gt; 함수를 사용하면 각각의 행이 어떠한 자료형인지 확인 할 수 있습니다.&lt;/p&gt;
 
@@ -226,7 +221,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;str&lt;span class="p"&gt;(&lt;/span&gt;surveys&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -236,7 +231,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -263,8 +258,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 결과에서 볼 수 있듯이, 다수 칼럼은 정수형 벡터로 구성되지만, species 와 sex는 요인(factor)으로 불리는 특수한 클래스로 입니다. 데이터프레임 클래스에 대해 추가적인 내용을 알아 보기 전에, 요인에 대해 먼저 살펴보겠습니다.&lt;/p&gt;
 &lt;h3 id="2.2.-요인(Factors)"&gt;2.2. 요인(Factors)&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.2.-%EC%9A%94%EC%9D%B8(Factors)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;범주형 데이터를 표현할때 사용됩니다. 요인은 순서가 있거나 순서가 없는 것으로 구분되는데, 이를 정확히 이해하는 것이 통계분석과 시각화에 필요합니다.&lt;/p&gt;
@@ -283,14 +277,13 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sex &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"male"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"female"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"female"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"male"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;R은 정수 1을 "female" 수준, 정수 2를 "male" 수준에 대입한다. 벡터 첫번째 원소로 "male"이 왔지만, 알파벳순으로 보면 f가 m보다 순서가 앞서기 때문이다. &lt;code&gt;levels()&lt;/code&gt; 함수를 사용해서 이런 사실을 확인할 수 있고, &lt;code&gt;nlevels()&lt;/code&gt; 함수를 사용해서 수준 갯수도 확인할 수 있습니다:&lt;/p&gt;
 
@@ -305,7 +298,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;levels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sex&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -315,7 +308,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -341,7 +334,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;nlevels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sex&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -351,7 +344,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -366,8 +359,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="2.2.-요인-자료형-변경"&gt;2.2. 요인 자료형 변경&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.2.-%EC%9A%94%EC%9D%B8-%EC%9E%90%EB%A3%8C%ED%98%95-%EB%B3%80%EA%B2%BD"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;요인 벡터를 문자형 벡터로 변경시킬 때는 &lt;code&gt;as.character()&lt;/code&gt; 함수를 사용합니다.&lt;/li&gt;
@@ -391,7 +383,7 @@ f2 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.charac
 f2
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -401,7 +393,7 @@ f2
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -429,7 +421,7 @@ f2
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;as.numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;f2&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -439,7 +431,7 @@ f2
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -467,7 +459,7 @@ f2
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;as.numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;levels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;f&lt;span class="p"&gt;))[&lt;/span&gt;f&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -477,7 +469,7 @@ f2
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -498,8 +490,7 @@ f2
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;levels()&lt;/code&gt; 방법을 사용하면 아래 세가지 절차가 내부적으로 실행됩니다.&lt;/p&gt;
 &lt;ol&gt;
@@ -512,8 +503,7 @@ f2
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="3.-Dataframe-설명"&gt;3. Dataframe 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.-Dataframe-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;앞서 알아본 Dataframe에 대하여 자세히 알아 보겠습니다.&lt;/p&gt;
 &lt;h3 id="3.1.-데이터프레임은-무엇인가?"&gt;3.1. 데이터프레임은 무엇인가?&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터프레임(dataframe)은 가장 대중적인 표형식 데이터에 대한 &lt;strong&gt;사실상 표준(de facto)&lt;/strong&gt; 으로, 통계 및 시각화에 활용하는 자료구조입니다. 동일한 길이를 갖는 벡터 집합이며, 벡터 각각은 행을 표현하지만 각 벡터는 서로 다른 자료형이 될 수 있다(예를 들어, 문자형, 정수형, 요인형). 우리는 앞에서  &lt;code&gt;str()&lt;/code&gt; 함수를 사용해서 각 칼럼별 자료형을 조사했었습니다. 데이터프레임은 일일이 생성할 수도 있지만, 일반적으로 ead.csv() 혹은 read.table() 함수로 만들어 냅니다.&lt;/p&gt;
@@ -534,7 +524,7 @@ f2
 str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -544,7 +534,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -561,8 +551,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="3.2.-Dataframe-살펴보기"&gt;3.2. Dataframe 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.2.-Dataframe-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;head()&lt;/code&gt;와 &lt;code&gt;str()&lt;/code&gt; 함수를 사용해서 Dataframe 구조와 내용물을 살펴볼수 있습니다. 그 외에도 아래와 같이 유용한 명령어가 존재 합니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -600,7 +589,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -610,7 +599,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -632,8 +621,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="4.-dplyr로-데이터-편집과-분석하기"&gt;4. dplyr로 데이터 편집과 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.-dplyr%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91%EA%B3%BC-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="4.1.-dplyr-설명"&gt;4.1. dplyr 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.1.-dplyr-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;dplyr&lt;/code&gt; 패키지에는 흔히 데이터를 조작하는데 필요한 도구가 포함되어 있습니다. dplyr 패키지는 그전에 폭넓게 사용된 plyr 패키지에서 영감을 받았는데, plyr 팩키지는 속도가 떨어지는 성능문제가 있었습니다. 하지만 dplyr은 연산의 상당부분을 &lt;strong&gt;C++&lt;/strong&gt; 을 이용해 연산 속도가 매우 빠릅니다. dplyr에 대해 더 많이 배우고자 하는 경우, &lt;a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf"&gt;dplyr cheatsheet&lt;/a&gt;를 참조하세요.&lt;/p&gt;
 &lt;h3 id="4.2.-dplyr-패키지를-활용한-데이터-편집"&gt;4.2. dplyr 패키지를 활용한 데이터 편집&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.2.-dplyr-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;dplyr은 데이터조작을 더 쉽고 데이터 분석을 즐겁도록 개발되었습니다. 아래의 방법으로 설치하고 불러옵니다.&lt;/p&gt;
@@ -657,7 +645,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;span class="kp"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;select_df&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 테이블 확인&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -667,7 +655,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -700,7 +688,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;filter&lt;span class="p"&gt;(&lt;/span&gt;surveys&lt;span class="p"&gt;,&lt;/span&gt; year &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;1995&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; head &lt;span class="c1"&gt;# 1995년 데이터만 필터합니다.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -710,7 +698,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -736,8 +724,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.4.-파이프(Pipes)-사용하기"&gt;4.4. 파이프(Pipes) 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.4.-%ED%8C%8C%EC%9D%B4%ED%94%84(Pipes)-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;한번에 행을 뽑아내고 필터링을 해야 한다면, 파이프를 사용해야 합니다. 파이프는 함수 출력값을 받아 다음번 함수에 곧바로 전송하는 것으로 &lt;strong&gt;Shell&lt;/strong&gt; script의 그것과 동일합니다. 이는 수많은 작업을 수행할 때 매우 유용합니다. R에서 파이프는 &lt;code&gt;%&amp;gt;%&lt;/code&gt; 모양입니다.&lt;/p&gt;
 
@@ -754,7 +741,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
   select&lt;span class="p"&gt;(&lt;/span&gt;species_id&lt;span class="p"&gt;,&lt;/span&gt; sex&lt;span class="p"&gt;,&lt;/span&gt; weight&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -764,7 +751,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -790,8 +777,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;상기 예제에서 파이프를 사용해서 survyes 데이터셋을 filter로 먼저 보내서 체중이 5보다 작은 행만 뽑아내고 나서, select로 species, sex, weight 칼럼을 뽑아냈습니다. 파이프를 사용하면 이처럼 간결하게 코딩을 할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;파이프를 사용해서, 데이터의 부분집합을 만들어내는데, 1995년 이전 포획된 개체로 year, sex, weight 칼럼만 포함되도록 해보겠습니다.&lt;/p&gt;
@@ -808,7 +794,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;span class="kp"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;small_df&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -818,7 +804,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -844,8 +830,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.5.-mutate()-함수"&gt;4.5. mutate() 함수&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.5.-mutate()-%ED%95%A8%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;종종, 기존 칼럼값을 활용하여 새로운 칼럼을 생성할때가 있습니다. 예를 들어, 단위를 전환하거나, 두 칼럼을 활용하여 비율을 계산할 때 말이죠.이런 작업을 위해서 &lt;code&gt;mutate()&lt;/code&gt; 함수를 사용합니다. 예시로 무게를 킬로그램 단위로 표시된 새로운 칼럼을 생성해보겠습니다.&lt;/p&gt;
 
@@ -861,7 +846,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
   mutate&lt;span class="p"&gt;(&lt;/span&gt;weight_kg &lt;span class="o"&gt;=&lt;/span&gt; weight &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -871,7 +856,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -897,8 +882,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;NA 값으로 가득차 있기 때문에 파이프 체인에 filter() 함수를 이용해 없는 값을 제거해 봅니다.&lt;/p&gt;
 
@@ -916,7 +900,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
   &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -926,7 +910,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -952,8 +936,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;is.na()&lt;/code&gt; 함수는 NA가 있는지 없는지 판단하는 함수입니다. &lt;code&gt;!&lt;/code&gt; 기호는 부정하는 기호로 NA가 아닌것을 의미합니다.&lt;/p&gt;
 
@@ -961,8 +944,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;다음 기준을 만족하는 survey 데이터에서 데이터프레임을 새로 생성시켜보겠습니다. species_id 칼럼과 hindfoot_length을 반으로 나누는 값을 포함하는 칼럼만 포함시킨다. 새로운 칼럼명은 hindfoot_half이다. hindfoot_half 칼럼에는 NA 값이 없고 모든 값은 30 보다 작아야 한다.&lt;/p&gt;
 
@@ -981,7 +963,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;new_df&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -991,7 +973,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1017,8 +999,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.6.-분할-적용-병합과-summarize()-함수"&gt;4.6. 분할-적용-병합과 summarize() 함수&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.6.-%EB%B6%84%ED%95%A0-%EC%A0%81%EC%9A%A9-%EB%B3%91%ED%95%A9%EA%B3%BC-summarize()-%ED%95%A8%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터분석 상당수 작업은 “split-apply-combine(분할-적용-병합)” 으로 해결됩니다. 데이터를 쪼개고, 각 집단별로 분석을 적용시키고 나서, 결과를 병합하는 것이죠. &lt;code&gt;dplyr&lt;/code&gt; 패키지는 이런 유형의 작업을 매우 쉽게 구현합니다. &lt;code&gt;group_by()&lt;/code&gt;, &lt;code&gt;summarize()&lt;/code&gt; 함수로 각 집단을 한줄로 요약해서 축약해 보겠습니다.&lt;/p&gt;
 &lt;p&gt;예시로 성별로 구별되는 체중을 계산해보겠습니다.&lt;/p&gt;
@@ -1037,7 +1018,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
     summarize&lt;span class="p"&gt;(&lt;/span&gt;mean_weight &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;weight&lt;span class="p"&gt;,&lt;/span&gt; na.rm &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# na.rm는 NA 값을 제거합니다&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1047,7 +1028,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1069,8 +1050,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;다수의 행을 group_by()에 넣어 사용하는 것도 가능합니다. &lt;strong&gt;sex&lt;/strong&gt; 와 &lt;strong&gt;species_id&lt;/strong&gt; 모두를 집단으로 묶고 계산 해보도록 하겠습니다. 체중에 대한 요약 통계량을 산출하기 전에 체중에 대한 결측값(NA)을 제거했기 때문에 평균을 계산할 때 &lt;strong&gt;na.rm=TRUE&lt;/strong&gt;를 생략해도 됩니다.&lt;/p&gt;
 
@@ -1089,7 +1069,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
     summarize&lt;span class="p"&gt;(&lt;/span&gt;mean_weight &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;weight&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1099,7 +1079,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1125,8 +1105,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.7.-총-합계--구하기와-갯수-세기(Tallying)"&gt;4.7. 총 합계  구하기와 갯수 세기(Tallying)&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.7.-%EC%B4%9D-%ED%95%A9%EA%B3%84--%EA%B5%AC%ED%95%98%EA%B8%B0%EC%99%80-%EA%B0%AF%EC%88%98-%EC%84%B8%EA%B8%B0(Tallying)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;각 요인별로 관측점 갯수가 몇개나 되는지 확인하는 작업할 때는 &lt;code&gt;tally()&lt;/code&gt; 함수를 사용합니다. 예를 들어, 성별로 집단을 묶어 각 행의 갯수를 세어 총계를 기록하고자 하는 경우, 다음과 같이 작성합니다.&lt;/p&gt;
 
@@ -1144,7 +1123,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
     tally&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1154,7 +1133,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1176,8 +1155,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;group_by()&lt;/code&gt; 와 &lt;code&gt;summarize()&lt;/code&gt; 함수를 사용해서, &lt;strong&gt;hindfoot_length&lt;/strong&gt;에 대한 평균, 최소값, 최대값을 각 종별(species_id)로 묶어 구하도록 하겠습니다.&lt;/p&gt;
 
@@ -1195,7 +1173,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
                  max_hindfoot_length &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;hindfoot_length&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1205,7 +1183,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1231,8 +1209,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.8.-데이터-내보내기"&gt;4.8. 데이터 내보내기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;지금까지 dplyr 패키지를 사용해서 데이터에서 필요한 정보를 추출하고, 요약하는 방법을 학습했습니다. 이제 데이터를 내보내는 방법을 알아 보겠습니다. CSV 파일을 R로 불러오는데 사용된 &lt;code&gt;read.csv()&lt;/code&gt; 함수와 비슷하게, 데이터프레임에서 CSV 파일을 생성시키는데 &lt;code&gt;write.csv()&lt;/code&gt; 함수가 사용됩니다.&lt;/p&gt;
 &lt;p&gt;원본 데이터(surveys)에 결측값이 없이 정제된 데이터셋(survey_complete)를 만들어 보겠습니다.&lt;/p&gt;
@@ -1253,7 +1230,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;span class="kp"&gt;dim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;surveys_complete&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1263,7 +1240,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1282,8 +1259,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;dim(surveys_complete)&lt;/code&gt;을 통해 확인 해보니 surveys_complete 데이터프레임은 행갯수가 30676, 열갯수가 9입니다. 이제 CSV 파일로 저장합니다. 기본 설정으로, write.csv() 함수는 행명칭(row names)이 포함된 칼럼을 포함하여 저장합니다. 이번 경우에는 행명칭이 행번호임으로 &lt;strong&gt;row.names = FALSE&lt;/strong&gt;로 설정합니다.&lt;/p&gt;
 
@@ -1299,14 +1275,13 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
           row.names&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="5.-마무리하며,"&gt;5. 마무리하며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#5.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;R에서 데이터를 불러오고 전처리하는 과정을 &lt;code&gt;dplyr&lt;/code&gt; 패키지를 이용해 해보았습니다. 이러한 과정은 필수적이면서도 노동집약적이기 때문에 평소에 잘 기억해 두는것이 좋습니다.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;파이썬에서는 &lt;code&gt;pandas&lt;/code&gt;, R에는 &lt;code&gt;dplyr&lt;/code&gt;&lt;/p&gt;

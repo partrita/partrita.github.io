@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about machine learning)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/machine-learning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Wed, 29 Aug 2018 06:33:49 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>edwith 머신러닝 강의 노트정리</title><link>https://partrita.github.io/posts/edwith-machinelearning/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about machine learning)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/machine-learning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Thu, 01 Nov 2018 09:52:24 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>edwith 머신러닝 강의 노트정리</title><link>https://partrita.github.io/posts/edwith-machinelearning/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="0.-시작하기전에"&gt;0. 시작하기전에&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="http://www.edwith.org/aipython/joinLectures/14365"&gt;edwith&lt;/a&gt;에서 최성철교수님의 강의를 듣고 노트정리를 한 내용입니다. 따라서 사용한 모든 코드와 내용의 저작권은 최성철 교수님에게 있습니다. 보다 자세한 내용은 위의 링크에서 강의를 수강하시기 바랍니다.&lt;/p&gt;
 &lt;h2 id="1.-교육-환경"&gt;1. 교육 환경&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#1.-%EA%B5%90%EC%9C%A1-%ED%99%98%EA%B2%BD"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;모든 라이브러리는 &lt;code&gt;Anaconda&lt;/code&gt;를 이용해 설치 하였습니다. 사용한 라이브러리의 목록은 다음과 같습니다.&lt;/p&gt;
@@ -45,14 +44,13 @@
 &lt;span class="n"&gt;subdomain&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tld&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="2.2.-List-Comprehension"&gt;2.2. List Comprehension&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#2.2.-List-Comprehension"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;많이 사용되는 기법 중에 하나인 List Comprehension 을 사용해봅니다. 비교를 하기 위해 먼저, &lt;code&gt;for loop&lt;/code&gt; + &lt;code&gt;append()&lt;/code&gt; 사용한 코드를 살펴 보겠습니다.&lt;/p&gt;
 
@@ -70,7 +68,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -80,7 +78,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -94,8 +92,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;list Comprehension 사용하면 다음과 같습니다.&lt;/p&gt;
 
@@ -111,7 +108,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -121,7 +118,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -135,8 +132,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="2.3.-Enumerate-&amp;amp;-Zip"&gt;2.3. Enumerate &amp;amp; Zip&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#2.3.-Enumerate-&amp;amp;-Zip"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;리스트의 값을 추출할때 방법으로 이용되는 &lt;code&gt;enumerate&lt;/code&gt; 와 두개의 &lt;code&gt;list&lt;/code&gt; 값을 병렬적으로 추출할 수 있는 &lt;code&gt;zip&lt;/code&gt; 모듈을 알아 봅니다.&lt;/p&gt;
 &lt;h4 id="2.3.1.-Enumerate"&gt;2.3.1. Enumerate&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#2.3.1.-Enumerate"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
@@ -156,7 +152,7 @@
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -166,7 +162,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -189,7 +185,7 @@
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_list&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# 리스트에 있는 index와 값을 unpacking 후 다시 리스트로 저장&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -199,7 +195,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
 
 
 
@@ -215,8 +211,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="2.3.2.-Zip"&gt;2.3.2. Zip&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#2.3.2.-Zip"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;두 개의 리스트 값을 병렬적으로 추출합니다.&lt;/p&gt;
 
@@ -234,7 +229,7 @@
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -244,7 +239,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -257,8 +252,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="2.4.-Lambda-&amp;amp;-Map-&amp;amp;-Reduce"&gt;2.4. Lambda &amp;amp; Map &amp;amp; Reduce&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#2.4.-Lambda-&amp;amp;-Map-&amp;amp;-Reduce"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;함수처럼 사용가능한 &lt;code&gt;Lambda&lt;/code&gt;&lt;/li&gt;
@@ -283,7 +277,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -293,7 +287,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -307,8 +301,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;제 개인적 의견으로는 &lt;code&gt;Lambda&lt;/code&gt;는 가독성을 나쁘게 해서, 좋아하지 않습니다.&lt;/p&gt;
 &lt;h4 id="2.4.2.-Map-&amp;amp;-Reduce"&gt;2.4.2. Map &amp;amp; Reduce&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#2.4.2.-Map-&amp;amp;-Reduce"&gt;¶&lt;/a&gt;&lt;/h4&gt;
@@ -325,7 +318,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ex&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -335,7 +328,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -358,7 +351,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -368,7 +361,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -392,7 +385,7 @@
 &lt;span class="n"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -402,7 +395,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
 
 
 
@@ -418,8 +411,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="2.5.-Asterisk"&gt;2.5. Asterisk&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#2.5.-Asterisk"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;곱셈, 제곱연산, 가변인자 활용 등 여러 부분에서 다양하게 사용되는 Asterisk(*) 의 사용법을 알아봅니다.&lt;/p&gt;
 
@@ -438,7 +430,7 @@
 &lt;span class="n"&gt;asterisk_test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -448,7 +440,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -474,7 +466,7 @@
 &lt;span class="n"&gt;asterisk_test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -484,7 +476,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -510,7 +502,7 @@
 &lt;span class="n"&gt;asterisk_test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -520,7 +512,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -546,7 +538,7 @@
 &lt;span class="n"&gt;asterisk_test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -556,7 +548,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -579,7 +571,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -589,7 +581,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -611,7 +603,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -621,7 +613,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -643,7 +635,7 @@
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -653,7 +645,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -679,7 +671,7 @@
 &lt;span class="n"&gt;asterisk_test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -689,7 +681,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -703,8 +695,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="2.6.-Collections"&gt;2.6. Collections&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#2.6.-Collections"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;tuple, dict 에 대한 확장 데이터 구조를 제공하는 Collections 안에 포함된 모듈을 이용하여 Data Sturcture 의 기본
 개념을 이해하고 사용하는 방법을 알아봅니다.&lt;/p&gt;
@@ -724,7 +715,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -734,7 +725,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -748,8 +739,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="3.-선형대수(Linear-algebra)-문제-풀어보기"&gt;3. 선형대수(Linear algebra) 문제 풀어보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#3.-%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98(Linear-algebra)-%EB%AC%B8%EC%A0%9C-%ED%92%80%EC%96%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;파이썬으로 선형대수를 다루는 방법을 알아봅니다&lt;/p&gt;
 
@@ -769,7 +759,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -779,7 +769,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -805,7 +795,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -815,7 +805,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -840,7 +830,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -850,7 +840,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -875,7 +865,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -885,7 +875,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -899,8 +889,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;아래는 선형대수 과제에 대한 코드입니다.  vector와 matrix의 기초적인 연산을 수행하는 12개의 함수를 작성합니다.&lt;/p&gt;
 
@@ -921,7 +910,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vector_size_check&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="c1"&gt;# Expected value: False&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -931,7 +920,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -959,7 +948,7 @@ False
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vector_addition&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="c1"&gt;# Expected value: [15, 16]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -969,7 +958,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -999,7 +988,7 @@ False
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vector_subtraction&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="c1"&gt;# Expected value: [-13, -6]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1009,7 +998,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -1038,7 +1027,7 @@ False
 &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scalar_vector_product&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="c1"&gt;# Expected value: [4]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1048,7 +1037,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -1064,8 +1053,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="4.-머신러닝의-개요"&gt;4. 머신러닝의 개요&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#4.-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%98-%EA%B0%9C%EC%9A%94"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이번 장에서는 &lt;code&gt;Machine Learning&lt;/code&gt; 에서 사용하는 용어와 개념에 대해서 공부합니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1096,7 +1084,7 @@ False
 &lt;span class="n"&gt;test_matrix&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1106,7 +1094,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[28]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[28]:&lt;/div&gt;
 
 
 
@@ -1123,8 +1111,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;array&lt;/code&gt;의 모양 확인하는 방법은 아래와 같습니다.&lt;/p&gt;
 
@@ -1139,7 +1126,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1149,7 +1136,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[29]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[29]:&lt;/div&gt;
 
 
 
@@ -1165,8 +1152,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="5.1.1-Array-모양-바꾸기"&gt;5.1.1 Array 모양 바꾸기&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.1.1-Array-%EB%AA%A8%EC%96%91-%EB%B0%94%EA%BE%B8%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;array&lt;/code&gt;의 모양을 평평하게(1D array) 바꾸기&lt;/p&gt;
 
@@ -1181,7 +1167,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reshape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1191,7 +1177,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[30]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[30]:&lt;/div&gt;
 
 
 
@@ -1207,8 +1193,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;다른 방법으로 &lt;code&gt;flatten()&lt;/code&gt;를 사용할 수도 있습니다.&lt;/p&gt;
 
@@ -1223,7 +1208,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flatten&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1233,7 +1218,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[31]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[31]:&lt;/div&gt;
 
 
 
@@ -1249,8 +1234,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="5.1.2.-slicing"&gt;5.1.2. slicing&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.1.2.-slicing"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;array의 특정 영역만 선택하는 방법입니다.&lt;/p&gt;
 
@@ -1265,7 +1249,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# 2번째 column 부터&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1275,7 +1259,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[32]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[32]:&lt;/div&gt;
 
 
 
@@ -1299,7 +1283,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,:]&lt;/span&gt; &lt;span class="c1"&gt;# 2번째 row 부터&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1309,7 +1293,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[33]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[33]:&lt;/div&gt;
 
 
 
@@ -1325,8 +1309,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="5.1.3.-Concatenate"&gt;5.1.3. Concatenate&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.1.3.-Concatenate"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;각각의 &lt;code&gt;array&lt;/code&gt;를 하나로 합쳐줍니다.&lt;/p&gt;
 
@@ -1343,7 +1326,7 @@ False
 &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concatenate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1353,7 +1336,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[34]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[34]:&lt;/div&gt;
 
 
 
@@ -1377,7 +1360,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concatenate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1387,7 +1370,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[35]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[35]:&lt;/div&gt;
 
 
 
@@ -1403,8 +1386,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="5.1.4.-데이터-타입-바꿔주기"&gt;5.1.4. 데이터 타입 바꿔주기&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.1.4.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%80%EC%9E%85-%EB%B0%94%EA%BF%94%EC%A3%BC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;데이터 타입을 확인하고 원하는 것으로 바꿔주는 코드입니다.&lt;/p&gt;
 
@@ -1419,7 +1401,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1429,7 +1411,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[36]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[36]:&lt;/div&gt;
 
 
 
@@ -1454,7 +1436,7 @@ False
 &lt;span class="n"&gt;test_matrix_float&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1464,7 +1446,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[37]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[37]:&lt;/div&gt;
 
 
 
@@ -1480,8 +1462,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="5.2.-Pandas"&gt;5.2. Pandas&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.2.-Pandas"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파이썬의 &lt;strong&gt;엑셀&lt;/strong&gt;이라 불리는 &lt;code&gt;Pandas&lt;/code&gt;의 여러 기능과 사용하는 방법을 설명합니다. &lt;code&gt;pandas&lt;/code&gt;는 &lt;code&gt;series&lt;/code&gt;와 &lt;code&gt;dataframe&lt;/code&gt;이라는 형태로 데이터를 처리합니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1505,7 +1486,7 @@ False
 &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1515,7 +1496,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[39]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[39]:&lt;/div&gt;
 
 
 
@@ -1600,8 +1581,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;총 829개의 데이터를 가져왔습니다.&lt;/p&gt;
 
@@ -1609,8 +1589,7 @@ False
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="5.2.2.-데이터-선택하기"&gt;5.2.2. 데이터 선택하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.2.2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A0%ED%83%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;h5 id="Index-정보로-데이터-선택법"&gt;Index 정보로 데이터 선택법&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#Index-%EC%A0%95%EB%B3%B4%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A0%ED%83%9D%EB%B2%95"&gt;¶&lt;/a&gt;&lt;/h5&gt;
 &lt;/div&gt;
@@ -1624,7 +1603,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# 위에서 3번째까지의 데이터 선택&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1634,7 +1613,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[40]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[40]:&lt;/div&gt;
 
 
 
@@ -1701,8 +1680,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h5 id="Column-정보로-데이터-선택법"&gt;Column 정보로 데이터 선택법&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#Column-%EC%A0%95%EB%B3%B4%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A0%ED%83%9D%EB%B2%95"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;duration&lt;/strong&gt;과 &lt;strong&gt;network&lt;/strong&gt; column의 값만 선택하고, 위에서부터 3개의 값만 선택해보겠습니다.&lt;/p&gt;
 
@@ -1717,7 +1695,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s1"&gt;'duration'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'network'&lt;/span&gt;&lt;span class="p"&gt;]][:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1727,7 +1705,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[41]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[41]:&lt;/div&gt;
 
 
 
@@ -1774,8 +1752,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="5.2.3.-데이터-주무르기"&gt;5.2.3. 데이터 주무르기&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.2.3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A3%BC%EB%AC%B4%EB%A5%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;dateutil&lt;/code&gt;라이브러리를 사용하면 날짜데이터를 쉽게 파싱할 수 있습니다.&lt;/p&gt;
 
@@ -1792,7 +1769,7 @@ False
 &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1802,7 +1779,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[42]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[42]:&lt;/div&gt;
 
 
 
@@ -1887,8 +1864,7 @@ False
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;달별 총 통화량을 계산해 보겠습니다.&lt;/p&gt;
 
@@ -1903,7 +1879,7 @@ False
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;groupby&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'month'&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="s1"&gt;'duration'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1913,7 +1889,7 @@ False
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[43]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[43]:&lt;/div&gt;
 
 
 
@@ -1935,8 +1911,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;피봇테이블 기능을 이용해서도 할 수 있습니다.&lt;/p&gt;
 
@@ -1951,7 +1926,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pivot_table&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;'duration'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;month&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aggfunc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'sum'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1961,7 +1936,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[44]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[44]:&lt;/div&gt;
 
 
 
@@ -2011,8 +1986,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="5.2.4.--NA-값-처리하기"&gt;5.2.4.  NA 값 처리하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.2.4.--NA-%EA%B0%92-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -2033,7 +2007,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;df&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2043,7 +2017,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[45]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[45]:&lt;/div&gt;
 
 
 
@@ -2128,7 +2102,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;df_no_missing&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2138,7 +2112,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[46]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[46]:&lt;/div&gt;
 
 
 
@@ -2205,7 +2179,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;df_cleaned&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2215,7 +2189,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[47]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[47]:&lt;/div&gt;
 
 
 
@@ -2290,7 +2264,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillna&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2300,7 +2274,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[48]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[48]:&lt;/div&gt;
 
 
 
@@ -2376,8 +2350,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="5.2.5.-One-hot-encoding"&gt;5.2.5. One-hot encoding&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.2.5.-One-hot-encoding"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;get_dummies()&lt;/code&gt;함수를 이용해 one-hot encoding을 해봅니다.&lt;/p&gt;
 
@@ -2393,7 +2366,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_dummies&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'sex'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'sex'&lt;/span&gt;&lt;span class="p"&gt;)],&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2403,7 +2376,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[49]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[49]:&lt;/div&gt;
 
 
 
@@ -2491,8 +2464,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="5.2.6.-feature_scaling"&gt;5.2.6. feature_scaling&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#5.2.6.-feature_scaling"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;pandas&lt;/code&gt;로 구현하는 방법도 있지만, &lt;code&gt;sklearn&lt;/code&gt;의 &lt;code&gt;preprocessing&lt;/code&gt; 기능을 사용하는것이 보다 편합니다.&lt;/p&gt;
 
@@ -2511,7 +2483,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;df&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2521,7 +2493,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[50]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[50]:&lt;/div&gt;
 
 
 
@@ -2597,8 +2569,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;preTestScore, postTestScore의 값이 0~1사이의 값으로 정규화(normalization)되었습니다.&lt;/p&gt;
 &lt;h2 id="6.-Numpy-과제풀이"&gt;6. Numpy 과제풀이&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#6.-Numpy-%EA%B3%BC%EC%A0%9C%ED%92%80%EC%9D%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;숙제로 나온 과제 일부를 풀어봅니다.&lt;/p&gt;
@@ -2623,7 +2594,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;change_shape_of_ndarray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2633,7 +2604,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[51]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[51]:&lt;/div&gt;
 
 
 
@@ -2666,7 +2637,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;boolean_index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'&amp;gt;2'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2676,7 +2647,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[52]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[52]:&lt;/div&gt;
 
 
 
@@ -2703,7 +2674,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;find_nearest_value&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2713,7 +2684,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[53]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[53]:&lt;/div&gt;
 
 
 
@@ -2739,7 +2710,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;get_n_largest_values&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2749,7 +2720,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[54]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[54]:&lt;/div&gt;
 
 
 
@@ -2765,8 +2736,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="7.-선형회귀(Linear-regression)"&gt;7. 선형회귀(Linear regression)&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80(Linear-regression)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;종속 변수 y와 한 개 이상의 독립 변수 (또는 설명 변수) X와의 선형 상관 관계를 모델링하는 회귀분석 기법 --wikipedia&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2825,7 +2795,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;df_train&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2835,7 +2805,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[55]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[55]:&lt;/div&gt;
 
 
 
@@ -2887,8 +2857,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;데이터를 시각화하면 아래 그림과 같습니다. 명확하게 선형성(Linearity)이 보입니다.&lt;/p&gt;
 
@@ -2903,7 +2872,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2913,7 +2882,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[56]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[56]:&lt;/div&gt;
 
 
 
@@ -2926,7 +2895,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2942,8 +2911,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h5 id="모델-만들기"&gt;모델 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;&lt;code&gt;sklearn&lt;/code&gt;의 선형회귀 모델을 사용합니다.&lt;/p&gt;
 
@@ -2962,7 +2930,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="n"&gt;lr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2972,7 +2940,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[57]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[57]:&lt;/div&gt;
 
 
 
@@ -2988,8 +2956,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h5 id="예측하기-하고-시각화하기"&gt;예측하기 하고 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0-%ED%95%98%EA%B3%A0-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;테스트 값(x)을 넣어 예측 값(y)를 구하고 시각화 해봅니다.&lt;/p&gt;
 
@@ -3011,7 +2978,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Variance score: &lt;/span&gt;&lt;span class="si"&gt;{:02.3f}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r2_score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_pred&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3021,7 +2988,7 @@ Name: duration, dtype: float64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -3047,7 +3014,7 @@ Variance score: 0.989
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3057,7 +3024,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3073,8 +3040,7 @@ Variance score: 0.989
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="7.3.-Gradient-Descent"&gt;7.3. Gradient Descent&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.3.-Gradient-Descent"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Gradient Descent&lt;/strong&gt; 알고리즘으로 &lt;strong&gt;Linear Regression&lt;/strong&gt; 을 구하는 방법에 대해 공부합니다&lt;/p&gt;
 &lt;h4 id="7.3.1.-Linear-regression-with-Gradient-Descent"&gt;7.3.1. Linear regression with Gradient Descent&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.3.1.-Linear-regression-with-Gradient-Descent"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
@@ -3099,7 +3065,7 @@ Variance score: 0.989
 &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3109,7 +3075,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[60]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[60]:&lt;/div&gt;
 
 
 
@@ -3202,7 +3168,7 @@ Variance score: 0.989
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;raw_X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'o'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3212,7 +3178,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[61]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[61]:&lt;/div&gt;
 
 
 
@@ -3225,7 +3191,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3248,7 +3214,7 @@ Variance score: 0.989
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;raw_X&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3258,7 +3224,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[62]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[62]:&lt;/div&gt;
 
 
 
@@ -3285,7 +3251,7 @@ Variance score: 0.989
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ones&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;raw_X&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))[:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3295,7 +3261,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[63]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[63]:&lt;/div&gt;
 
 
 
@@ -3321,7 +3287,7 @@ Variance score: 0.989
 &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3331,7 +3297,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[64]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[64]:&lt;/div&gt;
 
 
 
@@ -3359,7 +3325,7 @@ Variance score: 0.989
 &lt;span class="n"&gt;w&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3369,7 +3335,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[65]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[65]:&lt;/div&gt;
 
 
 
@@ -3394,7 +3360,7 @@ Variance score: 0.989
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;raw_X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y_predict&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3404,7 +3370,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[66]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[66]:&lt;/div&gt;
 
 
 
@@ -3417,7 +3383,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3446,7 +3412,7 @@ Variance score: 0.989
 &lt;span class="n"&gt;cost_function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3456,7 +3422,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[67]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[67]:&lt;/div&gt;
 
 
 
@@ -3503,7 +3469,7 @@ Variance score: 0.989
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'cost:'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cost_function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hypothesis_function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;theta&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3513,7 +3479,7 @@ Variance score: 0.989
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -3535,7 +3501,7 @@ cost: 47.7085487867
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;theta_list&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3545,7 +3511,7 @@ cost: 47.7085487867
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[69]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[69]:&lt;/div&gt;
 
 
 
@@ -3576,7 +3542,7 @@ cost: 47.7085487867
 &lt;span class="n"&gt;cost_list&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3586,7 +3552,7 @@ cost: 47.7085487867
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[70]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[70]:&lt;/div&gt;
 
 
 
@@ -3623,7 +3589,7 @@ cost: 47.7085487867
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3633,7 +3599,7 @@ cost: 47.7085487867
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3649,8 +3615,7 @@ cost: 47.7085487867
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;학습이 진행 될 수록(line이 늘어날수록) 실제 데이터와 가까워 지는것을 확인 할 수 있습니다.&lt;/p&gt;
 
@@ -3665,7 +3630,7 @@ cost: 47.7085487867
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cost_list&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="n"&gt;cost_list&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3675,7 +3640,7 @@ cost: 47.7085487867
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3691,8 +3656,7 @@ cost: 47.7085487867
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt;cost function&lt;/strong&gt;의 값이 2번째 학습때부터 0으로 최소값으로 수렴하는 것을 볼 수 있습니다.&lt;/p&gt;
 &lt;h3 id="7.4.-Multivariate-Linear-Regression"&gt;7.4. Multivariate Linear Regression&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.4.-Multivariate-Linear-Regression"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;한개 이상의 feature로 구성된 데이터를 분석할때 사용하는 &lt;strong&gt;Multivariate Linear Regression&lt;/strong&gt; 을 구현하는 방법에 대해 공부합니다.&lt;/p&gt;
@@ -3733,7 +3697,7 @@ cost: 47.7085487867
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3743,7 +3707,7 @@ cost: 47.7085487867
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3776,7 +3740,7 @@ cost: 47.7085487867
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3786,7 +3750,7 @@ cost: 47.7085487867
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3843,7 +3807,7 @@ cost: 47.7085487867
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"theta"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;theta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3853,7 +3817,7 @@ cost: 47.7085487867
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -3881,7 +3845,7 @@ cost: 47.7085487867
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'intercept: '&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;regr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;intercept_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3891,7 +3855,7 @@ cost: 47.7085487867
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -3914,7 +3878,7 @@ intercept:  524.459599046
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;regr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reshape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3924,7 +3888,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -3954,7 +3918,7 @@ intercept:  524.459599046
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3964,7 +3928,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3988,7 +3952,7 @@ intercept:  524.459599046
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3998,7 +3962,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -4014,8 +3978,7 @@ intercept:  524.459599046
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;100번째 학습이후 &lt;strong&gt;cost function&lt;/strong&gt;이 수렴하는것을 알 수 있습니다.&lt;/p&gt;
 &lt;h3 id="7.5.-성능-측정법(Performance-measure)"&gt;7.5. 성능 측정법(Performance measure)&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.5.-%EC%84%B1%EB%8A%A5-%EC%B8%A1%EC%A0%95%EB%B2%95(Performance-measure)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;em&gt;만들어진 모델의 평가는 어떻게 할 것인가?&lt;/em&gt; 를 판단하기 위해서는 평가할수있는 수치가 필요합니다. 이제 우리가 만든 모델을 평가하기 위해서 사용되는 &lt;strong&gt;measure&lt;/strong&gt; 에 대한 개념과, &lt;code&gt;scikit-learn&lt;/code&gt; 을 사용하여 어떻게 코드를 작성하는 지에 대해 공부합니다.&lt;/p&gt;
@@ -4037,7 +4000,7 @@ intercept:  524.459599046
 &lt;span class="n"&gt;median_absolute_error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y_true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_pred&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4047,7 +4010,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[80]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[80]:&lt;/div&gt;
 
 
 
@@ -4076,7 +4039,7 @@ intercept:  524.459599046
 &lt;span class="n"&gt;mean_squared_error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y_true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_pred&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4086,7 +4049,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[81]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[81]:&lt;/div&gt;
 
 
 
@@ -4115,7 +4078,7 @@ intercept:  524.459599046
 &lt;span class="n"&gt;r2_score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y_true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_pred&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4125,7 +4088,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[82]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[82]:&lt;/div&gt;
 
 
 
@@ -4141,8 +4104,7 @@ intercept:  524.459599046
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="7.6.-Stochastic-Gradient-Descent"&gt;7.6. Stochastic Gradient Descent&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.6.-Stochastic-Gradient-Descent"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Stochastic Gradient Descent(이하,SGD)&lt;/strong&gt; 알고리즘에 대한 개념과 GD와의 장단점이 무엇인지에 대해 비교해보겠습니다. 그리고 모델을 학습시킬 경우에 필수적인 &lt;strong&gt;hyper parameter&lt;/strong&gt; 중 &lt;strong&gt;epoch&lt;/strong&gt;과 &lt;strong&gt;batch size&lt;/strong&gt; 에 대해서 함께 공부합니다.&lt;/p&gt;
 &lt;h4 id="7.6.1.-Full-batch-gradient-descent"&gt;7.6.1. Full-batch gradient descent&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.6.1.-Full-batch-gradient-descent"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;일반적으로 GD = full-batch GD라고 가정합니다. 모든 데이터 셋으로 학습하고 다음과 같은 특징을 가집니다.&lt;/p&gt;
@@ -4232,7 +4194,7 @@ intercept:  524.459599046
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Prices vs Predicted prices: $Y_i$ vs $\hat&lt;/span&gt;&lt;span class="si"&gt;{Y}&lt;/span&gt;&lt;span class="s2"&gt;_i$"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4242,7 +4204,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[83]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[83]:&lt;/div&gt;
 
 
 
@@ -4255,7 +4217,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -4271,8 +4233,7 @@ intercept:  524.459599046
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="7.7.-오버피팅(Overfitting)-과-정규화(Regularization)"&gt;7.7. 오버피팅(Overfitting) 과 정규화(Regularization)&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.7.-%EC%98%A4%EB%B2%84%ED%94%BC%ED%8C%85(Overfitting)-%EA%B3%BC-%EC%A0%95%EA%B7%9C%ED%99%94(Regularization)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;오버피팅이란 모델이 학습데이터에 과다 최적화되어 오히려 새로운 데이터 예측에는 성능이 떨어지는 것을 말합니다.&lt;/p&gt;
 &lt;h4 id="Overfitting-을-방지하기-위한-기법"&gt;Overfitting 을 방지하기 위한 기법&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#Overfitting-%EC%9D%84-%EB%B0%A9%EC%A7%80%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EA%B8%B0%EB%B2%95"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
@@ -4303,14 +4264,13 @@ intercept:  524.459599046
 &lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="7.7.2.-Regularization-방법"&gt;7.7.2. Regularization 방법&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.7.2.-Regularization-%EB%B0%A9%EB%B2%95"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;L1 Regularization과 L2 Regularization의 개념과, 두 Regularization의 차이점에 대하여 공부합니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -4368,7 +4328,7 @@ intercept:  524.459599046
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Prices vs Predicted prices: $Y_i$ vs $\hat&lt;/span&gt;&lt;span class="si"&gt;{Y}&lt;/span&gt;&lt;span class="s2"&gt;_i$"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4378,7 +4338,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[85]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[85]:&lt;/div&gt;
 
 
 
@@ -4391,7 +4351,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -4444,7 +4404,7 @@ intercept:  524.459599046
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="si"&gt;{:.3f}&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s1"&gt; &lt;/span&gt;&lt;span class="si"&gt;{:.4f}&lt;/span&gt;&lt;span class="se"&gt;\t\t&lt;/span&gt;&lt;span class="s1"&gt; &lt;/span&gt;&lt;span class="si"&gt;{:.4f}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;rmse_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;rmse_10cv&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4454,7 +4414,7 @@ intercept:  524.459599046
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -4491,7 +4451,7 @@ alpha	 RMSE_train	 RMSE_10cv
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Alpha'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4501,7 +4461,7 @@ alpha	 RMSE_train	 RMSE_10cv
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[87]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[87]:&lt;/div&gt;
 
 
 
@@ -4514,7 +4474,7 @@ alpha	 RMSE_train	 RMSE_10cv
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -4560,7 +4520,7 @@ alpha	 RMSE_train	 RMSE_10cv
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'RMSE on 10-fold CV: &lt;/span&gt;&lt;span class="si"&gt;%.4f&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;rmse_10cv&lt;/span&gt;)
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4570,7 +4530,7 @@ alpha	 RMSE_train	 RMSE_10cv
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -4589,8 +4549,7 @@ RMSE on 10-fold CV: 5.8535
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="7.8.-다항회귀(Polynomial-Regression)"&gt;7.8. 다항회귀(Polynomial Regression)&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.8.-%EB%8B%A4%ED%95%AD%ED%9A%8C%EA%B7%80(Polynomial-Regression)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Regression&lt;/strong&gt; 모델 중 X, Y 의 관계가 곡선 형태(비선형)일 경우에 사용할 수 있는 &lt;strong&gt;Polynomial Regression&lt;/strong&gt;에 대한 개념과, &lt;code&gt;scikit-learn&lt;/code&gt;을 활용해서 &lt;strong&gt;polynomial regression&lt;/strong&gt; 을 수행하는 방법에 대해서 공부합니다.&lt;/p&gt;
 &lt;h4 id="7.8.1.-Polynomial-Features"&gt;7.8.1. Polynomial Features&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.8.1.-Polynomial-Features"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;1차 방정식을 고차다항식으로 변경하는 기법,&lt;code&gt;sklearn.preprocessing.PolynomialFeatures&lt;/code&gt; 사용합니다. 다음과 같은 상황에서 사용됩니다.&lt;/p&gt;
@@ -4642,7 +4601,7 @@ RMSE on 10-fold CV: 5.8535
 &lt;span class="n"&gt;lg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;coef_&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4652,7 +4611,7 @@ RMSE on 10-fold CV: 5.8535
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[89]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[89]:&lt;/div&gt;
 
 
 
@@ -4677,7 +4636,7 @@ RMSE on 10-fold CV: 5.8535
 &lt;span class="n"&gt;lg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_test_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4687,7 +4646,7 @@ RMSE on 10-fold CV: 5.8535
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[90]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[90]:&lt;/div&gt;
 
 
 
@@ -4703,8 +4662,7 @@ RMSE on 10-fold CV: 5.8535
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="7.9.-Performance-measure-techniques"&gt;7.9. Performance measure techniques&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#7.9.-Performance-measure-techniques"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;머신러닝의 &lt;strong&gt;Performance&lt;/strong&gt;를 측정하는 여러가지 기법에 대한 개념과, &lt;code&gt;scikit-learn&lt;/code&gt; 으로 실행시키는 방법에 대해서 공부합니다.&lt;/p&gt;
 &lt;h4 id="교차-검증(cross-validation)이란?"&gt;교차 검증(cross validation)이란?&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D(cross-validation)%EC%9D%B4%EB%9E%80?"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;일반적으로 테스트 데이터가 별도로 존재하는 경우가 많지 않기 때문에 보통은 원래 학습용으로 확보한 데이터 중 일부를 떼어내어 테스트 데이터로 사용하는 경우가 많습니다. 그런데 데이터를 어떻게 나누냐에 따라 성능이 조금씩 달라질 수 있습니다. 따라서 여러가지 서로 다른 학습과 테스트 데이터를 사용해 여러번의 성능을 측정해 &lt;strong&gt;평균 성능(mean performance)&lt;/strong&gt; 과 &lt;strong&gt;성능 분산(performance variance)&lt;/strong&gt; 을 구하는 방법을 &lt;strong&gt;교차 검증(cross validation)&lt;/strong&gt; 이라고 합니다.&lt;/p&gt;
@@ -4744,7 +4702,7 @@ RMSE on 10-fold CV: 5.8535
 &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;boston&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4761,7 +4719,7 @@ RMSE on 10-fold CV: 5.8535
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"TEST - "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_index&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4771,7 +4729,7 @@ RMSE on 10-fold CV: 5.8535
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -4809,7 +4767,7 @@ TEST -  101
 &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lasso_scores&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ridge_scores&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4819,7 +4777,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[93]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[93]:&lt;/div&gt;
 
 
 
@@ -4847,7 +4805,7 @@ TEST -  101
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4857,7 +4815,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -4874,8 +4832,7 @@ TEST -  101
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="9.-로지스틱-회귀(Logistic-Regression)"&gt;9. 로지스틱 회귀(Logistic Regression)&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#9.-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80(Logistic-Regression)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;로지스틱 회귀(logistic regression)는 독립 변수의 선형 결합을 이용하여 사건의 발생 가능성을 예측하는데 사용되는 통계 기법이다. -- wikipedia&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -4894,12 +4851,9 @@ TEST -  101
 &lt;li&gt;일어나지 않을 확률 1 - P(X)
 수식으로 나타내면 다음과 같습니다.  &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;$$\frac{P(X)}{1 - P(X)}$$&lt;/p&gt;
-&lt;h4 id="9.1.2.-Logit-function"&gt;9.1.2. Logit function&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#9.1.2.-Logit-function"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;X의 값이 주어졌을 때 y의 확률을 이용한 &lt;strong&gt;log odds&lt;/strong&gt;. 수식은 다음과 같습니다.&lt;/p&gt;
-&lt;p&gt;$$logit(P) =\ln\left(\frac{P(X)}{1 - P(X)}\right)$$&lt;/p&gt;
-&lt;h4 id="9.1.3.-Sigmoid(=Logistic)-Function"&gt;9.1.3. Sigmoid(=Logistic) Function&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#9.1.3.-Sigmoid(=Logistic)-Function"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Logit 함수의 역함수로 z에 관한 확률을 산출합니다. 미분가능한 연속구간으로 변환되고, S 모양이라 하여 &lt;strong&gt;sigmoid function&lt;/strong&gt;으로 부릅니다. 수식은 아래와 같습니다.&lt;/p&gt;
-&lt;p&gt;$$ y = \frac{1}{1 + e^{-z}}$$&lt;/p&gt;
-&lt;h3 id="9.2.-Cost-function"&gt;9.2. Cost function&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#9.2.-Cost-function"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Logistic Regression&lt;/strong&gt; 에서 사용하는 &lt;strong&gt;Cost Function&lt;/strong&gt; 에 대해 알아봅니다&lt;/p&gt;
+$$\frac{P(X)}{1 - P(X)}$$&lt;h4 id="9.1.2.-Logit-function"&gt;9.1.2. Logit function&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#9.1.2.-Logit-function"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;X의 값이 주어졌을 때 y의 확률을 이용한 &lt;strong&gt;log odds&lt;/strong&gt;. 수식은 다음과 같습니다.&lt;/p&gt;
+$$logit(P) =\ln\left(\frac{P(X)}{1 - P(X)}\right)$$&lt;h4 id="9.1.3.-Sigmoid(=Logistic)-Function"&gt;9.1.3. Sigmoid(=Logistic) Function&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#9.1.3.-Sigmoid(=Logistic)-Function"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Logit 함수의 역함수로 z에 관한 확률을 산출합니다. 미분가능한 연속구간으로 변환되고, S 모양이라 하여 &lt;strong&gt;sigmoid function&lt;/strong&gt;으로 부릅니다. 수식은 아래와 같습니다.&lt;/p&gt;
+$$ y = \frac{1}{1 + e^{-z}}$$&lt;h3 id="9.2.-Cost-function"&gt;9.2. Cost function&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#9.2.-Cost-function"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Logistic Regression&lt;/strong&gt; 에서 사용하는 &lt;strong&gt;Cost Function&lt;/strong&gt; 에 대해 알아봅니다&lt;/p&gt;
 &lt;h3 id="예제-코드"&gt;예제 코드&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4918,7 +4872,7 @@ TEST -  101
 &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4928,7 +4882,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
 
 
 
@@ -5001,7 +4955,7 @@ TEST -  101
 &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hist&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5011,7 +4965,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
 
 
 
@@ -5027,7 +4981,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -5058,7 +5012,7 @@ TEST -  101
 &lt;span class="n"&gt;x_data&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5068,7 +5022,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
 
 
 
@@ -5107,7 +5061,7 @@ TEST -  101
 &lt;span class="n"&gt;accuracy_score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y_true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_pred&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5117,7 +5071,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
 
 
 
@@ -5133,8 +5087,7 @@ TEST -  101
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;정확도가 72% 정도로 만족스럽지는 않네요.&lt;/p&gt;
 &lt;h2 id="10.-수강후기"&gt;10. 수강후기&lt;a class="anchor-link" href="https://partrita.github.io/posts/edwith-machinelearning/#10.-%EC%88%98%EA%B0%95%ED%9B%84%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;최성철 교수님께서 설명을 쉽게 해주셔서 이해하기 쉬웠던것 같습니다. 방대한 분량을 5일안에 강의하시다 보니, 뒷부분이 좀 너무 빠르게 지나간것 같아서 아쉽기는 합니다. 간만에 한국어로 강의를 듣다보니 집중해서 듣게 되고, 갑자기 의욕이 생깁니다. &lt;strong&gt;Kaggle&lt;/strong&gt;에 들어가서 좀 더 배우도록 하겠습니다.&lt;/p&gt;
@@ -5148,8 +5101,7 @@ TEST -  101
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;a href="http://www.blopig.com/blog/2017/07/using-random-forests-in-python-with-scikit-learn/"&gt;원문 출처&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;이 글에서는 기계학습의 알고리즘 중의 하나인 &lt;strong&gt;Random forest&lt;/strong&gt;을 간략하게 사용해보도록 하겠습니다. 그래서 구체적인 &lt;strong&gt;Random forest&lt;/strong&gt;의 이론은 생략하도록 할게요. 대신에 저와 같이 기계학습을 배우려는 초보자가 흥미를 느낄 방법론 위주로 작성했습니다.&lt;/p&gt;
@@ -5176,14 +5128,13 @@ TEST -  101
 &lt;span class="n"&gt;iris&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datasets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_iris&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Random-forest으로-데이터-분류하기"&gt;Random forest으로 데이터 분류하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/random-forest-python/#Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;첫번째로 우리는 아주 간단한 분류작업을 해보겠습니다. &lt;code&gt;Iris&lt;/code&gt;데이터를 &lt;code&gt;pandas&lt;/code&gt;의 &lt;code&gt;dataframe&lt;/code&gt;으로 만들고 시각화 라이브러리인 &lt;code&gt;seaborn&lt;/code&gt;으로 그림을 그려볼게요.&lt;/p&gt;
 
@@ -5204,7 +5155,7 @@ TEST -  101
 &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pairplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'species'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5214,7 +5165,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
 
 
 
@@ -5227,7 +5178,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -5243,8 +5194,7 @@ TEST -  101
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;그림이 아주 멋집니다. 자세히 살펴보면 파란색의 &lt;strong&gt;setosa&lt;/strong&gt;는 &lt;strong&gt;petal length&lt;/strong&gt; 와 &lt;strong&gt;petal width&lt;/strong&gt;에서 다른것들과 구별이 되는것을 알 수 있구요. 다른 두 종은 구별이 쉬워 보이지는 않아 보입니다. 이 정도면 분석에 앞서 충분히 살펴본것 같군요.&lt;/p&gt;
 &lt;p&gt;본격적으로, 분석을 시작하도록 하죠. 먼저 데이터를 &lt;strong&gt;training&lt;/strong&gt; 과 &lt;strong&gt;test&lt;/strong&gt; 세트로 나누겠습니다. 보통 75/25의 비율로 나누기 때문에 우리도 일단은 그렇게 하도록 하겠습니다.&lt;/p&gt;
@@ -5263,14 +5213,13 @@ TEST -  101
 &lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;iris&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;feature_names&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;iris&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stratify&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;iris&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;123456&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt;traning&lt;/strong&gt;세트가 준비가 되었으니 &lt;code&gt;Scikit-learn&lt;/code&gt;을 사용해 모델을 만들어 볼게요. 대부분의 설정은 기본값으로 두지만 &lt;strong&gt;out-of-bag estimate&lt;/strong&gt;은 &lt;strong&gt;True&lt;/strong&gt; 값으로 변경하겠습니다.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;out-of-bag score&lt;/strong&gt;은 예측이 얼마나 정확한가에 대한 추정을 수치로 나타낸 것입니다.&lt;/p&gt;
@@ -5291,7 +5240,7 @@ TEST -  101
 &lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5301,7 +5250,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
 
 
 
@@ -5322,8 +5271,7 @@ TEST -  101
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;이제 우리가 만든 모델을 가지고 &lt;strong&gt;test&lt;/strong&gt; 세트를 분류해보겠습니다.&lt;/p&gt;
 
@@ -5344,7 +5292,7 @@ TEST -  101
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Mean accuracy score: &lt;/span&gt;&lt;span class="si"&gt;{accuracy:.3}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5354,7 +5302,7 @@ TEST -  101
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -5369,8 +5317,7 @@ Mean accuracy score: 0.933
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;두개의 값이 서로 비슷하네요. 하지만 주의할 점이 있습니다. 이러한 간단한 비교는 진짜로 우리가 제대로된 모델을 사용 하고 있다는 것을 의미 하지는 않습니다. 시각화를 통해 보다 구체적으로 보도록 하겠습니다.&lt;/p&gt;
 
@@ -5388,7 +5335,7 @@ Mean accuracy score: 0.933
 &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;heatmap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;annot&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5398,7 +5345,7 @@ Mean accuracy score: 0.933
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
 
 
 
@@ -5411,7 +5358,7 @@ Mean accuracy score: 0.933
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -5427,8 +5374,7 @@ Mean accuracy score: 0.933
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/random-forest-python/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시각화를 통해 우리의 모델이 &lt;strong&gt;setosa&lt;/strong&gt;는 정확히 분류해 내고 있지만, &lt;strong&gt;versicolor&lt;/strong&gt; 와 &lt;strong&gt;virginica&lt;/strong&gt;를 구별하는데는 애를 먹고 있다는 것을 알 수 있습니다.&lt;/p&gt;
 &lt;p&gt;이렇게 간단하게 파이썬으로 &lt;strong&gt;Random forest&lt;/strong&gt;를 하는 방법을 알아 보았습니다. 다음에는 더 구체적이고 심화된 내용으로 찾아 뵙겠습니다.&lt;/p&gt;
@@ -5442,8 +5388,7 @@ Mean accuracy score: 0.933
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;a href="https://www.reddit.com/r/Python/comments/7rppky/learn_how_to_create_a_neural_network_that/"&gt;Reddit&lt;/a&gt; 에서 흥미로운 글을 봤어요. 인공신경망을 이용해서 당뇨를 예측하는 튜토리얼이었죠. &lt;strong&gt;파이썬&lt;/strong&gt;을 이용해서 &lt;strong&gt;15줄&lt;/strong&gt;의 코드가 전부였습니다.&lt;/p&gt;
 &lt;h2 id="0.-기계학습이라고?"&gt;0. 기계학습이라고?&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#0.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9D%BC%EA%B3%A0?"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;2016년도 이세돌을 이겼던 &lt;strong&gt;AlphaGO&lt;/strong&gt;를 기억하시나요? AlphaGO라는 인공지능을 바로 기계학습으로 만들었습니다.&lt;/p&gt;
@@ -5507,7 +5452,7 @@ Mean accuracy score: 0.933
 &lt;span class="n"&gt;dataset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;numpy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loadtxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;","&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5517,7 +5462,7 @@ Mean accuracy score: 0.933
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stderr output_text"&gt;
@@ -5531,8 +5476,7 @@ Mean accuracy score: 0.933
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;이걸로 데이터 세트는 준비가 되었습니다.&lt;/p&gt;
 &lt;h3 id="모델-만들기"&gt;모델 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다음으로 &lt;strong&gt;Keras&lt;/strong&gt;를 이용해 간단한 모델을 만들고, 800번의 학습(epochs)을 해보겠습니다.
@@ -5570,7 +5514,7 @@ Mean accuracy score: 0.933
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;: &lt;/span&gt;&lt;span class="si"&gt;%.2f%%&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;metrics_names&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;scores&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5580,7 +5524,7 @@ Mean accuracy score: 0.933
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -5596,8 +5540,7 @@ acc: 87.89%
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;우리의 모델이 학습결과 &lt;strong&gt;87.89%&lt;/strong&gt; 라는 정확도를 가지게 되었습니다.&lt;/p&gt;
 &lt;h2 id="2.-시각화하기"&gt;2. 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이제 다 끝났습니다. 다음으로는 &lt;strong&gt;Keras&lt;/strong&gt;가 학습을 반복할 때마다 정확도가 얼마나 올라가는지 시각화를 해보겠습니다.&lt;/p&gt;
@@ -5622,7 +5565,7 @@ acc: 87.89%
 &lt;span class="n"&gt;ax1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'model loss'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'epoch'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'loss'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5632,7 +5575,7 @@ acc: 87.89%
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
 
 
 
@@ -5645,7 +5588,7 @@ acc: 87.89%
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -5661,8 +5604,7 @@ acc: 87.89%
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;결과를 보니, 한 800번 정도 학습하면 꽤 정확한 모델을 얻을 수 있네요.&lt;/p&gt;
 &lt;h2 id="3.-마치며,"&gt;3. 마치며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/ML-by-Keras/#3.-%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;모델을 만들었다면, 이제 모델을 유용하게 사용할 시간입니다. 가상의 환자 데이터를 만들어 그 환자가 당뇨에 걸릴 확률을 알아보겠습니다.&lt;/p&gt;
@@ -5697,7 +5639,7 @@ acc: 87.89%
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prediction&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5707,7 +5649,7 @@ acc: 87.89%
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -5721,8 +5663,7 @@ acc: 87.89%
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;우리의 모델에 따르면, &lt;code&gt;patient_1&lt;/code&gt;는 당뇨병에 걸릴 확률이 약 &lt;strong&gt;30%&lt;/strong&gt; 입니다.&lt;/p&gt;
 

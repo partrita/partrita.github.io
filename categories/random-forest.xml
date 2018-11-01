@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about random forest)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/random-forest.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Wed, 29 Aug 2018 06:33:38 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 랜덤 포레스트 분석</title><link>https://partrita.github.io/posts/random-forest-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about random forest)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/random-forest.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Thu, 01 Nov 2018 09:52:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 랜덤 포레스트 분석</title><link>https://partrita.github.io/posts/random-forest-python/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;a href="http://www.blopig.com/blog/2017/07/using-random-forests-in-python-with-scikit-learn/"&gt;원문 출처&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;이 글에서는 기계학습의 알고리즘 중의 하나인 &lt;strong&gt;Random forest&lt;/strong&gt;을 간략하게 사용해보도록 하겠습니다. 그래서 구체적인 &lt;strong&gt;Random forest&lt;/strong&gt;의 이론은 생략하도록 할게요. 대신에 저와 같이 기계학습을 배우려는 초보자가 흥미를 느낄 방법론 위주로 작성했습니다.&lt;/p&gt;
@@ -31,14 +30,13 @@
 &lt;span class="n"&gt;iris&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datasets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_iris&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Random-forest으로-데이터-분류하기"&gt;Random forest으로 데이터 분류하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/random-forest-python/#Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;첫번째로 우리는 아주 간단한 분류작업을 해보겠습니다. &lt;code&gt;Iris&lt;/code&gt;데이터를 &lt;code&gt;pandas&lt;/code&gt;의 &lt;code&gt;dataframe&lt;/code&gt;으로 만들고 시각화 라이브러리인 &lt;code&gt;seaborn&lt;/code&gt;으로 그림을 그려볼게요.&lt;/p&gt;
 
@@ -59,7 +57,7 @@
 &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pairplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'species'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -69,7 +67,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
 
 
 
@@ -82,7 +80,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -98,8 +96,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;그림이 아주 멋집니다. 자세히 살펴보면 파란색의 &lt;strong&gt;setosa&lt;/strong&gt;는 &lt;strong&gt;petal length&lt;/strong&gt; 와 &lt;strong&gt;petal width&lt;/strong&gt;에서 다른것들과 구별이 되는것을 알 수 있구요. 다른 두 종은 구별이 쉬워 보이지는 않아 보입니다. 이 정도면 분석에 앞서 충분히 살펴본것 같군요.&lt;/p&gt;
 &lt;p&gt;본격적으로, 분석을 시작하도록 하죠. 먼저 데이터를 &lt;strong&gt;training&lt;/strong&gt; 과 &lt;strong&gt;test&lt;/strong&gt; 세트로 나누겠습니다. 보통 75/25의 비율로 나누기 때문에 우리도 일단은 그렇게 하도록 하겠습니다.&lt;/p&gt;
@@ -118,14 +115,13 @@
 &lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;iris&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;feature_names&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;iris&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stratify&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;iris&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;123456&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt;traning&lt;/strong&gt;세트가 준비가 되었으니 &lt;code&gt;Scikit-learn&lt;/code&gt;을 사용해 모델을 만들어 볼게요. 대부분의 설정은 기본값으로 두지만 &lt;strong&gt;out-of-bag estimate&lt;/strong&gt;은 &lt;strong&gt;True&lt;/strong&gt; 값으로 변경하겠습니다.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;out-of-bag score&lt;/strong&gt;은 예측이 얼마나 정확한가에 대한 추정을 수치로 나타낸 것입니다.&lt;/p&gt;
@@ -146,7 +142,7 @@
 &lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -156,7 +152,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
 
 
 
@@ -177,8 +173,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;이제 우리가 만든 모델을 가지고 &lt;strong&gt;test&lt;/strong&gt; 세트를 분류해보겠습니다.&lt;/p&gt;
 
@@ -199,7 +194,7 @@
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Mean accuracy score: &lt;/span&gt;&lt;span class="si"&gt;{accuracy:.3}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -209,7 +204,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -224,8 +219,7 @@ Mean accuracy score: 0.933
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;두개의 값이 서로 비슷하네요. 하지만 주의할 점이 있습니다. 이러한 간단한 비교는 진짜로 우리가 제대로된 모델을 사용 하고 있다는 것을 의미 하지는 않습니다. 시각화를 통해 보다 구체적으로 보도록 하겠습니다.&lt;/p&gt;
 
@@ -243,7 +237,7 @@ Mean accuracy score: 0.933
 &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;heatmap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;annot&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -253,7 +247,7 @@ Mean accuracy score: 0.933
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
 
 
 
@@ -266,7 +260,7 @@ Mean accuracy score: 0.933
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -282,8 +276,7 @@ Mean accuracy score: 0.933
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/random-forest-python/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시각화를 통해 우리의 모델이 &lt;strong&gt;setosa&lt;/strong&gt;는 정확히 분류해 내고 있지만, &lt;strong&gt;versicolor&lt;/strong&gt; 와 &lt;strong&gt;virginica&lt;/strong&gt;를 구별하는데는 애를 먹고 있다는 것을 알 수 있습니다.&lt;/p&gt;
 &lt;p&gt;이렇게 간단하게 파이썬으로 &lt;strong&gt;Random forest&lt;/strong&gt;를 하는 방법을 알아 보았습니다. 다음에는 더 구체적이고 심화된 내용으로 찾아 뵙겠습니다.&lt;/p&gt;

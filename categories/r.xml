@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about R)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/r.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Wed, 29 Aug 2018 06:33:50 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R에서 데이터 다루기(dplyr)</title><link>https://partrita.github.io/posts/dplyr/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about R)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/r.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Thu, 01 Nov 2018 09:52:24 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R에서 데이터 다루기(dplyr)</title><link>https://partrita.github.io/posts/dplyr/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="0.-시작하기-앞서"&gt;0. 시작하기 앞서&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이 글은 &lt;a href="http://www.datacarpentry.org/R-ecology-lesson/"&gt;Data Carpentry for data analysis&lt;/a&gt;을 공부하고 정리한 것입니다. 목표는 프로그래밍 경험이 없는 과학자들이 &lt;strong&gt;R&lt;/strong&gt;을 가지고 작업하는데 필요한 기본적인 개념, 기술, 사용법을 가르치는데 있습니다.간략한 목차는 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -31,7 +30,7 @@ mass_index &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; mass&lt;span class="o"&g
 mass_index
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -41,7 +40,7 @@ mass_index
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -56,8 +55,7 @@ mass_index
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="1.2.-벡터와-자료형"&gt;1.2. 벡터와 자료형&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.2.-%EB%B2%A1%ED%84%B0%EC%99%80-%EC%9E%90%EB%A3%8C%ED%98%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;벡터는 R에서 가장 기본적인 자료구조입니다. 예를 들어, 다음과 같이 벡터를 생성할 수 있습니다.&lt;/p&gt;
 
@@ -76,7 +74,7 @@ tricky &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;
 num_char &lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -86,7 +84,7 @@ num_char &lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -107,8 +105,7 @@ num_char &lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="1.2.1.-벡터-부분집합-뽑아내기"&gt;1.2.1. 벡터 부분집합 뽑아내기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.2.1.-%EB%B2%A1%ED%84%B0-%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9-%EB%BD%91%EC%95%84%EB%82%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;벡터에서 값을 하나 혹은 다수 값을 추출하려면, 꺾쇠 괄호 내부에 인덱스를 넣어 줍니다.&lt;/p&gt;
 
@@ -124,7 +121,7 @@ num_char &lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
 animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -134,7 +131,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -149,8 +146,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="2.-데이터-불러오기"&gt;2. 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;외부 데이터(CSV 파일)를 불러와&lt;/li&gt;
@@ -174,7 +170,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;surveys&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 파일 확인하기&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -184,7 +180,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -210,8 +206,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="2.1.-Dataframe"&gt;2.1. Dataframe&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.1.-Dataframe"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Dataframe은 엑셀의 테이블을 생각하시면 됩니다. 각각의 행이 백터로 구성되고 모여서 테이블 형태로 표현한 것입니다. &lt;code&gt;str()&lt;/code&gt; 함수를 사용하면 각각의 행이 어떠한 자료형인지 확인 할 수 있습니다.&lt;/p&gt;
 
@@ -226,7 +221,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;str&lt;span class="p"&gt;(&lt;/span&gt;surveys&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -236,7 +231,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -263,8 +258,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 결과에서 볼 수 있듯이, 다수 칼럼은 정수형 벡터로 구성되지만, species 와 sex는 요인(factor)으로 불리는 특수한 클래스로 입니다. 데이터프레임 클래스에 대해 추가적인 내용을 알아 보기 전에, 요인에 대해 먼저 살펴보겠습니다.&lt;/p&gt;
 &lt;h3 id="2.2.-요인(Factors)"&gt;2.2. 요인(Factors)&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.2.-%EC%9A%94%EC%9D%B8(Factors)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;범주형 데이터를 표현할때 사용됩니다. 요인은 순서가 있거나 순서가 없는 것으로 구분되는데, 이를 정확히 이해하는 것이 통계분석과 시각화에 필요합니다.&lt;/p&gt;
@@ -283,14 +277,13 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sex &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"male"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"female"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"female"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"male"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;R은 정수 1을 "female" 수준, 정수 2를 "male" 수준에 대입한다. 벡터 첫번째 원소로 "male"이 왔지만, 알파벳순으로 보면 f가 m보다 순서가 앞서기 때문이다. &lt;code&gt;levels()&lt;/code&gt; 함수를 사용해서 이런 사실을 확인할 수 있고, &lt;code&gt;nlevels()&lt;/code&gt; 함수를 사용해서 수준 갯수도 확인할 수 있습니다:&lt;/p&gt;
 
@@ -305,7 +298,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;levels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sex&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -315,7 +308,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -341,7 +334,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;nlevels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sex&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -351,7 +344,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -366,8 +359,7 @@ animals&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="2.2.-요인-자료형-변경"&gt;2.2. 요인 자료형 변경&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.2.-%EC%9A%94%EC%9D%B8-%EC%9E%90%EB%A3%8C%ED%98%95-%EB%B3%80%EA%B2%BD"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;요인 벡터를 문자형 벡터로 변경시킬 때는 &lt;code&gt;as.character()&lt;/code&gt; 함수를 사용합니다.&lt;/li&gt;
@@ -391,7 +383,7 @@ f2 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.charac
 f2
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -401,7 +393,7 @@ f2
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -429,7 +421,7 @@ f2
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;as.numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;f2&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -439,7 +431,7 @@ f2
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -467,7 +459,7 @@ f2
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;as.numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;levels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;f&lt;span class="p"&gt;))[&lt;/span&gt;f&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -477,7 +469,7 @@ f2
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -498,8 +490,7 @@ f2
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;levels()&lt;/code&gt; 방법을 사용하면 아래 세가지 절차가 내부적으로 실행됩니다.&lt;/p&gt;
 &lt;ol&gt;
@@ -512,8 +503,7 @@ f2
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="3.-Dataframe-설명"&gt;3. Dataframe 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.-Dataframe-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;앞서 알아본 Dataframe에 대하여 자세히 알아 보겠습니다.&lt;/p&gt;
 &lt;h3 id="3.1.-데이터프레임은-무엇인가?"&gt;3.1. 데이터프레임은 무엇인가?&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터프레임(dataframe)은 가장 대중적인 표형식 데이터에 대한 &lt;strong&gt;사실상 표준(de facto)&lt;/strong&gt; 으로, 통계 및 시각화에 활용하는 자료구조입니다. 동일한 길이를 갖는 벡터 집합이며, 벡터 각각은 행을 표현하지만 각 벡터는 서로 다른 자료형이 될 수 있다(예를 들어, 문자형, 정수형, 요인형). 우리는 앞에서  &lt;code&gt;str()&lt;/code&gt; 함수를 사용해서 각 칼럼별 자료형을 조사했었습니다. 데이터프레임은 일일이 생성할 수도 있지만, 일반적으로 ead.csv() 혹은 read.table() 함수로 만들어 냅니다.&lt;/p&gt;
@@ -534,7 +524,7 @@ f2
 str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -544,7 +534,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -561,8 +551,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="3.2.-Dataframe-살펴보기"&gt;3.2. Dataframe 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.2.-Dataframe-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;head()&lt;/code&gt;와 &lt;code&gt;str()&lt;/code&gt; 함수를 사용해서 Dataframe 구조와 내용물을 살펴볼수 있습니다. 그 외에도 아래와 같이 유용한 명령어가 존재 합니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -600,7 +589,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -610,7 +599,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -632,8 +621,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;example_data&lt;span class="p"&gt;)&lt;/s
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="4.-dplyr로-데이터-편집과-분석하기"&gt;4. dplyr로 데이터 편집과 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.-dplyr%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91%EA%B3%BC-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="4.1.-dplyr-설명"&gt;4.1. dplyr 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.1.-dplyr-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;dplyr&lt;/code&gt; 패키지에는 흔히 데이터를 조작하는데 필요한 도구가 포함되어 있습니다. dplyr 패키지는 그전에 폭넓게 사용된 plyr 패키지에서 영감을 받았는데, plyr 팩키지는 속도가 떨어지는 성능문제가 있었습니다. 하지만 dplyr은 연산의 상당부분을 &lt;strong&gt;C++&lt;/strong&gt; 을 이용해 연산 속도가 매우 빠릅니다. dplyr에 대해 더 많이 배우고자 하는 경우, &lt;a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf"&gt;dplyr cheatsheet&lt;/a&gt;를 참조하세요.&lt;/p&gt;
 &lt;h3 id="4.2.-dplyr-패키지를-활용한-데이터-편집"&gt;4.2. dplyr 패키지를 활용한 데이터 편집&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.2.-dplyr-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;dplyr은 데이터조작을 더 쉽고 데이터 분석을 즐겁도록 개발되었습니다. 아래의 방법으로 설치하고 불러옵니다.&lt;/p&gt;
@@ -657,7 +645,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;span class="kp"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;select_df&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 테이블 확인&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -667,7 +655,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -700,7 +688,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;filter&lt;span class="p"&gt;(&lt;/span&gt;surveys&lt;span class="p"&gt;,&lt;/span&gt; year &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;1995&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; head &lt;span class="c1"&gt;# 1995년 데이터만 필터합니다.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -710,7 +698,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -736,8 +724,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.4.-파이프(Pipes)-사용하기"&gt;4.4. 파이프(Pipes) 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.4.-%ED%8C%8C%EC%9D%B4%ED%94%84(Pipes)-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;한번에 행을 뽑아내고 필터링을 해야 한다면, 파이프를 사용해야 합니다. 파이프는 함수 출력값을 받아 다음번 함수에 곧바로 전송하는 것으로 &lt;strong&gt;Shell&lt;/strong&gt; script의 그것과 동일합니다. 이는 수많은 작업을 수행할 때 매우 유용합니다. R에서 파이프는 &lt;code&gt;%&amp;gt;%&lt;/code&gt; 모양입니다.&lt;/p&gt;
 
@@ -754,7 +741,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
   select&lt;span class="p"&gt;(&lt;/span&gt;species_id&lt;span class="p"&gt;,&lt;/span&gt; sex&lt;span class="p"&gt;,&lt;/span&gt; weight&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -764,7 +751,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -790,8 +777,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;상기 예제에서 파이프를 사용해서 survyes 데이터셋을 filter로 먼저 보내서 체중이 5보다 작은 행만 뽑아내고 나서, select로 species, sex, weight 칼럼을 뽑아냈습니다. 파이프를 사용하면 이처럼 간결하게 코딩을 할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;파이프를 사용해서, 데이터의 부분집합을 만들어내는데, 1995년 이전 포획된 개체로 year, sex, weight 칼럼만 포함되도록 해보겠습니다.&lt;/p&gt;
@@ -808,7 +794,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;span class="kp"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;small_df&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -818,7 +804,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -844,8 +830,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.5.-mutate()-함수"&gt;4.5. mutate() 함수&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.5.-mutate()-%ED%95%A8%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;종종, 기존 칼럼값을 활용하여 새로운 칼럼을 생성할때가 있습니다. 예를 들어, 단위를 전환하거나, 두 칼럼을 활용하여 비율을 계산할 때 말이죠.이런 작업을 위해서 &lt;code&gt;mutate()&lt;/code&gt; 함수를 사용합니다. 예시로 무게를 킬로그램 단위로 표시된 새로운 칼럼을 생성해보겠습니다.&lt;/p&gt;
 
@@ -861,7 +846,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
   mutate&lt;span class="p"&gt;(&lt;/span&gt;weight_kg &lt;span class="o"&gt;=&lt;/span&gt; weight &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -871,7 +856,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -897,8 +882,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;NA 값으로 가득차 있기 때문에 파이프 체인에 filter() 함수를 이용해 없는 값을 제거해 봅니다.&lt;/p&gt;
 
@@ -916,7 +900,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
   &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -926,7 +910,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -952,8 +936,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;is.na()&lt;/code&gt; 함수는 NA가 있는지 없는지 판단하는 함수입니다. &lt;code&gt;!&lt;/code&gt; 기호는 부정하는 기호로 NA가 아닌것을 의미합니다.&lt;/p&gt;
 
@@ -961,8 +944,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;다음 기준을 만족하는 survey 데이터에서 데이터프레임을 새로 생성시켜보겠습니다. species_id 칼럼과 hindfoot_length을 반으로 나누는 값을 포함하는 칼럼만 포함시킨다. 새로운 칼럼명은 hindfoot_half이다. hindfoot_half 칼럼에는 NA 값이 없고 모든 값은 30 보다 작아야 한다.&lt;/p&gt;
 
@@ -981,7 +963,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;new_df&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -991,7 +973,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1017,8 +999,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.6.-분할-적용-병합과-summarize()-함수"&gt;4.6. 분할-적용-병합과 summarize() 함수&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.6.-%EB%B6%84%ED%95%A0-%EC%A0%81%EC%9A%A9-%EB%B3%91%ED%95%A9%EA%B3%BC-summarize()-%ED%95%A8%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터분석 상당수 작업은 “split-apply-combine(분할-적용-병합)” 으로 해결됩니다. 데이터를 쪼개고, 각 집단별로 분석을 적용시키고 나서, 결과를 병합하는 것이죠. &lt;code&gt;dplyr&lt;/code&gt; 패키지는 이런 유형의 작업을 매우 쉽게 구현합니다. &lt;code&gt;group_by()&lt;/code&gt;, &lt;code&gt;summarize()&lt;/code&gt; 함수로 각 집단을 한줄로 요약해서 축약해 보겠습니다.&lt;/p&gt;
 &lt;p&gt;예시로 성별로 구별되는 체중을 계산해보겠습니다.&lt;/p&gt;
@@ -1037,7 +1018,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
     summarize&lt;span class="p"&gt;(&lt;/span&gt;mean_weight &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;weight&lt;span class="p"&gt;,&lt;/span&gt; na.rm &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# na.rm는 NA 값을 제거합니다&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1047,7 +1028,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1069,8 +1050,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;다수의 행을 group_by()에 넣어 사용하는 것도 가능합니다. &lt;strong&gt;sex&lt;/strong&gt; 와 &lt;strong&gt;species_id&lt;/strong&gt; 모두를 집단으로 묶고 계산 해보도록 하겠습니다. 체중에 대한 요약 통계량을 산출하기 전에 체중에 대한 결측값(NA)을 제거했기 때문에 평균을 계산할 때 &lt;strong&gt;na.rm=TRUE&lt;/strong&gt;를 생략해도 됩니다.&lt;/p&gt;
 
@@ -1089,7 +1069,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
     summarize&lt;span class="p"&gt;(&lt;/span&gt;mean_weight &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;weight&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1099,7 +1079,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1125,8 +1105,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.7.-총-합계--구하기와-갯수-세기(Tallying)"&gt;4.7. 총 합계  구하기와 갯수 세기(Tallying)&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.7.-%EC%B4%9D-%ED%95%A9%EA%B3%84--%EA%B5%AC%ED%95%98%EA%B8%B0%EC%99%80-%EA%B0%AF%EC%88%98-%EC%84%B8%EA%B8%B0(Tallying)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;각 요인별로 관측점 갯수가 몇개나 되는지 확인하는 작업할 때는 &lt;code&gt;tally()&lt;/code&gt; 함수를 사용합니다. 예를 들어, 성별로 집단을 묶어 각 행의 갯수를 세어 총계를 기록하고자 하는 경우, 다음과 같이 작성합니다.&lt;/p&gt;
 
@@ -1144,7 +1123,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
     tally&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1154,7 +1133,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1176,8 +1155,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;group_by()&lt;/code&gt; 와 &lt;code&gt;summarize()&lt;/code&gt; 함수를 사용해서, &lt;strong&gt;hindfoot_length&lt;/strong&gt;에 대한 평균, 최소값, 최대값을 각 종별(species_id)로 묶어 구하도록 하겠습니다.&lt;/p&gt;
 
@@ -1195,7 +1173,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
                  max_hindfoot_length &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;hindfoot_length&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="kp"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1205,7 +1183,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1231,8 +1209,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.8.-데이터-내보내기"&gt;4.8. 데이터 내보내기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;지금까지 dplyr 패키지를 사용해서 데이터에서 필요한 정보를 추출하고, 요약하는 방법을 학습했습니다. 이제 데이터를 내보내는 방법을 알아 보겠습니다. CSV 파일을 R로 불러오는데 사용된 &lt;code&gt;read.csv()&lt;/code&gt; 함수와 비슷하게, 데이터프레임에서 CSV 파일을 생성시키는데 &lt;code&gt;write.csv()&lt;/code&gt; 함수가 사용됩니다.&lt;/p&gt;
 &lt;p&gt;원본 데이터(surveys)에 결측값이 없이 정제된 데이터셋(survey_complete)를 만들어 보겠습니다.&lt;/p&gt;
@@ -1253,7 +1230,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;span class="kp"&gt;dim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;surveys_complete&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1263,7 +1240,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1282,8 +1259,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;dim(surveys_complete)&lt;/code&gt;을 통해 확인 해보니 surveys_complete 데이터프레임은 행갯수가 30676, 열갯수가 9입니다. 이제 CSV 파일로 저장합니다. 기본 설정으로, write.csv() 함수는 행명칭(row names)이 포함된 칼럼을 포함하여 저장합니다. 이번 경우에는 행명칭이 행번호임으로 &lt;strong&gt;row.names = FALSE&lt;/strong&gt;로 설정합니다.&lt;/p&gt;
 
@@ -1299,14 +1275,13 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
           row.names&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="5.-마무리하며,"&gt;5. 마무리하며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#5.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;R에서 데이터를 불러오고 전처리하는 과정을 &lt;code&gt;dplyr&lt;/code&gt; 패키지를 이용해 해보았습니다. 이러한 과정은 필수적이면서도 노동집약적이기 때문에 평소에 잘 기억해 두는것이 좋습니다.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;파이썬에서는 &lt;code&gt;pandas&lt;/code&gt;, R에는 &lt;code&gt;dplyr&lt;/code&gt;&lt;/p&gt;
@@ -1321,8 +1296,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="0.-ggpubr"&gt;0. ggpubr&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#0.-ggpubr"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;모든 내용은 &lt;a href="http://www.sthda.com/english/rpkgs/ggpubr"&gt;공식문서&lt;/a&gt;에서 간추린 것입니다. 자세한것은 공식문서를 읽어주세요.&lt;/p&gt;
 &lt;p&gt;&lt;img src="http://www.sthda.com/english/sthda-upload/images/ggpubr/ggpubr.png" alt=""&gt;&lt;/p&gt;
@@ -1340,8 +1314,7 @@ select_df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; select&lt;span class="p"&
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="1.-ggpubr-설치하기:"&gt;1. ggpubr 설치하기:&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#1.-ggpubr-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;CRAN&lt;/strong&gt; 을 통한 설치법은 아래와 같습니다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ggpubr"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1371,7 +1344,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ToothGrowth&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 데이터 테이블 확인&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1381,7 +1354,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1405,8 +1378,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="3.2.-시각화-설정하기"&gt;3.2. 시각화 설정하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#3.2.-%EC%8B%9C%EA%B0%81%ED%99%94-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -1423,7 +1395,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
       labs&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'Dose'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; y &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'Length'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; fill &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'Supp'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# 레이블 변경&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1433,7 +1405,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1443,7 +1415,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1459,8 +1431,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="3.3.-한페이지에-여러-도표-넣기"&gt;3.3. 한페이지에 여러 도표 넣기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#3.3.-%ED%95%9C%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90-%EC%97%AC%EB%9F%AC-%EB%8F%84%ED%91%9C-%EB%84%A3%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;여러 도표를 한페이지에 넣는 기능은 &lt;code&gt;ggarrange()&lt;/code&gt;입니다. &lt;code&gt;cowplot&lt;/code&gt;의 &lt;code&gt;plot_grid()&lt;/code&gt;함수에 기반하고 있죠. 그래서 사용법도 동일합니다.  아래의 예시 코드를 확인하세요.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ggarrange&lt;span class="p"&gt;(&lt;/span&gt;a&lt;span class="p"&gt;,&lt;/span&gt; b&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;  
@@ -1472,8 +1443,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="4.-다양한-ggpubr-예시"&gt;4. 다양한 ggpubr 예시&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.-%EB%8B%A4%EC%96%91%ED%95%9C-ggpubr-%EC%98%88%EC%8B%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;아래에는 많이 사용되는 도표의 예시를 제공하고 있습니다. 필요한 것이 있는지 살펴보세요.&lt;/p&gt;
 &lt;h3 id="4.1.-분포(Distribution)-시각화"&gt;4.1. 분포(Distribution) 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.1.-%EB%B6%84%ED%8F%AC(Distribution)-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
@@ -1493,7 +1463,7 @@ wdata &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;data.frame&lt;
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;wdata&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1503,7 +1473,7 @@ wdata &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;data.frame&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1557,7 +1527,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;a1&lt;span class="p"&gt;,&lt;/span&
           ncol &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; nrow &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1567,7 +1537,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;a1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1577,7 +1547,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;a1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1593,8 +1563,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;a1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="4.2.-박스-그래프(Box-plots),-바이올린(violin-plots)-그래프"&gt;4.2. 박스 그래프(Box plots), 바이올린(violin plots) 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.2.-%EB%B0%95%EC%8A%A4-%EA%B7%B8%EB%9E%98%ED%94%84(Box-plots),-%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0(violin-plots)-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
@@ -1611,7 +1580,7 @@ df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ToothGrowth
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1621,7 +1590,7 @@ df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ToothGrowth
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1671,7 +1640,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
           ncol &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; nrow &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1681,7 +1650,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1691,7 +1660,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1707,8 +1676,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.3.-막대-그래프(Bar-plots)"&gt;4.3. 막대 그래프(Bar plots)&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.3.-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84(Bar-plots)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="4.3.1-간단한-막대-그래프"&gt;4.3.1 간단한 막대 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.3.1-%EA%B0%84%EB%8B%A8%ED%95%9C-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -1752,7 +1720,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
           ncol &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; nrow &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1762,7 +1730,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1772,7 +1740,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1788,8 +1756,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="4.3.2-정돈된(Ordered)-바-그래프"&gt;4.3.2 정돈된(Ordered) 바 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.3.2-%EC%A0%95%EB%8F%88%EB%90%9C(Ordered)-%EB%B0%94-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;cyl&lt;/strong&gt;에 따라서 그룹화하고, 전체적으로 정렬한 그래프(A)와 그룹별로 정렬한 그래프(B)의 시각화입니다.&lt;/p&gt;
 
@@ -1809,7 +1776,7 @@ dfm&lt;span class="o"&gt;$&lt;/span&gt;name &lt;span class="o"&gt;&amp;lt;-&lt;/
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"name"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"wt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"mpg"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"cyl"&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt; &lt;span class="c1"&gt;# 데이터 살펴보기&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1819,7 +1786,7 @@ dfm&lt;span class="o"&gt;$&lt;/span&gt;name &lt;span class="o"&gt;&amp;lt;-&lt;/
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1870,7 +1837,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;a1&lt;span class="p"&gt;,&lt;/span&
           ncol &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; nrow &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1880,7 +1847,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;a1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1890,7 +1857,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;a1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1906,8 +1873,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;a1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="4.3.3.-편차(Deviation)-그래프"&gt;4.3.3. 편차(Deviation) 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.3.3.-%ED%8E%B8%EC%B0%A8(Deviation)-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;편차(deviation) 그래프는 각각의 값들이 평균값 대비 얼마나 차이가 나는지를 시각화 합니다. 여기서는 연비 평균값에 비교해서 각 차량의 편차가 얼마인지 계산해(Z-score) 도표를 그려보겠습니다.&lt;/p&gt;
 
@@ -1927,7 +1893,7 @@ dfm&lt;span class="o"&gt;$&lt;/span&gt;mpg_grp &lt;span class="o"&gt;&amp;lt;-&l
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"name"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"wt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"mpg"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"mpg_z"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"mpg_grp"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"cyl"&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1937,7 +1903,7 @@ dfm&lt;span class="o"&gt;$&lt;/span&gt;mpg_grp &lt;span class="o"&gt;&amp;lt;-&l
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1981,7 +1947,7 @@ ggbarplot&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;,&lt;/span
           ggtheme &lt;span class="o"&gt;=&lt;/span&gt; theme_minimal&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1991,7 +1957,7 @@ ggbarplot&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;,&lt;/span
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2001,7 +1967,7 @@ ggbarplot&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;,&lt;/span
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2017,8 +1983,7 @@ ggbarplot&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;,&lt;/span
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="4.4-점-그래프(Dot-plot)"&gt;4.4 점 그래프(Dot plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.4-%EC%A0%90-%EA%B7%B8%EB%9E%98%ED%94%84(Dot-plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="4.4.1-막대사탕(Lollipop)-plot"&gt;4.4.1 막대사탕(Lollipop) plot&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.4.1-%EB%A7%89%EB%8C%80%EC%82%AC%ED%83%95(Lollipop)-plot"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;막대사탕 그래프는 많은 양의 데이터를 시각화하는데 적합합니다. 아래 예시에서는 &lt;strong&gt;cyl&lt;/strong&gt; 그룹에 맞춰서 색상을 구분하였습니다.&lt;/p&gt;
 
@@ -2044,7 +2009,7 @@ ggbarplot&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;,&lt;/span
            ggtheme &lt;span class="o"&gt;=&lt;/span&gt; theme_pubr&lt;span class="p"&gt;())&lt;/span&gt;                        &lt;span class="c1"&gt;# ggplot2 theme&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2054,7 +2019,7 @@ ggbarplot&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;,&lt;/span
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2064,7 +2029,7 @@ ggbarplot&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;,&lt;/span
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2080,8 +2045,7 @@ ggbarplot&lt;span class="p"&gt;(&lt;/span&gt;dfm&lt;span class="p"&gt;,&lt;/span
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.5.-도표에-설명(figure-legend)-넣기"&gt;4.5. 도표에 설명(figure legend) 넣기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.5.-%EB%8F%84%ED%91%9C%EC%97%90-%EC%84%A4%EB%AA%85(figure-legend)-%EB%84%A3%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;도표 밑에 설명을 넣는 방법입니다. 한줄단위로 내용을 끊어서 작성해야, 산출물에서 줄이 잘 맞게 할 수 있습니다. 
 아래의 예시 코드를 확인하세요.&lt;/p&gt;
@@ -2116,7 +2080,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;density.p&lt;span class="p"&gt;,&lt
          heights &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2126,7 +2090,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;density.p&lt;span class="p"&gt;,&lt
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2136,7 +2100,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;density.p&lt;span class="p"&gt;,&lt
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2152,8 +2116,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;density.p&lt;span class="p"&gt;,&lt
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.6.-선-그래프"&gt;4.6. 선 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.6.-%EC%84%A0-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -2182,7 +2145,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
           ncol &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; nrow &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2192,7 +2155,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2202,7 +2165,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2218,8 +2181,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.7.-히스토그램과-산포도(Scatter-Plot-with-Histograms)"&gt;4.7. 히스토그램과 산포도(Scatter Plot with Histograms)&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.7.-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8%EA%B3%BC-%EC%82%B0%ED%8F%AC%EB%8F%84(Scatter-Plot-with-Histograms)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;히스토그램과 산포도를 하나의 도표에 합쳐서 그려보도록 하겠습니다.&lt;/p&gt;
 
@@ -2239,7 +2201,7 @@ ggscatterhist&lt;span class="p"&gt;(&lt;/span&gt;
  margin.params &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;fill &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"Species"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; color &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"black"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; size &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0.2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2249,7 +2211,7 @@ ggscatterhist&lt;span class="p"&gt;(&lt;/span&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2259,7 +2221,7 @@ ggscatterhist&lt;span class="p"&gt;(&lt;/span&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2275,8 +2237,7 @@ ggscatterhist&lt;span class="p"&gt;(&lt;/span&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.8.-상관분석(Correlation-Coefficients)과-P-values-추가하기"&gt;4.8. 상관분석(Correlation Coefficients)과 P-values 추가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.8.-%EC%83%81%EA%B4%80%EB%B6%84%EC%84%9D(Correlation-Coefficients)%EA%B3%BC-P-values-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;산포도에 &lt;strong&gt;상관분석&lt;/strong&gt;과 &lt;strong&gt;p-values&lt;/strong&gt;를 추가하는 방법입니다.&lt;/p&gt;
 
@@ -2316,7 +2277,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
           ncol &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; nrow &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2326,7 +2287,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2336,7 +2297,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2352,8 +2313,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.9.-Plot-Paired-Data"&gt;4.9. Plot Paired Data&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.9.-Plot-Paired-Data"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -2380,7 +2340,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
           ncol &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; nrow &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2390,7 +2350,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2400,7 +2360,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2416,8 +2376,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="4.10.--P-values-를-박스-그래프에-추가하기"&gt;4.10.  P-values 를 박스 그래프에 추가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#4.10.--P-values-%EB%A5%BC-%EB%B0%95%EC%8A%A4-%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
@@ -2433,7 +2392,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 &lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ToothGrowth&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2443,7 +2402,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2505,7 +2464,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
           labels &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"A"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"B"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"C"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"D"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2515,7 +2474,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2525,7 +2484,7 @@ ggarrange&lt;span class="p"&gt;(&lt;/span&gt;p1&lt;span class="p"&gt;,&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2555,7 +2514,7 @@ p5 &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; p &lt;span class="o"&gt;+&lt;/sp
 p5
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2565,7 +2524,7 @@ p5
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2575,7 +2534,7 @@ p5
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2591,8 +2550,7 @@ p5
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="5.-간단한-통계-분석"&gt;5. 간단한 통계 분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#5.-%EA%B0%84%EB%8B%A8%ED%95%9C-%ED%86%B5%EA%B3%84-%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;위에서 사용한 &lt;code&gt;ToothGrowth&lt;/code&gt; 데이터를 사용합니다.&lt;/p&gt;
 
@@ -2609,7 +2567,7 @@ data&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"ToothGrowth"&lt;/
 df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ToothGrowth
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2623,7 +2581,7 @@ df &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ToothGrowth
 compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; df&lt;span class="p"&gt;,&lt;/span&gt; mu &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2633,7 +2591,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2662,7 +2620,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;/span&gt; supp&lt;span class="p"&gt;,&lt;/span&gt; df&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2672,7 +2630,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2701,7 +2659,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;/span&gt; supp&lt;span class="p"&gt;,&lt;/span&gt; df&lt;span class="p"&gt;,&lt;/span&gt; paired &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2711,7 +2669,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2740,7 +2698,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;/span&gt; supp&lt;span class="p"&gt;,&lt;/span&gt; df&lt;span class="p"&gt;,&lt;/span&gt; group.by &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"dose"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2750,7 +2708,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2783,7 +2741,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;/span&gt; dose&lt;span class="p"&gt;,&lt;/span&gt; df&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2793,7 +2751,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2824,7 +2782,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;/span&gt; dose&lt;span class="p"&gt;,&lt;/span&gt; df&lt;span class="p"&gt;,&lt;/span&gt; ref.group &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"0.5"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2834,7 +2792,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2864,7 +2822,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;/span&gt; dose&lt;span class="p"&gt;,&lt;/span&gt; df&lt;span class="p"&gt;,&lt;/span&gt; ref.group &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;".all."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2874,7 +2832,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2905,7 +2863,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;/span&gt; dose&lt;span class="p"&gt;,&lt;/span&gt; df&lt;span class="p"&gt;,&lt;/span&gt; method &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"anova"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2915,7 +2873,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2944,7 +2902,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;/span&gt; dose&lt;span class="p"&gt;,&lt;/span&gt; df&lt;span class="p"&gt;,&lt;/span&gt; method &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"kruskal.test"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2954,7 +2912,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2975,8 +2933,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="6.-더-읽어볼것"&gt;6. 더 읽어볼것&lt;a class="anchor-link" href="https://partrita.github.io/posts/ggpubr/#6.-%EB%8D%94-%EC%9D%BD%EC%96%B4%EB%B3%BC%EA%B2%83"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/"&gt;Easy Way to Mix Multiple Graphs on The Same Page&lt;/a&gt;&lt;/li&gt;
@@ -2993,8 +2950,7 @@ compare_means&lt;span class="p"&gt;(&lt;/span&gt;len &lt;span class="o"&gt;~&lt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;R&lt;/code&gt;을 이용해서 간단한 생물정보학(bioinformatics) 분석을 해보도록 할게요. 여기서 우리가 초점을 맞출 것은 단백질의 서열입니다.&lt;/p&gt;
 &lt;p&gt;생물학에 대한 기초적인 이해가 있다고 가정하고 &lt;code&gt;R&lt;/code&gt;로 분석하는 것 위주로 설명을 할 겁니다. &lt;code&gt;R&lt;/code&gt;을 사용하기 위해서는 일단 컴퓨터에 설치를 해야 할텐데요. 설치가 되어 있지 않다면 다음 &lt;a href="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/src/installr.html"&gt;링크&lt;/a&gt;를 참고해서 설치하도록 하세요.&lt;/p&gt;
@@ -3021,7 +2977,7 @@ install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'seqin
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'seqinr'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3031,7 +2987,7 @@ install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'seqin
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stderr output_text"&gt;
@@ -3046,8 +3002,7 @@ Making 'packages.html' ... done
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="FASTA-형식(format)"&gt;FASTA 형식(format)&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#FASTA-%ED%98%95%EC%8B%9D(format)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FASTA 형식은 간단하고 많이 사용되는 형태의 파일입니다. sequence alignment용 FASTA라는 프로그램에서 처음으로 사용되었죠. 아래에 예시가 있습니다. 시퀀스에 대한 설명은 &lt;code&gt;&amp;gt;&lt;/code&gt; 꺽쇄로 시작한 첫번째 줄에 적혀 있고, 다음 줄에는 서열 정보가 들어갑니다.&lt;/p&gt;
 
@@ -3060,8 +3015,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="1.-서열-정보를-R로-읽어오기"&gt;1. 서열 정보를 R로 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지를 사용해서 파스타(FASTA) 파일을 읽어 보도록 해보겠습니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/_images/P1_image3.png" alt=""&gt;&lt;/p&gt;
@@ -3085,14 +3039,13 @@ dengue &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.fasta&lt;span class="p"
 dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="DNA-서열의-길이"&gt;DNA 서열의 길이&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA 서열을 불러온 다음에는 제대로 불어왔는지를 확인하기 위해 총 서열의 길이를 알아 보도록 하겠습니다.&lt;/p&gt;
 
@@ -3107,7 +3060,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3117,7 +3070,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3132,8 +3085,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;총 &lt;strong&gt;10735&lt;/strong&gt;개의 DNA 서열로 구성되어있다는 것을 알 수 있군요.&lt;/p&gt;
 &lt;h3 id="원하는-부분의-서열만-얻기"&gt;원하는 부분의 서열만 얻기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DNA 서열에서도 특정 부분만 필요할 때가 있습니다. &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 처음부터 50번째 까지의 서열을 확인해보겠습니다.&lt;/p&gt;
@@ -3149,7 +3101,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3159,7 +3111,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -3175,8 +3127,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="DNA-서열상의-염기-구성"&gt;DNA 서열상의 염기 구성&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA는 4가지의 nucleotides (“A”, “C”, “G”, “T”) 로 구성되어 있습니다. &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;에 각각이 몇개나 있는지 알아 보도록 하죠.&lt;/p&gt;
 
@@ -3191,7 +3142,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3201,7 +3152,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3219,8 +3170,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;에는 3426개의 A, 2240개의 C, 2770개의 G and 그리고 2299개의 T로 구성되어 있군요.&lt;/p&gt;
 &lt;h2 id="GC-Content-of-DNA"&gt;GC Content of DNA&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#GC-Content-of-DNA"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;genome sequene에서 가장 기초적인 분석은 GC content 입니다. DNA 서열상에 G와 C의 비율이 얼마나 되는지를 표현하죠. &lt;code&gt;SeqinR&lt;/code&gt;에서는 &lt;code&gt;GC()&lt;/code&gt; 기능을 제공하기 때문에 손쉽게 알아 볼 수 있습니다.&lt;/p&gt;
@@ -3236,7 +3186,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;GC&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3246,7 +3196,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3261,8 +3211,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;GC content는 총 46.66977%입니다. 약간 적은 편이네요.&lt;/p&gt;
 &lt;h2 id="특정-부분의-GC-content"&gt;특정 부분의 GC content&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;좀전의 분석은 전체 서열상에서 평균 GC content이었습니다. 하지만 DNA서열상의 특정부분에서의 GC content는 어떻게 알 수 있을까요?&lt;/p&gt;
@@ -3295,7 +3244,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 slidingwindowplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3305,7 +3254,7 @@ slidingwindowplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&l
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3321,8 +3270,7 @@ slidingwindowplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&l
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;전체적인 서열상에서 GC contents가 특별하게 낮은 구역은 4000번(40%) 즈음이군요.&lt;/p&gt;
 &lt;h3 id="파스타(FASTA)-파일-쓰기"&gt;파스타(FASTA) 파일 쓰기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파스타 파일을 불러들여 간단히 분석을 해보았는데, 이제는 편집한 서열을 파스타 파일로 저장하는 방법을 알아보겠습니다.&lt;/p&gt;
@@ -3339,14 +3287,13 @@ slidingwindowplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&l
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;write.fasta&lt;span class="p"&gt;(&lt;/span&gt;names&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"DEN-1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; sequences&lt;span class="o"&gt;=&lt;/span&gt;dengueseq&lt;span class="p"&gt;,&lt;/span&gt; file.out&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="파스타-파일에서-단백질-서열을-불러오기"&gt;파스타 파일에서 단백질 서열을 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt;을 사용하면 DNA 서열과 동일한 방법으로 단백질 서열도 읽을수 있습니다. &lt;strong&gt;Uniprot&lt;/strong&gt; 에 각각 &lt;strong&gt;Q9CD83&lt;/strong&gt; , &lt;strong&gt;A0PQ23&lt;/strong&gt;으로 저장되어 있는 단백질 서열의 파스타 파일을 다운받으세요.&lt;/p&gt;
 &lt;h3 id="예시로-사용한-Q9CD83,-A0PQ23-?"&gt;예시로 사용한 Q9CD83, A0PQ23 ?&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Q9CD83&lt;/strong&gt; 과 &lt;strong&gt;A0PQ23&lt;/strong&gt; 는 Chorismate pyruvate-lyase라는 효소입니다. 차이점은 서로 다른 균주에서 발현된다는 것입니다.&lt;/p&gt;
@@ -3373,7 +3320,7 @@ ulceransseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ulcerans&lt;span class=
 lepraeseq &lt;span class="c1"&gt;# Display the contents of "lepraeseq"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3383,7 +3330,7 @@ lepraeseq &lt;span class="c1"&gt;# Display the contents of "lepraeseq"&lt;/span&
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3416,8 +3363,7 @@ attr(,"class")
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;파스타 파일이 아미노산 서열을 담고 있는것을 확인할 수 있고, 서열으 정보(균주, 이름)등을 알수 있군요.&lt;/p&gt;
 &lt;h2 id="두-서열을-점도표로-비교하기"&gt;두 서열을 점도표로 비교하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두가지의 서열을 비교할때는 먼저 점도표(dotplot)을 그려보는것은 언제나 좋은 생각입니다.&lt;/p&gt;
@@ -3434,7 +3380,7 @@ attr(,"class")
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dotPlot&lt;span class="p"&gt;(&lt;/span&gt;lepraeseq&lt;span class="p"&gt;,&lt;/span&gt; ulceransseq&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3444,7 +3390,7 @@ attr(,"class")
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3460,8 +3406,7 @@ attr(,"class")
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위의 점도표에서, &lt;em&gt;M. leprae&lt;/em&gt;의 서열은 x축에, &lt;em&gt;M. ulcerans&lt;/em&gt;의 서열은 y축으로 표현되어 있습니다. 두개의 서열이 동일하면 점으로 표시됩니다. 예를 들어 x축의 아미노산 50번과 y축의 53번째 아미노산이 동일하기때문에 점이 찍혀 있습니다.&lt;/p&gt;
 &lt;p&gt;두개의 서열이 유사할수록 대각선이 선명하게 나타납니다. 우리가 사용한 단백질 서열은 서로 유사한 효소(homologues)이기 때문에 예상한것 처럼 선명한 대각선을 볼 수 있죠.&lt;/p&gt;
@@ -3470,8 +3415,7 @@ attr(,"class")
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="코돈표"&gt;코돈표&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%BD%94%EB%8F%88%ED%91%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지에는 &lt;code&gt;tablecode()&lt;/code&gt; 라는 기능으로 표준 코돈표를 제공하고 있습니다. 아래와 같이 확인할 수 있죠.&lt;/p&gt;
 &lt;p&gt;보통 인터넷에서 쉽게 확인 할 수 있는것이라 큰 쓸모는 없을 수도 있겠습니다.&lt;/p&gt;
@@ -3487,7 +3431,7 @@ attr(,"class")
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tablecode&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3497,7 +3441,7 @@ attr(,"class")
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3513,8 +3457,7 @@ attr(,"class")
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;R&lt;/code&gt;의 &lt;code&gt;SeqinR&lt;/code&gt;이라는 패키지를 사용해 생물학적 서열정보를 간략하게 분석해보았습니다. &lt;code&gt;R&lt;/code&gt;에서 기본적으로 제공하는 다음의 기능과&lt;/p&gt;
 &lt;ul&gt;
