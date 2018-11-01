@@ -12,6 +12,6 @@
 .. image:: http://i1.wp.com/blog.singihae.com/wp-content/uploads/sites/2/2014/02/sublime-text.png
    :align: center 
 
-1. `Ctrl + H`를 누른 후 (or Find > Replace)에 입력 창에 `^\n`을 입력한다.
+1. `Ctrl + H`를 누른 후 (or Find > Replace)에 입력 창에 `^\n`을 입력한다. 
 2. “regular expression”을 선택한다. (Alt + R을 누르거나 [.*] 아이콘을 클릭)
 3. 그리고 Replace All를 누르면 모든 줄 바꿈이 삭제 됩니다.
