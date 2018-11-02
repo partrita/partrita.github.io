@@ -5,7 +5,12 @@
 <meta name="description" content="Basically, all about my interest but something useful.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Biohacker (old posts, page 10) | Biohacker</title>
-<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/html4css1.css" rel="stylesheet" type="text/css">
+<link href="assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
+<link href="assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="assets/css/theme.css" rel="stylesheet" type="text/css">
 <link href="assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#083551">
@@ -191,8 +196,41 @@ git push origin -u
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.">5.<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#5.">¶</a>
+<h2 id="5.-Pipenv-사용하기">5. Pipenv 사용하기<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#5.-Pipenv-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
 </h2>
+<p><strong>Pipenv</strong>는 <strong>pip</strong>와 <strong>virtualenv</strong>의 불편함을 해결하기 위한 툴입니다. Python.org에서 공식적으로 권장하는 패키지 설치 툴이기도 하죠. 특징은 아래와 같습니다.</p>
+<ul>
+<li>pip와 virtualenv를 따로 쓸 필요가 없습니다.</li>
+<li>requirements.txt를 대신해 pipfile와 pipfile.lock을 사용합니다.</li>
+<li>해쉬가 자동생성되어 보안이 강화됩니다.</li>
+<li>패키지들의 의존성 그래프를 그려볼수 있습니다. </li>
+<li>다만 속도는 느린편이죠.</li>
+</ul>
+<h3 id="5.1.-설치">5.1. 설치<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#5.1.-%EC%84%A4%EC%B9%98">¶</a>
+</h3>
+<div class="highlight"><pre><span></span>pip install pipenv
+</pre></div>
+<h3 id="5.2.-실행">5.2. 실행<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#5.2.-%EC%8B%A4%ED%96%89">¶</a>
+</h3>
+<p>pipenv를 사용하고 싶은 폴더에 들어가서 아래의 명령어를 실행합니다.</p>
+<div class="highlight"><pre><span></span>pipenv install
+</pre></div>
+<p>그러면 자동으로 pipfile, pipfile.lock파일을 생성합니다.이제 가상환경을 사용할 수 있습니다.</p>
+<h3 id="5.3.-가상환경-실행">5.3. 가상환경 실행<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#5.3.-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EC%8B%A4%ED%96%89">¶</a>
+</h3>
+<div class="highlight"><pre><span></span>pipenv shell
+</pre></div>
+<h3 id="5.4.-패키지-설치">5.4. 패키지 설치<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#5.4.-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98">¶</a>
+</h3>
+<div class="highlight"><pre><span></span>pipenv install nikola
+</pre></div>
+<h3 id="5.5.-Pipenv이-매력적인-점">5.5. Pipenv이 매력적인 점<a class="anchor-link" href="posts/nikola-for-jupyer-blog/#5.5.-Pipenv%EC%9D%B4-%EB%A7%A4%EB%A0%A5%EC%A0%81%EC%9D%B8-%EC%A0%90">¶</a>
+</h3>
+<p>깃허브(github)에 pipfile, pipfile.lock 파일만 커밋하면 새로운 장소에서 손쉽게 가상환경을 설정할 수 있습니다. 아래와 같이 말이죠.</p>
+<div class="highlight"><pre><span></span>git clone <span class="o">[</span>https://github.com/pypa/pipenv.git<span class="o">]</span> <span class="c1"># pull하고 싶은 저장소</span>
+pipenv install
+</pre></div>
+
 </div>
 </div>
 </div>
@@ -495,7 +533,7 @@ Matplotlib은 파이썬의 시각화 라이브러리입니다. 출판용 품질�
 </div>
 
 
-            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="assets/js/jquery.min.js"></script><script src="assets/js/bootstrap.min.js"></script><script src="assets/js/moment-with-locales.min.js"></script><script src="assets/js/fancydates.js"></script><script src="assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
