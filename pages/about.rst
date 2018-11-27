@@ -81,7 +81,7 @@ Static site generator 중에 가장 유명한건 `Jekyll <https://jekyllrb-ko.gi
 
 라즈베리파이 [#]_
 -----------------------
-최근에 웹 프로그래밍에 관심이 생겨서 개인프로젝트용으로 서버로 사용하고 있습니다. 접속 주소는 `https://partrita.iptime.org <https://partrita.iptime.org/>`_ 입니다.
+최근에 웹 프로그래밍에 관심이 생겨서 개인프로젝트용으로 서버로 사용하고 있습니다. 접속 주소는 `http://partrita.iptime.org <http://partrita.iptime.org/>`_ 입니다.
 
 - 라즈베리안 OS를 사용 중입니다.
 - Django + Nginx + celery를 같이 굴리고 있습니다.
