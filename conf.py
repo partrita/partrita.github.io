@@ -6,7 +6,6 @@ import time
 # !! This is the configuration of Nikola. !! #
 # !!  You should edit it to your liking.  !! #
 
-
 # ! Some settings can be different in different languages.
 # ! A comment stating (translatable) is used to denote those.
 # ! There are two ways to specify a translatable setting:
@@ -15,9 +14,8 @@ import time
 # ! Option (a) is used when you don't want that setting translated.
 # ! Option (b) is used for settings that are different in different languages.
 
-
 # Data about this site
-BLOG_AUTHOR = "Taeyoon"  # (translatable)
+BLOG_AUTHOR = "Taeyoon Kim"  # (translatable)
 BLOG_TITLE = "Biohacker"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
@@ -30,7 +28,7 @@ BLOG_DESCRIPTION = {
     "en": "Basically, all about my interest but something useful.",
     "ko": "흥미롭거나 유용한것 아무거나!"
 }
-  # (translatable)
+# (translatable)
 
 # Nikola is multilingual!
 #
@@ -142,6 +140,7 @@ NAVIGATION_LINKS = {
         ("/pages/resume/index.html", "Resume"),
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
+        ("http://partrita.iptime.org", "Biohack"),
         ("/rss.xml", "RSS feed"),
     ),
 }
@@ -201,7 +200,6 @@ PAGES = (
     ("pages/*.html", "pages", "page.tmpl"),
     ("pages/*.ipynb", "pages", "page.tmpl"),
 )
-
 
 # Below this point, everything is optional
 
@@ -273,16 +271,16 @@ FILES_FOLDERS = {'files': ''}
 COMPILERS = {
     "rest": ('.rst', '.txt'),
     "markdown": ('.md', '.mdown', '.markdown'),
-    "textile": ('.textile',),
-    "txt2tags": ('.t2t',),
-    "bbcode": ('.bb',),
-    "wiki": ('.wiki',),
-    "ipynb": ('.ipynb',),
+    "textile": ('.textile', ),
+    "txt2tags": ('.t2t', ),
+    "bbcode": ('.bb', ),
+    "wiki": ('.wiki', ),
+    "ipynb": ('.ipynb', ),
     "html": ('.html', '.htm'),
     # PHP files are rendered the usual way (i.e. with the full templates).
     # The resulting files have .php extensions, making it possible to run
     # them without reconfiguring your server to recognize them.
-    "php": ('.php',),
+    "php": ('.php', ),
     # Pandoc detects the input from the source filename
     # but is disabled by default as it would conflict
     # with many of the others.
@@ -548,7 +546,6 @@ HIDDEN_CATEGORIES = []
 #    },
 # }
 
-
 # If you do not want to display an author publicly, you can mark it as hidden.
 # The author will not be displayed on the author list page and posts.
 # Tag pages will still be generated.
@@ -561,9 +558,7 @@ HIDDEN_AUTHORS = ['Guest']
 
 # Optional HTML that displayed on “main” blog index.html files.
 # May be used for a greeting. (translatable)
-FRONT_INDEX_HEADER = {
-    DEFAULT_LANG: ''
-}
+FRONT_INDEX_HEADER = {DEFAULT_LANG: ''}
 
 # Create per-month archives instead of per-year
 # CREATE_MONTHLY_ARCHIVE = False
@@ -907,7 +902,6 @@ IMAGE_FOLDERS = {'images': 'images'}
 # Show teasers (instead of full posts) in indexes? Defaults to False.
 # INDEX_TEASERS = False
 
-
 # HTML fragments with the Read more... links.
 # The following tags exist and are replaced for you:
 # {link}                        A link to the full post page.
@@ -965,15 +959,12 @@ CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{autho
 #          do not need formatting)
 # (translatable)
 CONTENT_FOOTER_FORMATS = {
-    DEFAULT_LANG: (
-        (),
-        {
-            "email": BLOG_EMAIL,
-            "author": BLOG_AUTHOR,
-            "date": time.gmtime().tm_year,
-            "license": LICENSE
-        }
-    )
+    DEFAULT_LANG: ((), {
+        "email": BLOG_EMAIL,
+        "author": BLOG_AUTHOR,
+        "date": time.gmtime().tm_year,
+        "license": LICENSE
+    })
 }
 
 # A simple copyright tag for inclusion in RSS feeds that works just
@@ -1108,7 +1099,10 @@ PRETTY_URLS = True
 # Note: most Nikola-specific extensions are done via the Nikola plugin system,
 #       with the MarkdownExtension class and should not be added here.
 # The default is ['fenced_code', 'codehilite']
-MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.codehilite', 'markdown.extensions.extra']
+MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.fenced_code', 'markdown.extensions.codehilite',
+    'markdown.extensions.extra'
+]
 
 # Extra options to pass to the pandoc command.
 # by default, it's empty, is a list of strings, for example
@@ -1383,7 +1377,7 @@ GLOBAL_CONTEXT_FILLER = []
 #   <a href="/rss.xml">
 #     <i class="fa fa-circle fa-stack-2x"></i>
 #     <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
-#   </a>    
+#   </a>
 # </span>
 # <span class="fa-stack fa-2x">
 #   <a href="https://twitter.com/jluttine">
