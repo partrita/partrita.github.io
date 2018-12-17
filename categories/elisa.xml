@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about ELISA)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/elisa.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Mon, 17 Dec 2018 06:48:42 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>ELISA 분석하기</title><link>https://partrita.github.io/posts/ELISA-python-analysis/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;4PL은 ELISA 실험에서 standard curve를 그릴때 가장 흔하게 사용되는 방법입니다.오늘은 ELISA 데이터에 사용되는 4 Parameter Logistic(이하,4PL) Regression을 파이썬을 가지고 해보겠습니다.&lt;/p&gt;
+&lt;h2 id="0.-ELISA?"&gt;0. ELISA?&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#0.-ELISA?"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Enzyme-linked immunosorbent assay의 약자인 ELISA는 항체 항원 반응을 이용해 목적 단백질의 활성이나 결합력을 정량적으로 측정하는 방법입니다. 아주 긴 역사와 전통을 가지고 있는 것으로 자세한 내용은 &lt;a href="https://ko.wikipedia.org/wiki/%ED%9A%A8%EC%86%8C_%EA%B2%B0%ED%95%A9_%EB%A9%B4%EC%97%AD_%EC%B9%A8%EA%B0%95_%EB%B6%84%EC%84%9D%EB%B2%95"&gt;위키피디아&lt;/a&gt;를 참고 하세요.&lt;/p&gt;
+&lt;h2 id="1.-Four-Parameter-Logistic-(4PL)-Regression"&gt;1. Four Parameter Logistic (4PL) Regression&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#1.-Four-Parameter-Logistic-(4PL)-Regression"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;많은 생물학적 데이터들은 간단한 선형회귀 모델과는 맞지 않습니다. 그래서 보다 복잡한 모델인 4PL이 더 잘 맞습니다. 4PL은 dose response 나 receptor-ligand binding 시험과 같은 실험에 적합합니다. 그래서 유용하죠. 이름에서 알 수 있듯 4개의 매개변수가 필요합니다. 그리고 S형태의 모양을 띄고 있습니다. 수식으로 표현하면 아래와 같죠.&lt;/p&gt;
+$$ y = \frac{A-D}{1.0+(\frac{x}{C})^B} + D $$&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;x = 독립 변수(예; 처리한 시료량)  &lt;/li&gt;
+&lt;li&gt;y = 종속 변수(예; 시료량에 따른 실험결과 값)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4개의 매개 변수가 뜻하는것은 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A = 최솟값 (예; 시료를 처리하지 않았을때의 수치)&lt;/li&gt;
+&lt;li&gt;B = 커브의 경사 기울기  &lt;/li&gt;
+&lt;li&gt;C = 커브의 중간점 (예; 경사가 급해지는 부분)&lt;/li&gt;
+&lt;li&gt;D = 최고값&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;위의 수식을 뒤집으면 실험에서 얻은 결과 값(y)로 부터 넣어준 미지의 시료의 값(x)를 알아낼 수 있습니다. 공식은 다음과 같습니다.&lt;/p&gt;
+$$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$&lt;h2 id="2.-실제-응용"&gt;2. 실제 응용&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#2.-%EC%8B%A4%EC%A0%9C-%EC%9D%91%EC%9A%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ELISA 실험에서 얻은 데이터를 가지고, Standard curve를 그려 4개의 매개 변수값을 구해보겠습니다. 그런 다음 실험 측정값(y)을 통해 거꾸로 사용한 시료의 양(x)을 구해보겠습니다.&lt;/p&gt;
+&lt;h3 id="2.1.-Standard-curve-그리기"&gt;2.1. Standard curve 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#2.1.-Standard-curve-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;사용할 라이브러리를 불러옵니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# load modules&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scipy.optimize&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;curve_fit&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;ELISA reader에서 얻은 데이터를 csv파일로 정리해서 불러옵니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# read data&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'./data/20171121_4PL_standard.csv'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iloc&lt;/span&gt;&lt;span class="p"&gt;[::&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# reverse row&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Sample&lt;/th&gt;
+      &lt;th&gt;Conc&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;14&lt;/th&gt;
+      &lt;td&gt;St15&lt;/td&gt;
+      &lt;td&gt;0.010&lt;/td&gt;
+      &lt;td&gt;-0.009&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;13&lt;/th&gt;
+      &lt;td&gt;St14&lt;/td&gt;
+      &lt;td&gt;0.031&lt;/td&gt;
+      &lt;td&gt;-0.025&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;12&lt;/th&gt;
+      &lt;td&gt;St13&lt;/td&gt;
+      &lt;td&gt;0.094&lt;/td&gt;
+      &lt;td&gt;-0.021&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;11&lt;/th&gt;
+      &lt;td&gt;St12&lt;/td&gt;
+      &lt;td&gt;0.282&lt;/td&gt;
+      &lt;td&gt;-0.015&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;10&lt;/th&gt;
+      &lt;td&gt;St11&lt;/td&gt;
+      &lt;td&gt;0.847&lt;/td&gt;
+      &lt;td&gt;-0.031&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;St10&lt;/td&gt;
+      &lt;td&gt;2.540&lt;/td&gt;
+      &lt;td&gt;-0.019&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;St09&lt;/td&gt;
+      &lt;td&gt;7.621&lt;/td&gt;
+      &lt;td&gt;-0.009&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;St08&lt;/td&gt;
+      &lt;td&gt;22.862&lt;/td&gt;
+      &lt;td&gt;0.019&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;St07&lt;/td&gt;
+      &lt;td&gt;68.587&lt;/td&gt;
+      &lt;td&gt;0.045&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;St06&lt;/td&gt;
+      &lt;td&gt;205.761&lt;/td&gt;
+      &lt;td&gt;0.094&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;St05&lt;/td&gt;
+      &lt;td&gt;617.284&lt;/td&gt;
+      &lt;td&gt;0.214&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;St04&lt;/td&gt;
+      &lt;td&gt;1851.852&lt;/td&gt;
+      &lt;td&gt;0.432&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;St03&lt;/td&gt;
+      &lt;td&gt;5555.556&lt;/td&gt;
+      &lt;td&gt;0.636&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;St02&lt;/td&gt;
+      &lt;td&gt;16666.667&lt;/td&gt;
+      &lt;td&gt;0.919&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;St01&lt;/td&gt;
+      &lt;td&gt;50000.000&lt;/td&gt;
+      &lt;td&gt;1.047&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;간단하게 설명하면 Standard 물질을 500,000 ng/ul에서 3배씩 연속희석하여 총 15번 희석했습니다. 각각의 시료에서 얻은 OD 결과값은 value값이고, 농도는 Conc열에 포함되어 있습니다. 
+그런다음 4PL 함수을 정의합니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# define 4pl logistic&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;logistic4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;"""4PL logoistic equation."""&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;D&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;code&gt;scipy.optimize&lt;/code&gt;의 &lt;code&gt;curve_fit&lt;/code&gt; 기능을 이용해서 수식의 매개변수를 구하고, 각각의 4개 변수를 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;xdata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Conc'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;ydata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Value'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;popt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pcov&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;curve_fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;logistic4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xdata&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ydata&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;popt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;[ -1.93893872e-02   7.36156893e-01   4.39117217e+03   1.23620082e+00]
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;이제 시각화를 통해 얼마나 curve fitting이 잘되었는가를 확인해보겠습니다. 아래와 같이 &lt;code&gt;numpy&lt;/code&gt;를 이용해 선그래프를 그리기 위한 데이터를 만들어봅니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [6]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="n"&gt;x_fit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.01&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;50000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;50000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;y_fit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;logistic4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;popt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;y_fit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;array([-0.01930128, -0.01676145, -0.01503393, ...,  1.05665527,
+        1.05665753,  1.0566598 ])&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;이제 실제 데이터는 점으로 표시하고, curve fitting은 선으로 표시하겠습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;xdata&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ydata&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'o'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'data'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'fit'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# plt.legend()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;[&amp;lt;matplotlib.lines.Line2D at 0x7f38d743b9b0&amp;gt;]&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_png output_subarea "&gt;
+&lt;img src="data:image/png;base64,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"&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;앞쪽의 값들은 너무 좁아서 잘 보이지 않네요. 이럴때는 x축을 로그스케일로 변경하면 좀 더 편하게 볼 수 있습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;xdata&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ydata&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'o'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'data'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'fit'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xscale&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'log'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_png output_subarea "&gt;
+&lt;img src="data:image/png;base64,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"&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;거의 절반의 샘플에서 0에 수렴하는 결과를 얻었지만, 전체적으로 curve fitting이 잘 된것을 확인할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="2.2-미지의-샘플농도-구하기"&gt;2.2 미지의 샘플농도 구하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#2.2-%EB%AF%B8%EC%A7%80%EC%9D%98-%EC%83%98%ED%94%8C%EB%86%8D%EB%8F%84-%EA%B5%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이제 실험 값(y)을 가지고 standard curve에 대입해서 농도값(x)을 알아보겠습니다. 이것이 진짜 ELISA 실험을 하는 이유입니다.&lt;/p&gt;
+&lt;p&gt;먼저 아래와 같은 함수를 정의합니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 역수를 구해서 OD값에서 conc 값 알아내기&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;solvex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;"""rearranged 4PL logoistic equation."""&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(((&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;위에서 정의한 함수를 가지고 y값이 1.0일때 x축의 값을 계산해보도록 하겠습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;solvex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;popt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# OD가 1.0일때 Concentration 값&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;32007.229532820107&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="정리하며,"&gt;정리하며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;결과값이 32000정도 나왔는데요, Standard curve에 대입해보면 얼추 맞는 것 같습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</description><category>Curve fitting</category><category>ELISA</category><category>Python</category><guid>https://partrita.github.io/posts/ELISA-python-analysis/</guid><pubDate>Sun, 16 Dec 2018 08:27:02 GMT</pubDate></item></channel></rss>

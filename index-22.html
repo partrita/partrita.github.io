@@ -92,7 +92,740 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/altair/" class="u-url">Altair로 시각화하기</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/regression-error/" class="u-url">회귀의 오류 지표 알아보기</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Taeyoon Kim
+            </span></p>
+            <p class="dateline"><a href="posts/regression-error/" rel="bookmark"><time class="published dt-published" datetime="2018-10-02T18:07:20+09:00" title="2018-10-02 18:07">2018-10-02 18:07</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="회귀모델의-오류(Regression-error-metrics)">회귀모델의 오류(Regression error metrics)<a class="anchor-link" href="posts/regression-error/#%ED%9A%8C%EA%B7%80%EB%AA%A8%EB%8D%B8%EC%9D%98-%EC%98%A4%EB%A5%98(Regression-error-metrics)">¶</a>
+</h2>
+<p><img src="http://scikit-learn.org/stable/_images/sphx_glr_plot_ols_001.png" alt=""></p>
+<p>선형회귀 모델에서 오류를 측정하는 방법으로 아래 4가지를 예시를 통해 살펴보겠습니다.</p>
+<ul>
+<li>Mean Absolute Error</li>
+<li>Mean Absolute Percentage Error</li>
+<li>Mean Square Error</li>
+<li>Mean Percentage Error</li>
+</ul>
+<h2 id="데이터-설명">데이터 설명<a class="anchor-link" href="posts/regression-error/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85">¶</a>
+</h2>
+<p>이 글에서 사용한 데이터는 캐글(Kaggle)의 <a href="https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings/data">비디오 게임 판매</a> 입니다.</p>
+<p>먼저 <code>pandas</code>로 <strong>csv</strong>를 불러오겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./data/Video_Games_Sales_as_at_22_Dec_2016.csv'</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[1]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>index</th>
+      <th>Name</th>
+      <th>Platform</th>
+      <th>Year_of_Release</th>
+      <th>Genre</th>
+      <th>Publisher</th>
+      <th>NA_Sales</th>
+      <th>EU_Sales</th>
+      <th>JP_Sales</th>
+      <th>Other_Sales</th>
+      <th>Global_Sales</th>
+      <th>Critic_Score</th>
+      <th>Critic_Count</th>
+      <th>User_Score</th>
+      <th>User_Count</th>
+      <th>Developer</th>
+      <th>Rating</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>6820</th>
+      <td>16667</td>
+      <td>E.T. The Extra-Terrestrial</td>
+      <td>GBA</td>
+      <td>2001.0</td>
+      <td>Action</td>
+      <td>NewKidCo</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.01</td>
+      <td>46.0</td>
+      <td>4.0</td>
+      <td>2.4</td>
+      <td>21.0</td>
+      <td>Fluid Studios</td>
+      <td>E</td>
+    </tr>
+<tr>
+<th>6821</th>
+      <td>16677</td>
+      <td>Mortal Kombat: Deadly Alliance</td>
+      <td>GBA</td>
+      <td>2002.0</td>
+      <td>Fighting</td>
+      <td>Midway Games</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.01</td>
+      <td>81.0</td>
+      <td>12.0</td>
+      <td>8.8</td>
+      <td>9.0</td>
+      <td>Criterion Games</td>
+      <td>M</td>
+    </tr>
+<tr>
+<th>6822</th>
+      <td>16696</td>
+      <td>Metal Gear Solid V: Ground Zeroes</td>
+      <td>PC</td>
+      <td>2014.0</td>
+      <td>Action</td>
+      <td>Konami Digital Entertainment</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.01</td>
+      <td>80.0</td>
+      <td>20.0</td>
+      <td>7.6</td>
+      <td>412.0</td>
+      <td>Kojima Productions</td>
+      <td>M</td>
+    </tr>
+<tr>
+<th>6823</th>
+      <td>16700</td>
+      <td>Breach</td>
+      <td>PC</td>
+      <td>2011.0</td>
+      <td>Shooter</td>
+      <td>Destineer</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.01</td>
+      <td>61.0</td>
+      <td>12.0</td>
+      <td>5.8</td>
+      <td>43.0</td>
+      <td>Atomic Games</td>
+      <td>T</td>
+    </tr>
+<tr>
+<th>6824</th>
+      <td>16706</td>
+      <td>STORM: Frontline Nation</td>
+      <td>PC</td>
+      <td>2011.0</td>
+      <td>Strategy</td>
+      <td>Unknown</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.01</td>
+      <td>60.0</td>
+      <td>12.0</td>
+      <td>7.2</td>
+      <td>13.0</td>
+      <td>SimBin</td>
+      <td>E10+</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>전체의 데이터중에 Critic_Score, User_Score, Global_Sales열만 사용하도록 하겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'Critic_Score'</span><span class="p">,</span><span class="s1">'User_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span>
+<span class="c1"># X = [tuple(x) for x in subset.values]</span>
+<span class="c1"># X = list(subset.itertuples(index=False))</span>
+<span class="n">sales</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Global_Sales'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span>
+<span class="c1"># y= list(sales.iteritems())</span>
+<span class="c1"># y = [tuple(x) for x in sales.values]</span>
+<span class="c1"># print(X.shape, sales.shape)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="데이터-시각화">데이터 시각화<a class="anchor-link" href="posts/regression-error/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
+</h2>
+<p>시각화를 통해 데이터의 모양을 확인해 보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">df</span><span class="p">[[</span><span class="s1">'Critic_Score'</span><span class="p">,</span><span class="s1">'User_Score'</span><span class="p">,</span>
+    <span class="s1">'Global_Sales'</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float'</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Critic_Score'</span><span class="p">,</span>
+                                                  <span class="n">y</span><span class="o">=</span><span class="s1">'Global_Sales'</span><span class="p">,</span>
+                                                  <span class="n">c</span><span class="o">=</span><span class="s1">'User_Score'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0eba6d12b0&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>x축은 평론가 점수이고 y축은 비디오 게임의 판매량입니다. 그리고 유저들의 평가는 색상으로 표현했습니다. 점수가 높을 수록 판매량이 높은 분명한 <strong>선형</strong> 관계가 보이네요. 그리고 몇개의 특이값(outliners) 보입니다.</p>
+<h2 id="선형회귀">선형회귀<a class="anchor-link" href="posts/regression-error/#%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80">¶</a>
+</h2>
+<p>이제 <code>sklearn</code>을 이용해 간단히 선형회귀 모델을 만들고 모델로 판매량을 예측해보겠습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span class="n">lm</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">sales</span><span class="p">)</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>생성한 선형회귀 모델을 평가하는 지표들을 차례로 살펴보죠. 각각의 지표는 특성을 이해하고 상황에 맞게 사용해야 합니다.</p>
+<h2 id="Mean-Absolute-Error-(MAE)">Mean Absolute Error (MAE)<a class="anchor-link" href="posts/regression-error/#Mean-Absolute-Error-(MAE)">¶</a>
+</h2>
+<p><img src="https://i.imgur.com/tqnei6J.jpg" alt=""></p>
+<p>MAE는 다음과 같이 정의됩니다. 
+$$ MAE = \frac { \sum \vert y - \hat y \vert }{n} $$
+모델의 예측값과 실제값의 차이를 모두 더한다는 개념입니다.</p>
+<ul>
+<li>절대값을 취하기 때문에 가장 직관적으로 알 수 있는 지표입니다. </li>
+<li>MSE 보다 특이치에 robust합니다.</li>
+<li>절대값을 취하기 때문에 모델이 underperformance 인지 overperformance 인지 알 수 없습니다.<ul>
+<li>underperformance: 모델이 실제보다 낮은 값으로 예측</li>
+<li>overperformance: 모델이 실제보다 높은 값으로 예측</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">MAE</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)))</span>
+
+<span class="n">MAE</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.76997957836731656</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>MAE는 <code>sklearn.metrics</code>에서 지원합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_absolute_error</span>
+<span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.76997957836731656</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>우리 모델의 MAE는 0.760이며, 우리의 데이터 판매 범위는 0.01에서 83이기 때문에 상당히 괜찮은 값입니다.</p>
+<h2 id="Mean-Squared-Error(MSE)">Mean Squared Error(MSE)<a class="anchor-link" href="posts/regression-error/#Mean-Squared-Error(MSE)">¶</a>
+</h2>
+<p><img src="https://i.imgur.com/mLn8AeW.jpg" alt=""></p>
+<p>MSE는 다음과 같이 정의됩니다.
+$$ MSE = \frac { \sum (y - \hat y)^2 }{n} $$</p>
+<p>제곱을 하기 때문에 MAE와는 다르게 모델의 예측값과 실제값 차이의 면적의 합입니다. 이런 차이로, 특이값이 존재하면 수치가 많이 늘어납니다.</p>
+<ul>
+<li>특이치에 민감하다</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">MSE</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">((</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)))</span>
+
+<span class="n">MSE</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3.6227746702258123</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>MSE 또한 <code>sklearn.metrics</code>로 간단히 사용할 수 있습니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_squared_error</span>
+<span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3.6227746702258123</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Root-Mean-Squared-Error(RMSE)">Root Mean Squared Error(RMSE)<a class="anchor-link" href="posts/regression-error/#Root-Mean-Squared-Error(RMSE)">¶</a>
+</h2>
+<p>RMSE는 MSE에 루트를 씌워 다음과 같이 정의합니다.</p>
+$$ RMSE = \sqrt { \frac { \sum (y - \hat y)^2 }{n} } $$<p>RMSE를 사용하면 오류 지표를 실제 값과 유사한 단위로 다시 변환하여 해석을 쉽게 합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.9033587865207684</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mean-Absolute-Percentage-Error(MAPE)">Mean Absolute Percentage Error(MAPE)<a class="anchor-link" href="posts/regression-error/#Mean-Absolute-Percentage-Error(MAPE)">¶</a>
+</h2>
+<p><img src="https://i.imgur.com/HPlrPmu.jpg" alt=""></p>
+<p>MAPE는 MAE를 퍼센트로 변환한 것입니다.
+$$ MAPE = \frac { \sum \vert \frac { y - \hat y}{y} \vert }{n}*100\% $$</p>
+<ul>
+<li>MAE와 마찬가지로 MSE보다 특이치에 robust합니다.</li>
+<li>MAE와 같은 단점을 가집니다.</li>
+<li>추가적으로 모델에 대한 편향이 존재합니다.<ul>
+<li>이 단점에 대응하기 위해 MPE도 추가로 확인하는게 좋습니다.</li>
+<li>0 근처의 값에서는 사용하기 어렵습니다.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">MAPE</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">/</span> <span class="n">y_true</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">MAPE</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>558.87888927059021</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mean-Percentage-Error(MPE)">Mean Percentage Error(MPE)<a class="anchor-link" href="posts/regression-error/#Mean-Percentage-Error(MPE)">¶</a>
+</h2>
+<p><img src="https://i.imgur.com/kTIYRBX.jpg" alt=""></p>
+<p>MAPE에서 절대값을 제외한 지표입니다. 아래와 같이 정의합니다.</p>
+$$ MAE = \frac { \sum ( y - \hat y ) }{n}* 100\% $$<p>MPE의 가장 큰 장점은</p>
+<ul>
+<li>모델이 underperformance 인지 overperformance 인지 판단 할 수 있다는 것입니다.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">MPE</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">/</span> <span class="n">y_true</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">MPE</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-468.23269419120248</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>음수의 값임으로, 모델이 overperformance임을 알 수있습니다.</p>
+<h2 id="마치며,">마치며,<a class="anchor-link" href="posts/regression-error/#%EB%A7%88%EC%B9%98%EB%A9%B0,">¶</a>
+</h2>
+<p>테이블로 간단하게 정리해보겠습니다.</p>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Residual Operation</th>
+<th>Robust To Outliers</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Mean Absolute Error</td>
+<td>Absolute Value</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Mean Squared Error</td>
+<td>Square</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Root Mean Squared Error</td>
+<td>Square</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Mean Absolute Percentage Error</td>
+<td>Absolute Value</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Mean Percentage Error</td>
+<td>N/A</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>회귀문제에서 RMSE가 일반적으로 선호되는 방법이지만, 상황에 맞는 다른 방식을 사용해야 합니다.  특이값이 많은 경우에는 MAE를 사용하는게 좋죠.</p>
+<h2 id="출처">출처<a class="anchor-link" href="posts/regression-error/#%EC%B6%9C%EC%B2%98">¶</a>
+</h2>
+<ul>
+<li>scikit-learn <a href="http://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics">공식문서</a>
+</li>
+<li><a href="https://www.dataquest.io/blog/understanding-regression-error-metrics/">Understanding Regression Error Metrics</a></li>
+</ul>
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/altair/" class="u-url">Altair로 시각화하기</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon Kim
@@ -191,10 +924,10 @@ Altair를 사용하면 데이터와 의미를 이해하는 데 더 많은 시간
 
 
 
-<div id="1c30c0c5-f351-4d20-9f58-c9e615e7f098"></div>
+<div id="8ea22af7-64a2-47e5-871f-078d38f84398"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#1c30c0c5-f351-4d20-9f58-c9e615e7f098');
+var element = $('#8ea22af7-64a2-47e5-871f-078d38f84398');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"values": [{"petalLength": 1.4, "petalWidth": 0.2, "sepalLength": 5.1, "sepalWidth": 3.5, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.2, "sepalLength": 4.9, "sepalWidth": 3.0, "species": "setosa"}, {"petalLength": 1.3, "petalWidth": 0.2, "sepalLength": 4.7, "sepalWidth": 3.2, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.2, "sepalLength": 4.6, "sepalWidth": 3.1, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.2, "sepalLength": 5.0, "sepalWidth": 3.6, "species": "setosa"}, {"petalLength": 1.7000000000000002, "petalWidth": 0.4, "sepalLength": 5.4, "sepalWidth": 3.9, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.30000000000000004, "sepalLength": 4.6, "sepalWidth": 3.4, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.2, "sepalLength": 5.0, "sepalWidth": 3.4, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.2, "sepalLength": 4.4, "sepalWidth": 2.9, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.1, "sepalLength": 4.9, "sepalWidth": 3.1, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.2, "sepalLength": 5.4, "sepalWidth": 3.7, "species": "setosa"}, {"petalLength": 1.6, "petalWidth": 0.2, "sepalLength": 4.8, "sepalWidth": 3.4, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.1, "sepalLength": 4.8, "sepalWidth": 3.0, "species": "setosa"}, {"petalLength": 1.1, "petalWidth": 0.1, "sepalLength": 4.3, "sepalWidth": 3.0, "species": "setosa"}, {"petalLength": 1.2, "petalWidth": 0.2, "sepalLength": 5.8, "sepalWidth": 4.0, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.4, "sepalLength": 5.7, "sepalWidth": 4.4, "species": "setosa"}, {"petalLength": 1.3, "petalWidth": 0.4, "sepalLength": 5.4, "sepalWidth": 3.9, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.30000000000000004, "sepalLength": 5.1, "sepalWidth": 3.5, "species": "setosa"}, {"petalLength": 1.7000000000000002, "petalWidth": 0.30000000000000004, "sepalLength": 5.7, "sepalWidth": 3.8, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.30000000000000004, "sepalLength": 5.1, "sepalWidth": 3.8, "species": "setosa"}, {"petalLength": 1.7000000000000002, "petalWidth": 0.2, "sepalLength": 5.4, "sepalWidth": 3.4, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.4, "sepalLength": 5.1, "sepalWidth": 3.7, "species": "setosa"}, {"petalLength": 1.0, "petalWidth": 0.2, "sepalLength": 4.6, "sepalWidth": 3.6, "species": "setosa"}, {"petalLength": 1.7000000000000002, "petalWidth": 0.5, "sepalLength": 5.1, "sepalWidth": 3.3, "species": "setosa"}, {"petalLength": 1.9, "petalWidth": 0.2, "sepalLength": 4.8, "sepalWidth": 3.4, "species": "setosa"}, {"petalLength": 1.6, "petalWidth": 0.2, "sepalLength": 5.0, "sepalWidth": 3.0, "species": "setosa"}, {"petalLength": 1.6, "petalWidth": 0.4, "sepalLength": 5.0, "sepalWidth": 3.4, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.2, "sepalLength": 5.2, "sepalWidth": 3.5, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.2, "sepalLength": 5.2, "sepalWidth": 3.4, "species": "setosa"}, {"petalLength": 1.6, "petalWidth": 0.2, "sepalLength": 4.7, "sepalWidth": 3.2, "species": "setosa"}, {"petalLength": 1.6, "petalWidth": 0.2, "sepalLength": 4.8, "sepalWidth": 3.1, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.4, "sepalLength": 5.4, "sepalWidth": 3.4, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.1, "sepalLength": 5.2, "sepalWidth": 4.1, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.2, "sepalLength": 5.5, "sepalWidth": 4.2, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.2, "sepalLength": 4.9, "sepalWidth": 3.1, "species": "setosa"}, {"petalLength": 1.2, "petalWidth": 0.2, "sepalLength": 5.0, "sepalWidth": 3.2, "species": "setosa"}, {"petalLength": 1.3, "petalWidth": 0.2, "sepalLength": 5.5, "sepalWidth": 3.5, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.1, "sepalLength": 4.9, "sepalWidth": 3.6, "species": "setosa"}, {"petalLength": 1.3, "petalWidth": 0.2, "sepalLength": 4.4, "sepalWidth": 3.0, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.2, "sepalLength": 5.1, "sepalWidth": 3.4, "species": "setosa"}, {"petalLength": 1.3, "petalWidth": 0.30000000000000004, "sepalLength": 5.0, "sepalWidth": 3.5, "species": "setosa"}, {"petalLength": 1.3, "petalWidth": 0.30000000000000004, "sepalLength": 4.5, "sepalWidth": 2.3, "species": "setosa"}, {"petalLength": 1.3, "petalWidth": 0.2, "sepalLength": 4.4, "sepalWidth": 3.2, "species": "setosa"}, {"petalLength": 1.6, "petalWidth": 0.6000000000000001, "sepalLength": 5.0, "sepalWidth": 3.5, "species": "setosa"}, {"petalLength": 1.9, "petalWidth": 0.4, "sepalLength": 5.1, "sepalWidth": 3.8, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.30000000000000004, "sepalLength": 4.8, "sepalWidth": 3.0, "species": "setosa"}, {"petalLength": 1.6, "petalWidth": 0.2, "sepalLength": 5.1, "sepalWidth": 3.8, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.2, "sepalLength": 4.6, "sepalWidth": 3.2, "species": "setosa"}, {"petalLength": 1.5, "petalWidth": 0.2, "sepalLength": 5.3, "sepalWidth": 3.7, "species": "setosa"}, {"petalLength": 1.4, "petalWidth": 0.2, "sepalLength": 5.0, "sepalWidth": 3.3, "species": "setosa"}, {"petalLength": 4.7, "petalWidth": 1.4, "sepalLength": 7.0, "sepalWidth": 3.2, "species": "versicolor"}, {"petalLength": 4.5, "petalWidth": 1.5, "sepalLength": 6.4, "sepalWidth": 3.2, "species": "versicolor"}, {"petalLength": 4.9, "petalWidth": 1.5, "sepalLength": 6.9, "sepalWidth": 3.1, "species": "versicolor"}, {"petalLength": 4.0, "petalWidth": 1.3, "sepalLength": 5.5, "sepalWidth": 2.3, "species": "versicolor"}, {"petalLength": 4.6, "petalWidth": 1.5, "sepalLength": 6.5, "sepalWidth": 2.8, "species": "versicolor"}, {"petalLength": 4.5, "petalWidth": 1.3, "sepalLength": 5.7, "sepalWidth": 2.8, "species": "versicolor"}, {"petalLength": 4.7, "petalWidth": 1.6, "sepalLength": 6.3, "sepalWidth": 3.3, "species": "versicolor"}, {"petalLength": 3.3, "petalWidth": 1.0, "sepalLength": 4.9, "sepalWidth": 2.4, "species": "versicolor"}, {"petalLength": 4.6, "petalWidth": 1.3, "sepalLength": 6.6, "sepalWidth": 2.9, "species": "versicolor"}, {"petalLength": 3.9, "petalWidth": 1.4, "sepalLength": 5.2, "sepalWidth": 2.7, "species": "versicolor"}, {"petalLength": 3.5, "petalWidth": 1.0, "sepalLength": 5.0, "sepalWidth": 2.0, "species": "versicolor"}, {"petalLength": 4.2, "petalWidth": 1.5, "sepalLength": 5.9, "sepalWidth": 3.0, "species": "versicolor"}, {"petalLength": 4.0, "petalWidth": 1.0, "sepalLength": 6.0, "sepalWidth": 2.2, "species": "versicolor"}, {"petalLength": 4.7, "petalWidth": 1.4, "sepalLength": 6.1, "sepalWidth": 2.9, "species": "versicolor"}, {"petalLength": 3.6, "petalWidth": 1.3, "sepalLength": 5.6, "sepalWidth": 2.9, "species": "versicolor"}, {"petalLength": 4.4, "petalWidth": 1.4, "sepalLength": 6.7, "sepalWidth": 3.1, "species": "versicolor"}, {"petalLength": 4.5, "petalWidth": 1.5, "sepalLength": 5.6, "sepalWidth": 3.0, "species": "versicolor"}, {"petalLength": 4.1, "petalWidth": 1.0, "sepalLength": 5.8, "sepalWidth": 2.7, "species": "versicolor"}, {"petalLength": 4.5, "petalWidth": 1.5, "sepalLength": 6.2, "sepalWidth": 2.2, "species": "versicolor"}, {"petalLength": 3.9, "petalWidth": 1.1, "sepalLength": 5.6, "sepalWidth": 2.5, "species": "versicolor"}, {"petalLength": 4.8, "petalWidth": 1.8, "sepalLength": 5.9, "sepalWidth": 3.2, "species": "versicolor"}, {"petalLength": 4.0, "petalWidth": 1.3, "sepalLength": 6.1, "sepalWidth": 2.8, "species": "versicolor"}, {"petalLength": 4.9, "petalWidth": 1.5, "sepalLength": 6.3, "sepalWidth": 2.5, "species": "versicolor"}, {"petalLength": 4.7, "petalWidth": 1.2, "sepalLength": 6.1, "sepalWidth": 2.8, "species": "versicolor"}, {"petalLength": 4.3, "petalWidth": 1.3, "sepalLength": 6.4, "sepalWidth": 2.9, "species": "versicolor"}, {"petalLength": 4.4, "petalWidth": 1.4, "sepalLength": 6.6, "sepalWidth": 3.0, "species": "versicolor"}, {"petalLength": 4.8, "petalWidth": 1.4, "sepalLength": 6.8, "sepalWidth": 2.8, "species": "versicolor"}, {"petalLength": 5.0, "petalWidth": 1.7000000000000002, "sepalLength": 6.7, "sepalWidth": 3.0, "species": "versicolor"}, {"petalLength": 4.5, "petalWidth": 1.5, "sepalLength": 6.0, "sepalWidth": 2.9, "species": "versicolor"}, {"petalLength": 3.5, "petalWidth": 1.0, "sepalLength": 5.7, "sepalWidth": 2.6, "species": "versicolor"}, {"petalLength": 3.8, "petalWidth": 1.1, "sepalLength": 5.5, "sepalWidth": 2.4, "species": "versicolor"}, {"petalLength": 3.7, "petalWidth": 1.0, "sepalLength": 5.5, "sepalWidth": 2.4, "species": "versicolor"}, {"petalLength": 3.9, "petalWidth": 1.2, "sepalLength": 5.8, "sepalWidth": 2.7, "species": "versicolor"}, {"petalLength": 5.1, "petalWidth": 1.6, "sepalLength": 6.0, "sepalWidth": 2.7, "species": "versicolor"}, {"petalLength": 4.5, "petalWidth": 1.5, "sepalLength": 5.4, "sepalWidth": 3.0, "species": "versicolor"}, {"petalLength": 4.5, "petalWidth": 1.6, "sepalLength": 6.0, "sepalWidth": 3.4, "species": "versicolor"}, {"petalLength": 4.7, "petalWidth": 1.5, "sepalLength": 6.7, "sepalWidth": 3.1, "species": "versicolor"}, {"petalLength": 4.4, "petalWidth": 1.3, "sepalLength": 6.3, "sepalWidth": 2.3, "species": "versicolor"}, {"petalLength": 4.1, "petalWidth": 1.3, "sepalLength": 5.6, "sepalWidth": 3.0, "species": "versicolor"}, {"petalLength": 4.0, "petalWidth": 1.3, "sepalLength": 5.5, "sepalWidth": 2.5, "species": "versicolor"}, {"petalLength": 4.4, "petalWidth": 1.2, "sepalLength": 5.5, "sepalWidth": 2.6, "species": "versicolor"}, {"petalLength": 4.6, "petalWidth": 1.4, "sepalLength": 6.1, "sepalWidth": 3.0, "species": "versicolor"}, {"petalLength": 4.0, "petalWidth": 1.2, "sepalLength": 5.8, "sepalWidth": 2.6, "species": "versicolor"}, {"petalLength": 3.3, "petalWidth": 1.0, "sepalLength": 5.0, "sepalWidth": 2.3, "species": "versicolor"}, {"petalLength": 4.2, "petalWidth": 1.3, "sepalLength": 5.6, "sepalWidth": 2.7, "species": "versicolor"}, {"petalLength": 4.2, "petalWidth": 1.2, "sepalLength": 5.7, "sepalWidth": 3.0, "species": "versicolor"}, {"petalLength": 4.2, "petalWidth": 1.3, "sepalLength": 5.7, "sepalWidth": 2.9, "species": "versicolor"}, {"petalLength": 4.3, "petalWidth": 1.3, "sepalLength": 6.2, "sepalWidth": 2.9, "species": "versicolor"}, {"petalLength": 3.0, "petalWidth": 1.1, "sepalLength": 5.1, "sepalWidth": 2.5, "species": "versicolor"}, {"petalLength": 4.1, "petalWidth": 1.3, "sepalLength": 5.7, "sepalWidth": 2.8, "species": "versicolor"}, {"petalLength": 6.0, "petalWidth": 2.5, "sepalLength": 6.3, "sepalWidth": 3.3, "species": "virginica"}, {"petalLength": 5.1, "petalWidth": 1.9, "sepalLength": 5.8, "sepalWidth": 2.7, "species": "virginica"}, {"petalLength": 5.9, "petalWidth": 2.1, "sepalLength": 7.1, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 5.6, "petalWidth": 1.8, "sepalLength": 6.3, "sepalWidth": 2.9, "species": "virginica"}, {"petalLength": 5.8, "petalWidth": 2.2, "sepalLength": 6.5, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 6.6, "petalWidth": 2.1, "sepalLength": 7.6, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 4.5, "petalWidth": 1.7000000000000002, "sepalLength": 4.9, "sepalWidth": 2.5, "species": "virginica"}, {"petalLength": 6.3, "petalWidth": 1.8, "sepalLength": 7.3, "sepalWidth": 2.9, "species": "virginica"}, {"petalLength": 5.8, "petalWidth": 1.8, "sepalLength": 6.7, "sepalWidth": 2.5, "species": "virginica"}, {"petalLength": 6.1, "petalWidth": 2.5, "sepalLength": 7.2, "sepalWidth": 3.6, "species": "virginica"}, {"petalLength": 5.1, "petalWidth": 2.0, "sepalLength": 6.5, "sepalWidth": 3.2, "species": "virginica"}, {"petalLength": 5.3, "petalWidth": 1.9, "sepalLength": 6.4, "sepalWidth": 2.7, "species": "virginica"}, {"petalLength": 5.5, "petalWidth": 2.1, "sepalLength": 6.8, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 5.0, "petalWidth": 2.0, "sepalLength": 5.7, "sepalWidth": 2.5, "species": "virginica"}, {"petalLength": 5.1, "petalWidth": 2.4, "sepalLength": 5.8, "sepalWidth": 2.8, "species": "virginica"}, {"petalLength": 5.3, "petalWidth": 2.3, "sepalLength": 6.4, "sepalWidth": 3.2, "species": "virginica"}, {"petalLength": 5.5, "petalWidth": 1.8, "sepalLength": 6.5, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 6.7, "petalWidth": 2.2, "sepalLength": 7.7, "sepalWidth": 3.8, "species": "virginica"}, {"petalLength": 6.9, "petalWidth": 2.3, "sepalLength": 7.7, "sepalWidth": 2.6, "species": "virginica"}, {"petalLength": 5.0, "petalWidth": 1.5, "sepalLength": 6.0, "sepalWidth": 2.2, "species": "virginica"}, {"petalLength": 5.7, "petalWidth": 2.3, "sepalLength": 6.9, "sepalWidth": 3.2, "species": "virginica"}, {"petalLength": 4.9, "petalWidth": 2.0, "sepalLength": 5.6, "sepalWidth": 2.8, "species": "virginica"}, {"petalLength": 6.7, "petalWidth": 2.0, "sepalLength": 7.7, "sepalWidth": 2.8, "species": "virginica"}, {"petalLength": 4.9, "petalWidth": 1.8, "sepalLength": 6.3, "sepalWidth": 2.7, "species": "virginica"}, {"petalLength": 5.7, "petalWidth": 2.1, "sepalLength": 6.7, "sepalWidth": 3.3, "species": "virginica"}, {"petalLength": 6.0, "petalWidth": 1.8, "sepalLength": 7.2, "sepalWidth": 3.2, "species": "virginica"}, {"petalLength": 4.8, "petalWidth": 1.8, "sepalLength": 6.2, "sepalWidth": 2.8, "species": "virginica"}, {"petalLength": 4.9, "petalWidth": 1.8, "sepalLength": 6.1, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 5.6, "petalWidth": 2.1, "sepalLength": 6.4, "sepalWidth": 2.8, "species": "virginica"}, {"petalLength": 5.8, "petalWidth": 1.6, "sepalLength": 7.2, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 6.1, "petalWidth": 1.9, "sepalLength": 7.4, "sepalWidth": 2.8, "species": "virginica"}, {"petalLength": 6.4, "petalWidth": 2.0, "sepalLength": 7.9, "sepalWidth": 3.8, "species": "virginica"}, {"petalLength": 5.6, "petalWidth": 2.2, "sepalLength": 6.4, "sepalWidth": 2.8, "species": "virginica"}, {"petalLength": 5.1, "petalWidth": 1.5, "sepalLength": 6.3, "sepalWidth": 2.8, "species": "virginica"}, {"petalLength": 5.6, "petalWidth": 1.4, "sepalLength": 6.1, "sepalWidth": 2.6, "species": "virginica"}, {"petalLength": 6.1, "petalWidth": 2.3, "sepalLength": 7.7, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 5.6, "petalWidth": 2.4, "sepalLength": 6.3, "sepalWidth": 3.4, "species": "virginica"}, {"petalLength": 5.5, "petalWidth": 1.8, "sepalLength": 6.4, "sepalWidth": 3.1, "species": "virginica"}, {"petalLength": 4.8, "petalWidth": 1.8, "sepalLength": 6.0, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 5.4, "petalWidth": 2.1, "sepalLength": 6.9, "sepalWidth": 3.1, "species": "virginica"}, {"petalLength": 5.6, "petalWidth": 2.4, "sepalLength": 6.7, "sepalWidth": 3.1, "species": "virginica"}, {"petalLength": 5.1, "petalWidth": 2.3, "sepalLength": 6.9, "sepalWidth": 3.1, "species": "virginica"}, {"petalLength": 5.1, "petalWidth": 1.9, "sepalLength": 5.8, "sepalWidth": 2.7, "species": "virginica"}, {"petalLength": 5.9, "petalWidth": 2.3, "sepalLength": 6.8, "sepalWidth": 3.2, "species": "virginica"}, {"petalLength": 5.7, "petalWidth": 2.5, "sepalLength": 6.7, "sepalWidth": 3.3, "species": "virginica"}, {"petalLength": 5.2, "petalWidth": 2.3, "sepalLength": 6.7, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 5.0, "petalWidth": 1.9, "sepalLength": 6.3, "sepalWidth": 2.5, "species": "virginica"}, {"petalLength": 5.2, "petalWidth": 2.0, "sepalLength": 6.5, "sepalWidth": 3.0, "species": "virginica"}, {"petalLength": 5.4, "petalWidth": 2.3, "sepalLength": 6.2, "sepalWidth": 3.4, "species": "virginica"}, {"petalLength": 5.1, "petalWidth": 1.8, "sepalLength": 5.9, "sepalWidth": 3.0, "species": "virginica"}]}, "mark": "point", "encoding": {"color": {"type": "nominal", "field": "species"}, "x": {"type": "quantitative", "field": "petalLength"}, "y": {"type": "quantitative", "field": "petalWidth"}}, "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#85aa5516-1d96-4794-a60d-73491f2d902b";
@@ -354,10 +1087,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="3eb8de3b-71e1-4b6e-a442-5e2a8e15648e"></div>
+<div id="4504dd2f-5beb-4176-ad2d-2f4f113a696a"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#3eb8de3b-71e1-4b6e-a442-5e2a8e15648e');
+var element = $('#4504dd2f-5beb-4176-ad2d-2f4f113a696a');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"values": [{"a": "C", "b": 2}, {"a": "C", "b": 7}, {"a": "C", "b": 4}, {"a": "D", "b": 1}, {"a": "D", "b": 2}, {"a": "D", "b": 6}, {"a": "E", "b": 8}, {"a": "E", "b": 4}, {"a": "E", "b": 7}]}, "mark": "point", "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#bdc8fcb6-9578-49a2-a151-c367fdc02031";
@@ -476,10 +1209,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="f4d0d36c-5b80-4ae0-82a8-0ae5334f515c"></div>
+<div id="4cdb1464-bbe0-442c-818a-a0b60dd58994"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#f4d0d36c-5b80-4ae0-82a8-0ae5334f515c');
+var element = $('#4cdb1464-bbe0-442c-818a-a0b60dd58994');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"values": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}, "mark": "bar", "encoding": {"x": {"type": "nominal", "field": "a"}, "y": {"type": "quantitative", "field": "b"}}, "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#a930f691-81d8-4ecf-872d-cfa264f8a9a3";
@@ -594,10 +1327,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="7ed57d67-7dc4-488e-91bb-1af92133651f"></div>
+<div id="ce0bfbd4-9799-4301-a097-9682e1e875bc"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#7ed57d67-7dc4-488e-91bb-1af92133651f');
+var element = $('#ce0bfbd4-9799-4301-a097-9682e1e875bc');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"values": [{"sin(x)": 0.0, "x": 0}, {"sin(x)": 0.19866933079506122, "x": 1}, {"sin(x)": 0.3894183423086505, "x": 2}, {"sin(x)": 0.5646424733950354, "x": 3}, {"sin(x)": 0.7173560908995228, "x": 4}, {"sin(x)": 0.8414709848078965, "x": 5}, {"sin(x)": 0.9320390859672263, "x": 6}, {"sin(x)": 0.9854497299884601, "x": 7}, {"sin(x)": 0.9995736030415051, "x": 8}, {"sin(x)": 0.9738476308781951, "x": 9}, {"sin(x)": 0.9092974268256817, "x": 10}, {"sin(x)": 0.8084964038195901, "x": 11}, {"sin(x)": 0.675463180551151, "x": 12}, {"sin(x)": 0.5155013718214642, "x": 13}, {"sin(x)": 0.3349881501559051, "x": 14}, {"sin(x)": 0.1411200080598672, "x": 15}, {"sin(x)": -0.058374143427580086, "x": 16}, {"sin(x)": -0.2555411020268312, "x": 17}, {"sin(x)": -0.44252044329485246, "x": 18}, {"sin(x)": -0.6118578909427189, "x": 19}, {"sin(x)": -0.7568024953079282, "x": 20}, {"sin(x)": -0.8715757724135882, "x": 21}, {"sin(x)": -0.951602073889516, "x": 22}, {"sin(x)": -0.9936910036334644, "x": 23}, {"sin(x)": -0.9961646088358407, "x": 24}, {"sin(x)": -0.9589242746631385, "x": 25}, {"sin(x)": -0.8834546557201531, "x": 26}, {"sin(x)": -0.7727644875559871, "x": 27}, {"sin(x)": -0.6312666378723216, "x": 28}, {"sin(x)": -0.46460217941375737, "x": 29}, {"sin(x)": -0.27941549819892586, "x": 30}, {"sin(x)": -0.0830894028174964, "x": 31}, {"sin(x)": 0.11654920485049364, "x": 32}, {"sin(x)": 0.31154136351337786, "x": 33}, {"sin(x)": 0.49411335113860816, "x": 34}, {"sin(x)": 0.6569865987187891, "x": 35}, {"sin(x)": 0.7936678638491531, "x": 36}, {"sin(x)": 0.8987080958116269, "x": 37}, {"sin(x)": 0.9679196720314863, "x": 38}, {"sin(x)": 0.998543345374605, "x": 39}, {"sin(x)": 0.9893582466233818, "x": 40}, {"sin(x)": 0.9407305566797731, "x": 41}, {"sin(x)": 0.8545989080882804, "x": 42}, {"sin(x)": 0.7343970978741133, "x": 43}, {"sin(x)": 0.5849171928917617, "x": 44}, {"sin(x)": 0.4121184852417566, "x": 45}, {"sin(x)": 0.22288991410024764, "x": 46}, {"sin(x)": 0.024775425453357765, "x": 47}, {"sin(x)": -0.17432678122297965, "x": 48}, {"sin(x)": -0.3664791292519284, "x": 49}, {"sin(x)": -0.5440211108893698, "x": 50}, {"sin(x)": -0.6998746875935423, "x": 51}, {"sin(x)": -0.8278264690856537, "x": 52}, {"sin(x)": -0.9227754216128066, "x": 53}, {"sin(x)": -0.9809362300664916, "x": 54}, {"sin(x)": -0.9999902065507035, "x": 55}, {"sin(x)": -0.9791777291513174, "x": 56}, {"sin(x)": -0.9193285256646757, "x": 57}, {"sin(x)": -0.8228285949687089, "x": 58}, {"sin(x)": -0.6935250847771224, "x": 59}, {"sin(x)": -0.5365729180004349, "x": 60}, {"sin(x)": -0.3582292822368287, "x": 61}, {"sin(x)": -0.1656041754483094, "x": 62}, {"sin(x)": 0.033623047221136695, "x": 63}, {"sin(x)": 0.23150982510153895, "x": 64}, {"sin(x)": 0.4201670368266409, "x": 65}, {"sin(x)": 0.592073514707223, "x": 66}, {"sin(x)": 0.7403758899524486, "x": 67}, {"sin(x)": 0.8591618148564958, "x": 68}, {"sin(x)": 0.9436956694441048, "x": 69}, {"sin(x)": 0.9906073556948704, "x": 70}, {"sin(x)": 0.9980266527163617, "x": 71}, {"sin(x)": 0.9656577765492774, "x": 72}, {"sin(x)": 0.8947911721405042, "x": 73}, {"sin(x)": 0.7882520673753163, "x": 74}, {"sin(x)": 0.6502878401571168, "x": 75}, {"sin(x)": 0.48639868885379967, "x": 76}, {"sin(x)": 0.30311835674570226, "x": 77}, {"sin(x)": 0.10775365229944406, "x": 78}, {"sin(x)": -0.09190685022768164, "x": 79}, {"sin(x)": -0.2879033166650653, "x": 80}, {"sin(x)": -0.47242198639846616, "x": 81}, {"sin(x)": -0.6381066823479474, "x": 82}, {"sin(x)": -0.7783520785342984, "x": 83}, {"sin(x)": -0.8875670335815046, "x": 84}, {"sin(x)": -0.9613974918795568, "x": 85}, {"sin(x)": -0.9969000660415961, "x": 86}, {"sin(x)": -0.9926593804706332, "x": 87}, {"sin(x)": -0.948844497918124, "x": 88}, {"sin(x)": -0.8672021794855813, "x": 89}, {"sin(x)": -0.750987246771676, "x": 90}, {"sin(x)": -0.6048328224062841, "x": 91}, {"sin(x)": -0.43456562207189675, "x": 92}, {"sin(x)": -0.2469736617366209, "x": 93}, {"sin(x)": -0.04953564087836742, "x": 94}, {"sin(x)": 0.14987720966295234, "x": 95}, {"sin(x)": 0.3433149288198954, "x": 96}, {"sin(x)": 0.5230657651576964, "x": 97}, {"sin(x)": 0.6819636200681356, "x": 98}, {"sin(x)": 0.8136737375071054, "x": 99}]}, "mark": "line", "encoding": {"x": {"type": "quantitative", "field": "x"}, "y": {"type": "quantitative", "field": "sin(x)"}}, "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#12753ac6-9155-487b-8261-341a23363d3a";
@@ -712,10 +1445,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="d2afbc9c-6a14-4e86-803e-a44e091fb2a1"></div>
+<div id="3be069e8-48e6-4ce2-a690-29f0714059d3"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#d2afbc9c-6a14-4e86-803e-a44e091fb2a1');
+var element = $('#3be069e8-48e6-4ce2-a690-29f0714059d3');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"values": [{"sin(x)": 0.0, "x": 0}, {"sin(x)": 0.19866933079506122, "x": 1}, {"sin(x)": 0.3894183423086505, "x": 2}, {"sin(x)": 0.5646424733950354, "x": 3}, {"sin(x)": 0.7173560908995228, "x": 4}, {"sin(x)": 0.8414709848078965, "x": 5}, {"sin(x)": 0.9320390859672263, "x": 6}, {"sin(x)": 0.9854497299884601, "x": 7}, {"sin(x)": 0.9995736030415051, "x": 8}, {"sin(x)": 0.9738476308781951, "x": 9}, {"sin(x)": 0.9092974268256817, "x": 10}, {"sin(x)": 0.8084964038195901, "x": 11}, {"sin(x)": 0.675463180551151, "x": 12}, {"sin(x)": 0.5155013718214642, "x": 13}, {"sin(x)": 0.3349881501559051, "x": 14}, {"sin(x)": 0.1411200080598672, "x": 15}, {"sin(x)": -0.058374143427580086, "x": 16}, {"sin(x)": -0.2555411020268312, "x": 17}, {"sin(x)": -0.44252044329485246, "x": 18}, {"sin(x)": -0.6118578909427189, "x": 19}, {"sin(x)": -0.7568024953079282, "x": 20}, {"sin(x)": -0.8715757724135882, "x": 21}, {"sin(x)": -0.951602073889516, "x": 22}, {"sin(x)": -0.9936910036334644, "x": 23}, {"sin(x)": -0.9961646088358407, "x": 24}, {"sin(x)": -0.9589242746631385, "x": 25}, {"sin(x)": -0.8834546557201531, "x": 26}, {"sin(x)": -0.7727644875559871, "x": 27}, {"sin(x)": -0.6312666378723216, "x": 28}, {"sin(x)": -0.46460217941375737, "x": 29}, {"sin(x)": -0.27941549819892586, "x": 30}, {"sin(x)": -0.0830894028174964, "x": 31}, {"sin(x)": 0.11654920485049364, "x": 32}, {"sin(x)": 0.31154136351337786, "x": 33}, {"sin(x)": 0.49411335113860816, "x": 34}, {"sin(x)": 0.6569865987187891, "x": 35}, {"sin(x)": 0.7936678638491531, "x": 36}, {"sin(x)": 0.8987080958116269, "x": 37}, {"sin(x)": 0.9679196720314863, "x": 38}, {"sin(x)": 0.998543345374605, "x": 39}, {"sin(x)": 0.9893582466233818, "x": 40}, {"sin(x)": 0.9407305566797731, "x": 41}, {"sin(x)": 0.8545989080882804, "x": 42}, {"sin(x)": 0.7343970978741133, "x": 43}, {"sin(x)": 0.5849171928917617, "x": 44}, {"sin(x)": 0.4121184852417566, "x": 45}, {"sin(x)": 0.22288991410024764, "x": 46}, {"sin(x)": 0.024775425453357765, "x": 47}, {"sin(x)": -0.17432678122297965, "x": 48}, {"sin(x)": -0.3664791292519284, "x": 49}, {"sin(x)": -0.5440211108893698, "x": 50}, {"sin(x)": -0.6998746875935423, "x": 51}, {"sin(x)": -0.8278264690856537, "x": 52}, {"sin(x)": -0.9227754216128066, "x": 53}, {"sin(x)": -0.9809362300664916, "x": 54}, {"sin(x)": -0.9999902065507035, "x": 55}, {"sin(x)": -0.9791777291513174, "x": 56}, {"sin(x)": -0.9193285256646757, "x": 57}, {"sin(x)": -0.8228285949687089, "x": 58}, {"sin(x)": -0.6935250847771224, "x": 59}, {"sin(x)": -0.5365729180004349, "x": 60}, {"sin(x)": -0.3582292822368287, "x": 61}, {"sin(x)": -0.1656041754483094, "x": 62}, {"sin(x)": 0.033623047221136695, "x": 63}, {"sin(x)": 0.23150982510153895, "x": 64}, {"sin(x)": 0.4201670368266409, "x": 65}, {"sin(x)": 0.592073514707223, "x": 66}, {"sin(x)": 0.7403758899524486, "x": 67}, {"sin(x)": 0.8591618148564958, "x": 68}, {"sin(x)": 0.9436956694441048, "x": 69}, {"sin(x)": 0.9906073556948704, "x": 70}, {"sin(x)": 0.9980266527163617, "x": 71}, {"sin(x)": 0.9656577765492774, "x": 72}, {"sin(x)": 0.8947911721405042, "x": 73}, {"sin(x)": 0.7882520673753163, "x": 74}, {"sin(x)": 0.6502878401571168, "x": 75}, {"sin(x)": 0.48639868885379967, "x": 76}, {"sin(x)": 0.30311835674570226, "x": 77}, {"sin(x)": 0.10775365229944406, "x": 78}, {"sin(x)": -0.09190685022768164, "x": 79}, {"sin(x)": -0.2879033166650653, "x": 80}, {"sin(x)": -0.47242198639846616, "x": 81}, {"sin(x)": -0.6381066823479474, "x": 82}, {"sin(x)": -0.7783520785342984, "x": 83}, {"sin(x)": -0.8875670335815046, "x": 84}, {"sin(x)": -0.9613974918795568, "x": 85}, {"sin(x)": -0.9969000660415961, "x": 86}, {"sin(x)": -0.9926593804706332, "x": 87}, {"sin(x)": -0.948844497918124, "x": 88}, {"sin(x)": -0.8672021794855813, "x": 89}, {"sin(x)": -0.750987246771676, "x": 90}, {"sin(x)": -0.6048328224062841, "x": 91}, {"sin(x)": -0.43456562207189675, "x": 92}, {"sin(x)": -0.2469736617366209, "x": 93}, {"sin(x)": -0.04953564087836742, "x": 94}, {"sin(x)": 0.14987720966295234, "x": 95}, {"sin(x)": 0.3433149288198954, "x": 96}, {"sin(x)": 0.5230657651576964, "x": 97}, {"sin(x)": 0.6819636200681356, "x": 98}, {"sin(x)": 0.8136737375071054, "x": 99}]}, "mark": {"type": "line", "point": true}, "encoding": {"x": {"type": "quantitative", "field": "x"}, "y": {"type": "quantitative", "field": "sin(x)"}}, "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#502d05c7-575b-415a-9aa4-7029b6a00ff1";
@@ -836,10 +1569,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="bd4475ec-d14a-4063-996c-d3b2f27a78f5"></div>
+<div id="5706aa5e-b932-4c91-84c5-5b35004b2d6a"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#bd4475ec-d14a-4063-996c-d3b2f27a78f5');
+var element = $('#5706aa5e-b932-4c91-84c5-5b35004b2d6a');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"values": [{"x": -5, "y": -5, "z": 50}, {"x": -4, "y": -5, "z": 41}, {"x": -3, "y": -5, "z": 34}, {"x": -2, "y": -5, "z": 29}, {"x": -1, "y": -5, "z": 26}, {"x": 0, "y": -5, "z": 25}, {"x": 1, "y": -5, "z": 26}, {"x": 2, "y": -5, "z": 29}, {"x": 3, "y": -5, "z": 34}, {"x": 4, "y": -5, "z": 41}, {"x": -5, "y": -4, "z": 41}, {"x": -4, "y": -4, "z": 32}, {"x": -3, "y": -4, "z": 25}, {"x": -2, "y": -4, "z": 20}, {"x": -1, "y": -4, "z": 17}, {"x": 0, "y": -4, "z": 16}, {"x": 1, "y": -4, "z": 17}, {"x": 2, "y": -4, "z": 20}, {"x": 3, "y": -4, "z": 25}, {"x": 4, "y": -4, "z": 32}, {"x": -5, "y": -3, "z": 34}, {"x": -4, "y": -3, "z": 25}, {"x": -3, "y": -3, "z": 18}, {"x": -2, "y": -3, "z": 13}, {"x": -1, "y": -3, "z": 10}, {"x": 0, "y": -3, "z": 9}, {"x": 1, "y": -3, "z": 10}, {"x": 2, "y": -3, "z": 13}, {"x": 3, "y": -3, "z": 18}, {"x": 4, "y": -3, "z": 25}, {"x": -5, "y": -2, "z": 29}, {"x": -4, "y": -2, "z": 20}, {"x": -3, "y": -2, "z": 13}, {"x": -2, "y": -2, "z": 8}, {"x": -1, "y": -2, "z": 5}, {"x": 0, "y": -2, "z": 4}, {"x": 1, "y": -2, "z": 5}, {"x": 2, "y": -2, "z": 8}, {"x": 3, "y": -2, "z": 13}, {"x": 4, "y": -2, "z": 20}, {"x": -5, "y": -1, "z": 26}, {"x": -4, "y": -1, "z": 17}, {"x": -3, "y": -1, "z": 10}, {"x": -2, "y": -1, "z": 5}, {"x": -1, "y": -1, "z": 2}, {"x": 0, "y": -1, "z": 1}, {"x": 1, "y": -1, "z": 2}, {"x": 2, "y": -1, "z": 5}, {"x": 3, "y": -1, "z": 10}, {"x": 4, "y": -1, "z": 17}, {"x": -5, "y": 0, "z": 25}, {"x": -4, "y": 0, "z": 16}, {"x": -3, "y": 0, "z": 9}, {"x": -2, "y": 0, "z": 4}, {"x": -1, "y": 0, "z": 1}, {"x": 0, "y": 0, "z": 0}, {"x": 1, "y": 0, "z": 1}, {"x": 2, "y": 0, "z": 4}, {"x": 3, "y": 0, "z": 9}, {"x": 4, "y": 0, "z": 16}, {"x": -5, "y": 1, "z": 26}, {"x": -4, "y": 1, "z": 17}, {"x": -3, "y": 1, "z": 10}, {"x": -2, "y": 1, "z": 5}, {"x": -1, "y": 1, "z": 2}, {"x": 0, "y": 1, "z": 1}, {"x": 1, "y": 1, "z": 2}, {"x": 2, "y": 1, "z": 5}, {"x": 3, "y": 1, "z": 10}, {"x": 4, "y": 1, "z": 17}, {"x": -5, "y": 2, "z": 29}, {"x": -4, "y": 2, "z": 20}, {"x": -3, "y": 2, "z": 13}, {"x": -2, "y": 2, "z": 8}, {"x": -1, "y": 2, "z": 5}, {"x": 0, "y": 2, "z": 4}, {"x": 1, "y": 2, "z": 5}, {"x": 2, "y": 2, "z": 8}, {"x": 3, "y": 2, "z": 13}, {"x": 4, "y": 2, "z": 20}, {"x": -5, "y": 3, "z": 34}, {"x": -4, "y": 3, "z": 25}, {"x": -3, "y": 3, "z": 18}, {"x": -2, "y": 3, "z": 13}, {"x": -1, "y": 3, "z": 10}, {"x": 0, "y": 3, "z": 9}, {"x": 1, "y": 3, "z": 10}, {"x": 2, "y": 3, "z": 13}, {"x": 3, "y": 3, "z": 18}, {"x": 4, "y": 3, "z": 25}, {"x": -5, "y": 4, "z": 41}, {"x": -4, "y": 4, "z": 32}, {"x": -3, "y": 4, "z": 25}, {"x": -2, "y": 4, "z": 20}, {"x": -1, "y": 4, "z": 17}, {"x": 0, "y": 4, "z": 16}, {"x": 1, "y": 4, "z": 17}, {"x": 2, "y": 4, "z": 20}, {"x": 3, "y": 4, "z": 25}, {"x": 4, "y": 4, "z": 32}]}, "mark": "rect", "encoding": {"color": {"type": "quantitative", "field": "z"}, "x": {"type": "ordinal", "field": "x"}, "y": {"type": "ordinal", "field": "y"}}, "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#730b0c46-5dc5-4007-931f-99da5856126f";
@@ -951,10 +1684,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="ac679ff1-e6f1-43eb-900c-9324b28780d0"></div>
+<div id="93a85870-ed12-4531-8181-91661d759b81"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#ac679ff1-e6f1-43eb-900c-9324b28780d0');
+var element = $('#93a85870-ed12-4531-8181-91661d759b81');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"url": "https://vega.github.io/vega-datasets/data/movies.json"}, "mark": "bar", "encoding": {"x": {"type": "quantitative", "bin": true, "field": "IMDB_Rating"}, "y": {"type": "quantitative", "aggregate": "count"}}, "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#d362f89d-fec6-412c-abb6-d16c51a9a8e4";
@@ -1067,10 +1800,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="6aaf370a-d839-4531-b567-23c6c162e951"></div>
+<div id="968c99b2-a1a7-4434-b9e7-87c71d993983"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#6aaf370a-d839-4531-b567-23c6c162e951');
+var element = $('#968c99b2-a1a7-4434-b9e7-87c71d993983');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"values": [{"year": "2001-01-01", "source": "Fossil Fuels", "net_generation": 35361}, {"year": "2002-01-01", "source": "Fossil Fuels", "net_generation": 35991}, {"year": "2003-01-01", "source": "Fossil Fuels", "net_generation": 36234}, {"year": "2004-01-01", "source": "Fossil Fuels", "net_generation": 36205}, {"year": "2005-01-01", "source": "Fossil Fuels", "net_generation": 36883}, {"year": "2006-01-01", "source": "Fossil Fuels", "net_generation": 37014}, {"year": "2007-01-01", "source": "Fossil Fuels", "net_generation": 41389}, {"year": "2008-01-01", "source": "Fossil Fuels", "net_generation": 42734}, {"year": "2009-01-01", "source": "Fossil Fuels", "net_generation": 38620}, {"year": "2010-01-01", "source": "Fossil Fuels", "net_generation": 42750}, {"year": "2011-01-01", "source": "Fossil Fuels", "net_generation": 39361}, {"year": "2012-01-01", "source": "Fossil Fuels", "net_generation": 37379}, {"year": "2013-01-01", "source": "Fossil Fuels", "net_generation": 34873}, {"year": "2014-01-01", "source": "Fossil Fuels", "net_generation": 35250}, {"year": "2015-01-01", "source": "Fossil Fuels", "net_generation": 32319}, {"year": "2016-01-01", "source": "Fossil Fuels", "net_generation": 28437}, {"year": "2017-01-01", "source": "Fossil Fuels", "net_generation": 29329}, {"year": "2001-01-01", "source": "Nuclear Energy", "net_generation": 3853}, {"year": "2002-01-01", "source": "Nuclear Energy", "net_generation": 4574}, {"year": "2003-01-01", "source": "Nuclear Energy", "net_generation": 3988}, {"year": "2004-01-01", "source": "Nuclear Energy", "net_generation": 4929}, {"year": "2005-01-01", "source": "Nuclear Energy", "net_generation": 4538}, {"year": "2006-01-01", "source": "Nuclear Energy", "net_generation": 5095}, {"year": "2007-01-01", "source": "Nuclear Energy", "net_generation": 4519}, {"year": "2008-01-01", "source": "Nuclear Energy", "net_generation": 5282}, {"year": "2009-01-01", "source": "Nuclear Energy", "net_generation": 4679}, {"year": "2010-01-01", "source": "Nuclear Energy", "net_generation": 4451}, {"year": "2011-01-01", "source": "Nuclear Energy", "net_generation": 5215}, {"year": "2012-01-01", "source": "Nuclear Energy", "net_generation": 4347}, {"year": "2013-01-01", "source": "Nuclear Energy", "net_generation": 5321}, {"year": "2014-01-01", "source": "Nuclear Energy", "net_generation": 4152}, {"year": "2015-01-01", "source": "Nuclear Energy", "net_generation": 5243}, {"year": "2016-01-01", "source": "Nuclear Energy", "net_generation": 4703}, {"year": "2017-01-01", "source": "Nuclear Energy", "net_generation": 5214}, {"year": "2001-01-01", "source": "Renewables", "net_generation": 1437}, {"year": "2002-01-01", "source": "Renewables", "net_generation": 1963}, {"year": "2003-01-01", "source": "Renewables", "net_generation": 1885}, {"year": "2004-01-01", "source": "Renewables", "net_generation": 2102}, {"year": "2005-01-01", "source": "Renewables", "net_generation": 2724}, {"year": "2006-01-01", "source": "Renewables", "net_generation": 3364}, {"year": "2007-01-01", "source": "Renewables", "net_generation": 3870}, {"year": "2008-01-01", "source": "Renewables", "net_generation": 5070}, {"year": "2009-01-01", "source": "Renewables", "net_generation": 8560}, {"year": "2010-01-01", "source": "Renewables", "net_generation": 10308}, {"year": "2011-01-01", "source": "Renewables", "net_generation": 11795}, {"year": "2012-01-01", "source": "Renewables", "net_generation": 14949}, {"year": "2013-01-01", "source": "Renewables", "net_generation": 16476}, {"year": "2014-01-01", "source": "Renewables", "net_generation": 17452}, {"year": "2015-01-01", "source": "Renewables", "net_generation": 19091}, {"year": "2016-01-01", "source": "Renewables", "net_generation": 21241}, {"year": "2017-01-01", "source": "Renewables", "net_generation": 21933}]}, "mark": "area", "encoding": {"color": {"type": "nominal", "field": "source"}, "x": {"type": "temporal", "field": "year"}, "y": {"type": "quantitative", "field": "net_generation"}}, "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#6b26ea45-b631-44c3-84ba-66097e3164e5";
@@ -1182,10 +1915,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="05cbec0f-c32c-4a18-80d6-742f66c0d668"></div>
+<div id="f6d8e1b6-f51a-472c-ac7c-9bf6d72a4517"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#05cbec0f-c32c-4a18-80d6-742f66c0d668');
+var element = $('#f6d8e1b6-f51a-472c-ac7c-9bf6d72a4517');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"values": [{"Acceleration": 12.0, "Cylinders": 8, "Displacement": 307.0, "Horsepower": 130.0, "Miles_per_Gallon": 18.0, "Name": "chevrolet chevelle malibu", "Origin": "USA", "Weight_in_lbs": 3504, "Year": "1970-01-01"}, {"Acceleration": 11.5, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 165.0, "Miles_per_Gallon": 15.0, "Name": "buick skylark 320", "Origin": "USA", "Weight_in_lbs": 3693, "Year": "1970-01-01"}, {"Acceleration": 11.0, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 18.0, "Name": "plymouth satellite", "Origin": "USA", "Weight_in_lbs": 3436, "Year": "1970-01-01"}, {"Acceleration": 12.0, "Cylinders": 8, "Displacement": 304.0, "Horsepower": 150.0, "Miles_per_Gallon": 16.0, "Name": "amc rebel sst", "Origin": "USA", "Weight_in_lbs": 3433, "Year": "1970-01-01"}, {"Acceleration": 10.5, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 140.0, "Miles_per_Gallon": 17.0, "Name": "ford torino", "Origin": "USA", "Weight_in_lbs": 3449, "Year": "1970-01-01"}, {"Acceleration": 10.0, "Cylinders": 8, "Displacement": 429.0, "Horsepower": 198.0, "Miles_per_Gallon": 15.0, "Name": "ford galaxie 500", "Origin": "USA", "Weight_in_lbs": 4341, "Year": "1970-01-01"}, {"Acceleration": 9.0, "Cylinders": 8, "Displacement": 454.0, "Horsepower": 220.0, "Miles_per_Gallon": 14.0, "Name": "chevrolet impala", "Origin": "USA", "Weight_in_lbs": 4354, "Year": "1970-01-01"}, {"Acceleration": 8.5, "Cylinders": 8, "Displacement": 440.0, "Horsepower": 215.0, "Miles_per_Gallon": 14.0, "Name": "plymouth fury iii", "Origin": "USA", "Weight_in_lbs": 4312, "Year": "1970-01-01"}, {"Acceleration": 10.0, "Cylinders": 8, "Displacement": 455.0, "Horsepower": 225.0, "Miles_per_Gallon": 14.0, "Name": "pontiac catalina", "Origin": "USA", "Weight_in_lbs": 4425, "Year": "1970-01-01"}, {"Acceleration": 8.5, "Cylinders": 8, "Displacement": 390.0, "Horsepower": 190.0, "Miles_per_Gallon": 15.0, "Name": "amc ambassador dpl", "Origin": "USA", "Weight_in_lbs": 3850, "Year": "1970-01-01"}, {"Acceleration": 17.5, "Cylinders": 4, "Displacement": 133.0, "Horsepower": 115.0, "Miles_per_Gallon": null, "Name": "citroen ds-21 pallas", "Origin": "Europe", "Weight_in_lbs": 3090, "Year": "1970-01-01"}, {"Acceleration": 11.5, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 165.0, "Miles_per_Gallon": null, "Name": "chevrolet chevelle concours (sw)", "Origin": "USA", "Weight_in_lbs": 4142, "Year": "1970-01-01"}, {"Acceleration": 11.0, "Cylinders": 8, "Displacement": 351.0, "Horsepower": 153.0, "Miles_per_Gallon": null, "Name": "ford torino (sw)", "Origin": "USA", "Weight_in_lbs": 4034, "Year": "1970-01-01"}, {"Acceleration": 10.5, "Cylinders": 8, "Displacement": 383.0, "Horsepower": 175.0, "Miles_per_Gallon": null, "Name": "plymouth satellite (sw)", "Origin": "USA", "Weight_in_lbs": 4166, "Year": "1970-01-01"}, {"Acceleration": 11.0, "Cylinders": 8, "Displacement": 360.0, "Horsepower": 175.0, "Miles_per_Gallon": null, "Name": "amc rebel sst (sw)", "Origin": "USA", "Weight_in_lbs": 3850, "Year": "1970-01-01"}, {"Acceleration": 10.0, "Cylinders": 8, "Displacement": 383.0, "Horsepower": 170.0, "Miles_per_Gallon": 15.0, "Name": "dodge challenger se", "Origin": "USA", "Weight_in_lbs": 3563, "Year": "1970-01-01"}, {"Acceleration": 8.0, "Cylinders": 8, "Displacement": 340.0, "Horsepower": 160.0, "Miles_per_Gallon": 14.0, "Name": "plymouth 'cuda 340", "Origin": "USA", "Weight_in_lbs": 3609, "Year": "1970-01-01"}, {"Acceleration": 8.0, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 140.0, "Miles_per_Gallon": null, "Name": "ford mustang boss 302", "Origin": "USA", "Weight_in_lbs": 3353, "Year": "1970-01-01"}, {"Acceleration": 9.5, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 150.0, "Miles_per_Gallon": 15.0, "Name": "chevrolet monte carlo", "Origin": "USA", "Weight_in_lbs": 3761, "Year": "1970-01-01"}, {"Acceleration": 10.0, "Cylinders": 8, "Displacement": 455.0, "Horsepower": 225.0, "Miles_per_Gallon": 14.0, "Name": "buick estate wagon (sw)", "Origin": "USA", "Weight_in_lbs": 3086, "Year": "1970-01-01"}, {"Acceleration": 15.0, "Cylinders": 4, "Displacement": 113.0, "Horsepower": 95.0, "Miles_per_Gallon": 24.0, "Name": "toyota corona mark ii", "Origin": "Japan", "Weight_in_lbs": 2372, "Year": "1970-01-01"}, {"Acceleration": 15.5, "Cylinders": 6, "Displacement": 198.0, "Horsepower": 95.0, "Miles_per_Gallon": 22.0, "Name": "plymouth duster", "Origin": "USA", "Weight_in_lbs": 2833, "Year": "1970-01-01"}, {"Acceleration": 15.5, "Cylinders": 6, "Displacement": 199.0, "Horsepower": 97.0, "Miles_per_Gallon": 18.0, "Name": "amc hornet", "Origin": "USA", "Weight_in_lbs": 2774, "Year": "1970-01-01"}, {"Acceleration": 16.0, "Cylinders": 6, "Displacement": 200.0, "Horsepower": 85.0, "Miles_per_Gallon": 21.0, "Name": "ford maverick", "Origin": "USA", "Weight_in_lbs": 2587, "Year": "1970-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 88.0, "Miles_per_Gallon": 27.0, "Name": "datsun pl510", "Origin": "Japan", "Weight_in_lbs": 2130, "Year": "1970-01-01"}, {"Acceleration": 20.5, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 46.0, "Miles_per_Gallon": 26.0, "Name": "volkswagen 1131 deluxe sedan", "Origin": "Europe", "Weight_in_lbs": 1835, "Year": "1970-01-01"}, {"Acceleration": 17.5, "Cylinders": 4, "Displacement": 110.0, "Horsepower": 87.0, "Miles_per_Gallon": 25.0, "Name": "peugeot 504", "Origin": "Europe", "Weight_in_lbs": 2672, "Year": "1970-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 107.0, "Horsepower": 90.0, "Miles_per_Gallon": 24.0, "Name": "audi 100 ls", "Origin": "Europe", "Weight_in_lbs": 2430, "Year": "1970-01-01"}, {"Acceleration": 17.5, "Cylinders": 4, "Displacement": 104.0, "Horsepower": 95.0, "Miles_per_Gallon": 25.0, "Name": "saab 99e", "Origin": "Europe", "Weight_in_lbs": 2375, "Year": "1970-01-01"}, {"Acceleration": 12.5, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 113.0, "Miles_per_Gallon": 26.0, "Name": "bmw 2002", "Origin": "Europe", "Weight_in_lbs": 2234, "Year": "1970-01-01"}, {"Acceleration": 15.0, "Cylinders": 6, "Displacement": 199.0, "Horsepower": 90.0, "Miles_per_Gallon": 21.0, "Name": "amc gremlin", "Origin": "USA", "Weight_in_lbs": 2648, "Year": "1970-01-01"}, {"Acceleration": 14.0, "Cylinders": 8, "Displacement": 360.0, "Horsepower": 215.0, "Miles_per_Gallon": 10.0, "Name": "ford f250", "Origin": "USA", "Weight_in_lbs": 4615, "Year": "1970-01-01"}, {"Acceleration": 15.0, "Cylinders": 8, "Displacement": 307.0, "Horsepower": 200.0, "Miles_per_Gallon": 10.0, "Name": "chevy c20", "Origin": "USA", "Weight_in_lbs": 4376, "Year": "1970-01-01"}, {"Acceleration": 13.5, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 210.0, "Miles_per_Gallon": 11.0, "Name": "dodge d200", "Origin": "USA", "Weight_in_lbs": 4382, "Year": "1970-01-01"}, {"Acceleration": 18.5, "Cylinders": 8, "Displacement": 304.0, "Horsepower": 193.0, "Miles_per_Gallon": 9.0, "Name": "hi 1200d", "Origin": "USA", "Weight_in_lbs": 4732, "Year": "1970-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 88.0, "Miles_per_Gallon": 27.0, "Name": "datsun pl510", "Origin": "Japan", "Weight_in_lbs": 2130, "Year": "1971-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 90.0, "Miles_per_Gallon": 28.0, "Name": "chevrolet vega 2300", "Origin": "USA", "Weight_in_lbs": 2264, "Year": "1971-01-01"}, {"Acceleration": 14.0, "Cylinders": 4, "Displacement": 113.0, "Horsepower": 95.0, "Miles_per_Gallon": 25.0, "Name": "toyota corona", "Origin": "Japan", "Weight_in_lbs": 2228, "Year": "1971-01-01"}, {"Acceleration": 19.0, "Cylinders": 4, "Displacement": 98.0, "Horsepower": null, "Miles_per_Gallon": 25.0, "Name": "ford pinto", "Origin": "USA", "Weight_in_lbs": 2046, "Year": "1971-01-01"}, {"Acceleration": 20.0, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 48.0, "Miles_per_Gallon": null, "Name": "volkswagen super beetle 117", "Origin": "Europe", "Weight_in_lbs": 1978, "Year": "1971-01-01"}, {"Acceleration": 13.0, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 100.0, "Miles_per_Gallon": 19.0, "Name": "amc gremlin", "Origin": "USA", "Weight_in_lbs": 2634, "Year": "1971-01-01"}, {"Acceleration": 15.5, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 105.0, "Miles_per_Gallon": 16.0, "Name": "plymouth satellite custom", "Origin": "USA", "Weight_in_lbs": 3439, "Year": "1971-01-01"}, {"Acceleration": 15.5, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 100.0, "Miles_per_Gallon": 17.0, "Name": "chevrolet chevelle malibu", "Origin": "USA", "Weight_in_lbs": 3329, "Year": "1971-01-01"}, {"Acceleration": 15.5, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 88.0, "Miles_per_Gallon": 19.0, "Name": "ford torino 500", "Origin": "USA", "Weight_in_lbs": 3302, "Year": "1971-01-01"}, {"Acceleration": 15.5, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 100.0, "Miles_per_Gallon": 18.0, "Name": "amc matador", "Origin": "USA", "Weight_in_lbs": 3288, "Year": "1971-01-01"}, {"Acceleration": 12.0, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 165.0, "Miles_per_Gallon": 14.0, "Name": "chevrolet impala", "Origin": "USA", "Weight_in_lbs": 4209, "Year": "1971-01-01"}, {"Acceleration": 11.5, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 175.0, "Miles_per_Gallon": 14.0, "Name": "pontiac catalina brougham", "Origin": "USA", "Weight_in_lbs": 4464, "Year": "1971-01-01"}, {"Acceleration": 13.5, "Cylinders": 8, "Displacement": 351.0, "Horsepower": 153.0, "Miles_per_Gallon": 14.0, "Name": "ford galaxie 500", "Origin": "USA", "Weight_in_lbs": 4154, "Year": "1971-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 14.0, "Name": "plymouth fury iii", "Origin": "USA", "Weight_in_lbs": 4096, "Year": "1971-01-01"}, {"Acceleration": 11.5, "Cylinders": 8, "Displacement": 383.0, "Horsepower": 180.0, "Miles_per_Gallon": 12.0, "Name": "dodge monaco (sw)", "Origin": "USA", "Weight_in_lbs": 4955, "Year": "1971-01-01"}, {"Acceleration": 12.0, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 170.0, "Miles_per_Gallon": 13.0, "Name": "ford country squire (sw)", "Origin": "USA", "Weight_in_lbs": 4746, "Year": "1971-01-01"}, {"Acceleration": 12.0, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 175.0, "Miles_per_Gallon": 13.0, "Name": "pontiac safari (sw)", "Origin": "USA", "Weight_in_lbs": 5140, "Year": "1971-01-01"}, {"Acceleration": 13.5, "Cylinders": 6, "Displacement": 258.0, "Horsepower": 110.0, "Miles_per_Gallon": 18.0, "Name": "amc hornet sportabout (sw)", "Origin": "USA", "Weight_in_lbs": 2962, "Year": "1971-01-01"}, {"Acceleration": 19.0, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 72.0, "Miles_per_Gallon": 22.0, "Name": "chevrolet vega (sw)", "Origin": "USA", "Weight_in_lbs": 2408, "Year": "1971-01-01"}, {"Acceleration": 15.0, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 100.0, "Miles_per_Gallon": 19.0, "Name": "pontiac firebird", "Origin": "USA", "Weight_in_lbs": 3282, "Year": "1971-01-01"}, {"Acceleration": 14.5, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 88.0, "Miles_per_Gallon": 18.0, "Name": "ford mustang", "Origin": "USA", "Weight_in_lbs": 3139, "Year": "1971-01-01"}, {"Acceleration": 14.0, "Cylinders": 4, "Displacement": 122.0, "Horsepower": 86.0, "Miles_per_Gallon": 23.0, "Name": "mercury capri 2000", "Origin": "USA", "Weight_in_lbs": 2220, "Year": "1971-01-01"}, {"Acceleration": 14.0, "Cylinders": 4, "Displacement": 116.0, "Horsepower": 90.0, "Miles_per_Gallon": 28.0, "Name": "opel 1900", "Origin": "Europe", "Weight_in_lbs": 2123, "Year": "1971-01-01"}, {"Acceleration": 19.5, "Cylinders": 4, "Displacement": 79.0, "Horsepower": 70.0, "Miles_per_Gallon": 30.0, "Name": "peugeot 304", "Origin": "Europe", "Weight_in_lbs": 2074, "Year": "1971-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 88.0, "Horsepower": 76.0, "Miles_per_Gallon": 30.0, "Name": "fiat 124b", "Origin": "Europe", "Weight_in_lbs": 2065, "Year": "1971-01-01"}, {"Acceleration": 19.0, "Cylinders": 4, "Displacement": 71.0, "Horsepower": 65.0, "Miles_per_Gallon": 31.0, "Name": "toyota corolla 1200", "Origin": "Japan", "Weight_in_lbs": 1773, "Year": "1971-01-01"}, {"Acceleration": 18.0, "Cylinders": 4, "Displacement": 72.0, "Horsepower": 69.0, "Miles_per_Gallon": 35.0, "Name": "datsun 1200", "Origin": "Japan", "Weight_in_lbs": 1613, "Year": "1971-01-01"}, {"Acceleration": 19.0, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 60.0, "Miles_per_Gallon": 27.0, "Name": "volkswagen model 111", "Origin": "Europe", "Weight_in_lbs": 1834, "Year": "1971-01-01"}, {"Acceleration": 20.5, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 70.0, "Miles_per_Gallon": 26.0, "Name": "plymouth cricket", "Origin": "USA", "Weight_in_lbs": 1955, "Year": "1971-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 113.0, "Horsepower": 95.0, "Miles_per_Gallon": 24.0, "Name": "toyota corona hardtop", "Origin": "Japan", "Weight_in_lbs": 2278, "Year": "1972-01-01"}, {"Acceleration": 17.0, "Cylinders": 4, "Displacement": 97.5, "Horsepower": 80.0, "Miles_per_Gallon": 25.0, "Name": "dodge colt hardtop", "Origin": "USA", "Weight_in_lbs": 2126, "Year": "1972-01-01"}, {"Acceleration": 23.5, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 54.0, "Miles_per_Gallon": 23.0, "Name": "volkswagen type 3", "Origin": "Europe", "Weight_in_lbs": 2254, "Year": "1972-01-01"}, {"Acceleration": 19.5, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 90.0, "Miles_per_Gallon": 20.0, "Name": "chevrolet vega", "Origin": "USA", "Weight_in_lbs": 2408, "Year": "1972-01-01"}, {"Acceleration": 16.5, "Cylinders": 4, "Displacement": 122.0, "Horsepower": 86.0, "Miles_per_Gallon": 21.0, "Name": "ford pinto runabout", "Origin": "USA", "Weight_in_lbs": 2226, "Year": "1972-01-01"}, {"Acceleration": 12.0, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 165.0, "Miles_per_Gallon": 13.0, "Name": "chevrolet impala", "Origin": "USA", "Weight_in_lbs": 4274, "Year": "1972-01-01"}, {"Acceleration": 12.0, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 175.0, "Miles_per_Gallon": 14.0, "Name": "pontiac catalina", "Origin": "USA", "Weight_in_lbs": 4385, "Year": "1972-01-01"}, {"Acceleration": 13.5, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 15.0, "Name": "plymouth fury iii", "Origin": "USA", "Weight_in_lbs": 4135, "Year": "1972-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 351.0, "Horsepower": 153.0, "Miles_per_Gallon": 14.0, "Name": "ford galaxie 500", "Origin": "USA", "Weight_in_lbs": 4129, "Year": "1972-01-01"}, {"Acceleration": 11.5, "Cylinders": 8, "Displacement": 304.0, "Horsepower": 150.0, "Miles_per_Gallon": 17.0, "Name": "amc ambassador sst", "Origin": "USA", "Weight_in_lbs": 3672, "Year": "1972-01-01"}, {"Acceleration": 11.0, "Cylinders": 8, "Displacement": 429.0, "Horsepower": 208.0, "Miles_per_Gallon": 11.0, "Name": "mercury marquis", "Origin": "USA", "Weight_in_lbs": 4633, "Year": "1972-01-01"}, {"Acceleration": 13.5, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 155.0, "Miles_per_Gallon": 13.0, "Name": "buick lesabre custom", "Origin": "USA", "Weight_in_lbs": 4502, "Year": "1972-01-01"}, {"Acceleration": 13.5, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 160.0, "Miles_per_Gallon": 12.0, "Name": "oldsmobile delta 88 royale", "Origin": "USA", "Weight_in_lbs": 4456, "Year": "1972-01-01"}, {"Acceleration": 12.5, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 190.0, "Miles_per_Gallon": 13.0, "Name": "chrysler newport royal", "Origin": "USA", "Weight_in_lbs": 4422, "Year": "1972-01-01"}, {"Acceleration": 13.5, "Cylinders": 3, "Displacement": 70.0, "Horsepower": 97.0, "Miles_per_Gallon": 19.0, "Name": "mazda rx2 coupe", "Origin": "Japan", "Weight_in_lbs": 2330, "Year": "1972-01-01"}, {"Acceleration": 12.5, "Cylinders": 8, "Displacement": 304.0, "Horsepower": 150.0, "Miles_per_Gallon": 15.0, "Name": "amc matador (sw)", "Origin": "USA", "Weight_in_lbs": 3892, "Year": "1972-01-01"}, {"Acceleration": 14.0, "Cylinders": 8, "Displacement": 307.0, "Horsepower": 130.0, "Miles_per_Gallon": 13.0, "Name": "chevrolet chevelle concours (sw)", "Origin": "USA", "Weight_in_lbs": 4098, "Year": "1972-01-01"}, {"Acceleration": 16.0, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 140.0, "Miles_per_Gallon": 13.0, "Name": "ford gran torino (sw)", "Origin": "USA", "Weight_in_lbs": 4294, "Year": "1972-01-01"}, {"Acceleration": 14.0, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 14.0, "Name": "plymouth satellite custom (sw)", "Origin": "USA", "Weight_in_lbs": 4077, "Year": "1972-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 112.0, "Miles_per_Gallon": 18.0, "Name": "volvo 145e (sw)", "Origin": "Europe", "Weight_in_lbs": 2933, "Year": "1972-01-01"}, {"Acceleration": 18.0, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 76.0, "Miles_per_Gallon": 22.0, "Name": "volkswagen 411 (sw)", "Origin": "Europe", "Weight_in_lbs": 2511, "Year": "1972-01-01"}, {"Acceleration": 19.5, "Cylinders": 4, "Displacement": 120.0, "Horsepower": 87.0, "Miles_per_Gallon": 21.0, "Name": "peugeot 504 (sw)", "Origin": "Europe", "Weight_in_lbs": 2979, "Year": "1972-01-01"}, {"Acceleration": 18.0, "Cylinders": 4, "Displacement": 96.0, "Horsepower": 69.0, "Miles_per_Gallon": 26.0, "Name": "renault 12 (sw)", "Origin": "Europe", "Weight_in_lbs": 2189, "Year": "1972-01-01"}, {"Acceleration": 16.0, "Cylinders": 4, "Displacement": 122.0, "Horsepower": 86.0, "Miles_per_Gallon": 22.0, "Name": "ford pinto (sw)", "Origin": "USA", "Weight_in_lbs": 2395, "Year": "1972-01-01"}, {"Acceleration": 17.0, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 92.0, "Miles_per_Gallon": 28.0, "Name": "datsun 510 (sw)", "Origin": "Japan", "Weight_in_lbs": 2288, "Year": "1972-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 120.0, "Horsepower": 97.0, "Miles_per_Gallon": 23.0, "Name": "toyouta corona mark ii (sw)", "Origin": "Japan", "Weight_in_lbs": 2506, "Year": "1972-01-01"}, {"Acceleration": 15.0, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 80.0, "Miles_per_Gallon": 28.0, "Name": "dodge colt (sw)", "Origin": "USA", "Weight_in_lbs": 2164, "Year": "1972-01-01"}, {"Acceleration": 16.5, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 88.0, "Miles_per_Gallon": 27.0, "Name": "toyota corolla 1600 (sw)", "Origin": "Japan", "Weight_in_lbs": 2100, "Year": "1972-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 175.0, "Miles_per_Gallon": 13.0, "Name": "buick century 350", "Origin": "USA", "Weight_in_lbs": 4100, "Year": "1973-01-01"}, {"Acceleration": 11.5, "Cylinders": 8, "Displacement": 304.0, "Horsepower": 150.0, "Miles_per_Gallon": 14.0, "Name": "amc matador", "Origin": "USA", "Weight_in_lbs": 3672, "Year": "1973-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 145.0, "Miles_per_Gallon": 13.0, "Name": "chevrolet malibu", "Origin": "USA", "Weight_in_lbs": 3988, "Year": "1973-01-01"}, {"Acceleration": 14.5, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 137.0, "Miles_per_Gallon": 14.0, "Name": "ford gran torino", "Origin": "USA", "Weight_in_lbs": 4042, "Year": "1973-01-01"}, {"Acceleration": 12.5, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 15.0, "Name": "dodge coronet custom", "Origin": "USA", "Weight_in_lbs": 3777, "Year": "1973-01-01"}, {"Acceleration": 11.5, "Cylinders": 8, "Displacement": 429.0, "Horsepower": 198.0, "Miles_per_Gallon": 12.0, "Name": "mercury marquis brougham", "Origin": "USA", "Weight_in_lbs": 4952, "Year": "1973-01-01"}, {"Acceleration": 12.0, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 150.0, "Miles_per_Gallon": 13.0, "Name": "chevrolet caprice classic", "Origin": "USA", "Weight_in_lbs": 4464, "Year": "1973-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 351.0, "Horsepower": 158.0, "Miles_per_Gallon": 13.0, "Name": "ford ltd", "Origin": "USA", "Weight_in_lbs": 4363, "Year": "1973-01-01"}, {"Acceleration": 14.5, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 14.0, "Name": "plymouth fury gran sedan", "Origin": "USA", "Weight_in_lbs": 4237, "Year": "1973-01-01"}, {"Acceleration": 11.0, "Cylinders": 8, "Displacement": 440.0, "Horsepower": 215.0, "Miles_per_Gallon": 13.0, "Name": "chrysler new yorker brougham", "Origin": "USA", "Weight_in_lbs": 4735, "Year": "1973-01-01"}, {"Acceleration": 11.0, "Cylinders": 8, "Displacement": 455.0, "Horsepower": 225.0, "Miles_per_Gallon": 12.0, "Name": "buick electra 225 custom", "Origin": "USA", "Weight_in_lbs": 4951, "Year": "1973-01-01"}, {"Acceleration": 11.0, "Cylinders": 8, "Displacement": 360.0, "Horsepower": 175.0, "Miles_per_Gallon": 13.0, "Name": "amc ambassador brougham", "Origin": "USA", "Weight_in_lbs": 3821, "Year": "1973-01-01"}, {"Acceleration": 16.5, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 105.0, "Miles_per_Gallon": 18.0, "Name": "plymouth valiant", "Origin": "USA", "Weight_in_lbs": 3121, "Year": "1973-01-01"}, {"Acceleration": 18.0, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 100.0, "Miles_per_Gallon": 16.0, "Name": "chevrolet nova custom", "Origin": "USA", "Weight_in_lbs": 3278, "Year": "1973-01-01"}, {"Acceleration": 16.0, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 100.0, "Miles_per_Gallon": 18.0, "Name": "amc hornet", "Origin": "USA", "Weight_in_lbs": 2945, "Year": "1973-01-01"}, {"Acceleration": 16.5, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 88.0, "Miles_per_Gallon": 18.0, "Name": "ford maverick", "Origin": "USA", "Weight_in_lbs": 3021, "Year": "1973-01-01"}, {"Acceleration": 16.0, "Cylinders": 6, "Displacement": 198.0, "Horsepower": 95.0, "Miles_per_Gallon": 23.0, "Name": "plymouth duster", "Origin": "USA", "Weight_in_lbs": 2904, "Year": "1973-01-01"}, {"Acceleration": 21.0, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 46.0, "Miles_per_Gallon": 26.0, "Name": "volkswagen super beetle", "Origin": "Europe", "Weight_in_lbs": 1950, "Year": "1973-01-01"}, {"Acceleration": 14.0, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 150.0, "Miles_per_Gallon": 11.0, "Name": "chevrolet impala", "Origin": "USA", "Weight_in_lbs": 4997, "Year": "1973-01-01"}, {"Acceleration": 12.5, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 167.0, "Miles_per_Gallon": 12.0, "Name": "ford country", "Origin": "USA", "Weight_in_lbs": 4906, "Year": "1973-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 360.0, "Horsepower": 170.0, "Miles_per_Gallon": 13.0, "Name": "plymouth custom suburb", "Origin": "USA", "Weight_in_lbs": 4654, "Year": "1973-01-01"}, {"Acceleration": 12.5, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 180.0, "Miles_per_Gallon": 12.0, "Name": "oldsmobile vista cruiser", "Origin": "USA", "Weight_in_lbs": 4499, "Year": "1973-01-01"}, {"Acceleration": 15.0, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 100.0, "Miles_per_Gallon": 18.0, "Name": "amc gremlin", "Origin": "USA", "Weight_in_lbs": 2789, "Year": "1973-01-01"}, {"Acceleration": 19.0, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 88.0, "Miles_per_Gallon": 20.0, "Name": "toyota carina", "Origin": "Japan", "Weight_in_lbs": 2279, "Year": "1973-01-01"}, {"Acceleration": 19.5, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 72.0, "Miles_per_Gallon": 21.0, "Name": "chevrolet vega", "Origin": "USA", "Weight_in_lbs": 2401, "Year": "1973-01-01"}, {"Acceleration": 16.5, "Cylinders": 4, "Displacement": 108.0, "Horsepower": 94.0, "Miles_per_Gallon": 22.0, "Name": "datsun 610", "Origin": "Japan", "Weight_in_lbs": 2379, "Year": "1973-01-01"}, {"Acceleration": 13.5, "Cylinders": 3, "Displacement": 70.0, "Horsepower": 90.0, "Miles_per_Gallon": 18.0, "Name": "maxda rx3", "Origin": "Japan", "Weight_in_lbs": 2124, "Year": "1973-01-01"}, {"Acceleration": 18.5, "Cylinders": 4, "Displacement": 122.0, "Horsepower": 85.0, "Miles_per_Gallon": 19.0, "Name": "ford pinto", "Origin": "USA", "Weight_in_lbs": 2310, "Year": "1973-01-01"}, {"Acceleration": 14.0, "Cylinders": 6, "Displacement": 155.0, "Horsepower": 107.0, "Miles_per_Gallon": 21.0, "Name": "mercury capri v6", "Origin": "USA", "Weight_in_lbs": 2472, "Year": "1973-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 90.0, "Miles_per_Gallon": 26.0, "Name": "fiat 124 sport coupe", "Origin": "Europe", "Weight_in_lbs": 2265, "Year": "1973-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 145.0, "Miles_per_Gallon": 15.0, "Name": "chevrolet monte carlo s", "Origin": "USA", "Weight_in_lbs": 4082, "Year": "1973-01-01"}, {"Acceleration": 9.5, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 230.0, "Miles_per_Gallon": 16.0, "Name": "pontiac grand prix", "Origin": "USA", "Weight_in_lbs": 4278, "Year": "1973-01-01"}, {"Acceleration": 19.5, "Cylinders": 4, "Displacement": 68.0, "Horsepower": 49.0, "Miles_per_Gallon": 29.0, "Name": "fiat 128", "Origin": "Europe", "Weight_in_lbs": 1867, "Year": "1973-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 116.0, "Horsepower": 75.0, "Miles_per_Gallon": 24.0, "Name": "opel manta", "Origin": "Europe", "Weight_in_lbs": 2158, "Year": "1973-01-01"}, {"Acceleration": 14.0, "Cylinders": 4, "Displacement": 114.0, "Horsepower": 91.0, "Miles_per_Gallon": 20.0, "Name": "audi 100ls", "Origin": "Europe", "Weight_in_lbs": 2582, "Year": "1973-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 112.0, "Miles_per_Gallon": 19.0, "Name": "volvo 144ea", "Origin": "Europe", "Weight_in_lbs": 2868, "Year": "1973-01-01"}, {"Acceleration": 11.0, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 15.0, "Name": "dodge dart custom", "Origin": "USA", "Weight_in_lbs": 3399, "Year": "1973-01-01"}, {"Acceleration": 14.0, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 110.0, "Miles_per_Gallon": 24.0, "Name": "saab 99le", "Origin": "Europe", "Weight_in_lbs": 2660, "Year": "1973-01-01"}, {"Acceleration": 13.5, "Cylinders": 6, "Displacement": 156.0, "Horsepower": 122.0, "Miles_per_Gallon": 20.0, "Name": "toyota mark ii", "Origin": "Japan", "Weight_in_lbs": 2807, "Year": "1973-01-01"}, {"Acceleration": 11.0, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 180.0, "Miles_per_Gallon": 11.0, "Name": "oldsmobile omega", "Origin": "USA", "Weight_in_lbs": 3664, "Year": "1973-01-01"}, {"Acceleration": 16.5, "Cylinders": 6, "Displacement": 198.0, "Horsepower": 95.0, "Miles_per_Gallon": 20.0, "Name": "plymouth duster", "Origin": "USA", "Weight_in_lbs": 3102, "Year": "1974-01-01"}, {"Acceleration": 17.0, "Cylinders": 6, "Displacement": 200.0, "Horsepower": null, "Miles_per_Gallon": 21.0, "Name": "ford maverick", "Origin": "USA", "Weight_in_lbs": 2875, "Year": "1974-01-01"}, {"Acceleration": 16.0, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 100.0, "Miles_per_Gallon": 19.0, "Name": "amc hornet", "Origin": "USA", "Weight_in_lbs": 2901, "Year": "1974-01-01"}, {"Acceleration": 17.0, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 100.0, "Miles_per_Gallon": 15.0, "Name": "chevrolet nova", "Origin": "USA", "Weight_in_lbs": 3336, "Year": "1974-01-01"}, {"Acceleration": 19.0, "Cylinders": 4, "Displacement": 79.0, "Horsepower": 67.0, "Miles_per_Gallon": 31.0, "Name": "datsun b210", "Origin": "Japan", "Weight_in_lbs": 1950, "Year": "1974-01-01"}, {"Acceleration": 16.5, "Cylinders": 4, "Displacement": 122.0, "Horsepower": 80.0, "Miles_per_Gallon": 26.0, "Name": "ford pinto", "Origin": "USA", "Weight_in_lbs": 2451, "Year": "1974-01-01"}, {"Acceleration": 21.0, "Cylinders": 4, "Displacement": 71.0, "Horsepower": 65.0, "Miles_per_Gallon": 32.0, "Name": "toyota corolla 1200", "Origin": "Japan", "Weight_in_lbs": 1836, "Year": "1974-01-01"}, {"Acceleration": 17.0, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 75.0, "Miles_per_Gallon": 25.0, "Name": "chevrolet vega", "Origin": "USA", "Weight_in_lbs": 2542, "Year": "1974-01-01"}, {"Acceleration": 17.0, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 100.0, "Miles_per_Gallon": 16.0, "Name": "chevrolet chevelle malibu classic", "Origin": "USA", "Weight_in_lbs": 3781, "Year": "1974-01-01"}, {"Acceleration": 18.0, "Cylinders": 6, "Displacement": 258.0, "Horsepower": 110.0, "Miles_per_Gallon": 16.0, "Name": "amc matador", "Origin": "USA", "Weight_in_lbs": 3632, "Year": "1974-01-01"}, {"Acceleration": 16.5, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 105.0, "Miles_per_Gallon": 18.0, "Name": "plymouth satellite sebring", "Origin": "USA", "Weight_in_lbs": 3613, "Year": "1974-01-01"}, {"Acceleration": 14.0, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 140.0, "Miles_per_Gallon": 16.0, "Name": "ford gran torino", "Origin": "USA", "Weight_in_lbs": 4141, "Year": "1974-01-01"}, {"Acceleration": 14.5, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 150.0, "Miles_per_Gallon": 13.0, "Name": "buick century luxus (sw)", "Origin": "USA", "Weight_in_lbs": 4699, "Year": "1974-01-01"}, {"Acceleration": 13.5, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 14.0, "Name": "dodge coronet custom (sw)", "Origin": "USA", "Weight_in_lbs": 4457, "Year": "1974-01-01"}, {"Acceleration": 16.0, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 140.0, "Miles_per_Gallon": 14.0, "Name": "ford gran torino (sw)", "Origin": "USA", "Weight_in_lbs": 4638, "Year": "1974-01-01"}, {"Acceleration": 15.5, "Cylinders": 8, "Displacement": 304.0, "Horsepower": 150.0, "Miles_per_Gallon": 14.0, "Name": "amc matador (sw)", "Origin": "USA", "Weight_in_lbs": 4257, "Year": "1974-01-01"}, {"Acceleration": 16.5, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 83.0, "Miles_per_Gallon": 29.0, "Name": "audi fox", "Origin": "Europe", "Weight_in_lbs": 2219, "Year": "1974-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 79.0, "Horsepower": 67.0, "Miles_per_Gallon": 26.0, "Name": "volkswagen dasher", "Origin": "Europe", "Weight_in_lbs": 1963, "Year": "1974-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 78.0, "Miles_per_Gallon": 26.0, "Name": "opel manta", "Origin": "Europe", "Weight_in_lbs": 2300, "Year": "1974-01-01"}, {"Acceleration": 16.5, "Cylinders": 4, "Displacement": 76.0, "Horsepower": 52.0, "Miles_per_Gallon": 31.0, "Name": "toyota corona", "Origin": "Japan", "Weight_in_lbs": 1649, "Year": "1974-01-01"}, {"Acceleration": 19.0, "Cylinders": 4, "Displacement": 83.0, "Horsepower": 61.0, "Miles_per_Gallon": 32.0, "Name": "datsun 710", "Origin": "Japan", "Weight_in_lbs": 2003, "Year": "1974-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 90.0, "Horsepower": 75.0, "Miles_per_Gallon": 28.0, "Name": "dodge colt", "Origin": "USA", "Weight_in_lbs": 2125, "Year": "1974-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 90.0, "Horsepower": 75.0, "Miles_per_Gallon": 24.0, "Name": "fiat 128", "Origin": "Europe", "Weight_in_lbs": 2108, "Year": "1974-01-01"}, {"Acceleration": 14.0, "Cylinders": 4, "Displacement": 116.0, "Horsepower": 75.0, "Miles_per_Gallon": 26.0, "Name": "fiat 124 tc", "Origin": "Europe", "Weight_in_lbs": 2246, "Year": "1974-01-01"}, {"Acceleration": 15.0, "Cylinders": 4, "Displacement": 120.0, "Horsepower": 97.0, "Miles_per_Gallon": 24.0, "Name": "honda civic", "Origin": "Japan", "Weight_in_lbs": 2489, "Year": "1974-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 108.0, "Horsepower": 93.0, "Miles_per_Gallon": 26.0, "Name": "subaru", "Origin": "Japan", "Weight_in_lbs": 2391, "Year": "1974-01-01"}, {"Acceleration": 16.0, "Cylinders": 4, "Displacement": 79.0, "Horsepower": 67.0, "Miles_per_Gallon": 31.0, "Name": "fiat x1.9", "Origin": "Europe", "Weight_in_lbs": 2000, "Year": "1974-01-01"}, {"Acceleration": 16.0, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 95.0, "Miles_per_Gallon": 19.0, "Name": "plymouth valiant custom", "Origin": "USA", "Weight_in_lbs": 3264, "Year": "1975-01-01"}, {"Acceleration": 16.0, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 105.0, "Miles_per_Gallon": 18.0, "Name": "chevrolet nova", "Origin": "USA", "Weight_in_lbs": 3459, "Year": "1975-01-01"}, {"Acceleration": 21.0, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 72.0, "Miles_per_Gallon": 15.0, "Name": "mercury monarch", "Origin": "USA", "Weight_in_lbs": 3432, "Year": "1975-01-01"}, {"Acceleration": 19.5, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 72.0, "Miles_per_Gallon": 15.0, "Name": "ford maverick", "Origin": "USA", "Weight_in_lbs": 3158, "Year": "1975-01-01"}, {"Acceleration": 11.5, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 170.0, "Miles_per_Gallon": 16.0, "Name": "pontiac catalina", "Origin": "USA", "Weight_in_lbs": 4668, "Year": "1975-01-01"}, {"Acceleration": 14.0, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 145.0, "Miles_per_Gallon": 15.0, "Name": "chevrolet bel air", "Origin": "USA", "Weight_in_lbs": 4440, "Year": "1975-01-01"}, {"Acceleration": 14.5, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 16.0, "Name": "plymouth grand fury", "Origin": "USA", "Weight_in_lbs": 4498, "Year": "1975-01-01"}, {"Acceleration": 13.5, "Cylinders": 8, "Displacement": 351.0, "Horsepower": 148.0, "Miles_per_Gallon": 14.0, "Name": "ford ltd", "Origin": "USA", "Weight_in_lbs": 4657, "Year": "1975-01-01"}, {"Acceleration": 21.0, "Cylinders": 6, "Displacement": 231.0, "Horsepower": 110.0, "Miles_per_Gallon": 17.0, "Name": "buick century", "Origin": "USA", "Weight_in_lbs": 3907, "Year": "1975-01-01"}, {"Acceleration": 18.5, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 105.0, "Miles_per_Gallon": 16.0, "Name": "chevroelt chevelle malibu", "Origin": "USA", "Weight_in_lbs": 3897, "Year": "1975-01-01"}, {"Acceleration": 19.0, "Cylinders": 6, "Displacement": 258.0, "Horsepower": 110.0, "Miles_per_Gallon": 15.0, "Name": "amc matador", "Origin": "USA", "Weight_in_lbs": 3730, "Year": "1975-01-01"}, {"Acceleration": 19.0, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 95.0, "Miles_per_Gallon": 18.0, "Name": "plymouth fury", "Origin": "USA", "Weight_in_lbs": 3785, "Year": "1975-01-01"}, {"Acceleration": 15.0, "Cylinders": 6, "Displacement": 231.0, "Horsepower": 110.0, "Miles_per_Gallon": 21.0, "Name": "buick skyhawk", "Origin": "USA", "Weight_in_lbs": 3039, "Year": "1975-01-01"}, {"Acceleration": 13.5, "Cylinders": 8, "Displacement": 262.0, "Horsepower": 110.0, "Miles_per_Gallon": 20.0, "Name": "chevrolet monza 2+2", "Origin": "USA", "Weight_in_lbs": 3221, "Year": "1975-01-01"}, {"Acceleration": 12.0, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 129.0, "Miles_per_Gallon": 13.0, "Name": "ford mustang ii", "Origin": "USA", "Weight_in_lbs": 3169, "Year": "1975-01-01"}, {"Acceleration": 16.0, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 75.0, "Miles_per_Gallon": 29.0, "Name": "toyota corolla", "Origin": "Japan", "Weight_in_lbs": 2171, "Year": "1975-01-01"}, {"Acceleration": 17.0, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 83.0, "Miles_per_Gallon": 23.0, "Name": "ford pinto", "Origin": "USA", "Weight_in_lbs": 2639, "Year": "1975-01-01"}, {"Acceleration": 16.0, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 100.0, "Miles_per_Gallon": 20.0, "Name": "amc gremlin", "Origin": "USA", "Weight_in_lbs": 2914, "Year": "1975-01-01"}, {"Acceleration": 18.5, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 78.0, "Miles_per_Gallon": 23.0, "Name": "pontiac astro", "Origin": "USA", "Weight_in_lbs": 2592, "Year": "1975-01-01"}, {"Acceleration": 13.5, "Cylinders": 4, "Displacement": 134.0, "Horsepower": 96.0, "Miles_per_Gallon": 24.0, "Name": "toyota corona", "Origin": "Japan", "Weight_in_lbs": 2702, "Year": "1975-01-01"}, {"Acceleration": 16.5, "Cylinders": 4, "Displacement": 90.0, "Horsepower": 71.0, "Miles_per_Gallon": 25.0, "Name": "volkswagen dasher", "Origin": "Europe", "Weight_in_lbs": 2223, "Year": "1975-01-01"}, {"Acceleration": 17.0, "Cylinders": 4, "Displacement": 119.0, "Horsepower": 97.0, "Miles_per_Gallon": 24.0, "Name": "datsun 710", "Origin": "Japan", "Weight_in_lbs": 2545, "Year": "1975-01-01"}, {"Acceleration": 14.5, "Cylinders": 6, "Displacement": 171.0, "Horsepower": 97.0, "Miles_per_Gallon": 18.0, "Name": "ford pinto", "Origin": "USA", "Weight_in_lbs": 2984, "Year": "1975-01-01"}, {"Acceleration": 14.0, "Cylinders": 4, "Displacement": 90.0, "Horsepower": 70.0, "Miles_per_Gallon": 29.0, "Name": "volkswagen rabbit", "Origin": "Europe", "Weight_in_lbs": 1937, "Year": "1975-01-01"}, {"Acceleration": 17.0, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 90.0, "Miles_per_Gallon": 19.0, "Name": "amc pacer", "Origin": "USA", "Weight_in_lbs": 3211, "Year": "1975-01-01"}, {"Acceleration": 15.0, "Cylinders": 4, "Displacement": 115.0, "Horsepower": 95.0, "Miles_per_Gallon": 23.0, "Name": "audi 100ls", "Origin": "Europe", "Weight_in_lbs": 2694, "Year": "1975-01-01"}, {"Acceleration": 17.0, "Cylinders": 4, "Displacement": 120.0, "Horsepower": 88.0, "Miles_per_Gallon": 23.0, "Name": "peugeot 504", "Origin": "Europe", "Weight_in_lbs": 2957, "Year": "1975-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 98.0, "Miles_per_Gallon": 22.0, "Name": "volvo 244dl", "Origin": "Europe", "Weight_in_lbs": 2945, "Year": "1975-01-01"}, {"Acceleration": 13.5, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 115.0, "Miles_per_Gallon": 25.0, "Name": "saab 99le", "Origin": "Europe", "Weight_in_lbs": 2671, "Year": "1975-01-01"}, {"Acceleration": 17.5, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 53.0, "Miles_per_Gallon": 33.0, "Name": "honda civic cvcc", "Origin": "Japan", "Weight_in_lbs": 1795, "Year": "1975-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 107.0, "Horsepower": 86.0, "Miles_per_Gallon": 28.0, "Name": "fiat 131", "Origin": "Europe", "Weight_in_lbs": 2464, "Year": "1976-01-01"}, {"Acceleration": 16.9, "Cylinders": 4, "Displacement": 116.0, "Horsepower": 81.0, "Miles_per_Gallon": 25.0, "Name": "opel 1900", "Origin": "Europe", "Weight_in_lbs": 2220, "Year": "1976-01-01"}, {"Acceleration": 14.9, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 92.0, "Miles_per_Gallon": 25.0, "Name": "capri ii", "Origin": "USA", "Weight_in_lbs": 2572, "Year": "1976-01-01"}, {"Acceleration": 17.7, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 79.0, "Miles_per_Gallon": 26.0, "Name": "dodge colt", "Origin": "USA", "Weight_in_lbs": 2255, "Year": "1976-01-01"}, {"Acceleration": 15.3, "Cylinders": 4, "Displacement": 101.0, "Horsepower": 83.0, "Miles_per_Gallon": 27.0, "Name": "renault 12tl", "Origin": "Europe", "Weight_in_lbs": 2202, "Year": "1976-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 305.0, "Horsepower": 140.0, "Miles_per_Gallon": 17.5, "Name": "chevrolet chevelle malibu classic", "Origin": "USA", "Weight_in_lbs": 4215, "Year": "1976-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 16.0, "Name": "dodge coronet brougham", "Origin": "USA", "Weight_in_lbs": 4190, "Year": "1976-01-01"}, {"Acceleration": 13.9, "Cylinders": 8, "Displacement": 304.0, "Horsepower": 120.0, "Miles_per_Gallon": 15.5, "Name": "amc matador", "Origin": "USA", "Weight_in_lbs": 3962, "Year": "1976-01-01"}, {"Acceleration": 12.8, "Cylinders": 8, "Displacement": 351.0, "Horsepower": 152.0, "Miles_per_Gallon": 14.5, "Name": "ford gran torino", "Origin": "USA", "Weight_in_lbs": 4215, "Year": "1976-01-01"}, {"Acceleration": 15.4, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 100.0, "Miles_per_Gallon": 22.0, "Name": "plymouth valiant", "Origin": "USA", "Weight_in_lbs": 3233, "Year": "1976-01-01"}, {"Acceleration": 14.5, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 105.0, "Miles_per_Gallon": 22.0, "Name": "chevrolet nova", "Origin": "USA", "Weight_in_lbs": 3353, "Year": "1976-01-01"}, {"Acceleration": 17.6, "Cylinders": 6, "Displacement": 200.0, "Horsepower": 81.0, "Miles_per_Gallon": 24.0, "Name": "ford maverick", "Origin": "USA", "Weight_in_lbs": 3012, "Year": "1976-01-01"}, {"Acceleration": 17.6, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 90.0, "Miles_per_Gallon": 22.5, "Name": "amc hornet", "Origin": "USA", "Weight_in_lbs": 3085, "Year": "1976-01-01"}, {"Acceleration": 22.2, "Cylinders": 4, "Displacement": 85.0, "Horsepower": 52.0, "Miles_per_Gallon": 29.0, "Name": "chevrolet chevette", "Origin": "USA", "Weight_in_lbs": 2035, "Year": "1976-01-01"}, {"Acceleration": 22.1, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 60.0, "Miles_per_Gallon": 24.5, "Name": "chevrolet woody", "Origin": "USA", "Weight_in_lbs": 2164, "Year": "1976-01-01"}, {"Acceleration": 14.2, "Cylinders": 4, "Displacement": 90.0, "Horsepower": 70.0, "Miles_per_Gallon": 29.0, "Name": "vw rabbit", "Origin": "Europe", "Weight_in_lbs": 1937, "Year": "1976-01-01"}, {"Acceleration": 17.4, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 53.0, "Miles_per_Gallon": 33.0, "Name": "honda civic", "Origin": "Japan", "Weight_in_lbs": 1795, "Year": "1976-01-01"}, {"Acceleration": 17.7, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 100.0, "Miles_per_Gallon": 20.0, "Name": "dodge aspen se", "Origin": "USA", "Weight_in_lbs": 3651, "Year": "1976-01-01"}, {"Acceleration": 21.0, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 78.0, "Miles_per_Gallon": 18.0, "Name": "ford granada ghia", "Origin": "USA", "Weight_in_lbs": 3574, "Year": "1976-01-01"}, {"Acceleration": 16.2, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 110.0, "Miles_per_Gallon": 18.5, "Name": "pontiac ventura sj", "Origin": "USA", "Weight_in_lbs": 3645, "Year": "1976-01-01"}, {"Acceleration": 17.8, "Cylinders": 6, "Displacement": 258.0, "Horsepower": 95.0, "Miles_per_Gallon": 17.5, "Name": "amc pacer d/l", "Origin": "USA", "Weight_in_lbs": 3193, "Year": "1976-01-01"}, {"Acceleration": 12.2, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 71.0, "Miles_per_Gallon": 29.5, "Name": "volkswagen rabbit", "Origin": "Europe", "Weight_in_lbs": 1825, "Year": "1976-01-01"}, {"Acceleration": 17.0, "Cylinders": 4, "Displacement": 85.0, "Horsepower": 70.0, "Miles_per_Gallon": 32.0, "Name": "datsun b-210", "Origin": "Japan", "Weight_in_lbs": 1990, "Year": "1976-01-01"}, {"Acceleration": 16.4, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 75.0, "Miles_per_Gallon": 28.0, "Name": "toyota corolla", "Origin": "Japan", "Weight_in_lbs": 2155, "Year": "1976-01-01"}, {"Acceleration": 13.6, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 72.0, "Miles_per_Gallon": 26.5, "Name": "ford pinto", "Origin": "USA", "Weight_in_lbs": 2565, "Year": "1976-01-01"}, {"Acceleration": 15.7, "Cylinders": 4, "Displacement": 130.0, "Horsepower": 102.0, "Miles_per_Gallon": 20.0, "Name": "volvo 245", "Origin": "Europe", "Weight_in_lbs": 3150, "Year": "1976-01-01"}, {"Acceleration": 13.2, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 13.0, "Name": "plymouth volare premier v8", "Origin": "USA", "Weight_in_lbs": 3940, "Year": "1976-01-01"}, {"Acceleration": 21.9, "Cylinders": 4, "Displacement": 120.0, "Horsepower": 88.0, "Miles_per_Gallon": 19.0, "Name": "peugeot 504", "Origin": "Europe", "Weight_in_lbs": 3270, "Year": "1976-01-01"}, {"Acceleration": 15.5, "Cylinders": 6, "Displacement": 156.0, "Horsepower": 108.0, "Miles_per_Gallon": 19.0, "Name": "toyota mark ii", "Origin": "Japan", "Weight_in_lbs": 2930, "Year": "1976-01-01"}, {"Acceleration": 16.7, "Cylinders": 6, "Displacement": 168.0, "Horsepower": 120.0, "Miles_per_Gallon": 16.5, "Name": "mercedes-benz 280s", "Origin": "Europe", "Weight_in_lbs": 3820, "Year": "1976-01-01"}, {"Acceleration": 12.1, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 180.0, "Miles_per_Gallon": 16.5, "Name": "cadillac seville", "Origin": "USA", "Weight_in_lbs": 4380, "Year": "1976-01-01"}, {"Acceleration": 12.0, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 145.0, "Miles_per_Gallon": 13.0, "Name": "chevy c10", "Origin": "USA", "Weight_in_lbs": 4055, "Year": "1976-01-01"}, {"Acceleration": 15.0, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 130.0, "Miles_per_Gallon": 13.0, "Name": "ford f108", "Origin": "USA", "Weight_in_lbs": 3870, "Year": "1976-01-01"}, {"Acceleration": 14.0, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 150.0, "Miles_per_Gallon": 13.0, "Name": "dodge d100", "Origin": "USA", "Weight_in_lbs": 3755, "Year": "1976-01-01"}, {"Acceleration": 18.5, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 68.0, "Miles_per_Gallon": 31.5, "Name": "honda Accelerationord cvcc", "Origin": "Japan", "Weight_in_lbs": 2045, "Year": "1977-01-01"}, {"Acceleration": 14.8, "Cylinders": 4, "Displacement": 111.0, "Horsepower": 80.0, "Miles_per_Gallon": 30.0, "Name": "buick opel isuzu deluxe", "Origin": "USA", "Weight_in_lbs": 2155, "Year": "1977-01-01"}, {"Acceleration": 18.6, "Cylinders": 4, "Displacement": 79.0, "Horsepower": 58.0, "Miles_per_Gallon": 36.0, "Name": "renault 5 gtl", "Origin": "Europe", "Weight_in_lbs": 1825, "Year": "1977-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 122.0, "Horsepower": 96.0, "Miles_per_Gallon": 25.5, "Name": "plymouth arrow gs", "Origin": "USA", "Weight_in_lbs": 2300, "Year": "1977-01-01"}, {"Acceleration": 16.8, "Cylinders": 4, "Displacement": 85.0, "Horsepower": 70.0, "Miles_per_Gallon": 33.5, "Name": "datsun f-10 hatchback", "Origin": "Japan", "Weight_in_lbs": 1945, "Year": "1977-01-01"}, {"Acceleration": 12.5, "Cylinders": 8, "Displacement": 305.0, "Horsepower": 145.0, "Miles_per_Gallon": 17.5, "Name": "chevrolet caprice classic", "Origin": "USA", "Weight_in_lbs": 3880, "Year": "1977-01-01"}, {"Acceleration": 19.0, "Cylinders": 8, "Displacement": 260.0, "Horsepower": 110.0, "Miles_per_Gallon": 17.0, "Name": "oldsmobile cutlass supreme", "Origin": "USA", "Weight_in_lbs": 4060, "Year": "1977-01-01"}, {"Acceleration": 13.7, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 145.0, "Miles_per_Gallon": 15.5, "Name": "dodge monaco brougham", "Origin": "USA", "Weight_in_lbs": 4140, "Year": "1977-01-01"}, {"Acceleration": 14.9, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 130.0, "Miles_per_Gallon": 15.0, "Name": "mercury cougar brougham", "Origin": "USA", "Weight_in_lbs": 4295, "Year": "1977-01-01"}, {"Acceleration": 16.4, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 110.0, "Miles_per_Gallon": 17.5, "Name": "chevrolet concours", "Origin": "USA", "Weight_in_lbs": 3520, "Year": "1977-01-01"}, {"Acceleration": 16.9, "Cylinders": 6, "Displacement": 231.0, "Horsepower": 105.0, "Miles_per_Gallon": 20.5, "Name": "buick skylark", "Origin": "USA", "Weight_in_lbs": 3425, "Year": "1977-01-01"}, {"Acceleration": 17.7, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 100.0, "Miles_per_Gallon": 19.0, "Name": "plymouth volare custom", "Origin": "USA", "Weight_in_lbs": 3630, "Year": "1977-01-01"}, {"Acceleration": 19.0, "Cylinders": 6, "Displacement": 250.0, "Horsepower": 98.0, "Miles_per_Gallon": 18.5, "Name": "ford granada", "Origin": "USA", "Weight_in_lbs": 3525, "Year": "1977-01-01"}, {"Acceleration": 11.1, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 180.0, "Miles_per_Gallon": 16.0, "Name": "pontiac grand prix lj", "Origin": "USA", "Weight_in_lbs": 4220, "Year": "1977-01-01"}, {"Acceleration": 11.4, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 170.0, "Miles_per_Gallon": 15.5, "Name": "chevrolet monte carlo landau", "Origin": "USA", "Weight_in_lbs": 4165, "Year": "1977-01-01"}, {"Acceleration": 12.2, "Cylinders": 8, "Displacement": 400.0, "Horsepower": 190.0, "Miles_per_Gallon": 15.5, "Name": "chrysler cordoba", "Origin": "USA", "Weight_in_lbs": 4325, "Year": "1977-01-01"}, {"Acceleration": 14.5, "Cylinders": 8, "Displacement": 351.0, "Horsepower": 149.0, "Miles_per_Gallon": 16.0, "Name": "ford thunderbird", "Origin": "USA", "Weight_in_lbs": 4335, "Year": "1977-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 78.0, "Miles_per_Gallon": 29.0, "Name": "volkswagen rabbit custom", "Origin": "Europe", "Weight_in_lbs": 1940, "Year": "1977-01-01"}, {"Acceleration": 16.0, "Cylinders": 4, "Displacement": 151.0, "Horsepower": 88.0, "Miles_per_Gallon": 24.5, "Name": "pontiac sunbird coupe", "Origin": "USA", "Weight_in_lbs": 2740, "Year": "1977-01-01"}, {"Acceleration": 18.2, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 75.0, "Miles_per_Gallon": 26.0, "Name": "toyota corolla liftback", "Origin": "Japan", "Weight_in_lbs": 2265, "Year": "1977-01-01"}, {"Acceleration": 15.8, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 89.0, "Miles_per_Gallon": 25.5, "Name": "ford mustang ii 2+2", "Origin": "USA", "Weight_in_lbs": 2755, "Year": "1977-01-01"}, {"Acceleration": 17.0, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 63.0, "Miles_per_Gallon": 30.5, "Name": "chevrolet chevette", "Origin": "USA", "Weight_in_lbs": 2051, "Year": "1977-01-01"}, {"Acceleration": 15.9, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 83.0, "Miles_per_Gallon": 33.5, "Name": "dodge colt m/m", "Origin": "USA", "Weight_in_lbs": 2075, "Year": "1977-01-01"}, {"Acceleration": 16.4, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 67.0, "Miles_per_Gallon": 30.0, "Name": "subaru dl", "Origin": "Japan", "Weight_in_lbs": 1985, "Year": "1977-01-01"}, {"Acceleration": 14.1, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 78.0, "Miles_per_Gallon": 30.5, "Name": "volkswagen dasher", "Origin": "Europe", "Weight_in_lbs": 2190, "Year": "1977-01-01"}, {"Acceleration": 14.5, "Cylinders": 6, "Displacement": 146.0, "Horsepower": 97.0, "Miles_per_Gallon": 22.0, "Name": "datsun 810", "Origin": "Japan", "Weight_in_lbs": 2815, "Year": "1977-01-01"}, {"Acceleration": 12.8, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 110.0, "Miles_per_Gallon": 21.5, "Name": "bmw 320i", "Origin": "Europe", "Weight_in_lbs": 2600, "Year": "1977-01-01"}, {"Acceleration": 13.5, "Cylinders": 3, "Displacement": 80.0, "Horsepower": 110.0, "Miles_per_Gallon": 21.5, "Name": "mazda rx-4", "Origin": "Japan", "Weight_in_lbs": 2720, "Year": "1977-01-01"}, {"Acceleration": 21.5, "Cylinders": 4, "Displacement": 90.0, "Horsepower": 48.0, "Miles_per_Gallon": 43.1, "Name": "volkswagen rabbit custom diesel", "Origin": "Europe", "Weight_in_lbs": 1985, "Year": "1978-01-01"}, {"Acceleration": 14.4, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 66.0, "Miles_per_Gallon": 36.1, "Name": "ford fiesta", "Origin": "USA", "Weight_in_lbs": 1800, "Year": "1978-01-01"}, {"Acceleration": 19.4, "Cylinders": 4, "Displacement": 78.0, "Horsepower": 52.0, "Miles_per_Gallon": 32.8, "Name": "mazda glc deluxe", "Origin": "Japan", "Weight_in_lbs": 1985, "Year": "1978-01-01"}, {"Acceleration": 18.6, "Cylinders": 4, "Displacement": 85.0, "Horsepower": 70.0, "Miles_per_Gallon": 39.4, "Name": "datsun b210 gx", "Origin": "Japan", "Weight_in_lbs": 2070, "Year": "1978-01-01"}, {"Acceleration": 16.4, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 60.0, "Miles_per_Gallon": 36.1, "Name": "honda civic cvcc", "Origin": "Japan", "Weight_in_lbs": 1800, "Year": "1978-01-01"}, {"Acceleration": 15.5, "Cylinders": 8, "Displacement": 260.0, "Horsepower": 110.0, "Miles_per_Gallon": 19.9, "Name": "oldsmobile cutlass salon brougham", "Origin": "USA", "Weight_in_lbs": 3365, "Year": "1978-01-01"}, {"Acceleration": 13.2, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 140.0, "Miles_per_Gallon": 19.4, "Name": "dodge diplomat", "Origin": "USA", "Weight_in_lbs": 3735, "Year": "1978-01-01"}, {"Acceleration": 12.8, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 139.0, "Miles_per_Gallon": 20.2, "Name": "mercury monarch ghia", "Origin": "USA", "Weight_in_lbs": 3570, "Year": "1978-01-01"}, {"Acceleration": 19.2, "Cylinders": 6, "Displacement": 231.0, "Horsepower": 105.0, "Miles_per_Gallon": 19.2, "Name": "pontiac phoenix lj", "Origin": "USA", "Weight_in_lbs": 3535, "Year": "1978-01-01"}, {"Acceleration": 18.2, "Cylinders": 6, "Displacement": 200.0, "Horsepower": 95.0, "Miles_per_Gallon": 20.5, "Name": "chevrolet malibu", "Origin": "USA", "Weight_in_lbs": 3155, "Year": "1978-01-01"}, {"Acceleration": 15.8, "Cylinders": 6, "Displacement": 200.0, "Horsepower": 85.0, "Miles_per_Gallon": 20.2, "Name": "ford fairmont (auto)", "Origin": "USA", "Weight_in_lbs": 2965, "Year": "1978-01-01"}, {"Acceleration": 15.4, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 88.0, "Miles_per_Gallon": 25.1, "Name": "ford fairmont (man)", "Origin": "USA", "Weight_in_lbs": 2720, "Year": "1978-01-01"}, {"Acceleration": 17.2, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 100.0, "Miles_per_Gallon": 20.5, "Name": "plymouth volare", "Origin": "USA", "Weight_in_lbs": 3430, "Year": "1978-01-01"}, {"Acceleration": 17.2, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 90.0, "Miles_per_Gallon": 19.4, "Name": "amc concord", "Origin": "USA", "Weight_in_lbs": 3210, "Year": "1978-01-01"}, {"Acceleration": 15.8, "Cylinders": 6, "Displacement": 231.0, "Horsepower": 105.0, "Miles_per_Gallon": 20.6, "Name": "buick century special", "Origin": "USA", "Weight_in_lbs": 3380, "Year": "1978-01-01"}, {"Acceleration": 16.7, "Cylinders": 6, "Displacement": 200.0, "Horsepower": 85.0, "Miles_per_Gallon": 20.8, "Name": "mercury zephyr", "Origin": "USA", "Weight_in_lbs": 3070, "Year": "1978-01-01"}, {"Acceleration": 18.7, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 110.0, "Miles_per_Gallon": 18.6, "Name": "dodge aspen", "Origin": "USA", "Weight_in_lbs": 3620, "Year": "1978-01-01"}, {"Acceleration": 15.1, "Cylinders": 6, "Displacement": 258.0, "Horsepower": 120.0, "Miles_per_Gallon": 18.1, "Name": "amc concord d/l", "Origin": "USA", "Weight_in_lbs": 3410, "Year": "1978-01-01"}, {"Acceleration": 13.2, "Cylinders": 8, "Displacement": 305.0, "Horsepower": 145.0, "Miles_per_Gallon": 19.2, "Name": "chevrolet monte carlo landau", "Origin": "USA", "Weight_in_lbs": 3425, "Year": "1978-01-01"}, {"Acceleration": 13.4, "Cylinders": 6, "Displacement": 231.0, "Horsepower": 165.0, "Miles_per_Gallon": 17.7, "Name": "buick regal sport coupe (turbo)", "Origin": "USA", "Weight_in_lbs": 3445, "Year": "1978-01-01"}, {"Acceleration": 11.2, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 139.0, "Miles_per_Gallon": 18.1, "Name": "ford futura", "Origin": "USA", "Weight_in_lbs": 3205, "Year": "1978-01-01"}, {"Acceleration": 13.7, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 140.0, "Miles_per_Gallon": 17.5, "Name": "dodge magnum xe", "Origin": "USA", "Weight_in_lbs": 4080, "Year": "1978-01-01"}, {"Acceleration": 16.5, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 68.0, "Miles_per_Gallon": 30.0, "Name": "chevrolet chevette", "Origin": "USA", "Weight_in_lbs": 2155, "Year": "1978-01-01"}, {"Acceleration": 14.2, "Cylinders": 4, "Displacement": 134.0, "Horsepower": 95.0, "Miles_per_Gallon": 27.5, "Name": "toyota corona", "Origin": "Japan", "Weight_in_lbs": 2560, "Year": "1978-01-01"}, {"Acceleration": 14.7, "Cylinders": 4, "Displacement": 119.0, "Horsepower": 97.0, "Miles_per_Gallon": 27.2, "Name": "datsun 510", "Origin": "Japan", "Weight_in_lbs": 2300, "Year": "1978-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 105.0, "Horsepower": 75.0, "Miles_per_Gallon": 30.9, "Name": "dodge omni", "Origin": "USA", "Weight_in_lbs": 2230, "Year": "1978-01-01"}, {"Acceleration": 14.8, "Cylinders": 4, "Displacement": 134.0, "Horsepower": 95.0, "Miles_per_Gallon": 21.1, "Name": "toyota celica gt liftback", "Origin": "Japan", "Weight_in_lbs": 2515, "Year": "1978-01-01"}, {"Acceleration": 16.7, "Cylinders": 4, "Displacement": 156.0, "Horsepower": 105.0, "Miles_per_Gallon": 23.2, "Name": "plymouth sapporo", "Origin": "USA", "Weight_in_lbs": 2745, "Year": "1978-01-01"}, {"Acceleration": 17.6, "Cylinders": 4, "Displacement": 151.0, "Horsepower": 85.0, "Miles_per_Gallon": 23.8, "Name": "oldsmobile starfire sx", "Origin": "USA", "Weight_in_lbs": 2855, "Year": "1978-01-01"}, {"Acceleration": 14.9, "Cylinders": 4, "Displacement": 119.0, "Horsepower": 97.0, "Miles_per_Gallon": 23.9, "Name": "datsun 200-sx", "Origin": "Japan", "Weight_in_lbs": 2405, "Year": "1978-01-01"}, {"Acceleration": 15.9, "Cylinders": 5, "Displacement": 131.0, "Horsepower": 103.0, "Miles_per_Gallon": 20.3, "Name": "audi 5000", "Origin": "Europe", "Weight_in_lbs": 2830, "Year": "1978-01-01"}, {"Acceleration": 13.6, "Cylinders": 6, "Displacement": 163.0, "Horsepower": 125.0, "Miles_per_Gallon": 17.0, "Name": "volvo 264gl", "Origin": "Europe", "Weight_in_lbs": 3140, "Year": "1978-01-01"}, {"Acceleration": 15.7, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 115.0, "Miles_per_Gallon": 21.6, "Name": "saab 99gle", "Origin": "Europe", "Weight_in_lbs": 2795, "Year": "1978-01-01"}, {"Acceleration": 15.8, "Cylinders": 6, "Displacement": 163.0, "Horsepower": 133.0, "Miles_per_Gallon": 16.2, "Name": "peugeot 604sl", "Origin": "Europe", "Weight_in_lbs": 3410, "Year": "1978-01-01"}, {"Acceleration": 14.9, "Cylinders": 4, "Displacement": 89.0, "Horsepower": 71.0, "Miles_per_Gallon": 31.5, "Name": "volkswagen scirocco", "Origin": "Europe", "Weight_in_lbs": 1990, "Year": "1978-01-01"}, {"Acceleration": 16.6, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 68.0, "Miles_per_Gallon": 29.5, "Name": "honda Accelerationord lx", "Origin": "Japan", "Weight_in_lbs": 2135, "Year": "1978-01-01"}, {"Acceleration": 15.4, "Cylinders": 6, "Displacement": 231.0, "Horsepower": 115.0, "Miles_per_Gallon": 21.5, "Name": "pontiac lemans v6", "Origin": "USA", "Weight_in_lbs": 3245, "Year": "1979-01-01"}, {"Acceleration": 18.2, "Cylinders": 6, "Displacement": 200.0, "Horsepower": 85.0, "Miles_per_Gallon": 19.8, "Name": "mercury zephyr 6", "Origin": "USA", "Weight_in_lbs": 2990, "Year": "1979-01-01"}, {"Acceleration": 17.3, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 88.0, "Miles_per_Gallon": 22.3, "Name": "ford fairmont 4", "Origin": "USA", "Weight_in_lbs": 2890, "Year": "1979-01-01"}, {"Acceleration": 18.2, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 90.0, "Miles_per_Gallon": 20.2, "Name": "amc concord dl 6", "Origin": "USA", "Weight_in_lbs": 3265, "Year": "1979-01-01"}, {"Acceleration": 16.6, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 110.0, "Miles_per_Gallon": 20.6, "Name": "dodge aspen 6", "Origin": "USA", "Weight_in_lbs": 3360, "Year": "1979-01-01"}, {"Acceleration": 15.4, "Cylinders": 8, "Displacement": 305.0, "Horsepower": 130.0, "Miles_per_Gallon": 17.0, "Name": "chevrolet caprice classic", "Origin": "USA", "Weight_in_lbs": 3840, "Year": "1979-01-01"}, {"Acceleration": 13.4, "Cylinders": 8, "Displacement": 302.0, "Horsepower": 129.0, "Miles_per_Gallon": 17.6, "Name": "ford ltd landau", "Origin": "USA", "Weight_in_lbs": 3725, "Year": "1979-01-01"}, {"Acceleration": 13.2, "Cylinders": 8, "Displacement": 351.0, "Horsepower": 138.0, "Miles_per_Gallon": 16.5, "Name": "mercury grand marquis", "Origin": "USA", "Weight_in_lbs": 3955, "Year": "1979-01-01"}, {"Acceleration": 15.2, "Cylinders": 8, "Displacement": 318.0, "Horsepower": 135.0, "Miles_per_Gallon": 18.2, "Name": "dodge st. regis", "Origin": "USA", "Weight_in_lbs": 3830, "Year": "1979-01-01"}, {"Acceleration": 14.9, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 155.0, "Miles_per_Gallon": 16.9, "Name": "buick estate wagon (sw)", "Origin": "USA", "Weight_in_lbs": 4360, "Year": "1979-01-01"}, {"Acceleration": 14.3, "Cylinders": 8, "Displacement": 351.0, "Horsepower": 142.0, "Miles_per_Gallon": 15.5, "Name": "ford country squire (sw)", "Origin": "USA", "Weight_in_lbs": 4054, "Year": "1979-01-01"}, {"Acceleration": 15.0, "Cylinders": 8, "Displacement": 267.0, "Horsepower": 125.0, "Miles_per_Gallon": 19.2, "Name": "chevrolet malibu classic (sw)", "Origin": "USA", "Weight_in_lbs": 3605, "Year": "1979-01-01"}, {"Acceleration": 13.0, "Cylinders": 8, "Displacement": 360.0, "Horsepower": 150.0, "Miles_per_Gallon": 18.5, "Name": "chrysler lebaron town @ country (sw)", "Origin": "USA", "Weight_in_lbs": 3940, "Year": "1979-01-01"}, {"Acceleration": 14.0, "Cylinders": 4, "Displacement": 89.0, "Horsepower": 71.0, "Miles_per_Gallon": 31.9, "Name": "vw rabbit custom", "Origin": "Europe", "Weight_in_lbs": 1925, "Year": "1979-01-01"}, {"Acceleration": 15.2, "Cylinders": 4, "Displacement": 86.0, "Horsepower": 65.0, "Miles_per_Gallon": 34.1, "Name": "maxda glc deluxe", "Origin": "Japan", "Weight_in_lbs": 1975, "Year": "1979-01-01"}, {"Acceleration": 14.4, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 80.0, "Miles_per_Gallon": 35.7, "Name": "dodge colt hatchback custom", "Origin": "USA", "Weight_in_lbs": 1915, "Year": "1979-01-01"}, {"Acceleration": 15.0, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 80.0, "Miles_per_Gallon": 27.4, "Name": "amc spirit dl", "Origin": "USA", "Weight_in_lbs": 2670, "Year": "1979-01-01"}, {"Acceleration": 20.1, "Cylinders": 5, "Displacement": 183.0, "Horsepower": 77.0, "Miles_per_Gallon": 25.4, "Name": "mercedes benz 300d", "Origin": "Europe", "Weight_in_lbs": 3530, "Year": "1979-01-01"}, {"Acceleration": 17.4, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 125.0, "Miles_per_Gallon": 23.0, "Name": "cadillac eldorado", "Origin": "USA", "Weight_in_lbs": 3900, "Year": "1979-01-01"}, {"Acceleration": 24.8, "Cylinders": 4, "Displacement": 141.0, "Horsepower": 71.0, "Miles_per_Gallon": 27.2, "Name": "peugeot 504", "Origin": "Europe", "Weight_in_lbs": 3190, "Year": "1979-01-01"}, {"Acceleration": 22.2, "Cylinders": 8, "Displacement": 260.0, "Horsepower": 90.0, "Miles_per_Gallon": 23.9, "Name": "oldsmobile cutlass salon brougham", "Origin": "USA", "Weight_in_lbs": 3420, "Year": "1979-01-01"}, {"Acceleration": 13.2, "Cylinders": 4, "Displacement": 105.0, "Horsepower": 70.0, "Miles_per_Gallon": 34.2, "Name": "plymouth horizon", "Origin": "USA", "Weight_in_lbs": 2200, "Year": "1979-01-01"}, {"Acceleration": 14.9, "Cylinders": 4, "Displacement": 105.0, "Horsepower": 70.0, "Miles_per_Gallon": 34.5, "Name": "plymouth horizon tc3", "Origin": "USA", "Weight_in_lbs": 2150, "Year": "1979-01-01"}, {"Acceleration": 19.2, "Cylinders": 4, "Displacement": 85.0, "Horsepower": 65.0, "Miles_per_Gallon": 31.8, "Name": "datsun 210", "Origin": "Japan", "Weight_in_lbs": 2020, "Year": "1979-01-01"}, {"Acceleration": 14.7, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 69.0, "Miles_per_Gallon": 37.3, "Name": "fiat strada custom", "Origin": "Europe", "Weight_in_lbs": 2130, "Year": "1979-01-01"}, {"Acceleration": 16.0, "Cylinders": 4, "Displacement": 151.0, "Horsepower": 90.0, "Miles_per_Gallon": 28.4, "Name": "buick skylark limited", "Origin": "USA", "Weight_in_lbs": 2670, "Year": "1979-01-01"}, {"Acceleration": 11.3, "Cylinders": 6, "Displacement": 173.0, "Horsepower": 115.0, "Miles_per_Gallon": 28.8, "Name": "chevrolet citation", "Origin": "USA", "Weight_in_lbs": 2595, "Year": "1979-01-01"}, {"Acceleration": 12.9, "Cylinders": 6, "Displacement": 173.0, "Horsepower": 115.0, "Miles_per_Gallon": 26.8, "Name": "oldsmobile omega brougham", "Origin": "USA", "Weight_in_lbs": 2700, "Year": "1979-01-01"}, {"Acceleration": 13.2, "Cylinders": 4, "Displacement": 151.0, "Horsepower": 90.0, "Miles_per_Gallon": 33.5, "Name": "pontiac phoenix", "Origin": "USA", "Weight_in_lbs": 2556, "Year": "1979-01-01"}, {"Acceleration": 14.7, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 76.0, "Miles_per_Gallon": 41.5, "Name": "vw rabbit", "Origin": "Europe", "Weight_in_lbs": 2144, "Year": "1980-01-01"}, {"Acceleration": 18.8, "Cylinders": 4, "Displacement": 89.0, "Horsepower": 60.0, "Miles_per_Gallon": 38.1, "Name": "toyota corolla tercel", "Origin": "Japan", "Weight_in_lbs": 1968, "Year": "1980-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 70.0, "Miles_per_Gallon": 32.1, "Name": "chevrolet chevette", "Origin": "USA", "Weight_in_lbs": 2120, "Year": "1980-01-01"}, {"Acceleration": 16.4, "Cylinders": 4, "Displacement": 86.0, "Horsepower": 65.0, "Miles_per_Gallon": 37.2, "Name": "datsun 310", "Origin": "Japan", "Weight_in_lbs": 2019, "Year": "1980-01-01"}, {"Acceleration": 16.5, "Cylinders": 4, "Displacement": 151.0, "Horsepower": 90.0, "Miles_per_Gallon": 28.0, "Name": "chevrolet citation", "Origin": "USA", "Weight_in_lbs": 2678, "Year": "1980-01-01"}, {"Acceleration": 18.1, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 88.0, "Miles_per_Gallon": 26.4, "Name": "ford fairmont", "Origin": "USA", "Weight_in_lbs": 2870, "Year": "1980-01-01"}, {"Acceleration": 20.1, "Cylinders": 4, "Displacement": 151.0, "Horsepower": 90.0, "Miles_per_Gallon": 24.3, "Name": "amc concord", "Origin": "USA", "Weight_in_lbs": 3003, "Year": "1980-01-01"}, {"Acceleration": 18.7, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 90.0, "Miles_per_Gallon": 19.1, "Name": "dodge aspen", "Origin": "USA", "Weight_in_lbs": 3381, "Year": "1980-01-01"}, {"Acceleration": 15.8, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 78.0, "Miles_per_Gallon": 34.3, "Name": "audi 4000", "Origin": "Europe", "Weight_in_lbs": 2188, "Year": "1980-01-01"}, {"Acceleration": 15.5, "Cylinders": 4, "Displacement": 134.0, "Horsepower": 90.0, "Miles_per_Gallon": 29.8, "Name": "toyota corona liftback", "Origin": "Japan", "Weight_in_lbs": 2711, "Year": "1980-01-01"}, {"Acceleration": 17.5, "Cylinders": 4, "Displacement": 120.0, "Horsepower": 75.0, "Miles_per_Gallon": 31.3, "Name": "mazda 626", "Origin": "Japan", "Weight_in_lbs": 2542, "Year": "1980-01-01"}, {"Acceleration": 15.0, "Cylinders": 4, "Displacement": 119.0, "Horsepower": 92.0, "Miles_per_Gallon": 37.0, "Name": "datsun 510 hatchback", "Origin": "Japan", "Weight_in_lbs": 2434, "Year": "1980-01-01"}, {"Acceleration": 15.2, "Cylinders": 4, "Displacement": 108.0, "Horsepower": 75.0, "Miles_per_Gallon": 32.2, "Name": "toyota corolla", "Origin": "Japan", "Weight_in_lbs": 2265, "Year": "1980-01-01"}, {"Acceleration": 17.9, "Cylinders": 4, "Displacement": 86.0, "Horsepower": 65.0, "Miles_per_Gallon": 46.6, "Name": "mazda glc", "Origin": "Japan", "Weight_in_lbs": 2110, "Year": "1980-01-01"}, {"Acceleration": 14.4, "Cylinders": 4, "Displacement": 156.0, "Horsepower": 105.0, "Miles_per_Gallon": 27.9, "Name": "dodge colt", "Origin": "USA", "Weight_in_lbs": 2800, "Year": "1980-01-01"}, {"Acceleration": 19.2, "Cylinders": 4, "Displacement": 85.0, "Horsepower": 65.0, "Miles_per_Gallon": 40.8, "Name": "datsun 210", "Origin": "Japan", "Weight_in_lbs": 2110, "Year": "1980-01-01"}, {"Acceleration": 21.7, "Cylinders": 4, "Displacement": 90.0, "Horsepower": 48.0, "Miles_per_Gallon": 44.3, "Name": "vw rabbit c (diesel)", "Origin": "Europe", "Weight_in_lbs": 2085, "Year": "1980-01-01"}, {"Acceleration": 23.7, "Cylinders": 4, "Displacement": 90.0, "Horsepower": 48.0, "Miles_per_Gallon": 43.4, "Name": "vw dasher (diesel)", "Origin": "Europe", "Weight_in_lbs": 2335, "Year": "1980-01-01"}, {"Acceleration": 19.9, "Cylinders": 5, "Displacement": 121.0, "Horsepower": 67.0, "Miles_per_Gallon": 36.4, "Name": "audi 5000s (diesel)", "Origin": "Europe", "Weight_in_lbs": 2950, "Year": "1980-01-01"}, {"Acceleration": 21.8, "Cylinders": 4, "Displacement": 146.0, "Horsepower": 67.0, "Miles_per_Gallon": 30.0, "Name": "mercedes-benz 240d", "Origin": "Europe", "Weight_in_lbs": 3250, "Year": "1980-01-01"}, {"Acceleration": 13.8, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 67.0, "Miles_per_Gallon": 44.6, "Name": "honda civic 1500 gl", "Origin": "Japan", "Weight_in_lbs": 1850, "Year": "1980-01-01"}, {"Acceleration": 17.3, "Cylinders": 4, "Displacement": 85.0, "Horsepower": null, "Miles_per_Gallon": 40.9, "Name": "renault lecar deluxe", "Origin": "Europe", "Weight_in_lbs": 1835, "Year": "1980-01-01"}, {"Acceleration": 18.0, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 67.0, "Miles_per_Gallon": 33.8, "Name": "subaru dl", "Origin": "Japan", "Weight_in_lbs": 2145, "Year": "1980-01-01"}, {"Acceleration": 15.3, "Cylinders": 4, "Displacement": 89.0, "Horsepower": 62.0, "Miles_per_Gallon": 29.8, "Name": "vokswagen rabbit", "Origin": "Europe", "Weight_in_lbs": 1845, "Year": "1980-01-01"}, {"Acceleration": 11.4, "Cylinders": 6, "Displacement": 168.0, "Horsepower": 132.0, "Miles_per_Gallon": 32.7, "Name": "datsun 280-zx", "Origin": "Japan", "Weight_in_lbs": 2910, "Year": "1980-01-01"}, {"Acceleration": 12.5, "Cylinders": 3, "Displacement": 70.0, "Horsepower": 100.0, "Miles_per_Gallon": 23.7, "Name": "mazda rx-7 gs", "Origin": "Japan", "Weight_in_lbs": 2420, "Year": "1980-01-01"}, {"Acceleration": 15.1, "Cylinders": 4, "Displacement": 122.0, "Horsepower": 88.0, "Miles_per_Gallon": 35.0, "Name": "triumph tr7 coupe", "Origin": "Europe", "Weight_in_lbs": 2500, "Year": "1980-01-01"}, {"Acceleration": 14.3, "Cylinders": 4, "Displacement": 140.0, "Horsepower": null, "Miles_per_Gallon": 23.6, "Name": "ford mustang cobra", "Origin": "USA", "Weight_in_lbs": 2905, "Year": "1980-01-01"}, {"Acceleration": 17.0, "Cylinders": 4, "Displacement": 107.0, "Horsepower": 72.0, "Miles_per_Gallon": 32.4, "Name": "honda Accelerationord", "Origin": "Japan", "Weight_in_lbs": 2290, "Year": "1980-01-01"}, {"Acceleration": 15.7, "Cylinders": 4, "Displacement": 135.0, "Horsepower": 84.0, "Miles_per_Gallon": 27.2, "Name": "plymouth reliant", "Origin": "USA", "Weight_in_lbs": 2490, "Year": "1982-01-01"}, {"Acceleration": 16.4, "Cylinders": 4, "Displacement": 151.0, "Horsepower": 84.0, "Miles_per_Gallon": 26.6, "Name": "buick skylark", "Origin": "USA", "Weight_in_lbs": 2635, "Year": "1982-01-01"}, {"Acceleration": 14.4, "Cylinders": 4, "Displacement": 156.0, "Horsepower": 92.0, "Miles_per_Gallon": 25.8, "Name": "dodge aries wagon (sw)", "Origin": "USA", "Weight_in_lbs": 2620, "Year": "1982-01-01"}, {"Acceleration": 12.6, "Cylinders": 6, "Displacement": 173.0, "Horsepower": 110.0, "Miles_per_Gallon": 23.5, "Name": "chevrolet citation", "Origin": "USA", "Weight_in_lbs": 2725, "Year": "1982-01-01"}, {"Acceleration": 12.9, "Cylinders": 4, "Displacement": 135.0, "Horsepower": 84.0, "Miles_per_Gallon": 30.0, "Name": "plymouth reliant", "Origin": "USA", "Weight_in_lbs": 2385, "Year": "1982-01-01"}, {"Acceleration": 16.9, "Cylinders": 4, "Displacement": 79.0, "Horsepower": 58.0, "Miles_per_Gallon": 39.1, "Name": "toyota starlet", "Origin": "Japan", "Weight_in_lbs": 1755, "Year": "1982-01-01"}, {"Acceleration": 16.4, "Cylinders": 4, "Displacement": 86.0, "Horsepower": 64.0, "Miles_per_Gallon": 39.0, "Name": "plymouth champ", "Origin": "USA", "Weight_in_lbs": 1875, "Year": "1982-01-01"}, {"Acceleration": 16.1, "Cylinders": 4, "Displacement": 81.0, "Horsepower": 60.0, "Miles_per_Gallon": 35.1, "Name": "honda civic 1300", "Origin": "Japan", "Weight_in_lbs": 1760, "Year": "1982-01-01"}, {"Acceleration": 17.8, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 67.0, "Miles_per_Gallon": 32.3, "Name": "subaru", "Origin": "Japan", "Weight_in_lbs": 2065, "Year": "1982-01-01"}, {"Acceleration": 19.4, "Cylinders": 4, "Displacement": 85.0, "Horsepower": 65.0, "Miles_per_Gallon": 37.0, "Name": "datsun 210", "Origin": "Japan", "Weight_in_lbs": 1975, "Year": "1982-01-01"}, {"Acceleration": 17.3, "Cylinders": 4, "Displacement": 89.0, "Horsepower": 62.0, "Miles_per_Gallon": 37.7, "Name": "toyota tercel", "Origin": "Japan", "Weight_in_lbs": 2050, "Year": "1982-01-01"}, {"Acceleration": 16.0, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 68.0, "Miles_per_Gallon": 34.1, "Name": "mazda glc 4", "Origin": "Japan", "Weight_in_lbs": 1985, "Year": "1982-01-01"}, {"Acceleration": 14.9, "Cylinders": 4, "Displacement": 105.0, "Horsepower": 63.0, "Miles_per_Gallon": 34.7, "Name": "plymouth horizon 4", "Origin": "USA", "Weight_in_lbs": 2215, "Year": "1982-01-01"}, {"Acceleration": 16.2, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 65.0, "Miles_per_Gallon": 34.4, "Name": "ford escort 4w", "Origin": "USA", "Weight_in_lbs": 2045, "Year": "1982-01-01"}, {"Acceleration": 20.7, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 65.0, "Miles_per_Gallon": 29.9, "Name": "ford escort 2h", "Origin": "USA", "Weight_in_lbs": 2380, "Year": "1982-01-01"}, {"Acceleration": 14.2, "Cylinders": 4, "Displacement": 105.0, "Horsepower": 74.0, "Miles_per_Gallon": 33.0, "Name": "volkswagen jetta", "Origin": "Europe", "Weight_in_lbs": 2190, "Year": "1982-01-01"}, {"Acceleration": 15.8, "Cylinders": 4, "Displacement": 100.0, "Horsepower": null, "Miles_per_Gallon": 34.5, "Name": "renault 18i", "Origin": "Europe", "Weight_in_lbs": 2320, "Year": "1982-01-01"}, {"Acceleration": 14.4, "Cylinders": 4, "Displacement": 107.0, "Horsepower": 75.0, "Miles_per_Gallon": 33.7, "Name": "honda prelude", "Origin": "Japan", "Weight_in_lbs": 2210, "Year": "1982-01-01"}, {"Acceleration": 16.8, "Cylinders": 4, "Displacement": 108.0, "Horsepower": 75.0, "Miles_per_Gallon": 32.4, "Name": "toyota corolla", "Origin": "Japan", "Weight_in_lbs": 2350, "Year": "1982-01-01"}, {"Acceleration": 14.8, "Cylinders": 4, "Displacement": 119.0, "Horsepower": 100.0, "Miles_per_Gallon": 32.9, "Name": "datsun 200sx", "Origin": "Japan", "Weight_in_lbs": 2615, "Year": "1982-01-01"}, {"Acceleration": 18.3, "Cylinders": 4, "Displacement": 120.0, "Horsepower": 74.0, "Miles_per_Gallon": 31.6, "Name": "mazda 626", "Origin": "Japan", "Weight_in_lbs": 2635, "Year": "1982-01-01"}, {"Acceleration": 20.4, "Cylinders": 4, "Displacement": 141.0, "Horsepower": 80.0, "Miles_per_Gallon": 28.1, "Name": "peugeot 505s turbo diesel", "Origin": "Europe", "Weight_in_lbs": 3230, "Year": "1982-01-01"}, {"Acceleration": 15.4, "Cylinders": 4, "Displacement": 121.0, "Horsepower": 110.0, "Miles_per_Gallon": null, "Name": "saab 900s", "Origin": "Europe", "Weight_in_lbs": 2800, "Year": "1982-01-01"}, {"Acceleration": 19.6, "Cylinders": 6, "Displacement": 145.0, "Horsepower": 76.0, "Miles_per_Gallon": 30.7, "Name": "volvo diesel", "Origin": "Europe", "Weight_in_lbs": 3160, "Year": "1982-01-01"}, {"Acceleration": 12.6, "Cylinders": 6, "Displacement": 168.0, "Horsepower": 116.0, "Miles_per_Gallon": 25.4, "Name": "toyota cressida", "Origin": "Japan", "Weight_in_lbs": 2900, "Year": "1982-01-01"}, {"Acceleration": 13.8, "Cylinders": 6, "Displacement": 146.0, "Horsepower": 120.0, "Miles_per_Gallon": 24.2, "Name": "datsun 810 maxima", "Origin": "Japan", "Weight_in_lbs": 2930, "Year": "1982-01-01"}, {"Acceleration": 15.8, "Cylinders": 6, "Displacement": 231.0, "Horsepower": 110.0, "Miles_per_Gallon": 22.4, "Name": "buick century", "Origin": "USA", "Weight_in_lbs": 3415, "Year": "1982-01-01"}, {"Acceleration": 19.0, "Cylinders": 8, "Displacement": 350.0, "Horsepower": 105.0, "Miles_per_Gallon": 26.6, "Name": "oldsmobile cutlass ls", "Origin": "USA", "Weight_in_lbs": 3725, "Year": "1982-01-01"}, {"Acceleration": 17.1, "Cylinders": 6, "Displacement": 200.0, "Horsepower": 88.0, "Miles_per_Gallon": 20.2, "Name": "ford granada gl", "Origin": "USA", "Weight_in_lbs": 3060, "Year": "1982-01-01"}, {"Acceleration": 16.6, "Cylinders": 6, "Displacement": 225.0, "Horsepower": 85.0, "Miles_per_Gallon": 17.6, "Name": "chrysler lebaron salon", "Origin": "USA", "Weight_in_lbs": 3465, "Year": "1982-01-01"}, {"Acceleration": 19.6, "Cylinders": 4, "Displacement": 112.0, "Horsepower": 88.0, "Miles_per_Gallon": 28.0, "Name": "chevrolet cavalier", "Origin": "USA", "Weight_in_lbs": 2605, "Year": "1982-01-01"}, {"Acceleration": 18.6, "Cylinders": 4, "Displacement": 112.0, "Horsepower": 88.0, "Miles_per_Gallon": 27.0, "Name": "chevrolet cavalier wagon", "Origin": "USA", "Weight_in_lbs": 2640, "Year": "1982-01-01"}, {"Acceleration": 18.0, "Cylinders": 4, "Displacement": 112.0, "Horsepower": 88.0, "Miles_per_Gallon": 34.0, "Name": "chevrolet cavalier 2-door", "Origin": "USA", "Weight_in_lbs": 2395, "Year": "1982-01-01"}, {"Acceleration": 16.2, "Cylinders": 4, "Displacement": 112.0, "Horsepower": 85.0, "Miles_per_Gallon": 31.0, "Name": "pontiac j2000 se hatchback", "Origin": "USA", "Weight_in_lbs": 2575, "Year": "1982-01-01"}, {"Acceleration": 16.0, "Cylinders": 4, "Displacement": 135.0, "Horsepower": 84.0, "Miles_per_Gallon": 29.0, "Name": "dodge aries se", "Origin": "USA", "Weight_in_lbs": 2525, "Year": "1982-01-01"}, {"Acceleration": 18.0, "Cylinders": 4, "Displacement": 151.0, "Horsepower": 90.0, "Miles_per_Gallon": 27.0, "Name": "pontiac phoenix", "Origin": "USA", "Weight_in_lbs": 2735, "Year": "1982-01-01"}, {"Acceleration": 16.4, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 92.0, "Miles_per_Gallon": 24.0, "Name": "ford fairmont futura", "Origin": "USA", "Weight_in_lbs": 2865, "Year": "1982-01-01"}, {"Acceleration": 20.5, "Cylinders": 4, "Displacement": 151.0, "Horsepower": null, "Miles_per_Gallon": 23.0, "Name": "amc concord dl", "Origin": "USA", "Weight_in_lbs": 3035, "Year": "1982-01-01"}, {"Acceleration": 15.3, "Cylinders": 4, "Displacement": 105.0, "Horsepower": 74.0, "Miles_per_Gallon": 36.0, "Name": "volkswagen rabbit l", "Origin": "Europe", "Weight_in_lbs": 1980, "Year": "1982-01-01"}, {"Acceleration": 18.2, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 68.0, "Miles_per_Gallon": 37.0, "Name": "mazda glc custom l", "Origin": "Japan", "Weight_in_lbs": 2025, "Year": "1982-01-01"}, {"Acceleration": 17.6, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 68.0, "Miles_per_Gallon": 31.0, "Name": "mazda glc custom", "Origin": "Japan", "Weight_in_lbs": 1970, "Year": "1982-01-01"}, {"Acceleration": 14.7, "Cylinders": 4, "Displacement": 105.0, "Horsepower": 63.0, "Miles_per_Gallon": 38.0, "Name": "plymouth horizon miser", "Origin": "USA", "Weight_in_lbs": 2125, "Year": "1982-01-01"}, {"Acceleration": 17.3, "Cylinders": 4, "Displacement": 98.0, "Horsepower": 70.0, "Miles_per_Gallon": 36.0, "Name": "mercury lynx l", "Origin": "USA", "Weight_in_lbs": 2125, "Year": "1982-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 120.0, "Horsepower": 88.0, "Miles_per_Gallon": 36.0, "Name": "nissan stanza xe", "Origin": "Japan", "Weight_in_lbs": 2160, "Year": "1982-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 107.0, "Horsepower": 75.0, "Miles_per_Gallon": 36.0, "Name": "honda Accelerationord", "Origin": "Japan", "Weight_in_lbs": 2205, "Year": "1982-01-01"}, {"Acceleration": 16.9, "Cylinders": 4, "Displacement": 108.0, "Horsepower": 70.0, "Miles_per_Gallon": 34.0, "Name": "toyota corolla", "Origin": "Japan", "Weight_in_lbs": 2245, "Year": "1982-01-01"}, {"Acceleration": 15.0, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 67.0, "Miles_per_Gallon": 38.0, "Name": "honda civic", "Origin": "Japan", "Weight_in_lbs": 1965, "Year": "1982-01-01"}, {"Acceleration": 15.7, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 67.0, "Miles_per_Gallon": 32.0, "Name": "honda civic (auto)", "Origin": "Japan", "Weight_in_lbs": 1965, "Year": "1982-01-01"}, {"Acceleration": 16.2, "Cylinders": 4, "Displacement": 91.0, "Horsepower": 67.0, "Miles_per_Gallon": 38.0, "Name": "datsun 310 gx", "Origin": "Japan", "Weight_in_lbs": 1995, "Year": "1982-01-01"}, {"Acceleration": 16.4, "Cylinders": 6, "Displacement": 181.0, "Horsepower": 110.0, "Miles_per_Gallon": 25.0, "Name": "buick century limited", "Origin": "USA", "Weight_in_lbs": 2945, "Year": "1982-01-01"}, {"Acceleration": 17.0, "Cylinders": 6, "Displacement": 262.0, "Horsepower": 85.0, "Miles_per_Gallon": 38.0, "Name": "oldsmobile cutlass ciera (diesel)", "Origin": "USA", "Weight_in_lbs": 3015, "Year": "1982-01-01"}, {"Acceleration": 14.5, "Cylinders": 4, "Displacement": 156.0, "Horsepower": 92.0, "Miles_per_Gallon": 26.0, "Name": "chrysler lebaron medallion", "Origin": "USA", "Weight_in_lbs": 2585, "Year": "1982-01-01"}, {"Acceleration": 14.7, "Cylinders": 6, "Displacement": 232.0, "Horsepower": 112.0, "Miles_per_Gallon": 22.0, "Name": "ford granada l", "Origin": "USA", "Weight_in_lbs": 2835, "Year": "1982-01-01"}, {"Acceleration": 13.9, "Cylinders": 4, "Displacement": 144.0, "Horsepower": 96.0, "Miles_per_Gallon": 32.0, "Name": "toyota celica gt", "Origin": "Japan", "Weight_in_lbs": 2665, "Year": "1982-01-01"}, {"Acceleration": 13.0, "Cylinders": 4, "Displacement": 135.0, "Horsepower": 84.0, "Miles_per_Gallon": 36.0, "Name": "dodge charger 2.2", "Origin": "USA", "Weight_in_lbs": 2370, "Year": "1982-01-01"}, {"Acceleration": 17.3, "Cylinders": 4, "Displacement": 151.0, "Horsepower": 90.0, "Miles_per_Gallon": 27.0, "Name": "chevrolet camaro", "Origin": "USA", "Weight_in_lbs": 2950, "Year": "1982-01-01"}, {"Acceleration": 15.6, "Cylinders": 4, "Displacement": 140.0, "Horsepower": 86.0, "Miles_per_Gallon": 27.0, "Name": "ford mustang gl", "Origin": "USA", "Weight_in_lbs": 2790, "Year": "1982-01-01"}, {"Acceleration": 24.6, "Cylinders": 4, "Displacement": 97.0, "Horsepower": 52.0, "Miles_per_Gallon": 44.0, "Name": "vw pickup", "Origin": "Europe", "Weight_in_lbs": 2130, "Year": "1982-01-01"}, {"Acceleration": 11.6, "Cylinders": 4, "Displacement": 135.0, "Horsepower": 84.0, "Miles_per_Gallon": 32.0, "Name": "dodge rampage", "Origin": "USA", "Weight_in_lbs": 2295, "Year": "1982-01-01"}, {"Acceleration": 18.6, "Cylinders": 4, "Displacement": 120.0, "Horsepower": 79.0, "Miles_per_Gallon": 28.0, "Name": "ford ranger", "Origin": "USA", "Weight_in_lbs": 2625, "Year": "1982-01-01"}, {"Acceleration": 19.4, "Cylinders": 4, "Displacement": 119.0, "Horsepower": 82.0, "Miles_per_Gallon": 31.0, "Name": "chevy s-10", "Origin": "USA", "Weight_in_lbs": 2720, "Year": "1982-01-01"}]}, "mark": "tick", "encoding": {"x": {"type": "quantitative", "field": "Horsepower"}, "y": {"type": "ordinal", "field": "Cylinders"}}, "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#ab0e8161-ea46-4e67-a892-a9e1013a6a8a";
@@ -1324,10 +2057,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="cde2f9ca-2008-4c0c-ad4d-699e94c3190d"></div>
+<div id="9c91b4d0-c306-4ea5-aa22-e9070e29914c"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#cde2f9ca-2008-4c0c-ad4d-699e94c3190d');
+var element = $('#9c91b4d0-c306-4ea5-aa22-e9070e29914c');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "layer": [{"data": {"url": "altair-data-a9da06517abbe7c727cab3f8a6bca85c.json", "format": {"type": "json"}}, "mark": "bar", "encoding": {"x": {"type": "ordinal", "field": "Day"}, "y": {"type": "quantitative", "field": "Value"}}}, {"data": {"url": "altair-data-2577723bdf208c71ed7b4b49a46d722c.json", "format": {"type": "json"}}, "mark": {"type": "text", "align": "left", "dx": 215, "dy": -5}, "encoding": {"text": {"value": "hazardous"}, "y": {"type": "quantitative", "axis": {"title": "PM2.5 Value"}, "field": "ThresholdValue"}}}, {"data": {"url": "altair-data-a9da06517abbe7c727cab3f8a6bca85c.json", "format": {"type": "json"}}, "mark": {"type": "bar", "color": "#e45755"}, "encoding": {"x": {"type": "ordinal", "field": "Day"}, "y": {"type": "quantitative", "field": "baseline"}, "y2": {"type": "quantitative", "field": "Value"}}, "transform": [{"filter": "datum.Value >= 300"}, {"calculate": "300", "as": "baseline"}]}, {"data": {"url": "altair-data-2577723bdf208c71ed7b4b49a46d722c.json", "format": {"type": "json"}}, "mark": "rule", "encoding": {"y": {"type": "quantitative", "field": "ThresholdValue"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#f4c6509b-bf49-4d33-8cbb-b9c70c25baaa";
@@ -1456,10 +2189,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="3cceffdc-5821-4dee-aecb-0d7ad72321c5"></div>
+<div id="333a3b88-6d98-48b4-8f6c-0360230b0e08"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#3cceffdc-5821-4dee-aecb-0d7ad72321c5');
+var element = $('#333a3b88-6d98-48b4-8f6c-0360230b0e08');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "layer": [{"data": {"url": "https://vega.github.io/vega-datasets/data/population.json"}, "mark": "rule", "encoding": {"x": {"type": "ordinal", "field": "age"}, "y": {"type": "quantitative", "aggregate": "min", "axis": {"title": "population"}, "field": "people"}, "y2": {"type": "quantitative", "aggregate": "q1", "field": "people"}}}, {"data": {"url": "https://vega.github.io/vega-datasets/data/population.json"}, "mark": {"type": "bar", "size": 5.0}, "encoding": {"x": {"type": "ordinal", "field": "age"}, "y": {"type": "quantitative", "aggregate": "q1", "field": "people"}, "y2": {"type": "quantitative", "aggregate": "q3", "field": "people"}}}, {"data": {"url": "https://vega.github.io/vega-datasets/data/population.json"}, "mark": "rule", "encoding": {"x": {"type": "ordinal", "field": "age"}, "y": {"type": "quantitative", "aggregate": "max", "field": "people"}, "y2": {"type": "quantitative", "aggregate": "q3", "field": "people"}}}, {"data": {"url": "https://vega.github.io/vega-datasets/data/population.json"}, "mark": {"type": "tick", "color": "white", "size": 5.0}, "encoding": {"x": {"type": "ordinal", "field": "age"}, "y": {"type": "quantitative", "aggregate": "median", "field": "people"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#2bd3a851-8e2d-4048-94ff-07105501ac2e";
@@ -1570,10 +2303,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="1a13d5d9-4971-40f5-9770-4d2a0c5f640c"></div>
+<div id="a9b7f8ed-2644-4d3b-bceb-20d5c4b8a6e9"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#1a13d5d9-4971-40f5-9770-4d2a0c5f640c');
+var element = $('#a9b7f8ed-2644-4d3b-bceb-20d5c4b8a6e9');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "vconcat": [{"hconcat": [{"data": {"url": "https://vega.github.io/vega-datasets/data/world-110m.json", "format": {"feature": "countries", "type": "topojson"}}, "mark": {"type": "geoshape", "fill": "#666666", "stroke": "white"}, "height": 180, "projection": {"type": "equirectangular"}, "title": "equirectangular", "width": 300}, {"data": {"url": "https://vega.github.io/vega-datasets/data/world-110m.json", "format": {"feature": "countries", "type": "topojson"}}, "mark": {"type": "geoshape", "fill": "#666666", "stroke": "white"}, "height": 180, "projection": {"type": "mercator"}, "title": "mercator", "width": 300}]}, {"hconcat": [{"data": {"url": "https://vega.github.io/vega-datasets/data/world-110m.json", "format": {"feature": "countries", "type": "topojson"}}, "mark": {"type": "geoshape", "fill": "#666666", "stroke": "white"}, "height": 180, "projection": {"type": "orthographic"}, "title": "orthographic", "width": 300}, {"data": {"url": "https://vega.github.io/vega-datasets/data/world-110m.json", "format": {"feature": "countries", "type": "topojson"}}, "mark": {"type": "geoshape", "fill": "#666666", "stroke": "white"}, "height": 180, "projection": {"type": "gnomonic"}, "title": "gnomonic", "width": 300}]}], "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#8ced509f-615a-4e81-ab85-57f077fd3e3e";
@@ -1685,10 +2418,10 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 
 
 
-<div id="784f79a7-290c-4ca2-b094-ac384d86a0b1"></div>
+<div id="126f5d18-5cf6-481f-b8fa-a22ab63a8c1f"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#784f79a7-290c-4ca2-b094-ac384d86a0b1');
+var element = $('#126f5d18-5cf6-481f-b8fa-a22ab63a8c1f');
 var spec = {"config": {"view": {"width": 400, "height": 300}}, "layer": [{"data": {"url": "altair-data-c6acb8f78cd1b09b6c4c1aff5ed5b093.json", "format": {"type": "json"}}, "mark": {"type": "point", "filled": true}, "encoding": {"color": {"value": "black"}, "x": {"type": "quantitative", "aggregate": "mean", "axis": {"title": "Barley Yield"}, "field": "yield", "scale": {"zero": false}}, "y": {"type": "nominal", "field": "variety"}}}, {"data": {"url": "altair-data-c6acb8f78cd1b09b6c4c1aff5ed5b093.json", "format": {"type": "json"}}, "mark": "rule", "encoding": {"x": {"type": "quantitative", "aggregate": "ci0", "field": "yield"}, "x2": {"type": "quantitative", "aggregate": "ci1", "field": "yield"}, "y": {"type": "nominal", "field": "variety"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
 var opt = {};
 var selector = "#10aedb24-00f8-4000-afb8-7bda71c0b734";
