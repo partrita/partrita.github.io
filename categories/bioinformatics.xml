@@ -1,5 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Bioinformatics)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/bioinformatics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon&lt;/a&gt; </copyright><lastBuildDate>Fri, 02 Nov 2018 01:59:19 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>당뇨환자의 재입원율(Diabetes_Readmission_rate)</title><link>https://partrita.github.io/posts/Diabetes_Readmission/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Bioinformatics)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/bioinformatics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Thu, 27 Dec 2018 14:18:26 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Cloning_with_pyDNA</title><link>https://partrita.github.io/posts/pydna/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Planning genetic constructs with many parts and assembly steps, such as recombinant metabolic pathways are often difficult to properly document.&lt;/p&gt;
+&lt;p&gt;The Pydna python package provide a human-readable formal description of cloning and assembly strategies in Python which also allows for simulation and verification of cloning strategies. Pydna can be though of as executable documentation for molecular biology.&lt;/p&gt;
+&lt;h3 id="pyDNA"&gt;pyDNA&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#pyDNA"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://photos-4.dropbox.com/t/2/AABtT3RgvKvNXtT_GM_bkIgEGPLD_YhvVH1fnLzyx51csw/12/1263722/png/32x32/3/1515247200/0/2/logo.png/EJqk4KsFGKVuIAcoBw/zK96Ws_Az5gnenjNPxHNDGdvFso2W-rn-z6V-KvZFGE?dl=0&amp;amp;preserve_transparency=1&amp;amp;size=1280x960&amp;amp;size_mode=3" alt="pydna"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-015-0544-x"&gt;Pydna: a simulation and documentation tool for DNA assembly strategies using python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Contains classes and code for representing double stranded DNA and functions for simulating homologous recombination between DNA molecules.&lt;/p&gt;
+&lt;p&gt;Pydna provides simulation of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Restriction digestion&lt;/li&gt;
+&lt;li&gt;Ligation&lt;/li&gt;
+&lt;li&gt;PCR&lt;/li&gt;
+&lt;li&gt;Primer design&lt;/li&gt;
+&lt;li&gt;Gibson assembly&lt;/li&gt;
+&lt;li&gt;Golden gate assembly&lt;/li&gt;
+&lt;li&gt;Homologous recombination&lt;/li&gt;
+&lt;li&gt;Gel electrophoresis of DNA with generation of gel images&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Virtually any sub-cloning experiment can be described in pydna, and its execution yield the sequence of the of intermediate and final resulting DNA molecule(s). A cloning strategy expressed in pydna is complete, unambiguous and can be made stable. Pydna has been designed to be understandable for biologists with only some basic understanding of Python.&lt;/p&gt;
+&lt;p&gt;Pydna can formalize planning and sharing of cloning strategies and is especially useful for complex or combinatorial DNA molecule constructions.&lt;/p&gt;
+&lt;h3 id="왜?"&gt;왜?&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#%EC%99%9C?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;pyDNA 말고도 많은데 써야하는 이유?&lt;/p&gt;
+&lt;h3 id="예를-들어보기"&gt;예를 들어보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#%EC%98%88%EB%A5%BC-%EB%93%A4%EC%96%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;두가지 PCR을 진행해보려고 합니다 각각 C3, C5라고 이름을 붙였구요. 
+pyDNA로 PCR simulation을 해보려고 합니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [23]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 필요한 pydna 라이브러리를 불러옵니다.&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pydna.parsers&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;parsers&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pydna.amplify&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pcr&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [24]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# template template loading&lt;/span&gt;
+&lt;span class="n"&gt;C3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pydna&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parsers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'CEACAM3.ape'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ds&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C3_F&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pydna&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parsers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_primers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'C3_F.ape'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C3_R&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pydna&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parsers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_primers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'C3_R.ape'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# PCR&lt;/span&gt;
+&lt;span class="n"&gt;C3_pcr_prod&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pcr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;C3_F&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;C3_R&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;C3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [25]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pydna.gel&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;weight_standard_sample&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Gel&lt;/span&gt;
+&lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;weight_standard_sample&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'1kb+_GeneRuler'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Gel&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,[&lt;/span&gt;&lt;span class="n"&gt;C3_pcr_prod&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gel_len&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_png output_subarea "&gt;
+&lt;img src="data:image/png;base64,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"&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [26]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# general PCR &lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;C3_pcr_prod&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;
+Taq (rate 30 nt/s) 35 cycles             |1325bp
+95.0°C    |95.0°C                 |      |Tm formula: Biopython Tm_NN
+|_________|_____          72.0°C  |72.0°C|SaltC 50mM
+| 03min00s|30s  \         ________|______|Primer1C 1.0µM
+|         |      \ 58.6°C/ 0min40s| 5min |Primer2C 1.0µM
+|         |       \_____/         |      |GC 54%
+|         |         30s           |      |4-12°C
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [27]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Pfu PCR&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;C3_pcr_prod&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dbd_program&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;
+Pfu-Sso7d (rate 15s/kb)                 |1325bp
+Three-step|          30 cycles   |      |Tm formula: Pydna tmbresluc
+98.0°C    |98.0°C                |      |SaltC 50mM
+__________|_____          72.0°C |72.0°C|Primer1C 1.0µM
+00min30s  |10s  \ 58.0°C ________|______|Primer2C 1.0µM
+          |      \______/ 0min19s|10min |GC 54%
+          |        10s           |      |4-12°C
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [28]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# anealing results&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;C3_pcr_prod&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;         5ATGGGGCCCCCCTTGGC...AAAGGAGATGTGGCTTCT3
+                              |||||||||||||||||| tm 53.9 (dbd) 58.1
+                             3TTTCCTCTACACCGAAGATGCAGCTG5
+5GACAAGCCTATGGGGCCCCCCTTGGC3
+          ||||||||||||||||| tm 65.9 (dbd) 75.1
+         3TACCCCGGGGGGAACCG...TTTCCTCTACACCGAAGA5
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;추가적으로 C5에 대한 PCR을 진행해보겠습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [29]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# C5 PCR&lt;/span&gt;
+&lt;span class="n"&gt;C5&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;parsers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'CEACAM5.ape'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ds&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C5_F&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;parsers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_primers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Cyno_C5-F.ape'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C5_R&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;parsers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_primers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Cyno_C5-R.ape'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C5_pcr_prod&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pcr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;C5_F&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;C5_R&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;C5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_text output_error"&gt;
+&lt;pre&gt;
+&lt;span class="ansi-red-fg"&gt;---------------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="ansi-red-fg"&gt;Exception&lt;/span&gt;                                 Traceback (most recent call last)
+&lt;span class="ansi-green-fg"&gt;&amp;lt;ipython-input-29-2ab9477161e8&amp;gt;&lt;/span&gt; in &lt;span class="ansi-cyan-fg"&gt;&amp;lt;module&amp;gt;&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;()&lt;/span&gt;
+&lt;span class="ansi-green-intense-fg ansi-bold"&gt;      3&lt;/span&gt; C5_F &lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;=&lt;/span&gt; parsers&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;.&lt;/span&gt;parse_primers&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;&lt;span class="ansi-blue-intense-fg ansi-bold"&gt;'Cyno_C5-F.ape'&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt;
+&lt;span class="ansi-green-intense-fg ansi-bold"&gt;      4&lt;/span&gt; C5_R &lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;=&lt;/span&gt; parsers&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;.&lt;/span&gt;parse_primers&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;&lt;span class="ansi-blue-intense-fg ansi-bold"&gt;'Cyno_C5-R.ape'&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt;
+&lt;span class="ansi-green-fg"&gt;----&amp;gt; 5&lt;/span&gt;&lt;span class="ansi-red-fg"&gt; &lt;/span&gt;C5_pcr_prod &lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;=&lt;/span&gt; pcr&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;C5_F&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;,&lt;/span&gt;C5_R&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;,&lt;/span&gt;C5&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt;
+
+&lt;span class="ansi-green-fg"&gt;C:\python\envs\py3\lib\site-packages\pydna-2.0.2-py3.5.egg\pydna\amplify.py&lt;/span&gt; in &lt;span class="ansi-cyan-fg"&gt;pcr&lt;/span&gt;&lt;span class="ansi-blue-fg"&gt;(*args, **kwargs)&lt;/span&gt;
+&lt;span class="ansi-green-intense-fg ansi-bold"&gt;    451&lt;/span&gt;             &lt;span class="ansi-green-intense-fg ansi-bold"&gt;return&lt;/span&gt; anneal_primers&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;.&lt;/span&gt;products&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;[&lt;/span&gt;&lt;span class="ansi-cyan-intense-fg ansi-bold"&gt;0&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;]&lt;/span&gt;
+&lt;span class="ansi-green-intense-fg ansi-bold"&gt;    452&lt;/span&gt;         &lt;span class="ansi-green-intense-fg ansi-bold"&gt;elif&lt;/span&gt; len&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;anneal_primers&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;.&lt;/span&gt;products&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt; &lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;==&lt;/span&gt; &lt;span class="ansi-cyan-intense-fg ansi-bold"&gt;0&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;:&lt;/span&gt;
+&lt;span class="ansi-green-fg"&gt;--&amp;gt; 453&lt;/span&gt;&lt;span class="ansi-red-fg"&gt;             &lt;/span&gt;&lt;span class="ansi-green-intense-fg ansi-bold"&gt;raise&lt;/span&gt; Exception&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;&lt;span class="ansi-blue-intense-fg ansi-bold"&gt;"No PCR products! {}"&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;.&lt;/span&gt;format&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;anneal_primers&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;.&lt;/span&gt;report&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt;
+&lt;span class="ansi-green-intense-fg ansi-bold"&gt;    454&lt;/span&gt;         &lt;span class="ansi-green-intense-fg ansi-bold"&gt;else&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;:&lt;/span&gt;
+&lt;span class="ansi-green-intense-fg ansi-bold"&gt;    455&lt;/span&gt;             &lt;span class="ansi-green-intense-fg ansi-bold"&gt;raise&lt;/span&gt; Exception&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;&lt;span class="ansi-blue-intense-fg ansi-bold"&gt;"PCR not specific! {}"&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;.&lt;/span&gt;format&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;anneal_primers&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;.&lt;/span&gt;report&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;(&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt;&lt;span class="ansi-yellow-intense-fg ansi-bold"&gt;)&lt;/span&gt;
+
+&lt;span class="ansi-red-fg"&gt;Exception&lt;/span&gt;: No PCR products! Template CEACAM5 2118 nt linear:
+Primer New_DNA anneals forward at position 18
+
+No reverse primers anneal...&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;이런 에러가 나는군요 No reverse primers anneal...&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</description><category>Bioinformatics</category><guid>https://partrita.github.io/posts/pydna/</guid><pubDate>Wed, 19 Dec 2018 09:07:20 GMT</pubDate></item><item><title>당뇨환자의 재입원율(Diabetes_Readmission_rate)</title><link>https://partrita.github.io/posts/Diabetes_Readmission/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -2464,7 +2758,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</description><category>Bioinformatics</category><category>Diabetes</category><category>kaggle</category><category>Python</category><category>당뇨</category><category>재입원</category><category>캐글</category><guid>https://partrita.github.io/posts/Diabetes_Readmission/</guid><pubDate>Wed, 25 Jul 2018 23:07:20 GMT</pubDate></item><item><title>R로 서열분석하기</title><link>https://partrita.github.io/posts/R-bio/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+</description><category>Bioinformatics</category><category>Diabetes</category><category>kaggle</category><category>Python</category><category>당뇨</category><category>재입원</category><category>캐글</category><guid>https://partrita.github.io/posts/Diabetes_Readmission/</guid><pubDate>Wed, 25 Jul 2018 23:07:20 GMT</pubDate></item><item><title>R로 서열분석하기</title><link>https://partrita.github.io/posts/R-bio/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -2490,9 +2784,9 @@ dtype: int64&lt;/pre&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# package 설치하기&lt;/span&gt;
-install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'seqinr'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;install.packages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'seqinr'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# package 실행&lt;/span&gt;
-&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'seqinr'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'seqinr'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2550,11 +2844,11 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"seqinr"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"seqinr"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-dengue &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.fasta&lt;span class="p"&gt;(&lt;/span&gt;file &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;dengue&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# In fact, the first element of the list object dengue contains the the DNA sequence&lt;/span&gt;
-dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+&lt;span class="n"&gt;dengueseq&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;dengue[[1]]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2575,7 +2869,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 &lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2616,7 +2910,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 &lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dengueseq[1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="n"&gt;]&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2657,7 +2951,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 &lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2701,7 +2995,7 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 &lt;div class="prompt input_prompt"&gt;In [6]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;GC&lt;span class="p"&gt;(&lt;/span&gt;dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;GC&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2744,22 +3038,22 @@ dengueseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; dengue&lt;span class="p"&
 &lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;slidingwindowplot &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;windowsize&lt;span class="p"&gt;,&lt;/span&gt; inputseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;slidingwindowplot&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
-   starts &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;inputseq&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;windowsize&lt;span class="p"&gt;,&lt;/span&gt; by &lt;span class="o"&gt;=&lt;/span&gt; windowsize&lt;span class="p"&gt;)&lt;/span&gt;
-   n &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;starts&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;# Find the length of the vector "starts"&lt;/span&gt;
-   chunkGCs &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;n&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# Make a vector of the same length as vector "starts", but just containing zeroes&lt;/span&gt;
-   &lt;span class="kr"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;i &lt;span class="kr"&gt;in&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;n&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        chunk &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; inputseq&lt;span class="p"&gt;[&lt;/span&gt;starts&lt;span class="p"&gt;[&lt;/span&gt;i&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;starts&lt;span class="p"&gt;[&lt;/span&gt;i&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;windowsize&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
-        chunkGC &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; GC&lt;span class="p"&gt;(&lt;/span&gt;chunk&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;starts&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;# Find the length of the vector "starts"&lt;/span&gt;
+   &lt;span class="n"&gt;chunkGCs&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# Make a vector of the same length as vector "starts", but just containing zeroes&lt;/span&gt;
+   &lt;span class="nf"&gt;for &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;chunk&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;inputseq[starts[i]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts[i]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;chunkGC&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;GC&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chunk&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="c1"&gt;# print(chunkGC)&lt;/span&gt;
-        chunkGCs&lt;span class="p"&gt;[&lt;/span&gt;i&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; chunkGC
+        &lt;span class="n"&gt;chunkGCs[i]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;chunkGC&lt;/span&gt;
    &lt;span class="p"&gt;}&lt;/span&gt;
-   plot&lt;span class="p"&gt;(&lt;/span&gt;starts&lt;span class="p"&gt;,&lt;/span&gt;chunkGCs&lt;span class="p"&gt;,&lt;/span&gt;type&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;xlab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"Nucleotide start position"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;ylab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GC content"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="nf"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;chunkGCs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;xlab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"Nucleotide start position"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ylab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GC content"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="c1"&gt;# 300개씩 서열을 나누어서 GC() 기능을 사용합니다.&lt;/span&gt;
-slidingwindowplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; dengueseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;slidingwindowplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2802,7 +3096,7 @@ slidingwindowplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&l
 &lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;write.fasta&lt;span class="p"&gt;(&lt;/span&gt;names&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"DEN-1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; sequences&lt;span class="o"&gt;=&lt;/span&gt;dengueseq&lt;span class="p"&gt;,&lt;/span&gt; file.out&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;write.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;names&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"DEN-1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sequences&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;file.out&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2829,13 +3123,13 @@ slidingwindowplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&l
 &lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;leprae &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.fasta&lt;span class="p"&gt;(&lt;/span&gt;file &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"Q9CD83.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-lepraeseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; leprae&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;leprae&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"Q9CD83.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;lepraeseq&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;leprae[[1]]&lt;/span&gt;
 
-ulcerans &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.fasta&lt;span class="p"&gt;(&lt;/span&gt;file &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"A0PQ23.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-ulceransseq &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ulcerans&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+&lt;span class="n"&gt;ulcerans&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"A0PQ23.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ulceransseq&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;ulcerans[[1]]&lt;/span&gt;
 
-lepraeseq &lt;span class="c1"&gt;# Display the contents of "lepraeseq"&lt;/span&gt;
+&lt;span class="n"&gt;lepraeseq&lt;/span&gt; &lt;span class="c1"&gt;# Display the contents of "lepraeseq"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2895,7 +3189,7 @@ attr(,"class")
 &lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dotPlot&lt;span class="p"&gt;(&lt;/span&gt;lepraeseq&lt;span class="p"&gt;,&lt;/span&gt; ulceransseq&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;dotPlot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lepraeseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ulceransseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2946,7 +3240,7 @@ attr(,"class")
 &lt;div class="prompt input_prompt"&gt;In [11]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tablecode&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;tablecode&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2996,7 +3290,7 @@ attr(,"class")
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</description><category>Bioinformatics</category><category>R</category><category>SeqinR</category><guid>https://partrita.github.io/posts/R-bio/</guid><pubDate>Mon, 29 Jan 2018 08:56:47 GMT</pubDate></item><item><title>Ancestral reconstruction</title><link>https://partrita.github.io/posts/Ancestral-reconstruction/</link><dc:creator>Taeyoon</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+</description><category>Bioinformatics</category><category>R</category><category>SeqinR</category><guid>https://partrita.github.io/posts/R-bio/</guid><pubDate>Mon, 29 Jan 2018 08:56:47 GMT</pubDate></item><item><title>Ancestral reconstruction</title><link>https://partrita.github.io/posts/Ancestral-reconstruction/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;

@@ -956,24 +956,24 @@ Double-dashes - - "- -" - - must be escaped somehow in HTML output. -->
 <h3><a class="toc-backref" href="posts/restructuredtext-demo/#id61">3.1   Code Blocks</a></h3>
 <p>Here's a neat implementation of the Sieve of Eratosthenes.</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/restructuredtext-demo/#rest_code_243403ef9d5d4193bde70dd4d1bde7e2-1">1</a>
-<a href="posts/restructuredtext-demo/#rest_code_243403ef9d5d4193bde70dd4d1bde7e2-2">2</a>
-<a href="posts/restructuredtext-demo/#rest_code_243403ef9d5d4193bde70dd4d1bde7e2-3">3</a>
-<a href="posts/restructuredtext-demo/#rest_code_243403ef9d5d4193bde70dd4d1bde7e2-4">4</a>
-<a href="posts/restructuredtext-demo/#rest_code_243403ef9d5d4193bde70dd4d1bde7e2-5">5</a>
-<a href="posts/restructuredtext-demo/#rest_code_243403ef9d5d4193bde70dd4d1bde7e2-6">6</a>
-<a href="posts/restructuredtext-demo/#rest_code_243403ef9d5d4193bde70dd4d1bde7e2-7">7</a>
-<a href="posts/restructuredtext-demo/#rest_code_243403ef9d5d4193bde70dd4d1bde7e2-8">8</a>
-<a href="posts/restructuredtext-demo/#rest_code_243403ef9d5d4193bde70dd4d1bde7e2-9">9</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_243403ef9d5d4193bde70dd4d1bde7e2-1"></a><span class="k">def</span> <span class="nf">sieve_of_eratosthenes</span><span class="p">():</span>
-<a name="rest_code_243403ef9d5d4193bde70dd4d1bde7e2-2"></a>    <span class="n">factors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
-<a name="rest_code_243403ef9d5d4193bde70dd4d1bde7e2-3"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-<a name="rest_code_243403ef9d5d4193bde70dd4d1bde7e2-4"></a>        <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
-<a name="rest_code_243403ef9d5d4193bde70dd4d1bde7e2-5"></a>            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<a name="rest_code_243403ef9d5d4193bde70dd4d1bde7e2-6"></a>                <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<a name="rest_code_243403ef9d5d4193bde70dd4d1bde7e2-7"></a>        <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_243403ef9d5d4193bde70dd4d1bde7e2-8"></a>            <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<a name="rest_code_243403ef9d5d4193bde70dd4d1bde7e2-9"></a>            <span class="k">yield</span> <span class="n">n</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/restructuredtext-demo/#rest_code_a941abb69c4844a3b53f10fd87a39e78-1">1</a>
+<a href="posts/restructuredtext-demo/#rest_code_a941abb69c4844a3b53f10fd87a39e78-2">2</a>
+<a href="posts/restructuredtext-demo/#rest_code_a941abb69c4844a3b53f10fd87a39e78-3">3</a>
+<a href="posts/restructuredtext-demo/#rest_code_a941abb69c4844a3b53f10fd87a39e78-4">4</a>
+<a href="posts/restructuredtext-demo/#rest_code_a941abb69c4844a3b53f10fd87a39e78-5">5</a>
+<a href="posts/restructuredtext-demo/#rest_code_a941abb69c4844a3b53f10fd87a39e78-6">6</a>
+<a href="posts/restructuredtext-demo/#rest_code_a941abb69c4844a3b53f10fd87a39e78-7">7</a>
+<a href="posts/restructuredtext-demo/#rest_code_a941abb69c4844a3b53f10fd87a39e78-8">8</a>
+<a href="posts/restructuredtext-demo/#rest_code_a941abb69c4844a3b53f10fd87a39e78-9">9</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_a941abb69c4844a3b53f10fd87a39e78-1"></a><span class="k">def</span> <span class="nf">sieve_of_eratosthenes</span><span class="p">():</span>
+<a name="rest_code_a941abb69c4844a3b53f10fd87a39e78-2"></a>    <span class="n">factors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+<a name="rest_code_a941abb69c4844a3b53f10fd87a39e78-3"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<a name="rest_code_a941abb69c4844a3b53f10fd87a39e78-4"></a>        <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
+<a name="rest_code_a941abb69c4844a3b53f10fd87a39e78-5"></a>            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_a941abb69c4844a3b53f10fd87a39e78-6"></a>                <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<a name="rest_code_a941abb69c4844a3b53f10fd87a39e78-7"></a>        <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_a941abb69c4844a3b53f10fd87a39e78-8"></a>            <span class="n">factors</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a name="rest_code_a941abb69c4844a3b53f10fd87a39e78-9"></a>            <span class="k">yield</span> <span class="n">n</span>
 </pre></td>
 </tr></table>
 </div>

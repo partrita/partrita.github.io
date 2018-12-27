@@ -449,9 +449,9 @@ Mean accuracy score: 0.933
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># package 설치하기</span>
-install.packages<span class="p">(</span><span class="s">'seqinr'</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">'seqinr'</span><span class="p">)</span>
 <span class="c1"># package 실행</span>
-<span class="kn">library</span><span class="p">(</span><span class="s">'seqinr'</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">'seqinr'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -518,11 +518,11 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="kn">library</span><span class="p">(</span><span class="s">"seqinr"</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">"seqinr"</span><span class="p">)</span>
 
-dengue <span class="o">&lt;-</span> read.fasta<span class="p">(</span>file <span class="o">=</span> <span class="s">"den1.fasta"</span><span class="p">)</span>
+<span class="n">dengue</span> <span class="o">&lt;-</span> <span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">"den1.fasta"</span><span class="p">)</span>
 <span class="c1"># In fact, the first element of the list object dengue contains the the DNA sequence</span>
-dengueseq <span class="o">&lt;-</span> dengue<span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">dengueseq</span> <span class="o">&lt;-</span> <span class="n">dengue[[1]]</span>
 </pre></div>
 
     </div>
@@ -547,7 +547,7 @@ dengueseq <span class="o">&lt;-</span> dengue<span class="p">[[</span><span clas
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="kp">length</span><span class="p">(</span>dengueseq<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">length</span><span class="p">(</span><span class="n">dengueseq</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -592,7 +592,7 @@ dengueseq <span class="o">&lt;-</span> dengue<span class="p">[[</span><span clas
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="kp">print</span><span class="p">(</span>dengueseq<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">])</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">dengueseq[1</span><span class="o">:</span><span class="m">50</span><span class="n">]</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -637,7 +637,7 @@ dengueseq <span class="o">&lt;-</span> dengue<span class="p">[[</span><span clas
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="kp">table</span><span class="p">(</span>dengueseq<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">table</span><span class="p">(</span><span class="n">dengueseq</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -685,7 +685,7 @@ dengueseq <span class="o">&lt;-</span> dengue<span class="p">[[</span><span clas
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>GC<span class="p">(</span>dengueseq<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">GC</span><span class="p">(</span><span class="n">dengueseq</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -732,22 +732,22 @@ dengueseq <span class="o">&lt;-</span> dengue<span class="p">[[</span><span clas
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>slidingwindowplot <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>windowsize<span class="p">,</span> inputseq<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">slidingwindowplot</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">windowsize</span><span class="p">,</span> <span class="n">inputseq</span><span class="p">)</span>
 <span class="p">{</span>
-   starts <span class="o">&lt;-</span> <span class="kp">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="kp">length</span><span class="p">(</span>inputseq<span class="p">)</span><span class="o">-</span>windowsize<span class="p">,</span> by <span class="o">=</span> windowsize<span class="p">)</span>
-   n <span class="o">&lt;-</span> <span class="kp">length</span><span class="p">(</span>starts<span class="p">)</span>    <span class="c1"># Find the length of the vector "starts"</span>
-   chunkGCs <span class="o">&lt;-</span> <span class="kt">numeric</span><span class="p">(</span>n<span class="p">)</span> <span class="c1"># Make a vector of the same length as vector "starts", but just containing zeroes</span>
-   <span class="kr">for</span> <span class="p">(</span>i <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>n<span class="p">)</span> <span class="p">{</span>
-        chunk <span class="o">&lt;-</span> inputseq<span class="p">[</span>starts<span class="p">[</span>i<span class="p">]</span><span class="o">:</span><span class="p">(</span>starts<span class="p">[</span>i<span class="p">]</span><span class="o">+</span>windowsize<span class="m">-1</span><span class="p">)]</span>
-        chunkGC <span class="o">&lt;-</span> GC<span class="p">(</span>chunk<span class="p">)</span>
+   <span class="n">starts</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="n">inputseq</span><span class="p">)</span><span class="o">-</span><span class="n">windowsize</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="n">windowsize</span><span class="p">)</span>
+   <span class="n">n</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">starts</span><span class="p">)</span>    <span class="c1"># Find the length of the vector "starts"</span>
+   <span class="n">chunkGCs</span> <span class="o">&lt;-</span> <span class="nf">numeric</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># Make a vector of the same length as vector "starts", but just containing zeroes</span>
+   <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">chunk</span> <span class="o">&lt;-</span> <span class="n">inputseq[starts[i]</span><span class="o">:</span><span class="p">(</span><span class="n">starts[i]</span><span class="o">+</span><span class="n">windowsize</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span>
+        <span class="n">chunkGC</span> <span class="o">&lt;-</span> <span class="nf">GC</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
         <span class="c1"># print(chunkGC)</span>
-        chunkGCs<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> chunkGC
+        <span class="n">chunkGCs[i]</span> <span class="o">&lt;-</span> <span class="n">chunkGC</span>
    <span class="p">}</span>
-   plot<span class="p">(</span>starts<span class="p">,</span>chunkGCs<span class="p">,</span>type<span class="o">=</span><span class="s">"b"</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">"Nucleotide start position"</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">"GC content"</span><span class="p">)</span>
+   <span class="nf">plot</span><span class="p">(</span><span class="n">starts</span><span class="p">,</span><span class="n">chunkGCs</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">"b"</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">"Nucleotide start position"</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">"GC content"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1"># 300개씩 서열을 나누어서 GC() 기능을 사용합니다.</span>
-slidingwindowplot<span class="p">(</span><span class="m">300</span><span class="p">,</span> dengueseq<span class="p">)</span>
+<span class="nf">slidingwindowplot</span><span class="p">(</span><span class="m">300</span><span class="p">,</span> <span class="n">dengueseq</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -794,7 +794,7 @@ slidingwindowplot<span class="p">(</span><span class="m">300</span><span class="
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>write.fasta<span class="p">(</span>names<span class="o">=</span><span class="s">"DEN-1"</span><span class="p">,</span> sequences<span class="o">=</span>dengueseq<span class="p">,</span> file.out<span class="o">=</span><span class="s">"den1.fasta"</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">write.fasta</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="s">"DEN-1"</span><span class="p">,</span> <span class="n">sequences</span><span class="o">=</span><span class="n">dengueseq</span><span class="p">,</span> <span class="n">file.out</span><span class="o">=</span><span class="s">"den1.fasta"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -828,13 +828,13 @@ slidingwindowplot<span class="p">(</span><span class="m">300</span><span class="
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>leprae <span class="o">&lt;-</span> read.fasta<span class="p">(</span>file <span class="o">=</span> <span class="s">"Q9CD83.fasta"</span><span class="p">)</span>
-lepraeseq <span class="o">&lt;-</span> leprae<span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">leprae</span> <span class="o">&lt;-</span> <span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">"Q9CD83.fasta"</span><span class="p">)</span>
+<span class="n">lepraeseq</span> <span class="o">&lt;-</span> <span class="n">leprae[[1]]</span>
 
-ulcerans <span class="o">&lt;-</span> read.fasta<span class="p">(</span>file <span class="o">=</span> <span class="s">"A0PQ23.fasta"</span><span class="p">)</span>
-ulceransseq <span class="o">&lt;-</span> ulcerans<span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">ulcerans</span> <span class="o">&lt;-</span> <span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">"A0PQ23.fasta"</span><span class="p">)</span>
+<span class="n">ulceransseq</span> <span class="o">&lt;-</span> <span class="n">ulcerans[[1]]</span>
 
-lepraeseq <span class="c1"># Display the contents of "lepraeseq"</span>
+<span class="n">lepraeseq</span> <span class="c1"># Display the contents of "lepraeseq"</span>
 </pre></div>
 
     </div>
@@ -898,7 +898,7 @@ attr(,"class")
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>dotPlot<span class="p">(</span>lepraeseq<span class="p">,</span> ulceransseq<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">dotPlot</span><span class="p">(</span><span class="n">lepraeseq</span><span class="p">,</span> <span class="n">ulceransseq</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -955,7 +955,7 @@ attr(,"class")
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>tablecode<span class="p">()</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">tablecode</span><span class="p">()</span>
 </pre></div>
 
     </div>

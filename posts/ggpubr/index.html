@@ -145,11 +145,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="1.-ggpubr-설치하기:">1. ggpubr 설치하기:<a class="anchor-link" href="#1.-ggpubr-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0:">¶</a>
 </h2>
 <p><strong>CRAN</strong> 을 통한 설치법은 아래와 같습니다.</p>
-<div class="highlight"><pre><span></span>install.packages<span class="p">(</span><span class="s">"ggpubr"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"ggpubr"</span><span class="p">)</span>
 </pre></div>
 <h2 id="2.-ggpubr-불러오기:">2. ggpubr 불러오기:<a class="anchor-link" href="#2.-ggpubr-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0:">¶</a>
 </h2>
-<div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span><span class="s">"ggpubr"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">"ggpubr"</span><span class="p">)</span>
 </pre></div>
 <h2 id="3.-ggpubr로-도표-그리기">3. ggpubr로 도표 그리기<a class="anchor-link" href="#3.-ggpubr%EB%A1%9C-%EB%8F%84%ED%91%9C-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
 </h2>
@@ -169,12 +169,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># 필요한  패키지 불러오기</span>
-<span class="kn">library</span><span class="p">(</span><span class="s">"dplyr"</span><span class="p">)</span> 
-<span class="kn">library</span><span class="p">(</span><span class="s">"ggpubr"</span><span class="p">)</span>
-<span class="kp">options</span><span class="p">(</span>warn<span class="o">=</span><span class="m">-1</span><span class="p">)</span> <span class="c1"># 경고메세지 무시하기</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">"dplyr"</span><span class="p">)</span> 
+<span class="nf">library</span><span class="p">(</span><span class="s">"ggpubr"</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">warn</span><span class="o">=</span><span class="m">-1</span><span class="p">)</span> <span class="c1"># 경고메세지 무시하기</span>
 
-data<span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">)</span> <span class="c1"># 예제 데이터 불러오기</span>
-<span class="kp">head</span><span class="p">(</span>ToothGrowth<span class="p">,</span><span class="m">4</span><span class="p">)</span> <span class="c1"># 데이터 테이블 확인</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">)</span> <span class="c1"># 예제 데이터 불러오기</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">,</span><span class="m">4</span><span class="p">)</span> <span class="c1"># 데이터 테이블 확인</span>
 </pre></div>
 
     </div>
@@ -244,10 +244,10 @@ data<span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>ggline<span class="p">(</span>ToothGrowth<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> add <span class="o">=</span> <span class="s">"mean_se"</span><span class="p">,</span> <span class="c1"># 각각의 축설정 </span>
-      color <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span><span class="o">+</span>  <span class="c1"># 색상 설정하기</span>
-      stat_compare_means<span class="p">(</span>aes<span class="p">(</span>group <span class="o">=</span> supp<span class="p">),</span> label <span class="o">=</span> <span class="s">"p.signif"</span><span class="p">,</span> label.y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">16</span><span class="p">,</span> <span class="m">25</span><span class="p">,</span> <span class="m">29</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># 통계적 유의성 표시</span>
-      labs<span class="p">(</span><span class="kt">list</span><span class="p">(</span>x <span class="o">=</span> <span class="s">'Dose'</span><span class="p">,</span> y <span class="o">=</span> <span class="s">'Length'</span><span class="p">,</span> fill <span class="o">=</span> <span class="s">'Supp'</span><span class="p">))</span> <span class="c1"># 레이블 변경</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">ggline</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> <span class="n">add</span> <span class="o">=</span> <span class="s">"mean_se"</span><span class="p">,</span> <span class="c1"># 각각의 축설정 </span>
+      <span class="n">color</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span><span class="o">+</span>  <span class="c1"># 색상 설정하기</span>
+      <span class="nf">stat_compare_means</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">group</span> <span class="o">=</span> <span class="n">supp</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s">"p.signif"</span><span class="p">,</span> <span class="n">label.y</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">16</span><span class="p">,</span> <span class="m">25</span><span class="p">,</span> <span class="m">29</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># 통계적 유의성 표시</span>
+      <span class="nf">labs</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">'Dose'</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">'Length'</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">'Supp'</span><span class="p">))</span> <span class="c1"># 레이블 변경</span>
 </pre></div>
 
     </div>
@@ -293,9 +293,9 @@ data<span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">
 <h3 id="3.3.-한페이지에-여러-도표-넣기">3.3. 한페이지에 여러 도표 넣기<a class="anchor-link" href="#3.3.-%ED%95%9C%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90-%EC%97%AC%EB%9F%AC-%EB%8F%84%ED%91%9C-%EB%84%A3%EA%B8%B0">¶</a>
 </h3>
 <p>여러 도표를 한페이지에 넣는 기능은 <code>ggarrange()</code>입니다. <code>cowplot</code>의 <code>plot_grid()</code>함수에 기반하고 있죠. 그래서 사용법도 동일합니다.  아래의 예시 코드를 확인하세요.</p>
-<div class="highlight"><pre><span></span>ggarrange<span class="p">(</span>a<span class="p">,</span> b<span class="p">,</span> <span class="kt">c</span> <span class="p">,</span>  
-          labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
-          ncol <span class="o">=</span> <span class="m">2</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nf">ggarrange</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="p">,</span>  
+          <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
+          <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -320,11 +320,11 @@ data<span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># 예제 데이터 만들기</span>
-<span class="kp">set.seed</span><span class="p">(</span><span class="m">1234</span><span class="p">)</span>
-wdata <span class="o">=</span> <span class="kt">data.frame</span><span class="p">(</span>
-   sex <span class="o">=</span> <span class="kp">factor</span><span class="p">(</span><span class="kp">rep</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="s">"F"</span><span class="p">,</span> <span class="s">"M"</span><span class="p">),</span> each<span class="o">=</span><span class="m">200</span><span class="p">)),</span>
-   weight <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>rnorm<span class="p">(</span><span class="m">200</span><span class="p">,</span> <span class="m">55</span><span class="p">),</span> rnorm<span class="p">(</span><span class="m">200</span><span class="p">,</span> <span class="m">58</span><span class="p">)))</span>
-<span class="kp">head</span><span class="p">(</span>wdata<span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">1234</span><span class="p">)</span>
+<span class="n">wdata</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span>
+   <span class="n">sex</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">"F"</span><span class="p">,</span> <span class="s">"M"</span><span class="p">),</span> <span class="n">each</span><span class="o">=</span><span class="m">200</span><span class="p">)),</span>
+   <span class="n">weight</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="m">200</span><span class="p">,</span> <span class="m">55</span><span class="p">),</span> <span class="nf">rnorm</span><span class="p">(</span><span class="m">200</span><span class="p">,</span> <span class="m">58</span><span class="p">)))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">wdata</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -379,30 +379,30 @@ wdata <span class="o">=</span> <span class="kt">data.frame</span><span class="p"
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>a1 <span class="o">&lt;-</span> ggdensity<span class="p">(</span>wdata<span class="p">,</span> x <span class="o">=</span> <span class="s">"weight"</span><span class="p">,</span>
-   add <span class="o">=</span> <span class="s">"mean"</span><span class="p">,</span> rug <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="c1"># Density plot with mean lines and marginal rug</span>
-   color <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span> fill <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span>  <span class="c1"># Change outline and fill colors by groups ("sex")</span>
-   palette <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">))</span> <span class="c1"># Use custom palette</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">a1</span> <span class="o">&lt;-</span> <span class="nf">ggdensity</span><span class="p">(</span><span class="n">wdata</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"weight"</span><span class="p">,</span>
+   <span class="n">add</span> <span class="o">=</span> <span class="s">"mean"</span><span class="p">,</span> <span class="n">rug</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="c1"># Density plot with mean lines and marginal rug</span>
+   <span class="n">color</span> <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span>  <span class="c1"># Change outline and fill colors by groups ("sex")</span>
+   <span class="n">palette</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">))</span> <span class="c1"># Use custom palette</span>
 
-a2 <span class="o">&lt;-</span> gghistogram<span class="p">(</span>wdata<span class="p">,</span> x <span class="o">=</span> <span class="s">"weight"</span><span class="p">,</span>
-   add <span class="o">=</span> <span class="s">"mean"</span><span class="p">,</span> rug <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
-   color <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span> fill <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span>
-   palette <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">))</span>
+<span class="n">a2</span> <span class="o">&lt;-</span> <span class="nf">gghistogram</span><span class="p">(</span><span class="n">wdata</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"weight"</span><span class="p">,</span>
+   <span class="n">add</span> <span class="o">=</span> <span class="s">"mean"</span><span class="p">,</span> <span class="n">rug</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+   <span class="n">color</span> <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span>
+   <span class="n">palette</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">))</span>
 
-a3 <span class="o">&lt;-</span> ggdensity<span class="p">(</span>wdata<span class="p">,</span> x <span class="o">=</span> <span class="s">"weight"</span><span class="p">,</span>
-   add <span class="o">=</span> <span class="s">"mean"</span><span class="p">,</span> rug <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
-   fill <span class="o">=</span> <span class="s">"lightgray"</span><span class="p">)</span>
+<span class="n">a3</span> <span class="o">&lt;-</span> <span class="nf">ggdensity</span><span class="p">(</span><span class="n">wdata</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"weight"</span><span class="p">,</span>
+   <span class="n">add</span> <span class="o">=</span> <span class="s">"mean"</span><span class="p">,</span> <span class="n">rug</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+   <span class="n">fill</span> <span class="o">=</span> <span class="s">"lightgray"</span><span class="p">)</span>
 
 <span class="c1"># Combine histogram and density plots</span>
-a4 <span class="o">&lt;-</span>  gghistogram<span class="p">(</span>wdata<span class="p">,</span> x <span class="o">=</span> <span class="s">"weight"</span><span class="p">,</span>
-   add <span class="o">=</span> <span class="s">"mean"</span><span class="p">,</span> rug <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
-   fill <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span> palette <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">),</span>
-   add_density <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">a4</span> <span class="o">&lt;-</span>  <span class="nf">gghistogram</span><span class="p">(</span><span class="n">wdata</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"weight"</span><span class="p">,</span>
+   <span class="n">add</span> <span class="o">=</span> <span class="s">"mean"</span><span class="p">,</span> <span class="n">rug</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+   <span class="n">fill</span> <span class="o">=</span> <span class="s">"sex"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">),</span>
+   <span class="n">add_density</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="c1"># 한페이지에 넣기</span>
-ggarrange<span class="p">(</span>a1<span class="p">,</span> a2<span class="p">,</span> a3 <span class="p">,</span> a4<span class="p">,</span>
-          labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">,</span> <span class="s">"D"</span><span class="p">),</span>
-          ncol <span class="o">=</span> <span class="m">2</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span> <span class="p">,</span> <span class="n">a4</span><span class="p">,</span>
+          <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">,</span> <span class="s">"D"</span><span class="p">),</span>
+          <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -456,9 +456,9 @@ ggarrange<span class="p">(</span>a1<span class="p">,</span> a2<span class="p">,<
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Load data</span>
-data<span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">)</span>
-df <span class="o">&lt;-</span> ToothGrowth
-<span class="kp">head</span><span class="p">(</span>df<span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="n">ToothGrowth</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -519,25 +519,25 @@ df <span class="o">&lt;-</span> ToothGrowth
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Box plots with jittered points</span>
-p1 <span class="o">&lt;-</span> ggboxplot<span class="p">(</span>df<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
-        color <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> palette <span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span>
-        add <span class="o">=</span> <span class="s">"jitter"</span><span class="p">,</span> shape <span class="o">=</span> <span class="s">"dose"</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">&lt;-</span> <span class="nf">ggboxplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span>
+        <span class="n">add</span> <span class="o">=</span> <span class="s">"jitter"</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">)</span>
 
 <span class="c1"># Add p-values comparing groups</span>
-my_comparisons <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span> <span class="kt">c</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">),</span> <span class="kt">c</span><span class="p">(</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">),</span> <span class="kt">c</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">)</span> <span class="p">)</span>
-p2 <span class="o">&lt;-</span> p1 <span class="o">+</span> stat_compare_means<span class="p">(</span>comparisons <span class="o">=</span> my_comparisons<span class="p">)</span><span class="o">+</span> <span class="c1"># Add pairwise comparisons p-value</span>
-        stat_compare_means<span class="p">(</span>label.y <span class="o">=</span> <span class="m">50</span><span class="p">)</span>                   <span class="c1"># Add global p-value</span>
+<span class="n">my_comparisons</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span> <span class="nf">c</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">p2</span> <span class="o">&lt;-</span> <span class="n">p1</span> <span class="o">+</span> <span class="nf">stat_compare_means</span><span class="p">(</span><span class="n">comparisons</span> <span class="o">=</span> <span class="n">my_comparisons</span><span class="p">)</span><span class="o">+</span> <span class="c1"># Add pairwise comparisons p-value</span>
+        <span class="nf">stat_compare_means</span><span class="p">(</span><span class="n">label.y</span> <span class="o">=</span> <span class="m">50</span><span class="p">)</span>                   <span class="c1"># Add global p-value</span>
 
 <span class="c1"># Violin plots with box plots inside</span>
-p3 <span class="o">&lt;-</span> ggviolin<span class="p">(</span>df<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> fill <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span>
-         palette <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span>
-         add <span class="o">=</span> <span class="s">"boxplot"</span><span class="p">,</span> add.params <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>fill <span class="o">=</span> <span class="s">"white"</span><span class="p">))</span><span class="o">+</span>
-         stat_compare_means<span class="p">(</span>comparisons <span class="o">=</span> my_comparisons<span class="p">,</span> label <span class="o">=</span> <span class="s">"p.signif"</span><span class="p">)</span><span class="o">+</span> <span class="c1"># Add significance levels</span>
-         stat_compare_means<span class="p">(</span>label.y <span class="o">=</span> <span class="m">50</span><span class="p">)</span>        <span class="c1"># Add global the p-value </span>
+<span class="n">p3</span> <span class="o">&lt;-</span> <span class="nf">ggviolin</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span>
+         <span class="n">palette</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span>
+         <span class="n">add</span> <span class="o">=</span> <span class="s">"boxplot"</span><span class="p">,</span> <span class="n">add.params</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s">"white"</span><span class="p">))</span><span class="o">+</span>
+         <span class="nf">stat_compare_means</span><span class="p">(</span><span class="n">comparisons</span> <span class="o">=</span> <span class="n">my_comparisons</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">"p.signif"</span><span class="p">)</span><span class="o">+</span> <span class="c1"># Add significance levels</span>
+         <span class="nf">stat_compare_means</span><span class="p">(</span><span class="n">label.y</span> <span class="o">=</span> <span class="m">50</span><span class="p">)</span>        <span class="c1"># Add global the p-value </span>
 
-ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,</span> p3<span class="p">,</span>
-          labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
-          ncol <span class="o">=</span> <span class="m">2</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span>
+          <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
+          <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -593,36 +593,36 @@ ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,<
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># example Data</span>
-df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>dose<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">"D0.5"</span><span class="p">,</span> <span class="s">"D1"</span><span class="p">,</span> <span class="s">"D2"</span><span class="p">),</span>
-   len<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">4.2</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">29.5</span><span class="p">))</span>
-df2 <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>supp<span class="o">=</span><span class="kp">rep</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="s">"VC"</span><span class="p">,</span> <span class="s">"OJ"</span><span class="p">),</span> each<span class="o">=</span><span class="m">3</span><span class="p">),</span>
-   dose<span class="o">=</span><span class="kp">rep</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="s">"D0.5"</span><span class="p">,</span> <span class="s">"D1"</span><span class="p">,</span> <span class="s">"D2"</span><span class="p">),</span><span class="m">2</span><span class="p">),</span>
-   len<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">6.8</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">33</span><span class="p">,</span> <span class="m">4.2</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">29.5</span><span class="p">))</span>
-df3 <span class="o">&lt;-</span> ToothGrowth
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">dose</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"D0.5"</span><span class="p">,</span> <span class="s">"D1"</span><span class="p">,</span> <span class="s">"D2"</span><span class="p">),</span>
+   <span class="n">len</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">4.2</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">29.5</span><span class="p">))</span>
+<span class="n">df2</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">supp</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">"VC"</span><span class="p">,</span> <span class="s">"OJ"</span><span class="p">),</span> <span class="n">each</span><span class="o">=</span><span class="m">3</span><span class="p">),</span>
+   <span class="n">dose</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">"D0.5"</span><span class="p">,</span> <span class="s">"D1"</span><span class="p">,</span> <span class="s">"D2"</span><span class="p">),</span><span class="m">2</span><span class="p">),</span>
+   <span class="n">len</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">6.8</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">33</span><span class="p">,</span> <span class="m">4.2</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">29.5</span><span class="p">))</span>
+<span class="n">df3</span> <span class="o">&lt;-</span> <span class="n">ToothGrowth</span>
 
 <span class="c1"># Change position: Interleaved (dodged) bar plot</span>
-p1 <span class="o">&lt;-</span> ggbarplot<span class="p">(</span>df2<span class="p">,</span> <span class="s">"dose"</span><span class="p">,</span> <span class="s">"len"</span><span class="p">,</span>
-        fill <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> color <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"Paired"</span><span class="p">,</span>
-        position <span class="o">=</span> position_dodge<span class="p">(</span><span class="m">0.8</span><span class="p">))</span>
+<span class="n">p1</span> <span class="o">&lt;-</span> <span class="nf">ggbarplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="s">"dose"</span><span class="p">,</span> <span class="s">"len"</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"Paired"</span><span class="p">,</span>
+        <span class="n">position</span> <span class="o">=</span> <span class="nf">position_dodge</span><span class="p">(</span><span class="m">0.8</span><span class="p">))</span>
 
 <span class="c1"># Change fill and outline color add labels inside bars</span>
-p2 <span class="o">&lt;-</span> ggbarplot<span class="p">(</span>df<span class="p">,</span> <span class="s">"dose"</span><span class="p">,</span> <span class="s">"len"</span><span class="p">,</span>
-        fill <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> color <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span>
-        palette <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span>
-        label <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> lab.pos <span class="o">=</span> <span class="s">"in"</span><span class="p">,</span> lab.col <span class="o">=</span> <span class="s">"white"</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">&lt;-</span> <span class="nf">ggbarplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s">"dose"</span><span class="p">,</span> <span class="s">"len"</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span>
+        <span class="n">palette</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">lab.pos</span> <span class="o">=</span> <span class="s">"in"</span><span class="p">,</span> <span class="n">lab.col</span> <span class="o">=</span> <span class="s">"white"</span><span class="p">)</span>
 
 <span class="c1"># Add jitter points and errors (mean_se)</span>
-p3 <span class="o">&lt;-</span> ggbarplot<span class="p">(</span>df3<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
-        add <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"mean_se"</span><span class="p">,</span> <span class="s">"jitter"</span><span class="p">))</span>
+<span class="n">p3</span> <span class="o">&lt;-</span> <span class="nf">ggbarplot</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
+        <span class="n">add</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"mean_se"</span><span class="p">,</span> <span class="s">"jitter"</span><span class="p">))</span>
 
 <span class="c1"># Multiple groups with error bars and jitter point</span>
-p4 <span class="o">&lt;-</span> ggbarplot<span class="p">(</span>df3<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> color <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span>
-         add <span class="o">=</span> <span class="s">"mean_se"</span><span class="p">,</span> palette <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">),</span>
-         position <span class="o">=</span> position_dodge<span class="p">(</span><span class="m">0.8</span><span class="p">))</span>
+<span class="n">p4</span> <span class="o">&lt;-</span> <span class="nf">ggbarplot</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span>
+         <span class="n">add</span> <span class="o">=</span> <span class="s">"mean_se"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">),</span>
+         <span class="n">position</span> <span class="o">=</span> <span class="nf">position_dodge</span><span class="p">(</span><span class="m">0.8</span><span class="p">))</span>
 
-ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,</span> p3<span class="p">,</span> p4<span class="p">,</span>
-          labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">,</span> <span class="s">"D"</span><span class="p">),</span>
-          ncol <span class="o">=</span> <span class="m">2</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span>
+          <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">,</span> <span class="s">"D"</span><span class="p">),</span>
+          <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -678,11 +678,11 @@ ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,<
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># 샘플 데이터 불러오기</span>
-data<span class="p">(</span><span class="s">"mtcars"</span><span class="p">)</span>
-dfm <span class="o">&lt;-</span> mtcars
-dfm<span class="o">$</span>cyl <span class="o">&lt;-</span> <span class="kp">as.factor</span><span class="p">(</span>dfm<span class="o">$</span>cyl<span class="p">)</span> <span class="c1"># Convert the cyl variable to a factor</span>
-dfm<span class="o">$</span>name <span class="o">&lt;-</span> <span class="kp">rownames</span><span class="p">(</span>dfm<span class="p">)</span> <span class="c1"># Add the name colums</span>
-<span class="kp">head</span><span class="p">(</span>dfm<span class="p">[,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span> <span class="s">"wt"</span><span class="p">,</span> <span class="s">"mpg"</span><span class="p">,</span> <span class="s">"cyl"</span><span class="p">)])</span> <span class="c1"># 데이터 살펴보기</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">"mtcars"</span><span class="p">)</span>
+<span class="n">dfm</span> <span class="o">&lt;-</span> <span class="n">mtcars</span>
+<span class="n">dfm</span><span class="o">$</span><span class="n">cyl</span> <span class="o">&lt;-</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">dfm</span><span class="o">$</span><span class="n">cyl</span><span class="p">)</span> <span class="c1"># Convert the cyl variable to a factor</span>
+<span class="n">dfm</span><span class="o">$</span><span class="n">name</span> <span class="o">&lt;-</span> <span class="nf">rownames</span><span class="p">(</span><span class="n">dfm</span><span class="p">)</span> <span class="c1"># Add the name colums</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dfm[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span> <span class="s">"wt"</span><span class="p">,</span> <span class="s">"mpg"</span><span class="p">,</span> <span class="s">"cyl"</span><span class="p">)</span><span class="n">]</span><span class="p">)</span> <span class="c1"># 데이터 살펴보기</span>
 </pre></div>
 
     </div>
@@ -766,25 +766,25 @@ dfm<span class="o">$</span>name <span class="o">&lt;-</span> <span class="kp">ro
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>a1 <span class="o">&lt;-</span> ggbarplot<span class="p">(</span>dfm<span class="p">,</span> x <span class="o">=</span> <span class="s">"name"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
-          fill <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>               <span class="c1"># change fill color by cyl</span>
-          color <span class="o">=</span> <span class="s">"white"</span><span class="p">,</span>            <span class="c1"># Set bar border colors to white</span>
-          palette <span class="o">=</span> <span class="s">"jco"</span><span class="p">,</span>            <span class="c1"># jco journal color palett. see ?ggpar</span>
-          sort.val <span class="o">=</span> <span class="s">"desc"</span><span class="p">,</span>          <span class="c1"># Sort the value in dscending order</span>
-          sort.by.groups <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>     <span class="c1"># Don't sort inside each group</span>
-          x.text.angle <span class="o">=</span> <span class="m">90</span><span class="p">)</span>           <span class="c1"># Rotate vertically x axis texts</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">a1</span> <span class="o">&lt;-</span> <span class="nf">ggbarplot</span><span class="p">(</span><span class="n">dfm</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"name"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
+          <span class="n">fill</span> <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>               <span class="c1"># change fill color by cyl</span>
+          <span class="n">color</span> <span class="o">=</span> <span class="s">"white"</span><span class="p">,</span>            <span class="c1"># Set bar border colors to white</span>
+          <span class="n">palette</span> <span class="o">=</span> <span class="s">"jco"</span><span class="p">,</span>            <span class="c1"># jco journal color palett. see ?ggpar</span>
+          <span class="n">sort.val</span> <span class="o">=</span> <span class="s">"desc"</span><span class="p">,</span>          <span class="c1"># Sort the value in dscending order</span>
+          <span class="n">sort.by.groups</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>     <span class="c1"># Don't sort inside each group</span>
+          <span class="n">x.text.angle</span> <span class="o">=</span> <span class="m">90</span><span class="p">)</span>           <span class="c1"># Rotate vertically x axis texts</span>
 
-a2 <span class="o">&lt;-</span> ggbarplot<span class="p">(</span>dfm<span class="p">,</span> x <span class="o">=</span> <span class="s">"name"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
-          fill <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>               <span class="c1"># change fill color by cyl</span>
-          color <span class="o">=</span> <span class="s">"white"</span><span class="p">,</span>            <span class="c1"># Set bar border colors to white</span>
-          palette <span class="o">=</span> <span class="s">"jco"</span><span class="p">,</span>            <span class="c1"># jco journal color palett. see ?ggpar</span>
-          sort.val <span class="o">=</span> <span class="s">"asc"</span><span class="p">,</span>           <span class="c1"># Sort the value in dscending order</span>
-          sort.by.groups <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>      <span class="c1"># Sort inside each group</span>
-          x.text.angle <span class="o">=</span> <span class="m">90</span><span class="p">)</span>           <span class="c1"># Rotate vertically x axis texts</span>
+<span class="n">a2</span> <span class="o">&lt;-</span> <span class="nf">ggbarplot</span><span class="p">(</span><span class="n">dfm</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"name"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
+          <span class="n">fill</span> <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>               <span class="c1"># change fill color by cyl</span>
+          <span class="n">color</span> <span class="o">=</span> <span class="s">"white"</span><span class="p">,</span>            <span class="c1"># Set bar border colors to white</span>
+          <span class="n">palette</span> <span class="o">=</span> <span class="s">"jco"</span><span class="p">,</span>            <span class="c1"># jco journal color palett. see ?ggpar</span>
+          <span class="n">sort.val</span> <span class="o">=</span> <span class="s">"asc"</span><span class="p">,</span>           <span class="c1"># Sort the value in dscending order</span>
+          <span class="n">sort.by.groups</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>      <span class="c1"># Sort inside each group</span>
+          <span class="n">x.text.angle</span> <span class="o">=</span> <span class="m">90</span><span class="p">)</span>           <span class="c1"># Rotate vertically x axis texts</span>
 
-ggarrange<span class="p">(</span>a1<span class="p">,</span> a2<span class="p">,</span>
-          labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">),</span>
-          ncol <span class="o">=</span> <span class="m">1</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span>
+          <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">),</span>
+          <span class="n">ncol</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -840,11 +840,11 @@ ggarrange<span class="p">(</span>a1<span class="p">,</span> a2<span class="p">,<
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Calculate the z-score of the mpg data</span>
-dfm<span class="o">$</span>mpg_z <span class="o">&lt;-</span> <span class="p">(</span>dfm<span class="o">$</span>mpg <span class="o">-</span><span class="kp">mean</span><span class="p">(</span>dfm<span class="o">$</span>mpg<span class="p">))</span><span class="o">/</span>sd<span class="p">(</span>dfm<span class="o">$</span>mpg<span class="p">)</span>
-dfm<span class="o">$</span>mpg_grp <span class="o">&lt;-</span> <span class="kp">factor</span><span class="p">(</span><span class="kp">ifelse</span><span class="p">(</span>dfm<span class="o">$</span>mpg_z <span class="o">&lt;</span> <span class="m">0</span><span class="p">,</span> <span class="s">"low"</span><span class="p">,</span> <span class="s">"high"</span><span class="p">),</span> 
-                     levels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"low"</span><span class="p">,</span> <span class="s">"high"</span><span class="p">))</span>
+<span class="n">dfm</span><span class="o">$</span><span class="n">mpg_z</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">dfm</span><span class="o">$</span><span class="n">mpg</span> <span class="o">-</span><span class="nf">mean</span><span class="p">(</span><span class="n">dfm</span><span class="o">$</span><span class="n">mpg</span><span class="p">))</span><span class="o">/</span><span class="nf">sd</span><span class="p">(</span><span class="n">dfm</span><span class="o">$</span><span class="n">mpg</span><span class="p">)</span>
+<span class="n">dfm</span><span class="o">$</span><span class="n">mpg_grp</span> <span class="o">&lt;-</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">dfm</span><span class="o">$</span><span class="n">mpg_z</span> <span class="o">&lt;</span> <span class="m">0</span><span class="p">,</span> <span class="s">"low"</span><span class="p">,</span> <span class="s">"high"</span><span class="p">),</span> 
+                     <span class="n">levels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"low"</span><span class="p">,</span> <span class="s">"high"</span><span class="p">))</span>
 <span class="c1"># Inspect the data</span>
-<span class="kp">head</span><span class="p">(</span>dfm<span class="p">[,</span> <span class="kt">c</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span> <span class="s">"wt"</span><span class="p">,</span> <span class="s">"mpg"</span><span class="p">,</span> <span class="s">"mpg_z"</span><span class="p">,</span> <span class="s">"mpg_grp"</span><span class="p">,</span> <span class="s">"cyl"</span><span class="p">)])</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dfm[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span> <span class="s">"wt"</span><span class="p">,</span> <span class="s">"mpg"</span><span class="p">,</span> <span class="s">"mpg_z"</span><span class="p">,</span> <span class="s">"mpg_grp"</span><span class="p">,</span> <span class="s">"cyl"</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -943,17 +943,17 @@ dfm<span class="o">$</span>mpg_grp <span class="o">&lt;-</span> <span class="kp"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Create an ordered bar plot, colored according to the level of mpg:</span>
-ggbarplot<span class="p">(</span>dfm<span class="p">,</span> x <span class="o">=</span> <span class="s">"name"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"mpg_z"</span><span class="p">,</span>
-          fill <span class="o">=</span> <span class="s">"mpg_grp"</span><span class="p">,</span>           <span class="c1"># change fill color by mpg_level</span>
-          color <span class="o">=</span> <span class="s">"white"</span><span class="p">,</span>            <span class="c1"># Set bar border colors to white</span>
-          palette <span class="o">=</span> <span class="s">"jco"</span><span class="p">,</span>            <span class="c1"># jco journal color palett. see ?ggpar</span>
-          sort.val <span class="o">=</span> <span class="s">"desc"</span><span class="p">,</span>          <span class="c1"># Sort the value in descending order</span>
-          sort.by.groups <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>     <span class="c1"># Don't sort inside each group</span>
-          x.text.angle <span class="o">=</span> <span class="m">90</span><span class="p">,</span>          <span class="c1"># Rotate vertically x axis texts</span>
-          ylab <span class="o">=</span> <span class="s">"MPG z-score"</span><span class="p">,</span>
-          legend.title <span class="o">=</span> <span class="s">"MPG Group"</span><span class="p">,</span>
-          rotate <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
-          ggtheme <span class="o">=</span> theme_minimal<span class="p">())</span>
+<span class="nf">ggbarplot</span><span class="p">(</span><span class="n">dfm</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"name"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"mpg_z"</span><span class="p">,</span>
+          <span class="n">fill</span> <span class="o">=</span> <span class="s">"mpg_grp"</span><span class="p">,</span>           <span class="c1"># change fill color by mpg_level</span>
+          <span class="n">color</span> <span class="o">=</span> <span class="s">"white"</span><span class="p">,</span>            <span class="c1"># Set bar border colors to white</span>
+          <span class="n">palette</span> <span class="o">=</span> <span class="s">"jco"</span><span class="p">,</span>            <span class="c1"># jco journal color palett. see ?ggpar</span>
+          <span class="n">sort.val</span> <span class="o">=</span> <span class="s">"desc"</span><span class="p">,</span>          <span class="c1"># Sort the value in descending order</span>
+          <span class="n">sort.by.groups</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>     <span class="c1"># Don't sort inside each group</span>
+          <span class="n">x.text.angle</span> <span class="o">=</span> <span class="m">90</span><span class="p">,</span>          <span class="c1"># Rotate vertically x axis texts</span>
+          <span class="n">ylab</span> <span class="o">=</span> <span class="s">"MPG z-score"</span><span class="p">,</span>
+          <span class="n">legend.title</span> <span class="o">=</span> <span class="s">"MPG Group"</span><span class="p">,</span>
+          <span class="n">rotate</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+          <span class="n">ggtheme</span> <span class="o">=</span> <span class="nf">theme_minimal</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -1010,18 +1010,18 @@ ggbarplot<span class="p">(</span>dfm<span class="p">,</span> x <span class="o">=
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>ggdotchart<span class="p">(</span>dfm<span class="p">,</span> x <span class="o">=</span> <span class="s">"name"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
-           color <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>                                <span class="c1"># Color by groups</span>
-           palette <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span> <span class="c1"># Custom color palette</span>
-           sorting <span class="o">=</span> <span class="s">"descending"</span><span class="p">,</span>                       <span class="c1"># Sort value in descending order</span>
-           add <span class="o">=</span> <span class="s">"segments"</span><span class="p">,</span>                             <span class="c1"># Add segments from y = 0 to dots</span>
-           rotate <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>                                <span class="c1"># Rotate vertically</span>
-           group <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>                                <span class="c1"># Order by groups</span>
-           dot.size <span class="o">=</span> <span class="m">6</span><span class="p">,</span>                                 <span class="c1"># Large dot size</span>
-           label <span class="o">=</span> <span class="kp">round</span><span class="p">(</span>dfm<span class="o">$</span>mpg<span class="p">),</span>                        <span class="c1"># Add mpg values as dot labels</span>
-           font.label <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>color <span class="o">=</span> <span class="s">"white"</span><span class="p">,</span> size <span class="o">=</span> <span class="m">9</span><span class="p">,</span> 
-           vjust <span class="o">=</span> <span class="m">0.5</span><span class="p">),</span>               <span class="c1"># Adjust label parameters</span>
-           ggtheme <span class="o">=</span> theme_pubr<span class="p">())</span>                        <span class="c1"># ggplot2 theme</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">ggdotchart</span><span class="p">(</span><span class="n">dfm</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"name"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
+           <span class="n">color</span> <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>                                <span class="c1"># Color by groups</span>
+           <span class="n">palette</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span> <span class="c1"># Custom color palette</span>
+           <span class="n">sorting</span> <span class="o">=</span> <span class="s">"descending"</span><span class="p">,</span>                       <span class="c1"># Sort value in descending order</span>
+           <span class="n">add</span> <span class="o">=</span> <span class="s">"segments"</span><span class="p">,</span>                             <span class="c1"># Add segments from y = 0 to dots</span>
+           <span class="n">rotate</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>                                <span class="c1"># Rotate vertically</span>
+           <span class="n">group</span> <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>                                <span class="c1"># Order by groups</span>
+           <span class="n">dot.size</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span>                                 <span class="c1"># Large dot size</span>
+           <span class="n">label</span> <span class="o">=</span> <span class="nf">round</span><span class="p">(</span><span class="n">dfm</span><span class="o">$</span><span class="n">mpg</span><span class="p">),</span>                        <span class="c1"># Add mpg values as dot labels</span>
+           <span class="n">font.label</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">"white"</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">9</span><span class="p">,</span> 
+           <span class="n">vjust</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">),</span>               <span class="c1"># Adjust label parameters</span>
+           <span class="n">ggtheme</span> <span class="o">=</span> <span class="nf">theme_pubr</span><span class="p">())</span>                        <span class="c1"># ggplot2 theme</span>
 </pre></div>
 
     </div>
@@ -1068,10 +1068,10 @@ ggbarplot<span class="p">(</span>dfm<span class="p">,</span> x <span class="o">=
 </h3>
 <p>도표 밑에 설명을 넣는 방법입니다. 한줄단위로 내용을 끊어서 작성해야, 산출물에서 줄이 잘 맞게 할 수 있습니다. 
 아래의 예시 코드를 확인하세요.</p>
-<div class="highlight"><pre><span></span>ggparagraph<span class="p">(</span>text<span class="p">,</span> color <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> size <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> face <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> family <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
-  lineheight <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nf">ggparagraph</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">face</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+  <span class="n">lineheight</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span>
 <span class="c1"># S3 method for splitText</span>
-drawDetails<span class="p">(</span>x<span class="p">,</span> recording<span class="p">)</span>
+<span class="nf">drawDetails</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">recording</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1083,20 +1083,20 @@ drawDetails<span class="p">(</span>x<span class="p">,</span> recording<span clas
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Density plot</span>
-density.p <span class="o">&lt;-</span> ggdensity<span class="p">(</span>iris<span class="p">,</span> x <span class="o">=</span> <span class="s">"Sepal.Length"</span><span class="p">,</span>
-                      fill <span class="o">=</span> <span class="s">"Species"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"jco"</span><span class="p">)</span>
+<span class="n">density.p</span> <span class="o">&lt;-</span> <span class="nf">ggdensity</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"Sepal.Length"</span><span class="p">,</span>
+                      <span class="n">fill</span> <span class="o">=</span> <span class="s">"Species"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"jco"</span><span class="p">)</span>
 <span class="c1"># Text plot</span>
-text <span class="o">&lt;-</span> <span class="kp">paste</span><span class="p">(</span><span class="s">"Iris data set gives the measurements in cm"</span><span class="p">,</span>
+<span class="n">text</span> <span class="o">&lt;-</span> <span class="nf">paste</span><span class="p">(</span><span class="s">"Iris data set gives the measurements in cm"</span><span class="p">,</span>
              <span class="s">"of the variables sepal length and width"</span><span class="p">,</span>
              <span class="s">"and petal length and width, respectively,"</span><span class="p">,</span>
              <span class="s">"for 50 flowers from each of 3 species of iris."</span><span class="p">,</span>
-             <span class="s">"The species are Iris setosa, versicolor, and virginica."</span><span class="p">,</span> sep <span class="o">=</span> <span class="s">" "</span><span class="p">)</span>
-text.p <span class="o">&lt;-</span> ggparagraph<span class="p">(</span>text<span class="p">,</span> face <span class="o">=</span> <span class="s">"italic"</span><span class="p">,</span> size <span class="o">=</span> <span class="m">12</span><span class="p">)</span>
+             <span class="s">"The species are Iris setosa, versicolor, and virginica."</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">" "</span><span class="p">)</span>
+<span class="n">text.p</span> <span class="o">&lt;-</span> <span class="nf">ggparagraph</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">face</span> <span class="o">=</span> <span class="s">"italic"</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span>
 
 <span class="c1"># Arrange the plots on the same page</span>
-ggarrange<span class="p">(</span>density.p<span class="p">,</span> text.p<span class="p">,</span>
-         ncol <span class="o">=</span> <span class="m">1</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
-         heights <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">0.3</span><span class="p">))</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">density.p</span><span class="p">,</span> <span class="n">text.p</span><span class="p">,</span>
+         <span class="n">ncol</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+         <span class="n">heights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">0.3</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1150,21 +1150,21 @@ ggarrange<span class="p">(</span>density.p<span class="p">,</span> text.p<span c
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Data: ToothGrowth data set we'll be used.</span>
-df3 <span class="o">&lt;-</span> ToothGrowth
+<span class="n">df3</span> <span class="o">&lt;-</span> <span class="n">ToothGrowth</span>
 <span class="c1"># Add error bars: mean_se</span>
 <span class="c1"># (other values include: mean_sd, mean_ci, median_iqr, ....)</span>
 <span class="c1"># Add labels</span>
-p1 <span class="o">&lt;-</span> ggline<span class="p">(</span>df3<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> add <span class="o">=</span> <span class="s">"mean_se"</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">&lt;-</span> <span class="nf">ggline</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> <span class="n">add</span> <span class="o">=</span> <span class="s">"mean_se"</span><span class="p">)</span>
 <span class="c1"># Add jitter points and errors (mean_se)</span>
-p2 <span class="o">&lt;-</span> ggline<span class="p">(</span>df3<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
- add <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"mean_se"</span><span class="p">,</span><span class="s">'jitter'</span><span class="p">))</span>
+<span class="n">p2</span> <span class="o">&lt;-</span> <span class="nf">ggline</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
+ <span class="n">add</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"mean_se"</span><span class="p">,</span><span class="s">'jitter'</span><span class="p">))</span>
 <span class="c1"># Multiple groups with error bars</span>
-p3 <span class="o">&lt;-</span> ggline<span class="p">(</span>df3<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> color <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span>
- add <span class="o">=</span> <span class="s">"mean_se"</span><span class="p">,</span> palette <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">))</span>
+<span class="n">p3</span> <span class="o">&lt;-</span> <span class="nf">ggline</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span>
+ <span class="n">add</span> <span class="o">=</span> <span class="s">"mean_se"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">))</span>
 
-ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,</span> p3<span class="p">,</span>
-          labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
-          ncol <span class="o">=</span> <span class="m">2</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span>
+          <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
+          <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1220,11 +1220,11 @@ ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,<
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Grouped data</span>
-ggscatterhist<span class="p">(</span>
- iris<span class="p">,</span> x <span class="o">=</span> <span class="s">"Sepal.Length"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"Sepal.Width"</span><span class="p">,</span>
- color <span class="o">=</span> <span class="s">"Species"</span><span class="p">,</span> size <span class="o">=</span> <span class="m">3</span><span class="p">,</span> alpha <span class="o">=</span> <span class="m">0.6</span><span class="p">,</span>
- palette <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span>
- margin.params <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>fill <span class="o">=</span> <span class="s">"Species"</span><span class="p">,</span> color <span class="o">=</span> <span class="s">"black"</span><span class="p">,</span> size <span class="o">=</span> <span class="m">0.2</span><span class="p">))</span>
+<span class="nf">ggscatterhist</span><span class="p">(</span>
+ <span class="n">iris</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"Sepal.Length"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"Sepal.Width"</span><span class="p">,</span>
+ <span class="n">color</span> <span class="o">=</span> <span class="s">"Species"</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.6</span><span class="p">,</span>
+ <span class="n">palette</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"#00AFBB"</span><span class="p">,</span> <span class="s">"#E7B800"</span><span class="p">,</span> <span class="s">"#FC4E07"</span><span class="p">),</span>
+ <span class="n">margin.params</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s">"Species"</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">"black"</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1280,31 +1280,31 @@ ggscatterhist<span class="p">(</span>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Load data</span>
-data<span class="p">(</span><span class="s">"mtcars"</span><span class="p">)</span>
-df <span class="o">&lt;-</span> mtcars
-df<span class="o">$</span>cyl <span class="o">&lt;-</span> <span class="kp">as.factor</span><span class="p">(</span>df<span class="o">$</span>cyl<span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">"mtcars"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="n">mtcars</span>
+<span class="n">df</span><span class="o">$</span><span class="n">cyl</span> <span class="o">&lt;-</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">cyl</span><span class="p">)</span>
 
 <span class="c1"># Scatter plot with correlation coefficient</span>
-sp <span class="o">&lt;-</span> ggscatter<span class="p">(</span>df<span class="p">,</span> x <span class="o">=</span> <span class="s">"wt"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
-   add <span class="o">=</span> <span class="s">"reg.line"</span><span class="p">,</span>  <span class="c1"># Add regressin line</span>
-   add.params <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>color <span class="o">=</span> <span class="s">"blue"</span><span class="p">,</span> fill <span class="o">=</span> <span class="s">"lightgray"</span><span class="p">),</span> <span class="c1"># Customize reg. line</span>
-   conf.int <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="c1"># Add confidence interval</span>
+<span class="n">sp</span> <span class="o">&lt;-</span> <span class="nf">ggscatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"wt"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
+   <span class="n">add</span> <span class="o">=</span> <span class="s">"reg.line"</span><span class="p">,</span>  <span class="c1"># Add regressin line</span>
+   <span class="n">add.params</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">"blue"</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">"lightgray"</span><span class="p">),</span> <span class="c1"># Customize reg. line</span>
+   <span class="n">conf.int</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="c1"># Add confidence interval</span>
 <span class="c1"># Add correlation coefficient</span>
-p1 <span class="o">&lt;-</span> sp <span class="o">+</span> stat_cor<span class="p">(</span>method <span class="o">=</span> <span class="s">"pearson"</span><span class="p">,</span> label.x <span class="o">=</span> <span class="m">3</span><span class="p">,</span> label.y <span class="o">=</span> <span class="m">30</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">&lt;-</span> <span class="n">sp</span> <span class="o">+</span> <span class="nf">stat_cor</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">"pearson"</span><span class="p">,</span> <span class="n">label.x</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">label.y</span> <span class="o">=</span> <span class="m">30</span><span class="p">)</span>
 <span class="c1"># Color by groups and facet</span>
-sp <span class="o">&lt;-</span> ggscatter<span class="p">(</span>df<span class="p">,</span> x <span class="o">=</span> <span class="s">"wt"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
-   color <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"jco"</span><span class="p">,</span>
-   add <span class="o">=</span> <span class="s">"reg.line"</span><span class="p">,</span> conf.int <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
-p2 <span class="o">&lt;-</span> sp <span class="o">+</span> stat_cor<span class="p">(</span>aes<span class="p">(</span>color <span class="o">=</span> cyl<span class="p">),</span> label.x <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+<span class="n">sp</span> <span class="o">&lt;-</span> <span class="nf">ggscatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"wt"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
+   <span class="n">color</span> <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"jco"</span><span class="p">,</span>
+   <span class="n">add</span> <span class="o">=</span> <span class="s">"reg.line"</span><span class="p">,</span> <span class="n">conf.int</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">&lt;-</span> <span class="n">sp</span> <span class="o">+</span> <span class="nf">stat_cor</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">cyl</span><span class="p">),</span> <span class="n">label.x</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
 <span class="c1"># Scatter plot with ellipses and group mean points</span>
-p3 <span class="o">&lt;-</span> ggscatter<span class="p">(</span>df<span class="p">,</span> x <span class="o">=</span> <span class="s">"wt"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
-   color <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span> shape <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>
-   mean.point <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> ellipse <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span><span class="o">+</span>
-   stat_stars<span class="p">(</span>aes<span class="p">(</span>color <span class="o">=</span> cyl<span class="p">))</span>
+<span class="n">p3</span> <span class="o">&lt;-</span> <span class="nf">ggscatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"wt"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"mpg"</span><span class="p">,</span>
+   <span class="n">color</span> <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="s">"cyl"</span><span class="p">,</span>
+   <span class="n">mean.point</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">ellipse</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span><span class="o">+</span>
+   <span class="nf">stat_stars</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">cyl</span><span class="p">))</span>
 
-ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,</span> p3<span class="p">,</span>
-          labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
-          ncol <span class="o">=</span> <span class="m">2</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span>
+          <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
+          <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1358,19 +1358,19 @@ ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,<
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Example data</span>
-before <span class="o">&lt;-</span><span class="kt">c</span><span class="p">(</span><span class="m">200.1</span><span class="p">,</span> <span class="m">190.9</span><span class="p">,</span> <span class="m">192.7</span><span class="p">,</span> <span class="m">213</span><span class="p">,</span> <span class="m">241.4</span><span class="p">,</span> <span class="m">196.9</span><span class="p">,</span> <span class="m">172.2</span><span class="p">,</span> <span class="m">185.5</span><span class="p">,</span> <span class="m">205.2</span><span class="p">,</span> <span class="m">193.7</span><span class="p">)</span>
-after <span class="o">&lt;-</span><span class="kt">c</span><span class="p">(</span><span class="m">392.9</span><span class="p">,</span> <span class="m">393.2</span><span class="p">,</span> <span class="m">345.1</span><span class="p">,</span> <span class="m">393</span><span class="p">,</span> <span class="m">434</span><span class="p">,</span> <span class="m">427.9</span><span class="p">,</span> <span class="m">422</span><span class="p">,</span> <span class="m">383.9</span><span class="p">,</span> <span class="m">392.3</span><span class="p">,</span> <span class="m">352.2</span><span class="p">)</span>
+<span class="n">before</span> <span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="m">200.1</span><span class="p">,</span> <span class="m">190.9</span><span class="p">,</span> <span class="m">192.7</span><span class="p">,</span> <span class="m">213</span><span class="p">,</span> <span class="m">241.4</span><span class="p">,</span> <span class="m">196.9</span><span class="p">,</span> <span class="m">172.2</span><span class="p">,</span> <span class="m">185.5</span><span class="p">,</span> <span class="m">205.2</span><span class="p">,</span> <span class="m">193.7</span><span class="p">)</span>
+<span class="n">after</span> <span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="m">392.9</span><span class="p">,</span> <span class="m">393.2</span><span class="p">,</span> <span class="m">345.1</span><span class="p">,</span> <span class="m">393</span><span class="p">,</span> <span class="m">434</span><span class="p">,</span> <span class="m">427.9</span><span class="p">,</span> <span class="m">422</span><span class="p">,</span> <span class="m">383.9</span><span class="p">,</span> <span class="m">392.3</span><span class="p">,</span> <span class="m">352.2</span><span class="p">)</span>
 
-d <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>before <span class="o">=</span> before<span class="p">,</span> after <span class="o">=</span> after<span class="p">)</span>
-p1 <span class="o">&lt;-</span> ggpaired<span class="p">(</span>d<span class="p">,</span> cond1 <span class="o">=</span> <span class="s">"before"</span><span class="p">,</span> cond2 <span class="o">=</span> <span class="s">"after"</span><span class="p">,</span> width <span class="o">=</span> <span class="m">0.0</span><span class="p">,</span>
-    line.color <span class="o">=</span> <span class="s">"gray"</span><span class="p">,</span> line.size <span class="o">=</span> <span class="m">0.4</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span>
-p2 <span class="o">&lt;-</span> ggpaired<span class="p">(</span>d<span class="p">,</span> cond1 <span class="o">=</span> <span class="s">"before"</span><span class="p">,</span> cond2 <span class="o">=</span> <span class="s">"after"</span><span class="p">,</span> width <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span>
-    line.color <span class="o">=</span> <span class="s">"gray"</span><span class="p">,</span> line.size <span class="o">=</span> <span class="m">0.4</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"aaas"</span><span class="p">)</span>
-p3 <span class="o">&lt;-</span> ggpaired<span class="p">(</span>d<span class="p">,</span> cond1 <span class="o">=</span> <span class="s">"before"</span><span class="p">,</span> cond2 <span class="o">=</span> <span class="s">"after"</span><span class="p">,</span> width <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span>
-    line.color <span class="o">=</span> <span class="s">"gray"</span><span class="p">,</span> line.size <span class="o">=</span> <span class="m">0.4</span><span class="p">,</span> fill <span class="o">=</span> <span class="s">"condition"</span><span class="p">,</span>palette <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span>
-ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,</span> p3<span class="p">,</span>
-          labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
-          ncol <span class="o">=</span> <span class="m">2</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">before</span> <span class="o">=</span> <span class="n">before</span><span class="p">,</span> <span class="n">after</span> <span class="o">=</span> <span class="n">after</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">&lt;-</span> <span class="nf">ggpaired</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">cond1</span> <span class="o">=</span> <span class="s">"before"</span><span class="p">,</span> <span class="n">cond2</span> <span class="o">=</span> <span class="s">"after"</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">0.0</span><span class="p">,</span>
+    <span class="n">line.color</span> <span class="o">=</span> <span class="s">"gray"</span><span class="p">,</span> <span class="n">line.size</span> <span class="o">=</span> <span class="m">0.4</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">&lt;-</span> <span class="nf">ggpaired</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">cond1</span> <span class="o">=</span> <span class="s">"before"</span><span class="p">,</span> <span class="n">cond2</span> <span class="o">=</span> <span class="s">"after"</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span>
+    <span class="n">line.color</span> <span class="o">=</span> <span class="s">"gray"</span><span class="p">,</span> <span class="n">line.size</span> <span class="o">=</span> <span class="m">0.4</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"aaas"</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">&lt;-</span> <span class="nf">ggpaired</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">cond1</span> <span class="o">=</span> <span class="s">"before"</span><span class="p">,</span> <span class="n">cond2</span> <span class="o">=</span> <span class="s">"after"</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span>
+    <span class="n">line.color</span> <span class="o">=</span> <span class="s">"gray"</span><span class="p">,</span> <span class="n">line.size</span> <span class="o">=</span> <span class="m">0.4</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">"condition"</span><span class="p">,</span><span class="n">palette</span> <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span>
+          <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">),</span>
+          <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1424,8 +1424,8 @@ ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,<
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Load data</span>
-data<span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>ToothGrowth<span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1496,35 +1496,35 @@ data<span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Two independent groups</span>
-p <span class="o">&lt;-</span> ggboxplot<span class="p">(</span>ToothGrowth<span class="p">,</span> x <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
-    color <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"npg"</span><span class="p">,</span> add <span class="o">=</span> <span class="s">"jitter"</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">ggboxplot</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"npg"</span><span class="p">,</span> <span class="n">add</span> <span class="o">=</span> <span class="s">"jitter"</span><span class="p">)</span>
 
 <span class="c1">#  Add p-value</span>
-p1 <span class="o">&lt;-</span> p <span class="o">+</span> stat_compare_means<span class="p">(</span>method <span class="o">=</span> <span class="s">"t.test"</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">&lt;-</span> <span class="n">p</span> <span class="o">+</span> <span class="nf">stat_compare_means</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">"t.test"</span><span class="p">)</span>
 
 <span class="c1"># Paired samples</span>
-p2 <span class="o">&lt;-</span> ggpaired<span class="p">(</span>ToothGrowth<span class="p">,</span> x <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
-    color <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> line.color <span class="o">=</span> <span class="s">"gray"</span><span class="p">,</span> line.size <span class="o">=</span> <span class="m">0.4</span><span class="p">,</span>
-    palette <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span><span class="o">+</span>
-    stat_compare_means<span class="p">(</span>paired <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> method <span class="o">=</span> <span class="s">"t.test"</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">&lt;-</span> <span class="nf">ggpaired</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> <span class="n">line.color</span> <span class="o">=</span> <span class="s">"gray"</span><span class="p">,</span> <span class="n">line.size</span> <span class="o">=</span> <span class="m">0.4</span><span class="p">,</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span><span class="o">+</span>
+    <span class="nf">stat_compare_means</span><span class="p">(</span><span class="n">paired</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">"t.test"</span><span class="p">)</span>
 
 <span class="c1"># More than two groups, Pairwise comparisons: Specify the comparisons you want</span>
-my_comparisons <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span> <span class="kt">c</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">),</span> <span class="kt">c</span><span class="p">(</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">),</span> <span class="kt">c</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">)</span> <span class="p">)</span>
-p3 <span class="o">&lt;-</span> ggboxplot<span class="p">(</span>ToothGrowth<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
-          color <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span><span class="o">+</span>
+<span class="n">my_comparisons</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span> <span class="nf">c</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="s">"0.5"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">p3</span> <span class="o">&lt;-</span> <span class="nf">ggboxplot</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
+          <span class="n">color</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span><span class="o">+</span>
 <span class="c1"># Add pairwise comparisons p-value</span>
-    stat_compare_means<span class="p">(</span>comparisons <span class="o">=</span> my_comparisons<span class="p">,</span> label.y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">29</span><span class="p">,</span> <span class="m">35</span><span class="p">,</span> <span class="m">40</span><span class="p">))</span><span class="o">+</span>
-    stat_compare_means<span class="p">(</span>label.y <span class="o">=</span> <span class="m">45</span><span class="p">)</span>     <span class="c1"># Add global Anova p-value</span>
+    <span class="nf">stat_compare_means</span><span class="p">(</span><span class="n">comparisons</span> <span class="o">=</span> <span class="n">my_comparisons</span><span class="p">,</span> <span class="n">label.y</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">29</span><span class="p">,</span> <span class="m">35</span><span class="p">,</span> <span class="m">40</span><span class="p">))</span><span class="o">+</span>
+    <span class="nf">stat_compare_means</span><span class="p">(</span><span class="n">label.y</span> <span class="o">=</span> <span class="m">45</span><span class="p">)</span>     <span class="c1"># Add global Anova p-value</span>
 
 <span class="c1"># Multiple pairwise test against a reference group</span>
-p4 <span class="o">&lt;-</span> ggboxplot<span class="p">(</span>ToothGrowth<span class="p">,</span> x <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
-    color <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span><span class="o">+</span>
-    stat_compare_means<span class="p">(</span>method <span class="o">=</span> <span class="s">"anova"</span><span class="p">,</span> label.y <span class="o">=</span> <span class="m">40</span><span class="p">)</span><span class="o">+</span> <span class="c1"># Add global p-value</span>
-    stat_compare_means<span class="p">(</span>aes<span class="p">(</span>label <span class="o">=</span> <span class="m">..</span>p.signif..<span class="p">),</span>
-                      method <span class="o">=</span> <span class="s">"t.test"</span><span class="p">,</span> ref.group <span class="o">=</span> <span class="s">"0.5"</span><span class="p">)</span>
+<span class="n">p4</span> <span class="o">&lt;-</span> <span class="nf">ggboxplot</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"npg"</span><span class="p">)</span><span class="o">+</span>
+    <span class="nf">stat_compare_means</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">"anova"</span><span class="p">,</span> <span class="n">label.y</span> <span class="o">=</span> <span class="m">40</span><span class="p">)</span><span class="o">+</span> <span class="c1"># Add global p-value</span>
+    <span class="nf">stat_compare_means</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="n">..p.signif..</span><span class="p">),</span>
+                      <span class="n">method</span> <span class="o">=</span> <span class="s">"t.test"</span><span class="p">,</span> <span class="n">ref.group</span> <span class="o">=</span> <span class="s">"0.5"</span><span class="p">)</span>
 
-ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,</span> p3<span class="p">,</span> p4<span class="p">,</span>  ncol <span class="o">=</span> <span class="m">2</span><span class="p">,</span> nrow <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
-          labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span><span class="s">"C"</span><span class="p">,</span><span class="s">"D"</span><span class="p">))</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span>  <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+          <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span><span class="s">"C"</span><span class="p">,</span><span class="s">"D"</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1568,13 +1568,13 @@ ggarrange<span class="p">(</span>p1<span class="p">,</span> p2<span class="p">,<
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Multiple grouping variables</span>
-p <span class="o">&lt;-</span> ggboxplot<span class="p">(</span>ToothGrowth<span class="p">,</span> x <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> y <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
-              color <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> palette <span class="o">=</span> <span class="s">"npg"</span><span class="p">,</span>
-              add <span class="o">=</span> <span class="s">"jitter"</span><span class="p">,</span>
-              facet.by <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> short.panel.labs <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">ggboxplot</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">"len"</span><span class="p">,</span>
+              <span class="n">color</span> <span class="o">=</span> <span class="s">"supp"</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s">"npg"</span><span class="p">,</span>
+              <span class="n">add</span> <span class="o">=</span> <span class="s">"jitter"</span><span class="p">,</span>
+              <span class="n">facet.by</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">,</span> <span class="n">short.panel.labs</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
 <span class="c1"># Use only p.format as label. Remove method name.</span>
-p5 <span class="o">&lt;-</span> p <span class="o">+</span> stat_compare_means<span class="p">(</span>aes<span class="p">(</span>label <span class="o">=</span> <span class="kp">paste0</span><span class="p">(</span><span class="s">"p = "</span><span class="p">,</span> <span class="m">..</span>p.format..<span class="p">)))</span>
-p5
+<span class="n">p5</span> <span class="o">&lt;-</span> <span class="n">p</span> <span class="o">+</span> <span class="nf">stat_compare_means</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">"p = "</span><span class="p">,</span> <span class="n">..p.format..</span><span class="p">)))</span>
+<span class="n">p5</span>
 </pre></div>
 
     </div>
@@ -1630,8 +1630,8 @@ p5
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Load data</span>
-data<span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">)</span>
-df <span class="o">&lt;-</span> ToothGrowth
+<span class="nf">data</span><span class="p">(</span><span class="s">"ToothGrowth"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="n">ToothGrowth</span>
 </pre></div>
 
     </div>
@@ -1645,7 +1645,7 @@ df <span class="o">&lt;-</span> ToothGrowth
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># One-sample test</span>
-compare_means<span class="p">(</span>len <span class="o">~</span> <span class="m">1</span><span class="p">,</span> df<span class="p">,</span> mu <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+<span class="nf">compare_means</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="m">1</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1699,7 +1699,7 @@ compare_means<span class="p">(</span>len <span class="o">~</span> <span class="m
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Two-samples unpaired test</span>
-compare_means<span class="p">(</span>len <span class="o">~</span> supp<span class="p">,</span> df<span class="p">)</span>
+<span class="nf">compare_means</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">supp</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1753,7 +1753,7 @@ compare_means<span class="p">(</span>len <span class="o">~</span> supp<span clas
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Two-samples paired test</span>
-compare_means<span class="p">(</span>len <span class="o">~</span> supp<span class="p">,</span> df<span class="p">,</span> paired <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">compare_means</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">supp</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">paired</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1807,7 +1807,7 @@ compare_means<span class="p">(</span>len <span class="o">~</span> supp<span clas
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Compare supp levels after grouping the data by "dose"</span>
-compare_means<span class="p">(</span>len <span class="o">~</span> supp<span class="p">,</span> df<span class="p">,</span> group.by <span class="o">=</span> <span class="s">"dose"</span><span class="p">)</span>
+<span class="nf">compare_means</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">supp</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">group.by</span> <span class="o">=</span> <span class="s">"dose"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1889,7 +1889,7 @@ compare_means<span class="p">(</span>len <span class="o">~</span> supp<span clas
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># pairwise comparisons</span>
 <span class="c1"># As dose contains more thant two levels ==&gt;</span>
 <span class="c1"># pairwise test is automatically performed.</span>
-compare_means<span class="p">(</span>len <span class="o">~</span> dose<span class="p">,</span> df<span class="p">)</span>
+<span class="nf">compare_means</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">dose</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1965,7 +1965,7 @@ compare_means<span class="p">(</span>len <span class="o">~</span> dose<span clas
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Comparison against reference group</span>
-compare_means<span class="p">(</span>len <span class="o">~</span> dose<span class="p">,</span> df<span class="p">,</span> ref.group <span class="o">=</span> <span class="s">"0.5"</span><span class="p">)</span>
+<span class="nf">compare_means</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">dose</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">ref.group</span> <span class="o">=</span> <span class="s">"0.5"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2031,7 +2031,7 @@ compare_means<span class="p">(</span>len <span class="o">~</span> dose<span clas
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Comparison against all</span>
-compare_means<span class="p">(</span>len <span class="o">~</span> dose<span class="p">,</span> df<span class="p">,</span> ref.group <span class="o">=</span> <span class="s">".all."</span><span class="p">)</span>
+<span class="nf">compare_means</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">dose</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">ref.group</span> <span class="o">=</span> <span class="s">".all."</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2107,7 +2107,7 @@ compare_means<span class="p">(</span>len <span class="o">~</span> dose<span clas
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Anova test</span>
-compare_means<span class="p">(</span>len <span class="o">~</span> dose<span class="p">,</span> df<span class="p">,</span> method <span class="o">=</span> <span class="s">"anova"</span><span class="p">)</span>
+<span class="nf">compare_means</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">dose</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">"anova"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2157,7 +2157,7 @@ compare_means<span class="p">(</span>len <span class="o">~</span> dose<span clas
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># kruskal.test</span>
-compare_means<span class="p">(</span>len <span class="o">~</span> dose<span class="p">,</span> df<span class="p">,</span> method <span class="o">=</span> <span class="s">"kruskal.test"</span><span class="p">)</span>
+<span class="nf">compare_means</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">dose</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">"kruskal.test"</span><span class="p">)</span>
 </pre></div>
 
     </div>
