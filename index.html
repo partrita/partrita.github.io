@@ -108,14 +108,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Planning genetic constructs with many parts and assembly steps, such as recombinant metabolic pathways are often difficult to properly document.</p>
-<p>The Pydna python package provide a human-readable formal description of cloning and assembly strategies in Python which also allows for simulation and verification of cloning strategies. Pydna can be though of as executable documentation for molecular biology.</p>
-<h3 id="pyDNA">pyDNA<a class="anchor-link" href="posts/pydna/#pyDNA">¶</a>
-</h3>
-<p><img src="https://photos-4.dropbox.com/t/2/AABtT3RgvKvNXtT_GM_bkIgEGPLD_YhvVH1fnLzyx51csw/12/1263722/png/32x32/3/1515247200/0/2/logo.png/EJqk4KsFGKVuIAcoBw/zK96Ws_Az5gnenjNPxHNDGdvFso2W-rn-z6V-KvZFGE?dl=0&amp;preserve_transparency=1&amp;size=1280x960&amp;size_mode=3" alt="pydna"></p>
-<p><a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-015-0544-x">Pydna: a simulation and documentation tool for DNA assembly strategies using python</a></p>
-<p>Contains classes and code for representing double stranded DNA and functions for simulating homologous recombination between DNA molecules.</p>
-<p>Pydna provides simulation of:</p>
+<div class="highlight"><pre><span></span>_             
+                <span class="p">|</span> <span class="p">|</span>            
+ ____  _   _  __<span class="p">|</span> <span class="p">|</span>___   __ ___
+<span class="p">|</span>  _ <span class="se">\|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span>/ _  <span class="p">|</span>  _ <span class="se">\(</span>____ <span class="p">|</span>
+<span class="p">|</span> <span class="p">|</span>_<span class="p">|</span> <span class="p">|</span> <span class="p">|</span>_<span class="p">|</span> <span class="o">(</span> <span class="o">(</span>_<span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> / ___ <span class="p">|</span>
+<span class="p">|</span>  __/ <span class="se">\_</span>_  <span class="p">|</span><span class="se">\_</span>___<span class="p">|</span>_<span class="p">|</span> <span class="p">|</span>_<span class="se">\_</span>____<span class="p">|</span>
+<span class="p">|</span>_<span class="p">|</span>   <span class="o">(</span>____/
+</pre></div>
+<p><a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-015-0544-x">Pydna</a> 파이썬 패키지는 분자 생물학의 클로닝을 도와줍니다. 제공하는 기능은 다음과 같습니다.</p>
 <ul>
 <li>Restriction digestion</li>
 <li>Ligation</li>
@@ -126,15 +127,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Homologous recombination</li>
 <li>Gel electrophoresis of DNA with generation of gel images</li>
 </ul>
-<p>Virtually any sub-cloning experiment can be described in pydna, and its execution yield the sequence of the of intermediate and final resulting DNA molecule(s). A cloning strategy expressed in pydna is complete, unambiguous and can be made stable. Pydna has been designed to be understandable for biologists with only some basic understanding of Python.</p>
-<p>Pydna can formalize planning and sharing of cloning strategies and is especially useful for complex or combinatorial DNA molecule constructions.</p>
-<h3 id="왜?">왜?<a class="anchor-link" href="posts/pydna/#%EC%99%9C?">¶</a>
-</h3>
-<p>pyDNA 말고도 많은데 써야하는 이유?</p>
-<h3 id="예를-들어보기">예를 들어보기<a class="anchor-link" href="posts/pydna/#%EC%98%88%EB%A5%BC-%EB%93%A4%EC%96%B4%EB%B3%B4%EA%B8%B0">¶</a>
-</h3>
-<p>두가지 PCR을 진행해보려고 합니다 각각 C3, C5라고 이름을 붙였구요. 
-pyDNA로 PCR simulation을 해보려고 합니다.</p>
+<h2 id="PCR-simulation">PCR simulation<a class="anchor-link" href="posts/pydna/#PCR-simulation">¶</a>
+</h2>
+<p>하나 예를 들어보겠습니다. 두 가지 PCR을 진행해보려고 합니다 각각 C3, C5라고 이름을 붙였구요. C3는 정상적인 PCR 반응이 가능하고, C5는 Primer에 문제가 있어 PCR이 되지 않습니다.</p>
 
 </div>
 </div>
@@ -159,7 +154,38 @@ pyDNA로 PCR simulation을 해보려고 합니다.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="서열-불러오기">서열 불러오기<a class="anchor-link" href="posts/pydna/#%EC%84%9C%EC%97%B4-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+</h3>
+<blockquote>
+<p>사용된 서열은 ape 파일로 저장되어 있습니다.</p>
+</blockquote>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># template template loading</span>
+<span class="n">C3</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">'CEACAM3.ape'</span><span class="p">,</span><span class="n">ds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">C3_F</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s1">'C3_F.ape'</span><span class="p">)</span>
+<span class="n">C3_R</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s1">'C3_R.ape'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="PCR-진행하기">PCR 진행하기<a class="anchor-link" href="posts/pydna/#PCR-%EC%A7%84%ED%96%89%ED%95%98%EA%B8%B0">¶</a>
+</h3>
 </div>
 </div>
 </div>
@@ -168,12 +194,7 @@ pyDNA로 PCR simulation을 해보려고 합니다.</p>
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># template template loading</span>
-<span class="n">C3</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">'CEACAM3.ape'</span><span class="p">,</span><span class="n">ds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">C3_F</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s1">'C3_F.ape'</span><span class="p">)</span>
-<span class="n">C3_R</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s1">'C3_R.ape'</span><span class="p">)</span>
-
-<span class="c1"># PCR</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># PCR</span>
 <span class="n">C3_pcr_prod</span> <span class="o">=</span> <span class="n">pcr</span><span class="p">(</span><span class="n">C3_F</span><span class="p">,</span><span class="n">C3_R</span><span class="p">,</span><span class="n">C3</span><span class="p">)</span>
 </pre></div>
 
@@ -181,6 +202,16 @@ pyDNA로 PCR simulation을 해보려고 합니다.</p>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Agarose-gel-electrophoresis-결과-예측">Agarose gel electrophoresis 결과 예측<a class="anchor-link" href="posts/pydna/#Agarose-gel-electrophoresis-%EA%B2%B0%EA%B3%BC-%EC%98%88%EC%B8%A1">¶</a>
+</h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -217,6 +248,19 @@ pyDNA로 PCR simulation을 해보려고 합니다.</p>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="PCR-조건-예측">PCR 조건 예측<a class="anchor-link" href="posts/pydna/#PCR-%EC%A1%B0%EA%B1%B4-%EC%98%88%EC%B8%A1">¶</a>
+</h2>
+<p>일반적인 taq polymerase PCR과 pFu를 사용한 PCR의 조건을 예측해보겠습니다.</p>
+<h3 id="일반-PCR">일반 PCR<a class="anchor-link" href="posts/pydna/#%EC%9D%BC%EB%B0%98-PCR">¶</a>
+</h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -257,6 +301,16 @@ Taq (rate 30 nt/s) 35 cycles             |1325bp
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Pfu-PCR">Pfu PCR<a class="anchor-link" href="posts/pydna/#Pfu-PCR">¶</a>
+</h3>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [27]:</div>
@@ -296,6 +350,18 @@ __________|_____          72.0°C |72.0°C|Primer1C 1.0µM
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Primer-anealing-예측">Primer anealing 예측<a class="anchor-link" href="posts/pydna/#Primer-anealing-%EC%98%88%EC%B8%A1">¶</a>
+</h2>
+<p>Primer가 template DNA에 어떻게 붙는지를 예상해보겠습니다.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -339,7 +405,7 @@ __________|_____          72.0°C |72.0°C|Primer1C 1.0µM
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>추가적으로 C5에 대한 PCR을 진행해보겠습니다.</p>
+<p>추가적으로 C5에 대한 Anealing을 예측해보겠습니다.</p>
 
 </div>
 </div>
@@ -401,7 +467,14 @@ No reverse primers anneal...</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>이런 에러가 나는군요 No reverse primers anneal...</p>
+<p>이런 에러가 나는군요.</p>
+<blockquote>
+<p>No reverse primers anneal...</p>
+</blockquote>
+<p>사용된 reverse primer가 잘못되었기 때문입니다.</p>
+<h2 id="마치며">마치며<a class="anchor-link" href="posts/pydna/#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+</h2>
+<p>위에서 살펴본 기능들은 다른 상용 프로그램에서 쉽게 사용할 수 있는것들입니다. 그럼에도 불구하고 <strong>pydna</strong>가 가지는 강점은 자동화가 쉽다는데 있습니다. 수백개의 클로닝을 진행해야 할때는 마우스클릭만으로는 어렵기 때문입니다. 또한 <a href="https://pydna.readthedocs.io/index.html">공식문서</a>를 참고 하시면 더 다양한 기능을 사용할 수 있습니다.</p>
 
 </div>
 </div>
@@ -944,7 +1017,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용"
         <!--End of body content-->
 
         <footer id="footer">
-            Contents © 2018         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2019         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
         </footer>
 </div>
