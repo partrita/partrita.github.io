@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Linux)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/linux.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Sat, 08 Jun 2019 06:59:11 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>리눅스 문제 해결</title><link>https://partrita.github.io/posts/linux-trouble-shooting/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;h2&gt;리눅스 해상도 문제 해결하기&lt;/h2&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Linux)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/linux.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Mon, 30 Dec 2019 08:45:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>리눅스 문제 해결</title><link>https://partrita.github.io/posts/linux-trouble-shooting/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;h2&gt;리눅스 해상도 문제 해결하기&lt;/h2&gt;
 &lt;p&gt;구형 컴퓨터에 리눅스(리눅스 민트)를 설치하였습니다. 저해상도로 고정되는 경우는 처음이었는데, 검색을 통해 아래와 같은 방법으로 해결했습니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;먼저 아래와 터미널에 아래와 같은 명령어를 칩니다. (예시로 1600×900을 사용했는데, 원하는 비율로 변경하시면 됩니다.)&lt;/li&gt;
@@ -8,8 +8,8 @@
 &lt;/pre&gt;
 
 
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;1600x900&lt;/span&gt; &lt;span class="nt"&gt;59&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;95&lt;/span&gt; &lt;span class="nt"&gt;Hz&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;CVT&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;44M9&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nt"&gt;hsync&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;55&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;99&lt;/span&gt; &lt;span class="nt"&gt;kHz&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;pclk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;118&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;25&lt;/span&gt; &lt;span class="nt"&gt;MHz&lt;/span&gt;
-&lt;span class="nt"&gt;Modeline&lt;/span&gt; &lt;span class="s2"&gt;"1600x900_60.00"&lt;/span&gt; &lt;span class="nt"&gt;118&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;25&lt;/span&gt; &lt;span class="nt"&gt;1600&lt;/span&gt; &lt;span class="nt"&gt;1696&lt;/span&gt; &lt;span class="nt"&gt;1856&lt;/span&gt; &lt;span class="nt"&gt;2112&lt;/span&gt; &lt;span class="nt"&gt;900&lt;/span&gt; &lt;span class="nt"&gt;903&lt;/span&gt; &lt;span class="nt"&gt;908&lt;/span&gt; &lt;span class="nt"&gt;934&lt;/span&gt; &lt;span class="nt"&gt;-hsync&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;vsync&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;1600x900 59.95 Hz (CVT 1.44M9) hsync: 55.99 kHz; pclk: 118.25 MHz&lt;/span&gt;
+&lt;span class="err"&gt;Modeline "1600x900_60.00" 118.25 1600 1696 1856 2112 900 903 908 934 -hsync +vsync&lt;/span&gt;
 &lt;/pre&gt;
 
 
@@ -73,7 +73,7 @@ cp fix-resolution.desktop /etc/xdg/autostart
 &lt;li&gt;Alias 명령어 추가하기
 Alias 사용법은 다음과 같습니다. &lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;"ls -a"&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;alias l="ls -a"&lt;/span&gt;
 &lt;/pre&gt;
 
 
@@ -121,7 +121,7 @@ zip파일은 거의 모든 압축포맷 중에 단연 최고의 사용률을 자
 &lt;/pre&gt;
 
 
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Ubuntu&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Ubuntu 15.04&lt;/span&gt;
 &lt;/pre&gt;
 
 
@@ -133,15 +133,15 @@ zip파일은 거의 모든 압축포맷 중에 단연 최고의 사용률을 자
 &lt;/pre&gt;
 
 
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Filesystem&lt;/span&gt; &lt;span class="k"&gt;Size&lt;/span&gt; &lt;span class="n"&gt;Used&lt;/span&gt; &lt;span class="n"&gt;Avail&lt;/span&gt; &lt;span class="n"&gt;Use&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;Mounted&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt;
-&lt;span class="n"&gt;udev&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="k"&gt;G&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="k"&gt;G&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
-&lt;span class="n"&gt;tmpfs&lt;/span&gt; &lt;span class="mi"&gt;771&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="mi"&gt;26&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="mi"&gt;746&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;
-&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda5&lt;/span&gt; &lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="k"&gt;G&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="k"&gt;G&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="k"&gt;G&lt;/span&gt; &lt;span class="mi"&gt;46&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;
-&lt;span class="n"&gt;tmpfs&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="k"&gt;G&lt;/span&gt; &lt;span class="mi"&gt;604&lt;/span&gt;&lt;span class="n"&gt;K&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="k"&gt;G&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shm&lt;/span&gt;
-&lt;span class="n"&gt;tmpfs&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;K&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;lock&lt;/span&gt;
-&lt;span class="n"&gt;tmpfs&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="k"&gt;G&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="k"&gt;G&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;cgroup&lt;/span&gt;
-&lt;span class="n"&gt;cgmfs&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="n"&gt;K&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="n"&gt;K&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;cgmanager&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fs&lt;/span&gt;
-&lt;span class="n"&gt;tmpfs&lt;/span&gt; &lt;span class="mi"&gt;771&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="mi"&gt;48&lt;/span&gt;&lt;span class="n"&gt;K&lt;/span&gt; &lt;span class="mi"&gt;771&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;user&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Filesystem Size Used Avail Use% Mounted on&lt;/span&gt;
+&lt;span class="err"&gt;udev 3.8G 0 3.8G 0% /dev&lt;/span&gt;
+&lt;span class="err"&gt;tmpfs 771M 26M 746M 4% /run&lt;/span&gt;
+&lt;span class="err"&gt;/dev/sda5 33G 15G 17G 46% /&lt;/span&gt;
+&lt;span class="err"&gt;tmpfs 3.8G 604K 3.8G 1% /dev/shm&lt;/span&gt;
+&lt;span class="err"&gt;tmpfs 5.0M 4.0K 5.0M 1% /run/lock&lt;/span&gt;
+&lt;span class="err"&gt;tmpfs 3.8G 0 3.8G 0% /sys/fs/cgroup&lt;/span&gt;
+&lt;span class="err"&gt;cgmfs 100K 0 100K 0% /run/cgmanager/fs&lt;/span&gt;
+&lt;span class="err"&gt;tmpfs 771M 48K 771M 1% /run/user/1000&lt;/span&gt;
 &lt;/pre&gt;
 
 
@@ -153,7 +153,7 @@ zip파일은 거의 모든 압축포맷 중에 단연 최고의 사용률을 자
 &lt;/pre&gt;
 
 
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;8&lt;/span&gt;
 &lt;/pre&gt;
 
 
@@ -165,10 +165,10 @@ zip파일은 거의 모든 압축포맷 중에 단연 최고의 사용률을 자
 &lt;/pre&gt;
 
 
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="k"&gt;free&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt; &lt;span class="n"&gt;buffers&lt;/span&gt; &lt;span class="n"&gt;cached&lt;/span&gt;
-&lt;span class="n"&gt;Mem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;7708&lt;/span&gt; &lt;span class="mi"&gt;2690&lt;/span&gt; &lt;span class="mi"&gt;5017&lt;/span&gt; &lt;span class="mi"&gt;161&lt;/span&gt; &lt;span class="mi"&gt;351&lt;/span&gt; &lt;span class="mi"&gt;669&lt;/span&gt;
-&lt;span class="o"&gt;-/+&lt;/span&gt; &lt;span class="n"&gt;buffers&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;cache&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1669&lt;/span&gt; &lt;span class="mi"&gt;6038&lt;/span&gt;
-&lt;span class="n"&gt;Swap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;total used free shared buffers cached&lt;/span&gt;
+&lt;span class="c"&gt;Mem: 7708 2690 5017 161 351 669&lt;/span&gt;
+&lt;span class="err"&gt;-/+ buffers/cache: 1669 6038&lt;/span&gt;
+&lt;span class="c"&gt;Swap: 0 0 0&lt;/span&gt;
 &lt;/pre&gt;
 
 
@@ -223,7 +223,7 @@ cmatrix
 
 
 &lt;p&gt;으로 크론을 실행한뒤 아래와 같이 입력합니다.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;su&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt; &lt;span class="s1"&gt;'/root/revive.sh /dev/null'&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;* * * * * su - root -c '/root/revive.sh /dev/null'&lt;/span&gt;
 &lt;/pre&gt;
 
 

@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="description" content="california-housing prediction">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>주택가격 예측하기 | Biohacker</title>
 <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/html4css1.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/colorbox.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
-<meta name="theme-color" content="#083551">
+<meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://partrita.github.io/posts/predict-housing/">
@@ -44,47 +45,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="article:tag" content="예측">
 <meta property="article:tag" content="주택가격">
 <meta property="article:tag" content="캘리포니아">
-<!-- End Google Tag Manager -->
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-default navbar-static-top navbar-dark bg-primary"><div class="container">
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
 <!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="https://partrita.github.io/">
 
-                <span id="blog-title">Biohacker</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../../pages/about/">About</a>
+            <span id="blog-title">Biohacker</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../pages/about/" class="nav-link">About</a>
                 </li>
-<li>
-<a href="../../pages/resume/index.html">Resume</a>
+<li class="nav-item">
+<a href="../../pages/resume/index.html" class="nav-link">Resume</a>
                 </li>
-<li>
-<a href="../../archive.html">Archive</a>
+<li class="nav-item">
+<a href="../../archive.html" class="nav-link">Archive</a>
                 </li>
-<li>
-<a href="../../categories/">Tags</a>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
                 </li>
-<li>
-<a href="http://partrita.iptime.org">Biohack</a>
+<li class="nav-item">
+<a href="http://partrita.iptime.org" class="nav-link">Biohack</a>
                 </li>
-<li>
-<a href="../../rss.xml">RSS feed</a>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
 
                 
             </li>
@@ -92,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span class="navbar-form navbar-right">
 <input type="text" id="tipue_search_input" class="form-control" placeholder="Search"></span>
 
-            <ul class="nav navbar-nav navbar-right"></ul>
+            <ul class="navbar-nav navbar-right"></ul>
 </div>
 <!-- /.navbar-collapse -->
     </div>
@@ -100,16 +97,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </nav><!-- End of Menubar --><div class="container" id="content" role="main">
     <div class="body-content">
         <!--Body content-->
-        <div class="row">
-            
-            
+        
+        
+        
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">주택가격 예측하기</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
                     Taeyoon Kim
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-02-22T07:07:20+09:00" itemprop="datePublished" title="2019-02-22 07:07">2019-02-22 07:07</time></a></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-02-22T07:07:20+09:00" itemprop="datePublished" title="2019-02-22 07:07">2019-02-22 07:07</time></a>
+            </p>
             
 
         </div>
@@ -138,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tarfile</span>
-<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">urllib</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">urllib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># 항상 동일한 결과를 얻기 위해 random.seed 값을 설정한다</span>
@@ -600,7 +600,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tools.plotting</span> <span class="k">import</span> <span class="n">scatter_matrix</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tools.plotting</span> <span class="kn">import</span> <span class="n">scatter_matrix</span>
 
 <span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 <span class="n">attributes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'median_house_value'</span><span class="p">,</span><span class="s1">'median_income'</span><span class="p">,</span> <span class="s1">'total_rooms'</span><span class="p">,</span><span class="s1">'housing_median_age'</span><span class="p">]</span>
@@ -866,7 +866,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [61]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">Imputer</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Imputer</span>
 
 <span class="n">imputer</span> <span class="o">=</span> <span class="n">Imputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"median"</span><span class="p">)</span>
 
@@ -1070,7 +1070,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [63]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">StandardScaler</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="c1"># scaler.fit(housing_tr)</span>
@@ -1121,7 +1121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [64]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">scaled_df</span><span class="p">,</span> <span class="n">housing_labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1170,7 +1170,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [68]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># -1 means use all cpu core</span>
 <span class="n">lin_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1216,7 +1216,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [70]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_squared_error</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rms</span><span class="p">)</span>
@@ -1273,7 +1273,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [73]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 
 <span class="n">tree_reg</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">tree_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1325,7 +1325,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [74]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestRegressor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 <span class="n">forest_reg</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">forest_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
@@ -1373,7 +1373,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [77]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVR</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVR</span>
 
 <span class="n">svm_reg</span> <span class="o">=</span> <span class="n">SVR</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">)</span>
 <span class="n">svm_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1430,7 +1430,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [78]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 
 <span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># try 12 (3×4) combinations of hyperparameters</span>
@@ -1882,8 +1882,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="prompt input_prompt">In [84]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">RandomizedSearchCV</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">randint</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">randint</span>
 
 <span class="n">param_distribs</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">'n_estimators'</span><span class="p">:</span> <span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">200</span><span class="p">),</span>
@@ -2048,24 +2048,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li class="next">
                 <a href="../96well-binding/" rel="next" title="96well 모양으로 시각화하기">Next post</a>
             </li>
-        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
-        </script></article>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer">
+        </script></article><!--End of body content--><footer id="footer">
             Contents © 2019         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
             
         </footer>
 </div>
 </div>
 
 
-            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/moment-with-locales.min.js"></script><script src="../../assets/js/fancydates.js"></script><script src="../../assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates --><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
+            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 
     <!-- Modal content-->

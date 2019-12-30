@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Random)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/random.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Sat, 08 Jun 2019 06:59:12 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>랜덤하게 단백질 서열만들기</title><link>https://partrita.github.io/posts/python_randomseq/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;p&gt;랜덤으로 원하는 길이의 단백질 서열을 원하는 만큼 만드는 파이썬 스크립트 입니다.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Random)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/random.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Mon, 30 Dec 2019 08:45:05 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>랜덤하게 단백질 서열만들기</title><link>https://partrita.github.io/posts/python_randomseq/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;p&gt;랜덤으로 원하는 길이의 단백질 서열을 원하는 만큼 만드는 파이썬 스크립트 입니다.&lt;/p&gt;
 &lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# python 2.7 버전&lt;/span&gt;
 &lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Random&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;AminoacidGenerator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;'***generate random aminoacid sequence ***'&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;'***generate random aminoacid sequence ***'&lt;/span&gt;
     &lt;span class="n"&gt;codeFile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'codes.txt'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'w'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;'invalid number of protein'&lt;/span&gt;
@@ -20,7 +20,7 @@
             &lt;span class="n"&gt;codeFile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c1"&gt;# 100개 길이의 단백질 서열을 100개 만들어 봅니다. &lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;AminoacidGenerator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;AminoacidGenerator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;
 
 
