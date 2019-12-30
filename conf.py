@@ -146,11 +146,11 @@ NAVIGATION_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "lumen"
+THEME = "custom"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
-THEME_COLOR = '#083551'
+#THEME_COLOR = '#083551'
 
 # POSTS and PAGES contains (wildcard, destination, template) tuples.
 # (translatable)

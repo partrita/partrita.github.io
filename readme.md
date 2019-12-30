@@ -6,9 +6,9 @@
 접속주소: https://partrita.github.io
 
 ## TODO list
-- [ x ] CSS 수정
-- [ ] Wordpress migration
-- [ x ] Title 바꾸기
-- [ x ] Tag 수정
-- [ x ] category 수정
+- [x] CSS 수정
+- [x] Wordpress migration
+- [x] Title 바꾸기
+- [x] Tag 수정
+- [x] category 수정
 - [ ] 포스팅하기
