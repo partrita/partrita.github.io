@@ -122,65 +122,65 @@ navbar-dark bg-dark
 또한, case sensitive (Var 와 var 는 다른 변수이다) 하고, 객체 지향적 (모든것이 객체이다) 이다.</p>
 <h2>도움 얻기</h2>
 <p>인터프리터에서 도움을 받을 수 있다. 어떤 객체에 대해 알고 싶으면, 인터프리터에서 help() 와 dir() 을 이용한다, dir() 은 객체의 속성,메써드들을 보여준다. 그리고 .<strong>doc</strong> 으로 객체의 문서를 볼 수 있다:</p>
-<pre class="code literal-block"><span></span><span class="n">help</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># int 객체의 help 메시지를 보여준다: (etc etc)</span>
+<pre class="code literal-block"><span></span><code><span class="n">help</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># int 객체의 help 메시지를 보여준다: (etc etc)</span>
 <span class="nb">dir</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># 객체의 속성, 메써드들을 보여준다</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">['__abs__', '__add__', ...]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">['__abs__', '__add__', ...]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="nb">abs</span><span class="o">.</span><span class="vm">__doc__</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="nb">abs</span><span class="o">.</span><span class="vm">__doc__</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">'abs(number) -&gt; number</span>
+<pre class="code literal-block"><span></span><code><span class="err">'abs(number) -&gt; number</span>
 <span class="err">인자의 절대값을 리턴한다.'</span>
-</pre>
+</code></pre>
 
 
 <h2>문법(Syntax)</h2>
 <p>파이썬은 코드의 끝을 <strong> ; </strong> 등으로 특별히 표시하지 않는다. block 은 줄맞춤 (indentation) 으로 표현한다. block 을 사용하는 문장 (if, else 등) 은 : 을 끝에 붙인다. 한줄짜리 주석은 # 을 사용하고, 여러줄에 걸친 주석은 """ 주석 """ 을 사용한다. 객체에 값을 할당할 때에는 = 을 사용하고, 두 객체를 비교할 때에는 == 을 사용한다. += 와 -= 으로 값을 증가/감소할 수 있다.</p>
-<pre class="code literal-block"><span></span><span class="n">myvar</span> <span class="o">=</span> <span class="mi">3</span>
+<pre class="code literal-block"><span></span><code><span class="n">myvar</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">myvar</span> <span class="o">+=</span> <span class="mi">2</span>
 <span class="n">myvar</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">5</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">5</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">myvar</span> <span class="o">-=</span> <span class="mi">1</span>
+<pre class="code literal-block"><span></span><code><span class="n">myvar</span> <span class="o">-=</span> <span class="mi">1</span>
 <span class="n">myvar</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">4</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">4</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="sd">"""여러줄짜리 주석이다.</span>
+<pre class="code literal-block"><span></span><code><span class="sd">"""여러줄짜리 주석이다.</span>
 <span class="sd">어쩌고 저쩌고..."""</span>
 <span class="n">mystring</span> <span class="o">=</span> <span class="s2">"Hello"</span>
 <span class="n">mystring</span> <span class="o">+=</span> <span class="s2">" world."</span>
 <span class="nb">print</span> <span class="n">mystring</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">Hello world.</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">Hello world.</span>
+</code></pre>
 
 
 <p>변수 두개를 서로 바꿔준다!</p>
-<pre class="code literal-block"><span></span><span class="n">myvar</span><span class="p">,</span> <span class="n">mystring</span> <span class="o">=</span> <span class="n">mystring</span><span class="p">,</span> <span class="n">myvar</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">myvar</span><span class="p">,</span> <span class="n">mystring</span> <span class="o">=</span> <span class="n">mystring</span><span class="p">,</span> <span class="n">myvar</span>
+</code></pre>
 
 
 <h2>데이터형(Data types)</h2>
 <p>파이썬은 리스트, tuple (튜플), dictionary, set 데이터 타입을 제공한다. list 는 여러개의 원소를 가지고, 다른 리스트를 원소로 가질 수도 있다. dictionary 는 연관배열 (associative array, hash table 로 key/value 를 저장함) 이고, tuple 은 변경이 불가능한 배열이다. 이들 컨테이너에 여러개 타입의 객체들을 섞어서 넣을 수 있다. list 나 tuple 등의 배열 형식의 컨테이너에서 첫번재 인자의 인덱스는 0 이다. -1 은 배열의 마지막 원소의 인덱스이며, -2 는 마지막에서 두번째 인덱스이다. 그리고 파이썬에서는, 변수에 함수를 지정할 수 있다.</p>
-<pre class="code literal-block"><span></span><span class="n">sample</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"another"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">],</span> <span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"tuple"</span><span class="p">)]</span>
+<pre class="code literal-block"><span></span><code><span class="n">sample</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"another"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">],</span> <span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"tuple"</span><span class="p">)]</span>
 <span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"List item 1"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
 <span class="n">mylist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"List item 1 again"</span> <span class="c1"># 첫번째 원소를 변경한다</span>
 <span class="n">mylist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.21</span> <span class="c1"># 마지막 원소를 변경한다.</span>
@@ -189,125 +189,125 @@ navbar-dark bg-dark
 <span class="n">mytuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">myfunction</span> <span class="o">=</span> <span class="nb">len</span> <span class="c1"># myfunction 변수가 len 이라는 함수를 가리키도록 한다</span>
 <span class="nb">print</span> <span class="n">myfunction</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">3</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">3</span>
+</code></pre>
 
 
 <p><code>:</code> 을 이용하여 배열의 구간을 표현한다. <code>:</code> 을 사용할 때 앞의 index 가 없으면 0 인덱스 을 사용하고, 마지막 인덱스가 없으면 배열의 길이를 사용한다.
 [a:b] 는 [a, b) 즉 a 는 포함하고 b 는 포함하지 않는다.</p>
-<pre class="code literal-block"><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"List item 1"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
+<pre class="code literal-block"><span></span><code><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"List item 1"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
 <span class="nb">print</span> <span class="n">mylist</span><span class="p">[:]</span> <span class="c1"># [0:3] 과 같다</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">['List item 1', 2, 3.1400000000000001]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">['List item 1', 2, 3.1400000000000001]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="nb">print</span> <span class="n">mylist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="nb">print</span> <span class="n">mylist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">['List item 1', 2]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">['List item 1', 2]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="nb">print</span> <span class="n">mylist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="nb">print</span> <span class="n">mylist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">['List item 1', 2]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">['List item 1', 2]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">mylist</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">mylist</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">[2, 3.14]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">[2, 3.14]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># 3 번재 인자로, 건너 띄면서 원소를 가지고 올 수도 있다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 3 번재 인자로, 건너 띄면서 원소를 가지고 올 수도 있다.</span>
 <span class="c1"># [::] == [::1] 가 기본이고, [::2] 로 step 이 2 이면 하나씩 건너뛴다.</span>
 <span class="nb">print</span> <span class="n">mylist</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">['List item 1', 3.14]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">['List item 1', 3.14]</span>
+</code></pre>
 
 
 <h2>문자열(Strings)</h2>
 <p>string 은 "hello" 또는 'hello' 처럼, " 와 ' 를 아무것이나 사용해도 된다. "say 'hello'" 처럼 하나를 스트링 안쪽에 사용할 수도 있다. 여러줄에 걸친 string 은 따옴표 세개 (""") 를 사용한다. 파이썬은 u"이것은 unicode 문자열입니다" 의 형태로 Unicode 문자열을 기본 지원한다. % 연산자와 tuple 을 사용하여 문자열의 한 부분을 치환할 수 있다.</p>
-<pre class="code literal-block"><span></span><span class="nb">print</span> <span class="s2">"Name: </span><span class="si">%s</span><span class="s2"> Number: </span><span class="si">%s</span><span class="s2"> String: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">myclass</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="s2">"-"</span><span class="p">)</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="nb">print</span> <span class="s2">"Name: </span><span class="si">%s</span><span class="s2"> Number: </span><span class="si">%s</span><span class="s2"> String: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">myclass</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="s2">"-"</span><span class="p">)</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">Name</span><span class="o">:</span> <span class="n">Poromenos</span> <span class="n">Number</span><span class="o">:</span> <span class="mi">3</span> <span class="n">String</span><span class="o">:</span> <span class="o">---</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">Name</span><span class="o">:</span> <span class="n">Poromenos</span> <span class="n">Number</span><span class="o">:</span> <span class="mi">3</span> <span class="n">String</span><span class="o">:</span> <span class="o">---</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># 다음처럼 dictionary 를 사용하여 치환할 수도 있다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 다음처럼 dictionary 를 사용하여 치환할 수도 있다.</span>
 <span class="nb">print</span> <span class="s2">"This </span><span class="si">%(verb)s</span><span class="s2"> a </span><span class="si">%(noun)s</span><span class="s2">."</span> <span class="o">%</span> <span class="p">{</span><span class="s2">"noun"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span> <span class="s2">"verb"</span><span class="p">:</span> <span class="s2">"is"</span><span class="p">}</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">This is a test.</span>
+<pre class="code literal-block"><span></span><code><span class="err">This is a test.</span>
 <span class="err">Flow control statements</span>
-</pre>
+</code></pre>
 
 
 <p>if, for, while 을 이용하여 흐름을 제어한다. range() 를 이용하여 숫자 배열을 얻을 수 있다:</p>
-<pre class="code literal-block"><span></span><span class="n">rangelist</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<pre class="code literal-block"><span></span><code><span class="n">rangelist</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span> <span class="n">rangelist</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">rangelist</span><span class="p">:</span>
+<pre class="code literal-block"><span></span><code><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">rangelist</span><span class="p">:</span>
     <span class="c1"># number 가 tuple 안에 들어 있는지 확인한다</span>
     <span class="k">if</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
         <span class="c1"># "break" 로 "else" 문을 실행하지 않고 for 문을 나온다.</span>
         <span class="k">break</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">pass</span>  <span class="c1"># 아무것도 하지 않는다</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="k">if</span> <span class="n">rangelist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<pre class="code literal-block"><span></span><code><span class="k">if</span> <span class="n">rangelist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
     <span class="nb">print</span> <span class="s2">"두번째 아이템이 2 이다"</span>
 <span class="k">elif</span> <span class="n">rangelist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
     <span class="nb">print</span> <span class="s2">"두번째 아이템이 3 이다"</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span> <span class="s2">"Dunno"</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="k">while</span> <span class="n">rangelist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<pre class="code literal-block"><span></span><code><span class="k">while</span> <span class="n">rangelist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
     <span class="k">pass</span>
-</pre>
+</code></pre>
 
 
 <h3>함수(Functions)</h3>
 <p>함수는 <code>def</code> 키워드를 이용하여 선언한다. 함수의 인자중, 반드시 필요한 인자를 먼저 나열하고, 선택적 인자들을 그 후에 나열한다. 선택적 인자들에게는 기본값을 설정한다. 여러개의 값을 한꺼번에 tuple 로 리턴할 수 있다. Lambda 함수는 선언없이, 필요할 때 정의해서 사용하는 함수다. 인자는 레퍼런스 (참조) 로 전달된다. (역주: C++ 의 포인터가 카피되어 전달된다고 보면 된다, 전달된 변수를 수정하는 것이아니라, 새로운 값을 할당하면, 함수 바깥쪽에서는 이 변화는 인지하지 못한다.) 하지만 전달 받은 immutable 타입들 (튜플, int, string 등등) 은 참조로 전달되었다고 하더라도, 수정할 수 없다.</p>
-<pre class="code literal-block"><span></span><span class="c1"># 다음 문장은 def funcvar(x): return x + 1 와 같다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 다음 문장은 def funcvar(x): return x + 1 와 같다.</span>
 <span class="n">funcvar</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="nb">print</span> <span class="n">funcvar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">2</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">2</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># an_int 와 a_string 은 선택적 인자로 기본값을 가진다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># an_int 와 a_string 은 선택적 인자로 기본값을 가진다.</span>
 <span class="k">def</span> <span class="nf">passing_example</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="n">an_int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a_string</span><span class="o">=</span><span class="s2">"A default string"</span><span class="p">):</span>
     <span class="n">a_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"A new item"</span><span class="p">)</span>
     <span class="n">an_int</span> <span class="o">=</span> <span class="mi">4</span>
@@ -316,32 +316,32 @@ navbar-dark bg-dark
 <span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">my_int</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="nb">print</span> <span class="n">passing_example</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">my_int</span><span class="p">)</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">([1, 2, 3, 'A new item'], 4, "A default string")</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">([1, 2, 3, 'A new item'], 4, "A default string")</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">my_list</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">my_list</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">[1, 2, 3, 'A new item']</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">[1, 2, 3, 'A new item']</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">my_int</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">my_int</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">10</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">10</span>
+</code></pre>
 
 
 <h2>클래스(Classes)</h2>
 <p>파이썬은 제한적으로 다중 상속을 지원한다. private 변수와, 함수는 앞에 __ 을 붙인다. 관습일 뿐이며, python 언어 자체는 private 이란 개념이 없다.</p>
-<pre class="code literal-block"><span></span><span class="c1"># 클래스 객체를 만든다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 클래스 객체를 만든다.</span>
 <span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">common</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -350,86 +350,86 @@ navbar-dark bg-dark
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">myvariable</span>
 <span class="n">classinstance</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
 <span class="n">classinstance</span><span class="o">.</span><span class="n">myfunction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">3</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">3</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># 객체에서도 common 속성을 사용할 수 있다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 객체에서도 common 속성을 사용할 수 있다.</span>
 <span class="n">classinstance2</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
 <span class="n">classinstance</span><span class="o">.</span><span class="n">common</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">10</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">10</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">10</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">10</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># 클래스 변수를 변경한다</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 클래스 변수를 변경한다</span>
 <span class="n">MyClass</span><span class="o">.</span><span class="n">common</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="n">classinstance</span><span class="o">.</span><span class="n">common</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">30</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">30</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">30</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">30</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># classinstance 객체에 common 이라는 속성을 생성하고, 값을 준다</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># classinstance 객체에 common 이라는 속성을 생성하고, 값을 준다</span>
 <span class="n">classinstance</span><span class="o">.</span><span class="n">common</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">classinstance</span><span class="o">.</span><span class="n">common</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">10</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">10</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">30</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">30</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">MyClass</span><span class="o">.</span><span class="n">common</span> <span class="o">=</span> <span class="mi">50</span>
+<pre class="code literal-block"><span></span><code><span class="n">MyClass</span><span class="o">.</span><span class="n">common</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="c1"># classinstance.common 은 객체의 속성이기 때문에 변하지 않는다.</span>
 <span class="n">classinstance</span><span class="o">.</span><span class="n">common</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">10</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">10</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">classinstance2</span><span class="o">.</span><span class="n">common</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">50</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">50</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># MyClass 클래스를 상속받는다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># MyClass 클래스를 상속받는다.</span>
 <span class="c1"># class OtherClass(MyClass1, MyClass2, MyClassN) 형태로 다중상속 받을 수 있다.</span>
 <span class="k">class</span> <span class="nc">OtherClass</span><span class="p">(</span><span class="n">MyClass</span><span class="p">):</span>
     <span class="c1"># "self" 인자는 자동으로 넘어오는 인자로 객체 자신을 가리킨다.</span>
@@ -439,35 +439,35 @@ navbar-dark bg-dark
         <span class="nb">print</span> <span class="n">arg1</span>
 
 <span class="n">classinstance</span> <span class="o">=</span> <span class="n">OtherClass</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">)</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">hello</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">hello</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="n">classinstance</span><span class="o">.</span><span class="n">myfunction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">classinstance</span><span class="o">.</span><span class="n">myfunction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">3</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">3</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># 이 클래스는 test 라는 변수를 정의한적이 없다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 이 클래스는 test 라는 변수를 정의한적이 없다.</span>
 <span class="c1"># 하지만 다음 처럼 그냥 만들수 있다.</span>
 <span class="n">classinstance</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">classinstance</span><span class="o">.</span><span class="n">test</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">10</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">10</span>
+</code></pre>
 
 
 <h3>예외 처리(Exceptions)</h3>
 <p><code>try-exept [exceptionname]</code> 형태로 처리합니다.</p>
-<pre class="code literal-block"><span></span><span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+<pre class="code literal-block"><span></span><code><span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># 0 으로 나눠서 exception 을 발생시킨다.</span>
         <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
@@ -481,31 +481,31 @@ navbar-dark bg-dark
         <span class="nb">print</span> <span class="s2">"We're done with that."</span>
 
 <span class="n">some_function</span><span class="p">()</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">Oops, invalid.</span>
+<pre class="code literal-block"><span></span><code><span class="err">Oops, invalid.</span>
 <span class="err">We're done with that.</span>
 <span class="err">Importing</span>
-</pre>
+</code></pre>
 
 
 <p>라이브러리를 <code>import [library_name]</code> 으로 불러와 사용할 수 있다. <code>from [library_name] import [name]</code> 으로 라이브러리의 특정 이름만 가져올 수 있습니다.</p>
-<pre class="code literal-block"><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1"># random library 를 불러온다</span>
+<pre class="code literal-block"><span></span><code><span class="kn">import</span> <span class="nn">random</span> <span class="c1"># random library 를 불러온다</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">clock</span> <span class="c1"># time 라이브러리의 clock 함수를 가져온다.</span>
 
 <span class="n">randomint</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="nb">print</span> <span class="n">randomint</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">64</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">64</span>
+</code></pre>
 
 
 <h3>파일 입출력(File I/O)</h3>
 <p>파이썬은 다수의 내장 라이브러리를 제공한다. 다음 예제는 pickle 라이브러리를 이용하여 데이터를 serialize 하여 파일로 저장하는 것을 보여준다.</p>
-<pre class="code literal-block"><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<pre class="code literal-block"><span></span><code><span class="kn">import</span> <span class="nn">pickle</span>
 <span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"This"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">13327</span><span class="p">]</span>
 <span class="c1"># C:binary.dat 파일을 쓰기 모드로 연다.</span>
 <span class="c1"># 'r' 은 raw 라는 뜻으로, 가 escaping 을 의미하지 않도록 한다.</span>
@@ -519,14 +519,14 @@ navbar-dark bg-dark
 <span class="n">myfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="nb">print</span> <span class="n">loadedlist</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">['This', 'is', 4, 13327]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">['This', 'is', 4, 13327]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># 텍스트 파일에 데이터를 저장한다</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 텍스트 파일에 데이터를 저장한다</span>
 <span class="n">myfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s2">"C:text.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span>
 <span class="n">myfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"This is a sample string"</span><span class="p">)</span>
 <span class="n">myfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -535,58 +535,58 @@ navbar-dark bg-dark
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">myfile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="s1">'This is a sample string'</span>
 <span class="n">myfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre>
+</code></pre>
 
 
 <h3>기타기능(Miscellaneous)</h3>
 <p>1 &lt; a &lt; 3 같은 조건을 사용할 수 있다. <code>del</code> 키워드를 이용하여, 변수를 삭제하거나, 배열의 아이템을 삭제한다. list comprehension 을 이용하여 리스트를 만들 수 있다. list comprehension 은 <code>for</code> 와 <code>if</code> 문을 내부에 사용합니다.</p>
-<pre class="code literal-block"><span></span><span class="n">lst1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<pre class="code literal-block"><span></span><code><span class="n">lst1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">lst2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="nb">print</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">lst2</span><span class="p">]</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">[3, 4, 5, 6, 8, 10, 9, 12, 15]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">[3, 4, 5, 6, 8, 10, 9, 12, 15]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="nb">print</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst1</span> <span class="k">if</span> <span class="mi">4</span> <span class="o">&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="nb">print</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst1</span> <span class="k">if</span> <span class="mi">4</span> <span class="o">&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">[2, 3]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">[2, 3]</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># 원소 하나라도 true 인지 확인한다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 원소 하나라도 true 인지 확인한다.</span>
 <span class="nb">any</span><span class="p">([</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="c1"># any(0,0,1,1,0)</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">True</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">True</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="c1"># Check for how many items a condition is true.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># Check for how many items a condition is true.</span>
 <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">2</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">2</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="k">del</span> <span class="n">lst1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<pre class="code literal-block"><span></span><code><span class="k">del</span> <span class="n">lst1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span> <span class="n">lst1</span>
-</pre>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">[2, 3]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">[2, 3]</span>
+</code></pre>
 
 
 <p>함수 바깥에 정의하는 변수는 글로벌 변수이다. 어디서도 이 변수를 접근할 수 있지만, 이 값을 함수내에서 변경할 때에는 global 키워드를 사용하여 선언해줘야 한다. 그렇지 않으면, 파이썬은 같은 이름의 새로운 로컬 변수를 만든다.</p>
-<pre class="code literal-block"><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
+<pre class="code literal-block"><span></span><code><span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="k">def</span> <span class="nf">myfunc</span><span class="p">():</span>
     <span class="c1"># 5 를 출력한다.</span>
@@ -603,7 +603,7 @@ navbar-dark bg-dark
     <span class="k">global</span> <span class="n">number</span>
     <span class="c1"># global 변수를 수정한다.</span>
     <span class="n">number</span> <span class="o">=</span> <span class="mi">3</span>
-</pre>
+</code></pre>
 
 
 <h2>마치며</h2>

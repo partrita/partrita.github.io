@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about os.walk)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/oswalk.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Mon, 06 Jan 2020 10:35:43 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>디렉토리 탐색하기</title><link>https://partrita.github.io/posts/walking-the-file-tree/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;p&gt;현재 디렉토리 아래의 모든 파일(서브디렉토리 포함)의 목록을 얻고자 할 때는 &lt;code&gt;os.walk('./')&lt;/code&gt;기능을 사용합니다.
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about os.walk)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/oswalk.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Sat, 29 Feb 2020 05:15:28 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>디렉토리 탐색하기</title><link>https://partrita.github.io/posts/walking-the-file-tree/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;p&gt;현재 디렉토리 아래의 모든 파일(서브디렉토리 포함)의 목록을 얻고자 할 때는 &lt;code&gt;os.walk('./')&lt;/code&gt;기능을 사용합니다.
 아래의 예제 코드를 확인하세요.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# python 2.7 버전&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# python 2.7 버전&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'./'&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;
-&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;h2&gt;os.walk&lt;/h2&gt;
@@ -14,7 +14,7 @@
 &lt;p&gt;좀 더 많은 기능은 &lt;a href="https://docs.python.org/2/library/os.html"&gt;공식 문서&lt;/a&gt;를 참고하세요.&lt;/p&gt;
 &lt;h2&gt;스크립트 파일 예제&lt;/h2&gt;
 &lt;p&gt;아래와 같이 스크립트 파일을 만들어 사용해 보았습니다.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#-*- coding: utf-8 -*-&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;#-*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="c1"&gt;# sub_dir_search.py&lt;/span&gt;
 &lt;span class="c1"&gt;# python 2.7 버전&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
@@ -42,12 +42,12 @@
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;터미널에 들어가서 다음과 같이 입력합니다.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;$ python sub_dir_search.py &lt;span class="o"&gt;[&lt;/span&gt;폴더명&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python sub_dir_search.py &lt;span class="o"&gt;[&lt;/span&gt;폴더명&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;blockquote&gt;

@@ -112,13 +112,13 @@ navbar-dark bg-dark
 <ol>
 <li>먼저 아래와 터미널에 아래와 같은 명령어를 칩니다. (예시로 1600×900을 사용했는데, 원하는 비율로 변경하시면 됩니다.)</li>
 </ol>
-<pre class="code literal-block"><span></span>cvt <span class="m">1600</span> <span class="m">900</span>
-</pre>
+<pre class="code literal-block"><span></span><code>cvt <span class="m">1600</span> <span class="m">900</span>
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">1600x900 59.95 Hz (CVT 1.44M9) hsync: 55.99 kHz; pclk: 118.25 MHz</span>
+<pre class="code literal-block"><span></span><code><span class="err">1600x900 59.95 Hz (CVT 1.44M9) hsync: 55.99 kHz; pclk: 118.25 MHz</span>
 <span class="err">Modeline "1600x900_60.00" 118.25 1600 1696 1856 2112 900 903 908 934 -hsync +vsync</span>
-</pre>
+</code></pre>
 
 
 <ol>
@@ -127,42 +127,42 @@ navbar-dark bg-dark
 </ul>
 </li>
 </ol>
-<pre class="code literal-block"><span></span>xrandr --newmode <span class="s2">"1600x900_60.00"</span> <span class="m">118</span>.25 <span class="m">1600</span> <span class="m">1696</span> <span class="m">1856</span> <span class="m">2112</span> <span class="m">900</span> <span class="m">903</span> <span class="m">908</span> <span class="m">934</span> -hsync +vsync
+<pre class="code literal-block"><span></span><code>xrandr --newmode <span class="s2">"1600x900_60.00"</span> <span class="m">118</span>.25 <span class="m">1600</span> <span class="m">1696</span> <span class="m">1856</span> <span class="m">2112</span> <span class="m">900</span> <span class="m">903</span> <span class="m">908</span> <span class="m">934</span> -hsync +vsync
 <span class="c1"># 새로운 모드를 만들고 아래와 같이 추가해줍니다.</span>
 xrandr --addmode VGA1 <span class="s2">"1600x900_60.00"</span>
-</pre>
+</code></pre>
 
 
 <p>면이 깜박이면서 1600×900해상도가 새롭게 생깁니다. 하지만 재부팅을하면 다시 복구가 되므로 매번 명령어를 입력하는 불편이 있습니다.</p>
 <ol>
 <li>쉘 스크립트(fix-resolution.sh)를 작성합니다. 텍스트에디터로 만들어서 확장자만 변경하시면 됩니다.</li>
 </ol>
-<pre class="code literal-block"><span></span><span class="ch">#!/bin/sh</span>
+<pre class="code literal-block"><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="c1"># fix-resolution.sh</span>
 xrandr --newmode <span class="s2">"1600x900_60.00"</span> <span class="m">118</span>.25 <span class="m">1600</span> <span class="m">1696</span> <span class="m">1856</span> <span class="m">2112</span> <span class="m">900</span> <span class="m">903</span> <span class="m">908</span> <span class="m">934</span> -hsync +vsync
 xrandr --addmode VGA1 <span class="s2">"1600x900_60.00"</span>
 xrandr --output VGA1 --mode <span class="s2">"1600x900_60.00"</span>
-</pre>
+</code></pre>
 
 
 <ol>
 <li>fix-resolution.desktop라는 파일도 만들어 줍니다.</li>
 </ol>
-<pre class="code literal-block"><span></span><span class="c1"># fix-resolution.desktop</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># fix-resolution.desktop</span>
 <span class="o">[</span>Desktop Entry<span class="o">]</span>
 <span class="nv">Type</span><span class="o">=</span>Application
 <span class="nv">Name</span><span class="o">=</span>fix-resolution.desktop
 <span class="nv">Exec</span><span class="o">=</span>/usr/local/bin/fix-resolution.sh
-</pre>
+</code></pre>
 
 
 <ol>
 <li>두개의 파일이 들어있는 디렉토리에서 터미널을 열고 다음의 명령어를 입력 합니다.</li>
 </ol>
-<pre class="code literal-block"><span></span>cp fix-resolution.sh /usr/local/bin
+<pre class="code literal-block"><span></span><code>cp fix-resolution.sh /usr/local/bin
 chmod +x /usr/local/bin/fix-resolution.sh
 cp fix-resolution.desktop /etc/xdg/autostart
-</pre>
+</code></pre>
 
 
 <p>파일을 복사해서 옮겨주는 것이라서, 생성하신 파일은 이제 삭제하셔도 됩니다.</p>
@@ -172,8 +172,8 @@ cp fix-resolution.desktop /etc/xdg/autostart
 <ol>
 <li>bashrc 파일 열기</li>
 </ol>
-<pre class="code literal-block"><span></span>nano ~/.bashrc
-</pre>
+<pre class="code literal-block"><span></span><code>nano ~/.bashrc
+</code></pre>
 
 
 <p>nano 에디터로 파일을 열어줍니다.</p>
@@ -181,8 +181,8 @@ cp fix-resolution.desktop /etc/xdg/autostart
 <li>Alias 명령어 추가하기
 Alias 사용법은 다음과 같습니다. </li>
 </ol>
-<pre class="code literal-block"><span></span><span class="err">alias l="ls -a"</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">alias l="ls -a"</span>
+</code></pre>
 
 
 <p>‘l’을 치면 ‘ls -a’랑 같은 효과가 나도록 설정하였습니다. 이제 Ctrl+x를 눌러 파일을 저장합니다.</p>
@@ -190,8 +190,8 @@ Alias 사용법은 다음과 같습니다. </li>
 <li>Bash shell 재실행
 저장한 내용을 적용하기 위해 shell을 다시 실행 해야합니다.</li>
 </ol>
-<pre class="code literal-block"><span></span><span class="nb">source</span> .bashrc
-</pre>
+<pre class="code literal-block"><span></span><code><span class="nb">source</span> .bashrc
+</code></pre>
 
 
 <p>이제 'l'을 누르면 적용이 된것을 확인 할 수 있습니다.</p>
@@ -202,8 +202,8 @@ Alias 사용법은 다음과 같습니다. </li>
 <li>unzip 사용법
 명령어의 사용법은 다음과 같습니다.</li>
 </ol>
-<pre class="code literal-block"><span></span><span class="nv">$unzip</span> -O <span class="o">[</span>인코딩<span class="o">]</span> <span class="o">[</span>파일명<span class="o">]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="nv">$unzip</span> -O <span class="o">[</span>인코딩<span class="o">]</span> <span class="o">[</span>파일명<span class="o">]</span>
+</code></pre>
 
 
 <p>윈도우에서 많이 사용되는 인코딩은 cp949이므로, 아래와 같이 쓰면 됩니다.</p>
@@ -211,8 +211,8 @@ Alias 사용법은 다음과 같습니다. </li>
 <p>물론 인코딩을 미리 확인하고 사용하는게 좋습니다.</p>
 </blockquote>
 <p>터미널에 아래와 같이 입력하세요.</p>
-<pre class="code literal-block"><span></span><span class="nv">$unzip</span> -O cp949 한글.zip
-</pre>
+<pre class="code literal-block"><span></span><code><span class="nv">$unzip</span> -O cp949 한글.zip
+</code></pre>
 
 
 <p>위 방법을 이용하면 인코딩 깨짐 없이 무사히 압축을 해제할 수 있습니다.</p>
@@ -225,23 +225,23 @@ zip파일은 거의 모든 압축포맷 중에 단연 최고의 사용률을 자
 <ol>
 <li>리눅스 버전확인</li>
 </ol>
-<pre class="code literal-block"><span></span>~$ cat /etc/issue
-</pre>
+<pre class="code literal-block"><span></span><code>~$ cat /etc/issue
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">Ubuntu 15.04</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">Ubuntu 15.04</span>
+</code></pre>
 
 
 <p>사용중인 리눅스의 버전을 확인합니다.</p>
 <ol>
 <li>하드디스크 용량 확인</li>
 </ol>
-<pre class="code literal-block"><span></span>~$ df -h
-</pre>
+<pre class="code literal-block"><span></span><code>~$ df -h
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">Filesystem Size Used Avail Use% Mounted on</span>
+<pre class="code literal-block"><span></span><code><span class="err">Filesystem Size Used Avail Use% Mounted on</span>
 <span class="err">udev 3.8G 0 3.8G 0% /dev</span>
 <span class="err">tmpfs 771M 26M 746M 4% /run</span>
 <span class="err">/dev/sda5 33G 15G 17G 46% /</span>
@@ -250,53 +250,53 @@ zip파일은 거의 모든 압축포맷 중에 단연 최고의 사용률을 자
 <span class="err">tmpfs 3.8G 0 3.8G 0% /sys/fs/cgroup</span>
 <span class="err">cgmfs 100K 0 100K 0% /run/cgmanager/fs</span>
 <span class="err">tmpfs 771M 48K 771M 1% /run/user/1000</span>
-</pre>
+</code></pre>
 
 
 <p>3번째 줄에서 총 공간이 총 33G이고 15G를 사용하고 있음을 확인합니다.</p>
 <ol>
 <li>CPU 코어 갯수 확인</li>
 </ol>
-<pre class="code literal-block"><span></span>~$ cat /proc/cpuinfo <span class="p">|</span> grep processor <span class="p">|</span> wc -l
-</pre>
+<pre class="code literal-block"><span></span><code>~$ cat /proc/cpuinfo <span class="p">|</span> grep processor <span class="p">|</span> wc -l
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">8</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">8</span>
+</code></pre>
 
 
 <p>코어의 갯수가 8개 임을 알수 있습니다.</p>
 <ol>
 <li>램 사용량 확인</li>
 </ol>
-<pre class="code literal-block"><span></span>~$ free -m
-</pre>
+<pre class="code literal-block"><span></span><code>~$ free -m
+</code></pre>
 
 
-<pre class="code literal-block"><span></span><span class="err">total used free shared buffers cached</span>
+<pre class="code literal-block"><span></span><code><span class="err">total used free shared buffers cached</span>
 <span class="c">Mem: 7708 2690 5017 161 351 669</span>
 <span class="err">-/+ buffers/cache: 1669 6038</span>
 <span class="c">Swap: 0 0 0</span>
-</pre>
+</code></pre>
 
 
 <p>전체 7708Mb에서 2618Mb를 사용하고 있습니다.</p>
 <hr>
 <h2>헐리우드 해커 터미널</h2>
 <p>영화에 나오는 해커처럼 터미널에 복잡한것을 띄워 봅시다. 아래 코드를 터미널에 입력하면 랜덤하게 hex dump가 시작됩니다. </p>
-<pre class="code literal-block"><span></span>hexdump -C /dev/urandom <span class="p">|</span> <span class="nv">GREP_COLOR</span><span class="o">=</span><span class="s1">'1;32'</span> grep --color<span class="o">=</span>auto <span class="s1">'ca fe'</span>
-</pre>
+<pre class="code literal-block"><span></span><code>hexdump -C /dev/urandom <span class="p">|</span> <span class="nv">GREP_COLOR</span><span class="o">=</span><span class="s1">'1;32'</span> grep --color<span class="o">=</span>auto <span class="s1">'ca fe'</span>
+</code></pre>
 
 
 <blockquote>
 <p>hex dump는 램 또는 파일이나 저장장치에 있는 컴퓨터 데이터의 십육진법적인 보임새이다. 데이터의 hex dump를 보는 것은 주로 디버깅이나 리버스 엔지니어링의 한 부분이다.  -- 위키피디아</p>
 </blockquote>
 <p>이와 비슷한 것으로 영화 <strong>메트릭스</strong>에 나오는 화면도 시도해 보겠습니다.</p>
-<pre class="code literal-block"><span></span><span class="c1"># 먼저 cmatrix를 설치해야 합니다.</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 먼저 cmatrix를 설치해야 합니다.</span>
 sudo apt-get install cmatrix
 <span class="c1"># 실행합니다.</span>
 cmatrix
-</pre>
+</code></pre>
 
 
 <p>별 의미는 없지만 흥미롭습니다.</p>
@@ -307,18 +307,18 @@ cmatrix
 <li>쉘 스크립트 작성
 아파치 데몬이 죽었을 경우 자동 재 시작하는 스크립트를 작성해보겠습니다. 아래와 같은 내용의 쉘 스크립트 파일을 만듭니다. 파일명은 <code>revive.sh</code>로 하겠습니다.</li>
 </ol>
-<pre class="code literal-block"><span></span><span class="c1"># revive.sh</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># revive.sh</span>
 <span class="c1">#!/bin/bash</span>
 <span class="nv">http</span><span class="o">=</span><span class="s2">"`pgrep http  | wc -l`"</span>
 <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$http</span><span class="s2">"</span> -eq <span class="s2">"0"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
 /usr/local/apache/bin/apachectl restart
 <span class="k">fi</span>
-</pre>
+</code></pre>
 
 
 <p><code>http</code>라는 변수에 <code>pgrep http</code>로 아파치 프로세서의 갯수를 세어 저장합니다. 그리고, <code>if</code>문에서 <code>http</code>변수에 들어 있는 값이 0이라면 아파치를 재시작 합니다. 위의 스크립트를 <code>revive.sh</code> 로 저장하고, 터미널에 다음과 같이 입력합니다.</p>
-<pre class="code literal-block"><span></span>$ chmod -x revive.sh
-</pre>
+<pre class="code literal-block"><span></span><code>$ chmod -x revive.sh
+</code></pre>
 
 
 <p>이는 퍼미션을 주기 위한 것입니다.</p>
@@ -326,13 +326,13 @@ cmatrix
 <li>크론(cron)에 등록해서 1분마다 확인하기
 리눅스에서는 정기적으로 반복되는 작업을 위한 <code>cron</code>이라는 서비스가 있습니다. 크론으로 1분에 한번씩 위의 스크립트가 작동되도록 하겠습니다. </li>
 </ol>
-<pre class="code literal-block"><span></span>crontab -e
-</pre>
+<pre class="code literal-block"><span></span><code>crontab -e
+</code></pre>
 
 
 <p>으로 크론을 실행한뒤 아래와 같이 입력합니다.</p>
-<pre class="code literal-block"><span></span><span class="err">* * * * * su - root -c '/root/revive.sh /dev/null'</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">* * * * * su - root -c '/root/revive.sh /dev/null'</span>
+</code></pre>
 
 
 <p>파일을 저장한뒤 적용을 위해서는 로그오프가 필요합니다. </p>
@@ -483,24 +483,24 @@ cmatrix
 <ol>
 <li>충돌을 일으킬 수 있는 laptop-mode 제거</li>
 </ol>
-<pre class="code literal-block"><span></span>sudo apt-get purge laptop-mode-tools
-</pre>
+<pre class="code literal-block"><span></span><code>sudo apt-get purge laptop-mode-tools
+</code></pre>
 
 
 <ol>
 <li>TLP설치</li>
 </ol>
-<pre class="code literal-block"><span></span>sudo add-apt-repository ppa:linrunner/tlp
+<pre class="code literal-block"><span></span><code>sudo add-apt-repository ppa:linrunner/tlp
 sudo apt-get update
 sudo apt-get install tlp
-</pre>
+</code></pre>
 
 
 <ol>
 <li>처음 실행후에는 부팅시 자동 실행된다.</li>
 </ol>
-<pre class="code literal-block"><span></span>sudo tlp start
-</pre>
+<pre class="code literal-block"><span></span><code>sudo tlp start
+</code></pre>
 
 
 <hr>
@@ -525,7 +525,7 @@ sudo apt-get install tlp
 <li>BeautifulSoup 모듈</li>
 </ul>
 <h2>2. Code</h2>
-<pre class="code literal-block"><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">urllib</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
@@ -569,7 +569,7 @@ sudo apt-get install tlp
 <span class="nb">print</span> <span class="s1">'Finished'</span><span class="n">기</span>
 <span class="nb">print</span> <span class="s1">'Fail list : '</span>
 <span class="nb">print</span> <span class="n">fail_list</span> <span class="c1"># 실패한 페이지 출력</span>
-</pre>
+</code></pre>
 
 
 <h2>3. 결과 확인</h2>
