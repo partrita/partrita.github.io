@@ -138,6 +138,7 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/pages/about/", "About"),
         ("/pages/resume/index.html", "Resume"),
+        ("/pages/books/index.html","Book"),
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
         ("http://partrita.iptime.org", "Biohack"),
