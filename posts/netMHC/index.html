@@ -121,11 +121,11 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="면역원성(Immunogenicity)-예측">면역원성(Immunogenicity) 예측<a class="anchor-link" href="#%EB%A9%B4%EC%97%AD%EC%9B%90%EC%84%B1(Immunogenicity)-%EC%98%88%EC%B8%A1">¶</a>
+<h2 id="1.-면역원성(Immunogenicity)-예측">1. 면역원성(Immunogenicity) 예측<a class="anchor-link" href="#1.-%EB%A9%B4%EC%97%AD%EC%9B%90%EC%84%B1(Immunogenicity)-%EC%98%88%EC%B8%A1">¶</a>
 </h2>
 <p>고분자 물질(예를 들면 단백질 의약품)이 체내에 들어왔을때 면역반응을 유발하는 성질을 면역원성 (immunogenicity)이라 합니다. 면역원성은 단백질 의약품의 약효뿐만 아니라 환자의 에도 문제를 일으킬수 있습니다. 따라서 재조합 단백질이나 항체와 같은 단백질 의약품 개발 시 면역원성을 사전에 예방하고 최소화하는 것이 반드시 필요하죠.</p>
 <p><em>in silico</em> 기술을 활용하여 기존의 알려진 DB를 검색하여 면역원성을 예측하는 방법을 알아 보겠습니다.</p>
-<h3 id="NetMHC-4.0-Server">NetMHC 4.0 Server<a class="anchor-link" href="#NetMHC-4.0-Server">¶</a>
+<h3 id="1.1.-NetMHC-4.0-Server">1.1. NetMHC 4.0 Server<a class="anchor-link" href="#1.1.-NetMHC-4.0-Server">¶</a>
 </h3>
 <p>MHC class I에 붙는 펩타이드를 예측해주는 프로그램입니다. 다음은 홈페이지의 소개 글입니다.</p>
 <blockquote>
@@ -399,8 +399,8 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>df_M113HC</strong> 데이터프레임을 보면 인덱스로는 펩타이드 서열이 있고, 각각의 열은 <strong>alleles</strong> 를 나타냅니다. allele에 대해서는 <a href="https://en.wikipedia.org/wiki/Allele">위키피디아</a>를 참고하세요. 숫자는 펩타이드가 붙을 확률을 나타냅니다. 숫자가 크면 가능성이 크고, 낮으면 적다고 생각하시면 됩니다.</p>
-<p>우리가 알고 싶은것은 각 시퀀스의 Immunogenicity이므로 Peptide의 첫번째 아미노산만을 남기 겠습니다.</p>
+<p><strong>df_M113HC</strong> 데이터프레임을 보면 인덱스로는 펩타이드 서열이 있고, 각각의 열은 <strong>alleles</strong> 를 나타냅니다. allele에 대해서는 <a href="https://en.wikipedia.org/wiki/Allele">위키피디아</a>를 참고하세요. 숫자는 펩타이드가 붙을 확률을 나타냅니다. 숫자가 크면 가능성이 크고, 낮으면 적다고 볼 수 있습니다.</p>
+<p>우리가 알고 싶은 것은 각각의 아미노산으로 유발되는 면역원성임으로 Peptide의 첫번째 아미노산만 남겨줍니다.</p>
 
 </div>
 </div>
@@ -428,6 +428,8 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.-시각화하기">1.2. 시각화하기<a class="anchor-link" href="#1.2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
+</h3>
 <p>다음과 같이 <a href="https://ko.wikipedia.org/wiki/%ED%9E%88%ED%8A%B8_%EB%A7%B5">히트맵</a>을 그리는 기능을 만들어 사용하겠습니다.</p>
 
 </div>
@@ -686,9 +688,10 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="마치며">마치며<a class="anchor-link" href="#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h3 id="2.-마치며">2. 마치며<a class="anchor-link" href="#2.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h3>
-<p>총 6종류의 단백질 서열를 가지고 각각의 Immunogenicity를 분석해 보았습니다. 수치가 높은 서열은 다른 것으로 치환하면서 Immunogenicity를 낮추는 곳에 활용할 수 있겠습니다.</p>
+<p>총 6종류의 단백질에 대한 각각의 면역원성을 분석했습니다. allele에 따라 면역반응이 다르지만 전체적으로 파란색을 띄는 서열을 직관적으로 알 수 있습니다.</p>
+<p>만약 인위적으로 넣은 서열이 매우 푸른색을 띈다면 피하는 편이 좋습니다.</p>
 
 </div>
 </div>
