@@ -98,7 +98,179 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/ANOVA-python/" class="u-url">파이썬으로 분산분석(ANOVA)</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/kakao_api/" class="u-url">카카오의 REST API 사용하기</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Taeyoon Kim
+            </span></p>
+            <p class="dateline">
+            <a href="posts/kakao_api/" rel="bookmark">
+            <time class="published dt-published" datetime="2018-03-16T15:35:54+09:00" itemprop="datePublished" title="2018-03-16 15:35">2018-03-16 15:35</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="0.-카카오-비전-API">0. 카카오 비전 API<a class="anchor-link" href="posts/kakao_api/#0.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API">¶</a>
+</h2>
+<p>카카오에서 최근에 흥미로운 서비스를 시작했습니다. 컴퓨터 비전(Computer Vision)으로 이미지 분석을 해주는 API를 <strong>카카오 비전</strong>을 공개한 것입니다. 카카오 비전은 이미지를 분석해서 콘텐츠 형태와 의미를 이해하고, 이미지를 활용할 수 있게 도와주는 API입니다. 현재 제공되는 API의 종류는 다음과 같습니다.</p>
+<ul>
+<li>얼굴 검출</li>
+<li>상품 검출</li>
+<li>썸네일 생성</li>
+<li>성인 이미지 판별</li>
+</ul>
+<p>얼굴 인식은 컴퓨터 비전에서 특별히 새로운 기술은 아닙니다만, 저는 카카오에서 공개한 API의 성능을 한번 확인하고자 시도해 봤습니다. 카카오 비전에 대한 자세한 것은 <a href="https://developers.kakao.com/docs/restapi/vision">이곳</a>를 참고하세요.</p>
+<h2 id="1.-카카오-비전-API-준수사항">1. 카카오 비전 API 준수사항<a class="anchor-link" href="posts/kakao_api/#1.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API-%EC%A4%80%EC%88%98%EC%82%AC%ED%95%AD">¶</a>
+</h2>
+<p>API 사용시 다음과 같은 사항을 준수해야 합니다.</p>
+<ul>
+<li>서버에서 호출하는 경우 REST API 키를 사용해 호출합니다.</li>
+<li>모든 API는 file 또는 image_url 중 하나의 값을 지정해야 합니다.</li>
+<li>file에 업로드되는 이미지와 image_url에 지정되는 이미지는 png 또는 jpg 포맷만 지원합니다.</li>
+</ul>
+<h2 id="2.-활용-예제-살펴보기">2. 활용 예제 살펴보기<a class="anchor-link" href="posts/kakao_api/#2.-%ED%99%9C%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">¶</a>
+</h2>
+<p>카카오에서 간단한 <code>파이썬</code> 예제 코드를 제공하고 있습니다. 저는 거기에서 <strong>얼굴을 추출해 모자이크 처리하는 예제</strong>를 테스트 해보겠습니다. 작동원리를 간단하게 서술해 보면, 먼저 카카오 API로 사진상의 얼굴의 좌표를 인식하고 <code>pillow</code> 라이브러리를 이용해서 얼굴 부분의 이미지를 잘라냅니다. 그리고 리사이즈를 한뒤 원본 사진에 다시 붙여(모자이크처리) 넣습니다.</p>
+<p>예제로 사용할 사진은 아래와 같이 준비했습니다.</p>
+<ol>
+<li>원숭이 사진  </li>
+</ol>
+<p><img src="https://i.imgur.com/HIp4WAQ.jpg" alt="monkey"></p>
+<ol>
+<li>단체사진  </li>
+</ol>
+<p><img src="https://i.imgur.com/9n0fVoI.jpg" alt="peoples"></p>
+<p>사용한 코드는 아래와 같습니다. 몇가지 설명을 덧붙이자면,</p>
+<ul>
+<li>본인의 API 키를 넣어야 작동합니다.</li>
+<li>변환할 사진 파일은 jpg 혹은 png 포멧이어야 합니다.</li>
+<li>사진 파일의 위치는 기본적으로 같은 폴더에 있으면 바로 작동하게 만들었습니다.</li>
+<li>모자이크 처리된 파일은 파일명에 <em>mosaic_</em>를 붙여서 생성됩니다.</li>
+</ul>
+<p>코드를 <code>kakao_api.py</code>로 저장하고 터미널에서</p>
+<div class="highlight"><pre><span></span>python kakao_api.py -f ./.
+</pre></div>
+<p>라고 입력합니다.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageFilter</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">API_URL</span> <span class="o">=</span> <span class="s1">'https://kapi.kakao.com/v1/vision/face/detect'</span>
+<span class="c1"># 아래 My Kakao api key, 본인 계정의 API 키로 변경해서 사용하세요.</span>
+<span class="n">MYAPP_KEY</span> <span class="o">=</span> <span class="s1">'b5f1dde7995c36168402318b69308ef218614'</span>
+
+<span class="k">def</span> <span class="nf">detect_face</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'KakaoAK </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">MYAPP_KEY</span><span class="p">)}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'file'</span> <span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)}</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">API_URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+        <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">mosaic</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">detection_result</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">detection_result</span><span class="p">[</span><span class="s1">'result'</span><span class="p">][</span><span class="s1">'faces'</span><span class="p">]:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'w'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'h'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">crop</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
+        <span class="c1"># 모자이크 강도를 조절하려면 사이즈를 조절하세요.</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">NEAREST</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">NEAREST</span><span class="p">)</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">image</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">'Mosaic all of faces.'</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'-f'</span><span class="p">,</span> <span class="s1">'--folder'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">"./."</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">'image file to hide faces'</span><span class="p">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="c1"># Make files lists</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.jpg'</span><span class="p">)</span> <span class="o">+</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.jpeg'</span><span class="p">)</span> <span class="o">+</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.png'</span><span class="p">)</span>
+    <span class="c1"># make loop</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">head</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">detection_result</span> <span class="o">=</span> <span class="n">detect_face</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">mosaic</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">detection_result</span><span class="p">)</span>           
+            <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">head</span><span class="o">+</span><span class="s1">'mosaic_'</span><span class="o">+</span><span class="n">tail</span><span class="p">,</span><span class="s1">'JPEG'</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'! Add mosaic on : '</span> <span class="o">+</span> <span class="n">tail</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'! Face does not detected on : '</span> <span class="o">+</span> <span class="n">tail</span><span class="p">)</span> 
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'!!  All process finished  !!'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>!!  All process finished  !!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-결과-확인">3. 결과 확인<a class="anchor-link" href="posts/kakao_api/#3.-%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8">¶</a>
+</h2>
+<ol>
+<li>원숭이 사진  </li>
+</ol>
+<p><img src="https://i.imgur.com/SMNZSM4.jpg" alt=""></p>
+<ol>
+<li>단체사진  </li>
+</ol>
+<p><img src="https://i.imgur.com/DwBjyNp.jpg" alt=""></p>
+<p>얼굴을 인식해서 모자이크 처리가 되는것을 볼수 있습니다. 첫 번째 원숭이 사진은 물론이고 단체사진의 얼굴도 인식을 잘 하는 것을 확인할 수 있습니다. 물론 모든 사진에서 성공적인 결과를 얻지는 못했습니다만, 얼굴 인식의 경우는 상당히 잘 작동합니다. 다른 API들도 테스트를 해보니 상품 검출 API는 아직 인식률과 오작동이 많습니다. 아마도 기술적으로 좀 더 어렵기 때문이겠죠. 테스트중에 알아낸 또 다른것은 사진 용량의 제한입니다. 사진 파일의 용량이 10MB 이상이면 에러메세지가 나오는데 아마도 제한을 걸어둔것 같습니다.</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/ANOVA-python/" class="u-url">파이썬으로 분산분석(ANOVA)</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon Kim
@@ -548,544 +720,6 @@ Residual              24.0    1.840000    0.076667          NaN           NaN
 </h2>
 <p>분산분석(ANOVA)는 전체 그룹간의 평균값 차이가 통계적 의미가 있는지 판단하는데 유용한 도구 입니다. 하지만 정확히 어느 그룹의 평균값이 의미가 있는지는 알려주지 않습니다. 따라서 추가적인 <strong>사후분석(Post Hoc Analysis)</strong> 이 필요합니다. 사후분석에 대해서는 다음 기회에 알아 보도록 하겠습니다.</p>
 
-</div>
-</div>
-</div>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/lab_materials/" class="u-url">Lab_materials</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Taeyoon Kim
-            </span></p>
-            <p class="dateline">
-            <a href="posts/lab_materials/" rel="bookmark">
-            <time class="published dt-published" datetime="2018-03-02T17:56:47+09:00" itemprop="datePublished" title="2018-03-02 17:56">2018-03-02 17:56</time></a>
-            </p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>실험하면서 자주 사용되는 시약의 정보를 모아두겠습니다.</p>
-<hr>
-<h2 id="Table-of-contents">Table of contents<a class="anchor-link" href="posts/lab_materials/#Table-of-contents">¶</a>
-</h2>
-<ol>
-<li><a href="posts/lab_materials/#media">Media</a></li>
-<li><a href="posts/lab_materials/#antibiotics">Antibiotics</a></li>
-<li><a href="posts/lab_materials/#enzymes">Enzymes</a></li>
-<li><a href="posts/lab_materials/#buffers">Buffers</a></li>
-<li><a href="posts/lab_materials/#others">Other common chemicals</a></li>
-</ol>
-<hr>
-<p>This category from <a href="https://openwetware.org/wiki/Materials">OpenWetWare</a></p>
-<hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p></p>
-<div id="media"></div>
-<h2 id="1.-Media">1. Media<a class="anchor-link" href="posts/lab_materials/#1.-Media">¶</a>
-</h2>
-<hr>
-<h3 id="1.1.-Defined-Media">1.1. Defined Media<a class="anchor-link" href="posts/lab_materials/#1.1.-Defined-Media">¶</a>
-</h3>
-<h4 id="Synthetic-Complete-(SC)-Medium-aka-(CSM,-CM).-Defined-yeast-medium">Synthetic Complete (SC) Medium aka (CSM, CM). Defined yeast medium<a class="anchor-link" href="posts/lab_materials/#Synthetic-Complete-(SC)-Medium-aka-(CSM,-CM).-Defined-yeast-medium">¶</a>
-</h4>
-<ul>
-<li>Adenine sulfate 20 mg/L</li>
-<li>Uracil 20 mg/L </li>
-<li>L-Tryptophan 20 mg/L</li>
-<li>L-Histidine-HC1 20 mg/L </li>
-<li>L-Arginine-HC1 20 mg/L </li>
-<li>L-Methionine 20 mg/L </li>
-<li>L-Tyrosine 30 mg/L </li>
-<li>L-Leucine 60 mg/L </li>
-<li>L-Isoleucine 30 mg/L </li>
-<li>L-Lysine-HC1 30 mg/L </li>
-<li>L-Phenylalanine 50 mg/L </li>
-<li>L-Glutamic acid 100 mg/L </li>
-<li>L-Aspartic acid 100 mg/L </li>
-<li>L-Valine 150 mg/L </li>
-<li>L-Threonine 200 mg/L </li>
-<li>L-Serine 400 mg/L </li>
-</ul>
-<h3 id="1.2.-Standard-Media">1.2. Standard Media<a class="anchor-link" href="posts/lab_materials/#1.2.-Standard-Media">¶</a>
-</h3>
-<h4 id="Luria-Bertani-Medium-(aka-L-Broth-or-LB-Medium)">Luria-Bertani Medium (aka L-Broth or LB Medium)<a class="anchor-link" href="posts/lab_materials/#Luria-Bertani-Medium-(aka-L-Broth-or-LB-Medium)">¶</a>
-</h4>
-<p>LB is a standard growth medium for a variety of bacteria and conditions.</p>
-<h5 id="Ingredients-for-1L">Ingredients for 1L<a class="anchor-link" href="posts/lab_materials/#Ingredients-for-1L">¶</a>
-</h5>
-<ul>
-<li>10 g Bacto-tryptone</li>
-<li>5 g yeast extract</li>
-<li>10 g NaCl</li>
-</ul>
-<p>For plates also add</p>
-<ul>
-<li>15g agar</li>
-</ul>
-<blockquote>
-<p>Note: There are two formulations of LB, Miller and Lennox, that differ in the amount of NaCl. Lennox has less salt, only 5 g/L. The Qiagen miniprep kit recommends LB with 10 g NaCl for highest plasmid yields.</p>
-</blockquote>
-<h5 id="Protocol">Protocol<a class="anchor-link" href="posts/lab_materials/#Protocol">¶</a>
-</h5>
-<ol>
-<li>Mix dry ingredients and add distilled water up to 1 Liter</li>
-<li>Pour into 2 L flask (or greater)</li>
-<li>Autoclave (liquid cycle) 250°F, 22psi, 30 minutes</li>
-</ol>
-<blockquote>
-<p>Notes: We do not pH medium when we make it on the fly. However, if it is really important, pH the medium to 7.0 with 5M NaOH (~200µL). Check with pH paper</p>
-</blockquote>
-<h5 id="For-plates">For plates<a class="anchor-link" href="posts/lab_materials/#For-plates">¶</a>
-</h5>
-<ol>
-<li>Mix dry ingredients and add distilled water up to less than 1 Liter</li>
-<li>After dissolved, add agar</li>
-<li>Pour into 2 L flask (or greater)</li>
-<li>Autoclave (liquid cycle): 250°F, 22psi, 30 minutes</li>
-<li>Cool media down to 60-55C (uncomfortable but not painful)</li>
-<li>Add appropriate antibiotic</li>
-<li>Pour the solution on sterile plates</li>
-<li>Let solidify about 1 h, wrap, label (name, date, additive) keep at 4°C</li>
-</ol>
-<hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p></p>
-<div id="anitibiotics"></div>
-<h2 id="2.-Antibiotics">2. Antibiotics<a class="anchor-link" href="posts/lab_materials/#2.-Antibiotics">¶</a>
-</h2>
-<hr>
-<h3 id="Kanamycin">Kanamycin<a class="anchor-link" href="posts/lab_materials/#Kanamycin">¶</a>
-</h3>
-<h4 id="Mode-of-Action">Mode of Action<a class="anchor-link" href="posts/lab_materials/#Mode-of-Action">¶</a>
-</h4>
-<p>Bacteriocidal. Diffuses through the porinchannels in the outer membrane of gram-negative bacteria. Interacts with at least three ribosomal proteins, inhibiting protein synthesis and increasing translation errors.</p>
-<h4 id="Working-Concentration-and-Stock-Solution">Working Concentration and Stock Solution<a class="anchor-link" href="posts/lab_materials/#Working-Concentration-and-Stock-Solution">¶</a>
-</h4>
-<p>Working concentration is 50 μg/ml, or 25 μg/ml for low-copy plasmids. Stock solution is 35 mg/ml in water (kanamycin is insoluble in 50% alcohol).</p>
-<h3 id="Ampicillin">Ampicillin<a class="anchor-link" href="posts/lab_materials/#Ampicillin">¶</a>
-</h3>
-<h4 id="Mode-of-Action">Mode of Action<a class="anchor-link" href="posts/lab_materials/#Mode-of-Action">¶</a>
-</h4>
-<p>Inhibits the formation of cross-links in the peptidoglycan layer (which provides rigidity to the cell wall). Most effective against cells in log phase growth (since this is when new cross-links are being formed), and has little effect on cells in stationary phase.</p>
-<h4 id="Stock-Solution">Stock Solution<a class="anchor-link" href="posts/lab_materials/#Stock-Solution">¶</a>
-</h4>
-<p>Typical concentrations of ampicillin are 50 μg/mL for low copy plasmids and 100 μg/mL for high copy plasmids. Stock solutions are typically at 100 mg/ml, so that 1 ml of antibiotic can be added to 1 liter of broth or agar. Stock solutions made in 50% alcohol remain liquid at -20°C and are easy to pipet. Cool agar to 55°C or below prior to adding antibiotic.</p>
-<p>Ampicillin available from Sigma A-9518 (Ampicillin sodium salt), FW 371.39. To make 100ml of 100 mg/ml stock solution, dissolve 10 g of ampicillin in 50 ml of water and 50 ml of 100% ethanol.</p>
-<h4 id="Stability">Stability<a class="anchor-link" href="posts/lab_materials/#Stability">¶</a>
-</h4>
-<p>Culture plates with ampicillin can be stored at 2-8°C for up to two weeks. (In our experience, plates are usable for 2-3 months when stored at 4°C and bagged to prevent evaporation.)<br>
-Stock solutions may be stored at 2-8°C for up to 3 weeks. For long term storage (4-6 months), stock solutions should be stored at -20°C. At 37°C in culture, ampicillin is stable up to 3 days. <a href="https://www.sigmaaldrich.com/sigma/product%20information%20sheet/a0166pis.pdf">Sigma reference</a></p>
-<h3 id="Carbenicillin">Carbenicillin<a class="anchor-link" href="posts/lab_materials/#Carbenicillin">¶</a>
-</h3>
-<p>Carbenicillin is used to select for cells bearing the beta-lactamase gene bla or ampR. Beta-lactamase also neutralizes ampicillin, but due to ampicillin's lower effectiveness, carbenicillin tends to give fewer satellite colonies and makes for more reliable cloning. Ampicillin is more widely used, though, due to carbenicillin's high cost ($75/g compared to ampicillin's $10/g (Sigma)).</p>
-<h3 id="Tetracycline">Tetracycline<a class="anchor-link" href="posts/lab_materials/#Tetracycline">¶</a>
-</h3>
-<p>Tetracyclines (there are many) enter the cell by diffusion through OmpF porins. It inhibits growth by preventing codon-anticodon interactions during translation.</p>
-<h4 id="Working-concentration-and-Stock-Solutions">Working concentration and Stock Solutions<a class="anchor-link" href="posts/lab_materials/#Working-concentration-and-Stock-Solutions">¶</a>
-</h4>
-<p>Using a plasmid with copy number 15-20, 20μg/ml tet has proved a successful selector. The reduction in growth rate, described above was significant.
-The RajBhandary lab uses 5μg/ml and see a minimal reduction in growth rate and never lose plasmid from their cells.
-Stock solution is 15 mg/ml in 50% ethanol (note: using 95-100% ethanol is much better for dissolving stock powder). Add 1 ml per liter of cooled broth or agar. Solutions and plates are light sensitive.
-Tetracycline is incompatible with (chelated by) magnesium ions, and thus unsuitable for use in minimal media</p>
-<h3 id="Streptomycin">Streptomycin<a class="anchor-link" href="posts/lab_materials/#Streptomycin">¶</a>
-</h3>
-<h4 id="Mode-of-Action">Mode of Action<a class="anchor-link" href="posts/lab_materials/#Mode-of-Action">¶</a>
-</h4>
-<p>Inhibits protein synthesis; binds to 30S ribosomal subunit. The rpsL50 gene mutation conveys streptomycin resistance. Resistance is recessive, so the presence of a wild type rpsL gene will convey sensitivity. This allows counter-selection against the presence of the wt rpsL gene. Mutations of wild type genes to convey resistance are common.</p>
-<h4 id="Working-concentration-and-Stock-Solutions">Working concentration and Stock Solutions<a class="anchor-link" href="posts/lab_materials/#Working-concentration-and-Stock-Solutions">¶</a>
-</h4>
-<p>100 mg/mL stock solution in water. It is barely soluble in ethanol so you must dissolve it in water. Add 1 mL per liter of culture.</p>
-<h3 id="Chloramphenicol">Chloramphenicol<a class="anchor-link" href="posts/lab_materials/#Chloramphenicol">¶</a>
-</h3>
-<p>Chloramphenicol is a bacteriostatic agent that binds to the 50S ribosomal subunit and inhibits ribosomal peptide bond formation. It is sometimes used as a way of "amplifying" plasmid production by shutting down protein synthesis in cultures, while allowing plasmid replication to continue.</p>
-<h4 id="Working-Concentrations-and-Stock-Solutions">Working Concentrations and Stock Solutions<a class="anchor-link" href="posts/lab_materials/#Working-Concentrations-and-Stock-Solutions">¶</a>
-</h4>
-<p>High copy plasmids allow 35 μg/ml concentration. Low-copy plasmids like bacterial artificial chromosomes allow 12.5 μg/ml. Stock solutions can be made at 35 mg/ml in ethanol, kept at -20C.</p>
-<h3 id="Neomycin">Neomycin<a class="anchor-link" href="posts/lab_materials/#Neomycin">¶</a>
-</h3>
-<p>binds to ribosomal components and inhibits protein synthesis. target organism: bacteria, mammalian cells</p>
-<h4 id="Working-Concentrations-and-Stock-Solutions">Working Concentrations and Stock Solutions<a class="anchor-link" href="posts/lab_materials/#Working-Concentrations-and-Stock-Solutions">¶</a>
-</h4>
-<p>stock solution: 10mg/ml in water
-working solution: 10-50µg/ml (stable at RT for 5days)</p>
-<hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div id="enzymes"></div>
-
-<h2 id="3.-Enzymes">3. Enzymes<a class="anchor-link" href="posts/lab_materials/#3.-Enzymes">¶</a>
-</h2>
-<hr>
-<h3 id="3.1-Phosphatases">3.1 Phosphatases<a class="anchor-link" href="posts/lab_materials/#3.1-Phosphatases">¶</a>
-</h3>
-<h4 id="Antarctic-Phosphatase">Antarctic Phosphatase<a class="anchor-link" href="posts/lab_materials/#Antarctic-Phosphatase">¶</a>
-</h4>
-<p>This enzyme is preferable to either Calf Intestinal Phosphatase or Shrimp Alkaline Phosphatase because it is more easily heat-inactivated. After phosphatase treatment of a vector, any remaining enzymatic activity would remove 5' phosphates from the insert in a subsequent ligation reaction, preventing a successful reaction. Thus, it is critical that the phosphatase be inactivated, purified away, or digested with Proteinase K.</p>
-<h3 id="3.2.-DNA-polymerases">3.2. DNA polymerases<a class="anchor-link" href="posts/lab_materials/#3.2.-DNA-polymerases">¶</a>
-</h3>
-<h4 id="Pfu">Pfu<a class="anchor-link" href="posts/lab_materials/#Pfu">¶</a>
-</h4>
-<p>Pfu has proof reading activity which makes it more accurate than for example Taq.
-Pfu does not exhibit 5' -&gt; 3' exonuclease activity, which prevents degradation of the primers in mutagenesis methods based on ligation of primers or elongated primers.
-Pfu is slower than Taq and one should calculate 2 min per 1000 bp (1 min for Taq)</p>
-<h4 id="T4-DNA-Polymerase">T4 DNA Polymerase<a class="anchor-link" href="posts/lab_materials/#T4-DNA-Polymerase">¶</a>
-</h4>
-<p>LIC quality T4 DNA Polymerase can be used to "chewback" 3' ends for use in Ligation Independent Cloning (LIC).</p>
-<h3 id="3.3.-DNA-ligases">3.3. DNA ligases<a class="anchor-link" href="posts/lab_materials/#3.3.-DNA-ligases">¶</a>
-</h3>
-<p>DNA ligase is a specific type of enzyme, a ligase, that facilitates the joining of DNA strands together by catalyzing the formation of a phosphodiester bond.</p>
-<h4 id="3.4.-RNA-Polymerases">3.4. RNA Polymerases<a class="anchor-link" href="posts/lab_materials/#3.4.-RNA-Polymerases">¶</a>
-</h4>
-<h4 id="3.5.-Restriction-enzymes">3.5. Restriction enzymes<a class="anchor-link" href="posts/lab_materials/#3.5.-Restriction-enzymes">¶</a>
-</h4>
-<p>Restriction enzymes are used for performing a restriction digest.</p>
-<p>Comprehensive information can be found in REBASE. Neeraj Dhar's good cutter list is a list of enzymes which are particularly reliable and straightforwards.</p>
-<p>This is another source of info on restricition enzymes. It's by the same people who provide REBASE, but in a different format:</p>
-<h3 id="3.6.-Other">3.6. Other<a class="anchor-link" href="posts/lab_materials/#3.6.-Other">¶</a>
-</h3>
-<h4 id="Lysozyme">Lysozyme<a class="anchor-link" href="posts/lab_materials/#Lysozyme">¶</a>
-</h4>
-<p>Breaks down cell walls by catalyzing the hydrolysis of cell wall peptidoglycans.</p>
-<hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>&lt;/div id='buffers'/&gt;</p>
-<h3 id="4.-Buffers">4. Buffers<a class="anchor-link" href="posts/lab_materials/#4.-Buffers">¶</a>
-</h3>
-<hr>
-<h3 id="TAE">TAE<a class="anchor-link" href="posts/lab_materials/#TAE">¶</a>
-</h3>
-<p>TAE is a commonly used buffer for making and running DNA agarose gels. It offers a few advantages and disadvantages compared to TBE buffer:</p>
-<ul>
-<li>TAE buffer provides optimal resolution of fragments &gt;4 kb in length, while TBE provides better resolution for 0.1 to 3 kb fragments. </li>
-<li>TAE is significantly cheaper to make </li>
-<li>TAE stocks can be 50X concentrated and therefore take up less space than 10X concentrated TBE stock</li>
-<li>TBE offers a higher resolution and has a higher buffering capacity at greater temperatures induced by relatively higher voltages</li>
-<li>TBE can negatively influence the yield of DNA after recovery from a gel when using glass-based protocols. Yield does not seem to be influenced when using silica-based methods.</li>
-<li>The bromide ion in TBE is a powerful inhibitor of enzyme activity. This can prevent degradation of nucleic acid, but can also interfere with subsequent experiments like cloning DNA into a vector. </li>
-</ul>
-<p>Ingredients for one litre 50X stock</p>
-<ul>
-<li>Tris-base: 242 g</li>
-<li>Acetate (100% acetic acid): 57.1 ml</li>
-<li>EDTA: 100 ml 0.5M sodium EDTA</li>
-</ul>
-<p>Add dH2O up to one litre.</p>
-<p>To make 1x TAE from 50X TAE stock, dilute 20ml of stock into 980 ml of deionised water.</p>
-<h3 id="PBS">PBS<a class="anchor-link" href="posts/lab_materials/#PBS">¶</a>
-</h3>
-<p>PBS stands for phosphate buffered saline and is often used because it is isotonic to cells.</p>
-<h4 id="Recipe">Recipe<a class="anchor-link" href="posts/lab_materials/#Recipe">¶</a>
-</h4>
-<p>1x PBS is 137 mM NaCl, 12 mM Phosphate, 2.7 mM KCl, pH 7.4<br>
-To make 10x PBS,</p>
-<ol>
-<li>Combine the following:<ul>
-<li>80 g NaCl</li>
-<li>2 g KCl</li>
-<li>14.4 g Na2HPO4 (dibasic anhydrous) OR 18.1 g Na2HPO4 · 2H2O (dibasic dihydrate) OR 27.2 g Na2HPO4 · 7H2O (dibasic heptahydrate)</li>
-<li>2.4 g KH2PO4 (monobasic anhydrous)</li>
-<li>800 mL distilled H2O</li>
-</ul>
-</li>
-<li>Adjust pH to 7.4 with HCl</li>
-<li>Add H2O to 1L</li>
-<li>Autoclave for 20 minutes on liquid cycle. Store at RT.</li>
-</ol>
-<h3 id="PBST">PBST<a class="anchor-link" href="posts/lab_materials/#PBST">¶</a>
-</h3>
-<p>For some applications (washing) one adds Tween 20 PBS which makes PBST</p>
-<ul>
-<li>Usual concentrations of Tween 20 in PBST are 0.1 or 0.05%.</li>
-<li>Usual concentration of Triton X-100 in TBST is 0.1-0.3%.</li>
-</ul>
-<h3 id="TE">TE<a class="anchor-link" href="posts/lab_materials/#TE">¶</a>
-</h3>
-<p>TB buffer is used to make chemically competent cells by the Inoue method Preparing chemically competent cells (Inoue)</p>
-<p>Preparation: For a 1 liter solution add</p>
-<ul>
-<li>250 mM potassium chloride (18.65 g)</li>
-<li>15 mM calcium chloride (2.2 g)</li>
-<li>10 mM PIPES (20 ml of an 0.5 M solution)</li>
-</ul>
-<p>to 800 ml of DI water. Adjust pH to 6.7 with 1M KOH.</p>
-<p>Dissolve</p>
-<ul>
-<li>55 mM manganese chloride (10.88 g)</li>
-</ul>
-<p>in 100 ml of DI water, add gradually to the solution of the remaining components. Bring solution to 1 liter. The pH of the solution will fall, which is expected.</p>
-<blockquote>
-<p>Do not attempt to adjust the pH. Adding base after adding manganese will precipitate a yellow/brown hydroxide.</p>
-</blockquote>
-<p>Sterile filter with a pre-washed 0.22 μm filter and store indefinitely at 4 degrees.</p>
-<h3 id="NEB-buffers">NEB buffers<a class="anchor-link" href="posts/lab_materials/#NEB-buffers">¶</a>
-</h3>
-<ul>
-<li>
-<p>NEBuffer 1 (yellow)</p>
-<ul>
-<li>10 mM Bis Tris Propane-HCl, 10 mM MgCl2, 1 mM DTT (pH 7.0 at 25°C). </li>
-</ul>
-</li>
-<li>
-<p>NEBuffer 2 (blue)</p>
-<ul>
-<li>10 mM Tris-HCl, 10 mM MgCl2, 50 mM NaCl, 1 mM DTT (pH 7.9 at 25°C). </li>
-</ul>
-</li>
-<li>
-<p>NEBuffer 3 (red)</p>
-<ul>
-<li>50 mM Tris-HCl, 10 mM MgCl2, 100 mM NaCl, 1 mM DTT (pH 7.9 at 25°C). </li>
-</ul>
-</li>
-<li>
-<p>NEBuffer 4 (green)</p>
-<ul>
-<li>20 mM Tris-acetate, 10 mM magnesium acetate, 50 mM potassium acetate, 1 mM DTT (pH 7.9 at 25°C).</li>
-</ul>
-</li>
-<li>
-<p>T4 DNA Ligase Buffer</p>
-<ul>
-<li>50 mM Tris-HCl, 10 mM MgCl2, 1 mM ATP, 10 mM Dithiothreitol (pH 7.5 at 25°C).</li>
-</ul>
-</li>
-<li>
-<p>NEBuffer EcoRI</p>
-<ul>
-<li>100 mM Tris-HCl, 50 mM NaCl, 10 mM MgCl2, 0.025 % Triton X-100 (pH 7.5 at 25°C).</li>
-</ul>
-</li>
-</ul>
-<h3 id="SDS-sample-buffer">SDS sample buffer<a class="anchor-link" href="posts/lab_materials/#SDS-sample-buffer">¶</a>
-</h3>
-<p>For preparation and loading of protein samples onto a gel for SDS-PAGE analysis (Western blot/protein blot).</p>
-<h4 id="Preparation:">Preparation:<a class="anchor-link" href="posts/lab_materials/#Preparation:">¶</a>
-</h4>
-<p>SDS contained in the sample buffer makes proteins negatively charged proportionally to their length. 2-mercapto-ethanol/DTT breaks disulphide bonds.</p>
-<h4 id="Loading:">Loading:<a class="anchor-link" href="posts/lab_materials/#Loading:">¶</a>
-</h4>
-<p>glycerol makes the sample buffer more dense than the surrounding running buffer of the protein gel, enabling easy loading into the gel pockets.</p>
-<h4 id="To-make-10-mL-of-4x-stock">To make 10 mL of 4x stock<a class="anchor-link" href="posts/lab_materials/#To-make-10-mL-of-4x-stock">¶</a>
-</h4>
-<ul>
-<li>2.0 ml 1M Tris-HCl pH 6.8</li>
-<li>0.8 g SDS</li>
-<li>4.0 ml 100% glycerol</li>
-<li>0.4 ml 14.7 M β-mercaptoethanol</li>
-<li>1.0 ml 0.5 M EDTA</li>
-<li>8 mg bromophenol Blue </li>
-</ul>
-<h4 id="Final-concentrations-(1x)">Final concentrations (1x)<a class="anchor-link" href="posts/lab_materials/#Final-concentrations-(1x)">¶</a>
-</h4>
-<ul>
-<li>50 mM Tris-HCl pH 6.8</li>
-<li>2% SDS</li>
-<li>10% glycerol</li>
-<li>1% β-mercaptoethanol</li>
-<li>12.5 mM EDTA</li>
-<li>0.02 % bromophenol blue</li>
-</ul>
-<h3 id="TBS">TBS<a class="anchor-link" href="posts/lab_materials/#TBS">¶</a>
-</h3>
-<p>TBS stands for tris-buffered saline and is used in many protocols for washing Endconzentration in 1x TBS will be 20mM Tris and 150mM NaCl</p>
-<h4 id="5xTBS-for-1-liter-with-stock-solutions:">5xTBS for 1 liter with stock solutions:<a class="anchor-link" href="posts/lab_materials/#5xTBS-for-1-liter-with-stock-solutions:">¶</a>
-</h4>
-<ul>
-<li>100 ml 1M Tris-HCl pH 7.5</li>
-<li>150 ml 5M NaCl</li>
-<li>750 ml ddH2O</li>
-</ul>
-<p>Prepare and sterilize filter. Store at 4°C. After diluting the 5x to 1x filter again</p>
-<h3 id="TBST">TBST<a class="anchor-link" href="posts/lab_materials/#TBST">¶</a>
-</h3>
-<p>TBST: For some applications one adds Tween 20 or Triton X-100 to TBS which makes TBST (people use the name TBST for both, probably it's lab dependent.</p>
-<ul>
-<li>Usual concentrations of Tween 20 in TBST are 0.1 or 0.05%.</li>
-<li>Usual concentration of Triton X-100 in TBST is 0.1%.</li>
-</ul>
-<h3 id="Killing-Buffer">Killing Buffer<a class="anchor-link" href="posts/lab_materials/#Killing-Buffer">¶</a>
-</h3>
-<p>Killing Buffer is used to kill bacterial cells. Usually one would use cold Killing buffer in a 50:50 ratio to harvest cells in liquid medium. The buffer contains NaN3 and kills the cells quickly. Fast killing and down cooling is important for example to stop RNases if you want to isolate RNA from that specific time point of cell growth.</p>
-<p>Endconzentration will be 20mM Tris and 5mM MgCl2 and 20mM NaN3</p>
-<h4 id="Killing-Buffer-for-1-liter:">Killing Buffer for 1 liter:<a class="anchor-link" href="posts/lab_materials/#Killing-Buffer-for-1-liter:">¶</a>
-</h4>
-<ul>
-<li>2 ml 1M Tris-HCl pH 7.5</li>
-<li>0.5 ml 1M MgCl2</li>
-<li>1.3 g NaN3</li>
-<li>997.5 ml ddH2O</li>
-</ul>
-<p>Store at 4°C.</p>
-<blockquote>
-<p>Note that NaN3 is highly toxic and should be handled accordingly.</p>
-</blockquote>
-<hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div id="others"></div>
-
-<h2 id="5.-Other-common-chemicals">5. Other common chemicals<a class="anchor-link" href="posts/lab_materials/#5.-Other-common-chemicals">¶</a>
-</h2>
-<hr>
-<h3 id="Ethidium-bromide">Ethidium bromide<a class="anchor-link" href="posts/lab_materials/#Ethidium-bromide">¶</a>
-</h3>
-<p>Ethidium Bromide, often abbreviated EtBr. Intercalating agent that inserts itself between DNA base pairs Fluorescent under UV light</p>
-<blockquote>
-<p>Caution: Carcinogen/Mutagen</p>
-</blockquote>
-<h3 id="IPTG">IPTG<a class="anchor-link" href="posts/lab_materials/#IPTG">¶</a>
-</h3>
-<p>Isopropyl-beta-D-thiogalactopyranoside
-Induces transcription from promoters regulated by LacI repressor.
-Molecular weight is 238.31 g/mol. The chemical formula is here.</p>
-<ol>
-<li>Dissolve 1g in 4196 μL deionized water to make 1M solution.</li>
-<li>Filter sterilize with syringe and 0.22μm filter</li>
-</ol>
-<p>Alternatively</p>
-<ol>
-<li>Dissolve 238 mg IPTG (sigma I-6758) in 10 ml DW for (100mM stock)</li>
-<li>store in 1 ml aliquotes at -20°C</li>
-</ol>
-<p>Generally a 1mM solution is an effective amount to induce the pLac promoter region.</p>
-<h3 id="EDTA">EDTA<a class="anchor-link" href="posts/lab_materials/#EDTA">¶</a>
-</h3>
-<p>EDTA stands for ethylene-diamine-tetraacetic acid. It chelates divalent cations and is therefore used in many buffers. Its relative EGTA has a higher affinity for calcium than for magnesium ions. 
-<img src="https://s3-us-west-2.amazonaws.com/oww-files-thumb/b/b9/EDTA.png/200px-EDTA.png" alt="edta"></p>
-<h4 id="0.5-M-EDTA-stock">0.5 M EDTA stock<a class="anchor-link" href="posts/lab_materials/#0.5-M-EDTA-stock">¶</a>
-</h4>
-<ul>
-<li>18.61 g EDTA (Sodium Salt)</li>
-<li>dH2O to 90 ml</li>
-<li>adjust pH to 7.0</li>
-<li>adjust volume to 100 ml</li>
-</ul>
-<h4 id="0.5M-500ml-pH-8.0-with-NaOH-pre-calculated">0.5M 500ml pH 8.0 with NaOH pre-calculated<a class="anchor-link" href="posts/lab_materials/#0.5M-500ml-pH-8.0-with-NaOH-pre-calculated">¶</a>
-</h4>
-<ul>
-<li>93.05g of Na2.EDTA (FW 372.2)</li>
-<li>10.14g of NaOH (FW 40)</li>
-<li>500 ml dH2O</li>
-</ul>
-<h3 id="Phenol">Phenol<a class="anchor-link" href="posts/lab_materials/#Phenol">¶</a>
-</h3>
-<p>Phenol is an important chemical in biological research. It is used primarily for isolation and purification of DNA and RNA. Pure phenol is solid at room temperature. Almost all biochemical uses of phenol use a water saturated phenol solution, or a mixture of phenol in chloroform.</p>
-<h4 id="Safety">Safety<a class="anchor-link" href="posts/lab_materials/#Safety">¶</a>
-</h4>
-<p>Phenol is caustic and causes nasty chemical burns which are slow to heal. It is also a systemic poison which can be rapidly absorbed through the skin.</p>
-<h3 id="Glucose">Glucose<a class="anchor-link" href="posts/lab_materials/#Glucose">¶</a>
-</h3>
-<p>The molecular weight of anhydrous glucose is 180.16 g/mol.
-To make 1M glucose, dissolve 18g in 100mL H2O.
-1M glucose = 18% glucose</p>
-<h3 id="PMSF">PMSF<a class="anchor-link" href="posts/lab_materials/#PMSF">¶</a>
-</h3>
-<p>PMSF stands for Phenylmethylsulfonyl fluoride. It is used as an irreversible inhibitor of serine protease activity for example in protein purification or co-immunoprecipitation. It has no effect on other proteases that might be present. It can also inactivate some non-proteolytic enzymes that contain serine in the active site.</p>
-<h4 id="Use">Use<a class="anchor-link" href="posts/lab_materials/#Use">¶</a>
-</h4>
-<p>PMSF is not soluble in water, dissolve in isopropanol, ethanol or methanol. 200 mM stock solution (0.035 g/mL) is stable for months at 4°C, although storage at -20 is probably better. A common final concentration of PMSF is 1mM. PMSF is extremely toxic, and preparation of solutions should be done very carefully. PMSF is not stable in alkaline conditions, or in water. For disposal, add alkali in water and wait to dispose.</p>
-<h3 id="Safety">Safety<a class="anchor-link" href="posts/lab_materials/#Safety">¶</a>
-</h3>
-<p>PMSF is extremely poisonous and should be handled carefully.</p>
-<h3 id="Glycerol">Glycerol<a class="anchor-link" href="posts/lab_materials/#Glycerol">¶</a>
-</h3>
-<p><img src="https://s3-us-west-2.amazonaws.com/oww-files-thumb/6/6d/Glycerol_chemical_formula.svg/300px-Glycerol_chemical_formula.svg.png" alt="">
-Glycerol is an alcohol often used in the lab to avoid freezing and increase the density of liquids. Its standardised IUPAC name is propane-1,2,3-triol. It is also often referred to as glycerine or glycerin.</p>
-<h4 id="Density">Density<a class="anchor-link" href="posts/lab_materials/#Density">¶</a>
-</h4>
-<p>Glycerol is used in many loading buffers to increase the density of the solution which enables good loading into already liquid filled wells of agarose and polyacrylamide gels. See agarose gel loading buffer and SDS sample buffer.</p>
-<h4 id="Freezing">Freezing<a class="anchor-link" href="posts/lab_materials/#Freezing">¶</a>
-</h4>
-<p>Glycerol is also used to decrease the freezing point of protein solution which are easily degraded by repeated freeze/thaw cycles. A 50% (w/v) glycerol/water solution freezes at -25ºC and can thus be stored in a -20ºC freezer. Note that glycerol with 1.26g/cm3 is much denser than water and, therefore, a 50% (v/v) solution will be very different from a 50% (w/v) solution. For example, restriction enzymes are typically stored in a glycerol/water solution.</p>
-<h3 id="Ficoll">Ficoll<a class="anchor-link" href="posts/lab_materials/#Ficoll">¶</a>
-</h3>
-<p>Ficoll™ is a sucrose polymer commonly used to adjust the density and viscosity of solutions in the lab. It is employed in density gradients and loading buffers.</p>
-<h4 id="Use">Use<a class="anchor-link" href="posts/lab_materials/#Use">¶</a>
-</h4>
-<p>One of the most common applications for Ficoll is as a density gradient for the isolation of eukaryotic cells, organelles, bacterial cells, and pancreatic islets.</p>
-<h4 id="Properties">Properties<a class="anchor-link" href="posts/lab_materials/#Properties">¶</a>
-</h4>
-<p>Ficoll is an uncharged, highly branched polymer formed by the co-polymerisation of sucrose and epichlorohydrin. Due to its many hydroxyl groups, Ficoll is highly soluble in water. Densities of up to 1.2 g/ml can be attained.</p>
-<h4 id="Stability-&amp;-storage">Stability &amp; storage<a class="anchor-link" href="posts/lab_materials/#Stability-&amp;-storage">¶</a>
-</h4>
-<p>Since Ficoll does not contain any ionized groups, the molecule does not readily react under physiological conditions. It is stable in alkaline and neutral solutions, but is rapidly hydrolysed in solution at pH 3, especially at high temperature. However, Ficoll can be autoclaving at 110ºC for 30 minutes in neutral solutions. Strong oxidizing and reducing agents should be avoided. Shipping and storage are at ambient temperatures.</p>
-<h3 id="DNA-dyes">DNA dyes<a class="anchor-link" href="posts/lab_materials/#DNA-dyes">¶</a>
-</h3>
-<p>DNA dyes stain deoxyribonucleic acid for laboratory purposes such as detection and quantification. Many DNA dyes also bind to RNA and could be more broadly described as nucleic acid stains. Common dyes included ethidium bromide (EtBr), esp. for agarose gel electrophoresis of DNA, and DAPI for staining the cell nucleus in fluorescent microscopy.</p>
-<h4 id="Dyes-for-DNA-in-agarose-gel-electrophoresis">Dyes for DNA in agarose gel electrophoresis<a class="anchor-link" href="posts/lab_materials/#Dyes-for-DNA-in-agarose-gel-electrophoresis">¶</a>
-</h4>
-<ul>
-<li>Ethidium bromide : traditional DNA stain.</li>
-<li>SYBR Gold : 10x more sensitive than EtBr</li>
-<li>SYBR Green : 20x more sensitive than EtBr</li>
-<li>SYBR Safe : sensitivity similar to EtBr</li>
-</ul>
-<h3 id="DNTPs">DNTPs<a class="anchor-link" href="posts/lab_materials/#DNTPs">¶</a>
-</h3>
-<p>dNTP's or deoxynucleosides are the monomers that DNA polymerase uses to form DNA.</p>
-<h3 id="ProteinA-Sepharose-Beads">ProteinA Sepharose Beads<a class="anchor-link" href="posts/lab_materials/#ProteinA-Sepharose-Beads">¶</a>
-</h3>
-<p>P3391 ProteinA-Sepharose beads from Staphylococcus aureus. Lyophilized powder</p>
-<h3 id="Tween-20">Tween 20<a class="anchor-link" href="posts/lab_materials/#Tween-20">¶</a>
-</h3>
-<p><img src="https://s3-us-west-2.amazonaws.com/oww-files-public/a/ad/250px-Polysorbate_20.png" alt="">
-Tween (full name Tween 20 or Polysorbate 20) is a common detergent used in biology used in cell lysis and membrane protein solubilisation among other uses.</p>
-<h3 id="Triton-X-100">Triton X-100<a class="anchor-link" href="posts/lab_materials/#Triton-X-100">¶</a>
-</h3>
-<p><img src="https://s3-us-west-2.amazonaws.com/oww-files-public/3/3d/200px-Triton_X-100.png" alt="">
-Triton (full name Triton X-100) is a common, nonionic detergent used for solubilisation, permeabilisation, and lysis.</p>
-<h3 id="SDS">SDS<a class="anchor-link" href="posts/lab_materials/#SDS">¶</a>
-</h3>
-<p><img src="https://s3-us-west-2.amazonaws.com/oww-files-thumb/f/f6/Sodium_dodecyl_sulfate.png/250px-Sodium_dodecyl_sulfate.png" alt="">
-SDS (sodium dodecyl sulfate/sulphate) is an anionic detergent effective in both acidic and alkaline solutions. SDS has a wide variety of applications, but is most often used in protein and lipid solubilisation.</p>
-<h4 id="Warnings">Warnings<a class="anchor-link" href="posts/lab_materials/#Warnings">¶</a>
-</h4>
-<ul>
-<li>highly flammable</li>
-<li>harmful in contact with skin and if swallowed</li>
-<li>irritating to eyes, respiratory system and skin</li>
-</ul>
-<hr>
 </div>
 </div>
 </div>

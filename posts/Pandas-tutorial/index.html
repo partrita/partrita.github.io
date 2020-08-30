@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pandas tutorial | Biohacker</title>
+<title>파이썬 판다스(pandas) 사용법 | Biohacker</title>
 <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
@@ -31,21 +31,18 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NHHK2BF');</script><meta name="author" content="Taeyoon Kim">
-<link rel="prev" href="../hello-world/" title="hello world" type="text/html">
+<link rel="prev" href="../protocols/" title="Protocols" type="text/html">
 <link rel="next" href="../matplotlib-tutorial/" title="matplotlib_tutorial" type="text/html">
 <meta property="og:site_name" content="Biohacker">
-<meta property="og:title" content="Pandas tutorial">
+<meta property="og:title" content="파이썬 판다스(pandas) 사용법">
 <meta property="og:url" content="https://partrita.github.io/posts/Pandas-tutorial/">
-<meta property="og:description" content="Pandas 라이브러리를 사용하는 방법을 정리했습니다.
+<meta property="og:description" content="파이썬 판다스(Pandas) 라이브러리를 사용하는 방법을 정리했습니다. 학습을 시작하기 전에 필요한 라이브러리를 아래의 명령어로 설치합니다.
 pip install pandas numpy xlrd
 
-필요한 모듈을 터미널에서 위의 명령어로 먼저 설치합니다.
+각각의 라이브러리에 대한 설명은 다음과 같습니다.
 
 pandas: raw Data를 불러들여 편집하는데 사용
-numpy: pandas의 aggfunc으로 평균과 분산값을 구하는데 사용 
-xlrd : excel 파일을 읽어들이는데 필요
-
-출처">
+numpy: pandas의 aggfunc으로 평균과 ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-12-11T19:52:05Z">
 </head>
@@ -106,7 +103,7 @@ navbar-dark bg-dark
         
         
         
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Pandas tutorial</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">파이썬 판다스(pandas) 사용법</a></h1>
 
         <div class="metadata">
             <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
@@ -128,19 +125,15 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Pandas 라이브러리를 사용하는 방법을 정리했습니다.</p>
+<p>파이썬 판다스(Pandas) 라이브러리를 사용하는 방법을 정리했습니다. 학습을 시작하기 전에 필요한 라이브러리를 아래의 명령어로 설치합니다.</p>
 <div class="highlight"><pre><span></span>pip install pandas numpy xlrd
 </pre></div>
-<p>필요한 모듈을 터미널에서 위의 명령어로 먼저 설치합니다.</p>
+<p>각각의 라이브러리에 대한 설명은 다음과 같습니다.</p>
 <ul>
 <li>pandas: <strong>raw Data</strong>를 불러들여 편집하는데 사용</li>
 <li>numpy: <strong>pandas</strong>의 <strong>aggfunc</strong>으로 평균과 분산값을 구하는데 사용 </li>
 <li>xlrd : excel 파일을 읽어들이는데 필요</li>
 </ul>
-<blockquote>
-<p>출처 : <a href="http://pinkwink.kr/977">pinkwink</a></p>
-</blockquote>
-
 </div>
 </div>
 </div>
@@ -164,8 +157,9 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>사용한 데이터는 깃허브에 공개되어 있는 엑셀파일 사용합니다.</p>
-
+<p>사용한 데이터는 깃허브에 공개되어 있는 엑셀파일 사용할 것입니다.</p>
+<h2 id="1.-엑셀-데이터-불러오기">1. 엑셀 데이터 불러오기<a class="anchor-link" href="#1.-%EC%97%91%EC%85%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+</h2>
 </div>
 </div>
 </div>
@@ -176,7 +170,7 @@ navbar-dark bg-dark
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read data from web</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">'https://github.com/chris1610/pbpython/raw/master/data/salesfunnel.xlsx'</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># 매니저나 도매상별 매출 집계 데이터 입니다. pd.read_excel 로 읽었구요</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -286,6 +280,16 @@ navbar-dark bg-dark
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>불러온 엑셀 파일은 매니저나 도매상별 매출에 대한 데이터입니다.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -468,96 +472,96 @@ navbar-dark bg-dark
 <th>Barton LLC</th>
       <th>John Smith</th>
       <th>Debra Henley</th>
-      <td>740150.0</td>
-      <td>35000.0</td>
+      <td>740150</td>
+      <td>35000</td>
       <td>1.000000</td>
     </tr>
 <tr>
 <th>Fritsch, Russel and Anderson</th>
       <th>Craig Booker</th>
       <th>Debra Henley</th>
-      <td>737550.0</td>
-      <td>35000.0</td>
+      <td>737550</td>
+      <td>35000</td>
       <td>1.000000</td>
     </tr>
 <tr>
 <th>Herman LLC</th>
       <th>Cedric Moss</th>
       <th>Fred Anderson</th>
-      <td>141962.0</td>
-      <td>65000.0</td>
+      <td>141962</td>
+      <td>65000</td>
       <td>2.000000</td>
     </tr>
 <tr>
 <th>Jerde-Hilpert</th>
       <th>John Smith</th>
       <th>Debra Henley</th>
-      <td>412290.0</td>
-      <td>5000.0</td>
+      <td>412290</td>
+      <td>5000</td>
       <td>2.000000</td>
     </tr>
 <tr>
 <th>Kassulke, Ondricka and Metz</th>
       <th>Wendy Yule</th>
       <th>Fred Anderson</th>
-      <td>307599.0</td>
-      <td>7000.0</td>
+      <td>307599</td>
+      <td>7000</td>
       <td>3.000000</td>
     </tr>
 <tr>
 <th>Keeling LLC</th>
       <th>Wendy Yule</th>
       <th>Fred Anderson</th>
-      <td>688981.0</td>
-      <td>100000.0</td>
+      <td>688981</td>
+      <td>100000</td>
       <td>5.000000</td>
     </tr>
 <tr>
 <th>Kiehn-Spinka</th>
       <th>Daniel Hilton</th>
       <th>Debra Henley</th>
-      <td>146832.0</td>
-      <td>65000.0</td>
+      <td>146832</td>
+      <td>65000</td>
       <td>2.000000</td>
     </tr>
 <tr>
 <th>Koepp Ltd</th>
       <th>Wendy Yule</th>
       <th>Fred Anderson</th>
-      <td>729833.0</td>
-      <td>35000.0</td>
+      <td>729833</td>
+      <td>35000</td>
       <td>2.000000</td>
     </tr>
 <tr>
 <th>Kulas Inc</th>
       <th>Daniel Hilton</th>
       <th>Debra Henley</th>
-      <td>218895.0</td>
-      <td>25000.0</td>
+      <td>218895</td>
+      <td>25000</td>
       <td>1.500000</td>
     </tr>
 <tr>
 <th>Purdy-Kunde</th>
       <th>Cedric Moss</th>
       <th>Fred Anderson</th>
-      <td>163416.0</td>
-      <td>30000.0</td>
+      <td>163416</td>
+      <td>30000</td>
       <td>1.000000</td>
     </tr>
 <tr>
 <th>Stokes LLC</th>
       <th>Cedric Moss</th>
       <th>Fred Anderson</th>
-      <td>239344.0</td>
-      <td>7500.0</td>
+      <td>239344</td>
+      <td>7500</td>
       <td>1.000000</td>
     </tr>
 <tr>
 <th>Trantow-Barrows</th>
       <th>Craig Booker</th>
       <th>Debra Henley</th>
-      <td>714466.0</td>
-      <td>15000.0</td>
+      <td>714466</td>
+      <td>15000</td>
       <td>1.333333</td>
     </tr>
 </tbody>
@@ -948,7 +952,7 @@ navbar-dark bg-dark
     </div>
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
-                <a href="../hello-world/" rel="prev" title="hello world">Previous post</a>
+                <a href="../protocols/" rel="prev" title="Protocols">Previous post</a>
             </li>
             <li class="next">
                 <a href="../matplotlib-tutorial/" rel="next" title="matplotlib_tutorial">Next post</a>
