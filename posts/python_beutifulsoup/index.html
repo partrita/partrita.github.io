@@ -71,10 +71,11 @@ from ">
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -143,7 +144,7 @@ navbar-dark bg-dark
 <li>BeautifulSoup 모듈</li>
 </ul>
 <h2>2. Code</h2>
-<pre class="code literal-block"><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">urllib</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
@@ -187,8 +188,7 @@ navbar-dark bg-dark
 <span class="nb">print</span> <span class="s1">'Finished'</span><span class="n">기</span>
 <span class="nb">print</span> <span class="s1">'Fail list : '</span>
 <span class="nb">print</span> <span class="n">fail_list</span> <span class="c1"># 실패한 페이지 출력</span>
-</pre>
-
+</code></pre>
 
 <h2>3. 결과 확인</h2>
 <p>결과는 <strong>result.txt</strong> 파일에 저장됩니다.</p>
@@ -222,9 +222,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

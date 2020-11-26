@@ -59,10 +59,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -129,66 +130,57 @@ navbar-dark bg-dark
 <h2>이름결정 :</h2>
 <p>함수나 변수들의 이름을 지을 때 생각할점.</p>
 <h3>변수명을 구체적으로 하자</h3>
-<pre class="code literal-block"><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<pre class="code literal-block"><span></span><code><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">number</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-</pre>
-
+</code></pre>
 
 <blockquote>
 <p>발음하기 쉽게 이름을 짓자</p>
 </blockquote>
 <h3>함수의 입력값을 받는 변수 앞에는 the를 붙이자</h3>
-<pre class="code literal-block"><span></span><span class="k">def</span> <span class="nf">writediary</span><span class="p">(</span><span class="n">theMonth</span><span class="p">,</span><span class="n">theDay</span><span class="p">):</span>
+<pre class="code literal-block"><span></span><code><span class="k">def</span> <span class="nf">writediary</span><span class="p">(</span><span class="n">theMonth</span><span class="p">,</span><span class="n">theDay</span><span class="p">):</span>
     <span class="n">nexDay</span><span class="o">=</span> <span class="n">theDay</span><span class="o">+</span><span class="mi">1</span>
-</pre>
-
+</code></pre>
 
 <h3>참과 거짓을 나타내는 변수에는 is를 붙이자</h3>
-<pre class="code literal-block"><span></span><span class="n">isProgrammer</span> <span class="o">=</span> <span class="mi">1</span>
+<pre class="code literal-block"><span></span><code><span class="n">isProgrammer</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">isStudent</span> <span class="o">=</span> <span class="mi">0</span>
-</pre>
-
+</code></pre>
 
 <h3>상황에 따라 변수명을 결정하자</h3>
 <p>보통 순환문에 사용되는 변수에는 i,j,k 등이 관례적으로 사용됨</p>
-<pre class="code literal-block"><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<pre class="code literal-block"><span></span><code><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
     <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-</pre>
-
+</code></pre>
 
 <h3>함수는 '동사+명사'식으로 짓자</h3>
-<pre class="code literal-block"><span></span><span class="k">def</span> <span class="nf">makehouse</span><span class="p">(</span><span class="n">theTree</span><span class="p">,</span><span class="n">theCement</span><span class="p">):</span>
+<pre class="code literal-block"><span></span><code><span class="k">def</span> <span class="nf">makehouse</span><span class="p">(</span><span class="n">theTree</span><span class="p">,</span><span class="n">theCement</span><span class="p">):</span>
     <span class="k">pass</span>
-</pre>
-
+</code></pre>
 
 <h3>함수에 들어오는 입력 값이 너무 많으면 딕셔너리로 대치하자</h3>
-<pre class="code literal-block"><span></span><span class="k">def</span> <span class="nf">makehouse</span><span class="p">(</span><span class="n">theTree</span><span class="p">,</span><span class="n">theCement</span><span class="p">,</span><span class="n">the</span><span class="o">.......</span><span class="p">):</span>
+<pre class="code literal-block"><span></span><code><span class="k">def</span> <span class="nf">makehouse</span><span class="p">(</span><span class="n">theTree</span><span class="p">,</span><span class="n">theCement</span><span class="p">,</span><span class="n">the</span><span class="o">.......</span><span class="p">):</span>
     <span class="k">pass</span>
-</pre>
-
+</code></pre>
 
 <p>보다는</p>
-<pre class="code literal-block"><span></span><span class="k">def</span> <span class="nf">makehouse</span><span class="p">(</span><span class="n">theManyinput</span><span class="p">):</span>
+<pre class="code literal-block"><span></span><code><span class="k">def</span> <span class="nf">makehouse</span><span class="p">(</span><span class="n">theManyinput</span><span class="p">):</span>
         <span class="n">theTree</span> <span class="o">=</span> <span class="n">theManyinput</span><span class="p">[</span><span class="s1">'tree'</span><span class="p">]</span>
         <span class="n">theCement</span> <span class="o">=</span> <span class="n">theManyinput</span><span class="p">[</span><span class="s1">'cement'</span><span class="p">]</span>
-</pre>
-
+</code></pre>
 
 <h3>클래스 이름은 대문자로</h3>
-<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+<pre class="code literal-block"><span></span><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
     <span class="k">pass</span>
-</pre>
-
+</code></pre>
 
 <h3>주석활용</h3>
 <p>자신이 작성한 코드의 의도를 알려주고 싶을 때 주석을 사용하자. 구체적으로 달고 가능하면 영어로 달자.</p>
-<pre class="code literal-block"><span></span><span class="c1"># FIXME: 코드를 고쳐야 할 부분을 나타냄</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># FIXME: 코드를 고쳐야 할 부분을 나타냄</span>
 <span class="c1"># TODO: 앞으로 어떻게 코드를 수정하고 싶은지에 대한 내용</span>
 <span class="c1"># XXX: 뭔가 잘못이 있는 것 같은 부분</span>
-</pre>
-
+</code></pre>
 
 <h2>마무리하며,</h2>
 <p>보기 좋은 코드가 읽기도 좋고 분석하기도 좋다. 다만 지키기 쉽지 않다는것!</p>
@@ -213,9 +205,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

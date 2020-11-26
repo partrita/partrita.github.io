@@ -53,10 +53,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href=".">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -123,24 +124,21 @@ navbar-dark bg-dark
 <h2>1. pow() 함수</h2>
 <p><code>pow(밑, 지수)</code> 의 형식으로 사용합니다.</p>
 <p>예를 들어, 3의 제곱을 구하려면 아래와 같이 입력합니다.</p>
-<pre class="code literal-block"><span></span><span class="nb">pow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre>
-
+<pre class="code literal-block"><span></span><code><span class="nb">pow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre>
 
 <p>다음으로, 3의 거듭제곱근을 구하는 방법입니다.</p>
-<pre class="code literal-block"><span></span><span class="c1"># 파이썬 2.7</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># 파이썬 2.7</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
   <span class="n">result</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
   <span class="nb">print</span> <span class="s2">"</span><span class="si">%d</span><span class="s2"> 의 </span><span class="si">%2d</span><span class="s2"> 제곱 = </span><span class="si">%.0f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-</pre>
-
+</code></pre>
 
 <h2>2. <code>**</code> 연산자</h2>
 <p><code>**</code>을 사용해서 거듭제곱을 구해보겠습니다.</p>
-<pre class="code literal-block"><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+<pre class="code literal-block"><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
     <span class="nb">print</span> <span class="s2">"</span><span class="si">%d</span><span class="s2"> 의 </span><span class="si">%2d</span><span class="s2"> 제곱 = </span><span class="si">%.0f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="o">**</span><span class="n">i</span><span class="p">)</span>  
-</pre>
-
+</code></pre>
 
 <p>사실상 파이썬에 기본적으로 들어있는 <code>**</code>과 <code>pow()</code>함수는 거의 유사합니다. 둘다 <code>__pow__</code> 혹은 <code>__rpow__</code> 방법을 호출하기 때문입니다. </p>
 <h2>3. <code>math.pow()</code> 함수</h2>
@@ -160,24 +158,21 @@ navbar-dark bg-dark
     </header><div class="e-content entry-content">
     <div>
 <p>Python의 리스트에 중복된 아이템은 아래와 같은 방법으로 쉽게 제거할 수 있습니다.</p>
-<pre class="code literal-block"><span></span><span class="c1">#리스트 생성과 확인</span>
+<pre class="code literal-block"><span></span><code><span class="c1">#리스트 생성과 확인</span>
 <span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"d"</span><span class="p">,</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'li'</span><span class="p">)</span>
-</pre>
+</code></pre>
 
+<pre class="code literal-block"><span></span><code><span class="err">["a","b","c","d","a","b"]</span>
+</code></pre>
 
-<pre class="code literal-block"><span></span><span class="err">["a","b","c","d","a","b"]</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1">#리스트에 중복 아이템 제거</span>
+<pre class="code literal-block"><span></span><code><span class="c1">#리스트에 중복 아이템 제거</span>
 <span class="n">li</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">li</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
-</pre>
+</code></pre>
 
-
-<pre class="code literal-block"><span></span><span class="err">['a', 'c', 'b', 'd']</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">['a', 'c', 'b', 'd']</span>
+</code></pre>
 </div>
     </div>
     </article>
@@ -199,9 +194,7 @@ navbar-dark bg-dark
             <script src="assets/js/jquery.min.js"></script><script src="assets/js/popper.min.js"></script><script src="assets/js/bootstrap.min.js"></script><script src="assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

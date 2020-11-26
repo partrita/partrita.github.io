@@ -60,10 +60,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -126,24 +127,21 @@ navbar-dark bg-dark
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <p>Python의 리스트에 중복된 아이템은 아래와 같은 방법으로 쉽게 제거할 수 있습니다.</p>
-<pre class="code literal-block"><span></span><span class="c1">#리스트 생성과 확인</span>
+<pre class="code literal-block"><span></span><code><span class="c1">#리스트 생성과 확인</span>
 <span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"d"</span><span class="p">,</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'li'</span><span class="p">)</span>
-</pre>
+</code></pre>
 
+<pre class="code literal-block"><span></span><code><span class="err">["a","b","c","d","a","b"]</span>
+</code></pre>
 
-<pre class="code literal-block"><span></span><span class="err">["a","b","c","d","a","b"]</span>
-</pre>
-
-
-<pre class="code literal-block"><span></span><span class="c1">#리스트에 중복 아이템 제거</span>
+<pre class="code literal-block"><span></span><code><span class="c1">#리스트에 중복 아이템 제거</span>
 <span class="n">li</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">li</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
-</pre>
+</code></pre>
 
-
-<pre class="code literal-block"><span></span><span class="err">['a', 'c', 'b', 'd']</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="err">['a', 'c', 'b', 'd']</span>
+</code></pre>
 </div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -168,9 +166,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

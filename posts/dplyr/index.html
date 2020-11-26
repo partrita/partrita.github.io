@@ -63,10 +63,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -259,7 +260,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="n">animals</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">"mouse"</span><span class="p">,</span> <span class="s">"rat"</span><span class="p">,</span> <span class="s">"dog"</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">)</span>
-<span class="n">animals[2]</span>
+<span class="n">animals</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -709,7 +710,7 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">levels</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="n">[f]</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">levels</span><span class="p">(</span><span class="n">f</span><span class="p">))[</span><span class="n">f</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -2061,9 +2062,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

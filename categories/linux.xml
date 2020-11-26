@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Linux)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/linux.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Sun, 16 Aug 2020 11:59:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>리눅스 문제 해결</title><link>https://partrita.github.io/posts/linux-trouble-shooting/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;h2&gt;리눅스 해상도 문제 해결하기&lt;/h2&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Linux)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/linux.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Thu, 26 Nov 2020 13:01:57 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>리눅스 문제 해결</title><link>https://partrita.github.io/posts/linux-trouble-shooting/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;h2&gt;리눅스 해상도 문제 해결하기&lt;/h2&gt;
 &lt;p&gt;구형 컴퓨터에 리눅스(리눅스 민트)를 설치하였습니다. 저해상도로 고정되는 경우는 처음이었는데, 검색을 통해 아래와 같은 방법으로 해결했습니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;먼저 아래와 터미널에 아래와 같은 명령어를 칩니다. (예시로 1600×900을 사용했는데, 원하는 비율로 변경하시면 됩니다.)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;cvt &lt;span class="m"&gt;1600&lt;/span&gt; &lt;span class="m"&gt;900&lt;/span&gt;
-&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cvt &lt;span class="m"&gt;1600&lt;/span&gt; &lt;span class="m"&gt;900&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;1600x900 59.95 Hz (CVT 1.44M9) hsync: 55.99 kHz; pclk: 118.25 MHz&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;1600x900 59.95 Hz (CVT 1.44M9) hsync: 55.99 kHz; pclk: 118.25 MHz&lt;/span&gt;
 &lt;span class="err"&gt;Modeline "1600x900_60.00" 118.25 1600 1696 1856 2112 900 903 908 934 -hsync +vsync&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;위에서 얻은 결과를 참고해 모니터 설정을 추가 합니다. 위의 결과의 뒷부분을 복사해서 붙여넣으면 됩니다.&lt;ul&gt;
@@ -19,43 +17,39 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;xrandr --newmode &lt;span class="s2"&gt;"1600x900_60.00"&lt;/span&gt; &lt;span class="m"&gt;118&lt;/span&gt;.25 &lt;span class="m"&gt;1600&lt;/span&gt; &lt;span class="m"&gt;1696&lt;/span&gt; &lt;span class="m"&gt;1856&lt;/span&gt; &lt;span class="m"&gt;2112&lt;/span&gt; &lt;span class="m"&gt;900&lt;/span&gt; &lt;span class="m"&gt;903&lt;/span&gt; &lt;span class="m"&gt;908&lt;/span&gt; &lt;span class="m"&gt;934&lt;/span&gt; -hsync +vsync
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;xrandr --newmode &lt;span class="s2"&gt;"1600x900_60.00"&lt;/span&gt; &lt;span class="m"&gt;118&lt;/span&gt;.25 &lt;span class="m"&gt;1600&lt;/span&gt; &lt;span class="m"&gt;1696&lt;/span&gt; &lt;span class="m"&gt;1856&lt;/span&gt; &lt;span class="m"&gt;2112&lt;/span&gt; &lt;span class="m"&gt;900&lt;/span&gt; &lt;span class="m"&gt;903&lt;/span&gt; &lt;span class="m"&gt;908&lt;/span&gt; &lt;span class="m"&gt;934&lt;/span&gt; -hsync +vsync
 &lt;span class="c1"&gt;# 새로운 모드를 만들고 아래와 같이 추가해줍니다.&lt;/span&gt;
 xrandr --addmode VGA1 &lt;span class="s2"&gt;"1600x900_60.00"&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;면이 깜박이면서 1600×900해상도가 새롭게 생깁니다. 하지만 재부팅을하면 다시 복구가 되므로 매번 명령어를 입력하는 불편이 있습니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;쉘 스크립트(fix-resolution.sh)를 작성합니다. 텍스트에디터로 만들어서 확장자만 변경하시면 됩니다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
 &lt;span class="c1"&gt;# fix-resolution.sh&lt;/span&gt;
 xrandr --newmode &lt;span class="s2"&gt;"1600x900_60.00"&lt;/span&gt; &lt;span class="m"&gt;118&lt;/span&gt;.25 &lt;span class="m"&gt;1600&lt;/span&gt; &lt;span class="m"&gt;1696&lt;/span&gt; &lt;span class="m"&gt;1856&lt;/span&gt; &lt;span class="m"&gt;2112&lt;/span&gt; &lt;span class="m"&gt;900&lt;/span&gt; &lt;span class="m"&gt;903&lt;/span&gt; &lt;span class="m"&gt;908&lt;/span&gt; &lt;span class="m"&gt;934&lt;/span&gt; -hsync +vsync
 xrandr --addmode VGA1 &lt;span class="s2"&gt;"1600x900_60.00"&lt;/span&gt;
 xrandr --output VGA1 --mode &lt;span class="s2"&gt;"1600x900_60.00"&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;fix-resolution.desktop라는 파일도 만들어 줍니다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# fix-resolution.desktop&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# fix-resolution.desktop&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;Desktop Entry&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;span class="nv"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Application
 &lt;span class="nv"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;fix-resolution.desktop
 &lt;span class="nv"&gt;Exec&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/bin/fix-resolution.sh
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;두개의 파일이 들어있는 디렉토리에서 터미널을 열고 다음의 명령어를 입력 합니다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;cp fix-resolution.sh /usr/local/bin
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cp fix-resolution.sh /usr/local/bin
 chmod +x /usr/local/bin/fix-resolution.sh
 cp fix-resolution.desktop /etc/xdg/autostart
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;파일을 복사해서 옮겨주는 것이라서, 생성하신 파일은 이제 삭제하셔도 됩니다.&lt;/p&gt;
 &lt;hr&gt;
@@ -64,27 +58,24 @@ cp fix-resolution.desktop /etc/xdg/autostart
 &lt;ol&gt;
 &lt;li&gt;bashrc 파일 열기&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;nano ~/.bashrc
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nano ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;nano 에디터로 파일을 열어줍니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Alias 명령어 추가하기
 Alias 사용법은 다음과 같습니다. &lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;alias l="ls -a"&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;alias l="ls -a"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;‘l’을 치면 ‘ls -a’랑 같은 효과가 나도록 설정하였습니다. 이제 Ctrl+x를 눌러 파일을 저장합니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Bash shell 재실행
 저장한 내용을 적용하기 위해 shell을 다시 실행 해야합니다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; .bashrc
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;source&lt;/span&gt; .bashrc
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;이제 'l'을 누르면 적용이 된것을 확인 할 수 있습니다.&lt;/p&gt;
 &lt;hr&gt;
@@ -94,18 +85,16 @@ Alias 사용법은 다음과 같습니다. &lt;/li&gt;
 &lt;li&gt;unzip 사용법
 명령어의 사용법은 다음과 같습니다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$unzip&lt;/span&gt; -O &lt;span class="o"&gt;[&lt;/span&gt;인코딩&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;파일명&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;$unzip&lt;/span&gt; -O &lt;span class="o"&gt;[&lt;/span&gt;인코딩&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;파일명&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;윈도우에서 많이 사용되는 인코딩은 cp949이므로, 아래와 같이 쓰면 됩니다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;물론 인코딩을 미리 확인하고 사용하는게 좋습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;터미널에 아래와 같이 입력하세요.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$unzip&lt;/span&gt; -O cp949 한글.zip
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;$unzip&lt;/span&gt; -O cp949 한글.zip
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;위 방법을 이용하면 인코딩 깨짐 없이 무사히 압축을 해제할 수 있습니다.&lt;/p&gt;
 &lt;ol&gt;
@@ -117,23 +106,20 @@ zip파일은 거의 모든 압축포맷 중에 단연 최고의 사용률을 자
 &lt;ol&gt;
 &lt;li&gt;리눅스 버전확인&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;~$ cat /etc/issue
-&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~$ cat /etc/issue
+&lt;/code&gt;&lt;/pre&gt;
 
-
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Ubuntu 15.04&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Ubuntu 15.04&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;사용중인 리눅스의 버전을 확인합니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;하드디스크 용량 확인&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;~$ df -h
-&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~$ df -h
+&lt;/code&gt;&lt;/pre&gt;
 
-
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Filesystem Size Used Avail Use% Mounted on&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Filesystem Size Used Avail Use% Mounted on&lt;/span&gt;
 &lt;span class="err"&gt;udev 3.8G 0 3.8G 0% /dev&lt;/span&gt;
 &lt;span class="err"&gt;tmpfs 771M 26M 746M 4% /run&lt;/span&gt;
 &lt;span class="err"&gt;/dev/sda5 33G 15G 17G 46% /&lt;/span&gt;
@@ -142,54 +128,47 @@ zip파일은 거의 모든 압축포맷 중에 단연 최고의 사용률을 자
 &lt;span class="err"&gt;tmpfs 3.8G 0 3.8G 0% /sys/fs/cgroup&lt;/span&gt;
 &lt;span class="err"&gt;cgmfs 100K 0 100K 0% /run/cgmanager/fs&lt;/span&gt;
 &lt;span class="err"&gt;tmpfs 771M 48K 771M 1% /run/user/1000&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;3번째 줄에서 총 공간이 총 33G이고 15G를 사용하고 있음을 확인합니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;CPU 코어 갯수 확인&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;~$ cat /proc/cpuinfo &lt;span class="p"&gt;|&lt;/span&gt; grep processor &lt;span class="p"&gt;|&lt;/span&gt; wc -l
-&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~$ cat /proc/cpuinfo &lt;span class="p"&gt;|&lt;/span&gt; grep processor &lt;span class="p"&gt;|&lt;/span&gt; wc -l
+&lt;/code&gt;&lt;/pre&gt;
 
-
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;8&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;8&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;코어의 갯수가 8개 임을 알수 있습니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;램 사용량 확인&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;~$ free -m
-&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~$ free -m
+&lt;/code&gt;&lt;/pre&gt;
 
-
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;total used free shared buffers cached&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;total used free shared buffers cached&lt;/span&gt;
 &lt;span class="c"&gt;Mem: 7708 2690 5017 161 351 669&lt;/span&gt;
 &lt;span class="err"&gt;-/+ buffers/cache: 1669 6038&lt;/span&gt;
 &lt;span class="c"&gt;Swap: 0 0 0&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;전체 7708Mb에서 2618Mb를 사용하고 있습니다.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;헐리우드 해커 터미널&lt;/h2&gt;
 &lt;p&gt;영화에 나오는 해커처럼 터미널에 복잡한것을 띄워 봅시다. 아래 코드를 터미널에 입력하면 랜덤하게 hex dump가 시작됩니다. &lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;hexdump -C /dev/urandom &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;GREP_COLOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'1;32'&lt;/span&gt; grep --color&lt;span class="o"&gt;=&lt;/span&gt;auto &lt;span class="s1"&gt;'ca fe'&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;hexdump -C /dev/urandom &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;GREP_COLOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'1;32'&lt;/span&gt; grep --color&lt;span class="o"&gt;=&lt;/span&gt;auto &lt;span class="s1"&gt;'ca fe'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;hex dump는 램 또는 파일이나 저장장치에 있는 컴퓨터 데이터의 십육진법적인 보임새이다. 데이터의 hex dump를 보는 것은 주로 디버깅이나 리버스 엔지니어링의 한 부분이다.  -- 위키피디아&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;이와 비슷한 것으로 영화 &lt;strong&gt;메트릭스&lt;/strong&gt;에 나오는 화면도 시도해 보겠습니다.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 먼저 cmatrix를 설치해야 합니다.&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# 먼저 cmatrix를 설치해야 합니다.&lt;/span&gt;
 sudo apt-get install cmatrix
 &lt;span class="c1"&gt;# 실행합니다.&lt;/span&gt;
 cmatrix
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;별 의미는 없지만 흥미롭습니다.&lt;/p&gt;
 &lt;hr&gt;
@@ -199,33 +178,29 @@ cmatrix
 &lt;li&gt;쉘 스크립트 작성
 아파치 데몬이 죽었을 경우 자동 재 시작하는 스크립트를 작성해보겠습니다. 아래와 같은 내용의 쉘 스크립트 파일을 만듭니다. 파일명은 &lt;code&gt;revive.sh&lt;/code&gt;로 하겠습니다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# revive.sh&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# revive.sh&lt;/span&gt;
 &lt;span class="c1"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="nv"&gt;http&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"`pgrep http  | wc -l`"&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$http&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -eq &lt;span class="s2"&gt;"0"&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
 /usr/local/apache/bin/apachectl restart
 &lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;http&lt;/code&gt;라는 변수에 &lt;code&gt;pgrep http&lt;/code&gt;로 아파치 프로세서의 갯수를 세어 저장합니다. 그리고, &lt;code&gt;if&lt;/code&gt;문에서 &lt;code&gt;http&lt;/code&gt;변수에 들어 있는 값이 0이라면 아파치를 재시작 합니다. 위의 스크립트를 &lt;code&gt;revive.sh&lt;/code&gt; 로 저장하고, 터미널에 다음과 같이 입력합니다.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;$ chmod -x revive.sh
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ chmod -x revive.sh
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;이는 퍼미션을 주기 위한 것입니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;크론(cron)에 등록해서 1분마다 확인하기
 리눅스에서는 정기적으로 반복되는 작업을 위한 &lt;code&gt;cron&lt;/code&gt;이라는 서비스가 있습니다. 크론으로 1분에 한번씩 위의 스크립트가 작동되도록 하겠습니다. &lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;crontab -e
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;crontab -e
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;으로 크론을 실행한뒤 아래와 같이 입력합니다.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;* * * * * su - root -c '/root/revive.sh /dev/null'&lt;/span&gt;
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;* * * * * su - root -c '/root/revive.sh /dev/null'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;파일을 저장한뒤 적용을 위해서는 로그오프가 필요합니다. &lt;/p&gt;
 &lt;hr&gt;
@@ -375,24 +350,21 @@ cmatrix
 &lt;ol&gt;
 &lt;li&gt;충돌을 일으킬 수 있는 laptop-mode 제거&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get purge laptop-mode-tools
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get purge laptop-mode-tools
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;TLP설치&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;sudo add-apt-repository ppa:linrunner/tlp
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo add-apt-repository ppa:linrunner/tlp
 sudo apt-get update
 sudo apt-get install tlp
-&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;처음 실행후에는 부팅시 자동 실행된다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;sudo tlp start
-&lt;/pre&gt;
-
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo tlp start
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr&gt;&lt;/div&gt;</description><category>Linux</category><category>trouble</category><guid>https://partrita.github.io/posts/linux-trouble-shooting/</guid><pubDate>Sun, 11 Oct 2015 02:11:03 GMT</pubDate></item></channel></rss>

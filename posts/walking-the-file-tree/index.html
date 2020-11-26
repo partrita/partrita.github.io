@@ -62,10 +62,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -129,20 +130,19 @@ navbar-dark bg-dark
     <div>
 <p>현재 디렉토리 아래의 모든 파일(서브디렉토리 포함)의 목록을 얻고자 할 때는 <code>os.walk('./')</code>기능을 사용합니다.
 아래의 예제 코드를 확인하세요.</p>
-<pre class="code literal-block"><span></span><span class="c1"># python 2.7 버전</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># python 2.7 버전</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">'./'</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
         <span class="nb">print</span> <span class="n">file</span>
-</pre>
-
+</code></pre>
 
 <h2>os.walk</h2>
 <p><code>os.walk</code>는 특정 디렉토리 아래의 모든 디렉토리와 파일의 목록을 얻어 올 수 있도록 도와줍니다. for 루프에서 3개의 아이템으로 구성된 튜플로 분해가 가능한데 이름만으로도 무엇인지 알 수 있습니다. <strong>root</strong>는 어떤 디렉토리인지, <strong>dirs</strong>는 root 아래의 디렉토리 목록, 그리고 <strong>files</strong>는 <strong>root</strong> 폴더 아래의 파일 목록입니다.  </p>
 <p>좀 더 많은 기능은 <a href="https://docs.python.org/2/library/os.html">공식 문서</a>를 참고하세요.</p>
 <h2>스크립트 파일 예제</h2>
 <p>아래와 같이 스크립트 파일을 만들어 사용해 보았습니다.</p>
-<pre class="code literal-block"><span></span><span class="c1">#-*- coding: utf-8 -*-</span>
+<pre class="code literal-block"><span></span><code><span class="c1">#-*- coding: utf-8 -*-</span>
 <span class="c1"># sub_dir_search.py</span>
 <span class="c1"># python 2.7 버전</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -170,13 +170,11 @@ navbar-dark bg-dark
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-
+</code></pre>
 
 <p>터미널에 들어가서 다음과 같이 입력합니다.</p>
-<pre class="code literal-block"><span></span>$ python sub_dir_search.py <span class="o">[</span>폴더명<span class="o">]</span>
-</pre>
-
+<pre class="code literal-block"><span></span><code>$ python sub_dir_search.py <span class="o">[</span>폴더명<span class="o">]</span>
+</code></pre>
 
 <blockquote>
 <p>루트 폴더('C:\')를 넣었더니 엄청나게 큰 파일 생성됩니다.</p>
@@ -207,9 +205,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 
