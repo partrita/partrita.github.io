@@ -45,6 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NHHK2BF');</script><meta name="author" content="Taeyoon Kim">
 <link rel="prev" href="../determine-dbc/" title="컬럼의 DBC 측정하기" type="text/html">
+<link rel="next" href="../ganttrify/" title="R로 간트 차트 그리기" type="text/html">
 <meta property="og:site_name" content="Biohacker">
 <meta property="og:title" content="돌연변이 위치에 따른 항체 생산량 예측하기">
 <meta property="og:url" content="https://partrita.github.io/posts/mljar-supervised/">
@@ -63,11 +64,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark
-bg-dark
+navbar-dark bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="../../">
+        <a class="navbar-brand" href="https://partrita.github.io/">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -1060,6 +1060,9 @@ AutoML fit time: 210.63 seconds
 <li class="previous">
                 <a href="../determine-dbc/" rel="prev" title="컬럼의 DBC 측정하기">Previous post</a>
             </li>
+            <li class="next">
+                <a href="../ganttrify/" rel="next" title="R로 간트 차트 그리기">Next post</a>
+            </li>
         </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
  MathJax.Hub.Config({
      tex2jax: {
@@ -1073,7 +1076,7 @@ AutoML fit time: 210.63 seconds
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -1084,7 +1087,9 @@ AutoML fit time: 210.63 seconds
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

@@ -63,11 +63,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark
-bg-dark
+navbar-dark bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="../../">
+        <a class="navbar-brand" href="https://partrita.github.io/">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -595,7 +594,7 @@ bg-dark
 <span class="n">y_fit</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="o">*</span><span class="n">Run1</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Run1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Run1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'data'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'fit'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">'r_squared=</span><span class="si">{</span><span class="n">Run1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">'r_squared=</span><span class="si">{Run1[3]:.3f}</span><span class="s1">'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Breakthrough(%)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Volume(ml)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -645,9 +644,9 @@ bg-dark
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qb10_run1</span> <span class="o">=</span> <span class="n">inversefunc</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">Run1</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">y_values</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'10% breakthrough 일때 fraction(ml)의 값 </span><span class="si">{</span><span class="n">qb10_run1</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> ml 이고'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'10% breakthrough 일때 fraction(ml)의 값 </span><span class="si">{qb10_run1:.3f}</span><span class="s1"> ml 이고'</span><span class="p">)</span>
 <span class="n">dbc_run1</span> <span class="o">=</span> <span class="p">(</span><span class="n">qb10_run1</span><span class="o">-</span><span class="n">delayed_vol</span><span class="p">)</span><span class="o">*</span><span class="n">protein_conc</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'따라서 DBC(QB10)의 값은 </span><span class="si">{</span><span class="n">dbc_run1</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> mg/ml 이다.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'따라서 DBC(QB10)의 값은 </span><span class="si">{dbc_run1:.3f}</span><span class="s1"> mg/ml 이다.'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -695,7 +694,7 @@ bg-dark
 <span class="n">y_fit</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="o">*</span><span class="n">Run2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Run2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Run2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'data'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'fit'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">'r_squared=</span><span class="si">{</span><span class="n">Run2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">'r_squared=</span><span class="si">{Run2[3]:.3f}</span><span class="s1">'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Breakthrough(%)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Volume(ml)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -745,9 +744,9 @@ bg-dark
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qb10_run2</span> <span class="o">=</span> <span class="n">inversefunc</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">Run2</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">y_values</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'10% breakthrough 일때 fraction(ml)의 값 </span><span class="si">{</span><span class="n">qb10_run2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> ml 이고'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'10% breakthrough 일때 fraction(ml)의 값 </span><span class="si">{qb10_run2:.3f}</span><span class="s1"> ml 이고'</span><span class="p">)</span>
 <span class="n">dbc_run2</span> <span class="o">=</span> <span class="p">(</span><span class="n">qb10_run2</span><span class="o">-</span><span class="n">delayed_vol</span><span class="p">)</span><span class="o">*</span><span class="n">protein_conc</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'따라서 DBC(QB10)의 값은 </span><span class="si">{</span><span class="n">dbc_run2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> mg/ml 이다.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'따라서 DBC(QB10)의 값은 </span><span class="si">{dbc_run2:.3f}</span><span class="s1"> mg/ml 이다.'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -819,7 +818,7 @@ bg-dark
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -830,7 +829,9 @@ bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

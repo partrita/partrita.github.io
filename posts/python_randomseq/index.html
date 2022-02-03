@@ -61,11 +61,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark
-bg-dark
+navbar-dark bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="../../">
+        <a class="navbar-brand" href="https://partrita.github.io/">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -128,7 +127,7 @@ bg-dark
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <p>랜덤으로 원하는 길이의 단백질 서열을 원하는 만큼 만드는 파이썬 스크립트 입니다.</p>
-<pre class="code literal-block"><span></span><code><span class="c1"># python 2.7 버전</span>
+<pre class="code literal-block"><span></span><span class="c1"># python 2.7 버전</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">Random</span>
 
@@ -149,7 +148,8 @@ bg-dark
 
 <span class="c1"># 100개 길이의 단백질 서열을 100개 만들어 봅니다. </span>
 <span class="nb">print</span> <span class="n">AminoacidGenerator</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-</code></pre>
+</pre>
+
 
 <p>그냥 재미로 만들어 보았습니다. 만들어진 서열을 <strong>NCBI</strong>의 <strong>BLAST!</strong> 검색에 넣어보았는데, 비슷한 서열이 검색되지는 않더군요. 그 방대한 데이터베이스에서 겹치는 서열이 없다니 진화의 놀라움에 대해 다시 생각해보게 되는군요.</p>
 </div>
@@ -166,7 +166,7 @@ bg-dark
                 <a href="../python_10min_tutorial/" rel="next" title="10분안에 배우는 파이썬">Next post</a>
             </li>
         </ul></nav></aside></article><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -177,7 +177,9 @@ bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

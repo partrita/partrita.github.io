@@ -62,11 +62,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark
-bg-dark
+navbar-dark bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="../../">
+        <a class="navbar-brand" href="https://partrita.github.io/">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -228,7 +227,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 
 <span class="n">dengue</span> <span class="o">&lt;-</span> <span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">"den1.fasta"</span><span class="p">)</span>
 <span class="c1"># In fact, the first element of the list object dengue contains the the DNA sequence</span>
-<span class="n">dengueseq</span> <span class="o">&lt;-</span> <span class="n">dengue</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">dengueseq</span> <span class="o">&lt;-</span> <span class="n">dengue[[1]]</span>
 </pre></div>
 
     </div>
@@ -298,7 +297,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">dengueseq</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">])</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">dengueseq[1</span><span class="o">:</span><span class="m">50</span><span class="n">]</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -444,10 +443,10 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
    <span class="n">n</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">starts</span><span class="p">)</span>    <span class="c1"># Find the length of the vector "starts"</span>
    <span class="n">chunkGCs</span> <span class="o">&lt;-</span> <span class="nf">numeric</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># Make a vector of the same length as vector "starts", but just containing zeroes</span>
    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">chunk</span> <span class="o">&lt;-</span> <span class="n">inputseq</span><span class="p">[</span><span class="n">starts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="p">(</span><span class="n">starts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">windowsize</span><span class="m">-1</span><span class="p">)]</span>
+        <span class="n">chunk</span> <span class="o">&lt;-</span> <span class="n">inputseq[starts[i]</span><span class="o">:</span><span class="p">(</span><span class="n">starts[i]</span><span class="o">+</span><span class="n">windowsize</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span>
         <span class="n">chunkGC</span> <span class="o">&lt;-</span> <span class="nf">GC</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
         <span class="c1"># print(chunkGC)</span>
-        <span class="n">chunkGCs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">chunkGC</span>
+        <span class="n">chunkGCs[i]</span> <span class="o">&lt;-</span> <span class="n">chunkGC</span>
    <span class="p">}</span>
    <span class="nf">plot</span><span class="p">(</span><span class="n">starts</span><span class="p">,</span><span class="n">chunkGCs</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">"b"</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">"Nucleotide start position"</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">"GC content"</span><span class="p">)</span>
 <span class="p">}</span>
@@ -535,10 +534,10 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="n">leprae</span> <span class="o">&lt;-</span> <span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">"Q9CD83.fasta"</span><span class="p">)</span>
-<span class="n">lepraeseq</span> <span class="o">&lt;-</span> <span class="n">leprae</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">lepraeseq</span> <span class="o">&lt;-</span> <span class="n">leprae[[1]]</span>
 
 <span class="n">ulcerans</span> <span class="o">&lt;-</span> <span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">"A0PQ23.fasta"</span><span class="p">)</span>
-<span class="n">ulceransseq</span> <span class="o">&lt;-</span> <span class="n">ulcerans</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">ulceransseq</span> <span class="o">&lt;-</span> <span class="n">ulcerans[[1]]</span>
 
 <span class="n">lepraeseq</span> <span class="c1"># Display the contents of "lepraeseq"</span>
 </pre></div>
@@ -743,7 +742,7 @@ attr(,"class")
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -754,7 +753,9 @@ attr(,"class")
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 
