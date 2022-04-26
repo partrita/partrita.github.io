@@ -8,12 +8,12 @@
 .. type: text
 
 
-.. image:: https://pictogram-illustration.com/material/069-pictogram-illustration.jpg
+.. image:: https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/PublicInformationSymbol_EmergencyExit.svg/250px-PublicInformationSymbol_EmergencyExit.svg.png
    :align: center
-   :height: 280 px
-   :width: 400 px
+   :height: 250 px
+   :width: 250 px
 
-*Image from pictogram-illustration.com*
+*Image from wikipedia*
 
 
 짧은 소개
