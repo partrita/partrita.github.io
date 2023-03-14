@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about 통계)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/tonggye.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 하는 통계 추론과 유의성 검정</title><link>https://partrita.github.io/posts/StatTest/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about 통계)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/tonggye.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 하는 통계 추론과 유의성 검정</title><link>https://partrita.github.io/posts/StatTest/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-통계적-추론과-유의성-검정"&gt;0. 통계적 추론과 유의성 검정&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#0.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%B6%94%EB%A1%A0%EA%B3%BC-%EC%9C%A0%EC%9D%98%EC%84%B1-%EA%B2%80%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;여기에 사용한 코드는 모두 &lt;a href="https://github.com/gedeck/practical-statistics-for-data-scientists"&gt;https://github.com/gedeck/practical-statistics-for-data-scientists&lt;/a&gt; 
+&lt;h2 id="0.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%B6%94%EB%A1%A0%EA%B3%BC-%EC%9C%A0%EC%9D%98%EC%84%B1-%EA%B2%80%EC%A0%95"&gt;0. 통계적 추론과 유의성 검정&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#0.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%B6%94%EB%A1%A0%EA%B3%BC-%EC%9C%A0%EC%9D%98%EC%84%B1-%EA%B2%80%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;여기에 사용한 코드는 모두 &lt;a href="https://github.com/gedeck/practical-statistics-for-data-scientists"&gt;https://github.com/gedeck/practical-statistics-for-data-scientists&lt;/a&gt; 
 에서 가져왔습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;(c) 2019 Peter C. Bruce, Andrew Bruce, Peter Gedeck&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(c) 2019 Peter C. Bruce, Andrew Bruce, Peter Gedeck&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;통계적 추론이라는 것은 제한된 실험 데이터에서 얻은 결과를 모집단에도 적용하려는 것입니다. 이번 포스트에서는 통계적 추론에 사용되는 검정법을 배워볼 예정입니다.&lt;/p&gt;
 
@@ -73,7 +74,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="1.-A/B-검정"&gt;1. A/B 검정&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#1.-A/B-%EA%B2%80%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A/B 검정은 두 가지 중에 어떤 것이 더 좋은지를 증명하기 위해 실험군을 나누어 진행하는 실험입니다. 일반적으로 대조군(Negative control)과 처리군으로 나눕니다.&lt;/p&gt;
+&lt;h2 id="1.-A/B-%EA%B2%80%EC%A0%95"&gt;1. A/B 검정&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#1.-A/B-%EA%B2%80%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A/B 검정은 두 가지 중에 어떤 것이 더 좋은지를 증명하기 위해 실험군을 나누어 진행하는 실험입니다. 일반적으로 대조군(Negative control)과 처리군으로 나눕니다.&lt;/p&gt;
 &lt;p&gt;예시로 웹페이지에서 고객들이 얼마나 머무는지 측정(session_time)하고 A/B 검정을 해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -186,7 +187,8 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;대략적으로 36초정도 차이가 난다. 문제는 이 차이가 우연에 의한 것인지 아니면 통계적으로 중요한 것인지 판단하는 것이다.&lt;/p&gt;
-&lt;h3 id="1.1.-순열-검정을-통한-A/B-검정"&gt;1.1. 순열 검정을 통한 A/B 검정&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#1.1.-%EC%88%9C%EC%97%B4-%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-A/B-%EA%B2%80%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;&lt;p&gt;순열검정(permutaion test): 두 개 이상의 표본을 함께 결합하여 관측값들을 무작위로 재표본으로 추출하는 과정을 말한다.&lt;/p&gt;
+&lt;h3 id="1.1.-%EC%88%9C%EC%97%B4-%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-A/B-%EA%B2%80%EC%A0%95"&gt;1.1. 순열 검정을 통한 A/B 검정&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#1.1.-%EC%88%9C%EC%97%B4-%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-A/B-%EA%B2%80%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;순열검정(permutaion test): 두 개 이상의 표본을 함께 결합하여 관측값들을 무작위로 재표본으로 추출하는 과정을 말한다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;파이썬에서 순열 검정을 구현하기 위해 아래와 같이 &lt;code&gt;perm_fun&lt;/code&gt; 함수를 정의합니다.&lt;/p&gt;
 
@@ -335,7 +337,8 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="1.1.2.-t-Test를-사용한-A/B-검정"&gt;1.1.2. t-Test를 사용한 A/B 검정&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#1.1.2.-t-Test%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-A/B-%EA%B2%80%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;&lt;p&gt;t-테스트(t-test) 또는 t-검정 또는 스튜던트 t-테스트(Student's t-test)는 검정통계량이 귀무가설 하에서 t-분포를 따르는 통계적 가설 검정법이다. t-테스트는 일반적으로 검정통계량이 정규 분포를 따르며 분포와 관련된 스케일링 변숫값들이 알려진 경우에 사용한다. 이때 모집단의 분산과 같은 스케일링 항을 알 수 없으나, 이를 데이터를 기반으로 한 추정값으로 대체하면 검정통계량은 t-분포를 따른다. 예를 들어 t-테스트를 사용하여 두 데이터 세트(집단)의 평균이 서로 유의하게 다른지 여부를 판별할 수 있다. -wiki&lt;/p&gt;
+&lt;h3 id="1.1.2.-t-Test%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-A/B-%EA%B2%80%EC%A0%95"&gt;1.1.2. t-Test를 사용한 A/B 검정&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#1.1.2.-t-Test%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-A/B-%EA%B2%80%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;t-테스트(t-test) 또는 t-검정 또는 스튜던트 t-테스트(Student's t-test)는 검정통계량이 귀무가설 하에서 t-분포를 따르는 통계적 가설 검정법이다. t-테스트는 일반적으로 검정통계량이 정규 분포를 따르며 분포와 관련된 스케일링 변숫값들이 알려진 경우에 사용한다. 이때 모집단의 분산과 같은 스케일링 항을 알 수 없으나, 이를 데이터를 기반으로 한 추정값으로 대체하면 검정통계량은 t-분포를 따른다. 예를 들어 t-테스트를 사용하여 두 데이터 세트(집단)의 평균이 서로 유의하게 다른지 여부를 판별할 수 있다. -wiki&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;파이썬에서는 &lt;code&gt;ttest_ind&lt;/code&gt; 함수를 사용하면 손쉽게 구해볼 수 있습니다.&lt;/p&gt;
 
@@ -350,7 +353,7 @@
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ttest_ind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;session_times&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;session_times&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Page A'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
                       &lt;span class="n"&gt;session_times&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;session_times&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Page B'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                       &lt;span class="n"&gt;equal_var&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'p-value for single sided test: {res.pvalue / 2:.4f}'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'p-value for single sided test: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pvalue&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.4f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -393,7 +396,7 @@
     &lt;span class="n"&gt;session_times&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;session_times&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Page A'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
     &lt;span class="n"&gt;session_times&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;session_times&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Page B'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;usevar&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'unequal'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alternative&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'smaller'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'p-value: &lt;/span&gt;&lt;span class="si"&gt;{pvalue:.4f}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'p-value: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;pvalue&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.4f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -422,25 +425,26 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="2.-통계적-유의성과-P-Values"&gt;2. 통계적 유의성과 P-Values&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#2.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%9C%A0%EC%9D%98%EC%84%B1%EA%B3%BC-P-Values"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;통계적 유의성이란 실험 결과가 우연하게 일어난 것인지 아닌지 판단하는 것입니다. 유의 확률(p-value)는 통계적 유의성을 판단하기 위해 가정한 귀무가설에서 극단적인 결과를 얻을 확률입니다. 따라서 p-value가 낮을수록 우연한 일이 아니라고 생각 할 수 있습니다.&lt;/p&gt;
+&lt;h2 id="2.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%9C%A0%EC%9D%98%EC%84%B1%EA%B3%BC-P-Values"&gt;2. 통계적 유의성과 P-Values&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#2.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%9C%A0%EC%9D%98%EC%84%B1%EA%B3%BC-P-Values"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;통계적 유의성이란 실험 결과가 우연하게 일어난 것인지 아닌지 판단하는 것입니다. 유의 확률(p-value)는 통계적 유의성을 판단하기 위해 가정한 귀무가설에서 극단적인 결과를 얻을 확률입니다. 따라서 p-value가 낮을수록 우연한 일이 아니라고 생각 할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;다음의 예시 데이터를 가지고 예를 들어보도록 하겠습니다. 동일한 내용이지만 구성이 다른 상품판매 페이지A, 페이지B가 있고 방문자가 구매한 횟수와 그렇지 않은 데이터를 모았다고 생각합시다.&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;
-&lt;th&gt;결과&lt;/th&gt;
-&lt;th style="text-align:right"&gt;페이지A&lt;/th&gt;
-&lt;th style="text-align:right"&gt;페이지B&lt;/th&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+  &lt;th&gt;결과&lt;/th&gt;
+  &lt;th style="text-align:right"&gt;페이지A&lt;/th&gt;
+  &lt;th style="text-align:right"&gt;페이지B&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;구매&lt;/td&gt;
-&lt;td style="text-align:right"&gt;200&lt;/td&gt;
-&lt;td style="text-align:right"&gt;182&lt;/td&gt;
+  &lt;td&gt;구매&lt;/td&gt;
+  &lt;td style="text-align:right"&gt;200&lt;/td&gt;
+  &lt;td style="text-align:right"&gt;182&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;구매하지 않음&lt;/td&gt;
-&lt;td style="text-align:right"&gt;23539&lt;/td&gt;
-&lt;td style="text-align:right"&gt;22406&lt;/td&gt;
+  &lt;td&gt;구매하지 않음&lt;/td&gt;
+  &lt;td style="text-align:right"&gt;23539&lt;/td&gt;
+  &lt;td style="text-align:right"&gt;22406&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -456,7 +460,7 @@
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;obs_pct_diff&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;23739&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;182&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;22588&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Observed difference: &lt;/span&gt;&lt;span class="si"&gt;{obs_pct_diff:.4f}&lt;/span&gt;&lt;span class="s1"&gt;%'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Observed difference: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;obs_pct_diff&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.4f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;%'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;conversion&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;45945&lt;/span&gt;
 &lt;span class="n"&gt;conversion&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;382&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;conversion&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;conversion&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -515,7 +519,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;약 1000번의 순열 검정을 통해 얻은 히스토그램을 살펴보니 관측된 값은 충분히 우연에 의한 것으로 보입니다. 그러나 좀 더 명확하게 하기 위해 p-value를 계산해봅시다.&lt;/p&gt;
-&lt;h3 id="2.1.-P-Value-구하기"&gt;2.1. P-Value 구하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#2.1.-P-Value-%EA%B5%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;p-value는 순열 검정에서 얻은 결과 중에 관찰된 차이와 같거나 더 큰 차이를 보이는 경우의 비율이라고 할 수 있기에 다음과 같이 추정할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="2.1.-P-Value-%EA%B5%AC%ED%95%98%EA%B8%B0"&gt;2.1. P-Value 구하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#2.1.-P-Value-%EA%B5%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;p-value는 순열 검정에서 얻은 결과 중에 관찰된 차이와 같거나 더 큰 차이를 보이는 경우의 비율이라고 할 수 있기에 다음과 같이 추정할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -555,7 +559,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;예상한 것처럼 30%의 확률로 우연에 의해서 나타날 수 있는 차이였습니다. 따라서 페이지A와 페이지B의 차이는 통계적으로 유의미하지 않다고 말할 수 있겠습니다.&lt;/p&gt;
-&lt;h2 id="3.-일원-분산분석(ANOVA-)"&gt;3. 일원 분산분석(ANOVA )&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#3.-%EC%9D%BC%EC%9B%90-%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(ANOVA-)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A/B 검정이 아닌 여러 그룹간의 통계적 유의미한 차이를 검정하는 절차를 분산분석이라 합니다. 예시로 페이지 1,2,3,4에 방문자들이 머문 시간에 대한 데이터를 살펴보겠습니다. 먼저 데이터셋을 불러옵니다.&lt;/p&gt;
+&lt;h2 id="3.-%EC%9D%BC%EC%9B%90-%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(ANOVA-)"&gt;3. 일원 분산분석(ANOVA )&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#3.-%EC%9D%BC%EC%9B%90-%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(ANOVA-)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A/B 검정이 아닌 여러 그룹간의 통계적 유의미한 차이를 검정하는 절차를 분산분석이라 합니다. 예시로 페이지 1,2,3,4에 방문자들이 머문 시간에 대한 데이터를 살펴보겠습니다. 먼저 데이터셋을 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -650,7 +654,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.1.-순열검정을-통한-one-way-ANOVA"&gt;3.1. 순열검정을 통한 one-way ANOVA&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#3.1.-%EC%88%9C%EC%97%B4%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파이썬에서는 다음 코드를 사용해 순열 검정을 통해 ANOVA 분석을 진행할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="3.1.-%EC%88%9C%EC%97%B4%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA"&gt;3.1. 순열검정을 통한 one-way ANOVA&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#3.1.-%EC%88%9C%EC%97%B4%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파이썬에서는 다음 코드를 사용해 순열 검정을 통해 ANOVA 분석을 진행할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -757,7 +761,7 @@ Variance: 55.426666666666655
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Pr(Prob)의 값은 p-value이며 결과는 0.07입니다. 통상적인 임계 p-value 값인 0.05이상임으로 네 페이지간의 차이가 우연히 발생할 수 있다고 결론 내릴 수 있습니다.&lt;/p&gt;
-&lt;h3 id="3.2.-F-통계량을-통한-one-way-ANOVA"&gt;3.2. F-통계량을 통한 one-way ANOVA&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#3.2.-F-%ED%86%B5%EA%B3%84%EB%9F%89%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;F-통계량은 잔차 오류에 인한 분산과 그룹 평균의 분산에 대한 비율을 기초로 합니다. 비율이 높으면 통계적으로 유의미 하다고 할 수 있고 이를 토대로 p-value를 계산할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="3.2.-F-%ED%86%B5%EA%B3%84%EB%9F%89%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA"&gt;3.2. F-통계량을 통한 one-way ANOVA&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#3.2.-F-%ED%86%B5%EA%B3%84%EB%9F%89%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;F-통계량은 잔차 오류에 인한 분산과 그룹 평균의 분산에 대한 비율을 기초로 합니다. 비율이 높으면 통계적으로 유의미 하다고 할 수 있고 이를 토대로 p-value를 계산할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -815,8 +819,8 @@ Residual  16.0  1618.4  101.150000       NaN       NaN
                      &lt;span class="n"&gt;four_sessions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;four_sessions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Page 2'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                      &lt;span class="n"&gt;four_sessions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;four_sessions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Page 3'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                      &lt;span class="n"&gt;four_sessions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;four_sessions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'Page 4'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'F-Statistic: {res.statistic / 2:.4f}'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'p-value: {res.pvalue / 2:.4f}'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'F-Statistic: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;statistic&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.4f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'p-value: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pvalue&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.4f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -847,16 +851,17 @@ p-value: 0.0388
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;F-통계량을 사용한 방법은 p-value 값이 더 적게나와 임계값인 0.05 이하입니다. 그러나 ANOVA 분석의 p-value가 낮게 나왔다고 해서 모든 그룹에서 통계적으로 차이가 있다고 할 수는 없습니다. 추가적인 Ad hoc 분석을 진행해 어떤 그룹에서 차이가 있는지 확인해보아야 합니다.&lt;/p&gt;
-&lt;h2 id="4.-마무리하며"&gt;4. 마무리하며&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#4.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;현재 실험 데이터를 분석할때는 통계적 추론과 유의성 검증은 필수적인 절차입니다. 그렇기 때문에 반대로 실험에 대조군을 반드시 포함하며 데이터에 인위적인 조작이 없도록 하는 것이 더욱 중요해 졌습니다.&lt;/p&gt;
+&lt;h2 id="4.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0"&gt;4. 마무리하며&lt;a class="anchor-link" href="https://partrita.github.io/posts/StatTest/#4.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;현재 실험 데이터를 분석할때는 통계적 추론과 유의성 검증은 필수적인 절차입니다. 그렇기 때문에 반대로 실험에 대조군을 반드시 포함하며 데이터에 인위적인 조작이 없도록 하는 것이 더욱 중요해 졌습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>machine learning</category><category>Python</category><category>데이터 과학</category><category>유의성검정</category><category>통계</category><guid>https://partrita.github.io/posts/StatTest/</guid><pubDate>Wed, 27 Apr 2022 00:41:22 GMT</pubDate></item><item><title>파이썬으로 하는 탐색적 데이터 분석</title><link>https://partrita.github.io/posts/EDA4PracticalStatistics/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>machine learning</category><category>Python</category><category>데이터 과학</category><category>유의성검정</category><category>통계</category><guid>https://partrita.github.io/posts/StatTest/</guid><pubDate>Wed, 27 Apr 2022 00:41:22 GMT</pubDate></item><item><title>파이썬으로 하는 탐색적 데이터 분석</title><link>https://partrita.github.io/posts/EDA4PracticalStatistics/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="1.-탐색적-데이터-분석"&gt;1. 탐색적 데이터 분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#1.-%ED%83%90%EC%83%89%EC%A0%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;여기에 사용한 코드는 모두 &lt;a href="https://github.com/gedeck/practical-statistics-for-data-scientists"&gt;https://github.com/gedeck/practical-statistics-for-data-scientists&lt;/a&gt; 
+&lt;h2 id="1.-%ED%83%90%EC%83%89%EC%A0%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D"&gt;1. 탐색적 데이터 분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#1.-%ED%83%90%EC%83%89%EC%A0%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;여기에 사용한 코드는 모두 &lt;a href="https://github.com/gedeck/practical-statistics-for-data-scientists"&gt;https://github.com/gedeck/practical-statistics-for-data-scientists&lt;/a&gt; 
 에서 가져왔습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;(c) 2019 Peter C. Bruce, Andrew Bruce, Peter Gedeck&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(c) 2019 Peter C. Bruce, Andrew Bruce, Peter Gedeck&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;탐색적 데이터 분석은 모든 데이터 과학 프로젝트의 첫걸음으로 1977년 통계학자 존 투키에 의해 정립된 개념입니다. 간단히 말해 데이터 분석전에 요약 통계량과 시각화를 통해 미리 데이터는 살펴보는 것을 의미합니다.&lt;/p&gt;
 
@@ -934,8 +939,8 @@ p-value: 0.0388
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="2.-데이터의-위치-추정"&gt;2. 데이터의 위치 추정&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%9C%84%EC%B9%98-%EC%B6%94%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;데이터가 주어졌을 때 가장 처음으로 확인해야 할것은 각각의 데이터들의 대푯값을 구하는 것입니다. 이것은 대부분의 데이터들이 어디에 위치하는지 나타내는 것으로 대표적으로 평균, 가중평균, 중간값, 백분위수 등이 존재합니다.&lt;/p&gt;
-&lt;h3 id="2.1.-예시:-인구에-따른-살인-비율"&gt;2.1. 예시: 인구에 따른 살인 비율&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#2.1.-%EC%98%88%EC%8B%9C:-%EC%9D%B8%EA%B5%AC%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%82%B4%EC%9D%B8-%EB%B9%84%EC%9C%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다음 표는 미국의 주에서 일어난 살인 사건의 비율이다.&lt;/p&gt;
+&lt;h2 id="2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%9C%84%EC%B9%98-%EC%B6%94%EC%A0%95"&gt;2. 데이터의 위치 추정&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%9C%84%EC%B9%98-%EC%B6%94%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;데이터가 주어졌을 때 가장 처음으로 확인해야 할것은 각각의 데이터들의 대푯값을 구하는 것입니다. 이것은 대부분의 데이터들이 어디에 위치하는지 나타내는 것으로 대표적으로 평균, 가중평균, 중간값, 백분위수 등이 존재합니다.&lt;/p&gt;
+&lt;h3 id="2.1.-%EC%98%88%EC%8B%9C:-%EC%9D%B8%EA%B5%AC%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%82%B4%EC%9D%B8-%EB%B9%84%EC%9C%A8"&gt;2.1. 예시: 인구에 따른 살인 비율&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#2.1.-%EC%98%88%EC%8B%9C:-%EC%9D%B8%EA%B5%AC%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%82%B4%EC%9D%B8-%EB%B9%84%EC%9C%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다음 표는 미국의 주에서 일어난 살인 사건의 비율이다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -963,8 +968,7 @@ p-value: 0.0388
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1047,8 +1051,7 @@ p-value: 0.0388
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1232,7 +1235,7 @@ p-value: 0.0388
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.-데이터-변이(Variability)-추정"&gt;3. 데이터 변이(Variability) 추정&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B3%80%EC%9D%B4(Variability)-%EC%B6%94%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;변이는 데이터들이 어떻게 분포하는지를 나타내는 것으로 편차, 분산등이 있습니다.&lt;/p&gt;
+&lt;h2 id="3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B3%80%EC%9D%B4(Variability)-%EC%B6%94%EC%A0%95"&gt;3. 데이터 변이(Variability) 추정&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B3%80%EC%9D%B4(Variability)-%EC%B6%94%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;변이는 데이터들이 어떻게 분포하는지를 나타내는 것으로 편차, 분산등이 있습니다.&lt;/p&gt;
 &lt;p&gt;앞서 살펴본 데이터를 가지고 데이터들의 변이를 추정해봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1260,8 +1263,7 @@ p-value: 0.0388
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1344,8 +1346,7 @@ p-value: 0.0388
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1356,7 +1357,7 @@ p-value: 0.0388
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.1.-인구에-대한-표준-편차"&gt;3.1. 인구에 대한 표준 편차&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.1.-%EC%9D%B8%EA%B5%AC%EC%97%90-%EB%8C%80%ED%95%9C-%ED%91%9C%EC%A4%80-%ED%8E%B8%EC%B0%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="3.1.-%EC%9D%B8%EA%B5%AC%EC%97%90-%EB%8C%80%ED%95%9C-%ED%91%9C%EC%A4%80-%ED%8E%B8%EC%B0%A8"&gt;3.1. 인구에 대한 표준 편차&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.1.-%EC%9D%B8%EA%B5%AC%EC%97%90-%EB%8C%80%ED%95%9C-%ED%91%9C%EC%A4%80-%ED%8E%B8%EC%B0%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1435,7 +1436,7 @@ p-value: 0.0388
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.2.-백분위수와-상자그림"&gt;3.2. 백분위수와 상자그림&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.2.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98%EC%99%80-%EC%83%81%EC%9E%90%EA%B7%B8%EB%A6%BC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;주별 살인유의 백분위수를 구해봅시다.&lt;/p&gt;
+&lt;h3 id="3.2.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98%EC%99%80-%EC%83%81%EC%9E%90%EA%B7%B8%EB%A6%BC"&gt;3.2. 백분위수와 상자그림&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.2.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98%EC%99%80-%EC%83%81%EC%9E%90%EA%B7%B8%EB%A6%BC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;주별 살인유의 백분위수를 구해봅시다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1492,7 +1493,7 @@ Name: Murder.Rate, dtype: float64
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Table 1.4&lt;/span&gt;
 &lt;span class="n"&gt;percentages&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;0.05&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.95&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Murder.Rate'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quantile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;percentages&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'{p * 100}%'&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;percentages&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;%'&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;percentages&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;transpose&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1568,7 +1569,7 @@ Murder.Rate   1.6  2.425    4.0   5.55   6.51
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.3.-도수분포표와-히스토그램"&gt;3.3. 도수분포표와 히스토그램&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.3.-%EB%8F%84%EC%88%98%EB%B6%84%ED%8F%AC%ED%91%9C%EC%99%80-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;도수분포표는 데이터를 동일한 크기의 구간으로 나누어 구간마다 몇 개의 데이터가 존재하는지 보여주기 위해 사용됩니다. 다음은 인구를 10개의 구간으로 나누었을때의 도수분포표입니다.&lt;/p&gt;
+&lt;h3 id="3.3.-%EB%8F%84%EC%88%98%EB%B6%84%ED%8F%AC%ED%91%9C%EC%99%80-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8"&gt;3.3. 도수분포표와 히스토그램&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.3.-%EB%8F%84%EC%88%98%EB%B6%84%ED%8F%AC%ED%91%9C%EC%99%80-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;도수분포표는 데이터를 동일한 크기의 구간으로 나누어 구간마다 몇 개의 데이터가 존재하는지 보여주기 위해 사용됩니다. 다음은 인구를 10개의 구간으로 나누었을때의 도수분포표입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1742,7 +1743,7 @@ Name: Population, dtype: int64
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.4.-데이터-밀도(Density)-추정"&gt;3.4. 데이터 밀도(Density) 추정&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.4.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%80%EB%8F%84(Density)-%EC%B6%94%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;밀도 추정은 통계학에서 오래된 주제로 히스토그램과 유사하지만 y축의 단위가 비율이라는 차이가 있다. 다르게 말해 밀도 추정은 히스토그램을 좀 더 부드럽게 그려놓은 것이다.&lt;/p&gt;
+&lt;h3 id="3.4.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%80%EB%8F%84(Density)-%EC%B6%94%EC%A0%95"&gt;3.4. 데이터 밀도(Density) 추정&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#3.4.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%80%EB%8F%84(Density)-%EC%B6%94%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;밀도 추정은 통계학에서 오래된 주제로 히스토그램과 유사하지만 y축의 단위가 비율이라는 차이가 있다. 다르게 말해 밀도 추정은 히스토그램을 좀 더 부드럽게 그려놓은 것이다.&lt;/p&gt;
 &lt;p&gt;주별 살인율에 대한 밀도 추정 시각화는 아래와 같다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1790,7 +1791,7 @@ Name: Population, dtype: int64
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="4.-이진-데이터와-범주형-데이터"&gt;4. 이진 데이터와 범주형 데이터&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#4.-%EC%9D%B4%EC%A7%84-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;예시로 2010년에 공항에서 항공기가 지연된 원인별 데이터를 살펴보자.&lt;/p&gt;
+&lt;h2 id="4.-%EC%9D%B4%EC%A7%84-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;4. 이진 데이터와 범주형 데이터&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#4.-%EC%9D%B4%EC%A7%84-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;예시로 2010년에 공항에서 항공기가 지연된 원인별 데이터를 살펴보자.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1886,7 +1887,7 @@ Name: Population, dtype: int64
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="5.-상관-관계"&gt;5. 상관 관계&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#5.-%EC%83%81%EA%B4%80-%EA%B4%80%EA%B3%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;다음은 미국주식시장에 상장된 ETF종목간에 상관관계를 시각화하는 방법입니다.&lt;/p&gt;
+&lt;h2 id="5.-%EC%83%81%EA%B4%80-%EA%B4%80%EA%B3%84"&gt;5. 상관 관계&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#5.-%EC%83%81%EA%B4%80-%EA%B4%80%EA%B3%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;다음은 미국주식시장에 상장된 ETF종목간에 상관관계를 시각화하는 방법입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2000,7 +2001,7 @@ Name: Population, dtype: int64
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위의 결과를 통해 VXX는 다른 종목들과 반대로 움직인다는 것을 확인 할 수 있습니다.&lt;/p&gt;
-&lt;h3 id="5.1.-산점도"&gt;5.1. 산점도&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#5.1.-%EC%82%B0%EC%A0%90%EB%8F%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터 사이에서 두 변수간의 관계를 시각화하는 또 다른 방법에는 산점도가 있습니다. 아래 산점도의 버라이즌과 A&amp;amp;T 주식간의 관계를 나타낸 것으로 두 주식이 함께 오르거나 떨어지면 제 1사분면, 제 3사분면에 점이 많고, 서로 반대로 움직이는 경우(제 2사분면, 제 4사분면)는 드물다는 것을 알 수 있습니다.&lt;/p&gt;
+&lt;h3 id="5.1.-%EC%82%B0%EC%A0%90%EB%8F%84"&gt;5.1. 산점도&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#5.1.-%EC%82%B0%EC%A0%90%EB%8F%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터 사이에서 두 변수간의 관계를 시각화하는 또 다른 방법에는 산점도가 있습니다. 아래 산점도의 버라이즌과 A&amp;amp;T 주식간의 관계를 나타낸 것으로 두 주식이 함께 오르거나 떨어지면 제 1사분면, 제 3사분면에 점이 많고, 서로 반대로 움직이는 경우(제 2사분면, 제 4사분면)는 드물다는 것을 알 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2057,7 +2058,7 @@ Name: Population, dtype: int64
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="6.-다변량-분석"&gt;6. 다변량 분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.-%EB%8B%A4%EB%B3%80%EB%9F%89-%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;평균과 분산은 한 번에 하나의 변수를 다루는 일변량 분석이며, 앞서 살펴본 상관분석은 두 변수 사이를 비교하는 이변량 분석이다. 이번에는 셋 이상의 변수를 다루는 다변량 분석에 대하여 알아보자.
+&lt;h2 id="6.-%EB%8B%A4%EB%B3%80%EB%9F%89-%EB%B6%84%EC%84%9D"&gt;6. 다변량 분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.-%EB%8B%A4%EB%B3%80%EB%9F%89-%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;평균과 분산은 한 번에 하나의 변수를 다루는 일변량 분석이며, 앞서 살펴본 상관분석은 두 변수 사이를 비교하는 이변량 분석이다. 이번에는 셋 이상의 변수를 다루는 다변량 분석에 대하여 알아보자.
 먼저 예시로 사용할 &lt;code&gt;kc_tax&lt;/code&gt; 데이터셋을 불러온다. 이 데이터셋에는 주택에 대한 과세 평가 금액정보를 담고 있습니다. 너무 작거나 큰 주택에 대한 데이터는 제외하고 사용할 예정입니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -2102,7 +2103,7 @@ Name: Population, dtype: int64
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;데이터의 개수가 수십만개가 넘으면 산점도로 시각화하면 알아보기가 어렵습니다. 그런경우에 육각형 구간과 등고선을 이용한 시각화가 사용됩니다.&lt;/p&gt;
-&lt;h3 id="6.1.-수치형-변수대-수치형-변수"&gt;6.1. 수치형 변수대 수치형 변수&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.1.-%EC%88%98%EC%B9%98%ED%98%95-%EB%B3%80%EC%88%98%EB%8C%80-%EC%88%98%EC%B9%98%ED%98%95-%EB%B3%80%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 육각형 구간 그림을 그려본다. 다음 시각화는 집의 크기와 과세 평가 금액의 관계를 나타냅니다.&lt;/p&gt;
+&lt;h3 id="6.1.-%EC%88%98%EC%B9%98%ED%98%95-%EB%B3%80%EC%88%98%EB%8C%80-%EC%88%98%EC%B9%98%ED%98%95-%EB%B3%80%EC%88%98"&gt;6.1. 수치형 변수대 수치형 변수&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.1.-%EC%88%98%EC%B9%98%ED%98%95-%EB%B3%80%EC%88%98%EB%8C%80-%EC%88%98%EC%B9%98%ED%98%95-%EB%B3%80%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 육각형 구간 그림을 그려본다. 다음 시각화는 집의 크기와 과세 평가 금액의 관계를 나타냅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2198,7 +2199,7 @@ Name: Population, dtype: int64
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;등고선은 두 변수로 이루어진 지형에서 밀도를 표현한 것으로 꼭대기로 갈수록 밀도가 높아집니다. 이 그림 역시 육각형 구간과 같은 결과를 보여주고 있습니다.&lt;/p&gt;
-&lt;h3 id="6.2.-범주형-변수대-범주형-변수"&gt;6.2. 범주형 변수대 범주형 변수&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.2.-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B3%80%EC%88%98%EB%8C%80-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B3%80%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;범주형 변수를 요약하는데 피벗테이블이 효과적입니다. 이번에는 예시로 &lt;code&gt;lc_loans&lt;/code&gt; 데이터셋을 사용합니다. 이 데이터셋은 대출 등급과 상황에 대하여 담고 있습니다.&lt;/p&gt;
+&lt;h3 id="6.2.-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B3%80%EC%88%98%EB%8C%80-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B3%80%EC%88%98"&gt;6.2. 범주형 변수대 범주형 변수&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.2.-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B3%80%EC%88%98%EB%8C%80-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B3%80%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;범주형 변수를 요약하는데 피벗테이블이 효과적입니다. 이번에는 예시로 &lt;code&gt;lc_loans&lt;/code&gt; 데이터셋을 사용합니다. 이 데이터셋은 대출 등급과 상황에 대하여 담고 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2263,7 +2264,7 @@ G          0.126196  0.614008    0.198396  0.061401  0.007187
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 피벗테이블은 대출 결과에 대해 각 등급별 빈도와 비율을 나타냅니다.&lt;/p&gt;
-&lt;h3 id="6.3.-범주형-변수-대-수치형-변수"&gt;6.3. 범주형 변수 대 수치형 변수&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.3.-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B3%80%EC%88%98-%EB%8C%80-%EC%88%98%EC%B9%98%ED%98%95-%EB%B3%80%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;범주형 변수에 따라 분류된 수치형 변수는 상자그림을 통해 간단하게 시각화 할 수 있습니다. 예를 들어 항공사 별 비행기 지연 정도를 비교한다면 다음 그림과 같이 나타낼 수 있습니다.&lt;/p&gt;
+&lt;h3 id="6.3.-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B3%80%EC%88%98-%EB%8C%80-%EC%88%98%EC%B9%98%ED%98%95-%EB%B3%80%EC%88%98"&gt;6.3. 범주형 변수 대 수치형 변수&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.3.-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B3%80%EC%88%98-%EB%8C%80-%EC%88%98%EC%B9%98%ED%98%95-%EB%B3%80%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;범주형 변수에 따라 분류된 수치형 변수는 상자그림을 통해 간단하게 시각화 할 수 있습니다. 예를 들어 항공사 별 비행기 지연 정도를 비교한다면 다음 그림과 같이 나타낼 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2362,7 +2363,7 @@ G          0.126196  0.614008    0.198396  0.061401  0.007187
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;항공사에 따른 비행기 지연 비율을 나타낸 바이올린 도표를 통해 알레스카와 델타항공이 거의 0근처에 집중되어 있다는 것을 알 수 있습니다.&lt;/p&gt;
-&lt;h3 id="6.4.-여러개의-변수를-한번에-시각화-하기"&gt;6.4. 여러개의 변수를 한번에 시각화 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.4.-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%EB%B3%80%EC%88%98%EB%A5%BC-%ED%95%9C%EB%B2%88%EC%97%90-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;앞서 살펴보았던 주택 크기와 과세 평가 금액의 데이터셋을 좀 더 깊게 살펴보기 위해 우편번호 별로 그룹을 나누어 시각화합니다.&lt;/p&gt;
+&lt;h3 id="6.4.-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%EB%B3%80%EC%88%98%EB%A5%BC-%ED%95%9C%EB%B2%88%EC%97%90-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%95%98%EA%B8%B0"&gt;6.4. 여러개의 변수를 한번에 시각화 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#6.4.-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%EB%B3%80%EC%88%98%EB%A5%BC-%ED%95%9C%EB%B2%88%EC%97%90-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;앞서 살펴보았던 주택 크기와 과세 평가 금액의 데이터셋을 좀 더 깊게 살펴보기 위해 우편번호 별로 그룹을 나누어 시각화합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2419,8 +2420,8 @@ G          0.126196  0.614008    0.198396  0.061401  0.007187
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 시각화 결과를 통해 우편번호 98105 지역의 주택이 다른 곳들보다 과세 평가 금액이 높다는 것을 알 수 있습니다. 이런 추가 정보는 데이터셋을 이해하고 유용한 결론을 도출하는데 도움이 됩니다.&lt;/p&gt;
-&lt;h2 id="7.-마치며"&gt;7. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#7.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;탐색적 데이터 분석의 핵심은 바로 데이터를 들여다보는 것이 다른 어떤 것보다 중요하는 것입니다. 이렇게 먼저 데이터를 요약하고 시각화하는 것을 통해 가치 있는 결론을 얻는 것이 모든 데이터 과학 프로젝트의 성공에 지대한 영향을 줍니다.&lt;/p&gt;
+&lt;h2 id="7.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;7. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/EDA4PracticalStatistics/#7.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;탐색적 데이터 분석의 핵심은 바로 데이터를 들여다보는 것이 다른 어떤 것보다 중요하는 것입니다. 이렇게 먼저 데이터를 요약하고 시각화하는 것을 통해 가치 있는 결론을 얻는 것이 모든 데이터 과학 프로젝트의 성공에 지대한 영향을 줍니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>machine learning</category><category>Python</category><category>데이터 과학</category><category>통계</category><guid>https://partrita.github.io/posts/EDA4PracticalStatistics/</guid><pubDate>Tue, 19 Apr 2022 22:27:02 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>machine learning</category><category>Python</category><category>데이터 과학</category><category>통계</category><guid>https://partrita.github.io/posts/EDA4PracticalStatistics/</guid><pubDate>Tue, 19 Apr 2022 22:27:02 GMT</pubDate></item></channel></rss>

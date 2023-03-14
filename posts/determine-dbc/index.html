@@ -63,10 +63,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -127,41 +128,40 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.-DBC(dynamic-binding-capacity)란-무엇인가?">1. DBC(dynamic binding capacity)란 무엇인가?<a class="anchor-link" href="#1.-DBC(dynamic-binding-capacity)%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?">¶</a>
+<h2 id="1.-DBC(dynamic-binding-capacity)%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?">1. DBC(dynamic binding capacity)란 무엇인가?<a class="anchor-link" href="#1.-DBC(dynamic-binding-capacity)%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?">¶</a>
 </h2>
 <p>DBC는 단백질 정제에서 크로마토그래피 컬럼의 특정 실험 조건에 결합 할 수 있는 표적 단백질의 최대 양을 나타냅니다. 그러나 DBC는 유속이나 버퍼의 조성 및 단백질 시료에 따라 달라지기 때문에 실험 조건에 따라 달라 집니다.</p>
 <p>그렇기 때문에 단백질 정제에서 적합한 레진을 선택하기 위해서는 DBC에 대한 정보가 매우 중요합니다. 보통 레진의 제조사는 일반적인 단백질 정제 조건에서의 DBC 정보를 제공하고는 있지만 특정 단백질에 대한 최상의 레진 및 실험 조건을 찾기 위해 직접 DBC를 측정해야 할 일 이 생깁니다.</p>
-<h3 id="1.1.-breakthrough-곡선">1.1. breakthrough 곡선<a class="anchor-link" href="#1.1.-breakthrough-%EA%B3%A1%EC%84%A0">¶</a>
+<h3 id="1.1.-breakthrough-%EA%B3%A1%EC%84%A0">1.1. breakthrough 곡선<a class="anchor-link" href="#1.1.-breakthrough-%EA%B3%A1%EC%84%A0">¶</a>
 </h3>
 <p><img src="https://i.imgur.com/7tsSW8E.jpg" alt=""><sup>image from cytiva</sup></p>
 <p>breakthrough 곡선은 컬럼에 결합하지 못하고 흘러 나온 단백질의 양을 그래프로 표현한 것입니다. 그리고 전체의 10%의 단백질이 흘러나온 경우를 <strong>QB10</strong> 값이라 합니다.</p>
-<h3 id="1.2.-DBC-계산법">1.2. DBC 계산법<a class="anchor-link" href="#1.2.-DBC-%EA%B3%84%EC%82%B0%EB%B2%95">¶</a>
+<h3 id="1.2.-DBC-%EA%B3%84%EC%82%B0%EB%B2%95">1.2. DBC 계산법<a class="anchor-link" href="#1.2.-DBC-%EA%B3%84%EC%82%B0%EB%B2%95">¶</a>
 </h3>
 <p><img src="https://i.imgur.com/O0gVlb0.jpg" alt=""><sup>image from cytiva</sup></p>
 <p>위 그래프의 파란색 영역은 지연 볼륨(delay volume)으로 사용한 컬럼의 볼륨과 AKTA 시스템에 의해 발생합니다. 주황색 영역은 비 결합 단백질의 양을 나타냅니다. 파란색 곡선은 단백질 breakthrough를 나타내는 것으로 녹색 영역은 X% breakthrough에서 누출 된 단백질의 양을 나타냅니다. X% 에서의 총 DBC는 회색 영역으로 표시됩니다.</p>
 <p>위 그림을 예시로 Aoffset은 50 mAu이고 Amax는 1000 mAu 이라는 것을 알 수 있습니다.</p>
 <p>50 ml(Vx)에서 측정된 UV 흡광도는 126 mAu 이지만 아래의 계산을 통해 실제 값은 76 mAu라고 생각할 수 있습니다.</p>
-
-<pre><code>A- Aoffset = 126 – 50 = 76 mAu</code></pre>
+<pre><code>A- Aoffset = 126 – 50 = 76 mAu
+</code></pre>
 <p>그리고 최대 UV 흡광도도 마찬가지로 950 mAu가 될 것입니다.</p>
-
-<pre><code>Amax - Aoffset = 1000 – 50 = 950 mAu</code></pre>
+<pre><code>Amax - Aoffset = 1000 – 50 = 950 mAu
+</code></pre>
 <p>따라서 breakthrough의 비율은</p>
-
-<pre><code>(A - Aoffset) / (Amax - Aoffset) = Percentage of breakthrough</code></pre>
+<pre><code>(A - Aoffset) / (Amax - Aoffset) = Percentage of breakthrough
+</code></pre>
 <p>를 통해 계산합니다. 결과적으로 50ml에서 breakthrough의 비율은 8%가 됩니다.</p>
-
-<pre><code>% breakthrough = 76 / 950 = 8%</code></pre>
-<h2 id="2.-DBC-계산하기">2. DBC 계산하기<a class="anchor-link" href="#2.-DBC-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0">¶</a>
+<pre><code>% breakthrough = 76 / 950 = 8%
+</code></pre>
+<h2 id="2.-DBC-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0">2. DBC 계산하기<a class="anchor-link" href="#2.-DBC-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>실제 실험을 통해 얻은 데이터를 통해 DBC(QB10)을 계산해보도록 하겠습니다.</p>
-<h3 id="2.1.-실험-데이터-불러오기">2.1. 실험 데이터 불러오기<a class="anchor-link" href="#2.1.-%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+<h3 id="2.1.-%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">2.1. 실험 데이터 불러오기<a class="anchor-link" href="#2.1.-%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
 </h3>
 </div>
 </div>
@@ -199,8 +199,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -344,8 +343,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -378,8 +376,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -463,8 +460,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -477,7 +473,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.2.--전체-데이터-시각화">2.2.  전체 데이터 시각화<a class="anchor-link" href="#2.2.--%EC%A0%84%EC%B2%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
+<h3 id="2.2.--%EC%A0%84%EC%B2%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94">2.2.  전체 데이터 시각화<a class="anchor-link" href="#2.2.--%EC%A0%84%EC%B2%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
 </h3>
 <p>시각화를 통해 전체 데이터의 모습을 확인합니다.</p>
 
@@ -539,7 +535,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.3.-그래프-피팅하기">2.3. 그래프 피팅하기<a class="anchor-link" href="#2.3.-%EA%B7%B8%EB%9E%98%ED%94%84-%ED%94%BC%ED%8C%85%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="2.3.-%EA%B7%B8%EB%9E%98%ED%94%84-%ED%94%BC%ED%8C%85%ED%95%98%EA%B8%B0">2.3. 그래프 피팅하기<a class="anchor-link" href="#2.3.-%EA%B7%B8%EB%9E%98%ED%94%84-%ED%94%BC%ED%8C%85%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>시그모이드 함수 정의하고 <code>curvefit</code>으로 피팅하기</p>
 
@@ -578,7 +574,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2.3.1.-Residence-time-3분-DBC-계산">2.3.1. Residence time 3분 DBC 계산<a class="anchor-link" href="#2.3.1.-Residence-time-3%EB%B6%84-DBC-%EA%B3%84%EC%82%B0">¶</a>
+<h4 id="2.3.1.-Residence-time-3%EB%B6%84-DBC-%EA%B3%84%EC%82%B0">2.3.1. Residence time 3분 DBC 계산<a class="anchor-link" href="#2.3.1.-Residence-time-3%EB%B6%84-DBC-%EA%B3%84%EC%82%B0">¶</a>
 </h4>
 <p>피팅이 올바른지 그림으로 확인한다.</p>
 
@@ -594,7 +590,7 @@ navbar-dark bg-dark
 <span class="n">y_fit</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="o">*</span><span class="n">Run1</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Run1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Run1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'data'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'fit'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">'r_squared=</span><span class="si">{Run1[3]:.3f}</span><span class="s1">'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">'r_squared=</span><span class="si">{</span><span class="n">Run1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Breakthrough(%)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Volume(ml)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -644,9 +640,9 @@ navbar-dark bg-dark
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qb10_run1</span> <span class="o">=</span> <span class="n">inversefunc</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">Run1</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">y_values</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'10% breakthrough 일때 fraction(ml)의 값 </span><span class="si">{qb10_run1:.3f}</span><span class="s1"> ml 이고'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'10% breakthrough 일때 fraction(ml)의 값 </span><span class="si">{</span><span class="n">qb10_run1</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> ml 이고'</span><span class="p">)</span>
 <span class="n">dbc_run1</span> <span class="o">=</span> <span class="p">(</span><span class="n">qb10_run1</span><span class="o">-</span><span class="n">delayed_vol</span><span class="p">)</span><span class="o">*</span><span class="n">protein_conc</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'따라서 DBC(QB10)의 값은 </span><span class="si">{dbc_run1:.3f}</span><span class="s1"> mg/ml 이다.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'따라서 DBC(QB10)의 값은 </span><span class="si">{</span><span class="n">dbc_run1</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> mg/ml 이다.'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -678,7 +674,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2.3.1.-Residence-time-4분-DBC-계산">2.3.1. Residence time 4분 DBC 계산<a class="anchor-link" href="#2.3.1.-Residence-time-4%EB%B6%84-DBC-%EA%B3%84%EC%82%B0">¶</a>
+<h4 id="2.3.1.-Residence-time-4%EB%B6%84-DBC-%EA%B3%84%EC%82%B0">2.3.1. Residence time 4분 DBC 계산<a class="anchor-link" href="#2.3.1.-Residence-time-4%EB%B6%84-DBC-%EA%B3%84%EC%82%B0">¶</a>
 </h4>
 <p>앞서 사용한 방법과 동일하게 진행한다.</p>
 
@@ -694,7 +690,7 @@ navbar-dark bg-dark
 <span class="n">y_fit</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="o">*</span><span class="n">Run2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Run2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Run2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'data'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'fit'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">'r_squared=</span><span class="si">{Run2[3]:.3f}</span><span class="s1">'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">'r_squared=</span><span class="si">{</span><span class="n">Run2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Breakthrough(%)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Volume(ml)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -744,9 +740,9 @@ navbar-dark bg-dark
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qb10_run2</span> <span class="o">=</span> <span class="n">inversefunc</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">Run2</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">y_values</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'10% breakthrough 일때 fraction(ml)의 값 </span><span class="si">{qb10_run2:.3f}</span><span class="s1"> ml 이고'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'10% breakthrough 일때 fraction(ml)의 값 </span><span class="si">{</span><span class="n">qb10_run2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> ml 이고'</span><span class="p">)</span>
 <span class="n">dbc_run2</span> <span class="o">=</span> <span class="p">(</span><span class="n">qb10_run2</span><span class="o">-</span><span class="n">delayed_vol</span><span class="p">)</span><span class="o">*</span><span class="n">protein_conc</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'따라서 DBC(QB10)의 값은 </span><span class="si">{dbc_run2:.3f}</span><span class="s1"> mg/ml 이다.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'따라서 DBC(QB10)의 값은 </span><span class="si">{</span><span class="n">dbc_run2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> mg/ml 이다.'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -778,16 +774,15 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-결론">3. 결론<a class="anchor-link" href="#3.-%EA%B2%B0%EB%A1%A0">¶</a>
+<h2 id="3.-%EA%B2%B0%EB%A1%A0">3. 결론<a class="anchor-link" href="#3.-%EA%B2%B0%EB%A1%A0">¶</a>
 </h2>
 <p>Residence time은 평균적으로 단백질 시료가 정제 컬럼에 체류하는 시간의 값 입니다. 따라서 평균 체류 시간이 길수록 DBC는 증가할 것으로 예측할 수 있습니다. 위의 예시를 통해서도 3분일때는 72.902 mg/ml, 4분일때는 88.928 mg/ml 이라는 확인 할 수 있습니다.</p>
-<h3 id="3.1.-참고-자료">3.1. 참고 자료<a class="anchor-link" href="#3.1.-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C">¶</a>
+<h3 id="3.1.-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C">3.1. 참고 자료<a class="anchor-link" href="#3.1.-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C">¶</a>
 </h3>
 <ul>
 <li><a href="https://www.cytivalifesciences.com/en/us/news-center/how-to-determine-dynamic-binding-capacity-1000">GE Healthcare Life Sciences</a></li>
 <li>Pranav Gupte et. al, <a href="https://bioprocessintl.com/downstream-processing/chromatography/dynamic-binding-capacities-of-protein-a-resins-for-antibody-capture-a-comparative-evaluation/">Dynamic Binding Capacities of Protein A Resins for Antibody Capture: A Comparative Evaluation</a>, 2020, BioProcessInternational.</li>
 </ul>
-</div>
 </div>
 </div>
 </div>
@@ -818,7 +813,7 @@ navbar-dark bg-dark
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -829,9 +824,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Automl)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/automl.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>돌연변이 위치에 따른 항체 생산량 예측하기</title><link>https://partrita.github.io/posts/mljar-supervised/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Automl)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/automl.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>돌연변이 위치에 따른 항체 생산량 예측하기</title><link>https://partrita.github.io/posts/mljar-supervised/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-목적"&gt;0. 목적&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.-%EB%AA%A9%EC%A0%81"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/bcches/2018/bcches.2018.29.issue-2/acs.bioconjchem.7b00791/20180215/images/medium/bc-2017-007915_0008.gif" alt=""&gt;&lt;/p&gt;
+&lt;h2 id="0.-%EB%AA%A9%EC%A0%81"&gt;0. 목적&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.-%EB%AA%A9%EC%A0%81"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/bcches/2018/bcches.2018.29.issue-2/acs.bioconjchem.7b00791/20180215/images/medium/bc-2017-007915_0008.gif" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;mljar-supervised&lt;/code&gt;라는 AutoML 패키지를 사용해 돌연변이 위치에 따른 항체 발현량 예측하는 문제를 풀어보겠습니다.&lt;/p&gt;
-&lt;h3 id="0.1.-데이터-출처"&gt;0.1. 데이터 출처&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%9C%EC%B2%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;Ohri R, Bhakta S, Fourie-O'Donohue A, et al. High-Throughput Cysteine Scanning To Identify Stable Antibody Conjugation Sites for Maleimide- and Disulfide-Based Linkers. Bioconjug Chem. 2018;29(2):473-485. doi:10.1021/acs.bioconjchem.7b00791&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id="0.2.-데이터셋-설명"&gt;0.2. 데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터셋은 다음 9개의 열로 구성되어 있습니다.&lt;/p&gt;
+&lt;h3 id="0.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%9C%EC%B2%98"&gt;0.1. 데이터 출처&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%9C%EC%B2%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;Ohri R, Bhakta S, Fourie-O'Donohue A, et al. High-Throughput Cysteine Scanning To Identify Stable Antibody Conjugation Sites for Maleimide- and Disulfide-Based Linkers. Bioconjug Chem. 2018;29(2):473-485. doi:10.1021/acs.bioconjchem.7b00791
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="0.2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;0.2. 데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터셋은 다음 9개의 열로 구성되어 있습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Linker: maleimide linker(vc) 또는 pyridyl disulfide linker(PDS) 링커 구분&lt;/li&gt;
 &lt;li&gt;HC/LC: 항체의 light chain(LC) 혹은 heavy chain(HC) 표기&lt;/li&gt;
@@ -19,11 +19,11 @@
 &lt;li&gt;Stability: 랫(Rat)의 혈장에서 37도로 48시간 두었을때 변화한 DAR 비율&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="1.--mljar-supervised"&gt;1.  mljar-supervised&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#1.--mljar-supervised"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;mljar-supervised&lt;/code&gt;는 테이블 형식 데이터에 작동하는 자동화된 기계 학습 파이썬 패키지입니다. 데이터를 전처리하고, 기계 학습 모델을 구성하고, 하이퍼 매개 변수 조정을 수행하여 최상의 모델을 찾는 일반적인 방법을 추상화 해서 우리의 시간을 절약하도록 설계되었습니다😎.&lt;/p&gt;
-&lt;h3 id="1.1.-설치"&gt;1.1. 설치&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#1.1.-%EC%84%A4%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다음과 같이 &lt;code&gt;pip&lt;/code&gt; 명령어를 사용해 설치할 수 있습니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install mljar-supervised
+&lt;h3 id="1.1.-%EC%84%A4%EC%B9%98"&gt;1.1. 설치&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#1.1.-%EC%84%A4%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다음과 같이 &lt;code&gt;pip&lt;/code&gt; 명령어를 사용해 설치할 수 있습니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;mljar-supervised
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;더 자세한 설치방법은 다음의 링크 &lt;a href="https://github.com/mljar/mljar-supervised"&gt;https://github.com/mljar/mljar-supervised&lt;/a&gt; 를 확인하세요.&lt;/p&gt;
-&lt;h2 id="2.-분석하기"&gt;2. 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#2.-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 &lt;code&gt;pandas&lt;/code&gt;를 사용해 해당 데이터셋의 내용을 살펴봅니다.&lt;/p&gt;
+&lt;h2 id="2.-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;2. 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#2.-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 &lt;code&gt;pandas&lt;/code&gt;를 사용해 해당 데이터셋의 내용을 살펴봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -56,8 +56,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -209,8 +208,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -316,8 +314,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -409,8 +406,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -479,7 +475,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;데이터들이 대체로 두가지 분류로 나뉘는 것을 알 수 있습니다. 예를 들면 농도가 0인 것과 2인 것으로 분류할 수 있고 %Agg 도 0에 가깝거나 100에 가까운 그룹으로 나눌 수 있겠습니다. 이런 데이터셋은 바이어스(bias)가 있을 가능성이 커서 기계 학습하기에는 적합하지 않다고 볼 수 있습니다.&lt;/p&gt;
-&lt;h2 id="3.-mljar-supervised-사용하기"&gt;3. mljar-supervised 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.-mljar-supervised-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;데이터셋을 학습용과 테스트용으로 나눕니다. 그리고 각각의 크기를 출력합니다.&lt;/p&gt;
+&lt;h2 id="3.-mljar-supervised-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;3. mljar-supervised 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.-mljar-supervised-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;데이터셋을 학습용과 테스트용으로 나눕니다. 그리고 각각의 크기를 출력합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -527,7 +523,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.1-AutoML로-모델-학습"&gt;3.1 AutoML로 모델 학습&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.1-AutoML%EB%A1%9C-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="3.1-AutoML%EB%A1%9C-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5"&gt;3.1 AutoML로 모델 학습&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.1-AutoML%EB%A1%9C-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -595,7 +591,7 @@ AutoML fit time: 27.45 seconds
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;학습된 모델의 성능은 rmse으로 측정되었으며 가장 좋은 값은 &lt;code&gt;0.579981&lt;/code&gt; 입니다. &lt;code&gt;mljar-supervised&lt;/code&gt;은 결과를 &lt;code&gt;AutoML_XX&lt;/code&gt;라는 폴더로 저장해줍니다. 폴더 안을 각각의 모델에 대한 분석값이 들어 있습니다.&lt;/p&gt;
-&lt;h3 id="3.2.-예측-결과-시각화-하기"&gt;3.2. 예측 결과 시각화 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.2.-%EC%98%88%EC%B8%A1-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;x축은 실제 값으로 y축은 예측된 값인 scatter plot을 그려봅니다.&lt;/p&gt;
+&lt;h3 id="3.2.-%EC%98%88%EC%B8%A1-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%95%98%EA%B8%B0"&gt;3.2. 예측 결과 시각화 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.2.-%EC%98%88%EC%B8%A1-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;x축은 실제 값으로 y축은 예측된 값인 scatter plot을 그려봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -644,7 +640,7 @@ AutoML fit time: 27.45 seconds
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.3.-hyper-parameter-최적화하기"&gt;3.3. hyper parameter 최적화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.3.-hyper-parameter-%EC%B5%9C%EC%A0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;mljar-supervised&lt;/code&gt;에는 hyper parameter를 다음과 같이 손쉽게 최적화 할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="3.3.-hyper-parameter-%EC%B5%9C%EC%A0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;3.3. hyper parameter 최적화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.3.-hyper-parameter-%EC%B5%9C%EC%A0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;mljar-supervised&lt;/code&gt;에는 hyper parameter를 다음과 같이 손쉽게 최적화 할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -876,20 +872,20 @@ AutoML fit time: 210.63 seconds
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;큰 차이는 보이지 않지만 hyper parameter가 최적화된 모델에는 몇개의 데이터가 중심에서 벗어난 것 처럼 보입니다.&lt;/p&gt;
-&lt;h2 id="4.-마치며"&gt;4. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;그동안 기계 학습에서 적합한 모델을 선택하고 hyper parameter를 최적화하는 작업은 사용자가 할 일이라고 여겨져왔습니다. 그러나 AutoML이라는 개념이 등장하면서 이제 사용자들은 feature engineering에 집중할 수 있게 되었습니다. 그런 AutoML 도구 중에 &lt;code&gt;mljar-supervised&lt;/code&gt; 패키지는 쉬운 사용법과 상당히 깔끔한 보고서를 만들 수 있게 해줍니다. 앞으로는 feature engineering 마져 자동화하는 도구가 나올지도 모른다는 생각이 듭니다.&lt;/p&gt;
+&lt;h2 id="4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;4. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;그동안 기계 학습에서 적합한 모델을 선택하고 hyper parameter를 최적화하는 작업은 사용자가 할 일이라고 여겨져왔습니다. 그러나 AutoML이라는 개념이 등장하면서 이제 사용자들은 feature engineering에 집중할 수 있게 되었습니다. 그런 AutoML 도구 중에 &lt;code&gt;mljar-supervised&lt;/code&gt; 패키지는 쉬운 사용법과 상당히 깔끔한 보고서를 만들 수 있게 해줍니다. 앞으로는 feature engineering 마져 자동화하는 도구가 나올지도 모른다는 생각이 듭니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Antibody</category><category>Automl</category><category>Mutations</category><category>돌연변이</category><category>항체</category><guid>https://partrita.github.io/posts/mljar-supervised/</guid><pubDate>Wed, 25 Nov 2020 23:00:32 GMT</pubDate></item><item><title>H20 AutoML로 유방암 종양 판별하기</title><link>https://partrita.github.io/posts/H2O/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>Antibody</category><category>Automl</category><category>Mutations</category><category>돌연변이</category><category>항체</category><guid>https://partrita.github.io/posts/mljar-supervised/</guid><pubDate>Wed, 25 Nov 2020 23:00:32 GMT</pubDate></item><item><title>H20 AutoML로 유방암 종양 판별하기</title><link>https://partrita.github.io/posts/H2O/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="내용"&gt;&lt;a id="0"&gt;내용&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#%EB%82%B4%EC%9A%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#1"&gt;0. 들어가며&lt;/a&gt;  &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#2"&gt;1. 라이브러리 불러오기&lt;/a&gt;  &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#3"&gt;2. 데이터 불러오기&lt;/a&gt;  &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#4"&gt;3. 데이터 확인하기&lt;/a&gt;  &lt;/li&gt;
+&lt;h2 id="%EB%82%B4%EC%9A%A9"&gt;&lt;a id="0"&gt;내용&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#%EB%82%B4%EC%9A%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#1"&gt;0. 들어가며&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#2"&gt;1. 라이브러리 불러오기&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#3"&gt;2. 데이터 불러오기&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#4"&gt;3. 데이터 확인하기&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#5"&gt;4. 데이터 탐색하기&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#6"&gt;5. 예측 모델 만들기&lt;/a&gt;    &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#6"&gt;5. 예측 모델 만들기&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://partrita.github.io/posts/H2O/#8"&gt;6. 참고&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -899,67 +895,68 @@ AutoML fit time: 210.63 seconds
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="-0.-들어가며"&gt;&lt;a id="1"&gt; 0. 들어가며&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-0.-%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="데이터셋-설명"&gt;데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;여기서 사용한 데이터셋은 &lt;strong&gt;위스콘신 유방암 진단 데이터&lt;/strong&gt; 입니다.&lt;sup&gt;&lt;a href="https://partrita.github.io/posts/H2O/#8"&gt;[1]&lt;/a&gt;&lt;/sup&gt; 이 데이터셋에는 30개의 특성(features)값이 들어있고 유방암의 진단결과가 포함되어 있습니다. 총 데이터의 수는 596개이며 위스콘신 대학교에서 제공한 유방암 진단결과 데이터 입니다. 데이터셋에 포함된 특성에 대한 간략한 설명을 아래 표에 나타내었습니다.&lt;/p&gt;
+&lt;h2 id="-0.-%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0"&gt;&lt;a id="1"&gt; 0. 들어가며&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-0.-%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;여기서 사용한 데이터셋은 &lt;strong&gt;위스콘신 유방암 진단 데이터&lt;/strong&gt; 입니다.&lt;sup&gt;&lt;a href="https://partrita.github.io/posts/H2O/#8"&gt;[1]&lt;/a&gt;&lt;/sup&gt; 이 데이터셋에는 30개의 특성(features)값이 들어있고 유방암의 진단결과가 포함되어 있습니다. 총 데이터의 수는 596개이며 위스콘신 대학교에서 제공한 유방암 진단결과 데이터 입니다. 데이터셋에 포함된 특성에 대한 간략한 설명을 아래 표에 나타내었습니다.&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;
-&lt;th&gt;특성&lt;/th&gt;
-&lt;th&gt;설명&lt;/th&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+  &lt;th&gt;특성&lt;/th&gt;
+  &lt;th&gt;설명&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;id&lt;/td&gt;
-&lt;td&gt;환자 식별 번호&lt;/td&gt;
+  &lt;td&gt;id&lt;/td&gt;
+  &lt;td&gt;환자 식별 번호&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;dignosis&lt;/td&gt;
-&lt;td&gt;유방암 종양(M=악성, B=양성)&lt;/td&gt;
+  &lt;td&gt;dignosis&lt;/td&gt;
+  &lt;td&gt;유방암 종양(M=악성, B=양성)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;radius&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;세포의 크기&lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;radius&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;세포의 크기&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;texture&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;질감(흑백 처리했을때의 표준편차 값으로 계산) &lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;texture&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;질감(흑백 처리했을때의 표준편차 값으로 계산)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;perimeter&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;둘레&lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;perimeter&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;둘레&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;area&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;면적&lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;area&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;면적&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;smoothness&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;매끄러움(반경의 국소적 변화 측정)&lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;smoothness&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;매끄러움(반경의 국소적 변화 측정)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;compactness&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;작은 정도($perimeter^2/area-1$로 계산)&lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;compactness&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;작은 정도($perimeter^2/area-1$로 계산)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;concavity&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;오목함(윤곽의 오목한 부분의 정도)&lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;concavity&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;오목함(윤곽의 오목한 부분의 정도)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;concave points&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;오목한곳의 수&lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;concave points&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;오목한곳의 수&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;symmetry&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;대칭성&lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;symmetry&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;대칭성&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;fractal dimension&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;프랙탈 차원($coastline approximation-1$로 계산)  &lt;/td&gt;
+  &lt;td&gt;&lt;strong&gt;fractal dimension&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;프랙탈 차원($coastline approximation-1$로 계산)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;각각의 측정값들은 &lt;code&gt;_mean&lt;/code&gt;(평균값), &lt;code&gt;_SE&lt;/code&gt;(표준오차), &lt;code&gt;_worst&lt;/code&gt;(제일 큰값 3개의 평균)으로 나타내어 총 30개의 특성값을 갖는다.&lt;/p&gt;
 &lt;h3 id="H2O"&gt;H2O&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#H2O"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;H2O 는 자바(Java) 기반의 소프트웨어로 데이터 모델링에 사용된다. H2O의 첫번째 목적은 병렬 컴퓨팅을 통해 많은 CPU와 메모리를 프로세스 하는 것이다. 자바 기반이지만 파이썬과 &lt;code&gt;R&lt;/code&gt; 인터페이스를 제공합니다&lt;sup&gt;&lt;a href="https://partrita.github.io/posts/H2O/#8"&gt;[2]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;h3 id="분석하기"&gt;분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 유방암 진단에 대하여 이해하기 위해 데이터셋의 특성값을 분석해봅니다. 그런 다음 두 가지 알고리즘을 사용하여 모델을 생성하고 모델을 사용하여 유방암을 예측해봅니다.&lt;/p&gt;
+&lt;h3 id="%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 유방암 진단에 대하여 이해하기 위해 데이터셋의 특성값을 분석해봅니다. 그런 다음 두 가지 알고리즘을 사용하여 모델을 생성하고 모델을 사용하여 유방암을 예측해봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -967,7 +964,7 @@ AutoML fit time: 210.63 seconds
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="-1.-라이브러리-불러오기"&gt;&lt;a id="2"&gt; 1. 라이브러리 불러오기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-1.-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분석에 사용할 라이브러리를 불러옵니다.&lt;/p&gt;
+&lt;h2 id="-1.-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;&lt;a id="2"&gt; 1. 라이브러리 불러오기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-1.-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분석에 사용할 라이브러리를 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -998,7 +995,7 @@ AutoML fit time: 210.63 seconds
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;데이터를 불러오는데 H2O를 사용합니다. 먼저 H2O를 초기화해야 합니다.&lt;/p&gt;
-&lt;h3 id="1.1.-H2O-시작하기"&gt;1.1. H2O 시작하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#1.1.-H2O-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;H2O는 먼저 기존 인스턴스에 연결을 시도합니다. 그리고 사용 가능한 것이 없다면 새로 인스턴스를 만듭니다. 새 인스턴스에 대한 정보가 콘솔창에 출력되면 H2O를 사용할 준비는 모두 된 것입니다.&lt;/p&gt;
+&lt;h3 id="1.1.-H2O-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0"&gt;1.1. H2O 시작하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#1.1.-H2O-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;H2O는 먼저 기존 인스턴스에 연결을 시도합니다. 그리고 사용 가능한 것이 없다면 새로 인스턴스를 만듭니다. 새 인스턴스에 대한 정보가 콘솔창에 출력되면 H2O를 사용할 준비는 모두 된 것입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1044,8 +1041,7 @@ Connecting to H2O server at http://127.0.0.1:54321 ... successful.
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;div style="overflow:auto"&gt;&lt;table style="width:50%"&gt;&lt;tr&gt;&lt;td&gt;H2O cluster uptime:&lt;/td&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;div style="overflow:auto"&gt;&lt;table style="width:50%"&gt;&lt;tr&gt;&lt;td&gt;H2O cluster uptime:&lt;/td&gt;
 &lt;td&gt;02 secs&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;H2O cluster timezone:&lt;/td&gt;
 &lt;td&gt;Etc/UTC&lt;/td&gt;&lt;/tr&gt;
@@ -1076,8 +1072,7 @@ Connecting to H2O server at http://127.0.0.1:54321 ... successful.
 &lt;tr&gt;&lt;td&gt;H2O API Extensions:&lt;/td&gt;
 &lt;td&gt;Amazon S3, XGBoost, Algos, AutoML, Core V3, TargetEncoder, Core V4&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;Python version:&lt;/td&gt;
-&lt;td&gt;3.6.6 final&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;
+&lt;td&gt;3.6.6 final&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1096,7 +1091,7 @@ Connecting to H2O server at http://127.0.0.1:54321 ... successful.
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="-2.-데이터-불러오기"&gt;&lt;a id="3"&gt; 2. 데이터 불러오기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이제 아래 코드를 사용해 H2O를 사용하여 데이터를 가져옵니다.&lt;/p&gt;
+&lt;h2 id="-2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;&lt;a id="3"&gt; 2. 데이터 불러오기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이제 아래 코드를 사용해 H2O를 사용하여 데이터를 가져옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1135,8 +1130,9 @@ Connecting to H2O server at http://127.0.0.1:54321 ... successful.
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="-3.-데이터-확인하기"&gt;&lt;a id="4"&gt; 3. 데이터 확인하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;H2O의 &lt;code&gt;describe()&lt;/code&gt; 기능을 사용해 불러온 데이터셋을 확인합니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;&lt;code&gt;describe()&lt;/code&gt; 함수를 호출하는 것은 &lt;code&gt;summary()&lt;/code&gt; 를 호출하는 것과 동일한 기능을 합니다.&lt;/p&gt;
+&lt;h2 id="-3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0"&gt;&lt;a id="4"&gt; 3. 데이터 확인하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;H2O의 &lt;code&gt;describe()&lt;/code&gt; 기능을 사용해 불러온 데이터셋을 확인합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;describe()&lt;/code&gt; 함수를 호출하는 것은 &lt;code&gt;summary()&lt;/code&gt; 를 호출하는 것과 동일한 기능을 합니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;
@@ -1178,8 +1174,7 @@ Cols:33
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;&lt;th&gt;       &lt;/th&gt;&lt;th&gt;id                &lt;/th&gt;&lt;th&gt;diagnosis  &lt;/th&gt;&lt;th&gt;radius_mean       &lt;/th&gt;&lt;th&gt;texture_mean      &lt;/th&gt;&lt;th&gt;perimeter_mean   &lt;/th&gt;&lt;th&gt;area_mean        &lt;/th&gt;&lt;th&gt;smoothness_mean     &lt;/th&gt;&lt;th&gt;compactness_mean    &lt;/th&gt;&lt;th&gt;concavity_mean     &lt;/th&gt;&lt;th&gt;concave points_mean  &lt;/th&gt;&lt;th&gt;symmetry_mean       &lt;/th&gt;&lt;th&gt;fractal_dimension_mean  &lt;/th&gt;&lt;th&gt;radius_se          &lt;/th&gt;&lt;th&gt;texture_se        &lt;/th&gt;&lt;th&gt;perimeter_se      &lt;/th&gt;&lt;th&gt;area_se          &lt;/th&gt;&lt;th&gt;smoothness_se       &lt;/th&gt;&lt;th&gt;compactness_se      &lt;/th&gt;&lt;th&gt;concavity_se        &lt;/th&gt;&lt;th&gt;concave points_se   &lt;/th&gt;&lt;th&gt;symmetry_se         &lt;/th&gt;&lt;th&gt;fractal_dimension_se  &lt;/th&gt;&lt;th&gt;radius_worst      &lt;/th&gt;&lt;th&gt;texture_worst     &lt;/th&gt;&lt;th&gt;perimeter_worst   &lt;/th&gt;&lt;th&gt;area_worst       &lt;/th&gt;&lt;th&gt;smoothness_worst    &lt;/th&gt;&lt;th&gt;compactness_worst  &lt;/th&gt;&lt;th&gt;concavity_worst    &lt;/th&gt;&lt;th&gt;concave points_worst  &lt;/th&gt;&lt;th&gt;symmetry_worst     &lt;/th&gt;&lt;th&gt;fractal_dimension_worst  &lt;/th&gt;&lt;th&gt;C33  &lt;/th&gt;&lt;/tr&gt;
 &lt;/thead&gt;
@@ -1202,8 +1197,7 @@ Cols:33
 &lt;tr&gt;&lt;td&gt;8      &lt;/td&gt;&lt;td&gt;844981.0          &lt;/td&gt;&lt;td&gt;M          &lt;/td&gt;&lt;td&gt;13.0              &lt;/td&gt;&lt;td&gt;21.82             &lt;/td&gt;&lt;td&gt;87.5             &lt;/td&gt;&lt;td&gt;519.8            &lt;/td&gt;&lt;td&gt;0.1273              &lt;/td&gt;&lt;td&gt;0.1932              &lt;/td&gt;&lt;td&gt;0.1859             &lt;/td&gt;&lt;td&gt;0.09353              &lt;/td&gt;&lt;td&gt;0.235               &lt;/td&gt;&lt;td&gt;0.07389                 &lt;/td&gt;&lt;td&gt;0.3063             &lt;/td&gt;&lt;td&gt;1.002             &lt;/td&gt;&lt;td&gt;2.406             &lt;/td&gt;&lt;td&gt;24.32            &lt;/td&gt;&lt;td&gt;0.005731            &lt;/td&gt;&lt;td&gt;0.03502             &lt;/td&gt;&lt;td&gt;0.03553             &lt;/td&gt;&lt;td&gt;0.01226             &lt;/td&gt;&lt;td&gt;0.02143             &lt;/td&gt;&lt;td&gt;0.003749              &lt;/td&gt;&lt;td&gt;15.49             &lt;/td&gt;&lt;td&gt;30.73             &lt;/td&gt;&lt;td&gt;106.2             &lt;/td&gt;&lt;td&gt;739.3            &lt;/td&gt;&lt;td&gt;0.1703              &lt;/td&gt;&lt;td&gt;0.5401             &lt;/td&gt;&lt;td&gt;0.539              &lt;/td&gt;&lt;td&gt;0.206                 &lt;/td&gt;&lt;td&gt;0.4378             &lt;/td&gt;&lt;td&gt;0.1072                   &lt;/td&gt;&lt;td&gt;nan  &lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;9      &lt;/td&gt;&lt;td&gt;84501001.0        &lt;/td&gt;&lt;td&gt;M          &lt;/td&gt;&lt;td&gt;12.46             &lt;/td&gt;&lt;td&gt;24.04             &lt;/td&gt;&lt;td&gt;83.97            &lt;/td&gt;&lt;td&gt;475.9            &lt;/td&gt;&lt;td&gt;0.1186              &lt;/td&gt;&lt;td&gt;0.2396              &lt;/td&gt;&lt;td&gt;0.2273             &lt;/td&gt;&lt;td&gt;0.08543              &lt;/td&gt;&lt;td&gt;0.203               &lt;/td&gt;&lt;td&gt;0.08243                 &lt;/td&gt;&lt;td&gt;0.2976             &lt;/td&gt;&lt;td&gt;1.599             &lt;/td&gt;&lt;td&gt;2.039             &lt;/td&gt;&lt;td&gt;23.94            &lt;/td&gt;&lt;td&gt;0.007149            &lt;/td&gt;&lt;td&gt;0.07217             &lt;/td&gt;&lt;td&gt;0.07743             &lt;/td&gt;&lt;td&gt;0.01432             &lt;/td&gt;&lt;td&gt;0.01789             &lt;/td&gt;&lt;td&gt;0.01008               &lt;/td&gt;&lt;td&gt;15.09             &lt;/td&gt;&lt;td&gt;40.68             &lt;/td&gt;&lt;td&gt;97.65             &lt;/td&gt;&lt;td&gt;711.4            &lt;/td&gt;&lt;td&gt;0.1853              &lt;/td&gt;&lt;td&gt;1.058              &lt;/td&gt;&lt;td&gt;1.105              &lt;/td&gt;&lt;td&gt;0.221                 &lt;/td&gt;&lt;td&gt;0.4366             &lt;/td&gt;&lt;td&gt;0.2075                   &lt;/td&gt;&lt;td&gt;nan  &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
+&lt;/table&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1223,7 +1217,7 @@ Cols:33
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="4.-데이터-탐색하기"&gt;&lt;a id="5"&gt;4. 데이터 탐색하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#4.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%90%EC%83%89%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;H2O에서 제공하는 기능을 사용해 데이터를 탐색해봅니다.&lt;/p&gt;
+&lt;h2 id="4.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%90%EC%83%89%ED%95%98%EA%B8%B0"&gt;&lt;a id="5"&gt;4. 데이터 탐색하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#4.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%90%EC%83%89%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;H2O에서 제공하는 기능을 사용해 데이터를 탐색해봅니다.&lt;/p&gt;
 &lt;p&gt;종양의 진단에 관한 &lt;strong&gt;diagnosis&lt;/strong&gt; 값으로 그룹을 만들어 양성과 악성 종양의 데이터 수를 확인해 봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1252,8 +1246,7 @@ Cols:33
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;&lt;th&gt;diagnosis  &lt;/th&gt;&lt;th style="text-align: right;"&gt;  nrow&lt;/th&gt;&lt;/tr&gt;
 &lt;/thead&gt;
@@ -1261,8 +1254,7 @@ Cols:33
 &lt;tr&gt;&lt;td&gt;B          &lt;/td&gt;&lt;td style="text-align: right;"&gt;   357&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;M          &lt;/td&gt;&lt;td style="text-align: right;"&gt;   212&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
+&lt;/table&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1362,12 +1354,12 @@ Cols:33
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 그림을 통해 우리는 양성과 악성 종양을 구분할 수 있는 특성을 알 수 있습니다. 아래에는 그런 특성들의 목록입니다.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;radius_mean  &lt;/li&gt;
-&lt;li&gt;texture_mean &lt;/li&gt;
+&lt;li&gt;radius_mean&lt;/li&gt;
+&lt;li&gt;texture_mean&lt;/li&gt;
 &lt;li&gt;perimeter_mean&lt;/li&gt;
 &lt;li&gt;area_mean&lt;/li&gt;
-&lt;li&gt;radius_worst  &lt;/li&gt;
-&lt;li&gt;texture_worst &lt;/li&gt;
+&lt;li&gt;radius_worst&lt;/li&gt;
+&lt;li&gt;texture_worst&lt;/li&gt;
 &lt;li&gt;perimeter_worst&lt;/li&gt;
 &lt;li&gt;area_worst&lt;/li&gt;
 &lt;/ul&gt;
@@ -1376,7 +1368,7 @@ Cols:33
 &lt;li&gt;compactness_se&lt;/li&gt;
 &lt;li&gt;concavity_se&lt;/li&gt;
 &lt;li&gt;concave_points_se&lt;/li&gt;
-&lt;li&gt;simmetry_se &lt;/li&gt;
+&lt;li&gt;simmetry_se&lt;/li&gt;
 &lt;li&gt;smoothness_se&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;이제 특성간의 상관관계(correlation) Heat map을 그려봅니다.&lt;/p&gt;
@@ -1429,9 +1421,9 @@ Cols:33
 &lt;p&gt;아래 일부 특성은 서로 밀접하게 관련되어 있습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;radius_mean 과 perimeter_mean&lt;/li&gt;
-&lt;li&gt;radius_mean 과 texture_mean &lt;/li&gt;
+&lt;li&gt;radius_mean 과 texture_mean&lt;/li&gt;
 &lt;li&gt;perimeter_worst 와 radius_worst&lt;/li&gt;
-&lt;li&gt;perimeter_worst 와 area_worst &lt;/li&gt;
+&lt;li&gt;perimeter_worst 와 area_worst&lt;/li&gt;
 &lt;li&gt;area_se 와 perimeter_se&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1441,7 +1433,7 @@ Cols:33
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="-5.-예측-모델만들기"&gt;&lt;a id="6"&gt; 5. 예측 모델만들기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.-%EC%98%88%EC%B8%A1-%EB%AA%A8%EB%8D%B8%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="-5.1.-데이터-나누기"&gt;&lt;a id="61"&gt; 5.1. 데이터 나누기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%98%EB%88%84%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;학습, 검증, 테스트 데이터셋으로 데이터를 분할합니다. 각각 60%, 20%, 20% 로 분할합니다.&lt;/p&gt;
+&lt;h2 id="-5.-%EC%98%88%EC%B8%A1-%EB%AA%A8%EB%8D%B8%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;&lt;a id="6"&gt; 5. 예측 모델만들기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.-%EC%98%88%EC%B8%A1-%EB%AA%A8%EB%8D%B8%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="-5.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%98%EB%88%84%EA%B8%B0"&gt;&lt;a id="61"&gt; 5.1. 데이터 나누기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%98%EB%88%84%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;학습, 검증, 테스트 데이터셋으로 데이터를 분할합니다. 각각 60%, 20%, 20% 로 분할합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1485,7 +1477,7 @@ Cols:33
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="-5.2.-GBM(Gradient-Boosting-Algorithm)-모델로-학습하기"&gt;&lt;a id="62"&gt; 5.2. GBM(Gradient Boosting Algorithm) 모델로 학습하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.2.-GBM(Gradient-Boosting-Algorithm)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;GBM 모델을 사용해 기계 학습을 합니다.&lt;/p&gt;
+&lt;h3 id="-5.2.-GBM(Gradient-Boosting-Algorithm)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0"&gt;&lt;a id="62"&gt; 5.2. GBM(Gradient Boosting Algorithm) 모델로 학습하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.2.-GBM(Gradient-Boosting-Algorithm)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;GBM 모델을 사용해 기계 학습을 합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1526,7 +1518,7 @@ Cols:33
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="-5.3.-모델-평가하기"&gt;&lt;a id="63"&gt; 5.3. 모델 평가하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.3.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;훈련 된 모델을 검사 해봅니다. 먼저 모델에 대한 요약을 출력합니다.&lt;/p&gt;
+&lt;h3 id="-5.3.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;&lt;a id="63"&gt; 5.3. 모델 평가하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.3.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;훈련 된 모델을 검사 해봅니다. 먼저 모델에 대한 요약을 출력합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1564,8 +1556,7 @@ Model Summary: &lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1611,8 +1602,7 @@ Model Summary: &lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1686,8 +1676,7 @@ Confusion Matrix (Act/Pred) for max f1 @ threshold = 0.5851063290701174: &lt;/pr
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1739,8 +1728,7 @@ Confusion Matrix (Act/Pred) for max f1 @ threshold = 0.5851063290701174: &lt;/pr
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1762,8 +1750,7 @@ Maximum Metrics: Maximum metrics at their respective thresholds
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1916,8 +1903,7 @@ Maximum Metrics: Maximum metrics at their respective thresholds
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1939,8 +1925,7 @@ Gains/Lift Table: Avg response rate: 31.45 %, avg score: 31.14 %
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -2215,8 +2200,7 @@ Gains/Lift Table: Avg response rate: 31.45 %, avg score: 31.14 %
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -2284,7 +2268,7 @@ Gains/Lift Table: Avg response rate: 31.45 %, avg score: 31.14 %
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 그림을 통해 가장 중요한 변수는 &lt;code&gt;perimeter_worst&lt;/code&gt;, &lt;code&gt;concave_points_mean&lt;/code&gt;, &lt;code&gt;radius_worst&lt;/code&gt;, &lt;code&gt;concave_points_worst&lt;/code&gt;라는 것을 알 수 있습니다.&lt;/p&gt;
 &lt;p&gt;이제 모델을 사용해 예측을 해봅니다.&lt;/p&gt;
-&lt;h3 id="-5.4.-예측하기"&gt;&lt;a id="64"&gt; 5.4. 예측하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.4.-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="-5.4.-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;&lt;a id="64"&gt; 5.4. 예측하기&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-5.4.-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2334,9 +2318,9 @@ Prediction accuracy:  1.0
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="-6.참고"&gt;&lt;a id="8"&gt; 6.참고&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-6.%EC%B0%B8%EA%B3%A0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;[1] Breast Cancer Wisconsin (Diagnostic) Data Set, &lt;a href="https://www.kaggle.com/uciml/breast-cancer-wisconsin-data"&gt;https://www.kaggle.com/uciml/breast-cancer-wisconsin-data&lt;/a&gt;&lt;br&gt;
+&lt;h2 id="-6.%EC%B0%B8%EA%B3%A0"&gt;&lt;a id="8"&gt; 6.참고&lt;/a&gt;&lt;a class="anchor-link" href="https://partrita.github.io/posts/H2O/#-6.%EC%B0%B8%EA%B3%A0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;[1] Breast Cancer Wisconsin (Diagnostic) Data Set, &lt;a href="https://www.kaggle.com/uciml/breast-cancer-wisconsin-data"&gt;https://www.kaggle.com/uciml/breast-cancer-wisconsin-data&lt;/a&gt;&lt;br&gt;
 [2] SRK, Getting started with H2O,  &lt;a href="https://www.kaggle.com/sudalairajkumar/getting-started-with-h2o"&gt;https://www.kaggle.com/sudalairajkumar/getting-started-with-h2o&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Automl</category><category>breast cancer</category><category>H20</category><category>머신러닝</category><category>유방암</category><guid>https://partrita.github.io/posts/H2O/</guid><pubDate>Sat, 05 Oct 2019 06:29:39 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>Automl</category><category>breast cancer</category><category>H20</category><category>머신러닝</category><category>유방암</category><guid>https://partrita.github.io/posts/H2O/</guid><pubDate>Sat, 05 Oct 2019 06:29:39 GMT</pubDate></item></channel></rss>

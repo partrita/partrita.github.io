@@ -61,10 +61,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -125,9 +126,8 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>파이썬을 사용하여 위키피디아 검색어를 입력하고 나온 결과 페이지의 글자수를 세어주는 스크립트 입니다.<a href="http://jpub.tistory.com/420">데이터 과학자, 무엇을 배울 것인가</a>라는 책에서 코드를 가져와서 조금 수정 하였습니다.</p>
-<pre class="code literal-block"><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+    <p>파이썬을 사용하여 위키피디아 검색어를 입력하고 나온 결과 페이지의 글자수를 세어주는 스크립트 입니다.<a href="http://jpub.tistory.com/420">데이터 과학자, 무엇을 배울 것인가</a>라는 책에서 코드를 가져와서 조금 수정 하였습니다.</p>
+<div class="code"><pre class="code literal-block"><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># 파이썬2.7 버전 기준으로 작성되어있음</span>
 <span class="kn">import</span> <span class="nn">urllib2</span>
 
@@ -165,18 +165,16 @@ navbar-dark bg-dark
 <span class="n">ord_result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">ord_result</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'쿼리：'</span> <span class="o">+</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">', 문자 수：'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-</pre>
-
+</pre></div>
 
 <h2>실행 결과</h2>
 <p>실행하면 아래와 같이 각각의 쿼리와 문자수를 확인할 수 있습니다.</p>
-<pre class="code literal-block"><span></span><span class="err">쿼리：어류,문자 수：286300</span>
-<span class="err">쿼리：포유류,문자 수：94588</span>
-<span class="err">쿼리：양서류,문자 수：77480</span>
-<span class="err">쿼리：파충류,문자 수：73183</span>
-<span class="err">쿼리：조류,문자 수：21144</span>
-</pre>
-</div>
+<div class="code"><pre class="code literal-block">쿼리：어류,문자 수：286300
+쿼리：포유류,문자 수：94588
+쿼리：양서류,문자 수：77480
+쿼리：파충류,문자 수：73183
+쿼리：조류,문자 수：21144
+</pre></div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/python/" rel="tag">Python</a></li>
@@ -190,7 +188,7 @@ navbar-dark bg-dark
                 <a href="../notebook-fancontrol/" rel="next" title="노트북 팬 소음 줄이기">Next post</a>
             </li>
         </ul></nav></aside></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -201,9 +199,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

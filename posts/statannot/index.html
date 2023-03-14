@@ -49,10 +49,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:title" content="통계 분석 주석넣기">
 <meta property="og:url" content="https://partrita.github.io/posts/statannot/">
 <meta property="og:description" content="0. statannot 소개¶statannot은 파이썬 시각화 라이브러리 seaborn로 그린 박스플롯에 통계분석에 대한 주석을 자동으로 달아주는 파이썬 패키지입니다. 자세한 것은 공식 홈페이지를 참고하세요.
+
 막대그래프에 주석을 추가하는 것도 가능하지만 아직 완전하지 않습니다.
 
 1. statannot 특징¶
-scipy.stats 메소드를 사용한 통계분석:">
+scipy.stats 메소드를 사용한 통계분석">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-03-03T18:21:32+09:00">
 <meta property="article:tag" content="seaborn">
@@ -65,10 +66,11 @@ scipy.stats 메소드를 사용한 통계분석:">
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -129,19 +131,18 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="0.-statannot-소개">0. statannot 소개<a class="anchor-link" href="#0.-statannot-%EC%86%8C%EA%B0%9C">¶</a>
+<h2 id="0.-statannot-%EC%86%8C%EA%B0%9C">0. statannot 소개<a class="anchor-link" href="#0.-statannot-%EC%86%8C%EA%B0%9C">¶</a>
 </h2>
 <p><code>statannot</code>은 파이썬 시각화 라이브러리 <a href="https://seaborn.pydata.org/">seaborn</a>로 그린 박스플롯에 통계분석에 대한 주석을 자동으로 달아주는 파이썬 패키지입니다. 자세한 것은 공식 <a href="https://github.com/webermarcolivier/statannot">홈페이지</a>를 참고하세요.</p>
 <blockquote>
 <p>막대그래프에 주석을 추가하는 것도 가능하지만 아직 완전하지 않습니다.</p>
 </blockquote>
-<h2 id="1.-statannot-특징">1. statannot 특징<a class="anchor-link" href="#1.-statannot-%ED%8A%B9%EC%A7%95">¶</a>
+<h2 id="1.-statannot-%ED%8A%B9%EC%A7%95">1. statannot 특징<a class="anchor-link" href="#1.-statannot-%ED%8A%B9%EC%A7%95">¶</a>
 </h2>
 <ul>
 <li>
@@ -158,23 +159,24 @@ navbar-dark bg-dark
 <li>통계분석의 주석을 별표(*), p-value 등으로 사용자가 지정할 수 있음</li>
 <li>선택적으로 사용자 정의 p- value를 입력값으로 제공(이 경우 통계 분석은 수행되지 않음).</li>
 </ul>
-<h2 id="2.-statannot-의존성">2. statannot 의존성<a class="anchor-link" href="#2.-statannot-%EC%9D%98%EC%A1%B4%EC%84%B1">¶</a>
+<h2 id="2.-statannot-%EC%9D%98%EC%A1%B4%EC%84%B1">2. statannot 의존성<a class="anchor-link" href="#2.-statannot-%EC%9D%98%EC%A1%B4%EC%84%B1">¶</a>
 </h2>
 <pre><code>    Python &gt;= 3.5
     numpy &gt;= 1.12.1
     seaborn &gt;= 0.8.1
     matplotlib &gt;= 2.2.2
     pandas &gt;= 0.23.0
-    scipy &gt;= 1.1.0</code></pre>
-<h2 id="3.-statannot-설치">3. statannot 설치<a class="anchor-link" href="#3.-statannot-%EC%84%A4%EC%B9%98">¶</a>
+    scipy &gt;= 1.1.0
+</code></pre>
+<h2 id="3.-statannot-%EC%84%A4%EC%B9%98">3. statannot 설치<a class="anchor-link" href="#3.-statannot-%EC%84%A4%EC%B9%98">¶</a>
 </h2>
 <p>PyPI를 통해 설치:</p>
-<div class="highlight"><pre><span></span>pip install statannot
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>statannot
 </pre></div>
 <p>개발중인 최신 버전은 다음 명령어로 설치:</p>
-<div class="highlight"><pre><span></span>pip install git+https://github.com/webermarcolivier/statannot.git
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/webermarcolivier/statannot.git
 </pre></div>
-<h2 id="4.-사용-예시">4. 사용 예시<a class="anchor-link" href="#4.-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%8B%9C">¶</a>
+<h2 id="4.-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%8B%9C">4. 사용 예시<a class="anchor-link" href="#4.-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%8B%9C">¶</a>
 </h2>
 <p>먼저 필요한 라이브러리를 불러옵니다.</p>
 
@@ -208,7 +210,7 @@ navbar-dark bg-dark
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="4.1-Boxplot-non-hue">4.1 Boxplot non-hue<a class="anchor-link" href="#4.1-Boxplot-non-hue">¶</a>
 </h3>
-<h4 id="4.1.1-다중-비교-교정">4.1.1 다중 비교 교정<a class="anchor-link" href="#4.1.1-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95">¶</a>
+<h4 id="4.1.1-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95">4.1.1 다중 비교 교정<a class="anchor-link" href="#4.1.1-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95">¶</a>
 </h4>
 <p>기본적으로 본페로니 교정이 적용됩니다.</p>
 
@@ -281,7 +283,7 @@ Sun v.s. Fri: Mann-Whitney-Wilcoxon test two-sided with Bonferroni correction, P
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="4.1.2-통계-분석-결과">4.1.2 통계 분석 결과<a class="anchor-link" href="#4.1.2-%ED%86%B5%EA%B3%84-%EB%B6%84%EC%84%9D-%EA%B2%B0%EA%B3%BC">¶</a>
+<h4 id="4.1.2-%ED%86%B5%EA%B3%84-%EB%B6%84%EC%84%9D-%EA%B2%B0%EA%B3%BC">4.1.2 통계 분석 결과<a class="anchor-link" href="#4.1.2-%ED%86%B5%EA%B3%84-%EB%B6%84%EC%84%9D-%EA%B2%B0%EA%B3%BC">¶</a>
 </h4>
 <p><code>add_stat_annotation</code> 함수는 튜플 <code>ax, test_results</code> 를 반환합니다. 여기서 <code>test_results</code>는 원래 데이터와 통계 분석 결과 (p-value 등)를 모두 포함하는<code>StatResult</code> 리스트 객체입니다.</p>
 
@@ -331,7 +333,7 @@ StatResult attributes: dict_keys(['test_str', 'test_short_name', 'stat_str', 'st
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="4.1.3.-다중-비교-교정이-없는-경우">4.1.3. 다중 비교 교정이 없는 경우<a class="anchor-link" href="#4.1.3.-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95%EC%9D%B4-%EC%97%86%EB%8A%94-%EA%B2%BD%EC%9A%B0">¶</a>
+<h4 id="4.1.3.-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95%EC%9D%B4-%EC%97%86%EB%8A%94-%EA%B2%BD%EC%9A%B0">4.1.3. 다중 비교 교정이 없는 경우<a class="anchor-link" href="#4.1.3.-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95%EC%9D%B4-%EC%97%86%EB%8A%94-%EA%B2%BD%EC%9A%B0">¶</a>
 </h4>
 </div>
 </div>
@@ -402,7 +404,7 @@ Sun v.s. Fri: Mann-Whitney-Wilcoxon test two-sided, P_val=2.680e-02 U_stat=9.605
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="4.1.4.-주석의-위치">4.1.4. 주석의 위치<a class="anchor-link" href="#4.1.4.-%EC%A3%BC%EC%84%9D%EC%9D%98-%EC%9C%84%EC%B9%98">¶</a>
+<h4 id="4.1.4.-%EC%A3%BC%EC%84%9D%EC%9D%98-%EC%9C%84%EC%B9%98">4.1.4. 주석의 위치<a class="anchor-link" href="#4.1.4.-%EC%A3%BC%EC%84%9D%EC%9D%98-%EC%9C%84%EC%B9%98">¶</a>
 </h4>
 <p>통계 분석 주석은 플롯 안쪽(<code>loc = 'inside'</code>) 또는 바깥쪽(<code>loc ='outside'</code>)에 위치할 수 있습니다. 아래 예시는 안쪽 있는 예시입니다.</p>
 
@@ -511,8 +513,7 @@ Sun v.s. Sat: Custom statistical test, P_val:1.000e-01
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -608,8 +609,7 @@ Sun v.s. Sat: Custom statistical test, P_val:1.000e-01
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -700,7 +700,7 @@ I_Premium v.s. J_Ideal: Mann-Whitney-Wilcoxon test two-sided with Bonferroni cor
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4.3.-버킷-카테고리가-포함-된-박스-플롯">4.3. 버킷 카테고리가 포함 된 박스 플롯<a class="anchor-link" href="#4.3.-%EB%B2%84%ED%82%B7-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%EA%B0%80-%ED%8F%AC%ED%95%A8-%EB%90%9C-%EB%B0%95%EC%8A%A4-%ED%94%8C%EB%A1%AF">¶</a>
+<h3 id="4.3.-%EB%B2%84%ED%82%B7-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%EA%B0%80-%ED%8F%AC%ED%95%A8-%EB%90%9C-%EB%B0%95%EC%8A%A4-%ED%94%8C%EB%A1%AF">4.3. 버킷 카테고리가 포함 된 박스 플롯<a class="anchor-link" href="#4.3.-%EB%B2%84%ED%82%B7-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%EA%B0%80-%ED%8F%AC%ED%95%A8-%EB%90%9C-%EB%B0%95%EC%8A%A4-%ED%94%8C%EB%A1%AF">¶</a>
 </h3>
 </div>
 </div>
@@ -729,8 +729,7 @@ I_Premium v.s. J_Ideal: Mann-Whitney-Wilcoxon test two-sided with Bonferroni cor
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -814,8 +813,7 @@ I_Premium v.s. J_Ideal: Mann-Whitney-Wilcoxon test two-sided with Bonferroni cor
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -924,7 +922,7 @@ Fri_(0.991, 4.0] v.s. Sat_(7.0, 10.0]: t-test independent samples with Bonferron
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4.4.-y-오프셋-조절하기">4.4. y 오프셋 조절하기<a class="anchor-link" href="#4.4.-y-%EC%98%A4%ED%94%84%EC%85%8B-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="4.4.-y-%EC%98%A4%ED%94%84%EC%85%8B-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0">4.4. y 오프셋 조절하기<a class="anchor-link" href="#4.4.-y-%EC%98%A4%ED%94%84%EC%85%8B-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 </div>
 </div>
@@ -994,7 +992,7 @@ Thur_Yes v.s. Sun_No: t-test independent samples, P_val=5.623e-01 stat=-5.822e-0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4.5.-사용자-정의-p-value를-입력으로-사용하기">4.5. 사용자 정의 p-value를 입력으로 사용하기<a class="anchor-link" href="#4.5.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-p-value%EB%A5%BC-%EC%9E%85%EB%A0%A5%EC%9C%BC%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="4.5.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-p-value%EB%A5%BC-%EC%9E%85%EB%A0%A5%EC%9C%BC%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">4.5. 사용자 정의 p-value를 입력으로 사용하기<a class="anchor-link" href="#4.5.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-p-value%EB%A5%BC-%EC%9E%85%EB%A0%A5%EC%9C%BC%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 </div>
 </div>
@@ -1113,7 +1111,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4.6.-사용자-정의-주석문구-넣기">4.6. 사용자 정의 주석문구 넣기<a class="anchor-link" href="#4.6.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%EC%A3%BC%EC%84%9D%EB%AC%B8%EA%B5%AC-%EB%84%A3%EA%B8%B0">¶</a>
+<h3 id="4.6.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%EC%A3%BC%EC%84%9D%EB%AC%B8%EA%B5%AC-%EB%84%A3%EA%B8%B0">4.6. 사용자 정의 주석문구 넣기<a class="anchor-link" href="#4.6.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%EC%A3%BC%EC%84%9D%EB%AC%B8%EA%B5%AC-%EB%84%A3%EA%B8%B0">¶</a>
 </h3>
 </div>
 </div>
@@ -1166,11 +1164,10 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.-마치며">5. 마치며<a class="anchor-link" href="#5.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h2 id="5.-%EB%A7%88%EC%B9%98%EB%A9%B0">5. 마치며<a class="anchor-link" href="#5.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h2>
 <p>기존에는 번거롭게 플랏에 통계분석에 대한 주석을 수작업으로 넣었지만, <code>statannot</code> 패키지를 사용하면 간편하게 주석처리를 해줍니다. 게다가 기본 설정값도 충실해서 앞으로는 <code>statannot</code>을 계속 사용하게 될 것 같습니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -1200,7 +1197,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -1211,9 +1208,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

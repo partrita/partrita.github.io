@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about dataframe)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/dataframe.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:30 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R에서 데이터 다루기(dplyr)</title><link>https://partrita.github.io/posts/dplyr/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about dataframe)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/dataframe.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R에서 데이터 다루기(dplyr)</title><link>https://partrita.github.io/posts/dplyr/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-시작하기-앞서"&gt;0. 시작하기 앞서&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이 글은 &lt;a href="http://www.datacarpentry.org/R-ecology-lesson/"&gt;Data Carpentry for data analysis&lt;/a&gt;을 공부하고 정리한 것입니다. 목표는 프로그래밍 경험이 없는 과학자들이 &lt;strong&gt;R&lt;/strong&gt;을 가지고 작업하는데 필요한 기본적인 개념, 기술, 사용법을 가르치는데 있습니다.간략한 목차는 다음과 같습니다.&lt;/p&gt;
+&lt;h2 id="0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;0. 시작하기 앞서&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이 글은 &lt;a href="http://www.datacarpentry.org/R-ecology-lesson/"&gt;Data Carpentry for data analysis&lt;/a&gt;을 공부하고 정리한 것입니다. 목표는 프로그래밍 경험이 없는 과학자들이 &lt;strong&gt;R&lt;/strong&gt;을 가지고 작업하는데 필요한 기본적인 개념, 기술, 사용법을 가르치는데 있습니다.간략한 목차는 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;R 기초 문법&lt;/li&gt;
 &lt;li&gt;CSV 파일 불러오는 방법과 데이터프레임 구조&lt;/li&gt;
 &lt;li&gt;요인 처리방법, 행과 열 추가/삭제&lt;/li&gt;
 &lt;li&gt;요약 통계 계산법, 시각화에 대한 간단한 소개&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="1.-R-소개"&gt;1. R 소개&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.-R-%EC%86%8C%EA%B0%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="1.1.-객체-만들기"&gt;1.1. 객체 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.1.-%EA%B0%9D%EC%B2%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;R에서는 다음과 같이 객체를 생성합니다.&lt;/p&gt;
+&lt;h2 id="1.-R-%EC%86%8C%EA%B0%9C"&gt;1. R 소개&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.-R-%EC%86%8C%EA%B0%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="1.1.-%EA%B0%9D%EC%B2%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;1.1. 객체 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.1.-%EA%B0%9D%EC%B2%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;R에서는 다음과 같이 객체를 생성합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -19,11 +19,11 @@
 &lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;mass&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;47.5&lt;/span&gt;            &lt;span class="c1"&gt;# mass?&lt;/span&gt;
-&lt;span class="n"&gt;age&lt;/span&gt;  &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;122&lt;/span&gt;             &lt;span class="c1"&gt;# age?&lt;/span&gt;
-&lt;span class="n"&gt;mass&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;mass&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="m"&gt;2.0&lt;/span&gt;      &lt;span class="c1"&gt;# mass?&lt;/span&gt;
-&lt;span class="n"&gt;age&lt;/span&gt;  &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;20&lt;/span&gt;        &lt;span class="c1"&gt;# age?&lt;/span&gt;
-&lt;span class="n"&gt;mass_index&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;mass&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;age&lt;/span&gt;  &lt;span class="c1"&gt;# mass_index?&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;mass&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;47.5&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="c1"&gt;# mass?&lt;/span&gt;
+&lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;122&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="c1"&gt;# age?&lt;/span&gt;
+&lt;span class="n"&gt;mass&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mass&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2.0&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="c1"&gt;# mass?&lt;/span&gt;
+&lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20&lt;/span&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;# age?&lt;/span&gt;
+&lt;span class="n"&gt;mass_index&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mass&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# mass_index?&lt;/span&gt;
 &lt;span class="n"&gt;mass_index&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -41,9 +41,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-0.931372549019608
-&lt;/div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;0.931372549019608&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -54,7 +52,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="1.2.-벡터와-자료형"&gt;1.2. 벡터와 자료형&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.2.-%EB%B2%A1%ED%84%B0%EC%99%80-%EC%9E%90%EB%A3%8C%ED%98%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;벡터는 R에서 가장 기본적인 자료구조입니다. 예를 들어, 다음과 같이 벡터를 생성할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="1.2.-%EB%B2%A1%ED%84%B0%EC%99%80-%EC%9E%90%EB%A3%8C%ED%98%95"&gt;1.2. 벡터와 자료형&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.2.-%EB%B2%A1%ED%84%B0%EC%99%80-%EC%9E%90%EB%A3%8C%ED%98%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;벡터는 R에서 가장 기본적인 자료구조입니다. 예를 들어, 다음과 같이 벡터를 생성할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -64,11 +62,11 @@
 &lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;num_char&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'a'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;num_logical&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;char_logical&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'a'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'b'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'c'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;tricky&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'4'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;num_char&lt;/span&gt; &lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;num_char&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'a'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;num_logical&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;char_logical&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'a'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'b'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'c'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;tricky&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'4'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;num_char&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# 벡터값 확인하기&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -85,14 +83,12 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;ol class="list-inline"&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;ol class="list-inline"&gt;
 	&lt;li&gt;'1'&lt;/li&gt;
 	&lt;li&gt;'2'&lt;/li&gt;
 	&lt;li&gt;'3'&lt;/li&gt;
 	&lt;li&gt;'a'&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -104,7 +100,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="1.2.1.-벡터-부분집합-뽑아내기"&gt;1.2.1. 벡터 부분집합 뽑아내기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.2.1.-%EB%B2%A1%ED%84%B0-%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9-%EB%BD%91%EC%95%84%EB%82%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;벡터에서 값을 하나 혹은 다수 값을 추출하려면, 꺾쇠 괄호 내부에 인덱스를 넣어 줍니다.&lt;/p&gt;
+&lt;h4 id="1.2.1.-%EB%B2%A1%ED%84%B0-%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9-%EB%BD%91%EC%95%84%EB%82%B4%EA%B8%B0"&gt;1.2.1. 벡터 부분집합 뽑아내기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#1.2.1.-%EB%B2%A1%ED%84%B0-%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9-%EB%BD%91%EC%95%84%EB%82%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;벡터에서 값을 하나 혹은 다수 값을 추출하려면, 꺾쇠 괄호 내부에 인덱스를 넣어 줍니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -114,8 +110,8 @@
 &lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;animals&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"mouse"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"rat"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"dog"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"cat"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;animals[2]&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;animals&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"mouse"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"rat"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"dog"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"cat"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;animals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -132,9 +128,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-'rat'
-&lt;/div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;'rat'&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -145,13 +139,13 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="2.-데이터-불러오기"&gt;2. 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id="2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;2. 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;외부 데이터(CSV 파일)를 불러와&lt;/li&gt;
 &lt;li&gt;R에서 데이터프레임 구조와 내용물을 탐색해 봅니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;R함수 &lt;code&gt;download.file()&lt;/code&gt;를 사용해서 &lt;strong&gt;CSV&lt;/strong&gt;파일을 다운로드합니다. 그리고 &lt;code&gt;read.csv()&lt;/code&gt;기능을 이용해 파일을 불러오겠습니다. 아래의 명령어를 실행해 파일을 다운로드 하세요.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;download.file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"https://ndownloader.figshare.com/files/2292169"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-              &lt;span class="s"&gt;"portal_data_joined.csv"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="s"&gt;"portal_data_joined.csv"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;그런다음 파일을 읽어오도록 하겠습니다.&lt;/p&gt;
 
@@ -163,8 +157,8 @@
 &lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'portal_data_joined.csv'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nf"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 파일 확인하기&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;read.csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'portal_data_joined.csv'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# 파일 확인하기&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -181,8 +175,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;record_id&lt;/th&gt;&lt;th scope="col"&gt;month&lt;/th&gt;&lt;th scope="col"&gt;day&lt;/th&gt;&lt;th scope="col"&gt;year&lt;/th&gt;&lt;th scope="col"&gt;plot_id&lt;/th&gt;&lt;th scope="col"&gt;species_id&lt;/th&gt;&lt;th scope="col"&gt;sex&lt;/th&gt;&lt;th scope="col"&gt;hindfoot_length&lt;/th&gt;&lt;th scope="col"&gt;weight&lt;/th&gt;&lt;th scope="col"&gt;genus&lt;/th&gt;&lt;th scope="col"&gt;species&lt;/th&gt;&lt;th scope="col"&gt;taxa&lt;/th&gt;&lt;th scope="col"&gt;plot_type&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;  1     &lt;/td&gt;&lt;td&gt; 7      &lt;/td&gt;&lt;td&gt;16      &lt;/td&gt;&lt;td&gt;1977    &lt;/td&gt;&lt;td&gt;2       &lt;/td&gt;&lt;td&gt;NL      &lt;/td&gt;&lt;td&gt;M       &lt;/td&gt;&lt;td&gt;32      &lt;/td&gt;&lt;td&gt;NA      &lt;/td&gt;&lt;td&gt;Neotoma &lt;/td&gt;&lt;td&gt;albigula&lt;/td&gt;&lt;td&gt;Rodent  &lt;/td&gt;&lt;td&gt;Control &lt;/td&gt;&lt;/tr&gt;
@@ -193,7 +186,6 @@
 	&lt;tr&gt;&lt;td&gt;363     &lt;/td&gt;&lt;td&gt;11      &lt;/td&gt;&lt;td&gt;12      &lt;/td&gt;&lt;td&gt;1977    &lt;/td&gt;&lt;td&gt;2       &lt;/td&gt;&lt;td&gt;NL      &lt;/td&gt;&lt;td&gt;        &lt;/td&gt;&lt;td&gt;NA      &lt;/td&gt;&lt;td&gt;NA      &lt;/td&gt;&lt;td&gt;Neotoma &lt;/td&gt;&lt;td&gt;albigula&lt;/td&gt;&lt;td&gt;Rodent  &lt;/td&gt;&lt;td&gt;Control &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -258,8 +250,9 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 결과에서 볼 수 있듯이, 다수 칼럼은 정수형 벡터로 구성되지만, species 와 sex는 요인(factor)으로 불리는 특수한 클래스로 입니다. 데이터프레임 클래스에 대해 추가적인 내용을 알아 보기 전에, 요인에 대해 먼저 살펴보겠습니다.&lt;/p&gt;
-&lt;h3 id="2.2.-요인(Factors)"&gt;2.2. 요인(Factors)&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.2.-%EC%9A%94%EC%9D%B8(Factors)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;범주형 데이터를 표현할때 사용됩니다. 요인은 순서가 있거나 순서가 없는 것으로 구분되는데, 이를 정확히 이해하는 것이 통계분석과 시각화에 필요합니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;요인은 정수형으로 저장되고, 유일무이한 정수값과 연관된 표식이 붙여진다. 요인은 마치 문자형 벡터처럼 보이고 흔히 그렇게 동작하지만, 실제로 내부를 들여다 보면 정수값이다. 그래서 주의가 요구된다.&lt;/p&gt;
+&lt;h3 id="2.2.-%EC%9A%94%EC%9D%B8(Factors)"&gt;2.2. 요인(Factors)&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.2.-%EC%9A%94%EC%9D%B8(Factors)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;범주형 데이터를 표현할때 사용됩니다. 요인은 순서가 있거나 순서가 없는 것으로 구분되는데, 이를 정확히 이해하는 것이 통계분석과 시각화에 필요합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;요인은 정수형으로 저장되고, 유일무이한 정수값과 연관된 표식이 붙여진다. 요인은 마치 문자형 벡터처럼 보이고 흔히 그렇게 동작하지만, 실제로 내부를 들여다 보면 정수값이다. 그래서 주의가 요구된다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;요인형 벡터를 생성시키게 되면, 요인벡터에는 수준(level)으로 미리 정의된 값이 집합으로 담겨집니다. 기본 설정으로은 알파벳 순으로 정렬이 됩니다. 예를 들어, 수준 2개를 갖는 요인이 있다고 가정하면:&lt;/p&gt;
 
@@ -271,7 +264,7 @@
 &lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"male"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"female"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"female"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"male"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"male"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"female"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"female"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"male"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -309,12 +302,10 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;ol class="list-inline"&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;ol class="list-inline"&gt;
 	&lt;li&gt;'female'&lt;/li&gt;
 	&lt;li&gt;'male'&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -345,9 +336,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-2
-&lt;/div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;2&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -358,10 +347,10 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="2.2.-요인-자료형-변경"&gt;2.2. 요인 자료형 변경&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.2.-%EC%9A%94%EC%9D%B8-%EC%9E%90%EB%A3%8C%ED%98%95-%EB%B3%80%EA%B2%BD"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3 id="2.2.-%EC%9A%94%EC%9D%B8-%EC%9E%90%EB%A3%8C%ED%98%95-%EB%B3%80%EA%B2%BD"&gt;2.2. 요인 자료형 변경&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#2.2.-%EC%9A%94%EC%9D%B8-%EC%9E%90%EB%A3%8C%ED%98%95-%EB%B3%80%EA%B2%BD"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;요인 벡터를 문자형 벡터로 변경시킬 때는 &lt;code&gt;as.character()&lt;/code&gt; 함수를 사용합니다.&lt;/li&gt;
-&lt;li&gt;요인 벡터를 숫자형 벡터로 변경시키는 것 &lt;code&gt;as.numeric()&lt;/code&gt;을 사용하는데 두가지 방법이 있습니다. &lt;ul&gt;
-&lt;li&gt;문자형으로 바꾸고나서 다시 숫자로 전환시키거나 &lt;/li&gt;
+&lt;li&gt;요인 벡터를 숫자형 벡터로 변경시키는 것 &lt;code&gt;as.numeric()&lt;/code&gt;을 사용하는데 두가지 방법이 있습니다.&lt;ul&gt;
+&lt;li&gt;문자형으로 바꾸고나서 다시 숫자로 전환시키거나&lt;/li&gt;
 &lt;li&gt;또다른 방법은 &lt;code&gt;levels()&lt;/code&gt; 함수를 사용하는 것입니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -375,8 +364,8 @@
 &lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="n"&gt;f2&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;as.character&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;f2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;as.character&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;f2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -394,14 +383,12 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;ol class="list-inline"&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;ol class="list-inline"&gt;
 	&lt;li&gt;'1'&lt;/li&gt;
 	&lt;li&gt;'5'&lt;/li&gt;
 	&lt;li&gt;'10'&lt;/li&gt;
 	&lt;li&gt;'2'&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -432,14 +419,12 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;ol class="list-inline"&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;ol class="list-inline"&gt;
 	&lt;li&gt;1&lt;/li&gt;
 	&lt;li&gt;5&lt;/li&gt;
 	&lt;li&gt;10&lt;/li&gt;
 	&lt;li&gt;2&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -453,7 +438,7 @@
 &lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;as.numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;levels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="n"&gt;[f]&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;as.numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;levels&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -470,14 +455,12 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;ol class="list-inline"&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;ol class="list-inline"&gt;
 	&lt;li&gt;1&lt;/li&gt;
 	&lt;li&gt;5&lt;/li&gt;
 	&lt;li&gt;10&lt;/li&gt;
 	&lt;li&gt;2&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -502,8 +485,8 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.-Dataframe-설명"&gt;3. Dataframe 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.-Dataframe-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;앞서 알아본 Dataframe에 대하여 자세히 알아 보겠습니다.&lt;/p&gt;
-&lt;h3 id="3.1.-데이터프레임은-무엇인가?"&gt;3.1. 데이터프레임은 무엇인가?&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터프레임(dataframe)은 가장 대중적인 표형식 데이터에 대한 &lt;strong&gt;사실상 표준(de facto)&lt;/strong&gt; 으로, 통계 및 시각화에 활용하는 자료구조입니다. 동일한 길이를 갖는 벡터 집합이며, 벡터 각각은 행을 표현하지만 각 벡터는 서로 다른 자료형이 될 수 있다(예를 들어, 문자형, 정수형, 요인형). 우리는 앞에서  &lt;code&gt;str()&lt;/code&gt; 함수를 사용해서 각 칼럼별 자료형을 조사했었습니다. 데이터프레임은 일일이 생성할 수도 있지만, 일반적으로 ead.csv() 혹은 read.table() 함수로 만들어 냅니다.&lt;/p&gt;
+&lt;h2 id="3.-Dataframe-%EC%84%A4%EB%AA%85"&gt;3. Dataframe 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.-Dataframe-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;앞서 알아본 Dataframe에 대하여 자세히 알아 보겠습니다.&lt;/p&gt;
+&lt;h3 id="3.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?"&gt;3.1. 데이터프레임은 무엇인가?&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터프레임(dataframe)은 가장 대중적인 표형식 데이터에 대한 &lt;strong&gt;사실상 표준(de facto)&lt;/strong&gt; 으로, 통계 및 시각화에 활용하는 자료구조입니다. 동일한 길이를 갖는 벡터 집합이며, 벡터 각각은 행을 표현하지만 각 벡터는 서로 다른 자료형이 될 수 있다(예를 들어, 문자형, 정수형, 요인형). 우리는 앞에서  &lt;code&gt;str()&lt;/code&gt; 함수를 사용해서 각 칼럼별 자료형을 조사했었습니다. 데이터프레임은 일일이 생성할 수도 있지만, 일반적으로 ead.csv() 혹은 read.table() 함수로 만들어 냅니다.&lt;/p&gt;
 &lt;p&gt;기본 설정으로 데이터프레임이 생성될때 문자열이 담긴 행은 요인(factor) 자료형으로 변환됩니다. 따라서 작업하려는 의도에 따라 문자형(character)으로 칼럼을 그대로 두고자 하는 경우에는 &lt;strong&gt;stringsAsFactors = FALSE&lt;/strong&gt;로 설정하면 요인형이 아닌 문자형 그대로 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -514,10 +497,10 @@
 &lt;div class="prompt input_prompt"&gt;In [13]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;example_data&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;data.frame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;animal&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"dog"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"cat"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"sea cucumber"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"sea urchin"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                           &lt;span class="n"&gt;feel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"furry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"furry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"squishy"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"spiny"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                           &lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;45&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1.1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.8&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                           &lt;span class="n"&gt;stringsAsFactors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;example_data&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;data.frame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;animal&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"dog"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"cat"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"sea cucumber"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"sea urchin"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="w"&gt;                           &lt;/span&gt;&lt;span class="n"&gt;feel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"furry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"furry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"squishy"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"spiny"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="w"&gt;                           &lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nf"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;45&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1.1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0.8&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="w"&gt;                           &lt;/span&gt;&lt;span class="n"&gt;stringsAsFactors&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;example_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -550,7 +533,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.2.-Dataframe-살펴보기"&gt;3.2. Dataframe 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.2.-Dataframe-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;head()&lt;/code&gt;와 &lt;code&gt;str()&lt;/code&gt; 함수를 사용해서 Dataframe 구조와 내용물을 살펴볼수 있습니다. 그 외에도 아래와 같이 유용한 명령어가 존재 합니다.&lt;/p&gt;
+&lt;h3 id="3.2.-Dataframe-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;3.2. Dataframe 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#3.2.-Dataframe-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;head()&lt;/code&gt;와 &lt;code&gt;str()&lt;/code&gt; 함수를 사용해서 Dataframe 구조와 내용물을 살펴볼수 있습니다. 그 외에도 아래와 같이 유용한 명령어가 존재 합니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;데이터프레임 크기:&lt;ul&gt;
 &lt;li&gt;dim() - 첫번째 원소는 행의 갯수, 두번째 원소는 열의 갯수를 갖는 벡터를 반환 (객체에 대한 차원, dimensions)&lt;/li&gt;
@@ -620,12 +603,12 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="4.-dplyr로-데이터-편집과-분석하기"&gt;4. dplyr로 데이터 편집과 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.-dplyr%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91%EA%B3%BC-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="4.1.-dplyr-설명"&gt;4.1. dplyr 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.1.-dplyr-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;dplyr&lt;/code&gt; 패키지에는 흔히 데이터를 조작하는데 필요한 도구가 포함되어 있습니다. dplyr 패키지는 그전에 폭넓게 사용된 plyr 패키지에서 영감을 받았는데, plyr 팩키지는 속도가 떨어지는 성능문제가 있었습니다. 하지만 dplyr은 연산의 상당부분을 &lt;strong&gt;C++&lt;/strong&gt; 을 이용해 연산 속도가 매우 빠릅니다. dplyr에 대해 더 많이 배우고자 하는 경우, &lt;a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf"&gt;dplyr cheatsheet&lt;/a&gt;를 참조하세요.&lt;/p&gt;
-&lt;h3 id="4.2.-dplyr-패키지를-활용한-데이터-편집"&gt;4.2. dplyr 패키지를 활용한 데이터 편집&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.2.-dplyr-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;dplyr은 데이터조작을 더 쉽고 데이터 분석을 즐겁도록 개발되었습니다. 아래의 방법으로 설치하고 불러옵니다.&lt;/p&gt;
+&lt;h2 id="4.-dplyr%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91%EA%B3%BC-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;4. dplyr로 데이터 편집과 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.-dplyr%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91%EA%B3%BC-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="4.1.-dplyr-%EC%84%A4%EB%AA%85"&gt;4.1. dplyr 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.1.-dplyr-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;dplyr&lt;/code&gt; 패키지에는 흔히 데이터를 조작하는데 필요한 도구가 포함되어 있습니다. dplyr 패키지는 그전에 폭넓게 사용된 plyr 패키지에서 영감을 받았는데, plyr 팩키지는 속도가 떨어지는 성능문제가 있었습니다. 하지만 dplyr은 연산의 상당부분을 &lt;strong&gt;C++&lt;/strong&gt; 을 이용해 연산 속도가 매우 빠릅니다. dplyr에 대해 더 많이 배우고자 하는 경우, &lt;a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf"&gt;dplyr cheatsheet&lt;/a&gt;를 참조하세요.&lt;/p&gt;
+&lt;h3 id="4.2.-dplyr-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91"&gt;4.2. dplyr 패키지를 활용한 데이터 편집&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.2.-dplyr-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8E%B8%EC%A7%91"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;dplyr은 데이터조작을 더 쉽고 데이터 분석을 즐겁도록 개발되었습니다. 아래의 방법으로 설치하고 불러옵니다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;install.packages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"dplyr"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"dplyr"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;## 팩키지 불러오기&lt;/span&gt;
+&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"dplyr"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;## 팩키지 불러오기&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="4.3.-행을-뽑아내고-필터링한다."&gt;4.3. 행을 뽑아내고 필터링한다.&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.3.-%ED%96%89%EC%9D%84-%EB%BD%91%EC%95%84%EB%82%B4%EA%B3%A0-%ED%95%84%ED%84%B0%EB%A7%81%ED%95%9C%EB%8B%A4."&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;dplyr 함수중에서 가장 활용도가 높은 &lt;code&gt;select()&lt;/code&gt;, &lt;code&gt;filter()&lt;/code&gt;, &lt;code&gt;mutate()&lt;/code&gt;, &lt;code&gt;summarize()&lt;/code&gt;함수를 학습하겠습니다.&lt;br&gt;
+&lt;h3 id="4.3.-%ED%96%89%EC%9D%84-%EB%BD%91%EC%95%84%EB%82%B4%EA%B3%A0-%ED%95%84%ED%84%B0%EB%A7%81%ED%95%9C%EB%8B%A4."&gt;4.3. 행을 뽑아내고 필터링한다.&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.3.-%ED%96%89%EC%9D%84-%EB%BD%91%EC%95%84%EB%82%B4%EA%B3%A0-%ED%95%84%ED%84%B0%EB%A7%81%ED%95%9C%EB%8B%A4."&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;dplyr 함수중에서 가장 활용도가 높은 &lt;code&gt;select()&lt;/code&gt;, &lt;code&gt;filter()&lt;/code&gt;, &lt;code&gt;mutate()&lt;/code&gt;, &lt;code&gt;summarize()&lt;/code&gt;함수를 학습하겠습니다.&lt;br&gt;
 먼저 데이터에서 행을 뽑아낼 때 &lt;code&gt;select()&lt;/code&gt;를 사용합니다. &lt;code&gt;select()&lt;/code&gt; 함수에 넣은 첫번째 인자는 데이터프레임(surveys), 그리고 후속 인자는 뽑아낼 행이 들어간다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -636,10 +619,10 @@
 &lt;div class="prompt input_prompt"&gt;In [19]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dplyr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# dplyr을 불러옵니다.&lt;/span&gt;
-&lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'surveys.csv'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 데이터를 불러옵니다.&lt;/span&gt;
-&lt;span class="n"&gt;select_df&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;plot_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# plot_id, species_id, weight 행만 추출합니다.&lt;/span&gt;
-&lt;span class="nf"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;select_df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 테이블 확인&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dplyr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# dplyr을 불러옵니다.&lt;/span&gt;
+&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;read.csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'surveys.csv'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# 데이터를 불러옵니다.&lt;/span&gt;
+&lt;span class="n"&gt;select_df&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;plot_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# plot_id, species_id, weight 행만 추출합니다.&lt;/span&gt;
+&lt;span class="nf"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;select_df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# 테이블 확인&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -656,8 +639,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;th scope="col"&gt;plot_id&lt;/th&gt;&lt;th scope="col"&gt;species_id&lt;/th&gt;&lt;th scope="col"&gt;weight&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;th scope="row"&gt;35544&lt;/th&gt;&lt;td&gt;15&lt;/td&gt;&lt;td&gt;US&lt;/td&gt;&lt;td&gt;NA&lt;/td&gt;&lt;/tr&gt;
@@ -668,7 +650,6 @@
 	&lt;tr&gt;&lt;th scope="row"&gt;35549&lt;/th&gt;&lt;td&gt; 5&lt;/td&gt;&lt;td&gt;  &lt;/td&gt;&lt;td&gt;NA&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -682,7 +663,7 @@
 &lt;div class="prompt input_prompt"&gt;In [18]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;1995&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="n"&gt;head&lt;/span&gt; &lt;span class="c1"&gt;# 1995년 데이터만 필터합니다.&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1995&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# 1995년 데이터만 필터합니다.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -699,8 +680,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;record_id&lt;/th&gt;&lt;th scope="col"&gt;month&lt;/th&gt;&lt;th scope="col"&gt;day&lt;/th&gt;&lt;th scope="col"&gt;year&lt;/th&gt;&lt;th scope="col"&gt;plot_id&lt;/th&gt;&lt;th scope="col"&gt;species_id&lt;/th&gt;&lt;th scope="col"&gt;sex&lt;/th&gt;&lt;th scope="col"&gt;hindfoot_length&lt;/th&gt;&lt;th scope="col"&gt;weight&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;21993&lt;/td&gt;&lt;td&gt;1    &lt;/td&gt;&lt;td&gt;11   &lt;/td&gt;&lt;td&gt;1995 &lt;/td&gt;&lt;td&gt;18   &lt;/td&gt;&lt;td&gt;PF   &lt;/td&gt;&lt;td&gt;F    &lt;/td&gt;&lt;td&gt;16   &lt;/td&gt;&lt;td&gt; 7   &lt;/td&gt;&lt;/tr&gt;
@@ -711,7 +691,6 @@
 	&lt;tr&gt;&lt;td&gt;21998&lt;/td&gt;&lt;td&gt;1    &lt;/td&gt;&lt;td&gt;11   &lt;/td&gt;&lt;td&gt;1995 &lt;/td&gt;&lt;td&gt; 1   &lt;/td&gt;&lt;td&gt;DM   &lt;/td&gt;&lt;td&gt;M    &lt;/td&gt;&lt;td&gt;38   &lt;/td&gt;&lt;td&gt;46   &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -723,7 +702,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.4.-파이프(Pipes)-사용하기"&gt;4.4. 파이프(Pipes) 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.4.-%ED%8C%8C%EC%9D%B4%ED%94%84(Pipes)-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;한번에 행을 뽑아내고 필터링을 해야 한다면, 파이프를 사용해야 합니다. 파이프는 함수 출력값을 받아 다음번 함수에 곧바로 전송하는 것으로 &lt;strong&gt;Shell&lt;/strong&gt; script의 그것과 동일합니다. 이는 수많은 작업을 수행할 때 매우 유용합니다. R에서 파이프는 &lt;code&gt;%&amp;gt;%&lt;/code&gt; 모양입니다.&lt;/p&gt;
+&lt;h3 id="4.4.-%ED%8C%8C%EC%9D%B4%ED%94%84(Pipes)-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;4.4. 파이프(Pipes) 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.4.-%ED%8C%8C%EC%9D%B4%ED%94%84(Pipes)-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;한번에 행을 뽑아내고 필터링을 해야 한다면, 파이프를 사용해야 합니다. 파이프는 함수 출력값을 받아 다음번 함수에 곧바로 전송하는 것으로 &lt;strong&gt;Shell&lt;/strong&gt; script의 그것과 동일합니다. 이는 수많은 작업을 수행할 때 매우 유용합니다. R에서 파이프는 &lt;code&gt;%&amp;gt;%&lt;/code&gt; 모양입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -733,9 +712,9 @@
 &lt;div class="prompt input_prompt"&gt;In [19]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-  &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-  &lt;span class="nf"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="n"&gt;head&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nf"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -752,8 +731,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;species_id&lt;/th&gt;&lt;th scope="col"&gt;sex&lt;/th&gt;&lt;th scope="col"&gt;weight&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;PF&lt;/td&gt;&lt;td&gt;M &lt;/td&gt;&lt;td&gt;4 &lt;/td&gt;&lt;/tr&gt;
@@ -764,7 +742,6 @@
 	&lt;tr&gt;&lt;td&gt;RM&lt;/td&gt;&lt;td&gt;M &lt;/td&gt;&lt;td&gt;4 &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -787,7 +764,7 @@
 &lt;div class="prompt input_prompt"&gt;In [21]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;small_df&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="m"&gt;1995&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="nf"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;small_df&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1995&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nf"&gt;tail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;small_df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -805,8 +782,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;th scope="col"&gt;year&lt;/th&gt;&lt;th scope="col"&gt;sex&lt;/th&gt;&lt;th scope="col"&gt;weight&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;th scope="row"&gt;21987&lt;/th&gt;&lt;td&gt;1994&lt;/td&gt;&lt;td&gt;M   &lt;/td&gt;&lt;td&gt;46  &lt;/td&gt;&lt;/tr&gt;
@@ -817,7 +793,6 @@
 	&lt;tr&gt;&lt;th scope="row"&gt;21992&lt;/th&gt;&lt;td&gt;1994&lt;/td&gt;&lt;td&gt;    &lt;/td&gt;&lt;td&gt;NA  &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -829,7 +804,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.5.-mutate()-함수"&gt;4.5. mutate() 함수&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.5.-mutate()-%ED%95%A8%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;종종, 기존 칼럼값을 활용하여 새로운 칼럼을 생성할때가 있습니다. 예를 들어, 단위를 전환하거나, 두 칼럼을 활용하여 비율을 계산할 때 말이죠.이런 작업을 위해서 &lt;code&gt;mutate()&lt;/code&gt; 함수를 사용합니다. 예시로 무게를 킬로그램 단위로 표시된 새로운 칼럼을 생성해보겠습니다.&lt;/p&gt;
+&lt;h3 id="4.5.-mutate()-%ED%95%A8%EC%88%98"&gt;4.5. mutate() 함수&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.5.-mutate()-%ED%95%A8%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;종종, 기존 칼럼값을 활용하여 새로운 칼럼을 생성할때가 있습니다. 예를 들어, 단위를 전환하거나, 두 칼럼을 활용하여 비율을 계산할 때 말이죠.이런 작업을 위해서 &lt;code&gt;mutate()&lt;/code&gt; 함수를 사용합니다. 예시로 무게를 킬로그램 단위로 표시된 새로운 칼럼을 생성해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -839,8 +814,8 @@
 &lt;div class="prompt input_prompt"&gt;In [25]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-  &lt;span class="nf"&gt;mutate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight_kg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;weight&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="n"&gt;head&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nf"&gt;mutate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight_kg&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -857,8 +832,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;record_id&lt;/th&gt;&lt;th scope="col"&gt;month&lt;/th&gt;&lt;th scope="col"&gt;day&lt;/th&gt;&lt;th scope="col"&gt;year&lt;/th&gt;&lt;th scope="col"&gt;plot_id&lt;/th&gt;&lt;th scope="col"&gt;species_id&lt;/th&gt;&lt;th scope="col"&gt;sex&lt;/th&gt;&lt;th scope="col"&gt;hindfoot_length&lt;/th&gt;&lt;th scope="col"&gt;weight&lt;/th&gt;&lt;th scope="col"&gt;weight_kg&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;1   &lt;/td&gt;&lt;td&gt;7   &lt;/td&gt;&lt;td&gt;16  &lt;/td&gt;&lt;td&gt;1977&lt;/td&gt;&lt;td&gt;2   &lt;/td&gt;&lt;td&gt;NL  &lt;/td&gt;&lt;td&gt;M   &lt;/td&gt;&lt;td&gt;32  &lt;/td&gt;&lt;td&gt;NA  &lt;/td&gt;&lt;td&gt;NA  &lt;/td&gt;&lt;/tr&gt;
@@ -869,7 +843,6 @@
 	&lt;tr&gt;&lt;td&gt;6   &lt;/td&gt;&lt;td&gt;7   &lt;/td&gt;&lt;td&gt;16  &lt;/td&gt;&lt;td&gt;1977&lt;/td&gt;&lt;td&gt;1   &lt;/td&gt;&lt;td&gt;PF  &lt;/td&gt;&lt;td&gt;M   &lt;/td&gt;&lt;td&gt;14  &lt;/td&gt;&lt;td&gt;NA  &lt;/td&gt;&lt;td&gt;NA  &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -891,10 +864,10 @@
 &lt;div class="prompt input_prompt"&gt;In [26]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-  &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-  &lt;span class="nf"&gt;mutate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight_kg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;weight&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-  &lt;span class="n"&gt;head&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nf"&gt;mutate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight_kg&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -911,8 +884,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;record_id&lt;/th&gt;&lt;th scope="col"&gt;month&lt;/th&gt;&lt;th scope="col"&gt;day&lt;/th&gt;&lt;th scope="col"&gt;year&lt;/th&gt;&lt;th scope="col"&gt;plot_id&lt;/th&gt;&lt;th scope="col"&gt;species_id&lt;/th&gt;&lt;th scope="col"&gt;sex&lt;/th&gt;&lt;th scope="col"&gt;hindfoot_length&lt;/th&gt;&lt;th scope="col"&gt;weight&lt;/th&gt;&lt;th scope="col"&gt;weight_kg&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;63   &lt;/td&gt;&lt;td&gt;8    &lt;/td&gt;&lt;td&gt;19   &lt;/td&gt;&lt;td&gt;1977 &lt;/td&gt;&lt;td&gt;3    &lt;/td&gt;&lt;td&gt;DM   &lt;/td&gt;&lt;td&gt;M    &lt;/td&gt;&lt;td&gt;35   &lt;/td&gt;&lt;td&gt;40   &lt;/td&gt;&lt;td&gt;0.040&lt;/td&gt;&lt;/tr&gt;
@@ -923,7 +895,6 @@
 	&lt;tr&gt;&lt;td&gt;68   &lt;/td&gt;&lt;td&gt;8    &lt;/td&gt;&lt;td&gt;19   &lt;/td&gt;&lt;td&gt;1977 &lt;/td&gt;&lt;td&gt;8    &lt;/td&gt;&lt;td&gt;DO   &lt;/td&gt;&lt;td&gt;F    &lt;/td&gt;&lt;td&gt;32   &lt;/td&gt;&lt;td&gt;52   &lt;/td&gt;&lt;td&gt;0.052&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -953,10 +924,10 @@
 &lt;div class="prompt input_prompt"&gt;In [29]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;new_df&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span class="nf"&gt;mutate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_half&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span class="nf"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hindfoot_half&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_half&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="m"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;new_df&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nf"&gt;mutate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_half&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nf"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hindfoot_half&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_half&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nf"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -974,8 +945,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;species_id&lt;/th&gt;&lt;th scope="col"&gt;hindfoot_half&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;NL  &lt;/td&gt;&lt;td&gt;16.0&lt;/td&gt;&lt;/tr&gt;
@@ -986,7 +956,6 @@
 	&lt;tr&gt;&lt;td&gt;PF  &lt;/td&gt;&lt;td&gt; 7.0&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -998,7 +967,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.6.-분할-적용-병합과-summarize()-함수"&gt;4.6. 분할-적용-병합과 summarize() 함수&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.6.-%EB%B6%84%ED%95%A0-%EC%A0%81%EC%9A%A9-%EB%B3%91%ED%95%A9%EA%B3%BC-summarize()-%ED%95%A8%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터분석 상당수 작업은 “split-apply-combine(분할-적용-병합)” 으로 해결됩니다. 데이터를 쪼개고, 각 집단별로 분석을 적용시키고 나서, 결과를 병합하는 것이죠. &lt;code&gt;dplyr&lt;/code&gt; 패키지는 이런 유형의 작업을 매우 쉽게 구현합니다. &lt;code&gt;group_by()&lt;/code&gt;, &lt;code&gt;summarize()&lt;/code&gt; 함수로 각 집단을 한줄로 요약해서 축약해 보겠습니다.&lt;/p&gt;
+&lt;h3 id="4.6.-%EB%B6%84%ED%95%A0-%EC%A0%81%EC%9A%A9-%EB%B3%91%ED%95%A9%EA%B3%BC-summarize()-%ED%95%A8%EC%88%98"&gt;4.6. 분할-적용-병합과 summarize() 함수&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.6.-%EB%B6%84%ED%95%A0-%EC%A0%81%EC%9A%A9-%EB%B3%91%ED%95%A9%EA%B3%BC-summarize()-%ED%95%A8%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터분석 상당수 작업은 “split-apply-combine(분할-적용-병합)” 으로 해결됩니다. 데이터를 쪼개고, 각 집단별로 분석을 적용시키고 나서, 결과를 병합하는 것이죠. &lt;code&gt;dplyr&lt;/code&gt; 패키지는 이런 유형의 작업을 매우 쉽게 구현합니다. &lt;code&gt;group_by()&lt;/code&gt;, &lt;code&gt;summarize()&lt;/code&gt; 함수로 각 집단을 한줄로 요약해서 축약해 보겠습니다.&lt;/p&gt;
 &lt;p&gt;예시로 성별로 구별되는 체중을 계산해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1009,10 +978,10 @@
 &lt;div class="prompt input_prompt"&gt;In [46]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;"M"&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sex&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;"F"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span class="nf"&gt;group_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span class="nf"&gt;summarize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mean_weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;na.rm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# na.rm는 NA 값을 제거합니다&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"M"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"F"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;group_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;summarize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mean_weight&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;na.rm&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# na.rm는 NA 값을 제거합니다&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1029,15 +998,13 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;sex&lt;/th&gt;&lt;th scope="col"&gt;mean_weight&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;F       &lt;/td&gt;&lt;td&gt;42.17055&lt;/td&gt;&lt;/tr&gt;
 	&lt;tr&gt;&lt;td&gt;M       &lt;/td&gt;&lt;td&gt;42.99538&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1059,11 +1026,11 @@
 &lt;div class="prompt input_prompt"&gt;In [47]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;"M"&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sex&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;"F"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
-    &lt;span class="nf"&gt;group_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;year&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;species_id&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span class="nf"&gt;summarize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mean_weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="n"&gt;head&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"M"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"F"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;group_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;summarize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mean_weight&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1080,8 +1047,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;sex&lt;/th&gt;&lt;th scope="col"&gt;year&lt;/th&gt;&lt;th scope="col"&gt;species_id&lt;/th&gt;&lt;th scope="col"&gt;mean_weight&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;F         &lt;/td&gt;&lt;td&gt;1977      &lt;/td&gt;&lt;td&gt;DM        &lt;/td&gt;&lt;td&gt; 40.250000&lt;/td&gt;&lt;/tr&gt;
@@ -1092,7 +1058,6 @@
 	&lt;tr&gt;&lt;td&gt;F         &lt;/td&gt;&lt;td&gt;1977      &lt;/td&gt;&lt;td&gt;PF        &lt;/td&gt;&lt;td&gt;  7.266667&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1104,7 +1069,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.7.-총-합계--구하기와-갯수-세기(Tallying)"&gt;4.7. 총 합계  구하기와 갯수 세기(Tallying)&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.7.-%EC%B4%9D-%ED%95%A9%EA%B3%84--%EA%B5%AC%ED%95%98%EA%B8%B0%EC%99%80-%EA%B0%AF%EC%88%98-%EC%84%B8%EA%B8%B0(Tallying)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;각 요인별로 관측점 갯수가 몇개나 되는지 확인하는 작업할 때는 &lt;code&gt;tally()&lt;/code&gt; 함수를 사용합니다. 예를 들어, 성별로 집단을 묶어 각 행의 갯수를 세어 총계를 기록하고자 하는 경우, 다음과 같이 작성합니다.&lt;/p&gt;
+&lt;h3 id="4.7.-%EC%B4%9D-%ED%95%A9%EA%B3%84--%EA%B5%AC%ED%95%98%EA%B8%B0%EC%99%80-%EA%B0%AF%EC%88%98-%EC%84%B8%EA%B8%B0(Tallying)"&gt;4.7. 총 합계  구하기와 갯수 세기(Tallying)&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.7.-%EC%B4%9D-%ED%95%A9%EA%B3%84--%EA%B5%AC%ED%95%98%EA%B8%B0%EC%99%80-%EA%B0%AF%EC%88%98-%EC%84%B8%EA%B8%B0(Tallying)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;각 요인별로 관측점 갯수가 몇개나 되는지 확인하는 작업할 때는 &lt;code&gt;tally()&lt;/code&gt; 함수를 사용합니다. 예를 들어, 성별로 집단을 묶어 각 행의 갯수를 세어 총계를 기록하고자 하는 경우, 다음과 같이 작성합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1114,10 +1079,10 @@
 &lt;div class="prompt input_prompt"&gt;In [48]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;"M"&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sex&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;"F"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span class="nf"&gt;group_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span class="nf"&gt;tally&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"M"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"F"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;group_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;tally&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1134,15 +1099,13 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;sex&lt;/th&gt;&lt;th scope="col"&gt;n&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;F    &lt;/td&gt;&lt;td&gt;15690&lt;/td&gt;&lt;/tr&gt;
 	&lt;tr&gt;&lt;td&gt;M    &lt;/td&gt;&lt;td&gt;17348&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1164,10 +1127,10 @@
 &lt;div class="prompt input_prompt"&gt;In [69]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="nf"&gt;group_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span class="nf"&gt;summarize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mean_hindfoot_length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                 &lt;span class="n"&gt;min_hindfoot_length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                 &lt;span class="n"&gt;max_hindfoot_length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="n"&gt;head&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;group_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nf"&gt;summarize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mean_hindfoot_length&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="w"&gt;                 &lt;/span&gt;&lt;span class="n"&gt;min_hindfoot_length&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="w"&gt;                 &lt;/span&gt;&lt;span class="n"&gt;max_hindfoot_length&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1184,8 +1147,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;table&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;species_id&lt;/th&gt;&lt;th scope="col"&gt;mean_hindfoot_length&lt;/th&gt;&lt;th scope="col"&gt;min_hindfoot_length&lt;/th&gt;&lt;th scope="col"&gt;max_hindfoot_length&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
 	&lt;tr&gt;&lt;td&gt;AH      &lt;/td&gt;&lt;td&gt;33.00000&lt;/td&gt;&lt;td&gt;31      &lt;/td&gt;&lt;td&gt;35      &lt;/td&gt;&lt;/tr&gt;
@@ -1196,7 +1158,6 @@
 	&lt;tr&gt;&lt;td&gt;NL      &lt;/td&gt;&lt;td&gt;32.29423&lt;/td&gt;&lt;td&gt;21      &lt;/td&gt;&lt;td&gt;70      &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1208,7 +1169,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.8.-데이터-내보내기"&gt;4.8. 데이터 내보내기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;지금까지 dplyr 패키지를 사용해서 데이터에서 필요한 정보를 추출하고, 요약하는 방법을 학습했습니다. 이제 데이터를 내보내는 방법을 알아 보겠습니다. CSV 파일을 R로 불러오는데 사용된 &lt;code&gt;read.csv()&lt;/code&gt; 함수와 비슷하게, 데이터프레임에서 CSV 파일을 생성시키는데 &lt;code&gt;write.csv()&lt;/code&gt; 함수가 사용됩니다.&lt;/p&gt;
+&lt;h3 id="4.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0"&gt;4.8. 데이터 내보내기&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#4.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;지금까지 dplyr 패키지를 사용해서 데이터에서 필요한 정보를 추출하고, 요약하는 방법을 학습했습니다. 이제 데이터를 내보내는 방법을 알아 보겠습니다. CSV 파일을 R로 불러오는데 사용된 &lt;code&gt;read.csv()&lt;/code&gt; 함수와 비슷하게, 데이터프레임에서 CSV 파일을 생성시키는데 &lt;code&gt;write.csv()&lt;/code&gt; 함수가 사용됩니다.&lt;/p&gt;
 &lt;p&gt;원본 데이터(surveys)에 결측값이 없이 정제된 데이터셋(survey_complete)를 만들어 보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1219,11 +1180,11 @@
 &lt;div class="prompt input_prompt"&gt;In [70]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys_complete&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;surveys&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-  &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;         &lt;span class="c1"&gt;# 빈문자열을 갖는 species_id 제거&lt;/span&gt;
-         &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;           &lt;span class="c1"&gt;# weight 결측값 제거&lt;/span&gt;
-             &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;  &lt;span class="c1"&gt;# hindfoot_length 결측값 제거&lt;/span&gt;
-             &lt;span class="n"&gt;sex&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                &lt;span class="c1"&gt;# 빈문자열을 갖는 sex 제거&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surveys_complete&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;surveys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;species_id&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="c1"&gt;# 빈문자열을 갖는 species_id 제거&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="c1"&gt;# weight 결측값 제거&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nf"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hindfoot_length&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# hindfoot_length 결측값 제거&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="c1"&gt;# 빈문자열을 갖는 sex 제거&lt;/span&gt;
 &lt;span class="nf"&gt;dim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;surveys_complete&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1241,12 +1202,10 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-&lt;ol class="list-inline"&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;&lt;ol class="list-inline"&gt;
 	&lt;li&gt;30676&lt;/li&gt;
 	&lt;li&gt;9&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1268,8 +1227,8 @@
 &lt;div class="prompt input_prompt"&gt;In [35]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;write.csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;surveys_complete&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"surveys_complete.csv"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-          &lt;span class="n"&gt;row.names&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;write.csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;surveys_complete&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"surveys_complete.csv"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="n"&gt;row.names&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1280,10 +1239,11 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="5.-마무리하며,"&gt;5. 마무리하며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#5.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;R에서 데이터를 불러오고 전처리하는 과정을 &lt;code&gt;dplyr&lt;/code&gt; 패키지를 이용해 해보았습니다. 이러한 과정은 필수적이면서도 노동집약적이기 때문에 평소에 잘 기억해 두는것이 좋습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;파이썬에서는 &lt;code&gt;pandas&lt;/code&gt;, R에는 &lt;code&gt;dplyr&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="5.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;5. 마무리하며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/dplyr/#5.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;R에서 데이터를 불러오고 전처리하는 과정을 &lt;code&gt;dplyr&lt;/code&gt; 패키지를 이용해 해보았습니다. 이러한 과정은 필수적이면서도 노동집약적이기 때문에 평소에 잘 기억해 두는것이 좋습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;파이썬에서는 &lt;code&gt;pandas&lt;/code&gt;, R에는 &lt;code&gt;dplyr&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>dataframe</category><category>dplyr</category><category>R</category><category>데이터 프레임</category><guid>https://partrita.github.io/posts/dplyr/</guid><pubDate>Sun, 29 Apr 2018 22:56:47 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>dataframe</category><category>dplyr</category><category>R</category><category>데이터 프레임</category><guid>https://partrita.github.io/posts/dplyr/</guid><pubDate>Sun, 29 Apr 2018 22:56:47 GMT</pubDate></item></channel></rss>

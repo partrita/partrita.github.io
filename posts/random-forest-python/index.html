@@ -62,10 +62,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -126,8 +127,7 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -137,7 +137,7 @@ navbar-dark bg-dark
 <blockquote>
 <p>파이썬의 유명 라이브러리인 <code>Scikit-learn</code>을 이용할거에요.</p>
 </blockquote>
-<h3 id="예제-데이터">예제 데이터<a class="anchor-link" href="#%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0">¶</a>
+<h3 id="%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0">예제 데이터<a class="anchor-link" href="#%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0">¶</a>
 </h3>
 <p><code>Scikit-learn</code>에는 예제로 사용할 수 있는 데이터가 이미 포함되어 있습니다. 가짜가 아닌 진짜 데이터들이고, 몇몇은 아주 유명한 것이죠. 여기서는 <code>Iris</code> 데이터를 써볼거에요.</p>
 
@@ -170,7 +170,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Random-forest으로-데이터-분류하기">Random forest으로 데이터 분류하기<a class="anchor-link" href="#Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0">Random forest으로 데이터 분류하기<a class="anchor-link" href="#Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>첫번째로 우리는 아주 간단한 분류작업을 해보겠습니다. <code>Iris</code>데이터를 <code>pandas</code>의 <code>dataframe</code>으로 만들고 시각화 라이브러리인 <code>seaborn</code>으로 그림을 그려볼게요.</p>
 
@@ -331,8 +331,8 @@ navbar-dark bg-dark
 <span class="n">predicted</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Out-of-bag score estimate: </span><span class="si">{rf.oob_score_:.3}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Mean accuracy score: </span><span class="si">{accuracy:.3}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Out-of-bag score estimate: </span><span class="si">{</span><span class="n">rf</span><span class="o">.</span><span class="n">oob_score_</span><span class="si">:</span><span class="s1">.3</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Mean accuracy score: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.3</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -423,12 +423,11 @@ Mean accuracy score: 0.933
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="마치며">마치며<a class="anchor-link" href="#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h3 id="%EB%A7%88%EC%B9%98%EB%A9%B0">마치며<a class="anchor-link" href="#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h3>
 <p>시각화를 통해 우리의 모델이 <strong>setosa</strong>는 정확히 분류해 내고 있지만, <strong>versicolor</strong> 와 <strong>virginica</strong>를 구별하는데는 애를 먹고 있다는 것을 알 수 있습니다.</p>
 <p>이렇게 간단하게 파이썬으로 <strong>Random forest</strong>를 하는 방법을 알아 보았습니다. 다음에는 더 구체적이고 심화된 내용으로 찾아 뵙겠습니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -458,7 +457,7 @@ Mean accuracy score: 0.933
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -469,9 +468,7 @@ Mean accuracy score: 0.933
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

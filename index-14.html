@@ -53,10 +53,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href=".">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -118,8 +119,7 @@ navbar-dark bg-dark
             </p>
         </div>
     </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -129,7 +129,7 @@ navbar-dark bg-dark
 <blockquote>
 <p>파이썬의 유명 라이브러리인 <code>Scikit-learn</code>을 이용할거에요.</p>
 </blockquote>
-<h3 id="예제-데이터">예제 데이터<a class="anchor-link" href="posts/random-forest-python/#%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0">¶</a>
+<h3 id="%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0">예제 데이터<a class="anchor-link" href="posts/random-forest-python/#%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0">¶</a>
 </h3>
 <p><code>Scikit-learn</code>에는 예제로 사용할 수 있는 데이터가 이미 포함되어 있습니다. 가짜가 아닌 진짜 데이터들이고, 몇몇은 아주 유명한 것이죠. 여기서는 <code>Iris</code> 데이터를 써볼거에요.</p>
 
@@ -162,7 +162,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Random-forest으로-데이터-분류하기">Random forest으로 데이터 분류하기<a class="anchor-link" href="posts/random-forest-python/#Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0">Random forest으로 데이터 분류하기<a class="anchor-link" href="posts/random-forest-python/#Random-forest%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>첫번째로 우리는 아주 간단한 분류작업을 해보겠습니다. <code>Iris</code>데이터를 <code>pandas</code>의 <code>dataframe</code>으로 만들고 시각화 라이브러리인 <code>seaborn</code>으로 그림을 그려볼게요.</p>
 
@@ -323,8 +323,8 @@ navbar-dark bg-dark
 <span class="n">predicted</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Out-of-bag score estimate: </span><span class="si">{rf.oob_score_:.3}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Mean accuracy score: </span><span class="si">{accuracy:.3}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Out-of-bag score estimate: </span><span class="si">{</span><span class="n">rf</span><span class="o">.</span><span class="n">oob_score_</span><span class="si">:</span><span class="s1">.3</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Mean accuracy score: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.3</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -415,12 +415,11 @@ Mean accuracy score: 0.933
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="마치며">마치며<a class="anchor-link" href="posts/random-forest-python/#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h3 id="%EB%A7%88%EC%B9%98%EB%A9%B0">마치며<a class="anchor-link" href="posts/random-forest-python/#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h3>
 <p>시각화를 통해 우리의 모델이 <strong>setosa</strong>는 정확히 분류해 내고 있지만, <strong>versicolor</strong> 와 <strong>virginica</strong>를 구별하는데는 애를 먹고 있다는 것을 알 수 있습니다.</p>
 <p>이렇게 간단하게 파이썬으로 <strong>Random forest</strong>를 하는 방법을 알아 보았습니다. 다음에는 더 구체적이고 심화된 내용으로 찾아 뵙겠습니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -436,19 +435,18 @@ Mean accuracy score: 0.933
             </p>
         </div>
     </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>R</code>을 이용해서 간단한 생물정보학(bioinformatics) 분석을 해보도록 할게요. 여기서 우리가 초점을 맞출 것은 단백질의 서열입니다.</p>
 <p>생물학에 대한 기초적인 이해가 있다고 가정하고 <code>R</code>로 분석하는 것 위주로 설명을 할 겁니다. <code>R</code>을 사용하기 위해서는 일단 컴퓨터에 설치를 해야 할텐데요. 설치가 되어 있지 않다면 다음 <a href="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/src/installr.html">링크</a>를 참고해서 설치하도록 하세요.</p>
-<h2 id="0.-생물정보학-위한-R-packages:">0. 생물정보학 위한 R packages:<a class="anchor-link" href="posts/R-bio/#0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:">¶</a>
+<h2 id="0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:">0. 생물정보학 위한 R packages:<a class="anchor-link" href="posts/R-bio/#0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:">¶</a>
 </h2>
 <p>두 가지의 유명한 패키지가 알려져있습니다.</p>
 <ul>
-<li>Bioconductor </li>
+<li>Bioconductor</li>
 <li>SeqinR</li>
 </ul>
 <p>각각의 특징을 간략하게 알아보자면 <a href="posts/R-bio/www.bioconductor.org">Bioconductor</a>는 마이크로 어레이 데이터 같은 비교적 큰 데이터 분석을 위한 툴들을 제공합니다. 
@@ -498,14 +496,14 @@ Making 'packages.html' ... done
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="FASTA-형식(format)">FASTA 형식(format)<a class="anchor-link" href="posts/R-bio/#FASTA-%ED%98%95%EC%8B%9D(format)">¶</a>
+<h3 id="FASTA-%ED%98%95%EC%8B%9D(format)">FASTA 형식(format)<a class="anchor-link" href="posts/R-bio/#FASTA-%ED%98%95%EC%8B%9D(format)">¶</a>
 </h3>
 <p>FASTA 형식은 간단하고 많이 사용되는 형태의 파일입니다. sequence alignment용 FASTA라는 프로그램에서 처음으로 사용되었죠. 아래에 예시가 있습니다. 시퀀스에 대한 설명은 <code>&gt;</code> 꺽쇄로 시작한 첫번째 줄에 적혀 있고, 다음 줄에는 서열 정보가 들어갑니다.</p>
-
 <pre><code>&gt; A06852 183 residues
 MPRLFSYLLGVWLLLSQLPREIPGQSTNDFIKACGRELVRLWVEICGSVSWGRTALSLEE
 PQLETGPPAETMPSSITKDAEILKMMLEFVPNLPQELKATLSERQPSLRELQQSASKDSN
-LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
+LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR
+</code></pre>
 
 </div>
 </div>
@@ -515,7 +513,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.-서열-정보를-R로-읽어오기">1. 서열 정보를 R로 읽어오기<a class="anchor-link" href="posts/R-bio/#1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0">¶</a>
+<h2 id="1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0">1. 서열 정보를 R로 읽어오기<a class="anchor-link" href="posts/R-bio/#1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0">¶</a>
 </h2>
 <p><code>SeqinR</code> 패키지를 사용해서 파스타(FASTA) 파일을 읽어 보도록 해보겠습니다.</p>
 <p><img src="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/_images/P1_image3.png" alt=""></p>
@@ -535,9 +533,9 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">"seqinr"</span><span class="p">)</span>
 
-<span class="n">dengue</span> <span class="o">&lt;-</span> <span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">"den1.fasta"</span><span class="p">)</span>
+<span class="n">dengue</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"den1.fasta"</span><span class="p">)</span>
 <span class="c1"># In fact, the first element of the list object dengue contains the the DNA sequence</span>
-<span class="n">dengueseq</span> <span class="o">&lt;-</span> <span class="n">dengue[[1]]</span>
+<span class="n">dengueseq</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dengue</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
 </pre></div>
 
     </div>
@@ -550,7 +548,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="DNA-서열의-길이">DNA 서열의 길이<a class="anchor-link" href="posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4">¶</a>
+<h2 id="DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4">DNA 서열의 길이<a class="anchor-link" href="posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4">¶</a>
 </h2>
 <p>DNA 서열을 불러온 다음에는 제대로 불어왔는지를 확인하기 위해 총 서열의 길이를 알아 보도록 하겠습니다.</p>
 
@@ -579,9 +577,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 
 
 
-<div class="output_html rendered_html output_subarea ">
-10735
-</div>
+<div class="output_html rendered_html output_subarea ">10735</div>
 
 </div>
 
@@ -595,7 +591,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>총 <strong>10735</strong>개의 DNA 서열로 구성되어있다는 것을 알 수 있군요.</p>
-<h3 id="원하는-부분의-서열만-얻기">원하는 부분의 서열만 얻기<a class="anchor-link" href="posts/R-bio/#%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0">¶</a>
+<h3 id="%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0">원하는 부분의 서열만 얻기<a class="anchor-link" href="posts/R-bio/#%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0">¶</a>
 </h3>
 <p>DNA 서열에서도 특정 부분만 필요할 때가 있습니다. <strong>DEN-1 Dengue virus genome sequence</strong>의 처음부터 50번째 까지의 서열을 확인해보겠습니다.</p>
 
@@ -607,7 +603,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">dengueseq[1</span><span class="o">:</span><span class="m">50</span><span class="n">]</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">dengueseq</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -640,7 +636,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="DNA-서열상의-염기-구성">DNA 서열상의 염기 구성<a class="anchor-link" href="posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1">¶</a>
+<h2 id="DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1">DNA 서열상의 염기 구성<a class="anchor-link" href="posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1">¶</a>
 </h2>
 <p>DNA는 4가지의 nucleotides (“A”, “C”, “G”, “T”) 로 구성되어 있습니다. <strong>DEN-1.fasta</strong>에 각각이 몇개나 있는지 알아 보도록 하죠.</p>
 
@@ -717,9 +713,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 
 
 
-<div class="output_html rendered_html output_subarea ">
-0.466697717745692
-</div>
+<div class="output_html rendered_html output_subarea ">0.466697717745692</div>
 
 </div>
 
@@ -733,7 +727,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>GC content는 총 46.66977%입니다. 약간 적은 편이네요.</p>
-<h2 id="특정-부분의-GC-content">특정 부분의 GC content<a class="anchor-link" href="posts/R-bio/#%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content">¶</a>
+<h2 id="%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content">특정 부분의 GC content<a class="anchor-link" href="posts/R-bio/#%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content">¶</a>
 </h2>
 <p>좀전의 분석은 전체 서열상에서 평균 GC content이었습니다. 하지만 DNA서열상의 특정부분에서의 GC content는 어떻게 알 수 있을까요?</p>
 <p>전체서열을 여러개의 조각으로 나누어 <code>GC()</code>기능을 사용해보겠습니다.
@@ -747,22 +741,22 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="n">slidingwindowplot</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">windowsize</span><span class="p">,</span> <span class="n">inputseq</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">slidingwindowplot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">windowsize</span><span class="p">,</span><span class="w"> </span><span class="n">inputseq</span><span class="p">)</span>
 <span class="p">{</span>
-   <span class="n">starts</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="n">inputseq</span><span class="p">)</span><span class="o">-</span><span class="n">windowsize</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="n">windowsize</span><span class="p">)</span>
-   <span class="n">n</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">starts</span><span class="p">)</span>    <span class="c1"># Find the length of the vector "starts"</span>
-   <span class="n">chunkGCs</span> <span class="o">&lt;-</span> <span class="nf">numeric</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># Make a vector of the same length as vector "starts", but just containing zeroes</span>
-   <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">chunk</span> <span class="o">&lt;-</span> <span class="n">inputseq[starts[i]</span><span class="o">:</span><span class="p">(</span><span class="n">starts[i]</span><span class="o">+</span><span class="n">windowsize</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span>
-        <span class="n">chunkGC</span> <span class="o">&lt;-</span> <span class="nf">GC</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
-        <span class="c1"># print(chunkGC)</span>
-        <span class="n">chunkGCs[i]</span> <span class="o">&lt;-</span> <span class="n">chunkGC</span>
-   <span class="p">}</span>
-   <span class="nf">plot</span><span class="p">(</span><span class="n">starts</span><span class="p">,</span><span class="n">chunkGCs</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">"b"</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">"Nucleotide start position"</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">"GC content"</span><span class="p">)</span>
+<span class="w">   </span><span class="n">starts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">inputseq</span><span class="p">)</span><span class="o">-</span><span class="n">windowsize</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">windowsize</span><span class="p">)</span>
+<span class="w">   </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">starts</span><span class="p">)</span><span class="w">    </span><span class="c1"># Find the length of the vector "starts"</span>
+<span class="w">   </span><span class="n">chunkGCs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">numeric</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="c1"># Make a vector of the same length as vector "starts", but just containing zeroes</span>
+<span class="w">   </span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">chunk</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">inputseq</span><span class="p">[</span><span class="n">starts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="p">(</span><span class="n">starts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">windowsize</span><span class="m">-1</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">chunkGC</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">GC</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+<span class="w">        </span><span class="c1"># print(chunkGC)</span>
+<span class="w">        </span><span class="n">chunkGCs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chunkGC</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="nf">plot</span><span class="p">(</span><span class="n">starts</span><span class="p">,</span><span class="n">chunkGCs</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">"b"</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">"Nucleotide start position"</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">"GC content"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1"># 300개씩 서열을 나누어서 GC() 기능을 사용합니다.</span>
-<span class="nf">slidingwindowplot</span><span class="p">(</span><span class="m">300</span><span class="p">,</span> <span class="n">dengueseq</span><span class="p">)</span>
+<span class="nf">slidingwindowplot</span><span class="p">(</span><span class="m">300</span><span class="p">,</span><span class="w"> </span><span class="n">dengueseq</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -796,7 +790,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>전체적인 서열상에서 GC contents가 특별하게 낮은 구역은 4000번(40%) 즈음이군요.</p>
-<h3 id="파스타(FASTA)-파일-쓰기">파스타(FASTA) 파일 쓰기<a class="anchor-link" href="posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0">¶</a>
+<h3 id="%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0">파스타(FASTA) 파일 쓰기<a class="anchor-link" href="posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0">¶</a>
 </h3>
 <p>파스타 파일을 불러들여 간단히 분석을 해보았는데, 이제는 편집한 서열을 파스타 파일로 저장하는 방법을 알아보겠습니다.</p>
 <p>아래와 같이 작성해주면, <strong>den1.fasta</strong>라는 파일이 폴더에 생긴것을 확인 할수 있어요.</p>
@@ -809,7 +803,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">write.fasta</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="s">"DEN-1"</span><span class="p">,</span> <span class="n">sequences</span><span class="o">=</span><span class="n">dengueseq</span><span class="p">,</span> <span class="n">file.out</span><span class="o">=</span><span class="s">"den1.fasta"</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">write.fasta</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="s">"DEN-1"</span><span class="p">,</span><span class="w"> </span><span class="n">sequences</span><span class="o">=</span><span class="n">dengueseq</span><span class="p">,</span><span class="w"> </span><span class="n">file.out</span><span class="o">=</span><span class="s">"den1.fasta"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -822,14 +816,15 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="파스타-파일에서-단백질-서열을-불러오기">파스타 파일에서 단백질 서열을 불러오기<a class="anchor-link" href="posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+<h2 id="%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">파스타 파일에서 단백질 서열을 불러오기<a class="anchor-link" href="posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
 </h2>
 <p><code>SeqinR</code>을 사용하면 DNA 서열과 동일한 방법으로 단백질 서열도 읽을수 있습니다. <strong>Uniprot</strong> 에 각각 <strong>Q9CD83</strong> , <strong>A0PQ23</strong>으로 저장되어 있는 단백질 서열의 파스타 파일을 다운받으세요.</p>
-<h3 id="예시로-사용한-Q9CD83,-A0PQ23-?">예시로 사용한 Q9CD83, A0PQ23 ?<a class="anchor-link" href="posts/R-bio/#%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?">¶</a>
+<h3 id="%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?">예시로 사용한 Q9CD83, A0PQ23 ?<a class="anchor-link" href="posts/R-bio/#%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?">¶</a>
 </h3>
 <p><strong>Q9CD83</strong> 과 <strong>A0PQ23</strong> 는 Chorismate pyruvate-lyase라는 효소입니다. 차이점은 서로 다른 균주에서 발현된다는 것입니다.</p>
 <ul>
-<li>Q9CD83은 <em>Mycobacterium leprae</em> </li>
+<li>Q9CD83은 <em>Mycobacterium leprae</em>
+</li>
 <li>A0PQ23은 <em>Mycobacterium ulcerans</em>
 </li>
 </ul>
@@ -843,13 +838,13 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR</code></pre>
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="n">leprae</span> <span class="o">&lt;-</span> <span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">"Q9CD83.fasta"</span><span class="p">)</span>
-<span class="n">lepraeseq</span> <span class="o">&lt;-</span> <span class="n">leprae[[1]]</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">leprae</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Q9CD83.fasta"</span><span class="p">)</span>
+<span class="n">lepraeseq</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">leprae</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
 
-<span class="n">ulcerans</span> <span class="o">&lt;-</span> <span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">"A0PQ23.fasta"</span><span class="p">)</span>
-<span class="n">ulceransseq</span> <span class="o">&lt;-</span> <span class="n">ulcerans[[1]]</span>
+<span class="n">ulcerans</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.fasta</span><span class="p">(</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"A0PQ23.fasta"</span><span class="p">)</span>
+<span class="n">ulceransseq</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ulcerans</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
 
-<span class="n">lepraeseq</span> <span class="c1"># Display the contents of "lepraeseq"</span>
+<span class="n">lepraeseq</span><span class="w"> </span><span class="c1"># Display the contents of "lepraeseq"</span>
 </pre></div>
 
     </div>
@@ -900,7 +895,7 @@ attr(,"class")
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>파스타 파일이 아미노산 서열을 담고 있는것을 확인할 수 있고, 서열으 정보(균주, 이름)등을 알수 있군요.</p>
-<h2 id="두-서열을-점도표로-비교하기">두 서열을 점도표로 비교하기<a class="anchor-link" href="posts/R-bio/#%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">두 서열을 점도표로 비교하기<a class="anchor-link" href="posts/R-bio/#%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>두가지의 서열을 비교할때는 먼저 점도표(dotplot)을 그려보는것은 언제나 좋은 생각입니다.</p>
 <p><code>dotPlot()</code>이라는 기능으로 쉽게 그려 볼 수 있죠. 위에서 예로 들었던 <em>Mycobacterium leprae</em> 과 <em>Mycobacterium ulcerans</em>의 Chorismate pyruvate-lyase를 비교해보도록 하죠.</p>
@@ -913,7 +908,7 @@ attr(,"class")
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">dotPlot</span><span class="p">(</span><span class="n">lepraeseq</span><span class="p">,</span> <span class="n">ulceransseq</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">dotPlot</span><span class="p">(</span><span class="n">lepraeseq</span><span class="p">,</span><span class="w"> </span><span class="n">ulceransseq</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -957,7 +952,7 @@ attr(,"class")
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="코돈표">코돈표<a class="anchor-link" href="posts/R-bio/#%EC%BD%94%EB%8F%88%ED%91%9C">¶</a>
+<h2 id="%EC%BD%94%EB%8F%88%ED%91%9C">코돈표<a class="anchor-link" href="posts/R-bio/#%EC%BD%94%EB%8F%88%ED%91%9C">¶</a>
 </h2>
 <p><code>SeqinR</code> 패키지에는 <code>tablecode()</code> 라는 기능으로 표준 코돈표를 제공하고 있습니다. 아래와 같이 확인할 수 있죠.</p>
 <p>보통 인터넷에서 쉽게 확인 할 수 있는것이라 큰 쓸모는 없을 수도 있겠습니다.</p>
@@ -1003,13 +998,14 @@ attr(,"class")
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="마치며">마치며<a class="anchor-link" href="posts/R-bio/#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0">마치며<a class="anchor-link" href="posts/R-bio/#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h2>
 <p><code>R</code>의 <code>SeqinR</code>이라는 패키지를 사용해 생물학적 서열정보를 간략하게 분석해보았습니다. <code>R</code>에서 기본적으로 제공하는 다음의 기능과</p>
 <ul>
 <li>벡터(vector)나 리스트(list)의 길이를 알 수 있는 <code>length()</code>
 </li>
-<li>벡터(vector)나 리스트(list)의 구성성분의 갯수를 알려주는 <code>table()</code> </li>
+<li>벡터(vector)나 리스트(list)의 구성성분의 갯수를 알려주는 <code>table()</code>
+</li>
 </ul>
 <p><code>SeqinR</code> 패키지에서 제공하는 기능</p>
 <ul>
@@ -1022,7 +1018,6 @@ attr(,"class")
 <ul>
 <li><a href="https://a-little-book-of-r-for-bioinformatics.readthedocs.io">https://a-little-book-of-r-for-bioinformatics.readthedocs.io</a></li>
 </ul>
-</div>
 </div>
 </div>
 </div>
@@ -1047,7 +1042,7 @@ attr(,"class")
      }
  });
  </script><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -1058,9 +1053,7 @@ attr(,"class")
             <script src="assets/js/jquery.min.js"></script><script src="assets/js/popper.min.js"></script><script src="assets/js/bootstrap.min.js"></script><script src="assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

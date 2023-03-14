@@ -66,10 +66,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -130,17 +131,16 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="0.-단백질-용해도-예측">0. 단백질 용해도 예측<a class="anchor-link" href="#0.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9A%A9%ED%95%B4%EB%8F%84-%EC%98%88%EC%B8%A1">¶</a>
+<h2 id="0.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9A%A9%ED%95%B4%EB%8F%84-%EC%98%88%EC%B8%A1">0. 단백질 용해도 예측<a class="anchor-link" href="#0.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9A%A9%ED%95%B4%EB%8F%84-%EC%98%88%EC%B8%A1">¶</a>
 </h2>
 <p>유전자 재조합을 통해 특정 단백질을 과발현시키는 것은 생명과학에서 아주 중요한 일입니다. 그러나 대부분의 과발현 단백질은 <a href="https://en.wikipedia.org/wiki/Inclusion_bodies">inclusion bodies</a>를 형성해 용해도가 매우 낮은 문제가 있습니다. 그렇기 때문에 단백질 용해도를 예측하는 일은 실험의 시행착오를 줄이는데 도움이 됩니다.</p>
 <p>여기서는 대장균에서 발현되는 단백질 데이터를 가지고 기계학습으로 용해도를 예측하는 문제를 풀어보겠습니다.</p>
-<h2 id="1.-eSOL-데이터셋-설명">1. eSOL 데이터셋 설명<a class="anchor-link" href="#1.-eSOL-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85">¶</a>
+<h2 id="1.-eSOL-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85">1. eSOL 데이터셋 설명<a class="anchor-link" href="#1.-eSOL-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85">¶</a>
 </h2>
 <p>분석에 사용한 eSOL(Solubility database of all E.coli proteins) 데이터셋은 Targeted Proteins Research Project을 통해 <a href="http://tp-esol.genes.nig.ac.jp/">http://tp-esol.genes.nig.ac.jp/</a> 에 공개 되어있습니다.</p>
 <p>공식 페이지에서는 해당 데이터셋에 대해 다음과 같이 설명 합니다.</p>
@@ -148,7 +148,7 @@ navbar-dark bg-dark
 <p>eSOL is a database on the solubility of entire ensemble E.coli proteins (Niwa T, Ying BW, Saito K, Jin W, Takada S, Ueda T and Taguchi H, 2009) individually synthesized by PURE system that is chaperone free.</p>
 <p>대장균(<em>E.coli</em>) 단백질의 용해도(Solubility)는 아래의 공식을 통해 계산되었습니다.</p>
 $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>따라서 주의해야 할 것은 용해도가 동일해도 전체 발현량은 동일하지 않을 수 있습니다.</p>
-<h2 id="2.-데이터셋-불러오기">2. 데이터셋 불러오기<a class="anchor-link" href="#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+<h2 id="2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">2. 데이터셋 불러오기<a class="anchor-link" href="#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
 </h2>
 <p><code>pandas</code> 라이브러리를 사용해 데이터셋을 불러옵니다. 원본 데이터셋은 <code>tsv</code>형식으로 되어 있지만, 편의를 위해 <code>csv</code>형식으로 변경하고 단백질 서열 정보를 추가했습니다.</p>
 
@@ -180,8 +180,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -241,8 +240,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -256,11 +254,11 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>불러온 데이터셋의 마지막 5개 데이터는 위와 같습니다. 데이터셋에는 총 3147개의 단백질의 유전자이름과 서열정보 그리고 용해도값이 들어 있습니다.</p>
-<h2 id="3.-추가-데이터-열-만들기">3. 추가 데이터 열 만들기<a class="anchor-link" href="#3.-%EC%B6%94%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
+<h2 id="3.-%EC%B6%94%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0">3. 추가 데이터 열 만들기<a class="anchor-link" href="#3.-%EC%B6%94%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
 </h2>
 <p>단백질 서열은 상직적(symbolic) 정보입니다. 따라서 를 포함하고 있습니다. 따라서 다양한 분석법을 통해 기계학습에 유용한 특성(feature)를 만들 수 있습니다.</p>
 <p>먼저 전체 단백질 서열에서 각각의 아미노산의 비율에 대한 데이터를 추가해봅니다. 파이썬 기본 함수인 <code>count()</code>를 사용합니다.</p>
-<h3 id="3.1.-아미노산의-비율">3.1. 아미노산의 비율<a class="anchor-link" href="#3.1.-%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0%EC%9D%98-%EB%B9%84%EC%9C%A8">¶</a>
+<h3 id="3.1.-%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0%EC%9D%98-%EB%B9%84%EC%9C%A8">3.1. 아미노산의 비율<a class="anchor-link" href="#3.1.-%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0%EC%9D%98-%EB%B9%84%EC%9C%A8">¶</a>
 </h3>
 </div>
 </div>
@@ -287,7 +285,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>이제 <code>Biopython</code> 라이브러리에 있는 도구를 사용해 추가적인 데이터를 만들어 보겠습니다.</p>
-<h3 id="3.2.-단백질의-분자량">3.2. 단백질의 분자량<a class="anchor-link" href="#3.2.-%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%9D%98-%EB%B6%84%EC%9E%90%EB%9F%89">¶</a>
+<h3 id="3.2.-%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%9D%98-%EB%B6%84%EC%9E%90%EB%9F%89">3.2. 단백질의 분자량<a class="anchor-link" href="#3.2.-%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%9D%98-%EB%B6%84%EC%9E%90%EB%9F%89">¶</a>
 </h3>
 <p><code>Biopython.ProteinAnalysis</code> 객체를 사용합니다.</p>
 
@@ -314,7 +312,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.3.-다양한-계산값">3.3. 다양한 계산값<a class="anchor-link" href="#3.3.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B3%84%EC%82%B0%EA%B0%92">¶</a>
+<h3 id="3.3.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B3%84%EC%82%B0%EA%B0%92">3.3. 다양한 계산값<a class="anchor-link" href="#3.3.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B3%84%EC%82%B0%EA%B0%92">¶</a>
 </h3>
 <p>단백질의 방향족(aromaticity) 아미노산 비율, 불안정성(instability index), 등전점(isoelectric point)등에 관한 값을 추가합니다.</p>
 
@@ -342,7 +340,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.4.-단백질-2차-구조">3.4. 단백질 2차 구조<a class="anchor-link" href="#3.4.-%EB%8B%A8%EB%B0%B1%EC%A7%88-2%EC%B0%A8-%EA%B5%AC%EC%A1%B0">¶</a>
+<h3 id="3.4.-%EB%8B%A8%EB%B0%B1%EC%A7%88-2%EC%B0%A8-%EA%B5%AC%EC%A1%B0">3.4. 단백질 2차 구조<a class="anchor-link" href="#3.4.-%EB%8B%A8%EB%B0%B1%EC%A7%88-2%EC%B0%A8-%EA%B5%AC%EC%A1%B0">¶</a>
 </h3>
 <p>단백질 2차 구조의 비율에 대한 값을 추가합니다. 현재 단백질 서열을 통해 2차 구조를 예측하는 것은 상당히 정확한 편입니다.</p>
 
@@ -369,7 +367,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.5.-흡광-계수">3.5. 흡광 계수<a class="anchor-link" href="#3.5.-%ED%9D%A1%EA%B4%91-%EA%B3%84%EC%88%98">¶</a>
+<h3 id="3.5.-%ED%9D%A1%EA%B4%91-%EA%B3%84%EC%88%98">3.5. 흡광 계수<a class="anchor-link" href="#3.5.-%ED%9D%A1%EA%B4%91-%EA%B3%84%EC%88%98">¶</a>
 </h3>
 <p>단백질의 흡광 계수는 주로 농도를 계산하는데 사용되는 값으로 소수성 아미노산과 시스테인(cysteine)의 비율과 관련있습니다.</p>
 
@@ -395,7 +393,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.6.-단백질-유연성-정보">3.6. 단백질 유연성 정보<a class="anchor-link" href="#3.6.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9C%A0%EC%97%B0%EC%84%B1-%EC%A0%95%EB%B3%B4">¶</a>
+<h3 id="3.6.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9C%A0%EC%97%B0%EC%84%B1-%EC%A0%95%EB%B3%B4">3.6. 단백질 유연성 정보<a class="anchor-link" href="#3.6.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9C%A0%EC%97%B0%EC%84%B1-%EC%A0%95%EB%B3%B4">¶</a>
 </h3>
 <p>단백질 서열의 각 위치에 대한 아미노산 유연성을 계산합니다. 그런다음 평균값과 표준편차, 중간값을 추가합니다.</p>
 
@@ -482,8 +480,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -646,8 +643,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </tbody>
 </table>
 <p>5 rows × 43 columns</p>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -687,8 +683,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -923,8 +918,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </tbody>
 </table>
 <p>8 rows × 41 columns</p>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -938,7 +932,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 테이블을 통해 용해도의 표준편차값이 높다는 것과 생성한 데이터들이 음수값도 포함하고 있다는 것을 알 수 있습니다.</p>
-<h3 id="3.7.-데이터-행-정렬">3.7. 데이터 행 정렬<a class="anchor-link" href="#3.7.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%96%89-%EC%A0%95%EB%A0%AC">¶</a>
+<h3 id="3.7.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%96%89-%EC%A0%95%EB%A0%AC">3.7. 데이터 행 정렬<a class="anchor-link" href="#3.7.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%96%89-%EC%A0%95%EB%A0%AC">¶</a>
 </h3>
 <p>데이터 처리의 편의를 위해 <code>Solubility</code>, <code>Sequence</code> 행의 위치를 변경합니다.</p>
 
@@ -1033,8 +1027,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1197,8 +1190,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </tbody>
 </table>
 <p>5 rows × 43 columns</p>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1211,7 +1203,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.8.-데이터셋-파일로-저장">3.8. 데이터셋 파일로 저장<a class="anchor-link" href="#3.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%ED%8C%8C%EC%9D%BC%EB%A1%9C-%EC%A0%80%EC%9E%A5">¶</a>
+<h3 id="3.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%ED%8C%8C%EC%9D%BC%EB%A1%9C-%EC%A0%80%EC%9E%A5">3.8. 데이터셋 파일로 저장<a class="anchor-link" href="#3.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%ED%8C%8C%EC%9D%BC%EB%A1%9C-%EC%A0%80%EC%9E%A5">¶</a>
 </h3>
 <p>아래 명령어를 통해 데이터셋을 파일로 저장 할 수 있습니다.</p>
 
@@ -1236,7 +1228,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.--시각화로-EDA-하기">4.  시각화로 EDA 하기<a class="anchor-link" href="#4.--%EC%8B%9C%EA%B0%81%ED%99%94%EB%A1%9C-EDA-%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="4.--%EC%8B%9C%EA%B0%81%ED%99%94%EB%A1%9C-EDA-%ED%95%98%EA%B8%B0">4.  시각화로 EDA 하기<a class="anchor-link" href="#4.--%EC%8B%9C%EA%B0%81%ED%99%94%EB%A1%9C-EDA-%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>간단한 시각화를 통해 데이터셋이 어떻게 분포되어 있는지 확인합니다.</p>
 <h3 id="4.1.-Scatter-plot">4.1. Scatter plot<a class="anchor-link" href="#4.1.-Scatter-plot">¶</a>
@@ -1362,7 +1354,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 시각화를 통해 대부분의 단백질의 크기는 30kDa 주변에 몰려있으며, 용해도는 20%와 80% 그룹으로 나뉜다는 것을 알 수 있습니다. 또한 상대적으로 높은 용해도의 단백질은 25kDa 이하의 크기입니다.</p>
-<h2 id="5.-데이터-전처리">5. 데이터 전처리<a class="anchor-link" href="#5.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC">¶</a>
+<h2 id="5.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC">5. 데이터 전처리<a class="anchor-link" href="#5.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC">¶</a>
 </h2>
 <p>기계학습을 위해 데이터셋을 특성(feature)값과 결과값으로 분리합니다.</p>
 
@@ -1418,7 +1410,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5.1.-특성값-정규화하기">5.1. 특성값 정규화하기<a class="anchor-link" href="#5.1.-%ED%8A%B9%EC%84%B1%EA%B0%92-%EC%A0%95%EA%B7%9C%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="5.1.-%ED%8A%B9%EC%84%B1%EA%B0%92-%EC%A0%95%EA%B7%9C%ED%99%94%ED%95%98%EA%B8%B0">5.1. 특성값 정규화하기<a class="anchor-link" href="#5.1.-%ED%8A%B9%EC%84%B1%EA%B0%92-%EC%A0%95%EA%B7%9C%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>정규화를 통해 기계 학습 모델이 특정 특성값에 바이어스(Bias)를 갖지 않게 합니다.</p>
 
@@ -1449,9 +1441,9 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="6.-기계학습하기">6. 기계학습하기<a class="anchor-link" href="#6.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="6.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0">6. 기계학습하기<a class="anchor-link" href="#6.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0">¶</a>
 </h2>
-<h3 id="6.1.-다양한-기계-모델-비교">6.1. 다양한 기계 모델 비교<a class="anchor-link" href="#6.1.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B8%B0%EA%B3%84-%EB%AA%A8%EB%8D%B8-%EB%B9%84%EA%B5%90">¶</a>
+<h3 id="6.1.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B8%B0%EA%B3%84-%EB%AA%A8%EB%8D%B8-%EB%B9%84%EA%B5%90">6.1. 다양한 기계 모델 비교<a class="anchor-link" href="#6.1.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B8%B0%EA%B3%84-%EB%AA%A8%EB%8D%B8-%EB%B9%84%EA%B5%90">¶</a>
 </h3>
 <p>간단한 선형모델부터 다양한 기계 학습 모델을 사용해보고 평가 지표를 통해 가장 좋은 모델을 찾습니다. 예측의 정확도를 평가하기 위해 MAPE(Mean absolute percentage error)를 평가지표로 사용했습니다.</p>
 
@@ -1509,7 +1501,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
     <span class="k">return</span> <span class="n">accuracy</span>
 
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">lin_reg</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{accuracy:.2f}</span><span class="s1"> %'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> %'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1556,7 +1548,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <span class="n">tree_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">tree_reg</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{accuracy:.2f}</span><span class="s1"> %'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> %'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1593,7 +1585,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <span class="n">svm_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">svm_reg</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{accuracy:.2f}</span><span class="s1"> %'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> %'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1629,7 +1621,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <span class="n">forest_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">forest_reg</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{accuracy:.2f}</span><span class="s1"> %'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> %'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1665,7 +1657,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <span class="n">gbr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">gbr</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{accuracy:.2f}</span><span class="s1"> %'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> %'</span><span class="p">)</span>
 <span class="c1"># print(f'Score = {gbr.score(X_train, y_train)}') # R^2 socre</span>
 </pre></div>
 
@@ -1704,7 +1696,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <span class="n">hgr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">hgr</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{accuracy:.2f}</span><span class="s1"> %'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Accuracy = </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> %'</span><span class="p">)</span>
 <span class="c1"># print(f'Score = {hgr.score(X_train, y_train)}') # R^2 socre</span>
 </pre></div>
 
@@ -1737,7 +1729,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>가장 최근에 추가된 기능인 <code>HistGradientBoostingRegressor</code>이 가장 좋은 성능을 보여줍니다.</p>
-<h3 id="6.2.-특성의-중요도">6.2. 특성의 중요도<a class="anchor-link" href="#6.2.-%ED%8A%B9%EC%84%B1%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84">¶</a>
+<h3 id="6.2.-%ED%8A%B9%EC%84%B1%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84">6.2. 특성의 중요도<a class="anchor-link" href="#6.2.-%ED%8A%B9%EC%84%B1%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84">¶</a>
 </h3>
 <p>이제 데이터의 어느 특성이 모델 예측에 중요한지 살펴보겠습니다. 간단한 시각화로 막대그래프를 그려봅니다.</p>
 
@@ -1802,7 +1794,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
 <li>pI값(29번째 특성)</li>
 <li>분광계수(24번째 특성)</li>
 </ol>
-<h2 id="7.-모델의-매개-변수-최적화">7. 모델의 매개 변수 최적화<a class="anchor-link" href="#7.-%EB%AA%A8%EB%8D%B8%EC%9D%98-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98-%EC%B5%9C%EC%A0%81%ED%99%94">¶</a>
+<h2 id="7.-%EB%AA%A8%EB%8D%B8%EC%9D%98-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98-%EC%B5%9C%EC%A0%81%ED%99%94">7. 모델의 매개 변수 최적화<a class="anchor-link" href="#7.-%EB%AA%A8%EB%8D%B8%EC%9D%98-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98-%EC%B5%9C%EC%A0%81%ED%99%94">¶</a>
 </h2>
 <p><code>GridSearchCV</code>를 사용해 가장 좋은 성능을 나타내는 매개변수 값을 찾아봅니다.</p>
 
@@ -1887,7 +1879,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$<p>�
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cvres</span> <span class="o">=</span>  <span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span>
 <span class="k">for</span> <span class="n">mean_score</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cvres</span><span class="p">[</span><span class="s2">"mean_test_score"</span><span class="p">],</span> <span class="n">cvres</span><span class="p">[</span><span class="s2">"params"</span><span class="p">]):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Score = </span><span class="si">{mean_score:.2f}</span><span class="s1">, Params = </span><span class="si">{params}</span><span class="s1"> '</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Score = </span><span class="si">{</span><span class="n">mean_score</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Params = </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1"> '</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2021,7 +2013,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="8.-마치며">8. 마치며<a class="anchor-link" href="#8.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h2 id="8.-%EB%A7%88%EC%B9%98%EB%A9%B0">8. 마치며<a class="anchor-link" href="#8.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h2>
 <p>생성한 기계 학습 모델에 임의의 단백질 서열을 넣어 용해도를 예측해보겠습니다. 임의의 서열 2가지를 <code>csv</code>파일에 넣어 데이터 전처리과정을 동일하게 거칩니다.</p>
 
@@ -2051,8 +2043,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -2088,8 +2079,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -2144,8 +2134,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -2236,8 +2225,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
 </tbody>
 </table>
 <p>2 rows × 42 columns</p>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -2289,7 +2277,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pred_sol</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2_scaled</span><span class="p">)</span>
 <span class="n">gene</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'random'</span><span class="p">,</span> <span class="s1">'DPO1_THEAQ'</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gene</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Predicted solubility of </span><span class="si">{val}</span><span class="s1"> is </span><span class="si">{pred_sol[idx]:.2f}</span><span class="s1">%'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Predicted solubility of </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">pred_sol</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2326,7 +2314,6 @@ Predicted solubility of DPO1_THEAQ is 46.57%
 </div>
 </div>
 </div>
-</div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/machine-learning/" rel="tag">machine learning</a></li>
@@ -2357,7 +2344,7 @@ Predicted solubility of DPO1_THEAQ is 46.57%
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -2368,9 +2355,7 @@ Predicted solubility of DPO1_THEAQ is 46.57%
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

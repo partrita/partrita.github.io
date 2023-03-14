@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about seaborn)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/seaborn.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>통계 분석 주석넣기</title><link>https://partrita.github.io/posts/statannot/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about seaborn)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/seaborn.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>통계 분석 주석넣기</title><link>https://partrita.github.io/posts/statannot/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-statannot-소개"&gt;0. statannot 소개&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#0.-statannot-%EC%86%8C%EA%B0%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;statannot&lt;/code&gt;은 파이썬 시각화 라이브러리 &lt;a href="https://seaborn.pydata.org/"&gt;seaborn&lt;/a&gt;로 그린 박스플롯에 통계분석에 대한 주석을 자동으로 달아주는 파이썬 패키지입니다. 자세한 것은 공식 &lt;a href="https://github.com/webermarcolivier/statannot"&gt;홈페이지&lt;/a&gt;를 참고하세요.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;막대그래프에 주석을 추가하는 것도 가능하지만 아직 완전하지 않습니다.&lt;/p&gt;
+&lt;h2 id="0.-statannot-%EC%86%8C%EA%B0%9C"&gt;0. statannot 소개&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#0.-statannot-%EC%86%8C%EA%B0%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;statannot&lt;/code&gt;은 파이썬 시각화 라이브러리 &lt;a href="https://seaborn.pydata.org/"&gt;seaborn&lt;/a&gt;로 그린 박스플롯에 통계분석에 대한 주석을 자동으로 달아주는 파이썬 패키지입니다. 자세한 것은 공식 &lt;a href="https://github.com/webermarcolivier/statannot"&gt;홈페이지&lt;/a&gt;를 참고하세요.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;막대그래프에 주석을 추가하는 것도 가능하지만 아직 완전하지 않습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id="1.-statannot-특징"&gt;1. statannot 특징&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#1.-statannot-%ED%8A%B9%EC%A7%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id="1.-statannot-%ED%8A%B9%EC%A7%95"&gt;1. statannot 특징&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#1.-statannot-%ED%8A%B9%EC%A7%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;scipy.stats&lt;/code&gt; 메소드를 사용한 통계분석:&lt;ul&gt;
 &lt;li&gt;Mann-Whitney&lt;/li&gt;
 &lt;li&gt;t-test (independent and paired)&lt;/li&gt;
@@ -19,20 +20,20 @@
 &lt;li&gt;통계분석의 주석을 별표(*), p-value 등으로 사용자가 지정할 수 있음&lt;/li&gt;
 &lt;li&gt;선택적으로 사용자 정의 p- value를 입력값으로 제공(이 경우 통계 분석은 수행되지 않음).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="2.-statannot-의존성"&gt;2. statannot 의존성&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#2.-statannot-%EC%9D%98%EC%A1%B4%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;    Python &amp;gt;= 3.5
+&lt;h2 id="2.-statannot-%EC%9D%98%EC%A1%B4%EC%84%B1"&gt;2. statannot 의존성&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#2.-statannot-%EC%9D%98%EC%A1%B4%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;    Python &amp;gt;= 3.5
     numpy &amp;gt;= 1.12.1
     seaborn &amp;gt;= 0.8.1
     matplotlib &amp;gt;= 2.2.2
     pandas &amp;gt;= 0.23.0
-    scipy &amp;gt;= 1.1.0&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="3.-statannot-설치"&gt;3. statannot 설치&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#3.-statannot-%EC%84%A4%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;PyPI를 통해 설치:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install statannot
+    scipy &amp;gt;= 1.1.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="3.-statannot-%EC%84%A4%EC%B9%98"&gt;3. statannot 설치&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#3.-statannot-%EC%84%A4%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;PyPI를 통해 설치:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;statannot
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;개발중인 최신 버전은 다음 명령어로 설치:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install git+https://github.com/webermarcolivier/statannot.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;git+https://github.com/webermarcolivier/statannot.git
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id="4.-사용-예시"&gt;4. 사용 예시&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%8B%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 필요한 라이브러리를 불러옵니다.&lt;/p&gt;
+&lt;h2 id="4.-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%8B%9C"&gt;4. 사용 예시&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%8B%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 필요한 라이브러리를 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -60,7 +61,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.1-Boxplot-non-hue"&gt;4.1 Boxplot non-hue&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1-Boxplot-non-hue"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="4.1.1-다중-비교-교정"&gt;4.1.1 다중 비교 교정&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1.1-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;기본적으로 본페로니 교정이 적용됩니다.&lt;/p&gt;
+&lt;h3 id="4.1-Boxplot-non-hue"&gt;4.1 Boxplot non-hue&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1-Boxplot-non-hue"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="4.1.1-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95"&gt;4.1.1 다중 비교 교정&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1.1-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;기본적으로 본페로니 교정이 적용됩니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -129,7 +130,7 @@ Sun v.s. Fri: Mann-Whitney-Wilcoxon test two-sided with Bonferroni correction, P
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="4.1.2-통계-분석-결과"&gt;4.1.2 통계 분석 결과&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1.2-%ED%86%B5%EA%B3%84-%EB%B6%84%EC%84%9D-%EA%B2%B0%EA%B3%BC"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;add_stat_annotation&lt;/code&gt; 함수는 튜플 &lt;code&gt;ax, test_results&lt;/code&gt; 를 반환합니다. 여기서 &lt;code&gt;test_results&lt;/code&gt;는 원래 데이터와 통계 분석 결과 (p-value 등)를 모두 포함하는&lt;code&gt;StatResult&lt;/code&gt; 리스트 객체입니다.&lt;/p&gt;
+&lt;h4 id="4.1.2-%ED%86%B5%EA%B3%84-%EB%B6%84%EC%84%9D-%EA%B2%B0%EA%B3%BC"&gt;4.1.2 통계 분석 결과&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1.2-%ED%86%B5%EA%B3%84-%EB%B6%84%EC%84%9D-%EA%B2%B0%EA%B3%BC"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;add_stat_annotation&lt;/code&gt; 함수는 튜플 &lt;code&gt;ax, test_results&lt;/code&gt; 를 반환합니다. 여기서 &lt;code&gt;test_results&lt;/code&gt;는 원래 데이터와 통계 분석 결과 (p-value 등)를 모두 포함하는&lt;code&gt;StatResult&lt;/code&gt; 리스트 객체입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -175,7 +176,7 @@ StatResult attributes: dict_keys(['test_str', 'test_short_name', 'stat_str', 'st
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="4.1.3.-다중-비교-교정이-없는-경우"&gt;4.1.3. 다중 비교 교정이 없는 경우&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1.3.-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95%EC%9D%B4-%EC%97%86%EB%8A%94-%EA%B2%BD%EC%9A%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="4.1.3.-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95%EC%9D%B4-%EC%97%86%EB%8A%94-%EA%B2%BD%EC%9A%B0"&gt;4.1.3. 다중 비교 교정이 없는 경우&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1.3.-%EB%8B%A4%EC%A4%91-%EB%B9%84%EA%B5%90-%EA%B5%90%EC%A0%95%EC%9D%B4-%EC%97%86%EB%8A%94-%EA%B2%BD%EC%9A%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -243,7 +244,7 @@ Sun v.s. Fri: Mann-Whitney-Wilcoxon test two-sided, P_val=2.680e-02 U_stat=9.605
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="4.1.4.-주석의-위치"&gt;4.1.4. 주석의 위치&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1.4.-%EC%A3%BC%EC%84%9D%EC%9D%98-%EC%9C%84%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;통계 분석 주석은 플롯 안쪽(&lt;code&gt;loc = 'inside'&lt;/code&gt;) 또는 바깥쪽(&lt;code&gt;loc ='outside'&lt;/code&gt;)에 위치할 수 있습니다. 아래 예시는 안쪽 있는 예시입니다.&lt;/p&gt;
+&lt;h4 id="4.1.4.-%EC%A3%BC%EC%84%9D%EC%9D%98-%EC%9C%84%EC%B9%98"&gt;4.1.4. 주석의 위치&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.1.4.-%EC%A3%BC%EC%84%9D%EC%9D%98-%EC%9C%84%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;통계 분석 주석은 플롯 안쪽(&lt;code&gt;loc = 'inside'&lt;/code&gt;) 또는 바깥쪽(&lt;code&gt;loc ='outside'&lt;/code&gt;)에 위치할 수 있습니다. 아래 예시는 안쪽 있는 예시입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -346,8 +347,7 @@ Sun v.s. Sat: Custom statistical test, P_val:1.000e-01
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -445,8 +445,7 @@ Sun v.s. Sat: Custom statistical test, P_val:1.000e-01
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -535,7 +534,7 @@ I_Premium v.s. J_Ideal: Mann-Whitney-Wilcoxon test two-sided with Bonferroni cor
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.3.-버킷-카테고리가-포함-된-박스-플롯"&gt;4.3. 버킷 카테고리가 포함 된 박스 플롯&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.3.-%EB%B2%84%ED%82%B7-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%EA%B0%80-%ED%8F%AC%ED%95%A8-%EB%90%9C-%EB%B0%95%EC%8A%A4-%ED%94%8C%EB%A1%AF"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="4.3.-%EB%B2%84%ED%82%B7-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%EA%B0%80-%ED%8F%AC%ED%95%A8-%EB%90%9C-%EB%B0%95%EC%8A%A4-%ED%94%8C%EB%A1%AF"&gt;4.3. 버킷 카테고리가 포함 된 박스 플롯&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.3.-%EB%B2%84%ED%82%B7-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%EA%B0%80-%ED%8F%AC%ED%95%A8-%EB%90%9C-%EB%B0%95%EC%8A%A4-%ED%94%8C%EB%A1%AF"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -563,8 +562,7 @@ I_Premium v.s. J_Ideal: Mann-Whitney-Wilcoxon test two-sided with Bonferroni cor
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -650,8 +648,7 @@ I_Premium v.s. J_Ideal: Mann-Whitney-Wilcoxon test two-sided with Bonferroni cor
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -758,7 +755,7 @@ Fri_(0.991, 4.0] v.s. Sat_(7.0, 10.0]: t-test independent samples with Bonferron
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.4.-y-오프셋-조절하기"&gt;4.4. y 오프셋 조절하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.4.-y-%EC%98%A4%ED%94%84%EC%85%8B-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="4.4.-y-%EC%98%A4%ED%94%84%EC%85%8B-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0"&gt;4.4. y 오프셋 조절하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.4.-y-%EC%98%A4%ED%94%84%EC%85%8B-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -825,7 +822,7 @@ Thur_Yes v.s. Sun_No: t-test independent samples, P_val=5.623e-01 stat=-5.822e-0
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.5.-사용자-정의-p-value를-입력으로-사용하기"&gt;4.5. 사용자 정의 p-value를 입력으로 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.5.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-p-value%EB%A5%BC-%EC%9E%85%EB%A0%A5%EC%9C%BC%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="4.5.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-p-value%EB%A5%BC-%EC%9E%85%EB%A0%A5%EC%9C%BC%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;4.5. 사용자 정의 p-value를 입력으로 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.5.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-p-value%EB%A5%BC-%EC%9E%85%EB%A0%A5%EC%9C%BC%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -941,7 +938,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.6.-사용자-정의-주석문구-넣기"&gt;4.6. 사용자 정의 주석문구 넣기&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.6.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%EC%A3%BC%EC%84%9D%EB%AC%B8%EA%B5%AC-%EB%84%A3%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="4.6.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%EC%A3%BC%EC%84%9D%EB%AC%B8%EA%B5%AC-%EB%84%A3%EA%B8%B0"&gt;4.6. 사용자 정의 주석문구 넣기&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#4.6.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%EC%A3%BC%EC%84%9D%EB%AC%B8%EA%B5%AC-%EB%84%A3%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -991,16 +988,17 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="5.-마치며"&gt;5. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#5.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;기존에는 번거롭게 플랏에 통계분석에 대한 주석을 수작업으로 넣었지만, &lt;code&gt;statannot&lt;/code&gt; 패키지를 사용하면 간편하게 주석처리를 해줍니다. 게다가 기본 설정값도 충실해서 앞으로는 &lt;code&gt;statannot&lt;/code&gt;을 계속 사용하게 될 것 같습니다.&lt;/p&gt;
+&lt;h2 id="5.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;5. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/statannot/#5.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;기존에는 번거롭게 플랏에 통계분석에 대한 주석을 수작업으로 넣었지만, &lt;code&gt;statannot&lt;/code&gt; 패키지를 사용하면 간편하게 주석처리를 해줍니다. 게다가 기본 설정값도 충실해서 앞으로는 &lt;code&gt;statannot&lt;/code&gt;을 계속 사용하게 될 것 같습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>seaborn</category><category>statistics</category><category>t-test</category><guid>https://partrita.github.io/posts/statannot/</guid><pubDate>Tue, 03 Mar 2020 09:21:32 GMT</pubDate></item><item><title>포켓몬스터 데이터로 배우는 seaborn</title><link>https://partrita.github.io/posts/seaborn-pokemon/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>seaborn</category><category>statistics</category><category>t-test</category><guid>https://partrita.github.io/posts/statannot/</guid><pubDate>Tue, 03 Mar 2020 09:21:32 GMT</pubDate></item><item><title>포켓몬스터 데이터로 배우는 seaborn</title><link>https://partrita.github.io/posts/seaborn-pokemon/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;자세한 내용은 &lt;a href="https://elitedatascience.com/python-seaborn-tutorial"&gt;출처&lt;/a&gt;를 확인해주세요.&lt;/p&gt;
-&lt;h2 id="Seaborn-소개"&gt;Seaborn 소개&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#Seaborn-%EC%86%8C%EA%B0%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Seaborn&lt;/code&gt;은 강력하지만 다루기 힘든 시각화 라이브러리인 &lt;code&gt;Matplotlib&lt;/code&gt;에 좀 더 나은 환경을 제공하기 위해 만들어졌습니다. &lt;a href="https://seaborn.pydata.org/"&gt;공식 웹페이지&lt;/a&gt;는 다음과 같이 &lt;code&gt;Seaborn&lt;/code&gt;을 소개하고 있습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Matplotlib이 쉬운 일을 쉽게, 어려운 일은 가능하게 만들때, Seaborn은 어려운 일도 쉽게 만드려고 합니다.&lt;/p&gt;
+&lt;h2 id="Seaborn-%EC%86%8C%EA%B0%9C"&gt;Seaborn 소개&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#Seaborn-%EC%86%8C%EA%B0%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Seaborn&lt;/code&gt;은 강력하지만 다루기 힘든 시각화 라이브러리인 &lt;code&gt;Matplotlib&lt;/code&gt;에 좀 더 나은 환경을 제공하기 위해 만들어졌습니다. &lt;a href="https://seaborn.pydata.org/"&gt;공식 웹페이지&lt;/a&gt;는 다음과 같이 &lt;code&gt;Seaborn&lt;/code&gt;을 소개하고 있습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Matplotlib이 쉬운 일을 쉽게, 어려운 일은 가능하게 만들때, Seaborn은 어려운 일도 쉽게 만드려고 합니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Seaborn은 아래와 같은 기능을 제공합니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1011,7 +1009,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;/ul&gt;
 &lt;p&gt;강조하고 싶은 점은 Seaborn이 탐색적 분석을 위한 최선의 도구라는 것입니다. Seaborn을 사용한다면 원본 데이터를 빠르고 효율적으로 파악할 수있습니다.&lt;/p&gt;
 &lt;p&gt;다만 Seaborn은 Matplotlib의 대체품이 아닌 보완품입니다. Matplotlib 위에서 작동하기 때문에 Matplotlib를 다루는 방법도 알고 있어야 합니다.&lt;/p&gt;
-&lt;h3 id="시작하기-앞서"&gt;시작하기 앞서&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;필요한 라이브러리를 불러옵니다.&lt;/p&gt;
+&lt;h3 id="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;시작하기 앞서&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;필요한 라이브러리를 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1036,7 +1034,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="포켓몬스터-데이터"&gt;포켓몬스터 데이터&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;포켓몬스터 게임에서 수집한 데이터인 &lt;a href="https://github.com/veekun/pokedex/blob/master/pokedex/data/csv/pokemon.csv"&gt;Pokemon.csv&lt;/a&gt;파일을 사용하겠습니다.&lt;/p&gt;
+&lt;h2 id="%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;포켓몬스터 데이터&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;포켓몬스터 게임에서 수집한 데이터인 &lt;a href="https://github.com/veekun/pokedex/blob/master/pokedex/data/csv/pokemon.csv"&gt;Pokemon.csv&lt;/a&gt;파일을 사용하겠습니다.&lt;/p&gt;
 &lt;p&gt;먼저 &lt;code&gt;read_csv&lt;/code&gt;기능을 사용해 CSV형식으로 저장된 데이터를 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1066,8 +1064,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -1179,8 +1176,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1191,7 +1187,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="선형-회귀-시각화"&gt;선형 회귀 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;공격력과 방어력간에 선형의 관계가 있는지 시각화를 통해 살펴봅니다.&lt;/p&gt;
+&lt;h3 id="%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;선형 회귀 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;공격력과 방어력간에 선형의 관계가 있는지 시각화를 통해 살펴봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1247,7 +1243,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;다수의 포켓몬들의 공격력과 방어력은 명백한 선형의 관계가 있는것을 볼 수 있습니다. 유령형 포켓몬들은 공격력이 늘면 오히려 방어력이 줄어드는 경향이 있네요.&lt;/p&gt;
-&lt;h3 id="상자-그림-그리기"&gt;상자 그림 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%83%81%EC%9E%90-%EA%B7%B8%EB%A6%BC-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;모든 포켓몬의 스텟(공격력, 방어력, 체력 등등)의 상자그림을 그려보겠습니다.&lt;/p&gt;
+&lt;h3 id="%EC%83%81%EC%9E%90-%EA%B7%B8%EB%A6%BC-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;상자 그림 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%83%81%EC%9E%90-%EA%B7%B8%EB%A6%BC-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;모든 포켓몬의 스텟(공격력, 방어력, 체력 등등)의 상자그림을 그려보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1357,7 +1353,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;모든 값들이 비슷비슷하네요. 다만 체력(hp)의 경우는 아주높은 값의 특이값(outlier)가 존재 합니다.&lt;/p&gt;
-&lt;h3 id="바이올린-도표-그리기"&gt;바이올린 도표 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0-%EB%8F%84%ED%91%9C-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;공격력을 각각의 포켓몬 유형에 따라서 바이올린 도표를 그려봅니다. 기본적으로 상자그림과 동일한 유형입니다.&lt;/p&gt;
+&lt;h3 id="%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0-%EB%8F%84%ED%91%9C-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;바이올린 도표 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0-%EB%8F%84%ED%91%9C-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;공격력을 각각의 포켓몬 유형에 따라서 바이올린 도표를 그려봅니다. 기본적으로 상자그림과 동일한 유형입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1483,7 +1479,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="산포도(Scatter-plot)"&gt;산포도(Scatter plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%82%B0%ED%8F%AC%EB%8F%84(Scatter-plot)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;산포도로 표현할 수 도 있습니다.&lt;/p&gt;
+&lt;h3 id="%EC%82%B0%ED%8F%AC%EB%8F%84(Scatter-plot)"&gt;산포도(Scatter plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%82%B0%ED%8F%AC%EB%8F%84(Scatter-plot)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;산포도로 표현할 수 도 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1539,7 +1535,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="산포도와-바이올린-도표-겹치기"&gt;산포도와 바이올린 도표 겹치기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%82%B0%ED%8F%AC%EB%8F%84%EC%99%80-%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0-%EB%8F%84%ED%91%9C-%EA%B2%B9%EC%B9%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;각각의 도표를 겹쳐서 더많은 정보를 표현 할 수도 있습니다.&lt;/p&gt;
+&lt;h3 id="%EC%82%B0%ED%8F%AC%EB%8F%84%EC%99%80-%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0-%EB%8F%84%ED%91%9C-%EA%B2%B9%EC%B9%98%EA%B8%B0"&gt;산포도와 바이올린 도표 겹치기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%82%B0%ED%8F%AC%EB%8F%84%EC%99%80-%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0-%EB%8F%84%ED%91%9C-%EA%B2%B9%EC%B9%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;각각의 도표를 겹쳐서 더많은 정보를 표현 할 수도 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1609,7 +1605,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="함께-모아서"&gt;함께 모아서&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%ED%95%A8%EA%BB%98-%EB%AA%A8%EC%95%84%EC%84%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;각각의 특성에 대한 그림을 반복해서 그릴수도 있습니다. 하지만 하나의 그림에 정보를 표현하려면 어떻게 해야 할까요? 이런 상황에서 우리는 &lt;code&gt;Pandas&lt;/code&gt;의 &lt;code&gt;melt()&lt;/code&gt;기능을 사용합니다.&lt;/p&gt;
+&lt;h2 id="%ED%95%A8%EA%BB%98-%EB%AA%A8%EC%95%84%EC%84%9C"&gt;함께 모아서&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%ED%95%A8%EA%BB%98-%EB%AA%A8%EC%95%84%EC%84%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;각각의 특성에 대한 그림을 반복해서 그릴수도 있습니다. 하지만 하나의 그림에 정보를 표현하려면 어떻게 해야 할까요? 이런 상황에서 우리는 &lt;code&gt;Pandas&lt;/code&gt;의 &lt;code&gt;melt()&lt;/code&gt;기능을 사용합니다.&lt;/p&gt;
 &lt;p&gt;아래의 예를 확인하세요.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1656,7 +1652,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="산포도-그리기"&gt;산포도 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%82%B0%ED%8F%AC%EB%8F%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;복잡한 정보를 표현할때는 아래와 같은 산포도가 좋습니다.&lt;/p&gt;
+&lt;h3 id="%EC%82%B0%ED%8F%AC%EB%8F%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;산포도 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%82%B0%ED%8F%AC%EB%8F%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;복잡한 정보를 표현할때는 아래와 같은 산포도가 좋습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1715,7 +1711,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="히트맵-그리기"&gt;히트맵 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%ED%9E%88%ED%8A%B8%EB%A7%B5-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;각각의 스텟들 사이에 상관관계가 있는지 히트맵을 그려서 확인해보겠습니다.&lt;/p&gt;
+&lt;h3 id="%ED%9E%88%ED%8A%B8%EB%A7%B5-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;히트맵 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%ED%9E%88%ED%8A%B8%EB%A7%B5-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;각각의 스텟들 사이에 상관관계가 있는지 히트맵을 그려서 확인해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1772,7 +1768,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="히스토그램-그리기"&gt;히스토그램 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;공격력에 대한 히스토그램을 그려봅니다.&lt;/p&gt;
+&lt;h3 id="%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;히스토그램 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;공격력에 대한 히스토그램을 그려봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1827,7 +1823,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="카운트-플롯(Count-Plot)"&gt;카운트 플롯(Count Plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%B9%B4%EC%9A%B4%ED%8A%B8-%ED%94%8C%EB%A1%AF(Count-Plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;각각의 값들의 갯수를 표현하는 도표입니다.&lt;/p&gt;
+&lt;h2 id="%EC%B9%B4%EC%9A%B4%ED%8A%B8-%ED%94%8C%EB%A1%AF(Count-Plot)"&gt;카운트 플롯(Count Plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%B9%B4%EC%9A%B4%ED%8A%B8-%ED%94%8C%EB%A1%AF(Count-Plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;각각의 값들의 갯수를 표현하는 도표입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1885,7 +1881,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="요인-플롯(Factor-Plot)"&gt;요인 플롯(Factor Plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%9A%94%EC%9D%B8-%ED%94%8C%EB%A1%AF(Factor-Plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="%EC%9A%94%EC%9D%B8-%ED%94%8C%EB%A1%AF(Factor-Plot)"&gt;요인 플롯(Factor Plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EC%9A%94%EC%9D%B8-%ED%94%8C%EB%A1%AF(Factor-Plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1949,7 +1945,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="밀도-플롯(Density-Plot)"&gt;밀도 플롯(Density Plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EB%B0%80%EB%8F%84-%ED%94%8C%EB%A1%AF(Density-Plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;공격력와 방어력을 축으로 각각의 포켓몬들의 밀도를 표현합니다.&lt;/p&gt;
+&lt;h2 id="%EB%B0%80%EB%8F%84-%ED%94%8C%EB%A1%AF(Density-Plot)"&gt;밀도 플롯(Density Plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EB%B0%80%EB%8F%84-%ED%94%8C%EB%A1%AF(Density-Plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;공격력와 방어력을 축으로 각각의 포켓몬들의 밀도를 표현합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2003,7 +1999,7 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="분포도(Joint-Distribution-Plot)"&gt;분포도(Joint Distribution Plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EB%B6%84%ED%8F%AC%EB%8F%84(Joint-Distribution-Plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;공격력과 방어력을 축으로 각각의 분포를 하나의 그림에서 확인하는 방법입니다.&lt;/p&gt;
+&lt;h2 id="%EB%B6%84%ED%8F%AC%EB%8F%84(Joint-Distribution-Plot)"&gt;분포도(Joint Distribution Plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EB%B6%84%ED%8F%AC%EB%8F%84(Joint-Distribution-Plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;공격력과 방어력을 축으로 각각의 분포를 하나의 그림에서 확인하는 방법입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2057,8 +2053,8 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="마치며,"&gt;마치며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Seaborn은 Matplotlib을 기반으로 다양한 색상 테마와 통계용 차트등의 기능을 추가해 좀 더 멋있게 시각화를 해주는 도구 입니다. 더 멋있는 도표는 &lt;a href="https://seaborn.pydata.org/examples/index.html"&gt;예제 갤러리&lt;/a&gt;에서 확인하세요.&lt;/p&gt;
+&lt;h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;마치며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/seaborn-pokemon/#%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Seaborn은 Matplotlib을 기반으로 다양한 색상 테마와 통계용 차트등의 기능을 추가해 좀 더 멋있게 시각화를 해주는 도구 입니다. 더 멋있는 도표는 &lt;a href="https://seaborn.pydata.org/examples/index.html"&gt;예제 갤러리&lt;/a&gt;에서 확인하세요.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Python</category><category>seaborn</category><category>데이터 과학자</category><category>시각화</category><guid>https://partrita.github.io/posts/seaborn-pokemon/</guid><pubDate>Tue, 21 Aug 2018 09:07:20 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>Python</category><category>seaborn</category><category>데이터 과학자</category><category>시각화</category><guid>https://partrita.github.io/posts/seaborn-pokemon/</guid><pubDate>Tue, 21 Aug 2018 09:07:20 GMT</pubDate></item></channel></rss>

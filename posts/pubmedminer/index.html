@@ -66,10 +66,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -130,26 +131,25 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="0.-개요">0. 개요<a class="anchor-link" href="#0.-%EA%B0%9C%EC%9A%94">¶</a>
+<h2 id="0.-%EA%B0%9C%EC%9A%94">0. 개요<a class="anchor-link" href="#0.-%EA%B0%9C%EC%9A%94">¶</a>
 </h2>
 <p>고려대 DMIS Lab에서 공개한 BERN2 API를 살펴보다보니 기존의 <code>Biopython</code>의 pmid(논문의 고유 ID) 검색 기능을 사용하면 여러 논문들의 관계를 시각화할 수 있지 않을까하는 생각이 들었습니다. 그래서 오랜만에 코드를 작성해보았습니다.</p>
-<h2 id="1.-코드의-구성">1. 코드의 구성<a class="anchor-link" href="#1.-%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EC%84%B1">¶</a>
+<h2 id="1.-%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EC%84%B1">1. 코드의 구성<a class="anchor-link" href="#1.-%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EC%84%B1">¶</a>
 </h2>
 <p>크게 3부분으로 구성되어 있습니다. 1. <code>Biopython</code>을 사용해 pmid 목록 만들기. 2. 각 pmid에 해당하는 논문의 Abstract 부분을 BERN2 API로 biomedical entity 분석하기 3. <code>Networkx</code> 를 사용해 네트워크 만들고 시각화하기</p>
 <p>그리고 작성한 코드는 <a href="https://github.com/partrita/pubmed-miner">github repo</a>에 올려두었습니다.</p>
-<h3 id="1.1.-Biopython으로-Pubmed-검색하기">1.1. Biopython으로 Pubmed 검색하기<a class="anchor-link" href="#1.1.-Biopython%EC%9C%BC%EB%A1%9C-Pubmed-%EA%B2%80%EC%83%89%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="1.1.-Biopython%EC%9C%BC%EB%A1%9C-Pubmed-%EA%B2%80%EC%83%89%ED%95%98%EA%B8%B0">1.1. Biopython으로 Pubmed 검색하기<a class="anchor-link" href="#1.1.-Biopython%EC%9C%BC%EB%A1%9C-Pubmed-%EA%B2%80%EC%83%89%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>먼저 <code>Biopython</code>의 <code>Entrez</code>모듈을 사용해 주제문에 대한 pmid 목록을 만드는 함수 <code>get_pmid</code>. 한번에 최대 10000개까지 할 수 있습니다. 너무 많이 그리고 빨리 요청할 경우 pubmed에서 IP ban을 맞을 수도 있어요.</p>
 <h3 id="1.2.-BERN2-API">1.2. BERN2 API<a class="anchor-link" href="#1.2.-BERN2-API">¶</a>
 </h3>
 <p>BERN2 API를 사용해 biomedical entity 분석을 하는 함수 <code>query_pmid</code>. <a href="http://bern2.korea.ac.kr/">http://bern2.korea.ac.kr/</a> 에 의하면 초당 한건이하로 처리하라고 되어있습니다.</p>
-<h3 id="1.3.-Networkx로-분석하기">1.3. Networkx로 분석하기<a class="anchor-link" href="#1.3.-Networkx%EB%A1%9C-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="1.3.-Networkx%EB%A1%9C-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">1.3. Networkx로 분석하기<a class="anchor-link" href="#1.3.-Networkx%EB%A1%9C-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>일단은 데이터를 정리하고 저장하는 것이 우선이기에 코드를 분리했고 이후에 설명하겠습니다.</p>
 
@@ -173,7 +173,7 @@ navbar-dark bg-dark
 <span class="n">url</span> <span class="o">=</span> <span class="s2">"http://bern2.korea.ac.kr/pubmed"</span>  <span class="c1"># Remember 100 requests for 100 seconds</span>
 
 <span class="k">def</span> <span class="nf">get_pmid</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">num_list</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    num_list should be below 10000</span>
 <span class="sd">    """</span>
     <span class="n">handle</span> <span class="o">=</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">esearch</span><span class="p">(</span>
@@ -240,7 +240,7 @@ navbar-dark bg-dark
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">entrez_query</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"What do want to search in PubMed? "</span><span class="p">)</span>
 <span class="n">pmids</span> <span class="o">=</span> <span class="n">get_pmid</span><span class="p">(</span><span class="n">entrez_query</span><span class="p">,</span> <span class="s2">"10"</span><span class="p">)</span>  <span class="c1"># string is not a mistake</span>
 <span class="n">num_pmids</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pmids</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of search results is: </span><span class="si">{num_pmids}</span><span class="s2">!"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of search results is: </span><span class="si">{</span><span class="n">num_pmids</span><span class="si">}</span><span class="s2">!"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -283,7 +283,7 @@ Number of search results is: 10!
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">get_bern2</span><span class="p">(</span><span class="n">pmids</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Shape of result table is: </span><span class="si">{df.shape}</span><span class="s2">."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Shape of result table is: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -362,8 +362,7 @@ Number of search results is: 10!
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -423,8 +422,7 @@ Number of search results is: 10!
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -646,7 +644,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Networkx-를-사용해-분석하기">3. Networkx 를 사용해 분석하기<a class="anchor-link" href="#3.-Networkx-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="3.-Networkx-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">3. Networkx 를 사용해 분석하기<a class="anchor-link" href="#3.-Networkx-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p><code>Networkx</code>라는 도구를 사용하면 앞에서 만든 데이터를 손쉽게 분석 할 수 있습니다. 다음 명령어는 <code>pandas</code> dataframe을 노드와 엣지로 구성된 네트워크 graph 형식으로 변환해 줍니다.</p>
 
@@ -692,7 +690,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.1.-Degree가-낮은-노드-제거하기">3.1. Degree가 낮은 노드 제거하기<a class="anchor-link" href="#3.1.-Degree%EA%B0%80-%EB%82%AE%EC%9D%80-%EB%85%B8%EB%93%9C-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="3.1.-Degree%EA%B0%80-%EB%82%AE%EC%9D%80-%EB%85%B8%EB%93%9C-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0">3.1. Degree가 낮은 노드 제거하기<a class="anchor-link" href="#3.1.-Degree%EA%B0%80-%EB%82%AE%EC%9D%80-%EB%85%B8%EB%93%9C-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>노드에 연결된 엣지(edge)의 수를 degree라고 합니다. 우리가 만든 데이터의 node의 degree는 대부분은 1이하 일 것입니다. 그리고 그렇게 낮은 degree의 노드들은 의미가 없으며 시각화하는데 불편하기만 하니 제거합니다. 일단은 데이터들의 degree가 어떤지 확인부터 해봅시다.</p>
 
@@ -725,8 +723,7 @@ memory usage: 8.5+ KB
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -799,8 +796,7 @@ memory usage: 8.5+ KB
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -840,8 +836,7 @@ memory usage: 8.5+ KB
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -895,8 +890,7 @@ memory usage: 8.5+ KB
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -934,7 +928,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.2.-간단한-시각화하기">3.2. 간단한 시각화하기<a class="anchor-link" href="#3.2.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="3.2.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">3.2. 간단한 시각화하기<a class="anchor-link" href="#3.2.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p><code>Networkx</code>에서 제공되는 <code>draw()</code> 를 사용해 아래와 같이 그림을 그려봅니다.</p>
 
@@ -986,7 +980,7 @@ memory usage: 8.5+ KB
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그림을 살펴보면 pmid의 노드들이 특정 entity로 연결되어 있는 모습을 확인 할 수 있습니다.</p>
-<h3 id="3.3.-Betweeness-centrality와-Community-감지-시각화하기">3.3. Betweeness centrality와 Community 감지 시각화하기<a class="anchor-link" href="#3.3.-Betweeness-centrality%EC%99%80-Community-%EA%B0%90%EC%A7%80-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="3.3.-Betweeness-centrality%EC%99%80-Community-%EA%B0%90%EC%A7%80-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">3.3. Betweeness centrality와 Community 감지 시각화하기<a class="anchor-link" href="#3.3.-Betweeness-centrality%EC%99%80-Community-%EA%B0%90%EC%A7%80-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>먼저 Betweeness centrality는 네트워크에서 모든 노드를 쌍으로 만들고 해당 노드를 반드시 지나가야하는지 확인하는 평가법입니다. 이 값이 중요한 이유는 해당 노드가 사라졌을때 전체 네트워크의 흐름이 영향을 받는다는 의미이기 때문이죠.</p>
 <p>그리고 community 감지는 일종의 클러스터링으로 연결된 노드와 엣지간의 연결 밀도가 높은 집단을 서로 묶어 분석하는 것입니다. 
@@ -1052,7 +1046,7 @@ memory usage: 8.5+ KB
 
 <span class="c1"># Title/legend</span>
 <span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"color"</span><span class="p">:</span> <span class="s2">"k"</span><span class="p">,</span> <span class="s2">"fontweight"</span><span class="p">:</span> <span class="s2">"bold"</span><span class="p">,</span> <span class="s2">"fontsize"</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{entrez_query}</span><span class="s2"> network"</span><span class="p">,</span> <span class="n">font</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">entrez_query</span><span class="si">}</span><span class="s2"> network"</span><span class="p">,</span> <span class="n">font</span><span class="p">)</span>
 
 
 <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
@@ -1109,11 +1103,10 @@ memory usage: 8.5+ KB
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-마치며">4. 마치며<a class="anchor-link" href="#4.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h2 id="4.-%EB%A7%88%EC%B9%98%EB%A9%B0">4. 마치며<a class="anchor-link" href="#4.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h2>
 <p>이번 포스팅은 <code>Biopython</code>과 <code>BERN2</code>를 사용해 특정 검색어에 대한 Biomedical entity 데이터를 모으고 네트워크 그래프를 그려보는 작업을 해보았습니다. 예시를 들기 위해 아주 단순하게 분석해보았는데 만약 10000개의 pmid를 모아서 해본다면 실제로 쓸모있는 결과를 얻을 수 있을 것 같습니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -1147,7 +1140,7 @@ memory usage: 8.5+ KB
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -1158,9 +1151,7 @@ memory usage: 8.5+ KB
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

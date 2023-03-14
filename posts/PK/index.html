@@ -63,10 +63,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -127,28 +128,27 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="0.-Pharmacokinetics(PK)-분석">0. Pharmacokinetics(PK) 분석<a class="anchor-link" href="#0.-Pharmacokinetics(PK)-%EB%B6%84%EC%84%9D">¶</a>
+<h2 id="0.-Pharmacokinetics(PK)-%EB%B6%84%EC%84%9D">0. Pharmacokinetics(PK) 분석<a class="anchor-link" href="#0.-Pharmacokinetics(PK)-%EB%B6%84%EC%84%9D">¶</a>
 </h2>
 <p>ELISA를 이용하여 혈액에서 시험 약물의 약물학적 동태(Pharmacokinetics)를 평가한 데이터를 분석해보도록 하겠습니다. Pharmacokinetics(이하, PK)는 간단히 말하면 특정 약물에 대해서 몸이 어떻게 반응하는지를 보는 것입니다.</p>
 <blockquote>
 <p>Pharmacokinetics은 약물의 흡수, 분포, 대사, 배설과정을 동역학적 관점에서 해석하고 예측하고자 하는 것이다. -- 위키백과</p>
 </blockquote>
 <p>PK 분석을 통해서 약물의 반감기를 분석하고 약물 주입방식에 따른 차이를 살펴보도록 하겠습니다.</p>
-<h3 id="0.1.-실험-디자인">0.1. 실험 디자인<a class="anchor-link" href="#0.1.-%EC%8B%A4%ED%97%98-%EB%94%94%EC%9E%90%EC%9D%B8">¶</a>
+<h3 id="0.1.-%EC%8B%A4%ED%97%98-%EB%94%94%EC%9E%90%EC%9D%B8">0.1. 실험 디자인<a class="anchor-link" href="#0.1.-%EC%8B%A4%ED%97%98-%EB%94%94%EC%9E%90%EC%9D%B8">¶</a>
 </h3>
 <p>실험 쥐에 약물 X를 아래의 두가지 주입방식으로 실험합니다. 정확도를 위해 3번 반복하여 값을 측정하였습니다.</p>
 <ul>
 <li>IV(intravenous injection): 정맥주사</li>
-<li>SC(subcutaneous injection): 피하주사  </li>
+<li>SC(subcutaneous injection): 피하주사</li>
 </ul>
 <p>주입후 72시간동안 실험 쥐의 혈액을 채취해 남아있는 약물 X의 양을 구합니다.</p>
-<h2 id="1.-데이터-불러오기">1. 데이터 불러오기<a class="anchor-link" href="#1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+<h2 id="1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">1. 데이터 불러오기<a class="anchor-link" href="#1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
 </h2>
 <p>필요한 라이브러리를 불러옵니다.</p>
 
@@ -207,8 +207,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -273,8 +272,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -287,7 +285,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-데이터-전처리">2. 데이터 전처리<a class="anchor-link" href="#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC">¶</a>
+<h2 id="2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC">2. 데이터 전처리<a class="anchor-link" href="#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC">¶</a>
 </h2>
 <p>Injection 방법에 의한 차이와 샘플을 채취한 시간, 실험용 쥐의 번호등을 확인 할 수 있습니다. 데이터 전처리 과정에서 필요없는 행을 삭제하고 반복측정한 값의 평균값과 표준편차를 계산하겠습니다.</p>
 
@@ -322,8 +320,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -364,8 +361,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -411,8 +407,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
@@ -459,8 +454,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -474,9 +468,9 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>데이터가 잘 정돈 된것을 확인했으니, 다음으로 시각화를 합니다.</p>
-<h2 id="2.-시각화하기">2. 시각화하기<a class="anchor-link" href="#2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">2. 시각화하기<a class="anchor-link" href="#2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
 </h2>
-<h3 id="2.1.-간단한-선그래프">2.1. 간단한 선그래프<a class="anchor-link" href="#2.1.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84">¶</a>
+<h3 id="2.1.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84">2.1. 간단한 선그래프<a class="anchor-link" href="#2.1.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84">¶</a>
 </h3>
 <p>선그래프로 전체적인 모양을 확인해 봅니다.</p>
 
@@ -535,7 +529,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.2.-선그래프에-에러바-추가하기">2.2. 선그래프에 에러바 추가하기<a class="anchor-link" href="#2.2.-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-%EC%97%90%EB%9F%AC%EB%B0%94-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="2.2.-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-%EC%97%90%EB%9F%AC%EB%B0%94-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">2.2. 선그래프에 에러바 추가하기<a class="anchor-link" href="#2.2.-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-%EC%97%90%EB%9F%AC%EB%B0%94-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>위의 그래프에서는 IV injection의 두번째 값이 좀 낮은 것 같은데, 표준편차가 표시되어 있지 않아 실제값 자체가 낮은 것인지 실험상의 편차인지 명확하지 않습니다. <code>plt.errorbar()</code>를 이용해서 에러바를 표시해 알아 보도록 하죠.</p>
 
@@ -593,7 +587,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>IV injection의 두번째 값의 표준편차가 큰것을 확인할 수 있습니다. 따라서 실험상의 편차로 인해 나타난 현상이라고 볼 수 있겠습니다.</p>
-<h2 id="3.-반감기-계산">3. 반감기 계산<a class="anchor-link" href="#3.-%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0">¶</a>
+<h2 id="3.-%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0">3. 반감기 계산<a class="anchor-link" href="#3.-%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0">¶</a>
 </h2>
 <p>Pharmacokinetics 실험의 목적이라고 할 수 있는 약물의 반감기를 계산해 보도록 하겠습니다. 계산을 위해선 실험 데이터에 Curve fitting을 수행해야 합니다. 파이썬에서는 <code>scipy.optimize.curve_fit()</code> 을 사용하도록 하겠습니다.</p>
 
@@ -646,7 +640,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.1.-IV-주입-반감기">3.1. IV 주입 반감기<a class="anchor-link" href="#3.1.-IV-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0">¶</a>
+<h3 id="3.1.-IV-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0">3.1. IV 주입 반감기<a class="anchor-link" href="#3.1.-IV-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0">¶</a>
 </h3>
 <p>계산을 위해서는 IV 데이터를 <code>numpy.array()</code>로 변경해야 합니다.</p>
 <h4 id="Curve-fitting">Curve fitting<a class="anchor-link" href="#Curve-fitting">¶</a>
@@ -816,7 +810,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>아까보다는 좀 더 잘맞는 것 같습니다. 일단은 반감기를 구해보도록 하죠.</p>
-<h4 id="반감기-계산">반감기 계산<a class="anchor-link" href="#%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0">¶</a>
+<h4 id="%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0">반감기 계산<a class="anchor-link" href="#%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0">¶</a>
 </h4>
 <p>반감기는 주입한 약물의 양이 1/2로 감소하는 데 소요되는 시간입니다. 반감기를 구하는 공식이 따로 있기는 합니다만, 여기서는 Curve fiiting에 사용한 함수의 역함수를 정의해서 주입한 약물양의 절반이 되는 시간을 구해보겠습니다.</p>
 
@@ -831,7 +825,7 @@ navbar-dark bg-dark
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">half_y</span> <span class="o">=</span> <span class="n">exponential</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>  <span class="c1"># 주입한 약물량을 2로 나누어 줍니다</span>
 <span class="c1"># 계산을 위한 역함수를 정의합니다.</span>
 <span class="k">def</span> <span class="nf">rev_log</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
-    <span class="sd">"""for halflife calculate"""</span>
+<span class="w">    </span><span class="sd">"""for halflife calculate"""</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">D</span><span class="p">))</span><span class="o">/-</span><span class="n">k</span>
 
 <span class="n">half_life</span> <span class="o">=</span> <span class="n">rev_log</span><span class="p">(</span><span class="n">half_y</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>
@@ -867,7 +861,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.2.-SC-주입-반감기">3.2. SC 주입 반감기<a class="anchor-link" href="#3.2.-SC-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0">¶</a>
+<h3 id="3.2.-SC-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0">3.2. SC 주입 반감기<a class="anchor-link" href="#3.2.-SC-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0">¶</a>
 </h3>
 <p>SC 경우는 처음에는 약물이 흡수되는 시간이 있습니다. 그래서 처음 3개의 결과는 제외하고 반감기를 구해보겠습니다.</p>
 <h4 id="Curve-fitting">Curve fitting<a class="anchor-link" href="#Curve-fitting">¶</a>
@@ -954,7 +948,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="반감기-계산">반감기 계산<a class="anchor-link" href="#%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0">¶</a>
+<h4 id="%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0">반감기 계산<a class="anchor-link" href="#%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0">¶</a>
 </h4>
 </div>
 </div>
@@ -967,7 +961,7 @@ navbar-dark bg-dark
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">half_y</span> <span class="o">=</span> <span class="n">exponential</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>  <span class="c1"># 주입한 약물량을 2로 나누어 줍니다</span>
 <span class="c1"># 계산을 위한 역함수를 정의합니다.</span>
 <span class="k">def</span> <span class="nf">rev_log</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
-    <span class="sd">"""for halflife calculate"""</span>
+<span class="w">    </span><span class="sd">"""for halflife calculate"""</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">D</span><span class="p">))</span><span class="o">/-</span><span class="n">k</span>
 
 <span class="n">half_life</span> <span class="o">=</span> <span class="n">rev_log</span><span class="p">(</span><span class="n">half_y</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>
@@ -1002,7 +996,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-Bioavailability(BA)-계산">4. Bioavailability(BA) 계산<a class="anchor-link" href="#4.-Bioavailability(BA)-%EA%B3%84%EC%82%B0">¶</a>
+<h2 id="4.-Bioavailability(BA)-%EA%B3%84%EC%82%B0">4. Bioavailability(BA) 계산<a class="anchor-link" href="#4.-Bioavailability(BA)-%EA%B3%84%EC%82%B0">¶</a>
 </h2>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/AUC_IVPO.svg/220px-AUC_IVPO.svg.png" alt=""></p>
 <blockquote>
@@ -1011,10 +1005,10 @@ navbar-dark bg-dark
 <h3 id="4.1.-The-absolute-bioavailability">4.1. The absolute bioavailability<a class="anchor-link" href="#4.1.-The-absolute-bioavailability">¶</a>
 </h3>
 <blockquote>
-<p>정맥투여에 대한 상대적인 흡수율을 나타내며, %로 표시하기에 절대적 생체 이용률이라고 한다. 약
-물을 정맥에 투여할 때에는 곧 바로 전신순환에 도달되기 때문에 전신약물 흡수 즉 생체 이용률은
-100%으로 생각한다.  -- <em>Kyung Soo Kim, et al. Drug Effect and Generic Substitution</em></p>
+<p>정맥투여에 대한 상대적인 흡수율을 나타내며, %로 표시하기에 절대적 생체 이용률이라고 한다. 약</p>
 </blockquote>
+<p>물을 정맥에 투여할 때에는 곧 바로 전신순환에 도달되기 때문에 전신약물 흡수 즉 생체 이용률은
+100%으로 생각한다.  -- <em>Kyung Soo Kim, et al. Drug Effect and Generic Substitution</em></p>
 <p>아래의 공식은 절대적 생체 이용률(BA)를 구하는 방법입니다.</p>
 <p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7c9d7b07a55727d84e66666a95c3478d036b09a9" alt=""></p>
 <ul>
@@ -1078,11 +1072,10 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.-마치며">5. 마치며<a class="anchor-link" href="#5.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h2 id="5.-%EB%A7%88%EC%B9%98%EB%A9%B0">5. 마치며<a class="anchor-link" href="#5.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h2>
 <p>이번 포스트에서는 파이썬을 이용해 간단한 PK 분석을 해보았습니다. 저도 이쪽의 전문가가 아니라 직접 찾아보며 계산했습니다. 틀린 부분이 있다면 이해해주시기 바랍니다. 약물의 반감기와 BA는 다양한 PK 변수중에 극히 일부이지만, 이러한 변수를 구하는 방법을 안다면 다른 변수들도 쉽게 계산할 수 있으실 것입니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -1113,7 +1106,7 @@ navbar-dark bg-dark
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -1124,9 +1117,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

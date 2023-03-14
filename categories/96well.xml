@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about 96well)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/96well.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:29 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>96well 모양으로 시각화하기</title><link>https://partrita.github.io/posts/96well-binding/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about 96well)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/96well.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>96well 모양으로 시각화하기</title><link>https://partrita.github.io/posts/96well-binding/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://wol-prod-cdn.literatumonline.com/cms/attachment/34d4c21b-2fe3-4afa-bab1-cffd62d036bc/biot201800007-fig-0002-m.png" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;논문을 읽다 보면 위의 그림의 A 처럼 96well 형태로 시각화한것을 볼 수 있습니다. 가만히 생각해보면 위의 그림은 산점도(scatter plot)을 그리고 Binding 값을 점의 크기로 표현하면 될 것같습니다. 오늘은 그런 그림을 파이썬으로 그려봅니다.&lt;/p&gt;
-&lt;h3 id="필요한-라이브러리-불러오기"&gt;필요한 라이브러리 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#%ED%95%84%EC%9A%94%ED%95%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="%ED%95%84%EC%9A%94%ED%95%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;필요한 라이브러리 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#%ED%95%84%EC%9A%94%ED%95%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -29,7 +29,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="데이터-불러오기"&gt;데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시각화할 데이터를 &lt;code&gt;pandas&lt;/code&gt;로 불러옵니다.&lt;/p&gt;
+&lt;h3 id="%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시각화할 데이터를 &lt;code&gt;pandas&lt;/code&gt;로 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -57,8 +57,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -114,8 +113,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -153,8 +151,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -210,8 +207,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -223,7 +219,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위의 결과를 통해 Binding의 최대값은 26800, 최소값은 2700, 평균은 13840인것을 알 수 있습니다.&lt;/p&gt;
-&lt;h3 id="Seaborn-사용하기"&gt;Seaborn 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#Seaborn-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;seaborn&lt;/code&gt; 라이브러리를 사용해 시각화해봅니다.&lt;/p&gt;
+&lt;h3 id="Seaborn-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;Seaborn 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#Seaborn-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;seaborn&lt;/code&gt; 라이브러리를 사용해 시각화해봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -283,7 +279,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;똑같지는 않지만 비슷한 그래프를 그릴 수 있습니다. 게다가 코드도 간단합니다.&lt;/p&gt;
-&lt;h3 id="Matplotlib-사용하기"&gt;Matplotlib 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#Matplotlib-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;matplotlib&lt;/code&gt;을 사용해 구현해봅니다. &lt;code&gt;seaborn&lt;/code&gt;보다는 복잡하지만 좀 더 유연하게 사용할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="Matplotlib-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;Matplotlib 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#Matplotlib-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;matplotlib&lt;/code&gt;을 사용해 구현해봅니다. &lt;code&gt;seaborn&lt;/code&gt;보다는 복잡하지만 좀 더 유연하게 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -338,4 +334,4 @@
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>96well</category><category>Bioinformatics</category><category>Python</category><guid>https://partrita.github.io/posts/96well-binding/</guid><pubDate>Wed, 06 Mar 2019 21:07:20 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>96well</category><category>Bioinformatics</category><category>Python</category><guid>https://partrita.github.io/posts/96well-binding/</guid><pubDate>Wed, 06 Mar 2019 21:07:20 GMT</pubDate></item></channel></rss>

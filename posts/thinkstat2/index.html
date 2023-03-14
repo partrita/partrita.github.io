@@ -62,10 +62,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -126,16 +127,15 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="0.-통계적-사고">0. 통계적 사고<a class="anchor-link" href="#0.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%82%AC%EA%B3%A0">¶</a>
+<h2 id="0.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%82%AC%EA%B3%A0">0. 통계적 사고<a class="anchor-link" href="#0.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%82%AC%EA%B3%A0">¶</a>
 </h2>
 <p>아래 내용은 <em>통계적 사고: 파이썬을 이용한 탐색적 자료 분석</em> 을 읽고 내용을 정리한 것이다. 이 책의 원제는 <em>Thinkstat2(저자 Allen B. Downey)</em> 로 저자는 올린공대 컴퓨터과학과의 교수이다.</p>
-<h2 id="1.-탐색적-자료-분석">1. 탐색적 자료 분석<a class="anchor-link" href="#1.-%ED%83%90%EC%83%89%EC%A0%81-%EC%9E%90%EB%A3%8C-%EB%B6%84%EC%84%9D">¶</a>
+<h2 id="1.-%ED%83%90%EC%83%89%EC%A0%81-%EC%9E%90%EB%A3%8C-%EB%B6%84%EC%84%9D">1. 탐색적 자료 분석<a class="anchor-link" href="#1.-%ED%83%90%EC%83%89%EC%A0%81-%EC%9E%90%EB%A3%8C-%EB%B6%84%EC%84%9D">¶</a>
 </h2>
 <p><strong>일화적 증거(anecdotal evidence)</strong> 는 개인적인 경험을 직접, 혹은 한 다리 건너 듣고 이야기하는 것이다. 일화적 증거의 예시로 “최근에 첫째 아이를 출산한 내 친구 두명은 모두 예정일을 2주 지나서 낳았다. 그러니 내 첫째 아이도 2주가 지나서 나올 것이다."</p>
 <p>이런 일화적 증거의 신빙성이 부족한 이유는 다음과 같다:</p>
@@ -145,7 +145,7 @@ navbar-dark bg-dark
 <li>확증편의(Conﬁrmation bias)</li>
 <li>부정확함(Inaccuracy)</li>
 </ol>
-<h3 id="1.1.-통계적-접근법">1.1. 통계적 접근법<a class="anchor-link" href="#1.1.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%A0%91%EA%B7%BC%EB%B2%95">¶</a>
+<h3 id="1.1.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%A0%91%EA%B7%BC%EB%B2%95">1.1. 통계적 접근법<a class="anchor-link" href="#1.1.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%A0%91%EA%B7%BC%EB%B2%95">¶</a>
 </h3>
 <p>통계적인 접근법은 다음을 포함한다.</p>
 <ul>
@@ -155,19 +155,19 @@ navbar-dark bg-dark
 <li>추정(Estimation): 사용한 데이터를 토대로 모집단의 특징을 추정한다.</li>
 <li>가설검증(Hypothesis testing): 데이터셋에서 두 그룹간의 차이가 명백한 것인지 혹은 우연한 사건인지 평가한다.</li>
 </ul>
-<h3 id="1.2.-가족성장-국가조사(National-Survey-of-Family-Growth)">1.2. 가족성장 국가조사(National Survey of Family Growth)<a class="anchor-link" href="#1.2.-%EA%B0%80%EC%A1%B1%EC%84%B1%EC%9E%A5-%EA%B5%AD%EA%B0%80%EC%A1%B0%EC%82%AC(National-Survey-of-Family-Growth)">¶</a>
+<h3 id="1.2.-%EA%B0%80%EC%A1%B1%EC%84%B1%EC%9E%A5-%EA%B5%AD%EA%B0%80%EC%A1%B0%EC%82%AC(National-Survey-of-Family-Growth)">1.2. 가족성장 국가조사(National Survey of Family Growth)<a class="anchor-link" href="#1.2.-%EA%B0%80%EC%A1%B1%EC%84%B1%EC%9E%A5-%EA%B5%AD%EA%B0%80%EC%A1%B0%EC%82%AC(National-Survey-of-Family-Growth)">¶</a>
 </h3>
 <p>미국질병통제예방센터(Disease Control and Prevention, CDC)는 1973년부터 가족성장 국가조사(National Survey of Family Growth, 이하 NSFG)를 수행하고 있다.</p>
 <p>NSFG 조사 목적은“가족생활, 결혼및이혼, 임신, 출산, 피임, 그리고 남녀건강에 대한정보를 수집하는데 있다. 자세한 사항은 공식 <a href="http://cdc.gov/nchs/nsfg.html">웹사이트</a>를 참고하라.</p>
 <p>NSFG는 횡단적연구(cross-sectional study)로 특정시점에 집단에 대한 정보를 수집한다. 지금까지 NSFG 조사는 총 7번 수행되었으며 여기에서는 2002년1월에서 2003년 3월까지 수행된 6번째 데이터셋(<code>2002FemPreg.dat</code>)를 사용한다.</p>
-<h3 id="1.3.-데이터-가져오기">1.3. 데이터 가져오기<a class="anchor-link" href="#1.3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">¶</a>
+<h3 id="1.3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">1.3. 데이터 가져오기<a class="anchor-link" href="#1.3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">¶</a>
 </h3>
 <p>NSFG에서 제공하는 데이터(<code>2002FemPreg.dat</code>)는 Stata 에서 사용되는 파일 형식이다. Stata 파일 형식은 일종의 딕셔너리 형식으로 각 행마다 각 변수의 위치를 식별하는데 사용되는 인덱스, 형식, 변수 정보를 담고 있다.</p>
 <p><code>2002FemPreg.dat</code>파일은 NSFG 홈페이지에서 다운로드 받을 수 있다.</p>
-<h3 id="1.4.-데이터프레임">1.4. 데이터프레임<a class="anchor-link" href="#1.4.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84">¶</a>
+<h3 id="1.4.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84">1.4. 데이터프레임<a class="anchor-link" href="#1.4.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84">¶</a>
 </h3>
 <p>원서에서는 <code>2002FemPreg.dat</code>파일을 판다스(pandas) 데이터프레임으로 변환하는 코드를 제공하고 있다. 그러나 여기에서는 편의를 위해 이미 변환된 <code>2002FemPreg.csv</code>파일을 사용한다.</p>
-<h3 id="1.5.-변수(Variables)">1.5. 변수(Variables)<a class="anchor-link" href="#1.5.-%EB%B3%80%EC%88%98(Variables)">¶</a>
+<h3 id="1.5.-%EB%B3%80%EC%88%98(Variables)">1.5. 변수(Variables)<a class="anchor-link" href="#1.5.-%EB%B3%80%EC%88%98(Variables)">¶</a>
 </h3>
 <p>NSFG 데이터셋에는 총 244개의 변수가 있다. 그 중에 중요한 몇가기 변수를 아래에 설명했다.</p>
 <ul>
@@ -188,49 +188,49 @@ navbar-dark bg-dark
 <li>
 <code>finalwgt</code> 는 응답자와 연관된 통계적 가중치로 미국인구중 응답자가 대표하는 비중을 나타낸다.</li>
 </ul>
-<h3 id="1.6.-변환(Transformation)">1.6. 변환(Transformation)<a class="anchor-link" href="#1.6.-%EB%B3%80%ED%99%98(Transformation)">¶</a>
+<h3 id="1.6.-%EB%B3%80%ED%99%98(Transformation)">1.6. 변환(Transformation)<a class="anchor-link" href="#1.6.-%EB%B3%80%ED%99%98(Transformation)">¶</a>
 </h3>
 <p>데이터 정제(data cleaning)은 데이터를가져올때, 오류를점검하고, 특수값을처리하고, 데이터를 다른형식으로변환하고, 계산을 수행하는 것을 말한다.</p>
-<h3 id="1.7.-타당성-검사(Validation)">1.7. 타당성 검사(Validation)<a class="anchor-link" href="#1.7.-%ED%83%80%EB%8B%B9%EC%84%B1-%EA%B2%80%EC%82%AC(Validation)">¶</a>
+<h3 id="1.7.-%ED%83%80%EB%8B%B9%EC%84%B1-%EA%B2%80%EC%82%AC(Validation)">1.7. 타당성 검사(Validation)<a class="anchor-link" href="#1.7.-%ED%83%80%EB%8B%B9%EC%84%B1-%EA%B2%80%EC%82%AC(Validation)">¶</a>
 </h3>
 <p>데이터를 다른 소프트웨어환경으로 내보내고 또 다른 소프트웨어환경에서 가져올때 오류가 발생하곤 한다. 따라서 데이터의 타당성을 확인하는 단계를 거친다면 나중에 업무시간을 절약하고 오류를 피하는데 도움이 된다.</p>
 <p>데이터 타당성을 확보하는 가장 간단한 방법은 기초통계량을 계산해 결과값을 비교하는 것이다. NSFG 데이터의 경우 다음 표와 같은 정보가 이미 알려져 있다.</p>
 <table>
 <thead><tr>
 <th>value</th>
-<th>label</th>
-<th>Total</th>
+  <th>label</th>
+  <th>Total</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>LIVE BIRTH</td>
-<td>9148</td>
+  <td>LIVE BIRTH</td>
+  <td>9148</td>
 </tr>
 <tr>
 <td>2</td>
-<td>INDUCED ABORTION</td>
-<td>1862</td>
+  <td>INDUCED ABORTION</td>
+  <td>1862</td>
 </tr>
 <tr>
 <td>3</td>
-<td>STILLBIRTH</td>
-<td>120</td>
+  <td>STILLBIRTH</td>
+  <td>120</td>
 </tr>
 <tr>
 <td>4</td>
-<td>MISCARRIAGE</td>
-<td>1921</td>
+  <td>MISCARRIAGE</td>
+  <td>1921</td>
 </tr>
 <tr>
 <td>5</td>
-<td>ECTOPIC PREGNANCY</td>
-<td>190</td>
+  <td>ECTOPIC PREGNANCY</td>
+  <td>190</td>
 </tr>
 <tr>
 <td>6</td>
-<td>CURRENT PREGNANCY</td>
-<td>352</td>
+  <td>CURRENT PREGNANCY</td>
+  <td>352</td>
 </tr>
 </tbody>
 </table>
@@ -289,7 +289,7 @@ Name: outcome, dtype: int64</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>우리가 알고 있던 값과 동일한 것을 확인 할 수 있다.</p>
-<h3 id="1.8.-해석(Interpretation)">1.8. 해석(Interpretation)<a class="anchor-link" href="#1.8.-%ED%95%B4%EC%84%9D(Interpretation)">¶</a>
+<h3 id="1.8.-%ED%95%B4%EC%84%9D(Interpretation)">1.8. 해석(Interpretation)<a class="anchor-link" href="#1.8.-%ED%95%B4%EC%84%9D(Interpretation)">¶</a>
 </h3>
 <p>효과적으로 데이터를 다루기 위해 통계적 관점과 문맥적 관점을 동시에 생각해야 한다. 예를 들어 <code>caseid</code>가 <em>10229</em> 인 여성의 경우를 살펴본다.</p>
 
@@ -335,7 +335,7 @@ Name: outcome, dtype: int64</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위의 결과 값에서 숫자 4는 유산을 뜻하고 1은 정상적인 출산을 나타낸다. 즉, 위 여성은 총 6번 유산했고 마지막 7번째에 정상적으로 출산을 했다는 것을 알 수 있다.</p>
-<h3 id="1.9.-연습문제">1.9. 연습문제<a class="anchor-link" href="#1.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
+<h3 id="1.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">1.9. 연습문제<a class="anchor-link" href="#1.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
 </h3>
 <ol>
 <li>NSFG 데이터셋의 신생아 몸무게의 분포를 나타내라.</li>
@@ -398,7 +398,7 @@ Name: birthwgt_lb, dtype: int64</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 결과를 통해 대부분의 신생아는 2.75 - 3.17 사이에 모여 있다는 것을 알 수 있다.</p>
-<ol>
+<ol start="2">
 <li>신생아 몸무게의 평균은 얼마인가?</li>
 </ol>
 </div>
@@ -442,7 +442,7 @@ Name: birthwgt_lb, dtype: int64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.10.-용어설명">1.10. 용어설명<a class="anchor-link" href="#1.10.-%EC%9A%A9%EC%96%B4%EC%84%A4%EB%AA%85">¶</a>
+<h3 id="1.10.-%EC%9A%A9%EC%96%B4%EC%84%A4%EB%AA%85">1.10. 용어설명<a class="anchor-link" href="#1.10.-%EC%9A%A9%EC%96%B4%EC%84%A4%EB%AA%85">¶</a>
 </h3>
 <ul>
 <li>일화적 증거(anecdotal evidence): 과학적인 조사에 의한 것이 아닌 우연하게 수집된 증거.</li>
@@ -457,12 +457,12 @@ Name: birthwgt_lb, dtype: int64</pre>
 <li>재코드(recode): 원시자료에 특정 계산 혹은 다른방법을 통해 수정된 데이터.</li>
 <li>자료정제(data cleaning): 데이터 타당성 확보, 오류식별, 자료형간의 변환등을 포함하는 과정.</li>
 </ul>
-<h2 id="2.-분포(Distribution)">2. 분포(Distribution)<a class="anchor-link" href="#2.-%EB%B6%84%ED%8F%AC(Distribution)">¶</a>
+<h2 id="2.-%EB%B6%84%ED%8F%AC(Distribution)">2. 분포(Distribution)<a class="anchor-link" href="#2.-%EB%B6%84%ED%8F%AC(Distribution)">¶</a>
 </h2>
-<h2 id="2.1.-히스토그램">2.1. 히스토그램<a class="anchor-link" href="#2.1.-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">¶</a>
+<h2 id="2.1.-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">2.1. 히스토그램<a class="anchor-link" href="#2.1.-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">¶</a>
 </h2>
 <p>데이터의 분포를 표현할때 가장 일반적으로 사용하는 것은 히스토그램(histogram)이다. 히스토그램은 각 값의 빈도(frequency)를 보여주는 그래프다.</p>
-<h2 id="2.3.-간단한-히스토그램-그리기">2.3. 간단한 히스토그램 그리기<a class="anchor-link" href="#2.3.-%EA%B0%84%EB%8B%A8%ED%95%9C-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+<h2 id="2.3.-%EA%B0%84%EB%8B%A8%ED%95%9C-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">2.3. 간단한 히스토그램 그리기<a class="anchor-link" href="#2.3.-%EA%B0%84%EB%8B%A8%ED%95%9C-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
 </h2>
 <p>1장에서 살펴본 신생아들의 몸무게에 대한 히스토그램을 그려본다. 판다스의 <code>plot.hist()</code>함수를 사용한다.</p>
 
@@ -522,9 +522,9 @@ Name: birthwgt_lb, dtype: int64</pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>가장 높은 값 즉, 많이 관찰되는값을 <strong>최빈값(mode)</strong> 이라 하며 위의 예시에서는 3.3이다. 얼핏보면 몸무게의 분포는 종모양인 정규(normal) 분포처럼 보인다.(정규 분포는 다른 말로 가우스(Gaussian) 분포라고 한다.)</p>
 <p>그러나 자세히 보면 위 히스토그램은 오른쪽보다 왼쪽으로 좀 더확장된 <strong>꼬리(tail)</strong> 가 있는 비대칭한 분포를 보여준다.</p>
-<h3 id="2.4.-NSFG-데이터셋의-히스토그램">2.4. NSFG 데이터셋의 히스토그램<a class="anchor-link" href="#2.4.-NSFG-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B%EC%9D%98-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">¶</a>
+<h3 id="2.4.-NSFG-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B%EC%9D%98-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">2.4. NSFG 데이터셋의 히스토그램<a class="anchor-link" href="#2.4.-NSFG-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B%EC%9D%98-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">¶</a>
 </h3>
-<h4 id="2.4.1.-산모의-나이-히스토그램">2.4.1. 산모의 나이 히스토그램<a class="anchor-link" href="#2.4.1.-%EC%82%B0%EB%AA%A8%EC%9D%98-%EB%82%98%EC%9D%B4-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">¶</a>
+<h4 id="2.4.1.-%EC%82%B0%EB%AA%A8%EC%9D%98-%EB%82%98%EC%9D%B4-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">2.4.1. 산모의 나이 히스토그램<a class="anchor-link" href="#2.4.1.-%EC%82%B0%EB%AA%A8%EC%9D%98-%EB%82%98%EC%9D%B4-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">¶</a>
 </h4>
 </div>
 </div>
@@ -582,7 +582,7 @@ Name: birthwgt_lb, dtype: int64</pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>산모 나이에 대한 히스토그램의 분포는 꼬리가 좀 더 오른쪽으로 뻗어나갔다. 대부분
 의 산모는 20대이지만 30대이후에도 적지않게 존재한다는 의미이다.</p>
-<h4 id="2.4.2.-임신기간-히스토그램">2.4.2. 임신기간 히스토그램<a class="anchor-link" href="#2.4.2.-%EC%9E%84%EC%8B%A0%EA%B8%B0%EA%B0%84-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">¶</a>
+<h4 id="2.4.2.-%EC%9E%84%EC%8B%A0%EA%B8%B0%EA%B0%84-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">2.4.2. 임신기간 히스토그램<a class="anchor-link" href="#2.4.2.-%EC%9E%84%EC%8B%A0%EA%B8%B0%EA%B0%84-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8">¶</a>
 </h4>
 </div>
 </div>
@@ -640,11 +640,11 @@ Name: birthwgt_lb, dtype: int64</pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위의 코드에서 <code>df['outcome']==1</code>는 정상적으로 출산한 경우를 선택하기 위해 사용했다.
  임신기간 히스토그램의 단위는 주간(week)으로 가장 흔한값은 39주이다. 그리고 왼쪽 꼬리가 더 길다. 이것은 조산에 의한 것이이다. 그리고 임신기간이 43주가 넘어가면 유도분만을 하기 때문에 오른쪽 꼬리는 짧다.</p>
-<h3 id="2.5.-특이값(Outliers)">2.5. 특이값(Outliers)<a class="anchor-link" href="#2.5.-%ED%8A%B9%EC%9D%B4%EA%B0%92(Outliers)">¶</a>
+<h3 id="2.5.-%ED%8A%B9%EC%9D%B4%EA%B0%92(Outliers)">2.5. 특이값(Outliers)<a class="anchor-link" href="#2.5.-%ED%8A%B9%EC%9D%B4%EA%B0%92(Outliers)">¶</a>
 </h3>
 <p>특이값은 일반적인 데이터와 다르게 극단에 존재하는 데이터이다. 특이값은 측정의 오류에 의한 것일 수도 있고 드물게 실제 데이터일수도 있다. 앞에서 배운 히스토그램은 최빈값과 데이터 분포의 모양을 식별하기에는 적합하지만 특이값을 확인하기 어렵다.</p>
 <p>특이값을 찾는 가장 좋은 방법은 해당 분야의 전문지식(domain knowledge)이다. 다시말해 데이터 출처와 데이터의 의미를 파악할 수 있어야 특이값을 찾는데 어떤 분석법을 사용할지 알 수 있다.</p>
-<h3 id="2.6.-첫째-아이">2.6. 첫째 아이<a class="anchor-link" href="#2.6.-%EC%B2%AB%EC%A7%B8-%EC%95%84%EC%9D%B4">¶</a>
+<h3 id="2.6.-%EC%B2%AB%EC%A7%B8-%EC%95%84%EC%9D%B4">2.6. 첫째 아이<a class="anchor-link" href="#2.6.-%EC%B2%AB%EC%A7%B8-%EC%95%84%EC%9D%B4">¶</a>
 </h3>
 <p>NSFG 데이터셋으로 첫째 아이가 일찍(혹은 늦게) 태어나는 경향이 있는가?를 살펴본다. 먼저 
 첫째 아이와 나머지 아이들에 대한 임신 기간의 분포를 비교해보자.</p>
@@ -714,7 +714,7 @@ Name: birthwgt_lb, dtype: int64</pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>히스토그램은 최빈값을 명확하게 보여준다는 점에서 유용하지만 두 그룹간의 분포를 비교하는데는 좋은 선택이 되지 못한다는 것을 알 수 있다.</p>
 <p>또한 두 그룹의 높이 차이는 사실 표본크기에 의한 것이다. 위 예제에서“첫째가 아닌아이”보다“첫째아이”숫자가 더 적기 때문이다. 그래서 다음 3장에서 확률질량함수(probability mass functions)를 사용해 이 문제에 대해 다시 살펴본다.</p>
-<h3 id="2.7.-평균">2.7. 평균<a class="anchor-link" href="#2.7.-%ED%8F%89%EA%B7%A0">¶</a>
+<h3 id="2.7.-%ED%8F%89%EA%B7%A0">2.7. 평균<a class="anchor-link" href="#2.7.-%ED%8F%89%EA%B7%A0">¶</a>
 </h3>
 <p>가장 흔한 <strong>요약통계(summary statistics)</strong> 는 <strong>평균(mean)</strong> 으로 분포의 중심경향성을 기술할기 위해 사용된다.</p>
 $$\bar x = \frac{1}{n} \sum_{i} x_i$$<p>“평균(mean)”과“평균(average)”은 때때로 상호 호환적으로 사용된다. 하지만 이 책에서는 다음과 같이 구별한다.</p>
@@ -722,19 +722,19 @@ $$\bar x = \frac{1}{n} \sum_{i} x_i$$<p>“평균(mean)”과“평균(average)�
 <li>표본평균(mean)은 위의 공식으로 계산되는 요약 통계이다.</li>
 <li>평균(average)은 중심 경향성을 기술하기 위해 사용하는 요약 통계량중 하나다.</li>
 </ul>
-<h3 id="2.8.-분산">2.8. 분산<a class="anchor-link" href="#2.8.-%EB%B6%84%EC%82%B0">¶</a>
+<h3 id="2.8.-%EB%B6%84%EC%82%B0">2.8. 분산<a class="anchor-link" href="#2.8.-%EB%B6%84%EC%82%B0">¶</a>
 </h3>
 <p>분산은 분포의 변동(variability)과 퍼짐(spread)을 기술하는 요약 통계다. 공식으로 나타낸 분산은 다음과 같다.</p>
 $$S^2 = \frac{1}{n} \sum_{i} (x_i - \bar x)^2$$<p>$(x_i - \bar x)^2$항은“평균으로부터 편차(deviation from the mean)”라고 하며 분산은
 평균 편차의 제곱이다. 또한 분산의 제곱근(S)을 <strong>표준편차(standard deviation)</strong> 이라 부른다.</p>
-<h3 id="2.9.-효과크기(Effect-size)">2.9. 효과크기(Effect size)<a class="anchor-link" href="#2.9.-%ED%9A%A8%EA%B3%BC%ED%81%AC%EA%B8%B0(Effect-size)">¶</a>
+<h3 id="2.9.-%ED%9A%A8%EA%B3%BC%ED%81%AC%EA%B8%B0(Effect-size)">2.9. 효과크기(Effect size)<a class="anchor-link" href="#2.9.-%ED%9A%A8%EA%B3%BC%ED%81%AC%EA%B8%B0(Effect-size)">¶</a>
 </h3>
 <p><strong>효과크기(effect size)</strong> 는 두 집단간의 차이를 기술하는 요약 통계로 현상이 실제로 모집단에 존재하는 정도을 말한다.</p>
 <p>효과크기를 계산하는 방법으로 데이터셋의 집단 간(between groups)의 차이를 집단 내(within groups) 변동성과 비교 하는 <strong>코헨(Cohen) d</strong> 값을 주로 사용한다. <strong>코헨(Cohen) d</strong> 는 다음과 같이 정의된다.</p>
 $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균값이고, $s$는 합동 표준편차(pooled standard deviation)다.</p>
 <p>효과크기가 0이라는 것은 비교 집단들 사이의 차이가 없다는 것을 의미하며 귀무 가설이 성립하게 된다. 평균치 비교의 경우 비교 하려는 집단 사이에 평균 차이가 클수록 효과크기는 커지게 된다. 효과크기의 쉬운 예를 들어보면 남녀 성별 비율이 50:50이라는 귀무가설하에서 실제 비율은 53:47이라고 하면 효과크기는 3%가 된다.</p>
 <p>즉, 효과크기가 0이라는 의미는 비교하려는 집단사이의 평균이 동일하다는뜻이고, 효과크기의 값이 양수를 갖게 되면 비교집단이 대조집단에 비해 평균치가 크다는 의미이다. 그리고 음수 값을 갖게되면 비교집단의 평균이 대조집단에 비해 작다는것을 의미한다.</p>
-<h3 id="2.11.-연습문제">2.11. 연습문제<a class="anchor-link" href="#2.11.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
+<h3 id="2.11.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">2.11. 연습문제<a class="anchor-link" href="#2.11.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
 </h3>
 <ol>
 <li>변수 <code>totalwgt_lb</code>을사용해 첫째 아이가 다른 아이들 보다 더가벼운지더무거운지조사하시오. 집단사이 차이를 정량화하는데 코헨d 값을 계산한다.</li>
@@ -759,7 +759,7 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
     <span class="k">return</span> <span class="n">d</span>
 
 <span class="n">cohen_d</span> <span class="o">=</span> <span class="n">CohenEffectSize</span><span class="p">(</span><span class="n">first_baby</span><span class="o">.</span><span class="n">totalwgt_lb</span><span class="p">,</span> <span class="n">others</span><span class="o">.</span><span class="n">totalwgt_lb</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'코헨d 값은 </span><span class="si">{cohen_d}</span><span class="s1"> 이다.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'코헨d 값은 </span><span class="si">{</span><span class="n">cohen_d</span><span class="si">}</span><span class="s1"> 이다.'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -794,7 +794,7 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 <blockquote>
 <p>코헨은 효과 크기를 임의로 small(0.5미만), medium(0.5이상), large(1이상)로 구분해 직관적으로 이해하기 쉽게 소개하였다.</p>
 </blockquote>
-<h3 id="2.12.--용어사전">2.12.  용어사전<a class="anchor-link" href="#2.12.--%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="2.12.--%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">2.12.  용어사전<a class="anchor-link" href="#2.12.--%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>분포(distribution): 표본에 나타나는 값과 개별값의 빈도</li>
@@ -811,9 +811,9 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 <li>표준편차(standard deviation): 분산의 제곱근으로 퍼짐을 측정하는데 사용된다.</li>
 <li>효과크기(effect size): 집단간의 차이처럼 효과크기를 정량화하는 요약통계.</li>
 </ul>
-<h2 id="3.-확률-질량-함수">3. 확률 질량 함수<a class="anchor-link" href="#3.-%ED%99%95%EB%A5%A0-%EC%A7%88%EB%9F%89-%ED%95%A8%EC%88%98">¶</a>
+<h2 id="3.-%ED%99%95%EB%A5%A0-%EC%A7%88%EB%9F%89-%ED%95%A8%EC%88%98">3. 확률 질량 함수<a class="anchor-link" href="#3.-%ED%99%95%EB%A5%A0-%EC%A7%88%EB%9F%89-%ED%95%A8%EC%88%98">¶</a>
 </h2>
-<h3 id="3.1.-PMF-소개">3.1. PMF 소개<a class="anchor-link" href="#3.1.-PMF-%EC%86%8C%EA%B0%9C">¶</a>
+<h3 id="3.1.-PMF-%EC%86%8C%EA%B0%9C">3.1. PMF 소개<a class="anchor-link" href="#3.1.-PMF-%EC%86%8C%EA%B0%9C">¶</a>
 </h3>
 <p>확률 질량 함수(Probability Mass Function; 이하 PMF)은 분포를 표현하는 또 다른 방식이다. PMF는 각각의 값을 확률로 치환하는 방법으로 각각의 확률을 얻기 위해 표본의 크기 n으로 값을 나누는데 이것을 <strong>정규화</strong> 라고 한다.</p>
 <p>여기서는 설명을 위해 저자가 작성한 <code>thinkstats2</code> 모듈을 사용해 PMF를 계산한다. 실무에서는 <code>scipy</code>를 사용하는편이 성능면에서 유리할 것이다.</p>
@@ -860,7 +860,7 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>PMF는 정규화를 거치기 때문에 전체의 합이 1이 된다.</p>
-<h3 id="3.2.-PMF-플롯-그리기">3.2. PMF 플롯 그리기<a class="anchor-link" href="#3.2.-PMF-%ED%94%8C%EB%A1%AF-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+<h3 id="3.2.-PMF-%ED%94%8C%EB%A1%AF-%EA%B7%B8%EB%A6%AC%EA%B8%B0">3.2. PMF 플롯 그리기<a class="anchor-link" href="#3.2.-PMF-%ED%94%8C%EB%A1%AF-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
 </h3>
 <p>PMF를 시각화한다.</p>
 
@@ -932,7 +932,7 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.3.-다른-시각화-방법">3.3. 다른 시각화 방법<a class="anchor-link" href="#3.3.-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%B0%A9%EB%B2%95">¶</a>
+<h3 id="3.3.-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%B0%A9%EB%B2%95">3.3. 다른 시각화 방법<a class="anchor-link" href="#3.3.-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%B0%A9%EB%B2%95">¶</a>
 </h3>
 <p>히스토그램과 PMF은 데이터를 탐색하고 패턴을 식별하는데 유용하다. 위에서 살펴본 첫째아이와 나머지 아이 그룹의 가장 큰차이는 최빈값에 있다. 최빈값 차이를 강조하는 시각화를 해보자.</p>
 
@@ -987,16 +987,16 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 막대 그래프의 y축은 확률이다. 따라서 첫째 아이는 임신 39주차에 덜 태어났고 41-42주차에 좀 더 태어났다는 것을 알 수 있다.</p>
-<h3 id="3.4.-학급-크기-역설(Class-size-paradox)">3.4. 학급 크기 역설(Class size paradox)<a class="anchor-link" href="#3.4.-%ED%95%99%EA%B8%89-%ED%81%AC%EA%B8%B0-%EC%97%AD%EC%84%A4(Class-size-paradox)">¶</a>
+<h3 id="3.4.-%ED%95%99%EA%B8%89-%ED%81%AC%EA%B8%B0-%EC%97%AD%EC%84%A4(Class-size-paradox)">3.4. 학급 크기 역설(Class size paradox)<a class="anchor-link" href="#3.4.-%ED%95%99%EA%B8%89-%ED%81%AC%EA%B8%B0-%EC%97%AD%EC%84%A4(Class-size-paradox)">¶</a>
 </h3>
 <p>학교에서 학급(Class)를 개설했는데, 학교 측에서 계산한 학급 별 평균 인원보다 학생 측에서 느끼는 학급 별 평균 인원이 더 많은 현상을 말한다.</p>
-<h3 id="3.5.-데이터프레임-인덱싱(indexing)">3.5. 데이터프레임 인덱싱(indexing)<a class="anchor-link" href="#3.5.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84-%EC%9D%B8%EB%8D%B1%EC%8B%B1(indexing)">¶</a>
+<h3 id="3.5.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84-%EC%9D%B8%EB%8D%B1%EC%8B%B1(indexing)">3.5. 데이터프레임 인덱싱(indexing)<a class="anchor-link" href="#3.5.-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84-%EC%9D%B8%EB%8D%B1%EC%8B%B1(indexing)">¶</a>
 </h3>
 <p>자세한 것은 판다스(pandas) <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html">공식 문서</a>를 참고하라.</p>
-<h3 id="3.6.-연습문제">3.6. 연습문제<a class="anchor-link" href="#3.6.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
+<h3 id="3.6.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">3.6. 연습문제<a class="anchor-link" href="#3.6.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
 </h3>
 <ol>
-<li>달리기 경주 결과(<code>Apr25_27thAn_set1.shtml</code>)를 사용해 위에서 배운 학급 크기 역설을 적용한다. <em>주최자 입장에서의 실제 참가자 속도</em> 와 <em>참가자들의 입장에서 주자들의 속도</em> 를 PMF로 시각화하라. </li>
+<li>달리기 경주 결과(<code>Apr25_27thAn_set1.shtml</code>)를 사용해 위에서 배운 학급 크기 역설을 적용한다. <em>주최자 입장에서의 실제 참가자 속도</em> 와 <em>참가자들의 입장에서 주자들의 속도</em> 를 PMF로 시각화하라.</li>
 </ol>
 </div>
 </div>
@@ -1160,25 +1160,25 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.7.-용어사전">3.7. 용어사전<a class="anchor-link" href="#3.7.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="3.7.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">3.7. 용어사전<a class="anchor-link" href="#3.7.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>확률질량함수(Probability mass function, PMF): 값을 확률로 치환해 분포로 표현.</li>
 <li>확률(probability): 표본 크기의 일부로 표현되는 빈도수.</li>
 <li>정규화(normalization): 확률값을 얻기위해서 표본크기로 빈도수를 나누는과정.</li>
 </ul>
-<h2 id="4.-누적-분포-함수">4. 누적 분포 함수<a class="anchor-link" href="#4.-%EB%88%84%EC%A0%81-%EB%B6%84%ED%8F%AC-%ED%95%A8%EC%88%98">¶</a>
+<h2 id="4.-%EB%88%84%EC%A0%81-%EB%B6%84%ED%8F%AC-%ED%95%A8%EC%88%98">4. 누적 분포 함수<a class="anchor-link" href="#4.-%EB%88%84%EC%A0%81-%EB%B6%84%ED%8F%AC-%ED%95%A8%EC%88%98">¶</a>
 </h2>
-<h3 id="4.1.-PMF의-한계">4.1. PMF의 한계<a class="anchor-link" href="#4.1.-PMF%EC%9D%98-%ED%95%9C%EA%B3%84">¶</a>
+<h3 id="4.1.-PMF%EC%9D%98-%ED%95%9C%EA%B3%84">4.1. PMF의 한계<a class="anchor-link" href="#4.1.-PMF%EC%9D%98-%ED%95%9C%EA%B3%84">¶</a>
 </h3>
 <p>PMF는 데이터의 수가 적을때는 잘 작동하지만 데이터의 개수가 많이 증가되면 각각의 확률값이 작아져 확률잡음의 효과가 증가하는 한계가 있다. 따라서 이 문제를 해결하기 위해 누적 분포 함수(cumulative distribution function, 이하 CDF)의 개념이 나오게 되었다. CDF를 설명하기 앞서 백분위수(percentile)을 살펴보자.</p>
-<h3 id="4.2.-백분위수(Percentiles)">4.2. 백분위수(Percentiles)<a class="anchor-link" href="#4.2.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98(Percentiles)">¶</a>
+<h3 id="4.2.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98(Percentiles)">4.2. 백분위수(Percentiles)<a class="anchor-link" href="#4.2.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98(Percentiles)">¶</a>
 </h3>
 <p>백분위수는 데이터를 순서대로 나열했을 때 백분율로 특정 위치의 값을 나타내는 것이다. 일반적으로 가장 작은 것을 0, 가장 큰 것을 100으로 한다.</p>
 <h3 id="4.3.-CDF">4.3. CDF<a class="anchor-link" href="#4.3.-CDF">¶</a>
 </h3>
 <p>누적 분포 함수(CDF)는 데이터를 백분위 순위로 치환하는 것이다.</p>
-<h3 id="4.4.-CDF-표현하기">4.4. CDF 표현하기<a class="anchor-link" href="#4.4.-CDF-%ED%91%9C%ED%98%84%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="4.4.-CDF-%ED%91%9C%ED%98%84%ED%95%98%EA%B8%B0">4.4. CDF 표현하기<a class="anchor-link" href="#4.4.-CDF-%ED%91%9C%ED%98%84%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>책의 저자가 작성한 <code>thinkstats2</code>,<code>thinkplot</code>을 사용했다.</p>
 
@@ -1241,7 +1241,7 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 <p>CDF 그래프를 읽는 방법은 백분위수를 찾는 것이다. 위의 그림을 예로 들면 임신기간의 10%는 36주차보다 짧고 90%의 산모들은 41주보다 짧은 임신기간을 갖는다는 것을 알 수 있다.</p>
 <p>데이터의 최빈값은 CDF 그래프에서 급격하거나 수직선으로 표현된다. 위 그림에서는 39주차에서 명확하게 표현되어 있다. 또한 30주보다 짧은 데이터는 매우 적기 때문에 평평하게 표현되어 있다.</p>
 <p>이렇듯 CDF 그래프는 PMF 그래프보다 더 많은 정보를 보다 명확하게 시각화 할 수 있다는 장점이 있다.</p>
-<h3 id="4.5.-CDF-비교하기">4.5. CDF 비교하기<a class="anchor-link" href="#4.5.-CDF-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="4.5.-CDF-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">4.5. CDF 비교하기<a class="anchor-link" href="#4.5.-CDF-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>CDF는 서로 다른 데이터의 분포를 비교할때도 사용된다. 앞에서 했던 첫째 아이와 나머지 아이들의 임신기간의 차이를 다시 살펴보자.</p>
 
@@ -1305,17 +1305,17 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그림을 통해 분포 차이를 볼수 있다. 최빈값은 동일하나 첫째 아이가 나머지 아이들에 비해 임신기간이 조금 짧은 것을 볼 수 있다.</p>
-<h3 id="4.6.-백분위수-기반-통계량">4.6. 백분위수 기반 통계량<a class="anchor-link" href="#4.6.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98-%EA%B8%B0%EB%B0%98-%ED%86%B5%EA%B3%84%EB%9F%89">¶</a>
+<h3 id="4.6.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98-%EA%B8%B0%EB%B0%98-%ED%86%B5%EA%B3%84%EB%9F%89">4.6. 백분위수 기반 통계량<a class="anchor-link" href="#4.6.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98-%EA%B8%B0%EB%B0%98-%ED%86%B5%EA%B3%84%EB%9F%89">¶</a>
 </h3>
 <p><strong>중앙값(median)</strong> 또는 중위수는 어떤 주어진 값들을 크기의 순서대로 정렬했을 때 가장 중앙에 위치하는 값을 의미한다. 예를 들어 1, 2, 100의 세 값이 있을 때, 2가 가장 중앙에 있기 때문에 2가 중앙값이다.</p>
 <p>사분위수 범위(Interquartile range, IQR)는 자료를 작은 값부터 큰 값까지 순서대로 나열한 후 4등분 하였을 때 각 점에 해당하는 값을 의미한다. 따라서 전체 자료를 100%로 보았을 때, 25% 지점에 해당하는 값은 제1사분위수가 되는 것이다.</p>
 <ul>
 <li>25% = 제1사분위수 (q1) , the first quartile</li>
-<li>50% = 제2사분위수(중앙값) (q2), the second quartile </li>
+<li>50% = 제2사분위수(중앙값) (q2), the second quartile</li>
 <li>75% 제 3사분위수 (q3), the third quartile</li>
 </ul>
 <p>여기서 50% 지점에 해당하는 제2사분위수는 자료의 중앙값(중위수, median)과 동일하다.</p>
-<h3 id="4.7.-난수(Random-numbers)">4.7. 난수(Random numbers)<a class="anchor-link" href="#4.7.-%EB%82%9C%EC%88%98(Random-numbers)">¶</a>
+<h3 id="4.7.-%EB%82%9C%EC%88%98(Random-numbers)">4.7. 난수(Random numbers)<a class="anchor-link" href="#4.7.-%EB%82%9C%EC%88%98(Random-numbers)">¶</a>
 </h3>
 <p>난수란 무작위로 만들어진 수열을 가리킨다. 여기서 무작위란 다음에 나올 수를 절대 예측할 수 없다는 것을 말한다.</p>
 
@@ -1380,10 +1380,10 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 CDF 그래프는 근사적으로 직선이다. 즉, 분포는 균등하다는 것을 알 수 있다.</p>
 <p>CDF 모양과 관계없이 백분위 순위의 분포는 균등하며 또한 난수를 통해 선택이 균등하게 이루어졌다는 것을 알 수있다.</p>
-<h3 id="4.8.-백분위-순위-비교하기">4.8. 백분위 순위 비교하기<a class="anchor-link" href="#4.8.-%EB%B0%B1%EB%B6%84%EC%9C%84-%EC%88%9C%EC%9C%84-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="4.8.-%EB%B0%B1%EB%B6%84%EC%9C%84-%EC%88%9C%EC%9C%84-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">4.8. 백분위 순위 비교하기<a class="anchor-link" href="#4.8.-%EB%B0%B1%EB%B6%84%EC%9C%84-%EC%88%9C%EC%9C%84-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>백분위순위는 다른집단과의 측정값을 비교하는데 유용하다.</p>
-<h3 id="4.9.-연습문제">4.9. 연습문제<a class="anchor-link" href="#4.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
+<h3 id="4.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">4.9. 연습문제<a class="anchor-link" href="#4.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
 </h3>
 <ol>
 <li>난수 1000개를 생성해 PMF와 CDF가 균등분포인지 시각화하라.</li>
@@ -1476,7 +1476,7 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 CDF 그래프에서 확인할 수 있듯이, 매우 선형임으로 데이터셋이 균등분포라고 할 수 있다.</p>
-<h3 id="4.10.-용어사전">4.10. 용어사전<a class="anchor-link" href="#4.10.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="4.10.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">4.10. 용어사전<a class="anchor-link" href="#4.10.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>백분위순위(percentile rank): 분포에서 주어진 값과 동일하거나 적은값의 퍼센티지.</li>
@@ -1487,11 +1487,11 @@ $$d = \frac{\bar x_1 - \bar x_2}{s}$$<p>$\bar x_1 - \bar x_2$은 집단 평균�
 <li>사분위범위(interquartile range): 퍼짐의측도로사용되는75번째와25 번째백분위수간차이.</li>
 <li>복원(replacement): 표본추출 과정의 속성으로 복원추출(With replacement)은 동일한 값이한번이상 추출될수있다는 의미다. 그리고 비복원추출(Without replacement)은 값이 한번 추출되면 데이터셋에서 제거된다는 의미가 된다.</li>
 </ul>
-<h2 id="5.-분포-모델(Modeling-distributions)">5. 분포 모델(Modeling distributions)<a class="anchor-link" href="#5.-%EB%B6%84%ED%8F%AC-%EB%AA%A8%EB%8D%B8(Modeling-distributions)">¶</a>
+<h2 id="5.-%EB%B6%84%ED%8F%AC-%EB%AA%A8%EB%8D%B8(Modeling-distributions)">5. 분포 모델(Modeling distributions)<a class="anchor-link" href="#5.-%EB%B6%84%ED%8F%AC-%EB%AA%A8%EB%8D%B8(Modeling-distributions)">¶</a>
 </h2>
 <p>지금까지 배운 분포는 경험적 관측치에 기반한 데이터으로 구성된 <strong>경험적 분포(empirical distributions)</strong> 이다.</p>
 <p>이런 경험적 분포를 수학적인 함수로 단순화하는 작업을 모델(model)이라 하며 모델을 통해 만들어지는 분포를 <strong>해석분포(analytic distribution)</strong> 라고 한다.</p>
-<h3 id="5.1.-지수분포(Exponential-distribution)">5.1. 지수분포(Exponential distribution)<a class="anchor-link" href="#5.1.-%EC%A7%80%EC%88%98%EB%B6%84%ED%8F%AC(Exponential-distribution)">¶</a>
+<h3 id="5.1.-%EC%A7%80%EC%88%98%EB%B6%84%ED%8F%AC(Exponential-distribution)">5.1. 지수분포(Exponential distribution)<a class="anchor-link" href="#5.1.-%EC%A7%80%EC%88%98%EB%B6%84%ED%8F%AC(Exponential-distribution)">¶</a>
 </h3>
 <p>가장 단순한 분포 유형인 지수 분포의 CDF는 다음과 같이 표현한다.</p>
 $$CDF(x) = 1 - e^{-\lambda x}$$<p>여기서 모수 $\lambda$는 분포의 모양을 나타낸다.</p>
@@ -1651,7 +1651,7 @@ $$\log y \approx  - \lambda x$$<p>따라서 로그를 취한 CCDF는 기울기�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그래프는 명백한 직선이 아니라는 것을 알 수 있다. 따라서 이 데이터셋에 대해 지수분포는 완벽한 모델이 아니라는 것이 역으로 증명된다. 다시말해 아이의 "출생은 균등하게 발생할 것"이라는 가정은 틀렸다고 볼 수 있다.</p>
-<h3 id="5.2.-정규분포(normal-distribution)">5.2. 정규분포(normal distribution)<a class="anchor-link" href="#5.2.-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC(normal-distribution)">¶</a>
+<h3 id="5.2.-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC(normal-distribution)">5.2. 정규분포(normal distribution)<a class="anchor-link" href="#5.2.-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC(normal-distribution)">¶</a>
 </h3>
 <p>다른 말로 <strong>가우스 분포(Gaussian distribution)</strong> 라고 한다. 정규분포는 다양한 현상에 근사 모델로 사용될 수 있어 자주 사용된다.</p>
 <p>정규분포는 모수 평균 $µ$, 표준편차 $σ$로 특성화된다.  그리고 평균이 0이고 표준편차가 1인 정규분포를 표준 정규 분포(standard normal distribution)라고 한다. 수식으로는 다음과 같이 표현된다.</p>
@@ -1707,7 +1707,7 @@ $$ CDF(z) = \frac{1}{\sqrt{2 \pi}} \int^{z}_{-\infty} e^{\frac{-t^2}{2}}dt $$<p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5.3.-정규확률그림(Normal-probability-plot)">5.3. 정규확률그림(Normal probability plot)<a class="anchor-link" href="#5.3.-%EC%A0%95%EA%B7%9C%ED%99%95%EB%A5%A0%EA%B7%B8%EB%A6%BC(Normal-probability-plot)">¶</a>
+<h3 id="5.3.-%EC%A0%95%EA%B7%9C%ED%99%95%EB%A5%A0%EA%B7%B8%EB%A6%BC(Normal-probability-plot)">5.3. 정규확률그림(Normal probability plot)<a class="anchor-link" href="#5.3.-%EC%A0%95%EA%B7%9C%ED%99%95%EB%A5%A0%EA%B7%B8%EB%A6%BC(Normal-probability-plot)">¶</a>
 </h3>
 </div>
 </div>
@@ -1828,14 +1828,14 @@ $$ CDF(z) = \frac{1}{\sqrt{2 \pi}} \int^{z}_{-\infty} e^{\frac{-t^2}{2}}dt $$<p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그래프는 전체 정상 출생과 만삭(임신기간이36주이상)에 대한 결과를 보여준다. 두 곡선 모두 평균 근처에서 모형과 일치되고 꼬리 부분에서 차이가 난다. 무거운 아이는 모델로 예측한 것 보다 무겁고 가벼운 아이는 예측보다 더 가볍다.</p>
 <p>만삭 데이터만 선택하면 가벼운 아이들의 데이터가 제거되고 그래프의 아래쪽 꼬리가 모델에 좀 더 잘 일치되는 것을 확인 할 수 있다.</p>
-<h3 id="5.4.-로그-정규분포(Lognormal-distribution)">5.4. 로그 정규분포(Lognormal distribution)<a class="anchor-link" href="#5.4.-%EB%A1%9C%EA%B7%B8-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC(Lognormal-distribution)">¶</a>
+<h3 id="5.4.-%EB%A1%9C%EA%B7%B8-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC(Lognormal-distribution)">5.4. 로그 정규분포(Lognormal distribution)<a class="anchor-link" href="#5.4.-%EB%A1%9C%EA%B7%B8-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC(Lognormal-distribution)">¶</a>
 </h3>
 <p>정규분포에 로그를 취하면 로그 정규분포가 된다.</p>
 $$CDF_{lognormal}(x) = CDF_{normal}(logx)$$<p>로그 정규분포의 예시로 미국에서 조사한 성인의 체중 데이터(2008년에 조사한 398,484명의 데이터)를 사용한다.</p>
-<h3 id="5.5.-파레토-분포(Pareto-distribution)">5.5. 파레토 분포(Pareto distribution)<a class="anchor-link" href="#5.5.-%ED%8C%8C%EB%A0%88%ED%86%A0-%EB%B6%84%ED%8F%AC(Pareto-distribution)">¶</a>
+<h3 id="5.5.-%ED%8C%8C%EB%A0%88%ED%86%A0-%EB%B6%84%ED%8F%AC(Pareto-distribution)">5.5. 파레토 분포(Pareto distribution)<a class="anchor-link" href="#5.5.-%ED%8C%8C%EB%A0%88%ED%86%A0-%EB%B6%84%ED%8F%AC(Pareto-distribution)">¶</a>
 </h3>
 <p>파레토 분포(Pareto distribution)는 경제학자 빌프레도 파레토(Vilfredo Pareto) 이름에서 나왔는데 이것을 사용해 도시와 마을의 크기등을 나타냈다.</p>
-$$CDF(x) = 1 - \frac{x}{x_m}^{- \alpha}$$<h3 id="5.6.-난수-생성하기">5.6. 난수 생성하기<a class="anchor-link" href="#5.6.-%EB%82%9C%EC%88%98-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0">¶</a>
+$$CDF(x) = 1 - \frac{x}{x_m}^{- \alpha}$$<h3 id="5.6.-%EB%82%9C%EC%88%98-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0">5.6. 난수 생성하기<a class="anchor-link" href="#5.6.-%EB%82%9C%EC%88%98-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>주어진 분포함수 $p = CDF(x)$로 난수를 생성한다.</p>
 
@@ -1892,12 +1892,12 @@ $$CDF(x) = 1 - \frac{x}{x_m}^{- \alpha}$$<h3 id="5.6.-난수-생성하기">5.6. 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5.7.-왜-모델이-필요한가?">5.7. 왜 모델이 필요한가?<a class="anchor-link" href="#5.7.-%EC%99%9C-%EB%AA%A8%EB%8D%B8%EC%9D%B4-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80?">¶</a>
+<h3 id="5.7.-%EC%99%9C-%EB%AA%A8%EB%8D%B8%EC%9D%B4-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80?">5.7. 왜 모델이 필요한가?<a class="anchor-link" href="#5.7.-%EC%99%9C-%EB%AA%A8%EB%8D%B8%EC%9D%B4-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80?">¶</a>
 </h3>
 <p>모델은 일종의 데이터 압축이다. 모델이 데이터셋에 잘 적합 될 때, 적은 모수 집합으로 대량의 데이터를 요약할 수 있는 것이다.</p>
-<h3 id="5.8.-연습문제">5.8. 연습문제<a class="anchor-link" href="#5.8.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
+<h3 id="5.8.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">5.8. 연습문제<a class="anchor-link" href="#5.8.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
 </h3>
-<h3 id="5.9.-용어-사전">5.9. 용어 사전<a class="anchor-link" href="#5.9.-%EC%9A%A9%EC%96%B4-%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="5.9.-%EC%9A%A9%EC%96%B4-%EC%82%AC%EC%A0%84">5.9. 용어 사전<a class="anchor-link" href="#5.9.-%EC%9A%A9%EC%96%B4-%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>경험적분포(empirical distribution): 표본값의 분포</li>
@@ -1907,14 +1907,14 @@ $$CDF(x) = 1 - \frac{x}{x_m}^{- \alpha}$$<h3 id="5.6.-난수-생성하기">5.6. 
 <li>표준정규분포(standard normal distribution): 평균 0과 표준편차1을 갖는 정규분포.</li>
 <li>정규확률그림(normal probability plot): 표본값과 표준정규분포에서 나온 난수를 대비해 시각화한 그림</li>
 </ul>
-<h2 id="6.-확률밀도함수">6. 확률밀도함수<a class="anchor-link" href="#6.-%ED%99%95%EB%A5%A0%EB%B0%80%EB%8F%84%ED%95%A8%EC%88%98">¶</a>
+<h2 id="6.-%ED%99%95%EB%A5%A0%EB%B0%80%EB%8F%84%ED%95%A8%EC%88%98">6. 확률밀도함수<a class="anchor-link" href="#6.-%ED%99%95%EB%A5%A0%EB%B0%80%EB%8F%84%ED%95%A8%EC%88%98">¶</a>
 </h2>
 <h3 id="6.1.-PDF">6.1. PDF<a class="anchor-link" href="#6.1.-PDF">¶</a>
 </h3>
 <p>CDF 미분을 <strong>확률밀도함수(probability density function, 이하 PDF)</strong> 라고한다.</p>
-<h4 id="지수분포의-PDF는-다음과-같다.">지수분포의 PDF는 다음과 같다.<a class="anchor-link" href="#%EC%A7%80%EC%88%98%EB%B6%84%ED%8F%AC%EC%9D%98-PDF%EB%8A%94-%EB%8B%A4%EC%9D%8C%EA%B3%BC-%EA%B0%99%EB%8B%A4.">¶</a>
-</h4>$$PDF_{expo}(x) = \lambda e^{-\lambda x}$$<h4 id="정규분포의-PDF는-다음과-같다.">정규분포의 PDF는 다음과 같다.<a class="anchor-link" href="#%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC%EC%9D%98-PDF%EB%8A%94-%EB%8B%A4%EC%9D%8C%EA%B3%BC-%EA%B0%99%EB%8B%A4.">¶</a>
-</h4>$$PDF_{normal}(x) = \frac{1}{\sigma \sqrt{2\pi}} exp [ - \frac{1}{2}(\frac{x-\mu}{\sigma})^2]$$<h3 id="6.2.-핵밀도추정">6.2. 핵밀도추정<a class="anchor-link" href="#6.2.-%ED%95%B5%EB%B0%80%EB%8F%84%EC%B6%94%EC%A0%95">¶</a>
+<h4 id="%EC%A7%80%EC%88%98%EB%B6%84%ED%8F%AC%EC%9D%98-PDF%EB%8A%94-%EB%8B%A4%EC%9D%8C%EA%B3%BC-%EA%B0%99%EB%8B%A4.">지수분포의 PDF는 다음과 같다.<a class="anchor-link" href="#%EC%A7%80%EC%88%98%EB%B6%84%ED%8F%AC%EC%9D%98-PDF%EB%8A%94-%EB%8B%A4%EC%9D%8C%EA%B3%BC-%EA%B0%99%EB%8B%A4.">¶</a>
+</h4>$$PDF_{expo}(x) = \lambda e^{-\lambda x}$$<h4 id="%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC%EC%9D%98-PDF%EB%8A%94-%EB%8B%A4%EC%9D%8C%EA%B3%BC-%EA%B0%99%EB%8B%A4.">정규분포의 PDF는 다음과 같다.<a class="anchor-link" href="#%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC%EC%9D%98-PDF%EB%8A%94-%EB%8B%A4%EC%9D%8C%EA%B3%BC-%EA%B0%99%EB%8B%A4.">¶</a>
+</h4>$$PDF_{normal}(x) = \frac{1}{\sigma \sqrt{2\pi}} exp [ - \frac{1}{2}(\frac{x-\mu}{\sigma})^2]$$<h3 id="6.2.-%ED%95%B5%EB%B0%80%EB%8F%84%EC%B6%94%EC%A0%95">6.2. 핵밀도추정<a class="anchor-link" href="#6.2.-%ED%95%B5%EB%B0%80%EB%8F%84%EC%B6%94%EC%A0%95">¶</a>
 </h3>
 <p><strong>핵밀도추정(Kernel density estimation, 이하 KDE)</strong> 은 표본을 받아 데이터에 적합한 평활 PDF를 찾는 알고리즘이다. KDE는 다음과 같은 유용성이 있다.</p>
 <ul>
@@ -1925,14 +1925,14 @@ $$CDF(x) = 1 - \frac{x}{x_m}^{- \alpha}$$<h3 id="5.6.-난수-생성하기">5.6. 
 <blockquote>
 <p>보간이란 알려진 지점의 값 사이(중간)에 위치한 값을 알려진 값으로부터 추정하는 것을 말한다.</p>
 </blockquote>
-<h3 id="6.3.-분포-프레임워크">6.3. 분포 프레임워크<a class="anchor-link" href="#6.3.-%EB%B6%84%ED%8F%AC-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC">¶</a>
+<h3 id="6.3.-%EB%B6%84%ED%8F%AC-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC">6.3. 분포 프레임워크<a class="anchor-link" href="#6.3.-%EB%B6%84%ED%8F%AC-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC">¶</a>
 </h3>
 <p>지금까지 PMF, CDF, PDF를 살펴봤다, 잠시 복습시간을 갖는다. 다음 그림에 각각의 함수가 어떻게 연관 되는지 나타나 있다.</p>
 <p><img src="https://i.imgur.com/OtpVRmN.png" alt=""></p>
-<h3 id="6.8.-왜도">6.8. 왜도<a class="anchor-link" href="#6.8.-%EC%99%9C%EB%8F%84">¶</a>
+<h3 id="6.8.-%EC%99%9C%EB%8F%84">6.8. 왜도<a class="anchor-link" href="#6.8.-%EC%99%9C%EB%8F%84">¶</a>
 </h3>
 <p>왜도(Skewness)는 분포의 형태를 기술한다. 만약 분포가 중심경향성 주변에서 대칭이라면 기울어 지지 않았다. 만약 값들이 오른쪽으로 좀 더 뻗어져있다면“오른쪽으로기울어져(right skewed), 만약 값들이 왼쪽으로 치우쳐있다면,“왼쪽으로 기울어져(left skewed)”이다.</p>
-<h3 id="6.9.-연습문제">6.9. 연습문제<a class="anchor-link" href="#6.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
+<h3 id="6.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">6.9. 연습문제<a class="anchor-link" href="#6.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
 </h3>
 <ol>
 <li>소득의 분포는 기울어져 있기로 유명하다. 소득 데이터셋은 <a href="http://www.census.gov/hhes/www/cpstables/032013/hhinc/toc.htm">http://www.census.gov/hhes/www/cpstables/032013/hhinc/toc.htm</a> 에서 다운로드 받을수 있다. 얼마나 치우쳐 있는지 측정하라.</li>
@@ -2138,25 +2138,25 @@ $$CDF(x) = 1 - \frac{x}{x_m}^{- \alpha}$$<h3 id="5.6.-난수-생성하기">5.6. 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>왜도는 4.9로 데이터셋이 왼쪽으로 치우쳐있다는 것을 알 수 있다. (정규분포의 왜도는 0이다.) 그러나 이 계산는 가장 높은 소득을 백만달러라고 가정한 결과이다. 다시말해 최대값에 대한 정보가 없으면 계산된 왜도는 믿을 수가 없다.</p>
-<h3 id="6.10.-용어사전">6.10. 용어사전<a class="anchor-link" href="#6.10.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="6.10.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">6.10. 용어사전<a class="anchor-link" href="#6.10.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>확률밀도함수(Probability density function, PDF): 연속CDF 미분으로 값을 확률밀도로 치환하는 함수</li>
 <li>확률밀도(Probability density): 확률을 만들기 위해 범위값에 대해 적분 할 수 있는양.</li>
 <li>핵밀도추정(Kernel density estimation, KDE): 표본에기반해서PDF를 추정하는알고리즘.</li>
 <li>이산화(discretize): 연속 함수 혹은 이산 함수를 가진 분포를 근사함. 평활(smoothing)의반대.</li>
-<li>원적률(raw moment): 거듭제곱되는 데이터 합계에 기반한 통계량 </li>
+<li>원적률(raw moment): 거듭제곱되는 데이터 합계에 기반한 통계량</li>
 <li>중심적률(central moment): 평균에서 편차 거듭제곱에 기반한 통계량.</li>
 <li>표준적률(standardized moment): 단위가 없는 적률 비율.</li>
 <li>왜도(skewness): 분포가 얼마나 비대칭인지 나타내는 측도.</li>
 <li>표본왜도(sample skewness): 분포 왜도를 정량화 하는데 사용되는 적률 기반 통계량.</li>
-<li>피어슨중위수왜도계수(Pearson’s median skewness coefﬁcient): 중위수, 평균, 표준편차에 기반한 분포 왜도를 정량화하는데 사용되는 통계량. </li>
+<li>피어슨중위수왜도계수(Pearson’s median skewness coefﬁcient): 중위수, 평균, 표준편차에 기반한 분포 왜도를 정량화하는데 사용되는 통계량.</li>
 <li>강건성(robust): 특이값에도 휘둘리지 않는 통계량을 강건하다 표현한다.</li>
 </ul>
-<h2 id="7.-변수간-관계">7. 변수간 관계<a class="anchor-link" href="#7.-%EB%B3%80%EC%88%98%EA%B0%84-%EA%B4%80%EA%B3%84">¶</a>
+<h2 id="7.-%EB%B3%80%EC%88%98%EA%B0%84-%EA%B4%80%EA%B3%84">7. 변수간 관계<a class="anchor-link" href="#7.-%EB%B3%80%EC%88%98%EA%B0%84-%EA%B4%80%EA%B3%84">¶</a>
 </h2>
 <p>변수들에는 관계가 있다. 예를 들면 키와 체중은 관계가 있다; 키가 큰 사람이 체중도 더 나가는 경향이 있다. 물론 키가 작고 뚱뚱한 사람도 있을 수 있지만 키에 대한 정보를 알고 있으면 체중을 추정하는데 더 유리하다.</p>
-<h3 id="7.1.-산점도">7.1. 산점도<a class="anchor-link" href="#7.1.-%EC%82%B0%EC%A0%90%EB%8F%84">¶</a>
+<h3 id="7.1.-%EC%82%B0%EC%A0%90%EB%8F%84">7.1. 산점도<a class="anchor-link" href="#7.1.-%EC%82%B0%EC%A0%90%EB%8F%84">¶</a>
 </h3>
 <p>변수간의 관계(relationship)을 확인하는 가장 간단한 방법은 산점도(scatter plot)를 그리는 것이다.</p>
 
@@ -2286,7 +2286,7 @@ $$CDF(x) = 1 - \frac{x}{x_m}^{- \alpha}$$<h3 id="5.6.-난수-생성하기">5.6. 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>지터링(jittering)을 통해서 반올림으로 인한 시각적 효과를 줄이고, 변수의 관계 형태를 좀 더 명확해진다. 하지만, 일반적으로 지터링은 시각화 목적으로만 사용해야 하고 분석에 지터링된 데이터 사용은 피해야 한다.</p>
-<h3 id="7.2.-변수의-관계를-특징짓기">7.2. 변수의 관계를 특징짓기<a class="anchor-link" href="#7.2.-%EB%B3%80%EC%88%98%EC%9D%98-%EA%B4%80%EA%B3%84%EB%A5%BC-%ED%8A%B9%EC%A7%95%EC%A7%93%EA%B8%B0">¶</a>
+<h3 id="7.2.-%EB%B3%80%EC%88%98%EC%9D%98-%EA%B4%80%EA%B3%84%EB%A5%BC-%ED%8A%B9%EC%A7%95%EC%A7%93%EA%B8%B0">7.2. 변수의 관계를 특징짓기<a class="anchor-link" href="#7.2.-%EB%B3%80%EC%88%98%EC%9D%98-%EA%B4%80%EA%B3%84%EB%A5%BC-%ED%8A%B9%EC%A7%95%EC%A7%93%EA%B8%B0">¶</a>
 </h3>
 <p>변수의 관계에 대한 더 많은 통찰을 얻기 위해 변수를 구간화(binning)하고 다른 변수 백분위수를 시각화해보자. 넘파이(NumPy)와 판다스를 이용해 데이터를 구간으로 나눈다.</p>
 
@@ -2343,26 +2343,26 @@ $$CDF(x) = 1 - \frac{x}{x_m}^{- \alpha}$$<h3 id="5.6.-난수-생성하기">5.6. 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그림 결과를 보면 140cm에서 200cm 사이 두 변수간의 관계는 대략작인 선형 관계이다. 그리고 이 범위에 99% 이상의 데이터가 몰려있다. 그래서, 극단값들은 신경쓸 필요는 없다.</p>
-<h3 id="7.3.-상관(Correlation)">7.3. 상관(Correlation)<a class="anchor-link" href="#7.3.-%EC%83%81%EA%B4%80(Correlation)">¶</a>
+<h3 id="7.3.-%EC%83%81%EA%B4%80(Correlation)">7.3. 상관(Correlation)<a class="anchor-link" href="#7.3.-%EC%83%81%EA%B4%80(Correlation)">¶</a>
 </h3>
 <p><strong>상관(correlation)</strong> 은 두 변수간 관계를 정량화하는데 사용되는 통계량이다.</p>
-<h3 id="7.4.-공분산(Covariance)">7.4. 공분산(Covariance)<a class="anchor-link" href="#7.4.-%EA%B3%B5%EB%B6%84%EC%82%B0(Covariance)">¶</a>
+<h3 id="7.4.-%EA%B3%B5%EB%B6%84%EC%82%B0(Covariance)">7.4. 공분산(Covariance)<a class="anchor-link" href="#7.4.-%EA%B3%B5%EB%B6%84%EC%82%B0(Covariance)">¶</a>
 </h3>
 <p><strong>공분산(Covariance)</strong> 은 함께 변화하는 두 변수의 경향성이다. 만약 두 변수
 X, Y가 있다면 평균에 대한 편차는 다음과 같다.</p>
-<h3 id="7.5.-피어슨-상관(Pearson’s-correlation)">7.5. 피어슨 상관(Pearson’s correlation)<a class="anchor-link" href="#7.5.-%ED%94%BC%EC%96%B4%EC%8A%A8-%EC%83%81%EA%B4%80(Pearson%E2%80%99s-correlation)">¶</a>
+<h3 id="7.5.-%ED%94%BC%EC%96%B4%EC%8A%A8-%EC%83%81%EA%B4%80(Pearson%E2%80%99s-correlation)">7.5. 피어슨 상관(Pearson’s correlation)<a class="anchor-link" href="#7.5.-%ED%94%BC%EC%96%B4%EC%8A%A8-%EC%83%81%EA%B4%80(Pearson%E2%80%99s-correlation)">¶</a>
 </h3>
 <p>공분산이 몇몇 연산에서는 유용하지만 해석하기 어렵기 때문에 요약 통계량으로 많이 사용되지 않는다. 반면에 피어슨상관(Pearson's correlation)은 계산하기 쉽고 해석하기도 쉬워 많이 선형 상관을 판별하는데 많이 사용된다.</p>
-<h3 id="7.6.-비선형관계(Nonlinear-relationships)">7.6. 비선형관계(Nonlinear relationships)<a class="anchor-link" href="#7.6.-%EB%B9%84%EC%84%A0%ED%98%95%EA%B4%80%EA%B3%84(Nonlinear-relationships)">¶</a>
+<h3 id="7.6.-%EB%B9%84%EC%84%A0%ED%98%95%EA%B4%80%EA%B3%84(Nonlinear-relationships)">7.6. 비선형관계(Nonlinear relationships)<a class="anchor-link" href="#7.6.-%EB%B9%84%EC%84%A0%ED%98%95%EA%B4%80%EA%B3%84(Nonlinear-relationships)">¶</a>
 </h3>
 <p>상관계수가 0이어도 변수간에 관계가 존재하는 것을 비선형관계라고 한다. 다음 그림을 통해 
 다양한 범위의 상관을 갖는 데이터들을 확인할 수 있다.
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Correlation_examples2.svg/1024px-Correlation_examples2.svg.png" alt=""></p>
 <p>위 그림에서 세번째 행이 비선형 관계의 데이터셋이다.</p>
-<h3 id="7.7.-스피어만-순위-상관(Spearman’s-rank-correlation)">7.7. 스피어만 순위 상관(Spearman’s rank correlation)<a class="anchor-link" href="#7.7.-%EC%8A%A4%ED%94%BC%EC%96%B4%EB%A7%8C-%EC%88%9C%EC%9C%84-%EC%83%81%EA%B4%80(Spearman%E2%80%99s-rank-correlation)">¶</a>
+<h3 id="7.7.-%EC%8A%A4%ED%94%BC%EC%96%B4%EB%A7%8C-%EC%88%9C%EC%9C%84-%EC%83%81%EA%B4%80(Spearman%E2%80%99s-rank-correlation)">7.7. 스피어만 순위 상관(Spearman’s rank correlation)<a class="anchor-link" href="#7.7.-%EC%8A%A4%ED%94%BC%EC%96%B4%EB%A7%8C-%EC%88%9C%EC%9C%84-%EC%83%81%EA%B4%80(Spearman%E2%80%99s-rank-correlation)">¶</a>
 </h3>
 <p>피어슨 상관은 변수의 관계가 선형이고 정규분포를 따른다면 잘 작동한다. 하지만 데이터에 특이값이 있는 경우에는 스피어만 순위 상관을 대안으로 사용한다.</p>
-<h3 id="7.8.-상관과-인과관계(Correlation-and-causation)">7.8. 상관과 인과관계(Correlation and causation)<a class="anchor-link" href="#7.8.-%EC%83%81%EA%B4%80%EA%B3%BC-%EC%9D%B8%EA%B3%BC%EA%B4%80%EA%B3%84(Correlation-and-causation)">¶</a>
+<h3 id="7.8.-%EC%83%81%EA%B4%80%EA%B3%BC-%EC%9D%B8%EA%B3%BC%EA%B4%80%EA%B3%84(Correlation-and-causation)">7.8. 상관과 인과관계(Correlation and causation)<a class="anchor-link" href="#7.8.-%EC%83%81%EA%B4%80%EA%B3%BC-%EC%9D%B8%EA%B3%BC%EA%B4%80%EA%B3%84(Correlation-and-causation)">¶</a>
 </h3>
 <p>만약 변수 A와 B가 상관이 있다면 다음과 같은 세가지 설명이 가능하다.</p>
 <ol>
@@ -2375,7 +2375,7 @@ X, Y가 있다면 평균에 대한 편차는 다음과 같다.</p>
 <li>사건의 순서를 사용한다. 만약 A가 B 보다 먼저 일어났다면 A가 B를 발생시키는 원인이라고 추론할 수 있을 것이다. 그러나 다른 무언가 A와 B를 발생시키는 원인이 된다는 가능성을 배제할 수 없다.</li>
 <li>확률을 사용한다. 표본을 임의로 두 집단으로 나눠 변수의 평균을 계산하는 무작위 대조군 시험을 통해 인과 관계를 확인할 수 있다.</li>
 </ol>
-<h3 id="7.9.-연습문제">7.9. 연습문제<a class="anchor-link" href="#7.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
+<h3 id="7.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">7.9. 연습문제<a class="anchor-link" href="#7.9.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
 </h3>
 <ol>
 <li>NSFG 데이터를 사용해 출생 체중과 산모 연령의 산점도를 그리고, 출생 체중과 산모 연령백분위수를 시각화하라. 피어슨상관과 스피어만 상관을 계산해 두 변수사이의 관계를 설명하라.</li>
@@ -2430,8 +2430,8 @@ X, Y가 있다면 평균에 대한 편차는 다음과 같다.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span><span class="p">,</span> <span class="n">spearmanr</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'피어슨 상관 계수: {pearsonr(ages, weights)[0]}'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'스피어만 상관 계수: {spearmanr(ages, weights)[0]}'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'피어슨 상관 계수: </span><span class="si">{</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span><span class="w"> </span><span class="n">weights</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'스피어만 상관 계수: </span><span class="si">{</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span><span class="w"> </span><span class="n">weights</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2511,7 +2511,7 @@ X, Y가 있다면 평균에 대한 편차는 다음과 같다.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="7.10.-용어사전">7.10. 용어사전<a class="anchor-link" href="#7.10.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="7.10.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">7.10. 용어사전<a class="anchor-link" href="#7.10.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>산점도(scatter plot): 두 변수 사이 관계를 데이터 각 행마다 점을 찍어 보임으로써 시각화.</li>
@@ -2527,21 +2527,21 @@ X, Y가 있다면 평균에 대한 편차는 다음과 같다.</p>
 <li>대조군집단(control group): 대조군시험에서 처리를 받지 않거나 이미 효과가 알려진 처리를 받는 집단.</li>
 <li>자연실험(natural experiment): 대상이 집단으로 자연적으로 구분되는 현상을 이용한 실험계획. 여기서 집단은 근사적으로 무작위가 된다.</li>
 </ul>
-<h2 id="8.-추정">8. 추정<a class="anchor-link" href="#8.-%EC%B6%94%EC%A0%95">¶</a>
+<h2 id="8.-%EC%B6%94%EC%A0%95">8. 추정<a class="anchor-link" href="#8.-%EC%B6%94%EC%A0%95">¶</a>
 </h2>
-<h3 id="8.1.-통계적-추정">8.1. 통계적 추정<a class="anchor-link" href="#8.1.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%B6%94%EC%A0%95">¶</a>
+<h3 id="8.1.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%B6%94%EC%A0%95">8.1. 통계적 추정<a class="anchor-link" href="#8.1.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%B6%94%EC%A0%95">¶</a>
 </h3>
 <p><strong>추정(estimation)</strong> 은 표본을 통해 모집단 특성이 어떠한가에 대해 추측하는 것이다. 그리고 추정에 사용한 통계량(표본평균)을 <strong>추정량(estimator)</strong> 이라 한다.</p>
 <p>어느 추정량이 가장 좋은가는 상황에 따라 달라진다. 예를들어 특이값의 유무와 목적이 무엇인가에 달려있다. 만약 특이값이 없다면 <strong>누적평균제곱오차(mean squared error, 이하 MSE)</strong> 를 최소화하는 것이 좋은 방법이다.</p>
 <p>그러나 주사위 세개를 던져서 합계를 예측하는 문제에서 MSE 값은 10.5로 계산되지만 좋지못한 추정값이다. 왜냐하면 주사위 세개의 합은 결코 10.5 가 되지 못하기 때문이다. 이 경우 10 또는 11이 최선의 값이 되며 이것을 <strong>최대우도추정량(maximum likelihood
 estimator, 이하 MLE)</strong> 이라 부른다.</p>
-<h3 id="8.2.-모분산-추정">8.2. 모분산 추정<a class="anchor-link" href="#8.2.-%EB%AA%A8%EB%B6%84%EC%82%B0-%EC%B6%94%EC%A0%95">¶</a>
+<h3 id="8.2.-%EB%AA%A8%EB%B6%84%EC%82%B0-%EC%B6%94%EC%A0%95">8.2. 모분산 추정<a class="anchor-link" href="#8.2.-%EB%AA%A8%EB%B6%84%EC%82%B0-%EC%B6%94%EC%A0%95">¶</a>
 </h3>
 <blockquote>
 <p>어떤 공장에서 일정 크기의 볼트를 만든다고 해보자. 제조 공정에서 볼트의 지름이 일정해야 품질 기준을 만족할 수 있다. 볼트의 지름이 10mm 여야하는데, 평균적으로는 10mm 이지만, 분산이 존재해  불량품이 일정 부분 존재한다. 이런 상황에서 볼트 지름의 분산을 확인하는 방법으로 모분산에 대한 추론을 할 수 있다.</p>
 </blockquote>
 <p>출처: <a href="https://3months.tistory.com/480">https://3months.tistory.com/480</a> [Deep Play]</p>
-<h3 id="8.3.-표본분포(Sampling-distributions)">8.3. 표본분포(Sampling distributions)<a class="anchor-link" href="#8.3.-%ED%91%9C%EB%B3%B8%EB%B6%84%ED%8F%AC(Sampling-distributions)">¶</a>
+<h3 id="8.3.-%ED%91%9C%EB%B3%B8%EB%B6%84%ED%8F%AC(Sampling-distributions)">8.3. 표본분포(Sampling distributions)<a class="anchor-link" href="#8.3.-%ED%91%9C%EB%B3%B8%EB%B6%84%ED%8F%AC(Sampling-distributions)">¶</a>
 </h3>
 <p>크기 n의 확률 표본(random sample)의 확률 변수(random variable)의 분포(distribution)이다. 또한 확률선택(random selection) 에 의해 발생 되는 추정값의 변동을 표집오차(sampling error)라고한다.</p>
 
@@ -2606,17 +2606,17 @@ estimator, 이하 MLE)</strong> 이라 부른다.</p>
 <p>표집 분포를 요약하는 두가지 방법이 있다.</p>
 <ol>
 <li>
-<strong>표준오차(Standard error SE)</strong> 는 평균적으로 추정값이 얼마나 차이가 있을지 측정하는 측도다. 각각의 모의실험 마다, 오차($\hat x - \mu$)를 계산해 누적 평균제곱오차에제곱근(root mean squared error, RMSE)을 씌워 계산한다. </li>
+<strong>표준오차(Standard error SE)</strong> 는 평균적으로 추정값이 얼마나 차이가 있을지 측정하는 측도다. 각각의 모의실험 마다, 오차($\hat x - \mu$)를 계산해 누적 평균제곱오차에제곱근(root mean squared error, RMSE)을 씌워 계산한다.</li>
 <li>
 <strong>신뢰구간(conﬁdence interval, CI)</strong> 은 표집 분포를 주어진 비율로 포함할 범위가 된다. 예를들어, 신뢰구간 90%는 5번째부터 95번째 백분위수가 된다.</li>
 </ol>
-<h3 id="8.4.-선택편향(Sampling-bias)">8.4. 선택편향(Sampling bias)<a class="anchor-link" href="#8.4.-%EC%84%A0%ED%83%9D%ED%8E%B8%ED%96%A5(Sampling-bias)">¶</a>
+<h3 id="8.4.-%EC%84%A0%ED%83%9D%ED%8E%B8%ED%96%A5(Sampling-bias)">8.4. 선택편향(Sampling bias)<a class="anchor-link" href="#8.4.-%EC%84%A0%ED%83%9D%ED%8E%B8%ED%96%A5(Sampling-bias)">¶</a>
 </h3>
 <p>'표본 편향'이라고도 한다. 상당히 많은 자료들을 검토하였으나 그 자료를 선택하거나 해석함에 있어 중요한 측면을 간과함으로써 잘못된 결론에 도달하게 만든다.</p>
-<h3 id="8.5.-지수분포">8.5. 지수분포<a class="anchor-link" href="#8.5.-%EC%A7%80%EC%88%98%EB%B6%84%ED%8F%AC">¶</a>
+<h3 id="8.5.-%EC%A7%80%EC%88%98%EB%B6%84%ED%8F%AC">8.5. 지수분포<a class="anchor-link" href="#8.5.-%EC%A7%80%EC%88%98%EB%B6%84%ED%8F%AC">¶</a>
 </h3>
 <p>통계학에서 <strong>지수분포(exponential distribution)</strong> 는 연속 확률 분포의 일종이다. 사건이 서로 독립적일 때, 일정 시간동안 발생하는 사건의 횟수가 푸아송 분포를 따른다면, 다음 사건이 일어날 때까지 대기 시간은 지수분포를 따른다.</p>
-<h3 id="8.6-연습문제">8.6 연습문제<a class="anchor-link" href="#8.6-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
+<h3 id="8.6-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">8.6 연습문제<a class="anchor-link" href="#8.6-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
 </h3>
 <ol>
 <li>모수(λ)가 2인 지수 분포에서 표본(n) 10개를 추출한다. 1000번의 실험에서 추정값(L)의표본 분포를 시각화한다. 그리고 추정값의 표준오차와 90% 신뢰구간을 계산하라.</li>
@@ -2713,7 +2713,7 @@ confidence interval (1.251816627593507, 3.643302785154261)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="8.7.-용어사전">8.7. 용어사전<a class="anchor-link" href="#8.7.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="8.7.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">8.7. 용어사전<a class="anchor-link" href="#8.7.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>추정(estimation): 표본에서 분포를 추정하는 과정.</li>
@@ -2729,19 +2729,19 @@ confidence interval (1.251816627593507, 3.643302785154261)
 <li>표본오차(standard error): 추정값의RMSE로표집오차(하지만다른 오차는제외) 때문에생기는변동성을정량화한다.</li>
 <li>신뢰구간(conﬁdence interval): 만약실험을많이반복하면추정량예상 범위를 표현하는구간.</li>
 </ul>
-<h2 id="9.-가설-검정">9. 가설 검정<a class="anchor-link" href="#9.-%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95">¶</a>
+<h2 id="9.-%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95">9. 가설 검정<a class="anchor-link" href="#9.-%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95">¶</a>
 </h2>
-<h3 id="9.1.-전통적-가설-검정">9.1. 전통적 가설 검정<a class="anchor-link" href="#9.1.-%EC%A0%84%ED%86%B5%EC%A0%81-%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="9.1.-%EC%A0%84%ED%86%B5%EC%A0%81-%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95">9.1. 전통적 가설 검정<a class="anchor-link" href="#9.1.-%EC%A0%84%ED%86%B5%EC%A0%81-%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <ol>
 <li>첫번째 단계는 <strong>검정통계량(test statistic)</strong> 을 정해 효과 크기를 정량화 한다. 2. 두번째 단계는 <strong>귀무가설(null hypothesis)</strong> 을 정의 하는 것으로 명백한 차이가 없다고 가정한다.</li>
 <li>세번째 단계는 만약 귀무가설이 사실이라면 나타날 확률인 p-value를 계산 하는 것이다.</li>
 <li>마지막 단계는 결과를 해석 하는 것이다. 만약 p-value가 충분히 낮다면 <strong>통계적 유의성(statistically signiﬁcant)</strong> 이 있다고 본다. 다시말해 모집단에서도 동일한 현상이 나타난다고 추론할 수 있다.</li>
 </ol>
-<h3 id="9.2.-가설-검정">9.2. 가설 검정<a class="anchor-link" href="#9.2.-%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="9.2.-%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95">9.2. 가설 검정<a class="anchor-link" href="#9.2.-%EA%B0%80%EC%84%A4-%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <p>저자는 <code>thinkstats2</code> 모듈에 전통적 가설 검정 구조를 표현하는 <code>HypothesisTest</code> 클래스를 정의해 두었다. 우리는 쓰기만 하면 된다.</p>
-<h3 id="9.3.-평균-차이-검정">9.3. 평균 차이 검정<a class="anchor-link" href="#9.3.-%ED%8F%89%EA%B7%A0-%EC%B0%A8%EC%9D%B4-%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="9.3.-%ED%8F%89%EA%B7%A0-%EC%B0%A8%EC%9D%B4-%EA%B2%80%EC%A0%95">9.3. 평균 차이 검정<a class="anchor-link" href="#9.3.-%ED%8F%89%EA%B7%A0-%EC%B0%A8%EC%9D%B4-%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <p>예시로 NSFG 데이터셋에서 첫 번째 아이에 대한 평균 임신기간과 평균 출산 체중이 나머지 아이들과 통계적으로 유의미한 차이가 있는지 살펴보자.</p>
 
@@ -2772,7 +2772,7 @@ confidence interval (1.251816627593507, 3.643302785154261)
 <span class="n">data</span> <span class="o">=</span> <span class="n">first_baby</span><span class="o">.</span><span class="n">prglngth</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">others</span><span class="o">.</span><span class="n">prglngth</span><span class="o">.</span><span class="n">values</span>
 <span class="n">ht</span> <span class="o">=</span> <span class="n">DiffMeansPermute</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">pvalue</span> <span class="o">=</span> <span class="n">ht</span><span class="o">.</span><span class="n">PValue</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value 값은 </span><span class="si">{pvalue}</span><span class="s1"> 이다.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value 값은 </span><span class="si">{</span><span class="n">pvalue</span><span class="si">}</span><span class="s1"> 이다.'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2849,7 +2849,7 @@ confidence interval (1.251816627593507, 3.643302785154261)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>CDF는 0.83에서 관측차이와 교차한다.</p>
-<h3 id="9.4.-다른-검정-통계량">9.4. 다른 검정 통계량<a class="anchor-link" href="#9.4.-%EB%8B%A4%EB%A5%B8-%EA%B2%80%EC%A0%95-%ED%86%B5%EA%B3%84%EB%9F%89">¶</a>
+<h3 id="9.4.-%EB%8B%A4%EB%A5%B8-%EA%B2%80%EC%A0%95-%ED%86%B5%EA%B3%84%EB%9F%89">9.4. 다른 검정 통계량<a class="anchor-link" href="#9.4.-%EB%8B%A4%EB%A5%B8-%EA%B2%80%EC%A0%95-%ED%86%B5%EA%B3%84%EB%9F%89">¶</a>
 </h3>
 <p>앞선 검정은 양쪽을 사용하기 때문에양측(two-sided) 검증이라고한다. TestStatistic가차이에 절대값을 취하지 않는다는 것이다. 만약 첫번째 아이가 늦게 출생하는 경향이 있다고 가정한다면 이런 유형의 검증을 단측(one-sided)검증 이라고한다. 왜냐하면, 차이 분포의단측면만 고려하기때문이다.</p>
 
@@ -2870,7 +2870,7 @@ confidence interval (1.251816627593507, 3.643302785154261)
 
 <span class="n">ht</span> <span class="o">=</span> <span class="n">DiffStdPermute</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">pvalue</span> <span class="o">=</span> <span class="n">ht</span><span class="o">.</span><span class="n">PValue</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value 값은 </span><span class="si">{pvalue}</span><span class="s1"> 이다.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value 값은 </span><span class="si">{</span><span class="n">pvalue</span><span class="si">}</span><span class="s1"> 이다.'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2902,7 +2902,7 @@ confidence interval (1.251816627593507, 3.643302785154261)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>단측가설, 첫째 아이가 늦게 태어난다는 것이 양측가설보다 좀 더 구체적이다. 그래서 p-value가 더 작게 계산된다. 하지만 그럼에도 그 차이는 통계적으로 유의해보이지 않는다.</p>
-<h3 id="9.5.-상관검정">9.5. 상관검정<a class="anchor-link" href="#9.5.-%EC%83%81%EA%B4%80%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="9.5.-%EC%83%81%EA%B4%80%EA%B2%80%EC%A0%95">9.5. 상관검정<a class="anchor-link" href="#9.5.-%EC%83%81%EA%B4%80%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <p>NSFG 데이터 셋에서 산모의 나이와 출생 체중 사이 상관관계는 약 0.07 이다. 즉, 나이가 많은 산모 아이가 체중이 더 나가는 것처럼 보인다. 이것은 과연 우연일까? 귀무가설로 산모 연령과 신생아 체중사이에 상관관계는 없다고 가정해 검정해보자.</p>
 
@@ -2930,7 +2930,7 @@ confidence interval (1.251816627593507, 3.643302785154261)
 <span class="n">ht</span> <span class="o">=</span> <span class="n">CorrelationPermute</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">pvalue</span> <span class="o">=</span> <span class="n">ht</span><span class="o">.</span><span class="n">PValue</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value 값은 </span><span class="si">{pvalue}</span><span class="s1"> 이다.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value 값은 </span><span class="si">{</span><span class="n">pvalue</span><span class="si">}</span><span class="s1"> 이다.'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2962,14 +2962,14 @@ confidence interval (1.251816627593507, 3.643302785154261)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>계산된 p-value는 0 으로 귀무가설을 기각한다. 따라서 산모의 연령과 신생아의 체중에는 관계가 있다고 볼 수 있다.</p>
-<h3 id="9.6.-모비율-검정">9.6. 모비율 검정<a class="anchor-link" href="#9.6.-%EB%AA%A8%EB%B9%84%EC%9C%A8-%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="9.6.-%EB%AA%A8%EB%B9%84%EC%9C%A8-%EA%B2%80%EC%A0%95">9.6. 모비율 검정<a class="anchor-link" href="#9.6.-%EB%AA%A8%EB%B9%84%EC%9C%A8-%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <p>모비율의 검정은 모비율인 p가 이럴것이다. 라고 귀무가설을 세우고 검정 통계량을 계산하는 것이다.</p>
-<h3 id="9.7.-카이제곱-검정">9.7. 카이제곱 검정<a class="anchor-link" href="#9.7.-%EC%B9%B4%EC%9D%B4%EC%A0%9C%EA%B3%B1-%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="9.7.-%EC%B9%B4%EC%9D%B4%EC%A0%9C%EA%B3%B1-%EA%B2%80%EC%A0%95">9.7. 카이제곱 검정<a class="anchor-link" href="#9.7.-%EC%B9%B4%EC%9D%B4%EC%A0%9C%EA%B3%B1-%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <p>카이제곱 검정은 모비율 검정에서 일반적으로 사용되는 통계량이다. 수식으로는 다음과 같이 표현한다.</p>
 $$ x^2 = \sum_{i} \frac{(O_i - E_i)^2}{E_i} $$<p>여기서 $O_i$는 관측빈도 $E_i$는 기대 빈도이다.</p>
-<h3 id="9.8.-첫번째-아이의-임신기간">9.8. 첫번째 아이의 임신기간<a class="anchor-link" href="#9.8.-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EC%95%84%EC%9D%B4%EC%9D%98-%EC%9E%84%EC%8B%A0%EA%B8%B0%EA%B0%84">¶</a>
+<h3 id="9.8.-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EC%95%84%EC%9D%B4%EC%9D%98-%EC%9E%84%EC%8B%A0%EA%B8%B0%EA%B0%84">9.8. 첫번째 아이의 임신기간<a class="anchor-link" href="#9.8.-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EC%95%84%EC%9D%B4%EC%9D%98-%EC%9E%84%EC%8B%A0%EA%B8%B0%EA%B0%84">¶</a>
 </h3>
 <p>35 - 43주차에서 첫번째 아이와 나머지 아이의 카이제곱 검정을 수행한다.</p>
 
@@ -3048,22 +3048,22 @@ ts max = 26.09852160851441
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>NSFG 데이터셋의 카이제곱값 101.5 은 그 자체로 많은 것을 의미 하지는 않는다. 하지만 귀무가설 아래에서 1000회 반복했을때 가장 큰 검정 통계량은 25.7 다. 다시 말해 실제 카이 제곱 통계량이 귀무가설 아래에서 가능할 것 같지 않다고 결론 내릴 수 있다. 그래서 외관 효과는 통계적 유의성이 있다고 볼 수 있다. 동시에 이 예제는 카이제곱 검정한계를 보여준다. 바로 두 집단 사이에 차이가 있다는 것은 알 수 있지만 차이가 무엇인지에 대한 구체적인 것은 알 수 없다는 것이다.</p>
-<h3 id="9.9-오류">9.9 오류<a class="anchor-link" href="#9.9-%EC%98%A4%EB%A5%98">¶</a>
+<h3 id="9.9-%EC%98%A4%EB%A5%98">9.9 오류<a class="anchor-link" href="#9.9-%EC%98%A4%EB%A5%98">¶</a>
 </h3>
 <p>일반적으로 전통적 가설 검정에서 p-value가 0.05보다 낮다면 보통 통계적으로 유의미 하다고 판단한다. 그리고 그런 경우에도 다음 두 가지를 고려 한다.</p>
 <ol>
 <li>만약 효과가 실제로 우연이라면 해당 효과를 잘못 판단할 확률은 얼마나될까? 이것을 이거짓양성률(false positive rate)이라 한다.</li>
 <li>만약 효과가 진실이라면, 가설검정이 실패할 가능성은 얼마나될까? 이 확률은 <strong>거짓 음성률(false negative rate)</strong> 이라 한다.</li>
 </ol>
-<h3 id="9.10.-검정력(Power)">9.10. 검정력(Power)<a class="anchor-link" href="#9.10.-%EA%B2%80%EC%A0%95%EB%A0%A5(Power)">¶</a>
+<h3 id="9.10.-%EA%B2%80%EC%A0%95%EB%A0%A5(Power)">9.10. 검정력(Power)<a class="anchor-link" href="#9.10.-%EA%B2%80%EC%A0%95%EB%A0%A5(Power)">¶</a>
 </h3>
 <p>거짓양성률은 상대적으로 계산하기 쉽다. 분계점이 5% 이면, 거짓양성률은 5% 이다. 반면에 
 거짓음성률은 계산하기 더 어렵다. 왜냐면 실제 효과크기에 의존하고 정상적으로는 실제효과 크기를 모르기 때문이다. 한 가지 선택옵션은 가상효과크기(hypothetical effect size) 조건으로 거짓음성률을 계산하는 것이다.</p>
 <p>정확한 양성률(correct positive rate)을 검정력(power)라고 부르며 종종 민감도(sensitivity)라 한다.</p>
-<h3 id="9.11.-반복(Replication)">9.11. 반복(Replication)<a class="anchor-link" href="#9.11.-%EB%B0%98%EB%B3%B5(Replication)">¶</a>
+<h3 id="9.11.-%EB%B0%98%EB%B3%B5(Replication)">9.11. 반복(Replication)<a class="anchor-link" href="#9.11.-%EB%B0%98%EB%B3%B5(Replication)">¶</a>
 </h3>
 <p>현재 데이터에서 통계적 유의성이있는 모든 효과가 새로운 데이터셋에서도 반복되어야 한다.</p>
-<h3 id="9.12.-연습문제">9.12. 연습문제<a class="anchor-link" href="#9.12.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
+<h3 id="9.12.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">9.12. 연습문제<a class="anchor-link" href="#9.12.-%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">¶</a>
 </h3>
 <ol>
 <li>표본크기가 증가하면 가설 검정력이 증가하고 반대로 표본크기가 줄어들면 검정력은 줄어든다. 표본의 크기가 줄어듬에 따라 p-value 가 어떻게 변화하는지 최소한의 표본크기는 얼마인지 알아보라.</li>
@@ -3141,7 +3141,7 @@ ts max = 26.09852160851441
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>예상대로 큰 샘플에서 양성인 데이터를 제거하면 효과 크기가 줄어든다. 그러나 작은 샘플 크기에서도 패턴은 불규칙하게 일어난다.</p>
-<h3 id="9.13.-용어사전">9.13. 용어사전<a class="anchor-link" href="#9.13.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="9.13.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">9.13. 용어사전<a class="anchor-link" href="#9.13.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>가설검정(hypothesis testing): 외관효과(apparent effect)가 통계적 유의성이 있는지 결정하는 과정.</li>
@@ -3158,9 +3158,9 @@ ts max = 26.09852160851441
 <li>거짓음성(false negative): 우연이 아닐때 효과가 우연 때문이라는 결론.</li>
 <li>검정력(power): 대립 가설이 사실일때, 이를 사실로서 결정할 확률이다. 검정력이 90% 라고하면, 대립가설이 사실임에도 불구하고 귀무가설을 채택 할 확률은 10%이다.</li>
 </ul>
-<h2 id="10.-선형최소제곱(Linear-least-squares)">10. 선형최소제곱(Linear least squares)<a class="anchor-link" href="#10.-%EC%84%A0%ED%98%95%EC%B5%9C%EC%86%8C%EC%A0%9C%EA%B3%B1(Linear-least-squares)">¶</a>
+<h2 id="10.-%EC%84%A0%ED%98%95%EC%B5%9C%EC%86%8C%EC%A0%9C%EA%B3%B1(Linear-least-squares)">10. 선형최소제곱(Linear least squares)<a class="anchor-link" href="#10.-%EC%84%A0%ED%98%95%EC%B5%9C%EC%86%8C%EC%A0%9C%EA%B3%B1(Linear-least-squares)">¶</a>
 </h2>
-<h3 id="10.1.-최소제곱-적합(Lease-squares-fit)">10.1. 최소제곱 적합(Lease squares fit)<a class="anchor-link" href="#10.1.-%EC%B5%9C%EC%86%8C%EC%A0%9C%EA%B3%B1-%EC%A0%81%ED%95%A9(Lease-squares-fit)">¶</a>
+<h3 id="10.1.-%EC%B5%9C%EC%86%8C%EC%A0%9C%EA%B3%B1-%EC%A0%81%ED%95%A9(Lease-squares-fit)">10.1. 최소제곱 적합(Lease squares fit)<a class="anchor-link" href="#10.1.-%EC%B5%9C%EC%86%8C%EC%A0%9C%EA%B3%B1-%EC%A0%81%ED%95%A9(Lease-squares-fit)">¶</a>
 </h3>
 <p>변수간의 기울기를 측정하는 가장 흔한 방법이 <strong>선형최소제곱 적합(linearleast squares fit)</strong> 이다. 선형 적합은 변수 사이의 관계를 하나의 선으로 모델링한다. 따라서 소제곱 적합은 모델과 데이터 사이의 평균제곱오차를 최소화 하는 것이다.</p>
 <p>모델과 데이터 사이의 차이를 <strong>잔차(residual)</strong> 라고 한다. 잔차에 제곱을 하는 이유는 다음과 같다.</p>
@@ -3266,7 +3266,7 @@ ts max = 26.09852160851441
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>선과 함께 출생 체중과 연령을 산점도로 보여준다. 관계가 선형인지, 적합선이관계를 나타내는 좋은 모형인지를 평가 하는데 시각화는 언제나 좋은 생각이다.</p>
-<h3 id="10.3.-잔차(Residuals)">10.3. 잔차(Residuals)<a class="anchor-link" href="#10.3.-%EC%9E%94%EC%B0%A8(Residuals)">¶</a>
+<h3 id="10.3.-%EC%9E%94%EC%B0%A8(Residuals)">10.3. 잔차(Residuals)<a class="anchor-link" href="#10.3.-%EC%9E%94%EC%B0%A8(Residuals)">¶</a>
 </h3>
 <p>잔차를 시각화 해보자.</p>
 
@@ -3335,10 +3335,10 @@ ts max = 26.09852160851441
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>이상적으로는 모든 연령집단에서 잔차가 평평한 직선으로 나타나야 한다. 그러나 실제 데이터에는 위의 그림과 같은 모습을 띄게 된다.</p>
-<h3 id="10.4.-추정(Estimation)">10.4. 추정(Estimation)<a class="anchor-link" href="#10.4.-%EC%B6%94%EC%A0%95(Estimation)">¶</a>
+<h3 id="10.4.-%EC%B6%94%EC%A0%95(Estimation)">10.4. 추정(Estimation)<a class="anchor-link" href="#10.4.-%EC%B6%94%EC%A0%95(Estimation)">¶</a>
 </h3>
 <p>모수 <code>slope</code> 와 <code>inter</code> 는 표본에 기반한 추정값이다</p>
-<h3 id="10.5.-적합도(Goodness-of-fit)">10.5. 적합도(Goodness of fit)<a class="anchor-link" href="#10.5.-%EC%A0%81%ED%95%A9%EB%8F%84(Goodness-of-fit)">¶</a>
+<h3 id="10.5.-%EC%A0%81%ED%95%A9%EB%8F%84(Goodness-of-fit)">10.5. 적합도(Goodness of fit)<a class="anchor-link" href="#10.5.-%EC%A0%81%ED%95%A9%EB%8F%84(Goodness-of-fit)">¶</a>
 </h3>
 <p>선형 모델의 품질은 <strong>적합도(goodness of fit)</strong> 로 나타내며, 가장 간단하게 측정하는 방법은 잔차의 표준편차를 구하는 것이다.</p>
 <p>적합도를 측정하는 또 다른방식은 $R^2$로 표기하고, <strong>R-제곱(R-squared)</strong> 라고  부르는 결정계수(coefficient of determination)다.</p>
@@ -3391,7 +3391,7 @@ ts max = 26.09852160851441
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>신생아의 체중과 산모의 나이에 대한 적합도 $R^2$ 값은 0.0047 이다. 그말은 산모 나이가 신생아의 체중을 약 0.5% 확률로 예측한다는 의미가 된다.</p>
-<h3 id="10.9.-용어사전">10.9. 용어사전<a class="anchor-link" href="#10.9.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="10.9.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">10.9. 용어사전<a class="anchor-link" href="#10.9.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>선형적합(linear fit): 변수사이 관계를 모델링하는 직선.</li>
@@ -3401,13 +3401,13 @@ ts max = 26.09852160851441
 <li>결정계수(coefﬁcient of determination): 적합도를 계량화하는 통계량.</li>
 <li>표집가중치(sampling weight): 표본이 모집단 어느부분을 대표하는지 나타내는 표본 관측과 연관된 값.</li>
 </ul>
-<h2 id="11.-회귀">11. 회귀<a class="anchor-link" href="#11.-%ED%9A%8C%EA%B7%80">¶</a>
+<h2 id="11.-%ED%9A%8C%EA%B7%80">11. 회귀<a class="anchor-link" href="#11.-%ED%9A%8C%EA%B7%80">¶</a>
 </h2>
 <p>회귀(regression)는 데이터를 모형에 적합하는데 사용되는 방법이다. 회귀분석의 목적은 종속변수(dependent variables)라고 불리는 변수집합과 설명변수(explanatory variables)라고불리는 또 다른 집합변수사이관계를 기술하는 것이다.</p>
 <h3 id="11.1.-StatsModels">11.1. StatsModels<a class="anchor-link" href="#11.1.-StatsModels">¶</a>
 </h3>
 <p><code>statsmodels</code> 파이썬 패키지는 몇가지 형태의 회귀분석과 다른 통계 분석 기능을 제공한다.</p>
-<h3 id="11.2.-다중회귀(Multiple-regression)">11.2. 다중회귀(Multiple regression)<a class="anchor-link" href="#11.2.-%EB%8B%A4%EC%A4%91%ED%9A%8C%EA%B7%80(Multiple-regression)">¶</a>
+<h3 id="11.2.-%EB%8B%A4%EC%A4%91%ED%9A%8C%EA%B7%80(Multiple-regression)">11.2. 다중회귀(Multiple regression)<a class="anchor-link" href="#11.2.-%EB%8B%A4%EC%A4%91%ED%9A%8C%EA%B7%80(Multiple-regression)">¶</a>
 </h3>
 <p>다중 회귀란 설명변수(독립변수)가 2 개 이상인 회귀모형을 분석대상으로 삼는다.</p>
 <ul>
@@ -3500,8 +3500,7 @@ ts max = 26.09852160851441
 <th>Kurtosis:</th>       <td> 5.596</td>  <th>  Cond. No.          </th> <td>    118.</td>
 </tr>
 </table>
-<br><br>Warnings:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-</div>
+<br><br>Warnings:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div>
 
 </div>
 
@@ -3549,23 +3548,23 @@ ts max = 26.09852160851441
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="11.3.-비선형관계(Nonlinear-relationships)">11.3. 비선형관계(Nonlinear relationships)<a class="anchor-link" href="#11.3.-%EB%B9%84%EC%84%A0%ED%98%95%EA%B4%80%EA%B3%84(Nonlinear-relationships)">¶</a>
+<h3 id="11.3.-%EB%B9%84%EC%84%A0%ED%98%95%EA%B4%80%EA%B3%84(Nonlinear-relationships)">11.3. 비선형관계(Nonlinear relationships)<a class="anchor-link" href="#11.3.-%EB%B9%84%EC%84%A0%ED%98%95%EA%B4%80%EA%B3%84(Nonlinear-relationships)">¶</a>
 </h3>
 <p>위의 <code>agepreg</code> 변수가 비선형관계일지 모른다는 것을 고려해 변수간의 관계에서 더 많은 정보를 얻기 위해 변수를 추가한다.</p>
-<h3 id="11.6.-로지스틱-회귀(Logistic-regression)">11.6. 로지스틱 회귀(Logistic regression)<a class="anchor-link" href="#11.6.-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80(Logistic-regression)">¶</a>
+<h3 id="11.6.-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80(Logistic-regression)">11.6. 로지스틱 회귀(Logistic regression)<a class="anchor-link" href="#11.6.-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80(Logistic-regression)">¶</a>
 </h3>
 <p>선형회귀는 다른 유형 종속변수를 처리하도록 일반화 될 수 있다. 만약 종속변수가 부울(boolean)이라면, 일반화 모형은 로지스틱회귀(logistic regression)라 불린다. 만약 종속변수가 정수 갯수라면 포아송회귀(Poisson regression)라 한다.</p>
 $$ \log o = \beta_0 + \beta_1 x_1 + \beta_2 x_2 $$<blockquote>
 <p>로지스틱 회귀(logistic regression)는 영국의 통계학자인 D. R. Cox가 1958년 에 제안한 확률 모델로서 독립 변수의 선형 결합을 이용하여 사건의 발생 가능성을 예측하는데 사용되는 통계 기법이다.</p>
 </blockquote>
-<h3 id="11.7.-모수-추정">11.7. 모수 추정<a class="anchor-link" href="#11.7.-%EB%AA%A8%EC%88%98-%EC%B6%94%EC%A0%95">¶</a>
+<h3 id="11.7.-%EB%AA%A8%EC%88%98-%EC%B6%94%EC%A0%95">11.7. 모수 추정<a class="anchor-link" href="#11.7.-%EB%AA%A8%EC%88%98-%EC%B6%94%EC%A0%95">¶</a>
 </h3>
 <p>모수의 값으로 가장 가능성이 높은 하나의 숫자를 찾아내는 작업을 모수 추정(parameter estimation)이라고 한다.</p>
 <p>선형 회귀와 달리 로지스틱 회귀는 닫힌 형식 해답(closed form solution)이 없다. 그래서 초기 해답(solution)을 추측해 반복해 해답을 향해 접근한다.</p>
-<h3 id="11.9.-정밀도">11.9. 정밀도<a class="anchor-link" href="#11.9.-%EC%A0%95%EB%B0%80%EB%8F%84">¶</a>
+<h3 id="11.9.-%EC%A0%95%EB%B0%80%EB%8F%84">11.9. 정밀도<a class="anchor-link" href="#11.9.-%EC%A0%95%EB%B0%80%EB%8F%84">¶</a>
 </h3>
 <p>같은 실험을 반복했을 때 측정결과가 거의 유사한 형태의 집합을 이루면 이는 정밀도가 높다고 말한다. 정확성(accuracy)과 혼동하기 쉬우나, 정확성은 실험값이 이론에 상당하는 참값에 근사한 정도를 나타내며, 정밀도가 높더라도 이 결과의 집합들이 실제의 이론값과는 모두 오차가 클 수 있다.</p>
-<h3 id="11.11.-용어사전">11.11. 용어사전<a class="anchor-link" href="#11.11.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="11.11.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">11.11. 용어사전<a class="anchor-link" href="#11.11.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>회귀(regression): 데이터에 맞는 모델을 추정하기 위한 몇 가지 관련된 과정중 하나.</li>
@@ -3585,11 +3584,11 @@ $$ \log o = \beta_0 + \beta_1 x_1 + \beta_2 x_2 $$<blockquote>
 <li>포아송회귀(Poisson regression): 종속변수가 음수가 아닌 정수로 통상적으로 사용되는 회귀 형식.</li>
 <li>오즈(odds): 확률(p)를 확률과 확률보(complement) 비율로 $\frac{p}{1-p}$로 나타내는 대안적인 방법.</li>
 </ul>
-<h2 id="12.-시계열-분석">12. 시계열 분석<a class="anchor-link" href="#12.-%EC%8B%9C%EA%B3%84%EC%97%B4-%EB%B6%84%EC%84%9D">¶</a>
+<h2 id="12.-%EC%8B%9C%EA%B3%84%EC%97%B4-%EB%B6%84%EC%84%9D">12. 시계열 분석<a class="anchor-link" href="#12.-%EC%8B%9C%EA%B3%84%EC%97%B4-%EB%B6%84%EC%84%9D">¶</a>
 </h2>
 <p>시계열(time series)은 시스템에서 시간에 따라 변화하는 측정값이다. 간단한 예시로 시간에 따라변하는 세계 평균 기온이 있다.</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/T_comp_61-90.pdf/page1-795px-T_comp_61-90.pdf.jpg" alt=""></p>
-<h2 id="12.1.-데이터-가져와-정제하기">12.1. 데이터 가져와 정제하기<a class="anchor-link" href="#12.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%99%80-%EC%A0%95%EC%A0%9C%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="12.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%99%80-%EC%A0%95%EC%A0%9C%ED%95%98%EA%B8%B0">12.1. 데이터 가져와 정제하기<a class="anchor-link" href="#12.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%99%80-%EC%A0%95%EC%A0%9C%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>예시로 사용할 데이터는 <a href="http://www.priceofweed.com/">PriceOfWeed</a> 사이트에서 공개하고 있는 대마초의 시세이다. 다운로드한 데이터를 판다스 데이터프레임으로 만든다. 해당 데이터셋에는 다음과 같은 행이 포함되어 있다.</p>
 <ul>
@@ -3631,8 +3630,7 @@ $$ \log o = \beta_0 + \beta_1 x_1 + \beta_2 x_2 $$<blockquote>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -3728,8 +3726,7 @@ $$ \log o = \beta_0 + \beta_1 x_1 + \beta_2 x_2 $$<blockquote>
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -3782,7 +3779,7 @@ $$ \log o = \beta_0 + \beta_1 x_1 + \beta_2 x_2 $$<blockquote>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="12.2.-플롯-그리기">12.2. 플롯 그리기<a class="anchor-link" href="#12.2.-%ED%94%8C%EB%A1%AF-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+<h3 id="12.2.-%ED%94%8C%EB%A1%AF-%EA%B7%B8%EB%A6%AC%EA%B8%B0">12.2. 플롯 그리기<a class="anchor-link" href="#12.2.-%ED%94%8C%EB%A1%AF-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
 </h3>
 <p>시간에 따른 대마초의 가격을 품질로 구분해서 시각화한다.</p>
 
@@ -3840,7 +3837,7 @@ $$ \log o = \beta_0 + \beta_1 x_1 + \beta_2 x_2 $$<blockquote>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>품질에 따른 대마초 가격, 위 그래프를 통해 명백하게 알 수 있는 것은 2013년 11월에 데이터가 빈다는 것이다. 이 기간동안의 결측 데이터를 처리하는 방법은 이후에 생각해볼 것이다.</p>
-<h3 id="12.3.-선형회귀(Linear-regression)">12.3. 선형회귀(Linear regression)<a class="anchor-link" href="#12.3.-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80(Linear-regression)">¶</a>
+<h3 id="12.3.-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80(Linear-regression)">12.3. 선형회귀(Linear regression)<a class="anchor-link" href="#12.3.-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80(Linear-regression)">¶</a>
 </h3>
 <p>종속 변수 y와 한 개 이상의 독립 변수 (또는 설명 변수) X와의 선형 상관 관계를 모델링하는 회귀분석 기법이다.</p>
 
@@ -4022,7 +4019,7 @@ Warnings:
 <li>둘째 선형회귀모형은 모든 데이터에 동일한 가중치를 둔다. 예측 목적이라면 최근 데이터에 더 많은 가중치를 두어야 한다.</li>
 <li>마지막으로 선형회귀의 가정중 하나는 잔차는 상관되지 않는 잡음이라는 것이다. 그러나 시계열 데이터에서 연속된 값은 상관되기 때문에 종종 이런 가정은 틀리다.</li>
 </ul>
-<h3 id="12.4.-이동-평균(Moving-averages)">12.4. 이동 평균(Moving averages)<a class="anchor-link" href="#12.4.-%EC%9D%B4%EB%8F%99-%ED%8F%89%EA%B7%A0(Moving-averages)">¶</a>
+<h3 id="12.4.-%EC%9D%B4%EB%8F%99-%ED%8F%89%EA%B7%A0(Moving-averages)">12.4. 이동 평균(Moving averages)<a class="anchor-link" href="#12.4.-%EC%9D%B4%EB%8F%99-%ED%8F%89%EA%B7%A0(Moving-averages)">¶</a>
 </h3>
 <p>대부분 시계열 분석은 관측된 계열이 다음 세 가지 요소합이라는 가정에 기반한다.</p>
 <ul>
@@ -4031,7 +4028,7 @@ Warnings:
 <li>잡음(Noise): 장기 추세 주위 확률 변동.</li>
 </ul>
 <p>앞절에서 살펴봤듯 회귀는 계열에서 추세를 뽑아내는 방법이다. 하지만 추세는 찾는 훌륭한 방법 중 하나는 이동평균(moving average)을 구하는 것이다. 이동평균은 데이터를 윈도우(windows) 단위로 나누고 각 윈도우의 값을 평균내 계산한다.</p>
-<h3 id="12.5.-결측값(Missing-values)">12.5. 결측값(Missing values)<a class="anchor-link" href="#12.5.-%EA%B2%B0%EC%B8%A1%EA%B0%92(Missing-values)">¶</a>
+<h3 id="12.5.-%EA%B2%B0%EC%B8%A1%EA%B0%92(Missing-values)">12.5. 결측값(Missing values)<a class="anchor-link" href="#12.5.-%EA%B2%B0%EC%B8%A1%EA%B0%92(Missing-values)">¶</a>
 </h3>
 <p>시계열 데이터는 종종 일별, 주별, 월별, 년별 주기(cycle)를 나타낸다. 다음 절에서 계절성을 검정하는 방법을 제시한다. 하지만 결측값에는 잘 동작하지 않는다. 그래서 이 문제를 먼저 해결해야한다. 이런 결측값을 채우는 가장 간단하고 흔한 방법이 이동평균이다.</p>
 
@@ -4131,13 +4128,13 @@ Warnings:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그래프에 결측 데이터를 채워 시각화한 결과를 확인할 수 있다. 재표본 추출한 잔차가 무작위(random)로 결과는 매번 달라진다. 나중에 결측값에서 생성된 오차를 어떻게 특성화하는지 살펴볼 것이다.</p>
-<h3 id="12.6.-계열상관(Serial-correlation)">12.6. 계열상관(Serial correlation)<a class="anchor-link" href="#12.6.-%EA%B3%84%EC%97%B4%EC%83%81%EA%B4%80(Serial-correlation)">¶</a>
+<h3 id="12.6.-%EA%B3%84%EC%97%B4%EC%83%81%EA%B4%80(Serial-correlation)">12.6. 계열상관(Serial correlation)<a class="anchor-link" href="#12.6.-%EA%B3%84%EC%97%B4%EC%83%81%EA%B4%80(Serial-correlation)">¶</a>
 </h3>
 <p>만약 월요일에 대마초 가격이 높다면 다음 몇 일동안 가격이 높을 것을 예상된다. 그리고 만약 낮다면 낮게 유지될 것을 예상 할 수 있다. 이와 같이 각값이 다음값과 상관있는 패턴을 <strong>계열 상관(serial correlation)</strong> 이라 한다.</p>
-<h3 id="12.7.-자기상관(Autocorrelation)">12.7. 자기상관(Autocorrelation)<a class="anchor-link" href="#12.7.-%EC%9E%90%EA%B8%B0%EC%83%81%EA%B4%80(Autocorrelation)">¶</a>
+<h3 id="12.7.-%EC%9E%90%EA%B8%B0%EC%83%81%EA%B4%80(Autocorrelation)">12.7. 자기상관(Autocorrelation)<a class="anchor-link" href="#12.7.-%EC%9E%90%EA%B8%B0%EC%83%81%EA%B4%80(Autocorrelation)">¶</a>
 </h3>
 <p>시간 또는 공간적으로 연속된 일련의 관측치들간에 존재하는 상관관계다.</p>
-<h3 id="12.8.-예측">12.8. 예측<a class="anchor-link" href="#12.8.-%EC%98%88%EC%B8%A1">¶</a>
+<h3 id="12.8.-%EC%98%88%EC%B8%A1">12.8. 예측<a class="anchor-link" href="#12.8.-%EC%98%88%EC%B8%A1">¶</a>
 </h3>
 <p>시계열분석은 시간에변화하는 시스템을 조사하고 때로는 예측도 할수있다.</p>
 
@@ -4296,7 +4293,7 @@ Warnings:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그래프는 선형적합에 기초한 예측, 표집오차, 예측오차에 기인한 변동성을 시각화한다. 짙은 회색 지역은 표집 오차에 대한 90% 신뢰구간을 나타낸다. 즉, 표집 때문에 추정 기울기와 절편에 대한 불확실성이다. 밝은 회색 지역은 예측오차에 대한 90% 신뢰구간을 보여 주는데 표집오차와 확률 변동의 합이다.</p>
-<h3 id="12.11.-용어사전">12.11. 용어사전<a class="anchor-link" href="#12.11.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="12.11.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">12.11. 용어사전<a class="anchor-link" href="#12.11.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>시계열(time series): 시간(timestamp)과 연관된 데이터셋.</li>
@@ -4311,13 +4308,13 @@ Warnings:
 <li>자기상관함수(autocorrelation function): 시차에서 계열상관으로 매핑하는 함수.</li>
 <li>정상성(stationary): 만약 모수와 잔차분포가 시간에 따라 변화하지 않는다면 모델이 정상성이 있다.</li>
 </ul>
-<h2 id="13.-생존분석">13. 생존분석<a class="anchor-link" href="#13.-%EC%83%9D%EC%A1%B4%EB%B6%84%EC%84%9D">¶</a>
+<h2 id="13.-%EC%83%9D%EC%A1%B4%EB%B6%84%EC%84%9D">13. 생존분석<a class="anchor-link" href="#13.-%EC%83%9D%EC%A1%B4%EB%B6%84%EC%84%9D">¶</a>
 </h2>
 <p>생존분석(Survival analysis)은 무언가 얼마나 지속하는지를 기술하는 방법이다. 종종 사람생명연구에 사용되지만, 또한 기계나 전자부품의 생존(survial) 혹은 좀 더 일반적으로 사건 전 시간 간격에도 적용된다.</p>
 <blockquote>
 <p>생존 기간을 분석하여 생존함수(survival function)를 추정하는 통계기법으로 치료방법이나 예후 인자 등을 추정하는 데 이용된다. 실험 기간 동안 약물처리, 유전염기서열 변이 와 같이 특정 조건을 만족하는 집단 내 개체가 각 측정 시간에서 살아남아 있는 빈도로 나타낸다.</p>
 </blockquote>
-<h3 id="13.1.-생존곡선(Survival-curves)">13.1. 생존곡선(Survival curves)<a class="anchor-link" href="#13.1.-%EC%83%9D%EC%A1%B4%EA%B3%A1%EC%84%A0(Survival-curves)">¶</a>
+<h3 id="13.1.-%EC%83%9D%EC%A1%B4%EA%B3%A1%EC%84%A0(Survival-curves)">13.1. 생존곡선(Survival curves)<a class="anchor-link" href="#13.1.-%EC%83%9D%EC%A1%B4%EA%B3%A1%EC%84%A0(Survival-curves)">¶</a>
 </h3>
 <p>생존 곡선(survival curve; $S(t)$) 는 존속 t를 t보다 더 오래 생존할 확률로 치환하는 함수다. 만약 존속(duration) 분포 즉, 수명(lifetimes)을 알고 있다면 생존곡선을 찾는 것은좀 더 쉽다. CDF의 여분포(complement)가 된다. 여기서는 저자가 만든 <code>survival</code> 모듈을 사용한다.</p>
 <p>NSFG 데이터셋에서 결과 코드(outcome code) <code>1</code>, <code>3</code>, <code>4</code>은 각각 정상출산, 사산, 유산을 나타낸다. 여기에서는 분석을 위해서 유발유산(induced abortion), 자궁외임신(ectopic pregnancy), 그리고 임신상태인 경우는 제외한다.</p>
@@ -4390,17 +4387,17 @@ Warnings:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그래프에서 임신기간 CDF와 생존함수의 상보적 CDF가 보여진다.</p>
-<h3 id="13.2.-위험함수">13.2. 위험함수<a class="anchor-link" href="#13.2.-%EC%9C%84%ED%97%98%ED%95%A8%EC%88%98">¶</a>
+<h3 id="13.2.-%EC%9C%84%ED%97%98%ED%95%A8%EC%88%98">13.2. 위험함수<a class="anchor-link" href="#13.2.-%EC%9C%84%ED%97%98%ED%95%A8%EC%88%98">¶</a>
 </h3>
 <p>생존 함수에서 위험 함수(hazard function)를 도출할 수 있다. 임신기간에 대해서 위험 함수는 시간 t에서 t까지 계속 되고 나서 t에서 끝나는 임신 비율이다. 좀 더 정확하게는 다음과같다.</p>
 $$\lambda(t) = \frac{S(t)-S(t+1)}{S(t)}$$<p>분자는 PMF(t)로 t에서 끝나는 수명 비율이다. <code>SurvivalFunction</code>는 <code>MakeHazard</code> 함수를 제공 하는데 위험 함수를 계산한다</p>
-<h3 id="13.4.-케플란-마이어-추정(Kaplan-Meier-estimation)">13.4. 케플란-마이어 추정(Kaplan-Meier estimation)<a class="anchor-link" href="#13.4.-%EC%BC%80%ED%94%8C%EB%9E%80-%EB%A7%88%EC%9D%B4%EC%96%B4-%EC%B6%94%EC%A0%95(Kaplan-Meier-estimation)">¶</a>
+<h3 id="13.4.-%EC%BC%80%ED%94%8C%EB%9E%80-%EB%A7%88%EC%9D%B4%EC%96%B4-%EC%B6%94%EC%A0%95(Kaplan-Meier-estimation)">13.4. 케플란-마이어 추정(Kaplan-Meier estimation)<a class="anchor-link" href="#13.4.-%EC%BC%80%ED%94%8C%EB%9E%80-%EB%A7%88%EC%9D%B4%EC%96%B4-%EC%B6%94%EC%A0%95(Kaplan-Meier-estimation)">¶</a>
 </h3>
 <blockquote>
 <p>카플란-마이어 생존분석은 생존 분석에서 사용되는 통계 기법이다. 비모수 통계를 이용하여 생존함수를 추정한다. 미국의 통계학자 폴 마이어와 에드워드 카플란에 의해 개발되었다.</p>
 </blockquote>
 <p>생존 분석에서 중심적인 알고리즘 중의 하나인 캐플란-마이어 추정(Kaplan-Meier estimation)을 알아보기 위해 이번 예제는 결혼을 하지 않은 미혼 여성의 관측 정보를 포함해 사용한다.</p>
-<h3 id="13.5.-결혼-곡선(Marriage-curve)">13.5. 결혼 곡선(Marriage curve)<a class="anchor-link" href="#13.5.-%EA%B2%B0%ED%98%BC-%EA%B3%A1%EC%84%A0(Marriage-curve)">¶</a>
+<h3 id="13.5.-%EA%B2%B0%ED%98%BC-%EA%B3%A1%EC%84%A0(Marriage-curve)">13.5. 결혼 곡선(Marriage curve)<a class="anchor-link" href="#13.5.-%EA%B2%B0%ED%98%BC-%EA%B3%A1%EC%84%A0(Marriage-curve)">¶</a>
 </h3>
 <p>사용한 데이터셋에는 다음의 정보가 포함되어 있다.</p>
 <ul>
@@ -4561,7 +4558,7 @@ $$\lambda(t) = \frac{S(t)-S(t+1)}{S(t)}$$<p>분자는 PMF(t)로 t에서 끝나�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="13.7.-신뢰구간">13.7. 신뢰구간<a class="anchor-link" href="#13.7.-%EC%8B%A0%EB%A2%B0%EA%B5%AC%EA%B0%84">¶</a>
+<h3 id="13.7.-%EC%8B%A0%EB%A2%B0%EA%B5%AC%EA%B0%84">13.7. 신뢰구간<a class="anchor-link" href="#13.7.-%EC%8B%A0%EB%A2%B0%EA%B5%AC%EA%B0%84">¶</a>
 </h3>
 <p>캐플란-마이어분석(Kaplan-Meier analysis)은생존곡선에대한단하나의추정
 값을산출한다. 하지만, 추정값의불확실성을정량화하는것도또한중요하다</p>
@@ -4633,7 +4630,7 @@ $$\lambda(t) = \frac{S(t)-S(t+1)}{S(t)}$$<p>분자는 PMF(t)로 t에서 끝나�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그림은 앞에서 추정한 생존함수와 함께 표집 가중치에 근거한 90% 신뢰구간을 회색선으로 나타낸 것이다. 표집 가중치에 의해 두 곡선사이에 차이가 생긴다는 것을 유념하라.</p>
-<h3 id="13.8.-코호트-효과(Cohort-effects)">13.8. 코호트 효과(Cohort effects)<a class="anchor-link" href="#13.8.-%EC%BD%94%ED%98%B8%ED%8A%B8-%ED%9A%A8%EA%B3%BC(Cohort-effects)">¶</a>
+<h3 id="13.8.-%EC%BD%94%ED%98%B8%ED%8A%B8-%ED%9A%A8%EA%B3%BC(Cohort-effects)">13.8. 코호트 효과(Cohort effects)<a class="anchor-link" href="#13.8.-%EC%BD%94%ED%98%B8%ED%8A%B8-%ED%9A%A8%EA%B3%BC(Cohort-effects)">¶</a>
 </h3>
 <p>생존 분석의 문제 중 하나는 추정 곡선의 다른 부분이 응답자의 다른 집단에 기반한다는것이다. 시점 t에 곡선 부분은 인터뷰 당시에는 적어도 응답자 연령이 적어도 t인 응답자에 기반한다. 그래서 곡선의 가장 왼쪽 부분은 모든 응답자로 부터 데이터가 포함되어있고, 가장 오른쪽에는 가장 나이든 응답자만 포함된다.</p>
 <p>데이터의 특성이 시간에 따라 변화 하지 않는다면 문제가 되지않을 것이다. 그러나 출생한 세대에 따라 여성의 혼인 패턴은 다를 것으로 이기 때문에 10년 단위로 응답자 집단을 만들어 효과를 조사해보자.</p>
@@ -4752,7 +4749,7 @@ $$\lambda(t) = \frac{S(t)-S(t+1)}{S(t)}$$<p>분자는 PMF(t)로 t에서 끝나�
 <li>이후 세대들의 초혼 연령은 점차 늦어지고 있다.</li>
 <li>80년대생의 경우 25살이 넘어서 결혼을 하지 않는 비율이 유지되는 것이 보인다.</li>
 </ul>
-<h3 id="13.9-외삽법(Extrapolation)">13.9 외삽법(Extrapolation)<a class="anchor-link" href="#13.9-%EC%99%B8%EC%82%BD%EB%B2%95(Extrapolation)">¶</a>
+<h3 id="13.9-%EC%99%B8%EC%82%BD%EB%B2%95(Extrapolation)">13.9 외삽법(Extrapolation)<a class="anchor-link" href="#13.9-%EC%99%B8%EC%82%BD%EB%B2%95(Extrapolation)">¶</a>
 </h3>
 <p>앞에서 배운 예시에서 80년대 90년대생의 데이터가 부족해 충분한 곡선의 시각화를 할 수 없었다. 데이터를 빌려(borrowing)와 곡선을 외삽(extrapolate)해보도록 하자.</p>
 
@@ -4828,7 +4825,7 @@ $$\lambda(t) = \frac{S(t)-S(t+1)}{S(t)}$$<p>분자는 PMF(t)로 t에서 끝나�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>50년대생의 데이터를 빌려와 이후 세대의 초혼 연령을 추정했다. 비혼 여성의 비율이 시대가 흐를수록 늘어남이 보인다.</p>
-<h3 id="13.12.-용어사전">13.12. 용어사전<a class="anchor-link" href="#13.12.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
+<h3 id="13.12.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">13.12. 용어사전<a class="anchor-link" href="#13.12.-%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84">¶</a>
 </h3>
 <ul>
 <li>생존분석(survival analysis): 일반적으로 사건이 일어나기까지 시간을 기술하고 예측하는 방법.</li>
@@ -4838,16 +4835,16 @@ $$\lambda(t) = \frac{S(t)-S(t+1)}{S(t)}$$<p>분자는 PMF(t)로 t에서 끝나�
 <li>코호트(cohort): 비슷한 속성으로 그룹화된 집단.</li>
 <li>코호트 효과(cohort effect): 코호트 사이의 차이.</li>
 </ul>
-<h2 id="14.-해석적-방법(Analytic-methods)">14. 해석적 방법(Analytic methods)<a class="anchor-link" href="#14.-%ED%95%B4%EC%84%9D%EC%A0%81-%EB%B0%A9%EB%B2%95(Analytic-methods)">¶</a>
+<h2 id="14.-%ED%95%B4%EC%84%9D%EC%A0%81-%EB%B0%A9%EB%B2%95(Analytic-methods)">14. 해석적 방법(Analytic methods)<a class="anchor-link" href="#14.-%ED%95%B4%EC%84%9D%EC%A0%81-%EB%B0%A9%EB%B2%95(Analytic-methods)">¶</a>
 </h2>
 <p>해석적 방법이란 논리적인 추론을 통해 통계 문제를 풀어가는 과정이다. 이번 장에서 해석적 방법 일부를 설명하고 어떻게 동작하는지 알아본다.</p>
-<h3 id="14.1.-정규분포">14.1. 정규분포<a class="anchor-link" href="#14.1.-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC">¶</a>
+<h3 id="14.1.-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC">14.1. 정규분포<a class="anchor-link" href="#14.1.-%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC">¶</a>
 </h3>
 <p>인간과 자연 세상에서 일어나는 수많은 일을 설명하는 핵심 개념으로 정규분포는 평균값을 기준으로 좌우 대칭 형태가 나타나며, 좌우 극단으로 갈수록 급격하게 수치가 낮아지는 특징이 있다.</p>
-<h3 id="14.2.-표집분포">14.2. 표집분포<a class="anchor-link" href="#14.2.-%ED%91%9C%EC%A7%91%EB%B6%84%ED%8F%AC">¶</a>
+<h3 id="14.2.-%ED%91%9C%EC%A7%91%EB%B6%84%ED%8F%AC">14.2. 표집분포<a class="anchor-link" href="#14.2.-%ED%91%9C%EC%A7%91%EB%B6%84%ED%8F%AC">¶</a>
 </h3>
 <p>통계의 의사결정을 위한 이론적 분포로 이론적으로 표본의 크기가 n인 표본을 무한히 반복 추출한 후 무한개의 표본들의 평균을 가지고 그린 분포이다.</p>
-<h3 id="14.4.-중심극한정리">14.4. 중심극한정리<a class="anchor-link" href="#14.4.-%EC%A4%91%EC%8B%AC%EA%B7%B9%ED%95%9C%EC%A0%95%EB%A6%AC">¶</a>
+<h3 id="14.4.-%EC%A4%91%EC%8B%AC%EA%B7%B9%ED%95%9C%EC%A0%95%EB%A6%AC">14.4. 중심극한정리<a class="anchor-link" href="#14.4.-%EC%A4%91%EC%8B%AC%EA%B7%B9%ED%95%9C%EC%A0%95%EB%A6%AC">¶</a>
 </h3>
 <p>만약 값의 분포가 평균(µ), 표준편차(σ)를 갖는다면 합 분포는 근사적으로 $N(nµ, nσ^2)$이 된다는 것이 중심극한 정리의 의미다.</p>
 <p>중심극한정리(Central Limit Theorem, 이하 CLT)는 통계 분석에 가장 유용한 도구중 하나로 몇가지 주의할 점은 다음과 같다.</p>
@@ -4856,7 +4853,7 @@ $$\lambda(t) = \frac{S(t)-S(t+1)}{S(t)}$$<p>분자는 PMF(t)로 t에서 끝나�
 <li>값들은 동일한 분포에서 나와야 하며 유한한 평균과 분산을 갖는 분포를 가져야한다. 그래서 대부분 파레토 분포는 해당되지 않는다.</li>
 <li>수렴의 속도는 분포 왜도에 의존 한다. 지수분포에서 나온 값들의 합은 작은 n에 대해서 수렴한다. 로그정규분포에서 나온값들의 합은 더 커다란 크기가 필요 하다.</li>
 </ul>
-<h3 id="14.5.-중심극한정리-검정">14.5. 중심극한정리 검정<a class="anchor-link" href="#14.5.-%EC%A4%91%EC%8B%AC%EA%B7%B9%ED%95%9C%EC%A0%95%EB%A6%AC-%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="14.5.-%EC%A4%91%EC%8B%AC%EA%B7%B9%ED%95%9C%EC%A0%95%EB%A6%AC-%EA%B2%80%EC%A0%95">14.5. 중심극한정리 검정<a class="anchor-link" href="#14.5.-%EC%A4%91%EC%8B%AC%EA%B7%B9%ED%95%9C%EC%A0%95%EB%A6%AC-%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <p>지수 분포값의 합에 대한 분포를 검정한다.</p>
 
@@ -4977,7 +4974,7 @@ $$\lambda(t) = \frac{S(t)-S(t+1)}{S(t)}$$<p>분자는 PMF(t)로 t에서 끝나�
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>파레토 분포는 로그 정규분포보다 더 기울어짐이 심하다. 모수에 따라 많은 파레토 분포는 유한 평균과 분산을 갖지 못한다. 따라서 중심극한정리가 적용 되지 않는다. 심지어 <code>n=100</code>
 일때 정규 확률 그림은 직선과 거리가 매우 멀다.</p>
-<h3 id="14.7.-상관검정">14.7. 상관검정<a class="anchor-link" href="#14.7.-%EC%83%81%EA%B4%80%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="14.7.-%EC%83%81%EA%B4%80%EA%B2%80%EC%A0%95">14.7. 상관검정<a class="anchor-link" href="#14.7.-%EC%83%81%EA%B4%80%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <p>앞서 신생아 체중과 산모 연령사이 상관을 계산하는데 순열 검정(permutationtest)을 사용 해 p-value가 0.001 보다 작아 통계적으로 유의하다는 결론은 내렸다. 이제 해석적 방법을 통해 같은 분석을 수행해보자.</p>
 
@@ -5087,7 +5084,7 @@ tical)하는 것을 알 수 있다. 따라서 실제 분포가 정규 분포는 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>p-value 결과는 매우작다. 따라서 해석적 방법을 통해서도 신생아의 체중과 산모의 나이에는 통계적 유의성이 있다고 결론내릴 수 있다.</p>
-<h3 id="14.8.-카이제곱-검정">14.8. 카이제곱 검정<a class="anchor-link" href="#14.8.-%EC%B9%B4%EC%9D%B4%EC%A0%9C%EA%B3%B1-%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="14.8.-%EC%B9%B4%EC%9D%B4%EC%A0%9C%EA%B3%B1-%EA%B2%80%EC%A0%95">14.8. 카이제곱 검정<a class="anchor-link" href="#14.8.-%EC%B9%B4%EC%9D%B4%EC%A0%9C%EA%B3%B1-%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <p>카이제곱 통계량은 기대값과 정규화된 총 편차는 측정한다. 카이제곱 통계량이 널리 사용되는 이유는 귀무가설 아래에 표집분포가 해석적이기 때문이다. <code>scipy</code> 라이브러리를 사용해 카이제곱 검정을 쉽게 사용할 수 있다.</p>
 
@@ -5102,7 +5099,7 @@ tical)하는 것을 알 수 있다. 따라서 실제 분포가 정규 분포는 
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chi2_contingency</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">]]</span>
 <span class="n">chi2</span><span class="p">,</span> <span class="n">pval</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">expected</span> <span class="o">=</span> <span class="n">chi2_contingency</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'카이제곱 검정의 p-value는 </span><span class="si">{pval}</span><span class="s1"> 이다'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'카이제곱 검정의 p-value는 </span><span class="si">{</span><span class="n">pval</span><span class="si">}</span><span class="s1"> 이다'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -5133,7 +5130,7 @@ tical)하는 것을 알 수 있다. 따라서 실제 분포가 정규 분포는 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="14.9.-해석적-방법의-장점">14.9. 해석적 방법의 장점<a class="anchor-link" href="#14.9.-%ED%95%B4%EC%84%9D%EC%A0%81-%EB%B0%A9%EB%B2%95%EC%9D%98-%EC%9E%A5%EC%A0%90">¶</a>
+<h3 id="14.9.-%ED%95%B4%EC%84%9D%EC%A0%81-%EB%B0%A9%EB%B2%95%EC%9D%98-%EC%9E%A5%EC%A0%90">14.9. 해석적 방법의 장점<a class="anchor-link" href="#14.9.-%ED%95%B4%EC%84%9D%EC%A0%81-%EB%B0%A9%EB%B2%95%EC%9D%98-%EC%9E%A5%EC%A0%90">¶</a>
 </h3>
 <ul>
 <li>해석적 방법은 설명과 이해하기 더 쉽다. 귀무 가설을 시뮬레이션하고 검정 통계량을 계산하는것이 좀 더 명확하기 때문이다.</li>
@@ -5141,11 +5138,10 @@ tical)하는 것을 알 수 있다. 따라서 실제 분포가 정규 분포는 
 <li>해석적 방법은 디버그(debuggable)할 수 있다. 검증 및 테스트(incremental development and testing)를 할 수 있어 결과에 신뢰를 준다.</li>
 </ul>
 <p>그러나 해석적 방법에 장점만 있는 것은 아니다. 해석적 방법은 계산이 오래 걸린다는 단점이 있다.</p>
-<h2 id="15.-마치며">15. 마치며<a class="anchor-link" href="#15.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h2 id="15.-%EB%A7%88%EC%B9%98%EB%A9%B0">15. 마치며<a class="anchor-link" href="#15.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h2>
 <p><code>Thinkstat2</code>은 무료로 공개된 통계학 책으로 영어로 작성되어 있다. 책의 번역은 오래전  <em>이광춘</em> 씨가 인터넷에 공개하였다. 여기에서는 해당 번역본의 어색한 표현을 수정하고 내용을 요약해 정리한 것이다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -5175,7 +5171,7 @@ tical)하는 것을 알 수 있다. 따라서 실제 분포가 정규 분포는 
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -5186,9 +5182,7 @@ tical)하는 것을 알 수 있다. 따라서 실제 분포가 정규 분포는 
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

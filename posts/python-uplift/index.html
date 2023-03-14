@@ -62,10 +62,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -126,8 +127,7 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -137,66 +137,66 @@ navbar-dark bg-dark
 <ul>
 <li>무작위 대조시험: 모집단을 무작위로 실험군과 대조군으로 나누는 것을 말합니다. 예를 들어 신약 개발에서 실험군에는 신약을 투여하고 대조군에는 가짜 약을 투여하는 것 입니다.</li>
 </ul>
-<h2 id="0.-데이터-설명">0. 데이터 설명<a class="anchor-link" href="#0.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85">¶</a>
+<h2 id="0.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85">0. 데이터 설명<a class="anchor-link" href="#0.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85">¶</a>
 </h2>
 <p>과거 12개월 동안 구매이력이 있는 고객을 대상으로 '남성 타겟 판촉 메일', '여성 타겟 판촉 메일', '메일을 발송하지 않음'을 수행하고 이 행동이 사이트 방문으로 이어졌는지 조사한 것입니다.</p>
 <table>
 <thead><tr>
 <th>필드명</th>
-<th>내용</th>
+  <th>내용</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>recency</td>
-<td>마지막 구매 기록으로부터 경과한 기간</td>
+  <td>마지막 구매 기록으로부터 경과한 기간</td>
 </tr>
 <tr>
 <td>history_segment</td>
-<td>최근 1년 구매 금액에 따라 분류한 유형</td>
+  <td>최근 1년 구매 금액에 따라 분류한 유형</td>
 </tr>
 <tr>
 <td>history</td>
-<td>최근 1년 구매 금액</td>
+  <td>최근 1년 구매 금액</td>
 </tr>
 <tr>
 <td>mens</td>
-<td>최근 1년 동안 남성용 제품 구매 여부</td>
+  <td>최근 1년 동안 남성용 제품 구매 여부</td>
 </tr>
 <tr>
 <td>womens</td>
-<td>최근 1년 동안 여성용 제품 구매 여부</td>
+  <td>최근 1년 동안 여성용 제품 구매 여부</td>
 </tr>
 <tr>
 <td>zip_code</td>
-<td>우편번호</td>
+  <td>우편번호</td>
 </tr>
 <tr>
 <td>newbies</td>
-<td>신규고객 여부</td>
+  <td>신규고객 여부</td>
 </tr>
 <tr>
 <td>channel</td>
-<td>최근 1년동안 구매한 경로</td>
+  <td>최근 1년동안 구매한 경로</td>
 </tr>
 <tr>
 <td>segment</td>
-<td>고객에게 보낸 판촉 메일 유형</td>
+  <td>고객에게 보낸 판촉 메일 유형</td>
 </tr>
 <tr>
 <td>visit</td>
-<td>메일 수신후 2주 내 사이트 방문여부</td>
+  <td>메일 수신후 2주 내 사이트 방문여부</td>
 </tr>
 <tr>
 <td>conversion</td>
-<td>메일 수신후 2주내 상품 구매 여부</td>
+  <td>메일 수신후 2주내 상품 구매 여부</td>
 </tr>
 <tr>
 <td>spend</td>
-<td>메일 수신후 2주내 구매 금액</td>
+  <td>메일 수신후 2주내 구매 금액</td>
 </tr>
 </tbody>
 </table>
-<h2 id="1.-데이터-불러오기">1. 데이터 불러오기<a class="anchor-link" href="#1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+<h2 id="1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">1. 데이터 불러오기<a class="anchor-link" href="#1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
 </h2>
 <p>먼저 데이터 파일을 <code>pandas</code>를 이용해 읽어 들이고 구조를 확인합니다.</p>
 
@@ -227,8 +227,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -323,8 +322,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -337,9 +335,9 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-데이터-정리하기">2. 데이터 정리하기<a class="anchor-link" href="#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0">2. 데이터 정리하기<a class="anchor-link" href="#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0">¶</a>
 </h2>
-<h3 id="2.1.-불필요한-데이터-제거">2.1. 불필요한 데이터 제거<a class="anchor-link" href="#2.1.-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%9C%EA%B1%B0">¶</a>
+<h3 id="2.1.-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%9C%EA%B1%B0">2.1. 불필요한 데이터 제거<a class="anchor-link" href="#2.1.-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%9C%EA%B1%B0">¶</a>
 </h3>
 <p>메일을 받지 않은 고객의 데이터는 필요하지 않음으로 제거합니다.</p>
 
@@ -369,8 +367,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -465,8 +462,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -535,7 +531,7 @@ dtype: object</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위의 결과에서 zip_code, channe, segment가 object인것을 볼 수 있습니다.  segment는 label로 사용될 것입니다.</p>
-<h3 id="2.2.-원핫인코딩(one-hot-encoding)">2.2. 원핫인코딩(one-hot encoding)<a class="anchor-link" href="#2.2.-%EC%9B%90%ED%95%AB%EC%9D%B8%EC%BD%94%EB%94%A9(one-hot-encoding)">¶</a>
+<h3 id="2.2.-%EC%9B%90%ED%95%AB%EC%9D%B8%EC%BD%94%EB%94%A9(one-hot-encoding)">2.2. 원핫인코딩(one-hot encoding)<a class="anchor-link" href="#2.2.-%EC%9B%90%ED%95%AB%EC%9D%B8%EC%BD%94%EB%94%A9(one-hot-encoding)">¶</a>
 </h3>
 <p><strong>zip_code, channel</strong> 값은 범주형임으로 one-hot encoding을 수행합니다.</p>
 
@@ -568,8 +564,7 @@ dtype: object</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -646,8 +641,7 @@ dtype: object</pre>
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -684,7 +678,7 @@ dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-학습하기">3. 학습하기<a class="anchor-link" href="#3.-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="3.-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0">3. 학습하기<a class="anchor-link" href="#3.-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>먼저, 데이터를 학습용과 테스트 데이터로 나누어 줍니다.</p>
 
@@ -772,7 +766,7 @@ dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-모델-평가하기">4. 모델 평가하기<a class="anchor-link" href="#4.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="4.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0">4. 모델 평가하기<a class="anchor-link" href="#4.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>학습한 모델을 평가하기 위한 점수 시스템을 만들어보겠습니다. 업리프트 모델링에서는 <strong>treat_model, control_model</strong>로 부터 두개의 예측값을 얻게 됩니다 . 업리프트 모델링 점수는 실험군 예측값을 대조군 예측값으로 나눈 비율로 사용하겠습니다. <code>sklearn</code>의 <code>predict_proba</code> 함수를 통해 아래와 같이 간단히 할 수 있습니다.</p>
 
@@ -805,7 +799,7 @@ dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4.1.-백분위수-단위로-나타낸-전환율">4.1. 백분위수 단위로 나타낸 전환율<a class="anchor-link" href="#4.1.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EB%82%98%ED%83%80%EB%82%B8-%EC%A0%84%ED%99%98%EC%9C%A8">¶</a>
+<h3 id="4.1.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EB%82%98%ED%83%80%EB%82%B8-%EC%A0%84%ED%99%98%EC%9C%A8">4.1. 백분위수 단위로 나타낸 전환율<a class="anchor-link" href="#4.1.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EB%82%98%ED%83%80%EB%82%B8-%EC%A0%84%ED%99%98%EC%9C%A8">¶</a>
 </h3>
 <p>먼저 점수가 큰 순서대로 정렬하고 백분위수마다 점수를 계산해봅니다.</p>
 
@@ -892,7 +886,7 @@ dtype: object</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>백분위수 단위로 전환율을 시각화해보니 점수가 상위 60% 까지는 남성 타깃 메일을 보낸 쪽이 여성 타깃 메일을 보낸 쪽보다 반응이 좋음을 알 수 있습니다. 반대로 하위 40%까지는 여성 타깃 메일이 반응이 좋습니다. 그러므로 상위 60%는 남성 타깃 메일을 보내고 하위 40%는 여성 타깃 메일을 보내는 것이 좋음을 알 수 있습니다.</p>
-<h3 id="4.2.-AUC로-평가하기">4.2. AUC로 평가하기<a class="anchor-link" href="#4.2.-AUC%EB%A1%9C-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="4.2.-AUC%EB%A1%9C-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0">4.2. AUC로 평가하기<a class="anchor-link" href="#4.2.-AUC%EB%A1%9C-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <ol>
 <li>점수가 높은 순서대로 각 대상을 훑으면서 매 시점의 점수를 측정합니다.</li>
@@ -1032,11 +1026,10 @@ dtype: object</pre>
 <blockquote>
 <p>이 점수를 기초로 개입여부를 결정할 수 있습니다. lift점수가 최고점일때 개입하면 됩니다.</p>
 </blockquote>
-<h2 id="5.-마치며">5. 마치며<a class="anchor-link" href="#5.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h2 id="5.-%EB%A7%88%EC%B9%98%EB%A9%B0">5. 마치며<a class="anchor-link" href="#5.-%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h2>
 <p>업리프트 모델링을 소개하고 예를 살펴보았습니다. 업리프트 모델링은 무작위 대조시험과 고객 정보로 부터 추출한 특징을 조합하여, 효과가 좋은 고객을 예측해주는 모델을 구축하는 기법입니다. 이 기법을 사용하면 비용을 절감하고 효과를 최대화 할 수 있습니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -1066,7 +1059,7 @@ dtype: object</pre>
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -1077,9 +1070,7 @@ dtype: object</pre>
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

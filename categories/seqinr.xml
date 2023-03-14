@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about SeqinR)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/seqinr.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:22 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R로 서열분석하기</title><link>https://partrita.github.io/posts/R-bio/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about SeqinR)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/seqinr.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>R로 서열분석하기</title><link>https://partrita.github.io/posts/R-bio/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;R&lt;/code&gt;을 이용해서 간단한 생물정보학(bioinformatics) 분석을 해보도록 할게요. 여기서 우리가 초점을 맞출 것은 단백질의 서열입니다.&lt;/p&gt;
 &lt;p&gt;생물학에 대한 기초적인 이해가 있다고 가정하고 &lt;code&gt;R&lt;/code&gt;로 분석하는 것 위주로 설명을 할 겁니다. &lt;code&gt;R&lt;/code&gt;을 사용하기 위해서는 일단 컴퓨터에 설치를 해야 할텐데요. 설치가 되어 있지 않다면 다음 &lt;a href="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/src/installr.html"&gt;링크&lt;/a&gt;를 참고해서 설치하도록 하세요.&lt;/p&gt;
-&lt;h2 id="0.-생물정보학-위한-R-packages:"&gt;0. 생물정보학 위한 R packages:&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두 가지의 유명한 패키지가 알려져있습니다.&lt;/p&gt;
+&lt;h2 id="0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:"&gt;0. 생물정보학 위한 R packages:&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두 가지의 유명한 패키지가 알려져있습니다.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Bioconductor &lt;/li&gt;
+&lt;li&gt;Bioconductor&lt;/li&gt;
 &lt;li&gt;SeqinR&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;각각의 특징을 간략하게 알아보자면 &lt;a href="https://partrita.github.io/posts/R-bio/www.bioconductor.org"&gt;Bioconductor&lt;/a&gt;는 마이크로 어레이 데이터 같은 비교적 큰 데이터 분석을 위한 툴들을 제공합니다. 
@@ -54,12 +54,12 @@ Making 'packages.html' ... done
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="FASTA-형식(format)"&gt;FASTA 형식(format)&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#FASTA-%ED%98%95%EC%8B%9D(format)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FASTA 형식은 간단하고 많이 사용되는 형태의 파일입니다. sequence alignment용 FASTA라는 프로그램에서 처음으로 사용되었죠. 아래에 예시가 있습니다. 시퀀스에 대한 설명은 &lt;code&gt;&amp;gt;&lt;/code&gt; 꺽쇄로 시작한 첫번째 줄에 적혀 있고, 다음 줄에는 서열 정보가 들어갑니다.&lt;/p&gt;
-
+&lt;h3 id="FASTA-%ED%98%95%EC%8B%9D(format)"&gt;FASTA 형식(format)&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#FASTA-%ED%98%95%EC%8B%9D(format)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FASTA 형식은 간단하고 많이 사용되는 형태의 파일입니다. sequence alignment용 FASTA라는 프로그램에서 처음으로 사용되었죠. 아래에 예시가 있습니다. 시퀀스에 대한 설명은 &lt;code&gt;&amp;gt;&lt;/code&gt; 꺽쇄로 시작한 첫번째 줄에 적혀 있고, 다음 줄에는 서열 정보가 들어갑니다.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;gt; A06852 183 residues
 MPRLFSYLLGVWLLLSQLPREIPGQSTNDFIKACGRELVRLWVEICGSVSWGRTALSLEE
 PQLETGPPAETMPSSITKDAEILKMMLEFVPNLPQELKATLSERQPSLRELQQSASKDSN
-LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pre&gt;
+LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -67,10 +67,11 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="1.-서열-정보를-R로-읽어오기"&gt;1. 서열 정보를 R로 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지를 사용해서 파스타(FASTA) 파일을 읽어 보도록 해보겠습니다.&lt;/p&gt;
+&lt;h2 id="1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;1. 서열 정보를 R로 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지를 사용해서 파스타(FASTA) 파일을 읽어 보도록 해보겠습니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/_images/P1_image3.png" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;NCBI에 &lt;strong&gt;NC_001477&lt;/strong&gt;로 accession 되어 있는 &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 파스타 파일을 다운받아 주세요. 파일명은 &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;로 하겠습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;&lt;code&gt;getncbiseq()&lt;/code&gt;을 이용해 한번에 불러오는 방법도 있어요.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;getncbiseq()&lt;/code&gt;을 이용해 한번에 불러오는 방법도 있어요.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;다운받은 파스타 파일이 있는 폴더에서 아래의 명령어를 입력합니다.&lt;/p&gt;
 
@@ -84,9 +85,9 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"seqinr"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="n"&gt;dengue&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;dengue&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# In fact, the first element of the list object dengue contains the the DNA sequence&lt;/span&gt;
-&lt;span class="n"&gt;dengueseq&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;dengue[[1]]&lt;/span&gt;
+&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dengue&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -97,7 +98,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="DNA-서열의-길이"&gt;DNA 서열의 길이&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA 서열을 불러온 다음에는 제대로 불어왔는지를 확인하기 위해 총 서열의 길이를 알아 보도록 하겠습니다.&lt;/p&gt;
+&lt;h2 id="DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4"&gt;DNA 서열의 길이&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA 서열을 불러온 다음에는 제대로 불어왔는지를 확인하기 위해 총 서열의 길이를 알아 보도록 하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -124,9 +125,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-10735
-&lt;/div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;10735&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -138,7 +137,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;총 &lt;strong&gt;10735&lt;/strong&gt;개의 DNA 서열로 구성되어있다는 것을 알 수 있군요.&lt;/p&gt;
-&lt;h3 id="원하는-부분의-서열만-얻기"&gt;원하는 부분의 서열만 얻기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DNA 서열에서도 특정 부분만 필요할 때가 있습니다. &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 처음부터 50번째 까지의 서열을 확인해보겠습니다.&lt;/p&gt;
+&lt;h3 id="%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0"&gt;원하는 부분의 서열만 얻기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DNA 서열에서도 특정 부분만 필요할 때가 있습니다. &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 처음부터 50번째 까지의 서열을 확인해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -148,7 +147,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dengueseq[1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="n"&gt;]&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -179,7 +178,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="DNA-서열상의-염기-구성"&gt;DNA 서열상의 염기 구성&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA는 4가지의 nucleotides (“A”, “C”, “G”, “T”) 로 구성되어 있습니다. &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;에 각각이 몇개나 있는지 알아 보도록 하죠.&lt;/p&gt;
+&lt;h2 id="DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1"&gt;DNA 서열상의 염기 구성&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA는 4가지의 nucleotides (“A”, “C”, “G”, “T”) 로 구성되어 있습니다. &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;에 각각이 몇개나 있는지 알아 보도록 하죠.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -250,9 +249,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-0.466697717745692
-&lt;/div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;0.466697717745692&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -264,7 +261,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;GC content는 총 46.66977%입니다. 약간 적은 편이네요.&lt;/p&gt;
-&lt;h2 id="특정-부분의-GC-content"&gt;특정 부분의 GC content&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;좀전의 분석은 전체 서열상에서 평균 GC content이었습니다. 하지만 DNA서열상의 특정부분에서의 GC content는 어떻게 알 수 있을까요?&lt;/p&gt;
+&lt;h2 id="%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content"&gt;특정 부분의 GC content&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;좀전의 분석은 전체 서열상에서 평균 GC content이었습니다. 하지만 DNA서열상의 특정부분에서의 GC content는 어떻게 알 수 있을까요?&lt;/p&gt;
 &lt;p&gt;전체서열을 여러개의 조각으로 나누어 &lt;code&gt;GC()&lt;/code&gt;기능을 사용해보겠습니다.
 예시로 여기서는 300개씩 잘라보았습니다.&lt;/p&gt;
 
@@ -276,22 +273,22 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;slidingwindowplot&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;slidingwindowplot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
-   &lt;span class="n"&gt;starts&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-   &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;# Find the length of the vector "starts"&lt;/span&gt;
-   &lt;span class="n"&gt;chunkGCs&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# Make a vector of the same length as vector "starts", but just containing zeroes&lt;/span&gt;
-   &lt;span class="nf"&gt;for &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="n"&gt;chunk&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;inputseq[starts[i]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts[i]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;]&lt;/span&gt;
-        &lt;span class="n"&gt;chunkGC&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;GC&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chunk&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="c1"&gt;# print(chunkGC)&lt;/span&gt;
-        &lt;span class="n"&gt;chunkGCs[i]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;chunkGC&lt;/span&gt;
-   &lt;span class="p"&gt;}&lt;/span&gt;
-   &lt;span class="nf"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;chunkGCs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;xlab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"Nucleotide start position"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ylab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GC content"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;# Find the length of the vector "starts"&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;chunkGCs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Make a vector of the same length as vector "starts", but just containing zeroes&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nf"&gt;for &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;chunk&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;chunkGC&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;GC&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chunk&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;# print(chunkGC)&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;chunkGCs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chunkGC&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nf"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;chunkGCs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;xlab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"Nucleotide start position"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ylab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GC content"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="c1"&gt;# 300개씩 서열을 나누어서 GC() 기능을 사용합니다.&lt;/span&gt;
-&lt;span class="nf"&gt;slidingwindowplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;slidingwindowplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -323,7 +320,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;전체적인 서열상에서 GC contents가 특별하게 낮은 구역은 4000번(40%) 즈음이군요.&lt;/p&gt;
-&lt;h3 id="파스타(FASTA)-파일-쓰기"&gt;파스타(FASTA) 파일 쓰기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파스타 파일을 불러들여 간단히 분석을 해보았는데, 이제는 편집한 서열을 파스타 파일로 저장하는 방법을 알아보겠습니다.&lt;/p&gt;
+&lt;h3 id="%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0"&gt;파스타(FASTA) 파일 쓰기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파스타 파일을 불러들여 간단히 분석을 해보았는데, 이제는 편집한 서열을 파스타 파일로 저장하는 방법을 알아보겠습니다.&lt;/p&gt;
 &lt;p&gt;아래와 같이 작성해주면, &lt;strong&gt;den1.fasta&lt;/strong&gt;라는 파일이 폴더에 생긴것을 확인 할수 있어요.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -334,7 +331,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;write.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;names&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"DEN-1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sequences&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;file.out&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;write.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;names&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"DEN-1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sequences&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file.out&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -345,10 +342,10 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="파스타-파일에서-단백질-서열을-불러오기"&gt;파스타 파일에서 단백질 서열을 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt;을 사용하면 DNA 서열과 동일한 방법으로 단백질 서열도 읽을수 있습니다. &lt;strong&gt;Uniprot&lt;/strong&gt; 에 각각 &lt;strong&gt;Q9CD83&lt;/strong&gt; , &lt;strong&gt;A0PQ23&lt;/strong&gt;으로 저장되어 있는 단백질 서열의 파스타 파일을 다운받으세요.&lt;/p&gt;
-&lt;h3 id="예시로-사용한-Q9CD83,-A0PQ23-?"&gt;예시로 사용한 Q9CD83, A0PQ23 ?&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Q9CD83&lt;/strong&gt; 과 &lt;strong&gt;A0PQ23&lt;/strong&gt; 는 Chorismate pyruvate-lyase라는 효소입니다. 차이점은 서로 다른 균주에서 발현된다는 것입니다.&lt;/p&gt;
+&lt;h2 id="%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;파스타 파일에서 단백질 서열을 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt;을 사용하면 DNA 서열과 동일한 방법으로 단백질 서열도 읽을수 있습니다. &lt;strong&gt;Uniprot&lt;/strong&gt; 에 각각 &lt;strong&gt;Q9CD83&lt;/strong&gt; , &lt;strong&gt;A0PQ23&lt;/strong&gt;으로 저장되어 있는 단백질 서열의 파스타 파일을 다운받으세요.&lt;/p&gt;
+&lt;h3 id="%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?"&gt;예시로 사용한 Q9CD83, A0PQ23 ?&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Q9CD83&lt;/strong&gt; 과 &lt;strong&gt;A0PQ23&lt;/strong&gt; 는 Chorismate pyruvate-lyase라는 효소입니다. 차이점은 서로 다른 균주에서 발현된다는 것입니다.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Q9CD83은 &lt;em&gt;Mycobacterium leprae&lt;/em&gt; &lt;/li&gt;
+&lt;li&gt;Q9CD83은 &lt;em&gt;Mycobacterium leprae&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;A0PQ23은 &lt;em&gt;Mycobacterium ulcerans&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;R에서 아래와 같이 입력하세요.&lt;/p&gt;
@@ -361,13 +358,13 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;leprae&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"Q9CD83.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;lepraeseq&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;leprae[[1]]&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;leprae&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"Q9CD83.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;lepraeseq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;leprae&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 
-&lt;span class="n"&gt;ulcerans&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"A0PQ23.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ulceransseq&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;ulcerans[[1]]&lt;/span&gt;
+&lt;span class="n"&gt;ulcerans&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"A0PQ23.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ulceransseq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ulcerans&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 
-&lt;span class="n"&gt;lepraeseq&lt;/span&gt; &lt;span class="c1"&gt;# Display the contents of "lepraeseq"&lt;/span&gt;
+&lt;span class="n"&gt;lepraeseq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Display the contents of "lepraeseq"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -416,7 +413,7 @@ attr(,"class")
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;파스타 파일이 아미노산 서열을 담고 있는것을 확인할 수 있고, 서열으 정보(균주, 이름)등을 알수 있군요.&lt;/p&gt;
-&lt;h2 id="두-서열을-점도표로-비교하기"&gt;두 서열을 점도표로 비교하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두가지의 서열을 비교할때는 먼저 점도표(dotplot)을 그려보는것은 언제나 좋은 생각입니다.&lt;/p&gt;
+&lt;h2 id="%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0"&gt;두 서열을 점도표로 비교하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두가지의 서열을 비교할때는 먼저 점도표(dotplot)을 그려보는것은 언제나 좋은 생각입니다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;dotPlot()&lt;/code&gt;이라는 기능으로 쉽게 그려 볼 수 있죠. 위에서 예로 들었던 &lt;em&gt;Mycobacterium leprae&lt;/em&gt; 과 &lt;em&gt;Mycobacterium ulcerans&lt;/em&gt;의 Chorismate pyruvate-lyase를 비교해보도록 하죠.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -427,7 +424,7 @@ attr(,"class")
 &lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;dotPlot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lepraeseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ulceransseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;dotPlot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lepraeseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ulceransseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -467,7 +464,7 @@ attr(,"class")
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="코돈표"&gt;코돈표&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%BD%94%EB%8F%88%ED%91%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지에는 &lt;code&gt;tablecode()&lt;/code&gt; 라는 기능으로 표준 코돈표를 제공하고 있습니다. 아래와 같이 확인할 수 있죠.&lt;/p&gt;
+&lt;h2 id="%EC%BD%94%EB%8F%88%ED%91%9C"&gt;코돈표&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%BD%94%EB%8F%88%ED%91%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지에는 &lt;code&gt;tablecode()&lt;/code&gt; 라는 기능으로 표준 코돈표를 제공하고 있습니다. 아래와 같이 확인할 수 있죠.&lt;/p&gt;
 &lt;p&gt;보통 인터넷에서 쉽게 확인 할 수 있는것이라 큰 쓸모는 없을 수도 있겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -509,10 +506,10 @@ attr(,"class")
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;R&lt;/code&gt;의 &lt;code&gt;SeqinR&lt;/code&gt;이라는 패키지를 사용해 생물학적 서열정보를 간략하게 분석해보았습니다. &lt;code&gt;R&lt;/code&gt;에서 기본적으로 제공하는 다음의 기능과&lt;/p&gt;
+&lt;h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;R&lt;/code&gt;의 &lt;code&gt;SeqinR&lt;/code&gt;이라는 패키지를 사용해 생물학적 서열정보를 간략하게 분석해보았습니다. &lt;code&gt;R&lt;/code&gt;에서 기본적으로 제공하는 다음의 기능과&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;벡터(vector)나 리스트(list)의 길이를 알 수 있는 &lt;code&gt;length()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;벡터(vector)나 리스트(list)의 구성성분의 갯수를 알려주는 &lt;code&gt;table()&lt;/code&gt; &lt;/li&gt;
+&lt;li&gt;벡터(vector)나 리스트(list)의 구성성분의 갯수를 알려주는 &lt;code&gt;table()&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지에서 제공하는 기능&lt;/p&gt;
 &lt;ul&gt;
@@ -525,4 +522,4 @@ attr(,"class")
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Bioinformatics</category><category>R</category><category>SeqinR</category><guid>https://partrita.github.io/posts/R-bio/</guid><pubDate>Mon, 29 Jan 2018 08:56:47 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>Bioinformatics</category><category>R</category><category>SeqinR</category><guid>https://partrita.github.io/posts/R-bio/</guid><pubDate>Mon, 29 Jan 2018 08:56:47 GMT</pubDate></item></channel></rss>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Antibody)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/antibody.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>돌연변이 위치에 따른 항체 생산량 예측하기</title><link>https://partrita.github.io/posts/mljar-supervised/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Antibody)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/antibody.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>돌연변이 위치에 따른 항체 생산량 예측하기</title><link>https://partrita.github.io/posts/mljar-supervised/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-목적"&gt;0. 목적&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.-%EB%AA%A9%EC%A0%81"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/bcches/2018/bcches.2018.29.issue-2/acs.bioconjchem.7b00791/20180215/images/medium/bc-2017-007915_0008.gif" alt=""&gt;&lt;/p&gt;
+&lt;h2 id="0.-%EB%AA%A9%EC%A0%81"&gt;0. 목적&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.-%EB%AA%A9%EC%A0%81"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/bcches/2018/bcches.2018.29.issue-2/acs.bioconjchem.7b00791/20180215/images/medium/bc-2017-007915_0008.gif" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;mljar-supervised&lt;/code&gt;라는 AutoML 패키지를 사용해 돌연변이 위치에 따른 항체 발현량 예측하는 문제를 풀어보겠습니다.&lt;/p&gt;
-&lt;h3 id="0.1.-데이터-출처"&gt;0.1. 데이터 출처&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%9C%EC%B2%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;Ohri R, Bhakta S, Fourie-O'Donohue A, et al. High-Throughput Cysteine Scanning To Identify Stable Antibody Conjugation Sites for Maleimide- and Disulfide-Based Linkers. Bioconjug Chem. 2018;29(2):473-485. doi:10.1021/acs.bioconjchem.7b00791&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id="0.2.-데이터셋-설명"&gt;0.2. 데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터셋은 다음 9개의 열로 구성되어 있습니다.&lt;/p&gt;
+&lt;h3 id="0.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%9C%EC%B2%98"&gt;0.1. 데이터 출처&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%9C%EC%B2%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;Ohri R, Bhakta S, Fourie-O'Donohue A, et al. High-Throughput Cysteine Scanning To Identify Stable Antibody Conjugation Sites for Maleimide- and Disulfide-Based Linkers. Bioconjug Chem. 2018;29(2):473-485. doi:10.1021/acs.bioconjchem.7b00791
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="0.2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;0.2. 데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#0.2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터셋은 다음 9개의 열로 구성되어 있습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Linker: maleimide linker(vc) 또는 pyridyl disulfide linker(PDS) 링커 구분&lt;/li&gt;
 &lt;li&gt;HC/LC: 항체의 light chain(LC) 혹은 heavy chain(HC) 표기&lt;/li&gt;
@@ -19,11 +19,11 @@
 &lt;li&gt;Stability: 랫(Rat)의 혈장에서 37도로 48시간 두었을때 변화한 DAR 비율&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="1.--mljar-supervised"&gt;1.  mljar-supervised&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#1.--mljar-supervised"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;mljar-supervised&lt;/code&gt;는 테이블 형식 데이터에 작동하는 자동화된 기계 학습 파이썬 패키지입니다. 데이터를 전처리하고, 기계 학습 모델을 구성하고, 하이퍼 매개 변수 조정을 수행하여 최상의 모델을 찾는 일반적인 방법을 추상화 해서 우리의 시간을 절약하도록 설계되었습니다😎.&lt;/p&gt;
-&lt;h3 id="1.1.-설치"&gt;1.1. 설치&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#1.1.-%EC%84%A4%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다음과 같이 &lt;code&gt;pip&lt;/code&gt; 명령어를 사용해 설치할 수 있습니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install mljar-supervised
+&lt;h3 id="1.1.-%EC%84%A4%EC%B9%98"&gt;1.1. 설치&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#1.1.-%EC%84%A4%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다음과 같이 &lt;code&gt;pip&lt;/code&gt; 명령어를 사용해 설치할 수 있습니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;mljar-supervised
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;더 자세한 설치방법은 다음의 링크 &lt;a href="https://github.com/mljar/mljar-supervised"&gt;https://github.com/mljar/mljar-supervised&lt;/a&gt; 를 확인하세요.&lt;/p&gt;
-&lt;h2 id="2.-분석하기"&gt;2. 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#2.-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 &lt;code&gt;pandas&lt;/code&gt;를 사용해 해당 데이터셋의 내용을 살펴봅니다.&lt;/p&gt;
+&lt;h2 id="2.-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;2. 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#2.-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 &lt;code&gt;pandas&lt;/code&gt;를 사용해 해당 데이터셋의 내용을 살펴봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -56,8 +56,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -209,8 +208,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -316,8 +314,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -409,8 +406,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -479,7 +475,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;데이터들이 대체로 두가지 분류로 나뉘는 것을 알 수 있습니다. 예를 들면 농도가 0인 것과 2인 것으로 분류할 수 있고 %Agg 도 0에 가깝거나 100에 가까운 그룹으로 나눌 수 있겠습니다. 이런 데이터셋은 바이어스(bias)가 있을 가능성이 커서 기계 학습하기에는 적합하지 않다고 볼 수 있습니다.&lt;/p&gt;
-&lt;h2 id="3.-mljar-supervised-사용하기"&gt;3. mljar-supervised 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.-mljar-supervised-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;데이터셋을 학습용과 테스트용으로 나눕니다. 그리고 각각의 크기를 출력합니다.&lt;/p&gt;
+&lt;h2 id="3.-mljar-supervised-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;3. mljar-supervised 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.-mljar-supervised-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;데이터셋을 학습용과 테스트용으로 나눕니다. 그리고 각각의 크기를 출력합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -527,7 +523,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.1-AutoML로-모델-학습"&gt;3.1 AutoML로 모델 학습&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.1-AutoML%EB%A1%9C-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="3.1-AutoML%EB%A1%9C-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5"&gt;3.1 AutoML로 모델 학습&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.1-AutoML%EB%A1%9C-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -595,7 +591,7 @@ AutoML fit time: 27.45 seconds
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;학습된 모델의 성능은 rmse으로 측정되었으며 가장 좋은 값은 &lt;code&gt;0.579981&lt;/code&gt; 입니다. &lt;code&gt;mljar-supervised&lt;/code&gt;은 결과를 &lt;code&gt;AutoML_XX&lt;/code&gt;라는 폴더로 저장해줍니다. 폴더 안을 각각의 모델에 대한 분석값이 들어 있습니다.&lt;/p&gt;
-&lt;h3 id="3.2.-예측-결과-시각화-하기"&gt;3.2. 예측 결과 시각화 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.2.-%EC%98%88%EC%B8%A1-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;x축은 실제 값으로 y축은 예측된 값인 scatter plot을 그려봅니다.&lt;/p&gt;
+&lt;h3 id="3.2.-%EC%98%88%EC%B8%A1-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%95%98%EA%B8%B0"&gt;3.2. 예측 결과 시각화 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.2.-%EC%98%88%EC%B8%A1-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;x축은 실제 값으로 y축은 예측된 값인 scatter plot을 그려봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -644,7 +640,7 @@ AutoML fit time: 27.45 seconds
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.3.-hyper-parameter-최적화하기"&gt;3.3. hyper parameter 최적화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.3.-hyper-parameter-%EC%B5%9C%EC%A0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;mljar-supervised&lt;/code&gt;에는 hyper parameter를 다음과 같이 손쉽게 최적화 할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="3.3.-hyper-parameter-%EC%B5%9C%EC%A0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;3.3. hyper parameter 최적화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#3.3.-hyper-parameter-%EC%B5%9C%EC%A0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;mljar-supervised&lt;/code&gt;에는 hyper parameter를 다음과 같이 손쉽게 최적화 할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -876,8 +872,8 @@ AutoML fit time: 210.63 seconds
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;큰 차이는 보이지 않지만 hyper parameter가 최적화된 모델에는 몇개의 데이터가 중심에서 벗어난 것 처럼 보입니다.&lt;/p&gt;
-&lt;h2 id="4.-마치며"&gt;4. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;그동안 기계 학습에서 적합한 모델을 선택하고 hyper parameter를 최적화하는 작업은 사용자가 할 일이라고 여겨져왔습니다. 그러나 AutoML이라는 개념이 등장하면서 이제 사용자들은 feature engineering에 집중할 수 있게 되었습니다. 그런 AutoML 도구 중에 &lt;code&gt;mljar-supervised&lt;/code&gt; 패키지는 쉬운 사용법과 상당히 깔끔한 보고서를 만들 수 있게 해줍니다. 앞으로는 feature engineering 마져 자동화하는 도구가 나올지도 모른다는 생각이 듭니다.&lt;/p&gt;
+&lt;h2 id="4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;4. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/mljar-supervised/#4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;그동안 기계 학습에서 적합한 모델을 선택하고 hyper parameter를 최적화하는 작업은 사용자가 할 일이라고 여겨져왔습니다. 그러나 AutoML이라는 개념이 등장하면서 이제 사용자들은 feature engineering에 집중할 수 있게 되었습니다. 그런 AutoML 도구 중에 &lt;code&gt;mljar-supervised&lt;/code&gt; 패키지는 쉬운 사용법과 상당히 깔끔한 보고서를 만들 수 있게 해줍니다. 앞으로는 feature engineering 마져 자동화하는 도구가 나올지도 모른다는 생각이 듭니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Antibody</category><category>Automl</category><category>Mutations</category><category>돌연변이</category><category>항체</category><guid>https://partrita.github.io/posts/mljar-supervised/</guid><pubDate>Wed, 25 Nov 2020 23:00:32 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>Antibody</category><category>Automl</category><category>Mutations</category><category>돌연변이</category><category>항체</category><guid>https://partrita.github.io/posts/mljar-supervised/</guid><pubDate>Wed, 25 Nov 2020 23:00:32 GMT</pubDate></item></channel></rss>

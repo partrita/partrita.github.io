@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about RESTful)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/restful.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>카카오의 REST API 사용하기</title><link>https://partrita.github.io/posts/kakao_api/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about RESTful)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/restful.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>카카오의 REST API 사용하기</title><link>https://partrita.github.io/posts/kakao_api/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-카카오-비전-API"&gt;0. 카카오 비전 API&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#0.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;카카오에서 최근에 흥미로운 서비스를 시작했습니다. 컴퓨터 비전(Computer Vision)으로 이미지 분석을 해주는 API를 &lt;strong&gt;카카오 비전&lt;/strong&gt;을 공개한 것입니다. 카카오 비전은 이미지를 분석해서 콘텐츠 형태와 의미를 이해하고, 이미지를 활용할 수 있게 도와주는 API입니다. 현재 제공되는 API의 종류는 다음과 같습니다.&lt;/p&gt;
+&lt;h2 id="0.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API"&gt;0. 카카오 비전 API&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#0.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;카카오에서 최근에 흥미로운 서비스를 시작했습니다. 컴퓨터 비전(Computer Vision)으로 이미지 분석을 해주는 API를 &lt;strong&gt;카카오 비전&lt;/strong&gt;을 공개한 것입니다. 카카오 비전은 이미지를 분석해서 콘텐츠 형태와 의미를 이해하고, 이미지를 활용할 수 있게 도와주는 API입니다. 현재 제공되는 API의 종류는 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;얼굴 검출&lt;/li&gt;
 &lt;li&gt;상품 검출&lt;/li&gt;
@@ -10,20 +10,20 @@
 &lt;li&gt;성인 이미지 판별&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;얼굴 인식은 컴퓨터 비전에서 특별히 새로운 기술은 아닙니다만, 저는 카카오에서 공개한 API의 성능을 한번 확인하고자 시도해 봤습니다. 카카오 비전에 대한 자세한 것은 &lt;a href="https://developers.kakao.com/docs/restapi/vision"&gt;이곳&lt;/a&gt;를 참고하세요.&lt;/p&gt;
-&lt;h2 id="1.-카카오-비전-API-준수사항"&gt;1. 카카오 비전 API 준수사항&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#1.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API-%EC%A4%80%EC%88%98%EC%82%AC%ED%95%AD"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;API 사용시 다음과 같은 사항을 준수해야 합니다.&lt;/p&gt;
+&lt;h2 id="1.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API-%EC%A4%80%EC%88%98%EC%82%AC%ED%95%AD"&gt;1. 카카오 비전 API 준수사항&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#1.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API-%EC%A4%80%EC%88%98%EC%82%AC%ED%95%AD"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;API 사용시 다음과 같은 사항을 준수해야 합니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;서버에서 호출하는 경우 REST API 키를 사용해 호출합니다.&lt;/li&gt;
 &lt;li&gt;모든 API는 file 또는 image_url 중 하나의 값을 지정해야 합니다.&lt;/li&gt;
 &lt;li&gt;file에 업로드되는 이미지와 image_url에 지정되는 이미지는 png 또는 jpg 포맷만 지원합니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="2.-활용-예제-살펴보기"&gt;2. 활용 예제 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#2.-%ED%99%9C%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;카카오에서 간단한 &lt;code&gt;파이썬&lt;/code&gt; 예제 코드를 제공하고 있습니다. 저는 거기에서 &lt;strong&gt;얼굴을 추출해 모자이크 처리하는 예제&lt;/strong&gt;를 테스트 해보겠습니다. 작동원리를 간단하게 서술해 보면, 먼저 카카오 API로 사진상의 얼굴의 좌표를 인식하고 &lt;code&gt;pillow&lt;/code&gt; 라이브러리를 이용해서 얼굴 부분의 이미지를 잘라냅니다. 그리고 리사이즈를 한뒤 원본 사진에 다시 붙여(모자이크처리) 넣습니다.&lt;/p&gt;
+&lt;h2 id="2.-%ED%99%9C%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;2. 활용 예제 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#2.-%ED%99%9C%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;카카오에서 간단한 &lt;code&gt;파이썬&lt;/code&gt; 예제 코드를 제공하고 있습니다. 저는 거기에서 &lt;strong&gt;얼굴을 추출해 모자이크 처리하는 예제&lt;/strong&gt;를 테스트 해보겠습니다. 작동원리를 간단하게 서술해 보면, 먼저 카카오 API로 사진상의 얼굴의 좌표를 인식하고 &lt;code&gt;pillow&lt;/code&gt; 라이브러리를 이용해서 얼굴 부분의 이미지를 잘라냅니다. 그리고 리사이즈를 한뒤 원본 사진에 다시 붙여(모자이크처리) 넣습니다.&lt;/p&gt;
 &lt;p&gt;예제로 사용할 사진은 아래와 같이 준비했습니다.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;원숭이 사진  &lt;/li&gt;
+&lt;li&gt;원숭이 사진&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/HIp4WAQ.jpg" alt="monkey"&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;단체사진  &lt;/li&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;단체사진&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/9n0fVoI.jpg" alt="peoples"&gt;&lt;/p&gt;
 &lt;p&gt;사용한 코드는 아래와 같습니다. 몇가지 설명을 덧붙이자면,&lt;/p&gt;
@@ -34,7 +34,7 @@
 &lt;li&gt;모자이크 처리된 파일은 파일명에 &lt;em&gt;mosaic_&lt;/em&gt;를 붙여서 생성됩니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;코드를 &lt;code&gt;kakao_api.py&lt;/code&gt;로 저장하고 터미널에서&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python kakao_api.py -f ./.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;kakao_api.py&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;./.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;라고 입력합니다.&lt;/p&gt;
 
@@ -132,16 +132,16 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.-결과-확인"&gt;3. 결과 확인&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#3.-%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;원숭이 사진  &lt;/li&gt;
+&lt;h2 id="3.-%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8"&gt;3. 결과 확인&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#3.-%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;원숭이 사진&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/SMNZSM4.jpg" alt=""&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;단체사진  &lt;/li&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;단체사진&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/DwBjyNp.jpg" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;얼굴을 인식해서 모자이크 처리가 되는것을 볼수 있습니다. 첫 번째 원숭이 사진은 물론이고 단체사진의 얼굴도 인식을 잘 하는 것을 확인할 수 있습니다. 물론 모든 사진에서 성공적인 결과를 얻지는 못했습니다만, 얼굴 인식의 경우는 상당히 잘 작동합니다. 다른 API들도 테스트를 해보니 상품 검출 API는 아직 인식률과 오작동이 많습니다. 아마도 기술적으로 좀 더 어렵기 때문이겠죠. 테스트중에 알아낸 또 다른것은 사진 용량의 제한입니다. 사진 파일의 용량이 10MB 이상이면 에러메세지가 나오는데 아마도 제한을 걸어둔것 같습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>API</category><category>kakao</category><category>Python</category><category>RESTful</category><category>Web</category><guid>https://partrita.github.io/posts/kakao_api/</guid><pubDate>Fri, 16 Mar 2018 06:35:54 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>API</category><category>kakao</category><category>Python</category><category>RESTful</category><category>Web</category><guid>https://partrita.github.io/posts/kakao_api/</guid><pubDate>Fri, 16 Mar 2018 06:35:54 GMT</pubDate></item></channel></rss>

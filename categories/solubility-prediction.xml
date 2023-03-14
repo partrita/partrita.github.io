@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Solubility prediction)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/solubility-prediction.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:27 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>머신러닝으로 단백질 용해도 예측하기</title><link>https://partrita.github.io/posts/solubility/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Solubility prediction)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/solubility-prediction.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>머신러닝으로 단백질 용해도 예측하기</title><link>https://partrita.github.io/posts/solubility/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-단백질-용해도-예측"&gt;0. 단백질 용해도 예측&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#0.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9A%A9%ED%95%B4%EB%8F%84-%EC%98%88%EC%B8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;유전자 재조합을 통해 특정 단백질을 과발현시키는 것은 생명과학에서 아주 중요한 일입니다. 그러나 대부분의 과발현 단백질은 &lt;a href="https://en.wikipedia.org/wiki/Inclusion_bodies"&gt;inclusion bodies&lt;/a&gt;를 형성해 용해도가 매우 낮은 문제가 있습니다. 그렇기 때문에 단백질 용해도를 예측하는 일은 실험의 시행착오를 줄이는데 도움이 됩니다.&lt;/p&gt;
+&lt;h2 id="0.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9A%A9%ED%95%B4%EB%8F%84-%EC%98%88%EC%B8%A1"&gt;0. 단백질 용해도 예측&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#0.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9A%A9%ED%95%B4%EB%8F%84-%EC%98%88%EC%B8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;유전자 재조합을 통해 특정 단백질을 과발현시키는 것은 생명과학에서 아주 중요한 일입니다. 그러나 대부분의 과발현 단백질은 &lt;a href="https://en.wikipedia.org/wiki/Inclusion_bodies"&gt;inclusion bodies&lt;/a&gt;를 형성해 용해도가 매우 낮은 문제가 있습니다. 그렇기 때문에 단백질 용해도를 예측하는 일은 실험의 시행착오를 줄이는데 도움이 됩니다.&lt;/p&gt;
 &lt;p&gt;여기서는 대장균에서 발현되는 단백질 데이터를 가지고 기계학습으로 용해도를 예측하는 문제를 풀어보겠습니다.&lt;/p&gt;
-&lt;h2 id="1.-eSOL-데이터셋-설명"&gt;1. eSOL 데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#1.-eSOL-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분석에 사용한 eSOL(Solubility database of all E.coli proteins) 데이터셋은 Targeted Proteins Research Project을 통해 &lt;a href="http://tp-esol.genes.nig.ac.jp/"&gt;http://tp-esol.genes.nig.ac.jp/&lt;/a&gt; 에 공개 되어있습니다.&lt;/p&gt;
+&lt;h2 id="1.-eSOL-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;1. eSOL 데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#1.-eSOL-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분석에 사용한 eSOL(Solubility database of all E.coli proteins) 데이터셋은 Targeted Proteins Research Project을 통해 &lt;a href="http://tp-esol.genes.nig.ac.jp/"&gt;http://tp-esol.genes.nig.ac.jp/&lt;/a&gt; 에 공개 되어있습니다.&lt;/p&gt;
 &lt;p&gt;공식 페이지에서는 해당 데이터셋에 대해 다음과 같이 설명 합니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src="http://www.tanpaku.org/tp-esol/images/fig1_e.jpg" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;eSOL is a database on the solubility of entire ensemble E.coli proteins (Niwa T, Ying BW, Saito K, Jin W, Takada S, Ueda T and Taguchi H, 2009) individually synthesized by PURE system that is chaperone free.&lt;/p&gt;
 &lt;p&gt;대장균(&lt;em&gt;E.coli&lt;/em&gt;) 단백질의 용해도(Solubility)는 아래의 공식을 통해 계산되었습니다.&lt;/p&gt;
 $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;p&gt;따라서 주의해야 할 것은 용해도가 동일해도 전체 발현량은 동일하지 않을 수 있습니다.&lt;/p&gt;
-&lt;h2 id="2.-데이터셋-불러오기"&gt;2. 데이터셋 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;pandas&lt;/code&gt; 라이브러리를 사용해 데이터셋을 불러옵니다. 원본 데이터셋은 &lt;code&gt;tsv&lt;/code&gt;형식으로 되어 있지만, 편의를 위해 &lt;code&gt;csv&lt;/code&gt;형식으로 변경하고 단백질 서열 정보를 추가했습니다.&lt;/p&gt;
+&lt;h2 id="2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;2. 데이터셋 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;pandas&lt;/code&gt; 라이브러리를 사용해 데이터셋을 불러옵니다. 원본 데이터셋은 &lt;code&gt;tsv&lt;/code&gt;형식으로 되어 있지만, 편의를 위해 &lt;code&gt;csv&lt;/code&gt;형식으로 변경하고 단백질 서열 정보를 추가했습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -40,8 +40,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -103,8 +102,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -116,9 +114,9 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;불러온 데이터셋의 마지막 5개 데이터는 위와 같습니다. 데이터셋에는 총 3147개의 단백질의 유전자이름과 서열정보 그리고 용해도값이 들어 있습니다.&lt;/p&gt;
-&lt;h2 id="3.-추가-데이터-열-만들기"&gt;3. 추가 데이터 열 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.-%EC%B6%94%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;단백질 서열은 상직적(symbolic) 정보입니다. 따라서 를 포함하고 있습니다. 따라서 다양한 분석법을 통해 기계학습에 유용한 특성(feature)를 만들 수 있습니다.&lt;/p&gt;
+&lt;h2 id="3.-%EC%B6%94%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;3. 추가 데이터 열 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.-%EC%B6%94%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;단백질 서열은 상직적(symbolic) 정보입니다. 따라서 를 포함하고 있습니다. 따라서 다양한 분석법을 통해 기계학습에 유용한 특성(feature)를 만들 수 있습니다.&lt;/p&gt;
 &lt;p&gt;먼저 전체 단백질 서열에서 각각의 아미노산의 비율에 대한 데이터를 추가해봅니다. 파이썬 기본 함수인 &lt;code&gt;count()&lt;/code&gt;를 사용합니다.&lt;/p&gt;
-&lt;h3 id="3.1.-아미노산의-비율"&gt;3.1. 아미노산의 비율&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.1.-%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0%EC%9D%98-%EB%B9%84%EC%9C%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="3.1.-%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0%EC%9D%98-%EB%B9%84%EC%9C%A8"&gt;3.1. 아미노산의 비율&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.1.-%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0%EC%9D%98-%EB%B9%84%EC%9C%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -142,7 +140,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;이제 &lt;code&gt;Biopython&lt;/code&gt; 라이브러리에 있는 도구를 사용해 추가적인 데이터를 만들어 보겠습니다.&lt;/p&gt;
-&lt;h3 id="3.2.-단백질의-분자량"&gt;3.2. 단백질의 분자량&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.2.-%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%9D%98-%EB%B6%84%EC%9E%90%EB%9F%89"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Biopython.ProteinAnalysis&lt;/code&gt; 객체를 사용합니다.&lt;/p&gt;
+&lt;h3 id="3.2.-%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%9D%98-%EB%B6%84%EC%9E%90%EB%9F%89"&gt;3.2. 단백질의 분자량&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.2.-%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%9D%98-%EB%B6%84%EC%9E%90%EB%9F%89"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Biopython.ProteinAnalysis&lt;/code&gt; 객체를 사용합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -165,7 +163,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.3.-다양한-계산값"&gt;3.3. 다양한 계산값&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.3.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B3%84%EC%82%B0%EA%B0%92"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단백질의 방향족(aromaticity) 아미노산 비율, 불안정성(instability index), 등전점(isoelectric point)등에 관한 값을 추가합니다.&lt;/p&gt;
+&lt;h3 id="3.3.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B3%84%EC%82%B0%EA%B0%92"&gt;3.3. 다양한 계산값&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.3.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B3%84%EC%82%B0%EA%B0%92"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단백질의 방향족(aromaticity) 아미노산 비율, 불안정성(instability index), 등전점(isoelectric point)등에 관한 값을 추가합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -189,7 +187,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.4.-단백질-2차-구조"&gt;3.4. 단백질 2차 구조&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.4.-%EB%8B%A8%EB%B0%B1%EC%A7%88-2%EC%B0%A8-%EA%B5%AC%EC%A1%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단백질 2차 구조의 비율에 대한 값을 추가합니다. 현재 단백질 서열을 통해 2차 구조를 예측하는 것은 상당히 정확한 편입니다.&lt;/p&gt;
+&lt;h3 id="3.4.-%EB%8B%A8%EB%B0%B1%EC%A7%88-2%EC%B0%A8-%EA%B5%AC%EC%A1%B0"&gt;3.4. 단백질 2차 구조&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.4.-%EB%8B%A8%EB%B0%B1%EC%A7%88-2%EC%B0%A8-%EA%B5%AC%EC%A1%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단백질 2차 구조의 비율에 대한 값을 추가합니다. 현재 단백질 서열을 통해 2차 구조를 예측하는 것은 상당히 정확한 편입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -212,7 +210,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.5.-흡광-계수"&gt;3.5. 흡광 계수&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.5.-%ED%9D%A1%EA%B4%91-%EA%B3%84%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단백질의 흡광 계수는 주로 농도를 계산하는데 사용되는 값으로 소수성 아미노산과 시스테인(cysteine)의 비율과 관련있습니다.&lt;/p&gt;
+&lt;h3 id="3.5.-%ED%9D%A1%EA%B4%91-%EA%B3%84%EC%88%98"&gt;3.5. 흡광 계수&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.5.-%ED%9D%A1%EA%B4%91-%EA%B3%84%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단백질의 흡광 계수는 주로 농도를 계산하는데 사용되는 값으로 소수성 아미노산과 시스테인(cysteine)의 비율과 관련있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -234,7 +232,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.6.-단백질-유연성-정보"&gt;3.6. 단백질 유연성 정보&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.6.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9C%A0%EC%97%B0%EC%84%B1-%EC%A0%95%EB%B3%B4"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단백질 서열의 각 위치에 대한 아미노산 유연성을 계산합니다. 그런다음 평균값과 표준편차, 중간값을 추가합니다.&lt;/p&gt;
+&lt;h3 id="3.6.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9C%A0%EC%97%B0%EC%84%B1-%EC%A0%95%EB%B3%B4"&gt;3.6. 단백질 유연성 정보&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.6.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9C%A0%EC%97%B0%EC%84%B1-%EC%A0%95%EB%B3%B4"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단백질 서열의 각 위치에 대한 아미노산 유연성을 계산합니다. 그런다음 평균값과 표준편차, 중간값을 추가합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -315,8 +313,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -481,8 +478,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;5 rows × 43 columns&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -520,8 +516,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -758,8 +753,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;8 rows × 41 columns&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -771,7 +765,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 테이블을 통해 용해도의 표준편차값이 높다는 것과 생성한 데이터들이 음수값도 포함하고 있다는 것을 알 수 있습니다.&lt;/p&gt;
-&lt;h3 id="3.7.-데이터-행-정렬"&gt;3.7. 데이터 행 정렬&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.7.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%96%89-%EC%A0%95%EB%A0%AC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터 처리의 편의를 위해 &lt;code&gt;Solubility&lt;/code&gt;, &lt;code&gt;Sequence&lt;/code&gt; 행의 위치를 변경합니다.&lt;/p&gt;
+&lt;h3 id="3.7.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%96%89-%EC%A0%95%EB%A0%AC"&gt;3.7. 데이터 행 정렬&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.7.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%96%89-%EC%A0%95%EB%A0%AC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터 처리의 편의를 위해 &lt;code&gt;Solubility&lt;/code&gt;, &lt;code&gt;Sequence&lt;/code&gt; 행의 위치를 변경합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -864,8 +858,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1030,8 +1023,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;5 rows × 43 columns&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1042,7 +1034,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.8.-데이터셋-파일로-저장"&gt;3.8. 데이터셋 파일로 저장&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%ED%8C%8C%EC%9D%BC%EB%A1%9C-%EC%A0%80%EC%9E%A5"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;아래 명령어를 통해 데이터셋을 파일로 저장 할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="3.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%ED%8C%8C%EC%9D%BC%EB%A1%9C-%EC%A0%80%EC%9E%A5"&gt;3.8. 데이터셋 파일로 저장&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#3.8.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%ED%8C%8C%EC%9D%BC%EB%A1%9C-%EC%A0%80%EC%9E%A5"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;아래 명령어를 통해 데이터셋을 파일로 저장 할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1063,7 +1055,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="4.--시각화로-EDA-하기"&gt;4.  시각화로 EDA 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#4.--%EC%8B%9C%EA%B0%81%ED%99%94%EB%A1%9C-EDA-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;간단한 시각화를 통해 데이터셋이 어떻게 분포되어 있는지 확인합니다.&lt;/p&gt;
+&lt;h2 id="4.--%EC%8B%9C%EA%B0%81%ED%99%94%EB%A1%9C-EDA-%ED%95%98%EA%B8%B0"&gt;4.  시각화로 EDA 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#4.--%EC%8B%9C%EA%B0%81%ED%99%94%EB%A1%9C-EDA-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;간단한 시각화를 통해 데이터셋이 어떻게 분포되어 있는지 확인합니다.&lt;/p&gt;
 &lt;h3 id="4.1.-Scatter-plot"&gt;4.1. Scatter plot&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#4.1.-Scatter-plot"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1181,7 +1173,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 시각화를 통해 대부분의 단백질의 크기는 30kDa 주변에 몰려있으며, 용해도는 20%와 80% 그룹으로 나뉜다는 것을 알 수 있습니다. 또한 상대적으로 높은 용해도의 단백질은 25kDa 이하의 크기입니다.&lt;/p&gt;
-&lt;h2 id="5.-데이터-전처리"&gt;5. 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#5.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;기계학습을 위해 데이터셋을 특성(feature)값과 결과값으로 분리합니다.&lt;/p&gt;
+&lt;h2 id="5.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;5. 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#5.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;기계학습을 위해 데이터셋을 특성(feature)값과 결과값으로 분리합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1233,7 +1225,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="5.1.-특성값-정규화하기"&gt;5.1. 특성값 정규화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#5.1.-%ED%8A%B9%EC%84%B1%EA%B0%92-%EC%A0%95%EA%B7%9C%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;정규화를 통해 기계 학습 모델이 특정 특성값에 바이어스(Bias)를 갖지 않게 합니다.&lt;/p&gt;
+&lt;h3 id="5.1.-%ED%8A%B9%EC%84%B1%EA%B0%92-%EC%A0%95%EA%B7%9C%ED%99%94%ED%95%98%EA%B8%B0"&gt;5.1. 특성값 정규화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#5.1.-%ED%8A%B9%EC%84%B1%EA%B0%92-%EC%A0%95%EA%B7%9C%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;정규화를 통해 기계 학습 모델이 특정 특성값에 바이어스(Bias)를 갖지 않게 합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1260,7 +1252,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="6.-기계학습하기"&gt;6. 기계학습하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#6.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="6.1.-다양한-기계-모델-비교"&gt;6.1. 다양한 기계 모델 비교&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#6.1.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B8%B0%EA%B3%84-%EB%AA%A8%EB%8D%B8-%EB%B9%84%EA%B5%90"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;간단한 선형모델부터 다양한 기계 학습 모델을 사용해보고 평가 지표를 통해 가장 좋은 모델을 찾습니다. 예측의 정확도를 평가하기 위해 MAPE(Mean absolute percentage error)를 평가지표로 사용했습니다.&lt;/p&gt;
+&lt;h2 id="6.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0"&gt;6. 기계학습하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#6.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="6.1.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B8%B0%EA%B3%84-%EB%AA%A8%EB%8D%B8-%EB%B9%84%EA%B5%90"&gt;6.1. 다양한 기계 모델 비교&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#6.1.-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B8%B0%EA%B3%84-%EB%AA%A8%EB%8D%B8-%EB%B9%84%EA%B5%90"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;간단한 선형모델부터 다양한 기계 학습 모델을 사용해보고 평가 지표를 통해 가장 좋은 모델을 찾습니다. 예측의 정확도를 평가하기 위해 MAPE(Mean absolute percentage error)를 평가지표로 사용했습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1316,7 +1308,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;accuracy&lt;/span&gt;
 
 &lt;span class="n"&gt;accuracy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lin_reg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{accuracy:.2f}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;accuracy&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.2f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1361,7 +1353,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;span class="n"&gt;tree_reg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;accuracy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tree_reg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{accuracy:.2f}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;accuracy&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.2f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1398,7 +1390,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;span class="n"&gt;svm_reg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;accuracy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;svm_reg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{accuracy:.2f}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;accuracy&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.2f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1434,7 +1426,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;span class="n"&gt;forest_reg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;accuracy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forest_reg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{accuracy:.2f}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;accuracy&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.2f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1470,7 +1462,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;span class="n"&gt;gbr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;accuracy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gbr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{accuracy:.2f}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;accuracy&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.2f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# print(f'Score = {gbr.score(X_train, y_train)}') # R^2 socre&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1509,7 +1501,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;span class="n"&gt;hgr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;accuracy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hgr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{accuracy:.2f}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Accuracy = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;accuracy&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.2f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; %'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# print(f'Score = {hgr.score(X_train, y_train)}') # R^2 socre&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1540,7 +1532,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;가장 최근에 추가된 기능인 &lt;code&gt;HistGradientBoostingRegressor&lt;/code&gt;이 가장 좋은 성능을 보여줍니다.&lt;/p&gt;
-&lt;h3 id="6.2.-특성의-중요도"&gt;6.2. 특성의 중요도&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#6.2.-%ED%8A%B9%EC%84%B1%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이제 데이터의 어느 특성이 모델 예측에 중요한지 살펴보겠습니다. 간단한 시각화로 막대그래프를 그려봅니다.&lt;/p&gt;
+&lt;h3 id="6.2.-%ED%8A%B9%EC%84%B1%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84"&gt;6.2. 특성의 중요도&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#6.2.-%ED%8A%B9%EC%84%B1%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이제 데이터의 어느 특성이 모델 예측에 중요한지 살펴보겠습니다. 간단한 시각화로 막대그래프를 그려봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1601,7 +1593,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
 &lt;li&gt;pI값(29번째 특성)&lt;/li&gt;
 &lt;li&gt;분광계수(24번째 특성)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id="7.-모델의-매개-변수-최적화"&gt;7. 모델의 매개 변수 최적화&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#7.-%EB%AA%A8%EB%8D%B8%EC%9D%98-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98-%EC%B5%9C%EC%A0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;GridSearchCV&lt;/code&gt;를 사용해 가장 좋은 성능을 나타내는 매개변수 값을 찾아봅니다.&lt;/p&gt;
+&lt;h2 id="7.-%EB%AA%A8%EB%8D%B8%EC%9D%98-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98-%EC%B5%9C%EC%A0%81%ED%99%94"&gt;7. 모델의 매개 변수 최적화&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#7.-%EB%AA%A8%EB%8D%B8%EC%9D%98-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98-%EC%B5%9C%EC%A0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;GridSearchCV&lt;/code&gt;를 사용해 가장 좋은 성능을 나타내는 매개변수 값을 찾아봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1684,7 +1676,7 @@ $$ Solubility = \frac{Supernatant fraction}{uncentrifuged fraction} * 100 $$&lt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cvres&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;  &lt;span class="n"&gt;grid_search&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cv_results_&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;mean_score&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cvres&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"mean_test_score"&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;cvres&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"params"&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Score = &lt;/span&gt;&lt;span class="si"&gt;{mean_score:.2f}&lt;/span&gt;&lt;span class="s1"&gt;, Params = &lt;/span&gt;&lt;span class="si"&gt;{params}&lt;/span&gt;&lt;span class="s1"&gt; '&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Score = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;mean_score&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.2f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;, Params = &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; '&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1812,7 +1804,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="8.-마치며"&gt;8. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#8.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;생성한 기계 학습 모델에 임의의 단백질 서열을 넣어 용해도를 예측해보겠습니다. 임의의 서열 2가지를 &lt;code&gt;csv&lt;/code&gt;파일에 넣어 데이터 전처리과정을 동일하게 거칩니다.&lt;/p&gt;
+&lt;h2 id="8.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;8. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#8.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;생성한 기계 학습 모델에 임의의 단백질 서열을 넣어 용해도를 예측해보겠습니다. 임의의 서열 2가지를 &lt;code&gt;csv&lt;/code&gt;파일에 넣어 데이터 전처리과정을 동일하게 거칩니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1840,8 +1832,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1879,8 +1870,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1935,8 +1925,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -2029,8 +2018,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;2 rows × 42 columns&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -2080,7 +2068,7 @@ Score = 80.39, Params = {'learning_rate': 0.1, 'max_depth': 100, 'min_samples_le
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pred_sol&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;grid_search&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;best_estimator_&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X2_scaled&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;gene&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'random'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'DPO1_THEAQ'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gene&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Predicted solubility of &lt;/span&gt;&lt;span class="si"&gt;{val}&lt;/span&gt;&lt;span class="s1"&gt; is &lt;/span&gt;&lt;span class="si"&gt;{pred_sol[idx]:.2f}&lt;/span&gt;&lt;span class="s1"&gt;%'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'Predicted solubility of &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;val&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; is &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;pred_sol&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.2f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;%'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -2114,4 +2102,4 @@ Predicted solubility of DPO1_THEAQ is 46.57%
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>machine learning</category><category>Protein</category><category>Python</category><category>Solubility prediction</category><category>단백질</category><category>머신러닝</category><category>용해도</category><guid>https://partrita.github.io/posts/solubility/</guid><pubDate>Tue, 29 Oct 2019 09:29:39 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>machine learning</category><category>Protein</category><category>Python</category><category>Solubility prediction</category><category>단백질</category><category>머신러닝</category><category>용해도</category><guid>https://partrita.github.io/posts/solubility/</guid><pubDate>Tue, 29 Oct 2019 09:29:39 GMT</pubDate></item></channel></rss>

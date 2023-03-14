@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Bioinformatics)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/bioinformatics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:29 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>96well 모양으로 시각화하기</title><link>https://partrita.github.io/posts/96well-binding/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Bioinformatics)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/bioinformatics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>96well 모양으로 시각화하기</title><link>https://partrita.github.io/posts/96well-binding/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://wol-prod-cdn.literatumonline.com/cms/attachment/34d4c21b-2fe3-4afa-bab1-cffd62d036bc/biot201800007-fig-0002-m.png" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;논문을 읽다 보면 위의 그림의 A 처럼 96well 형태로 시각화한것을 볼 수 있습니다. 가만히 생각해보면 위의 그림은 산점도(scatter plot)을 그리고 Binding 값을 점의 크기로 표현하면 될 것같습니다. 오늘은 그런 그림을 파이썬으로 그려봅니다.&lt;/p&gt;
-&lt;h3 id="필요한-라이브러리-불러오기"&gt;필요한 라이브러리 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#%ED%95%84%EC%9A%94%ED%95%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="%ED%95%84%EC%9A%94%ED%95%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;필요한 라이브러리 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#%ED%95%84%EC%9A%94%ED%95%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -29,7 +29,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="데이터-불러오기"&gt;데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시각화할 데이터를 &lt;code&gt;pandas&lt;/code&gt;로 불러옵니다.&lt;/p&gt;
+&lt;h3 id="%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시각화할 데이터를 &lt;code&gt;pandas&lt;/code&gt;로 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -57,8 +57,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -114,8 +113,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -153,8 +151,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -210,8 +207,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -223,7 +219,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위의 결과를 통해 Binding의 최대값은 26800, 최소값은 2700, 평균은 13840인것을 알 수 있습니다.&lt;/p&gt;
-&lt;h3 id="Seaborn-사용하기"&gt;Seaborn 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#Seaborn-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;seaborn&lt;/code&gt; 라이브러리를 사용해 시각화해봅니다.&lt;/p&gt;
+&lt;h3 id="Seaborn-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;Seaborn 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#Seaborn-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;seaborn&lt;/code&gt; 라이브러리를 사용해 시각화해봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -283,7 +279,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;똑같지는 않지만 비슷한 그래프를 그릴 수 있습니다. 게다가 코드도 간단합니다.&lt;/p&gt;
-&lt;h3 id="Matplotlib-사용하기"&gt;Matplotlib 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#Matplotlib-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;matplotlib&lt;/code&gt;을 사용해 구현해봅니다. &lt;code&gt;seaborn&lt;/code&gt;보다는 복잡하지만 좀 더 유연하게 사용할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="Matplotlib-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;Matplotlib 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/96well-binding/#Matplotlib-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;matplotlib&lt;/code&gt;을 사용해 구현해봅니다. &lt;code&gt;seaborn&lt;/code&gt;보다는 복잡하지만 좀 더 유연하게 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -338,16 +334,16 @@
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>96well</category><category>Bioinformatics</category><category>Python</category><guid>https://partrita.github.io/posts/96well-binding/</guid><pubDate>Wed, 06 Mar 2019 21:07:20 GMT</pubDate></item><item><title>Cloning_with_pyDNA</title><link>https://partrita.github.io/posts/pydna/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>96well</category><category>Bioinformatics</category><category>Python</category><guid>https://partrita.github.io/posts/96well-binding/</guid><pubDate>Wed, 06 Mar 2019 21:07:20 GMT</pubDate></item><item><title>Cloning_with_pyDNA</title><link>https://partrita.github.io/posts/pydna/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;_             
-                &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;            
- ____  _   _  __&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;___   __ ___
-&lt;span class="p"&gt;|&lt;/span&gt;  _ &lt;span class="se"&gt;\|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;/ _  &lt;span class="p"&gt;|&lt;/span&gt;  _ &lt;span class="se"&gt;\(&lt;/span&gt;____ &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; / ___ &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;span class="p"&gt;|&lt;/span&gt;  __/ &lt;span class="se"&gt;\_&lt;/span&gt;_  &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="se"&gt;\_&lt;/span&gt;___&lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="se"&gt;\_&lt;/span&gt;____&lt;span class="p"&gt;|&lt;/span&gt;
-&lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt;   &lt;span class="o"&gt;(&lt;/span&gt;____/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;_&lt;span class="w"&gt;             &lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;____&lt;span class="w"&gt;  &lt;/span&gt;_&lt;span class="w"&gt;   &lt;/span&gt;_&lt;span class="w"&gt;  &lt;/span&gt;__&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;___&lt;span class="w"&gt;   &lt;/span&gt;__&lt;span class="w"&gt; &lt;/span&gt;___
+&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;_&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;_&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;_&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\(&lt;/span&gt;____&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;___&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;__/&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\_&lt;/span&gt;_&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="se"&gt;\_&lt;/span&gt;___&lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="se"&gt;\_&lt;/span&gt;____&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;_&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;____/
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-015-0544-x"&gt;Pydna&lt;/a&gt; 파이썬 패키지는 분자 생물학의 클로닝을 도와줍니다. 제공하는 기능은 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -383,7 +379,8 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="서열-불러오기"&gt;서열 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#%EC%84%9C%EC%97%B4-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;&lt;p&gt;사용된 서열은 ape 파일로 저장되어 있습니다.&lt;/p&gt;
+&lt;h3 id="%EC%84%9C%EC%97%B4-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;서열 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#%EC%84%9C%EC%97%B4-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;사용된 서열은 ape 파일로 저장되어 있습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;
@@ -408,7 +405,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="PCR-진행하기"&gt;PCR 진행하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#PCR-%EC%A7%84%ED%96%89%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="PCR-%EC%A7%84%ED%96%89%ED%95%98%EA%B8%B0"&gt;PCR 진행하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#PCR-%EC%A7%84%ED%96%89%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -429,7 +426,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Agarose-gel-electrophoresis-결과-예측"&gt;Agarose gel electrophoresis 결과 예측&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#Agarose-gel-electrophoresis-%EA%B2%B0%EA%B3%BC-%EC%98%88%EC%B8%A1"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Agarose-gel-electrophoresis-%EA%B2%B0%EA%B3%BC-%EC%98%88%EC%B8%A1"&gt;Agarose gel electrophoresis 결과 예측&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#Agarose-gel-electrophoresis-%EA%B2%B0%EA%B3%BC-%EC%98%88%EC%B8%A1"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -472,8 +469,8 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="PCR-조건-예측"&gt;PCR 조건 예측&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#PCR-%EC%A1%B0%EA%B1%B4-%EC%98%88%EC%B8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;일반적인 taq polymerase PCR과 pFu를 사용한 PCR의 조건을 예측해보겠습니다.&lt;/p&gt;
-&lt;h3 id="일반-PCR"&gt;일반 PCR&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#%EC%9D%BC%EB%B0%98-PCR"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id="PCR-%EC%A1%B0%EA%B1%B4-%EC%98%88%EC%B8%A1"&gt;PCR 조건 예측&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#PCR-%EC%A1%B0%EA%B1%B4-%EC%98%88%EC%B8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;일반적인 taq polymerase PCR과 pFu를 사용한 PCR의 조건을 예측해보겠습니다.&lt;/p&gt;
+&lt;h3 id="%EC%9D%BC%EB%B0%98-PCR"&gt;일반 PCR&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#%EC%9D%BC%EB%B0%98-PCR"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -566,7 +563,7 @@ __________|_____          72.0°C |72.0°C|Primer1C 1.0µM
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Primer-anealing-예측"&gt;Primer anealing 예측&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#Primer-anealing-%EC%98%88%EC%B8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Primer가 template DNA에 어떻게 붙는지를 예상해보겠습니다.&lt;/p&gt;
+&lt;h2 id="Primer-anealing-%EC%98%88%EC%B8%A1"&gt;Primer anealing 예측&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#Primer-anealing-%EC%98%88%EC%B8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Primer가 template DNA에 어떻게 붙는지를 예상해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -672,29 +669,32 @@ No reverse primers anneal...&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;이런 에러가 나는군요.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;No reverse primers anneal...&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;No reverse primers anneal...&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;사용된 reverse primer가 잘못되었기 때문입니다.&lt;/p&gt;
-&lt;h2 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;위에서 살펴본 기능들은 다른 상용 프로그램에서 쉽게 사용할 수 있는것들입니다. 그럼에도 불구하고 &lt;strong&gt;pydna&lt;/strong&gt;가 가지는 강점은 자동화가 쉽다는데 있습니다. 수백개의 클로닝을 진행해야 할때는 마우스클릭만으로는 어렵기 때문입니다. 또한 &lt;a href="https://pydna.readthedocs.io/index.html"&gt;공식문서&lt;/a&gt;를 참고 하시면 더 다양한 기능을 사용할 수 있습니다.&lt;/p&gt;
+&lt;h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/pydna/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;위에서 살펴본 기능들은 다른 상용 프로그램에서 쉽게 사용할 수 있는것들입니다. 그럼에도 불구하고 &lt;strong&gt;pydna&lt;/strong&gt;가 가지는 강점은 자동화가 쉽다는데 있습니다. 수백개의 클로닝을 진행해야 할때는 마우스클릭만으로는 어렵기 때문입니다. 또한 &lt;a href="https://pydna.readthedocs.io/index.html"&gt;공식문서&lt;/a&gt;를 참고 하시면 더 다양한 기능을 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Bioinformatics</category><guid>https://partrita.github.io/posts/pydna/</guid><pubDate>Wed, 19 Dec 2018 09:07:20 GMT</pubDate></item><item><title>당뇨환자의 재입원율(Diabetes_Readmission_rate)</title><link>https://partrita.github.io/posts/Diabetes_Readmission/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>Bioinformatics</category><guid>https://partrita.github.io/posts/pydna/</guid><pubDate>Wed, 19 Dec 2018 09:07:20 GMT</pubDate></item><item><title>당뇨환자의 재입원율(Diabetes_Readmission_rate)</title><link>https://partrita.github.io/posts/Diabetes_Readmission/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="당뇨-환자의-재입원-요인-분석"&gt;당뇨 환자의 재입원 요인 분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8B%B9%EB%87%A8-%ED%99%98%EC%9E%90%EC%9D%98-%EC%9E%AC%EC%9E%85%EC%9B%90-%EC%9A%94%EC%9D%B8-%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="http://khiss.go.kr/board/view?pageNum=1&amp;amp;rowCnt=10&amp;amp;menuId=MENU00307&amp;amp;schType=0&amp;amp;schText=&amp;amp;categoryId=&amp;amp;continent=&amp;amp;country=&amp;amp;boardStyle=&amp;amp;linkId=63698"&gt;인공지능, 심질환자 재입원 가능성 예측&lt;/a&gt; 기사를 보고 저도 한번 비슷한 문제를 풀어보고 싶었습니다.  인터넷에 공개되어있는 데이터 중에 &lt;a href="https://archive.ics.uci.edu/ml/datasets/diabetes+130-us+hospitals+for+years+1999-2008"&gt;당뇨환자의 재입원 데이터&lt;/a&gt;가 있더군요. 또한 당뇨환자들은 재입원 비율이 일반환자보다 높다고 알려져있습니다 &lt;a href="https://clindiabetesendo.biomedcentral.com/articles/10.1186/s40842-016-0040-x"&gt;관련 논문&lt;/a&gt;. 그래서 제가 한번 해봤습니다.&lt;/p&gt;
-&lt;h3 id="재입원이-왜-문제죠?"&gt;재입원이 왜 문제죠?&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9D%B4-%EC%99%9C-%EB%AC%B8%EC%A0%9C%EC%A3%A0?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://www.openplacement.com/uploads/op/files/revolvingdoor-11.07_.12_.jpg" alt="image"&gt;&lt;/p&gt;
+&lt;h2 id="%EB%8B%B9%EB%87%A8-%ED%99%98%EC%9E%90%EC%9D%98-%EC%9E%AC%EC%9E%85%EC%9B%90-%EC%9A%94%EC%9D%B8-%EB%B6%84%EC%84%9D"&gt;당뇨 환자의 재입원 요인 분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8B%B9%EB%87%A8-%ED%99%98%EC%9E%90%EC%9D%98-%EC%9E%AC%EC%9E%85%EC%9B%90-%EC%9A%94%EC%9D%B8-%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="http://khiss.go.kr/board/view?pageNum=1&amp;amp;rowCnt=10&amp;amp;menuId=MENU00307&amp;amp;schType=0&amp;amp;schText=&amp;amp;categoryId=&amp;amp;continent=&amp;amp;country=&amp;amp;boardStyle=&amp;amp;linkId=63698"&gt;인공지능, 심질환자 재입원 가능성 예측&lt;/a&gt; 기사를 보고 저도 한번 비슷한 문제를 풀어보고 싶었습니다.  인터넷에 공개되어있는 데이터 중에 &lt;a href="https://archive.ics.uci.edu/ml/datasets/diabetes+130-us+hospitals+for+years+1999-2008"&gt;당뇨환자의 재입원 데이터&lt;/a&gt;가 있더군요. 또한 당뇨환자들은 재입원 비율이 일반환자보다 높다고 알려져있습니다 &lt;a href="https://clindiabetesendo.biomedcentral.com/articles/10.1186/s40842-016-0040-x"&gt;관련 논문&lt;/a&gt;. 그래서 제가 한번 해봤습니다.&lt;/p&gt;
+&lt;h3 id="%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9D%B4-%EC%99%9C-%EB%AC%B8%EC%A0%9C%EC%A3%A0?"&gt;재입원이 왜 문제죠?&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9D%B4-%EC%99%9C-%EB%AC%B8%EC%A0%9C%EC%A3%A0?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://www.openplacement.com/uploads/op/files/revolvingdoor-11.07_.12_.jpg" alt="image"&gt;&lt;/p&gt;
 &lt;p&gt;환자의 재입원이 문제라고 합니다.  최근 퇴원한 지 30일 이내에 재입원하는 환자의 전체의 20%에 이른다고 합니다(2014년도 미국기준). 이러한 잦은 입원으로 인한 비용의 증가는 의료보험의 재정을 위협하고 있습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;미국 보건당국은 병원재입원감소대책을 수립하고 재입원에 대해 벌칙도 정했다. &lt;a href="http://www.docdocdoc.co.kr/news/articleView.html?idxno=151962"&gt;관련뉴스기사&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;미국 보건당국은 병원재입원감소대책을 수립하고 재입원에 대해 벌칙도 정했다. &lt;a href="http://www.docdocdoc.co.kr/news/articleView.html?idxno=151962"&gt;관련뉴스기사&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;이들은 중환자와는 달리 입원해서 치료를 받으면 안정을 되찾고 회복 상태로 지내지만 퇴원을 하게 되면 즉각적인 대응과 치료가 여의치 않아 상태가 나빠지는 환자들입니다.  대체로 고령이고, 이미 만성질환을 가지고 있어 급성 스트레스나 상해에 취약합니다. 이런 환자를 처음 입원 때부터 확인하고 관리한다면 비용절감과 환자의 삶이 개선될 수 있을 것입니다.&lt;/p&gt;
-&lt;h3 id="분석에-사용한-데이터"&gt;분석에 사용한 데이터&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%B6%84%EC%84%9D%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;사용한 데이터셋은 인터넷에 공개되어 있는 것을 사용했고 구체적인 정보는 다음과 같습니다.&lt;/p&gt;
+&lt;h3 id="%EB%B6%84%EC%84%9D%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;분석에 사용한 데이터&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%B6%84%EC%84%9D%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;사용한 데이터셋은 인터넷에 공개되어 있는 것을 사용했고 구체적인 정보는 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://archive.ics.uci.edu/ml/datasets/Diabetes+130-US+hospitals+for+years+1999-2008"&gt;데이터 다운로드&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Rubin, Daniel J (2015). "Hospital readmission of patients with diabetes". Current Diabetes Reports. 15 (4): 1–9. doi:10.1007/s11892-015-0584-7.  &lt;blockquote&gt;&lt;p&gt;저는 Kaggle에서 작업하였습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
+&lt;li&gt;Rubin, Daniel J (2015). "Hospital readmission of patients with diabetes". Current Diabetes Reports. 15 (4): 1–9. doi:10.1007/s11892-015-0584-7.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;저는 Kaggle에서 작업하였습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;1999년부터 2008년까지 근 10년간 미국 각지의 130개의 병원에서 수집된 데이터입니다. 50개가 넘는 항목을 포함하고 있으며 다음의 기준을 따르고 있습니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;입원한 환자만의 결과입니다.&lt;/li&gt;
@@ -703,7 +703,7 @@ No reverse primers anneal...&lt;/pre&gt;
 &lt;li&gt;일반 검사(Laboratory tests)는 입원중에 시행되었습니다.&lt;/li&gt;
 &lt;li&gt;의약품은 모두 입원중에 처방되었습니다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id="데이터-불러오기"&gt;데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분석을 시작하기 앞서 사용할 파이썬 라이브러리와 데이터를 불러오겠습니다.&lt;/p&gt;
+&lt;h2 id="%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분석을 시작하기 앞서 사용할 파이썬 라이브러리와 데이터를 불러오겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -742,8 +742,7 @@ No reverse primers anneal...&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -895,8 +894,7 @@ No reverse primers anneal...&lt;/pre&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;5 rows × 50 columns&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -908,165 +906,167 @@ No reverse primers anneal...&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;데이터는 50개의 행(columns)으로 구성되어 있습니다. 총 데이터의 갯수가 10000개로 알려져 있었는데 더 늘어난 101765인것을 확인 할 수 있습니다. 각각의 열의 데이터가 어떤 의미인지는 아래에서 설명하도록 하겠습니다.&lt;/p&gt;
-&lt;h2 id="데이터셋-설명"&gt;데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분석하기 앞서 데이터셋의 정보를 알아보겠습니다.&lt;/p&gt;
-&lt;h3 id="Feature-이름과-설명"&gt;Feature 이름과 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#Feature-%EC%9D%B4%EB%A6%84%EA%B3%BC-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터셋을 이루고 있는 &lt;strong&gt;Feature&lt;/strong&gt;들을 다음의 표로 정리하였습니다.&lt;/p&gt;
+&lt;h2 id="%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;데이터셋 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분석하기 앞서 데이터셋의 정보를 알아보겠습니다.&lt;/p&gt;
+&lt;h3 id="Feature-%EC%9D%B4%EB%A6%84%EA%B3%BC-%EC%84%A4%EB%AA%85"&gt;Feature 이름과 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#Feature-%EC%9D%B4%EB%A6%84%EA%B3%BC-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터셋을 이루고 있는 &lt;strong&gt;Feature&lt;/strong&gt;들을 다음의 표로 정리하였습니다.&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;
-&lt;th&gt;Feature name&lt;/th&gt;
-&lt;th&gt;데이터 형태(Type)&lt;/th&gt;
-&lt;th&gt;설명&lt;/th&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+  &lt;th&gt;Feature name&lt;/th&gt;
+  &lt;th&gt;데이터 형태(Type)&lt;/th&gt;
+  &lt;th&gt;설명&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;Encounter ID&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;입원의 고유한 식별값&lt;/td&gt;
+  &lt;td&gt;Encounter ID&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;입원의 고유한 식별값&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Patient number&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;환자의 고유한 식별값&lt;/td&gt;
+  &lt;td&gt;Patient number&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;환자의 고유한 식별값&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Race&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;인종: Caucasian, Asian, African American, Hispanic, other&lt;/td&gt;
+  &lt;td&gt;Race&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;인종: Caucasian, Asian, African American, Hispanic, other&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Gender&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;성별: 남성(male), 여성(female), 알수없음(unknown)&lt;/td&gt;
+  &lt;td&gt;Gender&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;성별: 남성(male), 여성(female), 알수없음(unknown)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt; Age&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;10년 단위로 묶여 있음: [0-10], [10-20] … [90-100]&lt;/td&gt;
+  &lt;td&gt;Age&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;10년 단위로 묶여 있음: [0-10], [10-20] … [90-100]&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt; Weight&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;몸무게 (파운드 단위)&lt;/td&gt;
+  &lt;td&gt;Weight&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;몸무게 (파운드 단위)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Admission type&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;입원 형태의 9가지의 숫자 식별값, emergency, urgent, elective, newborn 등등&lt;/td&gt;
+  &lt;td&gt;Admission type&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;입원 형태의 9가지의 숫자 식별값, emergency, urgent, elective, newborn 등등&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Discharge disposition&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;퇴원 처리의 29가지의 숫자 식별값,  집으로 퇴원, expired 등등&lt;/td&gt;
+  &lt;td&gt;Discharge disposition&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;퇴원 처리의 29가지의 숫자 식별값,  집으로 퇴원, expired 등등&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Admission source&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;입원 원인의 21가지 숫자 식별값, 의사 추천, 응급실, 다른 병원에서 옮김&lt;/td&gt;
+  &lt;td&gt;Admission source&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;입원 원인의 21가지 숫자 식별값, 의사 추천, 응급실, 다른 병원에서 옮김&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Time in hospital&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;입원 기간(일)&lt;/td&gt;
+  &lt;td&gt;Time in hospital&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;입원 기간(일)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Payer code&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;의료 보험의 23가지의 숫자 식별값, Blue Cross, Medicare, 직접 지불 등등&lt;/td&gt;
+  &lt;td&gt;Payer code&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;의료 보험의 23가지의 숫자 식별값, Blue Cross, Medicare, 직접 지불 등등&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Medical specialty&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;입원 시킨 의사의 전공 84가지의 숫자 식별값, 심장, 내과, 가정 / 일반 진료 및 외과 의사&lt;/td&gt;
+  &lt;td&gt;Medical specialty&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;입원 시킨 의사의 전공 84가지의 숫자 식별값, 심장, 내과, 가정 / 일반 진료 및 외과 의사&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Number of lab procedures&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;입원동안 수행한 일반 검사(Lab tests) 횟수&lt;/td&gt;
+  &lt;td&gt;Number of lab procedures&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;입원동안 수행한 일반 검사(Lab tests) 횟수&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Number of procedures&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;입원동안 수행한 특수 검사 횟수&lt;/td&gt;
+  &lt;td&gt;Number of procedures&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;입원동안 수행한 특수 검사 횟수&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Number of medications&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;입원동안 투약한 의약품의 수 &lt;/td&gt;
+  &lt;td&gt;Number of medications&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;입원동안 투약한 의약품의 수&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Number of outpatient visits&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;외래방문건수, 입원전의 통원 치료 방문 횟수 (1년간) &lt;/td&gt;
+  &lt;td&gt;Number of outpatient visits&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;외래방문건수, 입원전의 통원 치료 방문 횟수 (1년간)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Number of emergency visits&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;응급실방문건수, 입원전의 응급실 방문 횟수 (1년간)&lt;/td&gt;
+  &lt;td&gt;Number of emergency visits&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;응급실방문건수, 입원전의 응급실 방문 횟수 (1년간)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Number of inpatient visits&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;입원횟수, 입원전의 입원 횟수 (1년간)&lt;/td&gt;
+  &lt;td&gt;Number of inpatient visits&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;입원횟수, 입원전의 입원 횟수 (1년간)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Diagnosis 1&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;1차 진단(ICD9의 처음 세 자리 숫자), 848 개의 고유 값&lt;/td&gt;
+  &lt;td&gt;Diagnosis 1&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;1차 진단(ICD9의 처음 세 자리 숫자), 848 개의 고유 값&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Diagnosis 2&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;2차 진단(ICD9의 처음 세 자리 숫자), 923 개의 고유 값&lt;/td&gt;
+  &lt;td&gt;Diagnosis 2&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;2차 진단(ICD9의 처음 세 자리 숫자), 923 개의 고유 값&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Diagnosis 3&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;추가 2차 진단 (ICD9의 처음 세 자리 숫자), 954 개의 고유 값&lt;/td&gt;
+  &lt;td&gt;Diagnosis 3&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;추가 2차 진단 (ICD9의 처음 세 자리 숫자), 954 개의 고유 값&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Number of diagnoses&lt;/td&gt;
-&lt;td&gt;수치형&lt;/td&gt;
-&lt;td&gt;진단 횟수&lt;/td&gt;
+  &lt;td&gt;Number of diagnoses&lt;/td&gt;
+  &lt;td&gt;수치형&lt;/td&gt;
+  &lt;td&gt;진단 횟수&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Glucose serum test result&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;포도당 혈청 검사 결과&lt;/td&gt;
+  &lt;td&gt;Glucose serum test result&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;포도당 혈청 검사 결과&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;A1c test result&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;A1c 시험 결과 값, 8% 이상이면  &lt;strong&gt;&amp;gt;8&lt;/strong&gt; 7% 이상이면 &lt;strong&gt;&amp;gt;7&lt;/strong&gt; 7% 이하면 &lt;strong&gt;Normal&lt;/strong&gt; 표기&lt;/td&gt;
+  &lt;td&gt;A1c test result&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;A1c 시험 결과 값, 8% 이상이면  &lt;strong&gt;&amp;gt;8&lt;/strong&gt; 7% 이상이면 &lt;strong&gt;&amp;gt;7&lt;/strong&gt; 7% 이하면 &lt;strong&gt;Normal&lt;/strong&gt; 표기&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Change of medications&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;당뇨병 치료제(복용량 또는 약품)가 변경 여부 &lt;/td&gt;
+  &lt;td&gt;Change of medications&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;당뇨병 치료제(복용량 또는 약품)가 변경 여부&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Diabetes medications&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;당뇨병 치료제가 처방되었는지 여부, &lt;strong&gt;yes&lt;/strong&gt; 혹은 &lt;strong&gt;no&lt;/strong&gt;&lt;/td&gt;
+  &lt;td&gt;Diabetes medications&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;당뇨병 치료제가 처방되었는지 여부, &lt;strong&gt;yes&lt;/strong&gt; 혹은 &lt;strong&gt;no&lt;/strong&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;24 features for medications&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;24가지의 약물이 처방되었는지 또는 복용량의 변화 여부를 나타냅니다, 입원중 복용량이 증가하면 &lt;strong&gt;up&lt;/strong&gt; 줄어들면 &lt;strong&gt; down&lt;/strong&gt;  변화가 없으면 &lt;strong&gt;steady&lt;/strong&gt; 처방되지 않으면 &lt;strong&gt;no&lt;/strong&gt;로 표기 &lt;/td&gt;
+  &lt;td&gt;24 features for medications&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;24가지의 약물이 처방되었는지 또는 복용량의 변화 여부를 나타냅니다, 입원중 복용량이 증가하면 &lt;strong&gt;up&lt;/strong&gt; 줄어들면 ** down**  변화가 없으면 &lt;strong&gt;steady&lt;/strong&gt; 처방되지 않으면 &lt;strong&gt;no&lt;/strong&gt;로 표기&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Readmitted&lt;/td&gt;
-&lt;td&gt;명목형&lt;/td&gt;
-&lt;td&gt;퇴원 30일 이내 재입원은 &lt;strong&gt;&amp;gt; 30&lt;/strong&gt; 30일 이후 재입원은 &lt;strong&gt;&amp;lt; 30&lt;/strong&gt; 재입원 데이터가 없는 경우 &lt;strong&gt; No&lt;/strong&gt;로 표기 &lt;/td&gt;
+  &lt;td&gt;Readmitted&lt;/td&gt;
+  &lt;td&gt;명목형&lt;/td&gt;
+  &lt;td&gt;퇴원 30일 이내 재입원은 &lt;strong&gt;&amp;gt; 30&lt;/strong&gt; 30일 이후 재입원은 &lt;strong&gt;&amp;lt; 30&lt;/strong&gt; 재입원 데이터가 없는 경우 ** No**로 표기&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id="미리-알아야-할-것!"&gt;미리 알아야 할 것!&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%AF%B8%EB%A6%AC-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EA%B2%83!"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;데이터를 분석하기 앞서 미리 알아야할 것들을 공부해보도록 하겠습니다.&lt;/p&gt;
-&lt;h3 id="당뇨병"&gt;당뇨병&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8B%B9%EB%87%A8%EB%B3%91"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;아주 흔한 대사질환으로 혈당 조절에 장애가 발생하는 것입니다. 인슐린에 의해 Type1, Type2 로 구분하는게 일반적이고 완치는 어렵다는게 중론입니다.&lt;/p&gt;
-&lt;h3 id="당화혈색소(HbA1c)-검사"&gt;당화혈색소(HbA1c) 검사&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8B%B9%ED%99%94%ED%98%88%EC%83%89%EC%86%8C(HbA1c)-%EA%B2%80%EC%82%AC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;참고: &lt;a href="https://labtestsonline.kr/tests/hba1c"&gt;https://labtestsonline.kr/tests/hba1c&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;당화혈색소(glycated hemoglobin, HbA1c)란 장기간 동안 혈중 포도당(혈당) 농도를 알기 위해 사용하는 혈색소의 한 형태이다.  -wikipedia&lt;/p&gt;
+&lt;h2 id="%EB%AF%B8%EB%A6%AC-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EA%B2%83!"&gt;미리 알아야 할 것!&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%AF%B8%EB%A6%AC-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EA%B2%83!"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;데이터를 분석하기 앞서 미리 알아야할 것들을 공부해보도록 하겠습니다.&lt;/p&gt;
+&lt;h3 id="%EB%8B%B9%EB%87%A8%EB%B3%91"&gt;당뇨병&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8B%B9%EB%87%A8%EB%B3%91"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;아주 흔한 대사질환으로 혈당 조절에 장애가 발생하는 것입니다. 인슐린에 의해 Type1, Type2 로 구분하는게 일반적이고 완치는 어렵다는게 중론입니다.&lt;/p&gt;
+&lt;h3 id="%EB%8B%B9%ED%99%94%ED%98%88%EC%83%89%EC%86%8C(HbA1c)-%EA%B2%80%EC%82%AC"&gt;당화혈색소(HbA1c) 검사&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8B%B9%ED%99%94%ED%98%88%EC%83%89%EC%86%8C(HbA1c)-%EA%B2%80%EC%82%AC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;참고: &lt;a href="https://labtestsonline.kr/tests/hba1c"&gt;https://labtestsonline.kr/tests/hba1c&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;당화혈색소(glycated hemoglobin, HbA1c)란 장기간 동안 혈중 포도당(혈당) 농도를 알기 위해 사용하는 혈색소의 한 형태이다.  -wikipedia&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;우리 몸의 혈액에는 120일 정도의 수명을 적혈구가 존재하며, 적혈구 안에 있는 혈색소가 포도당과 결합하면서 당화혈색소를 형성합니다. 당뇨환자는 혈당이 잘 조절되지 않아 당화혈색소의 수치가 증가하게 된됩니다.  당화혈색소의 정상수치는 4 ~ 5.9% 입니다. 당뇨환자의 당화혈색소 조절 목표를 6.5%이하로 보고 있습니다.&lt;/p&gt;
-&lt;h2 id="탐색적-데이터-분석-(EDA)-부터"&gt;탐색적 데이터 분석 (EDA) 부터&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%ED%83%90%EC%83%89%EC%A0%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D-(EDA)-%EB%B6%80%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;제일 간단하게 할 수 있는 &lt;code&gt;pandas.DataFrame.describe()&lt;/code&gt;기능을 사용해 보겠습니다. (이 기능은 수치형 데이터에만 적용됩니다.)&lt;/p&gt;
+&lt;h2 id="%ED%83%90%EC%83%89%EC%A0%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D-(EDA)-%EB%B6%80%ED%84%B0"&gt;탐색적 데이터 분석 (EDA) 부터&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%ED%83%90%EC%83%89%EC%A0%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D-(EDA)-%EB%B6%80%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;제일 간단하게 할 수 있는 &lt;code&gt;pandas.DataFrame.describe()&lt;/code&gt;기능을 사용해 보겠습니다. (이 기능은 수치형 데이터에만 적용됩니다.)&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1093,8 +1093,7 @@ No reverse primers anneal...&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -1255,8 +1254,7 @@ No reverse primers anneal...&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1268,7 +1266,7 @@ No reverse primers anneal...&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;살펴보니 그다지 정보는 없는 것 같습니다.  총 환자수는 &lt;strong&gt;patient_nbr&lt;/strong&gt;의 갯수인 101766명입니다.  그리고 &lt;strong&gt;time_in_hospital, num_lab_procedures, num_medications,  number_diagnoses&lt;/strong&gt; 의 최대 최소값 정도를 알 수 있는데, 시각화를 통해 정규분포 형태인지 확인해 보겠습니다.&lt;/p&gt;
-&lt;h3 id="원시-데이터-시각화"&gt;원시 데이터 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%9B%90%EC%8B%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="%EC%9B%90%EC%8B%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;원시 데이터 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%9B%90%EC%8B%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1320,7 +1318,7 @@ No reverse primers anneal...&lt;/pre&gt;
 &lt;li&gt;대부분의 진단은 9번 내립니다. 그리고 정규분포의 형태는 아니군요.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;진단횟수에 따라서 그룹을 만들수 있지 않을까?하는 생각이 듭니다.&lt;/p&gt;
-&lt;h3 id="인종이나-성별의-차이가-존재-할까?"&gt;인종이나 성별의 차이가 존재 할까?&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%9D%B8%EC%A2%85%EC%9D%B4%EB%82%98-%EC%84%B1%EB%B3%84%EC%9D%98-%EC%B0%A8%EC%9D%B4%EA%B0%80-%EC%A1%B4%EC%9E%AC-%ED%95%A0%EA%B9%8C?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;간단하게 재입원율에 인종이나 성별의 차이가 있는지 알고 싶습니다. 그림으로 한눈에 보고 싶은데, 기존의 데이터 형식으로는 어려워 보입니다. 간단한 피봇 테이블을 만들어 보겠습니다.&lt;/p&gt;
+&lt;h3 id="%EC%9D%B8%EC%A2%85%EC%9D%B4%EB%82%98-%EC%84%B1%EB%B3%84%EC%9D%98-%EC%B0%A8%EC%9D%B4%EA%B0%80-%EC%A1%B4%EC%9E%AC-%ED%95%A0%EA%B9%8C?"&gt;인종이나 성별의 차이가 존재 할까?&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%9D%B8%EC%A2%85%EC%9D%B4%EB%82%98-%EC%84%B1%EB%B3%84%EC%9D%98-%EC%B0%A8%EC%9D%B4%EA%B0%80-%EC%A1%B4%EC%9E%AC-%ED%95%A0%EA%B9%8C?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;간단하게 재입원율에 인종이나 성별의 차이가 있는지 알고 싶습니다. 그림으로 한눈에 보고 싶은데, 기존의 데이터 형식으로는 어려워 보입니다. 간단한 피봇 테이블을 만들어 보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1352,8 +1350,7 @@ No reverse primers anneal...&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -1485,8 +1482,7 @@ No reverse primers anneal...&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1498,7 +1494,7 @@ No reverse primers anneal...&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;인종, 성별간의 데이터를 살펴보니,  성별간의 차이는 거의 미비해 보입니다. 오히려 인종간에는 차이가 있어보이는군요. 그림으로 그려볼게요.&lt;/p&gt;
-&lt;h3 id="인종별--재입원율-시각화"&gt;인종별  재입원율 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%9D%B8%EC%A2%85%EB%B3%84--%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9C%A8-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="%EC%9D%B8%EC%A2%85%EB%B3%84--%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9C%A8-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;인종별  재입원율 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%9D%B8%EC%A2%85%EB%B3%84--%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9C%A8-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1540,8 +1536,8 @@ No reverse primers anneal...&lt;/pre&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;strong&gt;Other&lt;/strong&gt; 그룹이 값이 낮아 보이지만, 실은 &lt;strong&gt;Unknown/Invalid&lt;/strong&gt;의 재입원율이 &lt;strong&gt; 0&lt;/strong&gt;이기 때문에 평균값이 낮아졌기 때문입니다. 결론적으로 &lt;strong&gt;Asian&lt;/strong&gt;의 평균 재입원율만 전체에 재입원율에 대비 낮다고 볼 수 있겠습니다.&lt;/p&gt;
-&lt;h3 id="데이터셋에-누락된-값이-있는가?"&gt;데이터셋에 누락된 값이 있는가?&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B%EC%97%90-%EB%88%84%EB%9D%BD%EB%90%9C-%EA%B0%92%EC%9D%B4-%EC%9E%88%EB%8A%94%EA%B0%80?"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Other&lt;/strong&gt; 그룹이 값이 낮아 보이지만, 실은 &lt;strong&gt;Unknown/Invalid&lt;/strong&gt;의 재입원율이 ** 0&lt;strong&gt;이기 때문에 평균값이 낮아졌기 때문입니다. 결론적으로 &lt;/strong&gt;Asian**의 평균 재입원율만 전체에 재입원율에 대비 낮다고 볼 수 있겠습니다.&lt;/p&gt;
+&lt;h3 id="%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B%EC%97%90-%EB%88%84%EB%9D%BD%EB%90%9C-%EA%B0%92%EC%9D%B4-%EC%9E%88%EB%8A%94%EA%B0%80?"&gt;데이터셋에 누락된 값이 있는가?&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B%EC%97%90-%EB%88%84%EB%9D%BD%EB%90%9C-%EA%B0%92%EC%9D%B4-%EC%9E%88%EB%8A%94%EA%B0%80?"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1591,7 +1587,7 @@ dtype: int64&lt;/pre&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;몸무게는 전체의 97%가 누락되어 있네요. 이렇게 많이 누락된 &lt;strong&gt;몸무게 값은 삭제해도 괜찮을 것 같습니다.&lt;/strong&gt;
 &lt;strong&gt;payer_code, medical_specialty&lt;/strong&gt; 또한 절반이상이 누락되어 있습니다.  그리고 환자의 상태와는 관련이 없어 보이기 때문에 저는 &lt;strong&gt;데이터를 빼고&lt;/strong&gt; 진행 하겠습니다.&lt;/p&gt;
-&lt;h2 id="데이터셋-정제하기"&gt;데이터셋 정제하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%A0%95%EC%A0%9C%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;탐색적 데이터 분석(EDA)를 해보니, 추가적 분석을 위해 원시 데이터(raw data)을 정제해야 할 것 같습니다.  그래서 아래와 같은 사항을 변경했습니다.&lt;/p&gt;
+&lt;h2 id="%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%A0%95%EC%A0%9C%ED%95%98%EA%B8%B0"&gt;데이터셋 정제하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%A0%95%EC%A0%9C%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;탐색적 데이터 분석(EDA)를 해보니, 추가적 분석을 위해 원시 데이터(raw data)을 정제해야 할 것 같습니다.  그래서 아래와 같은 사항을 변경했습니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;범위로 표현된 나이(명목형)를 나이의 중간 값(숫자형)으로 수정&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;max_glu_serum, A1Cresult, change &lt;/strong&gt; 등의 명목형 값은 직접 숫자형 데이터로 변환&lt;/li&gt;
@@ -1663,8 +1659,7 @@ dtype: int64&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -1816,8 +1811,7 @@ dtype: int64&lt;/pre&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;5 rows × 47 columns&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1829,7 +1823,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;정제한 데이터는 47개의 행을 가지고 있습니다. &lt;strong&gt;encounter_id ,patient_nbr &lt;/strong&gt;는 환자 고유값이기 때문에 학습 직전에 빼줄 예정입니다.&lt;/p&gt;
-&lt;h3 id="나이별-데이터의-수"&gt;나이별 데이터의 수&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%82%98%EC%9D%B4%EB%B3%84-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;나이별 환자의 수는 다음과 같습니다.&lt;/p&gt;
+&lt;h3 id="%EB%82%98%EC%9D%B4%EB%B3%84-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%88%98"&gt;나이별 데이터의 수&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%82%98%EC%9D%B4%EB%B3%84-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%88%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;나이별 환자의 수는 다음과 같습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1913,7 +1907,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;나이가 45~65살 사이에는 재입원율이 낮아 보이는데, 좀 더 명확하게 보기 위해 다시 피벗 테이블을 만들고 시각화로 확인해 보겠습니다.&lt;/p&gt;
-&lt;h3 id="나이별-재입원율-피벗테이블"&gt;나이별 재입원율 피벗테이블&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%82%98%EC%9D%B4%EB%B3%84-%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9C%A8-%ED%94%BC%EB%B2%97%ED%85%8C%EC%9D%B4%EB%B8%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="%EB%82%98%EC%9D%B4%EB%B3%84-%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9C%A8-%ED%94%BC%EB%B2%97%ED%85%8C%EC%9D%B4%EB%B8%94"&gt;나이별 재입원율 피벗테이블&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%82%98%EC%9D%B4%EB%B3%84-%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9C%A8-%ED%94%BC%EB%B2%97%ED%85%8C%EC%9D%B4%EB%B8%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1942,8 +1936,7 @@ dtype: int64&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -2045,8 +2038,7 @@ dtype: int64&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -2097,7 +2089,7 @@ dtype: int64&lt;/pre&gt;
 &lt;li&gt;95세에 가서는 다시 줄어드는 모습을 보이는데, 아마도 사망과 관련있지 않을까 생각합니다.&lt;/li&gt;
 &lt;li&gt;전체 평균 재입원 비율을 46%입니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="환자의-나이대에-따라-그룹화-하기"&gt;환자의 나이대에 따라 그룹화 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%ED%99%98%EC%9E%90%EC%9D%98-%EB%82%98%EC%9D%B4%EB%8C%80%EC%97%90-%EB%94%B0%EB%9D%BC-%EA%B7%B8%EB%A3%B9%ED%99%94-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;numpy.select()&lt;/code&gt;기능을 사용해 다양한 조건으로 그룹화가 가능합니다.&lt;/p&gt;
+&lt;h3 id="%ED%99%98%EC%9E%90%EC%9D%98-%EB%82%98%EC%9D%B4%EB%8C%80%EC%97%90-%EB%94%B0%EB%9D%BC-%EA%B7%B8%EB%A3%B9%ED%99%94-%ED%95%98%EA%B8%B0"&gt;환자의 나이대에 따라 그룹화 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%ED%99%98%EC%9E%90%EC%9D%98-%EB%82%98%EC%9D%B4%EB%8C%80%EC%97%90-%EB%94%B0%EB%9D%BC-%EA%B7%B8%EB%A3%B9%ED%99%94-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;numpy.select()&lt;/code&gt;기능을 사용해 다양한 조건으로 그룹화가 가능합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2125,7 +2117,7 @@ dtype: int64&lt;/pre&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="진단-횟수의-따라-재입원율-차이"&gt;진단 횟수의 따라 재입원율 차이&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%A7%84%EB%8B%A8-%ED%9A%9F%EC%88%98%EC%9D%98-%EB%94%B0%EB%9D%BC-%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9C%A8-%EC%B0%A8%EC%9D%B4"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;피벗테이블을 만들어 차이가 있는지 확인해보겠습니다.&lt;/p&gt;
+&lt;h3 id="%EC%A7%84%EB%8B%A8-%ED%9A%9F%EC%88%98%EC%9D%98-%EB%94%B0%EB%9D%BC-%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9C%A8-%EC%B0%A8%EC%9D%B4"&gt;진단 횟수의 따라 재입원율 차이&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%A7%84%EB%8B%A8-%ED%9A%9F%EC%88%98%EC%9D%98-%EB%94%B0%EB%9D%BC-%EC%9E%AC%EC%9E%85%EC%9B%90%EC%9C%A8-%EC%B0%A8%EC%9D%B4"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;피벗테이블을 만들어 차이가 있는지 확인해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2155,8 +2147,7 @@ dtype: int64&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -2300,8 +2291,7 @@ dtype: int64&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -2313,7 +2303,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;평균 재입원율은 46%인데 6번 이하로 진단받은 환자는 재입원율이 낮습니다. 반면에 7회이상은 평균 이상의 재입원율을 보입니다. 다만 12, 16번 진단 받은 환자들은 평균보다 낮기는 하지만 환자수가 너무 적어 유의미한 수치라고는 볼 수 없겠습니다.&lt;/p&gt;
-&lt;h3 id="진단-횟수별로-그룹-나누기"&gt;진단 횟수별로 그룹 나누기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%A7%84%EB%8B%A8-%ED%9A%9F%EC%88%98%EB%B3%84%EB%A1%9C-%EA%B7%B8%EB%A3%B9-%EB%82%98%EB%88%84%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;위의 결과를 토대로 진단 횟수별로 4개의 그룹으로 만들어 보겠습니다. 나이별 그룹을 만들었던 방법을 그대로 사용하겠습니다.&lt;/p&gt;
+&lt;h3 id="%EC%A7%84%EB%8B%A8-%ED%9A%9F%EC%88%98%EB%B3%84%EB%A1%9C-%EA%B7%B8%EB%A3%B9-%EB%82%98%EB%88%84%EA%B8%B0"&gt;진단 횟수별로 그룹 나누기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%A7%84%EB%8B%A8-%ED%9A%9F%EC%88%98%EB%B3%84%EB%A1%9C-%EA%B7%B8%EB%A3%B9-%EB%82%98%EB%88%84%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;위의 결과를 토대로 진단 횟수별로 4개의 그룹으로 만들어 보겠습니다. 나이별 그룹을 만들었던 방법을 그대로 사용하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2340,7 +2330,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;데이터 다듬기는 이정도로 하고 이제, 머신러닝을 시도해보도록 하겠습니다. 저는 &lt;strong&gt;xgboost&lt;/strong&gt; 를 사용해보도록 하겠습니다. xgboost는 캐글 경연대회에서 다수의 우승자들이 사용해서 유명세를 탄 방법입니다.  xgboost에 대한 자세한 내용은 &lt;a href="https://brunch.co.kr/@snobberys/137"&gt;링크&lt;/a&gt;를 확인하세요.&lt;/p&gt;
-&lt;h2 id="머신러닝-분석-시작하기"&gt;머신러닝 분석 시작하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%B6%84%EC%84%9D-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 데이터셋을 학습용과 테스트용으로 분리합니다. 그리고 데이터의 모양을 살펴보조.&lt;/p&gt;
+&lt;h2 id="%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%B6%84%EC%84%9D-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0"&gt;머신러닝 분석 시작하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%B6%84%EC%84%9D-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 데이터셋을 학습용과 테스트용으로 분리합니다. 그리고 데이터의 모양을 살펴보조.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2457,7 +2447,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;저의 예상보다 정확도가 높지는 않습니다. 이 수치를 높이기 위해 다양한 시도를 해봐야겠죠. 일단은 시각화를 통해 학습의 경과와 성능을 살펴 보겠습니다.&lt;/p&gt;
-&lt;h3 id="학습-시각화하기"&gt;학습 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%ED%95%99%EC%8A%B5-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="%ED%95%99%EC%8A%B5-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;학습 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%ED%95%99%EC%8A%B5-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2524,7 +2514,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;그림을 보니 적어도 오버피팅은 일어나지 않고 있는 모습입니다. 다만 테스트 데이터에 대한 모델의 성능이 좋지는 않아 보이는군요.&lt;/p&gt;
-&lt;h3 id="모델에서-features-중요도-시각화하기"&gt;모델에서 features 중요도 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%AA%A8%EB%8D%B8%EC%97%90%EC%84%9C-features-%EC%A4%91%EC%9A%94%EB%8F%84-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="%EB%AA%A8%EB%8D%B8%EC%97%90%EC%84%9C-features-%EC%A4%91%EC%9A%94%EB%8F%84-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;모델에서 features 중요도 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%AA%A8%EB%8D%B8%EC%97%90%EC%84%9C-features-%EC%A4%91%EC%9A%94%EB%8F%84-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2580,52 +2570,53 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;features 중요도 그림에서는 의사의 진단 재입원율에 중요하다고 나오고 있고, 그 다음으로 검사항목의 숫자와 투약한 약물의 숫자가 중요하다고 나왔습니다. 제가 예상했던 결과와 같아서 마음에 드는군요.&lt;/p&gt;
-&lt;h2 id="중간-결론과-앞으로-할-일"&gt;중간 결론과 앞으로 할 일&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%A4%91%EA%B0%84-%EA%B2%B0%EB%A1%A0%EA%B3%BC-%EC%95%9E%EC%9C%BC%EB%A1%9C-%ED%95%A0-%EC%9D%BC"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;장황하게 분석을 해보았는데요, 일단은 제 모델의 성능은 마음에 들지 않네요. 성능을 올리기 위해서는 다양한 시도가 필요합니다. 다시 말해서 할 일이 너무나도 많습니다. 다시 처음으로 돌아간다면 데이터 전처리를 더 해볼 필요도 있습니다. 예를 들면 1000개가 넘는 진단코드를 질병으로 그룹을 만들면 좀 더 빠르고 정확한 결과를 얻을 수 있을 수도 있습니다.&lt;/p&gt;
+&lt;h2 id="%EC%A4%91%EA%B0%84-%EA%B2%B0%EB%A1%A0%EA%B3%BC-%EC%95%9E%EC%9C%BC%EB%A1%9C-%ED%95%A0-%EC%9D%BC"&gt;중간 결론과 앞으로 할 일&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EC%A4%91%EA%B0%84-%EA%B2%B0%EB%A1%A0%EA%B3%BC-%EC%95%9E%EC%9C%BC%EB%A1%9C-%ED%95%A0-%EC%9D%BC"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;장황하게 분석을 해보았는데요, 일단은 제 모델의 성능은 마음에 들지 않네요. 성능을 올리기 위해서는 다양한 시도가 필요합니다. 다시 말해서 할 일이 너무나도 많습니다. 다시 처음으로 돌아간다면 데이터 전처리를 더 해볼 필요도 있습니다. 예를 들면 1000개가 넘는 진단코드를 질병으로 그룹을 만들면 좀 더 빠르고 정확한 결과를 얻을 수 있을 수도 있습니다.&lt;/p&gt;
 &lt;p&gt;다른 방법으로는 xgboost의 파라미터들을 최적화 시켜볼 필요도 있습니다. 다음의 &lt;a href="https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/"&gt;참고자료&lt;/a&gt;를 보고 모델을 다듬어 보려고 하는데요.&lt;/p&gt;
-&lt;h3 id="모델-다듬기"&gt;모델 다듬기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%AA%A8%EB%8D%B8-%EB%8B%A4%EB%93%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;왜냐하면 &lt;strong&gt;xgboost&lt;/strong&gt;는 몇가지 변수에 의해 모델의 정확도와 속도가 극적으로 높아질수 있기 때문이죠. 모델의 파라미터를 변경하기 이전에 그것을 이해하는 것이 중요합니다.  몇가지만 테이블로 아래에 정리해보았습니다.&lt;/p&gt;
+&lt;h3 id="%EB%AA%A8%EB%8D%B8-%EB%8B%A4%EB%93%AC%EA%B8%B0"&gt;모델 다듬기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%AA%A8%EB%8D%B8-%EB%8B%A4%EB%93%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;왜냐하면 &lt;strong&gt;xgboost&lt;/strong&gt;는 몇가지 변수에 의해 모델의 정확도와 속도가 극적으로 높아질수 있기 때문이죠. 모델의 파라미터를 변경하기 이전에 그것을 이해하는 것이 중요합니다.  몇가지만 테이블로 아래에 정리해보았습니다.&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;
-&lt;th&gt;Parameter&lt;/th&gt;
-&lt;th&gt;설명&lt;/th&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+  &lt;th&gt;Parameter&lt;/th&gt;
+  &lt;th&gt;설명&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;learning_rate&lt;/td&gt;
-&lt;td&gt;학습률, 보통 0.01~0.2&lt;/td&gt;
+  &lt;td&gt;learning_rate&lt;/td&gt;
+  &lt;td&gt;학습률, 보통 0.01~0.2&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;n_estimators&lt;/td&gt;
-&lt;td&gt;모델의 학습 반복 횟수, 너무 크면 오버피팅이 발생할 수 있습니다. 보통 100~1000&lt;/td&gt;
+  &lt;td&gt;n_estimators&lt;/td&gt;
+  &lt;td&gt;모델의 학습 반복 횟수, 너무 크면 오버피팅이 발생할 수 있습니다. 보통 100~1000&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;n_jobs&lt;/td&gt;
-&lt;td&gt;사용할 CPU 코어의 수&lt;/td&gt;
+  &lt;td&gt;n_jobs&lt;/td&gt;
+  &lt;td&gt;사용할 CPU 코어의 수&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;max_depth&lt;/td&gt;
-&lt;td&gt;결정 트리의 최고 깊이, 오버피팅을 조절하기 위해 사용. 보통 3 ~10&lt;/td&gt;
+  &lt;td&gt;max_depth&lt;/td&gt;
+  &lt;td&gt;결정 트리의 최고 깊이, 오버피팅을 조절하기 위해 사용. 보통 3 ~10&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;min_child_weight&lt;/td&gt;
-&lt;td&gt;오버피팅을 조절하기 위해 사용&lt;/td&gt;
+  &lt;td&gt;min_child_weight&lt;/td&gt;
+  &lt;td&gt;오버피팅을 조절하기 위해 사용&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;gamma&lt;/td&gt;
-&lt;td&gt;알고리즘을 보수적 만듬&lt;/td&gt;
+  &lt;td&gt;gamma&lt;/td&gt;
+  &lt;td&gt;알고리즘을 보수적 만듬&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;subsample&lt;/td&gt;
-&lt;td&gt;값이 낮을수록 알고리즘은 더 보수적이고, 오버 피팅을 방지하지만 너무 작은 값은 언더 피팅으로 이어질 수 있음. 보통 0.5~1&lt;/td&gt;
+  &lt;td&gt;subsample&lt;/td&gt;
+  &lt;td&gt;값이 낮을수록 알고리즘은 더 보수적이고, 오버 피팅을 방지하지만 너무 작은 값은 언더 피팅으로 이어질 수 있음. 보통 0.5~1&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;colsample_bytree&lt;/td&gt;
-&lt;td&gt;각각의 트리에 대해 무작위로 뽑히는 열의 비율을 나타냅니다. 보통 0.5-1&lt;/td&gt;
+  &lt;td&gt;colsample_bytree&lt;/td&gt;
+  &lt;td&gt;각각의 트리에 대해 무작위로 뽑히는 열의 비율을 나타냅니다. 보통 0.5-1&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;이외에도 다양한 파라미터가 있지만, 일단은 생략하겠습니다. 최적의 파라미터를 찾는 방법론에도 다양하게 있지만, 저는 가장 단순하게 사용할 수 있는 &lt;strong&gt;GridSearch&lt;/strong&gt;를  사용하겠습니다.&lt;/p&gt;
-&lt;h3 id="GridSearch-로-최적값-찾기"&gt;GridSearch 로 최적값 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#GridSearch-%EB%A1%9C-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;아래의 예제 코드를 사용해 &lt;code&gt;sklearn.GridSearchCV()&lt;/code&gt; 기능을 사용해 최적값을 찾아 보려고 합니다.&lt;/p&gt;
+&lt;h3 id="GridSearch-%EB%A1%9C-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;GridSearch 로 최적값 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#GridSearch-%EB%A1%9C-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;아래의 예제 코드를 사용해 &lt;code&gt;sklearn.GridSearchCV()&lt;/code&gt; 기능을 사용해 최적값을 찾아 보려고 합니다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.model_selection&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;GridSearchCV&lt;/span&gt;
 &lt;span class="n"&gt;param_test1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
      &lt;span class="s1"&gt;'max_depth'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
@@ -2639,7 +2630,7 @@ dtype: int64&lt;/pre&gt;
 &lt;span class="n"&gt;gsearch1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;grid_scores_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gsearch1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;best_params_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gsearch1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;best_score_&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;아래의 작업은 시간이 오래걸린다는 것을 주의해주세요.&lt;/p&gt;
-&lt;h4 id="1.-Max_depth와-Min_child_weight-최적값을-찾기"&gt;1. Max_depth와 Min_child_weight 최적값을 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#1.-Max_depth%EC%99%80-Min_child_weight-%EC%B5%9C%EC%A0%81%EA%B0%92%EC%9D%84-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="1.-Max_depth%EC%99%80-Min_child_weight-%EC%B5%9C%EC%A0%81%EA%B0%92%EC%9D%84-%EC%B0%BE%EA%B8%B0"&gt;1. Max_depth와 Min_child_weight 최적값을 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#1.-Max_depth%EC%99%80-Min_child_weight-%EC%B5%9C%EC%A0%81%EA%B0%92%EC%9D%84-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2738,7 +2729,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;max_depth': 7, min_child_weight: 5 일때 최적의 값이 나옵니다. 구한 값을 고정해 놓고 계속 진행하겠습니다.&lt;/p&gt;
-&lt;h4 id="2.-Gamma-최적값-찾기"&gt;2. Gamma 최적값 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#2.-Gamma-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="2.-Gamma-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;2. Gamma 최적값 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#2.-Gamma-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2805,7 +2796,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;gamma의 최적값은 0.0으로 변동이 없네요.&lt;/p&gt;
-&lt;h4 id="3.-Subsample,-Colsample_bytree-최적값-찾기"&gt;3. Subsample, Colsample_bytree 최적값 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#3.-Subsample,-Colsample_bytree-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="3.-Subsample,-Colsample_bytree-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;3. Subsample, Colsample_bytree 최적값 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#3.-Subsample,-Colsample_bytree-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2884,7 +2875,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;colsample_bytree: 0.8, subsample: 0.8 최적값도 변동이 없습니다.&lt;/p&gt;
-&lt;h4 id="4.-Reg_alpha-최적값-찾기"&gt;4. Reg_alpha 최적값 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#4.-Reg_alpha-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="4.-Reg_alpha-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;4. Reg_alpha 최적값 찾기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#4.-Reg_alpha-%EC%B5%9C%EC%A0%81%EA%B0%92-%EC%B0%BE%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2951,7 +2942,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;reg_alpha 값은 1이 가장 최적값으로 나옵니다.&lt;/p&gt;
-&lt;h4 id="5.-Learning-Rate-줄이기"&gt;5. Learning Rate 줄이기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#5.-Learning-Rate-%EC%A4%84%EC%9D%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;이제는 &lt;strong&gt;learning rate&lt;/strong&gt;를 줄여서 좀 더 견고한 모델을 만들어 보겠습니다.&lt;/p&gt;
+&lt;h4 id="5.-Learning-Rate-%EC%A4%84%EC%9D%B4%EA%B8%B0"&gt;5. Learning Rate 줄이기&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#5.-Learning-Rate-%EC%A4%84%EC%9D%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;이제는 &lt;strong&gt;learning rate&lt;/strong&gt;를 줄여서 좀 더 견고한 모델을 만들어 보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3012,7 +3003,7 @@ dtype: int64&lt;/pre&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;이렇게 모델 다듬기를 하면 정확도가 조금 나아집니다. 하지만 충분히 만족스럽지는 않네요.
 보다 좋은 모델은 역시나 feature engineering을 계속해 찾아봐야 합니다.&lt;/p&gt;
-&lt;h3 id="학습-시각화"&gt;학습 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%ED%95%99%EC%8A%B5-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="%ED%95%99%EC%8A%B5-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;학습 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%ED%95%99%EC%8A%B5-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3079,7 +3070,7 @@ dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;오버피팅의 문제는 없어보입니다. 그냥 모델의 성능이 좋지 않습니다.&lt;/p&gt;
-&lt;h3 id="Feature의-중요도-시각화"&gt;Feature의 중요도 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#Feature%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다시한번 feature의 중요도를 보고, 앞으로 진행할 feature engineering에 참고하겠습니다.&lt;/p&gt;
+&lt;h3 id="Feature%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;Feature의 중요도 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#Feature%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다시한번 feature의 중요도를 보고, 앞으로 진행할 feature engineering에 참고하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3134,18 +3125,18 @@ dtype: int64&lt;/pre&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;제가 만든 모델의 정확도는 65% 수준으로 만족스럽지 않습니다. 이것을 해결하기 위해 다음에는 feature engineering을 하겠습니다.&lt;/p&gt;
+&lt;h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/Diabetes_Readmission/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;제가 만든 모델의 정확도는 65% 수준으로 만족스럽지 않습니다. 이것을 해결하기 위해 다음에는 feature engineering을 하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Bioinformatics</category><category>Diabetes</category><category>kaggle</category><category>Python</category><category>당뇨</category><category>재입원</category><category>캐글</category><guid>https://partrita.github.io/posts/Diabetes_Readmission/</guid><pubDate>Wed, 25 Jul 2018 23:07:20 GMT</pubDate></item><item><title>R로 서열분석하기</title><link>https://partrita.github.io/posts/R-bio/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>Bioinformatics</category><category>Diabetes</category><category>kaggle</category><category>Python</category><category>당뇨</category><category>재입원</category><category>캐글</category><guid>https://partrita.github.io/posts/Diabetes_Readmission/</guid><pubDate>Wed, 25 Jul 2018 23:07:20 GMT</pubDate></item><item><title>R로 서열분석하기</title><link>https://partrita.github.io/posts/R-bio/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;R&lt;/code&gt;을 이용해서 간단한 생물정보학(bioinformatics) 분석을 해보도록 할게요. 여기서 우리가 초점을 맞출 것은 단백질의 서열입니다.&lt;/p&gt;
 &lt;p&gt;생물학에 대한 기초적인 이해가 있다고 가정하고 &lt;code&gt;R&lt;/code&gt;로 분석하는 것 위주로 설명을 할 겁니다. &lt;code&gt;R&lt;/code&gt;을 사용하기 위해서는 일단 컴퓨터에 설치를 해야 할텐데요. 설치가 되어 있지 않다면 다음 &lt;a href="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/src/installr.html"&gt;링크&lt;/a&gt;를 참고해서 설치하도록 하세요.&lt;/p&gt;
-&lt;h2 id="0.-생물정보학-위한-R-packages:"&gt;0. 생물정보학 위한 R packages:&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두 가지의 유명한 패키지가 알려져있습니다.&lt;/p&gt;
+&lt;h2 id="0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:"&gt;0. 생물정보학 위한 R packages:&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#0.-%EC%83%9D%EB%AC%BC%EC%A0%95%EB%B3%B4%ED%95%99-%EC%9C%84%ED%95%9C-R-packages:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두 가지의 유명한 패키지가 알려져있습니다.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Bioconductor &lt;/li&gt;
+&lt;li&gt;Bioconductor&lt;/li&gt;
 &lt;li&gt;SeqinR&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;각각의 특징을 간략하게 알아보자면 &lt;a href="https://partrita.github.io/posts/R-bio/www.bioconductor.org"&gt;Bioconductor&lt;/a&gt;는 마이크로 어레이 데이터 같은 비교적 큰 데이터 분석을 위한 툴들을 제공합니다. 
@@ -3193,12 +3184,12 @@ Making 'packages.html' ... done
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="FASTA-형식(format)"&gt;FASTA 형식(format)&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#FASTA-%ED%98%95%EC%8B%9D(format)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FASTA 형식은 간단하고 많이 사용되는 형태의 파일입니다. sequence alignment용 FASTA라는 프로그램에서 처음으로 사용되었죠. 아래에 예시가 있습니다. 시퀀스에 대한 설명은 &lt;code&gt;&amp;gt;&lt;/code&gt; 꺽쇄로 시작한 첫번째 줄에 적혀 있고, 다음 줄에는 서열 정보가 들어갑니다.&lt;/p&gt;
-
+&lt;h3 id="FASTA-%ED%98%95%EC%8B%9D(format)"&gt;FASTA 형식(format)&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#FASTA-%ED%98%95%EC%8B%9D(format)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FASTA 형식은 간단하고 많이 사용되는 형태의 파일입니다. sequence alignment용 FASTA라는 프로그램에서 처음으로 사용되었죠. 아래에 예시가 있습니다. 시퀀스에 대한 설명은 &lt;code&gt;&amp;gt;&lt;/code&gt; 꺽쇄로 시작한 첫번째 줄에 적혀 있고, 다음 줄에는 서열 정보가 들어갑니다.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;gt; A06852 183 residues
 MPRLFSYLLGVWLLLSQLPREIPGQSTNDFIKACGRELVRLWVEICGSVSWGRTALSLEE
 PQLETGPPAETMPSSITKDAEILKMMLEFVPNLPQELKATLSERQPSLRELQQSASKDSN
-LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pre&gt;
+LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3206,10 +3197,11 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="1.-서열-정보를-R로-읽어오기"&gt;1. 서열 정보를 R로 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지를 사용해서 파스타(FASTA) 파일을 읽어 보도록 해보겠습니다.&lt;/p&gt;
+&lt;h2 id="1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;1. 서열 정보를 R로 읽어오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#1.-%EC%84%9C%EC%97%B4-%EC%A0%95%EB%B3%B4%EB%A5%BC-R%EB%A1%9C-%EC%9D%BD%EC%96%B4%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지를 사용해서 파스타(FASTA) 파일을 읽어 보도록 해보겠습니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://a-little-book-of-r-for-bioinformatics.readthedocs.io/en/latest/_images/P1_image3.png" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;NCBI에 &lt;strong&gt;NC_001477&lt;/strong&gt;로 accession 되어 있는 &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 파스타 파일을 다운받아 주세요. 파일명은 &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;로 하겠습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;&lt;code&gt;getncbiseq()&lt;/code&gt;을 이용해 한번에 불러오는 방법도 있어요.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;getncbiseq()&lt;/code&gt;을 이용해 한번에 불러오는 방법도 있어요.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;다운받은 파스타 파일이 있는 폴더에서 아래의 명령어를 입력합니다.&lt;/p&gt;
 
@@ -3223,9 +3215,9 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"seqinr"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="n"&gt;dengue&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;dengue&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# In fact, the first element of the list object dengue contains the the DNA sequence&lt;/span&gt;
-&lt;span class="n"&gt;dengueseq&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;dengue[[1]]&lt;/span&gt;
+&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dengue&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -3236,7 +3228,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="DNA-서열의-길이"&gt;DNA 서열의 길이&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA 서열을 불러온 다음에는 제대로 불어왔는지를 확인하기 위해 총 서열의 길이를 알아 보도록 하겠습니다.&lt;/p&gt;
+&lt;h2 id="DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4"&gt;DNA 서열의 길이&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%9D%98-%EA%B8%B8%EC%9D%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA 서열을 불러온 다음에는 제대로 불어왔는지를 확인하기 위해 총 서열의 길이를 알아 보도록 하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3263,9 +3255,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-10735
-&lt;/div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;10735&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -3277,7 +3267,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;총 &lt;strong&gt;10735&lt;/strong&gt;개의 DNA 서열로 구성되어있다는 것을 알 수 있군요.&lt;/p&gt;
-&lt;h3 id="원하는-부분의-서열만-얻기"&gt;원하는 부분의 서열만 얻기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DNA 서열에서도 특정 부분만 필요할 때가 있습니다. &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 처음부터 50번째 까지의 서열을 확인해보겠습니다.&lt;/p&gt;
+&lt;h3 id="%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0"&gt;원하는 부분의 서열만 얻기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%9B%90%ED%95%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%98-%EC%84%9C%EC%97%B4%EB%A7%8C-%EC%96%BB%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DNA 서열에서도 특정 부분만 필요할 때가 있습니다. &lt;strong&gt;DEN-1 Dengue virus genome sequence&lt;/strong&gt;의 처음부터 50번째 까지의 서열을 확인해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3287,7 +3277,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dengueseq[1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="n"&gt;]&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -3318,7 +3308,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="DNA-서열상의-염기-구성"&gt;DNA 서열상의 염기 구성&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA는 4가지의 nucleotides (“A”, “C”, “G”, “T”) 로 구성되어 있습니다. &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;에 각각이 몇개나 있는지 알아 보도록 하죠.&lt;/p&gt;
+&lt;h2 id="DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1"&gt;DNA 서열상의 염기 구성&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#DNA-%EC%84%9C%EC%97%B4%EC%83%81%EC%9D%98-%EC%97%BC%EA%B8%B0-%EA%B5%AC%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DNA는 4가지의 nucleotides (“A”, “C”, “G”, “T”) 로 구성되어 있습니다. &lt;strong&gt;DEN-1.fasta&lt;/strong&gt;에 각각이 몇개나 있는지 알아 보도록 하죠.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3389,9 +3379,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 
 
 
-&lt;div class="output_html rendered_html output_subarea "&gt;
-0.466697717745692
-&lt;/div&gt;
+&lt;div class="output_html rendered_html output_subarea "&gt;0.466697717745692&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -3403,7 +3391,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;GC content는 총 46.66977%입니다. 약간 적은 편이네요.&lt;/p&gt;
-&lt;h2 id="특정-부분의-GC-content"&gt;특정 부분의 GC content&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;좀전의 분석은 전체 서열상에서 평균 GC content이었습니다. 하지만 DNA서열상의 특정부분에서의 GC content는 어떻게 알 수 있을까요?&lt;/p&gt;
+&lt;h2 id="%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content"&gt;특정 부분의 GC content&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8A%B9%EC%A0%95-%EB%B6%80%EB%B6%84%EC%9D%98-GC-content"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;좀전의 분석은 전체 서열상에서 평균 GC content이었습니다. 하지만 DNA서열상의 특정부분에서의 GC content는 어떻게 알 수 있을까요?&lt;/p&gt;
 &lt;p&gt;전체서열을 여러개의 조각으로 나누어 &lt;code&gt;GC()&lt;/code&gt;기능을 사용해보겠습니다.
 예시로 여기서는 300개씩 잘라보았습니다.&lt;/p&gt;
 
@@ -3415,22 +3403,22 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;slidingwindowplot&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;slidingwindowplot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
-   &lt;span class="n"&gt;starts&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-   &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;# Find the length of the vector "starts"&lt;/span&gt;
-   &lt;span class="n"&gt;chunkGCs&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# Make a vector of the same length as vector "starts", but just containing zeroes&lt;/span&gt;
-   &lt;span class="nf"&gt;for &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="n"&gt;chunk&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;inputseq[starts[i]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts[i]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;]&lt;/span&gt;
-        &lt;span class="n"&gt;chunkGC&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;GC&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chunk&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="c1"&gt;# print(chunkGC)&lt;/span&gt;
-        &lt;span class="n"&gt;chunkGCs[i]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;chunkGC&lt;/span&gt;
-   &lt;span class="p"&gt;}&lt;/span&gt;
-   &lt;span class="nf"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;chunkGCs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;xlab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"Nucleotide start position"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ylab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GC content"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;# Find the length of the vector "starts"&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;chunkGCs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Make a vector of the same length as vector "starts", but just containing zeroes&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nf"&gt;for &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;chunk&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;inputseq&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;windowsize&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;chunkGC&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;GC&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chunk&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;# print(chunkGC)&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;chunkGCs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;chunkGC&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="nf"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starts&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;chunkGCs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"b"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;xlab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"Nucleotide start position"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ylab&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GC content"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="c1"&gt;# 300개씩 서열을 나누어서 GC() 기능을 사용합니다.&lt;/span&gt;
-&lt;span class="nf"&gt;slidingwindowplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;slidingwindowplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -3462,7 +3450,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;전체적인 서열상에서 GC contents가 특별하게 낮은 구역은 4000번(40%) 즈음이군요.&lt;/p&gt;
-&lt;h3 id="파스타(FASTA)-파일-쓰기"&gt;파스타(FASTA) 파일 쓰기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파스타 파일을 불러들여 간단히 분석을 해보았는데, 이제는 편집한 서열을 파스타 파일로 저장하는 방법을 알아보겠습니다.&lt;/p&gt;
+&lt;h3 id="%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0"&gt;파스타(FASTA) 파일 쓰기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80(FASTA)-%ED%8C%8C%EC%9D%BC-%EC%93%B0%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;파스타 파일을 불러들여 간단히 분석을 해보았는데, 이제는 편집한 서열을 파스타 파일로 저장하는 방법을 알아보겠습니다.&lt;/p&gt;
 &lt;p&gt;아래와 같이 작성해주면, &lt;strong&gt;den1.fasta&lt;/strong&gt;라는 파일이 폴더에 생긴것을 확인 할수 있어요.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -3473,7 +3461,7 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;write.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;names&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"DEN-1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sequences&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;file.out&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;write.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;names&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"DEN-1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sequences&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;dengueseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file.out&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"den1.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -3484,10 +3472,10 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="파스타-파일에서-단백질-서열을-불러오기"&gt;파스타 파일에서 단백질 서열을 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt;을 사용하면 DNA 서열과 동일한 방법으로 단백질 서열도 읽을수 있습니다. &lt;strong&gt;Uniprot&lt;/strong&gt; 에 각각 &lt;strong&gt;Q9CD83&lt;/strong&gt; , &lt;strong&gt;A0PQ23&lt;/strong&gt;으로 저장되어 있는 단백질 서열의 파스타 파일을 다운받으세요.&lt;/p&gt;
-&lt;h3 id="예시로-사용한-Q9CD83,-A0PQ23-?"&gt;예시로 사용한 Q9CD83, A0PQ23 ?&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Q9CD83&lt;/strong&gt; 과 &lt;strong&gt;A0PQ23&lt;/strong&gt; 는 Chorismate pyruvate-lyase라는 효소입니다. 차이점은 서로 다른 균주에서 발현된다는 것입니다.&lt;/p&gt;
+&lt;h2 id="%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;파스타 파일에서 단백질 서열을 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%ED%8C%8C%EC%8A%A4%ED%83%80-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%84%9C%EC%97%B4%EC%9D%84-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt;을 사용하면 DNA 서열과 동일한 방법으로 단백질 서열도 읽을수 있습니다. &lt;strong&gt;Uniprot&lt;/strong&gt; 에 각각 &lt;strong&gt;Q9CD83&lt;/strong&gt; , &lt;strong&gt;A0PQ23&lt;/strong&gt;으로 저장되어 있는 단백질 서열의 파스타 파일을 다운받으세요.&lt;/p&gt;
+&lt;h3 id="%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?"&gt;예시로 사용한 Q9CD83, A0PQ23 ?&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%98%88%EC%8B%9C%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%9C-Q9CD83,-A0PQ23-?"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Q9CD83&lt;/strong&gt; 과 &lt;strong&gt;A0PQ23&lt;/strong&gt; 는 Chorismate pyruvate-lyase라는 효소입니다. 차이점은 서로 다른 균주에서 발현된다는 것입니다.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Q9CD83은 &lt;em&gt;Mycobacterium leprae&lt;/em&gt; &lt;/li&gt;
+&lt;li&gt;Q9CD83은 &lt;em&gt;Mycobacterium leprae&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;A0PQ23은 &lt;em&gt;Mycobacterium ulcerans&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;R에서 아래와 같이 입력하세요.&lt;/p&gt;
@@ -3500,13 +3488,13 @@ LNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIAR&lt;/code&gt;&lt;/pr
 &lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;leprae&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"Q9CD83.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;lepraeseq&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;leprae[[1]]&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;leprae&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"Q9CD83.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;lepraeseq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;leprae&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 
-&lt;span class="n"&gt;ulcerans&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"A0PQ23.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ulceransseq&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;ulcerans[[1]]&lt;/span&gt;
+&lt;span class="n"&gt;ulcerans&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;read.fasta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"A0PQ23.fasta"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ulceransseq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ulcerans&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 
-&lt;span class="n"&gt;lepraeseq&lt;/span&gt; &lt;span class="c1"&gt;# Display the contents of "lepraeseq"&lt;/span&gt;
+&lt;span class="n"&gt;lepraeseq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Display the contents of "lepraeseq"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -3555,7 +3543,7 @@ attr(,"class")
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;파스타 파일이 아미노산 서열을 담고 있는것을 확인할 수 있고, 서열으 정보(균주, 이름)등을 알수 있군요.&lt;/p&gt;
-&lt;h2 id="두-서열을-점도표로-비교하기"&gt;두 서열을 점도표로 비교하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두가지의 서열을 비교할때는 먼저 점도표(dotplot)을 그려보는것은 언제나 좋은 생각입니다.&lt;/p&gt;
+&lt;h2 id="%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0"&gt;두 서열을 점도표로 비교하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%91%90-%EC%84%9C%EC%97%B4%EC%9D%84-%EC%A0%90%EB%8F%84%ED%91%9C%EB%A1%9C-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두가지의 서열을 비교할때는 먼저 점도표(dotplot)을 그려보는것은 언제나 좋은 생각입니다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;dotPlot()&lt;/code&gt;이라는 기능으로 쉽게 그려 볼 수 있죠. 위에서 예로 들었던 &lt;em&gt;Mycobacterium leprae&lt;/em&gt; 과 &lt;em&gt;Mycobacterium ulcerans&lt;/em&gt;의 Chorismate pyruvate-lyase를 비교해보도록 하죠.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -3566,7 +3554,7 @@ attr(,"class")
 &lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;dotPlot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lepraeseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ulceransseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-r"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;dotPlot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lepraeseq&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ulceransseq&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -3606,7 +3594,7 @@ attr(,"class")
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="코돈표"&gt;코돈표&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%BD%94%EB%8F%88%ED%91%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지에는 &lt;code&gt;tablecode()&lt;/code&gt; 라는 기능으로 표준 코돈표를 제공하고 있습니다. 아래와 같이 확인할 수 있죠.&lt;/p&gt;
+&lt;h2 id="%EC%BD%94%EB%8F%88%ED%91%9C"&gt;코돈표&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EC%BD%94%EB%8F%88%ED%91%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지에는 &lt;code&gt;tablecode()&lt;/code&gt; 라는 기능으로 표준 코돈표를 제공하고 있습니다. 아래와 같이 확인할 수 있죠.&lt;/p&gt;
 &lt;p&gt;보통 인터넷에서 쉽게 확인 할 수 있는것이라 큰 쓸모는 없을 수도 있겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -3648,10 +3636,10 @@ attr(,"class")
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;R&lt;/code&gt;의 &lt;code&gt;SeqinR&lt;/code&gt;이라는 패키지를 사용해 생물학적 서열정보를 간략하게 분석해보았습니다. &lt;code&gt;R&lt;/code&gt;에서 기본적으로 제공하는 다음의 기능과&lt;/p&gt;
+&lt;h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/R-bio/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;R&lt;/code&gt;의 &lt;code&gt;SeqinR&lt;/code&gt;이라는 패키지를 사용해 생물학적 서열정보를 간략하게 분석해보았습니다. &lt;code&gt;R&lt;/code&gt;에서 기본적으로 제공하는 다음의 기능과&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;벡터(vector)나 리스트(list)의 길이를 알 수 있는 &lt;code&gt;length()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;벡터(vector)나 리스트(list)의 구성성분의 갯수를 알려주는 &lt;code&gt;table()&lt;/code&gt; &lt;/li&gt;
+&lt;li&gt;벡터(vector)나 리스트(list)의 구성성분의 갯수를 알려주는 &lt;code&gt;table()&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;SeqinR&lt;/code&gt; 패키지에서 제공하는 기능&lt;/p&gt;
 &lt;ul&gt;
@@ -3664,7 +3652,7 @@ attr(,"class")
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Bioinformatics</category><category>R</category><category>SeqinR</category><guid>https://partrita.github.io/posts/R-bio/</guid><pubDate>Mon, 29 Jan 2018 08:56:47 GMT</pubDate></item><item><title>Ancestral reconstruction</title><link>https://partrita.github.io/posts/Ancestral-reconstruction/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>Bioinformatics</category><category>R</category><category>SeqinR</category><guid>https://partrita.github.io/posts/R-bio/</guid><pubDate>Mon, 29 Jan 2018 08:56:47 GMT</pubDate></item><item><title>Ancestral reconstruction</title><link>https://partrita.github.io/posts/Ancestral-reconstruction/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Ancestral-Reconstruction"&gt;Ancestral Reconstruction&lt;a class="anchor-link" href="https://partrita.github.io/posts/Ancestral-reconstruction/#Ancestral-Reconstruction"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="Methods"&gt;Methods&lt;a class="anchor-link" href="https://partrita.github.io/posts/Ancestral-reconstruction/#Methods"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
@@ -3745,7 +3733,7 @@ attr(,"class")
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="각각의-공통조상의-아미노산-서열"&gt;각각의 공통조상의 아미노산 서열&lt;a class="anchor-link" href="https://partrita.github.io/posts/Ancestral-reconstruction/#%EA%B0%81%EA%B0%81%EC%9D%98-%EA%B3%B5%ED%86%B5%EC%A1%B0%EC%83%81%EC%9D%98-%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0-%EC%84%9C%EC%97%B4"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;FASTA&lt;/strong&gt; 포멧으로 아래와 같습니다.&lt;/p&gt;
+&lt;h4 id="%EA%B0%81%EA%B0%81%EC%9D%98-%EA%B3%B5%ED%86%B5%EC%A1%B0%EC%83%81%EC%9D%98-%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0-%EC%84%9C%EC%97%B4"&gt;각각의 공통조상의 아미노산 서열&lt;a class="anchor-link" href="https://partrita.github.io/posts/Ancestral-reconstruction/#%EA%B0%81%EA%B0%81%EC%9D%98-%EA%B3%B5%ED%86%B5%EC%A1%B0%EC%83%81%EC%9D%98-%EC%95%84%EB%AF%B8%EB%85%B8%EC%82%B0-%EC%84%9C%EC%97%B4"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;FASTA&lt;/strong&gt; 포멧으로 아래와 같습니다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;N1
 MKWVTLISLLFLFSSATSRNLQRFRRDAEAHKSEIAHRYNDLGEEHFKGLVLITFAQYLQKCPYEELAKLVKEVTDLAQACVADESAADCSKPLHTIFLDKICAVPKLRDTYGAMADCCAKADPERNECFLSHKDSQPDLVPPYQRPEPDVLCQAYQDNKESFLGHYIYEVARRHPFLYAPAILSFAQKFKAVLTECCEEADKGACLTTKLTALREKALIVSVKQRLSCGILQKFGDRVFQAWQLVRLSQKYPKAPFAEVSKLVTDLTKVHKECCHGDMLECMDDRADLTKHMCEHQDTISSKLKECCEKPIVERSHCIVELENDEMPADLPSLVEKFVEDKEVCKSFEEAKDVFLAEFLYEYSRRHPEFSVQLLLRIAKGYESTLEKCCETDNPHECYANAQDELNQLIKEPQDLVKQNCELLQKLGEYNFQNALLIRYTKKMPQVSTPTLVEISKSMTKVGSKCCKLPEAQRMPCAEGYLSVVINELCVLQETTPINENVTKCCSQSYANRRPCFTALGVDETYVPPEFNADTFTFHEDLCTLPEEERKIKKQTLLVNLVKHKPHVTEEQLKTIAGEFTAMVDKCCAAEDKEACFAEEGPKLIEQSKATLGLGA
 &amp;gt;N2
@@ -3772,4 +3760,4 @@ MKWVTFISLLFLFSSAYSRGVQRVRREAEAHKSEIAHRFNDLGEEHFRGLVLVAFSQYLQQCPFEDHVKLVNEVTEFAKA
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Bioinformatics</category><category>Python</category><guid>https://partrita.github.io/posts/Ancestral-reconstruction/</guid><pubDate>Thu, 14 Dec 2017 23:07:20 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>Bioinformatics</category><category>Python</category><guid>https://partrita.github.io/posts/Ancestral-reconstruction/</guid><pubDate>Thu, 14 Dec 2017 23:07:20 GMT</pubDate></item></channel></rss>

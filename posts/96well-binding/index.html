@@ -62,10 +62,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -126,15 +127,14 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="https://wol-prod-cdn.literatumonline.com/cms/attachment/34d4c21b-2fe3-4afa-bab1-cffd62d036bc/biot201800007-fig-0002-m.png" alt=""></p>
 <p>논문을 읽다 보면 위의 그림의 A 처럼 96well 형태로 시각화한것을 볼 수 있습니다. 가만히 생각해보면 위의 그림은 산점도(scatter plot)을 그리고 Binding 값을 점의 크기로 표현하면 될 것같습니다. 오늘은 그런 그림을 파이썬으로 그려봅니다.</p>
-<h3 id="필요한-라이브러리-불러오기">필요한 라이브러리 불러오기<a class="anchor-link" href="#%ED%95%84%EC%9A%94%ED%95%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+<h3 id="%ED%95%84%EC%9A%94%ED%95%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">필요한 라이브러리 불러오기<a class="anchor-link" href="#%ED%95%84%EC%9A%94%ED%95%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
 </h3>
 </div>
 </div>
@@ -162,7 +162,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="데이터-불러오기">데이터 불러오기<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
+<h3 id="%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">데이터 불러오기<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
 </h3>
 <p>시각화할 데이터를 <code>pandas</code>로 불러옵니다.</p>
 
@@ -192,8 +192,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -247,8 +246,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -288,8 +286,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -343,8 +340,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -358,7 +354,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위의 결과를 통해 Binding의 최대값은 26800, 최소값은 2700, 평균은 13840인것을 알 수 있습니다.</p>
-<h3 id="Seaborn-사용하기">Seaborn 사용하기<a class="anchor-link" href="#Seaborn-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="Seaborn-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">Seaborn 사용하기<a class="anchor-link" href="#Seaborn-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p><code>seaborn</code> 라이브러리를 사용해 시각화해봅니다.</p>
 
@@ -422,7 +418,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>똑같지는 않지만 비슷한 그래프를 그릴 수 있습니다. 게다가 코드도 간단합니다.</p>
-<h3 id="Matplotlib-사용하기">Matplotlib 사용하기<a class="anchor-link" href="#Matplotlib-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="Matplotlib-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">Matplotlib 사용하기<a class="anchor-link" href="#Matplotlib-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p><code>matplotlib</code>을 사용해 구현해봅니다. <code>seaborn</code>보다는 복잡하지만 좀 더 유연하게 사용할 수 있습니다.</p>
 
@@ -480,7 +476,6 @@ navbar-dark bg-dark
 </div>
 
 </div>
-</div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/96well/" rel="tag">96well</a></li>
@@ -507,7 +502,7 @@ navbar-dark bg-dark
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -518,9 +513,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

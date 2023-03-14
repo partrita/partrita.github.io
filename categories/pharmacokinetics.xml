@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Pharmacokinetics)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/pharmacokinetics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:31 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 PK 분석하기</title><link>https://partrita.github.io/posts/PK/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Pharmacokinetics)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/pharmacokinetics.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 PK 분석하기</title><link>https://partrita.github.io/posts/PK/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-Pharmacokinetics(PK)-분석"&gt;0. Pharmacokinetics(PK) 분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#0.-Pharmacokinetics(PK)-%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ELISA를 이용하여 혈액에서 시험 약물의 약물학적 동태(Pharmacokinetics)를 평가한 데이터를 분석해보도록 하겠습니다. Pharmacokinetics(이하, PK)는 간단히 말하면 특정 약물에 대해서 몸이 어떻게 반응하는지를 보는 것입니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Pharmacokinetics은 약물의 흡수, 분포, 대사, 배설과정을 동역학적 관점에서 해석하고 예측하고자 하는 것이다. -- 위키백과&lt;/p&gt;
+&lt;h2 id="0.-Pharmacokinetics(PK)-%EB%B6%84%EC%84%9D"&gt;0. Pharmacokinetics(PK) 분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#0.-Pharmacokinetics(PK)-%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ELISA를 이용하여 혈액에서 시험 약물의 약물학적 동태(Pharmacokinetics)를 평가한 데이터를 분석해보도록 하겠습니다. Pharmacokinetics(이하, PK)는 간단히 말하면 특정 약물에 대해서 몸이 어떻게 반응하는지를 보는 것입니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Pharmacokinetics은 약물의 흡수, 분포, 대사, 배설과정을 동역학적 관점에서 해석하고 예측하고자 하는 것이다. -- 위키백과&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;PK 분석을 통해서 약물의 반감기를 분석하고 약물 주입방식에 따른 차이를 살펴보도록 하겠습니다.&lt;/p&gt;
-&lt;h3 id="0.1.-실험-디자인"&gt;0.1. 실험 디자인&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#0.1.-%EC%8B%A4%ED%97%98-%EB%94%94%EC%9E%90%EC%9D%B8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;실험 쥐에 약물 X를 아래의 두가지 주입방식으로 실험합니다. 정확도를 위해 3번 반복하여 값을 측정하였습니다.&lt;/p&gt;
+&lt;h3 id="0.1.-%EC%8B%A4%ED%97%98-%EB%94%94%EC%9E%90%EC%9D%B8"&gt;0.1. 실험 디자인&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#0.1.-%EC%8B%A4%ED%97%98-%EB%94%94%EC%9E%90%EC%9D%B8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;실험 쥐에 약물 X를 아래의 두가지 주입방식으로 실험합니다. 정확도를 위해 3번 반복하여 값을 측정하였습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;IV(intravenous injection): 정맥주사&lt;/li&gt;
-&lt;li&gt;SC(subcutaneous injection): 피하주사  &lt;/li&gt;
+&lt;li&gt;SC(subcutaneous injection): 피하주사&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;주입후 72시간동안 실험 쥐의 혈액을 채취해 남아있는 약물 X의 양을 구합니다.&lt;/p&gt;
-&lt;h2 id="1.-데이터-불러오기"&gt;1. 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;필요한 라이브러리를 불러옵니다.&lt;/p&gt;
+&lt;h2 id="1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;1. 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;필요한 라이브러리를 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -67,8 +68,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -135,8 +135,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -147,7 +146,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="2.-데이터-전처리"&gt;2. 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Injection 방법에 의한 차이와 샘플을 채취한 시간, 실험용 쥐의 번호등을 확인 할 수 있습니다. 데이터 전처리 과정에서 필요없는 행을 삭제하고 반복측정한 값의 평균값과 표준편차를 계산하겠습니다.&lt;/p&gt;
+&lt;h2 id="2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;2. 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Injection 방법에 의한 차이와 샘플을 채취한 시간, 실험용 쥐의 번호등을 확인 할 수 있습니다. 데이터 전처리 과정에서 필요없는 행을 삭제하고 반복측정한 값의 평균값과 표준편차를 계산하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -180,8 +179,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -224,8 +222,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -269,8 +266,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -317,8 +313,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -330,7 +325,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;데이터가 잘 정돈 된것을 확인했으니, 다음으로 시각화를 합니다.&lt;/p&gt;
-&lt;h2 id="2.-시각화하기"&gt;2. 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="2.1.-간단한-선그래프"&gt;2.1. 간단한 선그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#2.1.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;선그래프로 전체적인 모양을 확인해 봅니다.&lt;/p&gt;
+&lt;h2 id="2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;2. 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="2.1.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84"&gt;2.1. 간단한 선그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#2.1.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;선그래프로 전체적인 모양을 확인해 봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -385,7 +380,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="2.2.-선그래프에-에러바-추가하기"&gt;2.2. 선그래프에 에러바 추가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#2.2.-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-%EC%97%90%EB%9F%AC%EB%B0%94-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;위의 그래프에서는 IV injection의 두번째 값이 좀 낮은 것 같은데, 표준편차가 표시되어 있지 않아 실제값 자체가 낮은 것인지 실험상의 편차인지 명확하지 않습니다. &lt;code&gt;plt.errorbar()&lt;/code&gt;를 이용해서 에러바를 표시해 알아 보도록 하죠.&lt;/p&gt;
+&lt;h3 id="2.2.-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-%EC%97%90%EB%9F%AC%EB%B0%94-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0"&gt;2.2. 선그래프에 에러바 추가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#2.2.-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-%EC%97%90%EB%9F%AC%EB%B0%94-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;위의 그래프에서는 IV injection의 두번째 값이 좀 낮은 것 같은데, 표준편차가 표시되어 있지 않아 실제값 자체가 낮은 것인지 실험상의 편차인지 명확하지 않습니다. &lt;code&gt;plt.errorbar()&lt;/code&gt;를 이용해서 에러바를 표시해 알아 보도록 하죠.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -439,7 +434,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;IV injection의 두번째 값의 표준편차가 큰것을 확인할 수 있습니다. 따라서 실험상의 편차로 인해 나타난 현상이라고 볼 수 있겠습니다.&lt;/p&gt;
-&lt;h2 id="3.-반감기-계산"&gt;3. 반감기 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#3.-%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pharmacokinetics 실험의 목적이라고 할 수 있는 약물의 반감기를 계산해 보도록 하겠습니다. 계산을 위해선 실험 데이터에 Curve fitting을 수행해야 합니다. 파이썬에서는 &lt;code&gt;scipy.optimize.curve_fit()&lt;/code&gt; 을 사용하도록 하겠습니다.&lt;/p&gt;
+&lt;h2 id="3.-%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0"&gt;3. 반감기 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#3.-%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pharmacokinetics 실험의 목적이라고 할 수 있는 약물의 반감기를 계산해 보도록 하겠습니다. 계산을 위해선 실험 데이터에 Curve fitting을 수행해야 합니다. 파이썬에서는 &lt;code&gt;scipy.optimize.curve_fit()&lt;/code&gt; 을 사용하도록 하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -486,7 +481,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.1.-IV-주입-반감기"&gt;3.1. IV 주입 반감기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#3.1.-IV-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;계산을 위해서는 IV 데이터를 &lt;code&gt;numpy.array()&lt;/code&gt;로 변경해야 합니다.&lt;/p&gt;
+&lt;h3 id="3.1.-IV-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0"&gt;3.1. IV 주입 반감기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#3.1.-IV-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;계산을 위해서는 IV 데이터를 &lt;code&gt;numpy.array()&lt;/code&gt;로 변경해야 합니다.&lt;/p&gt;
 &lt;h4 id="Curve-fitting"&gt;Curve fitting&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#Curve-fitting"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;실험데이터를 가장 가깝게 모든데이터를 지나는 선을 그려봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -648,7 +643,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;아까보다는 좀 더 잘맞는 것 같습니다. 일단은 반감기를 구해보도록 하죠.&lt;/p&gt;
-&lt;h4 id="반감기-계산"&gt;반감기 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;반감기는 주입한 약물의 양이 1/2로 감소하는 데 소요되는 시간입니다. 반감기를 구하는 공식이 따로 있기는 합니다만, 여기서는 Curve fiiting에 사용한 함수의 역함수를 정의해서 주입한 약물양의 절반이 되는 시간을 구해보겠습니다.&lt;/p&gt;
+&lt;h4 id="%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0"&gt;반감기 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;반감기는 주입한 약물의 양이 1/2로 감소하는 데 소요되는 시간입니다. 반감기를 구하는 공식이 따로 있기는 합니다만, 여기서는 Curve fiiting에 사용한 함수의 역함수를 정의해서 주입한 약물양의 절반이 되는 시간을 구해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -661,7 +656,7 @@
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;half_y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;exponential&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;popt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;  &lt;span class="c1"&gt;# 주입한 약물량을 2로 나누어 줍니다&lt;/span&gt;
 &lt;span class="c1"&gt;# 계산을 위한 역함수를 정의합니다.&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;rev_log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""for halflife calculate"""&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""for halflife calculate"""&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;/-&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;
 
 &lt;span class="n"&gt;half_life&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rev_log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;half_y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;popt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -695,7 +690,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.2.-SC-주입-반감기"&gt;3.2. SC 주입 반감기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#3.2.-SC-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;SC 경우는 처음에는 약물이 흡수되는 시간이 있습니다. 그래서 처음 3개의 결과는 제외하고 반감기를 구해보겠습니다.&lt;/p&gt;
+&lt;h3 id="3.2.-SC-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0"&gt;3.2. SC 주입 반감기&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#3.2.-SC-%EC%A3%BC%EC%9E%85-%EB%B0%98%EA%B0%90%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;SC 경우는 처음에는 약물이 흡수되는 시간이 있습니다. 그래서 처음 3개의 결과는 제외하고 반감기를 구해보겠습니다.&lt;/p&gt;
 &lt;h4 id="Curve-fitting"&gt;Curve fitting&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#Curve-fitting"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -777,7 +772,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="반감기-계산"&gt;반감기 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0"&gt;반감기 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#%EB%B0%98%EA%B0%90%EA%B8%B0-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -789,7 +784,7 @@
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;half_y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;exponential&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;popt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;  &lt;span class="c1"&gt;# 주입한 약물량을 2로 나누어 줍니다&lt;/span&gt;
 &lt;span class="c1"&gt;# 계산을 위한 역함수를 정의합니다.&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;rev_log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""for halflife calculate"""&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""for halflife calculate"""&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;/-&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;
 
 &lt;span class="n"&gt;half_life&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rev_log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;half_y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;popt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -822,13 +817,15 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="4.-Bioavailability(BA)-계산"&gt;4. Bioavailability(BA) 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#4.-Bioavailability(BA)-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/AUC_IVPO.svg/220px-AUC_IVPO.svg.png" alt=""&gt;&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;약물의 흡수는 생체 이용률(bioavailability)로 나타내는데, 경구로 투여된 약물이 전신순환계에 들어가 생체에 이용되는 비율을 말하며, 투여 후 혈중 약물 농도의 총 면적, 즉 AUC(Area Under the Concentration- time Curve)가 생체 이용률의 지표로 흔히 쓰이고 있다. -- &lt;em&gt;Kyung Soo Kim, et al. Drug Effect and Generic Substitution&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="4.-Bioavailability(BA)-%EA%B3%84%EC%82%B0"&gt;4. Bioavailability(BA) 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#4.-Bioavailability(BA)-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/AUC_IVPO.svg/220px-AUC_IVPO.svg.png" alt=""&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;약물의 흡수는 생체 이용률(bioavailability)로 나타내는데, 경구로 투여된 약물이 전신순환계에 들어가 생체에 이용되는 비율을 말하며, 투여 후 혈중 약물 농도의 총 면적, 즉 AUC(Area Under the Concentration- time Curve)가 생체 이용률의 지표로 흔히 쓰이고 있다. -- &lt;em&gt;Kyung Soo Kim, et al. Drug Effect and Generic Substitution&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id="4.1.-The-absolute-bioavailability"&gt;4.1. The absolute bioavailability&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#4.1.-The-absolute-bioavailability"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;&lt;p&gt;정맥투여에 대한 상대적인 흡수율을 나타내며, %로 표시하기에 절대적 생체 이용률이라고 한다. 약
-물을 정맥에 투여할 때에는 곧 바로 전신순환에 도달되기 때문에 전신약물 흡수 즉 생체 이용률은
+&lt;h3 id="4.1.-The-absolute-bioavailability"&gt;4.1. The absolute bioavailability&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#4.1.-The-absolute-bioavailability"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;정맥투여에 대한 상대적인 흡수율을 나타내며, %로 표시하기에 절대적 생체 이용률이라고 한다. 약&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;물을 정맥에 투여할 때에는 곧 바로 전신순환에 도달되기 때문에 전신약물 흡수 즉 생체 이용률은
 100%으로 생각한다.  -- &lt;em&gt;Kyung Soo Kim, et al. Drug Effect and Generic Substitution&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;p&gt;아래의 공식은 절대적 생체 이용률(BA)를 구하는 방법입니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7c9d7b07a55727d84e66666a95c3478d036b09a9" alt=""&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -890,8 +887,8 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="5.-마치며"&gt;5. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#5.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이번 포스트에서는 파이썬을 이용해 간단한 PK 분석을 해보았습니다. 저도 이쪽의 전문가가 아니라 직접 찾아보며 계산했습니다. 틀린 부분이 있다면 이해해주시기 바랍니다. 약물의 반감기와 BA는 다양한 PK 변수중에 극히 일부이지만, 이러한 변수를 구하는 방법을 안다면 다른 변수들도 쉽게 계산할 수 있으실 것입니다.&lt;/p&gt;
+&lt;h2 id="5.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;5. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/PK/#5.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이번 포스트에서는 파이썬을 이용해 간단한 PK 분석을 해보았습니다. 저도 이쪽의 전문가가 아니라 직접 찾아보며 계산했습니다. 틀린 부분이 있다면 이해해주시기 바랍니다. 약물의 반감기와 BA는 다양한 PK 변수중에 극히 일부이지만, 이러한 변수를 구하는 방법을 안다면 다른 변수들도 쉽게 계산할 수 있으실 것입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Curve fitting</category><category>Pharmacokinetics</category><category>PK</category><category>Python</category><guid>https://partrita.github.io/posts/PK/</guid><pubDate>Thu, 12 Apr 2018 22:56:47 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>Curve fitting</category><category>Pharmacokinetics</category><category>PK</category><category>Python</category><guid>https://partrita.github.io/posts/PK/</guid><pubDate>Thu, 12 Apr 2018 22:56:47 GMT</pubDate></item></channel></rss>

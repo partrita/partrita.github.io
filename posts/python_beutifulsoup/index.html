@@ -71,10 +71,11 @@ from ">
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -135,15 +136,14 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>시사용어 모음집은 유료 서비스(예를 들면 <em>에듀스</em>)를 이용할 수 밖에 없었는데 <a href="http://www.danbinews.com/">단비뉴스</a>라는 곳에서 감사하게도 시사용어를 소개하고 있는 페이지가 있어 파이썬을 사용해 초간단 웹 스크래핑을 했습니다.</p>
+    <p>시사용어 모음집은 유료 서비스(예를 들면 <em>에듀스</em>)를 이용할 수 밖에 없었는데 <a href="http://www.danbinews.com/">단비뉴스</a>라는 곳에서 감사하게도 시사용어를 소개하고 있는 페이지가 있어 파이썬을 사용해 초간단 웹 스크래핑을 했습니다.</p>
 <h2>1. 필요한 것</h2>
 <ul>
 <li>python 2.7+</li>
 <li>BeautifulSoup 모듈</li>
 </ul>
 <h2>2. Code</h2>
-<pre class="code literal-block"><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="code"><pre class="code literal-block"><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">urllib</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
@@ -187,15 +187,13 @@ navbar-dark bg-dark
 <span class="nb">print</span> <span class="s1">'Finished'</span><span class="n">기</span>
 <span class="nb">print</span> <span class="s1">'Fail list : '</span>
 <span class="nb">print</span> <span class="n">fail_list</span> <span class="c1"># 실패한 페이지 출력</span>
-</pre>
-
+</pre></div>
 
 <h2>3. 결과 확인</h2>
 <p>결과는 <strong>result.txt</strong> 파일에 저장됩니다.</p>
 <blockquote>
 <p>파일은 금방 만들었는데 언제 다 읽나.</p>
 </blockquote>
-</div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/beautifulsoup/" rel="tag">BeautifulSoup</a></li>
@@ -211,7 +209,7 @@ navbar-dark bg-dark
                 <a href="../linux-trouble-shooting/" rel="next" title="리눅스 문제 해결">Next post</a>
             </li>
         </ul></nav></aside></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -222,9 +220,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

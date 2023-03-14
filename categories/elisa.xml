@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about ELISA)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/elisa.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:31 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>ELISA 분석하기</title><link>https://partrita.github.io/posts/ELISA-python-analysis/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about ELISA)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/elisa.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:35 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>ELISA 분석하기</title><link>https://partrita.github.io/posts/ELISA-python-analysis/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;4PL은 ELISA 실험에서 standard curve를 그릴때 가장 흔하게 사용되는 방법입니다.오늘은 ELISA 데이터에 사용되는 4 Parameter Logistic(이하,4PL) Regression을 파이썬을 가지고 해보겠습니다.&lt;/p&gt;
 &lt;h2 id="0.-ELISA?"&gt;0. ELISA?&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#0.-ELISA?"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Enzyme-linked immunosorbent assay의 약자인 ELISA는 항체 항원 반응을 이용해 목적 단백질의 활성이나 결합력을 정량적으로 측정하는 방법입니다. 아주 긴 역사와 전통을 가지고 있는 것으로 자세한 내용은 &lt;a href="https://ko.wikipedia.org/wiki/%ED%9A%A8%EC%86%8C_%EA%B2%B0%ED%95%A9_%EB%A9%B4%EC%97%AD_%EC%B9%A8%EA%B0%95_%EB%B6%84%EC%84%9D%EB%B2%95"&gt;위키피디아&lt;/a&gt;를 참고 하세요.&lt;/p&gt;
 &lt;h2 id="1.-Four-Parameter-Logistic-(4PL)-Regression"&gt;1. Four Parameter Logistic (4PL) Regression&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#1.-Four-Parameter-Logistic-(4PL)-Regression"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;많은 생물학적 데이터들은 간단한 선형회귀 모델과는 맞지 않습니다. 그래서 보다 복잡한 모델인 4PL이 더 잘 맞습니다. 4PL은 dose response 나 receptor-ligand binding 시험과 같은 실험에 적합합니다. 그래서 유용하죠. 이름에서 알 수 있듯 4개의 매개변수가 필요합니다. 그리고 S형태의 모양을 띄고 있습니다. 수식으로 표현하면 아래와 같죠.&lt;/p&gt;
-$$ y = \frac{A-D}{1.0+(\frac{x}{C})^B} + D $$&lt;p&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;x = 독립 변수(예; 처리한 시료량)  &lt;/li&gt;
+$$ y = \frac{A-D}{1.0+(\frac{x}{C})^B} + D $$&lt;ul&gt;
+&lt;li&gt;x = 독립 변수(예; 처리한 시료량)&lt;/li&gt;
 &lt;li&gt;y = 종속 변수(예; 시료량에 따른 실험결과 값)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;4개의 매개 변수가 뜻하는것은 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A = 최솟값 (예; 시료를 처리하지 않았을때의 수치)&lt;/li&gt;
-&lt;li&gt;B = 커브의 경사 기울기  &lt;/li&gt;
+&lt;li&gt;B = 커브의 경사 기울기&lt;/li&gt;
 &lt;li&gt;C = 커브의 중간점 (예; 경사가 급해지는 부분)&lt;/li&gt;
 &lt;li&gt;D = 최고값&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;위의 수식을 뒤집으면 실험에서 얻은 결과 값(y)로 부터 넣어준 미지의 시료의 값(x)를 알아낼 수 있습니다. 공식은 다음과 같습니다.&lt;/p&gt;
-$$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$&lt;h2 id="2.-실제-응용"&gt;2. 실제 응용&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#2.-%EC%8B%A4%EC%A0%9C-%EC%9D%91%EC%9A%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ELISA 실험에서 얻은 데이터를 가지고, Standard curve를 그려 4개의 매개 변수값을 구해보겠습니다. 그런 다음 실험 측정값(y)을 통해 거꾸로 사용한 시료의 양(x)을 구해보겠습니다.&lt;/p&gt;
-&lt;h3 id="2.1.-Standard-curve-그리기"&gt;2.1. Standard curve 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#2.1.-Standard-curve-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;사용할 라이브러리를 불러옵니다.&lt;/p&gt;
+$$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$&lt;h2 id="2.-%EC%8B%A4%EC%A0%9C-%EC%9D%91%EC%9A%A9"&gt;2. 실제 응용&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#2.-%EC%8B%A4%EC%A0%9C-%EC%9D%91%EC%9A%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ELISA 실험에서 얻은 데이터를 가지고, Standard curve를 그려 4개의 매개 변수값을 구해보겠습니다. 그런 다음 실험 측정값(y)을 통해 거꾸로 사용한 시료의 양(x)을 구해보겠습니다.&lt;/p&gt;
+&lt;h3 id="2.1.-Standard-curve-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;2.1. Standard curve 그리기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#2.1.-Standard-curve-%EA%B7%B8%EB%A6%AC%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;사용할 라이브러리를 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -75,8 +74,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$&lt;h2 id="2.-실제-응�
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -179,8 +177,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$&lt;h2 id="2.-실제-응�
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -204,7 +201,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$&lt;h2 id="2.-실제-응�
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# define 4pl logistic&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;logistic4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""4PL logoistic equation."""&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""4PL logoistic equation."""&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;D&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -403,7 +400,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$&lt;h2 id="2.-실제-응�
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;거의 절반의 샘플에서 0에 수렴하는 결과를 얻었지만, 전체적으로 curve fitting이 잘 된것을 확인할 수 있습니다.&lt;/p&gt;
-&lt;h3 id="2.2-미지의-샘플농도-구하기"&gt;2.2 미지의 샘플농도 구하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#2.2-%EB%AF%B8%EC%A7%80%EC%9D%98-%EC%83%98%ED%94%8C%EB%86%8D%EB%8F%84-%EA%B5%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이제 실험 값(y)을 가지고 standard curve에 대입해서 농도값(x)을 알아보겠습니다. 이것이 진짜 ELISA 실험을 하는 이유입니다.&lt;/p&gt;
+&lt;h3 id="2.2-%EB%AF%B8%EC%A7%80%EC%9D%98-%EC%83%98%ED%94%8C%EB%86%8D%EB%8F%84-%EA%B5%AC%ED%95%98%EA%B8%B0"&gt;2.2 미지의 샘플농도 구하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#2.2-%EB%AF%B8%EC%A7%80%EC%9D%98-%EC%83%98%ED%94%8C%EB%86%8D%EB%8F%84-%EA%B5%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이제 실험 값(y)을 가지고 standard curve에 대입해서 농도값(x)을 알아보겠습니다. 이것이 진짜 ELISA 실험을 하는 이유입니다.&lt;/p&gt;
 &lt;p&gt;먼저 아래와 같은 함수를 정의합니다.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -416,7 +413,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$&lt;h2 id="2.-실제-응�
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 역수를 구해서 OD값에서 conc 값 알아내기&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;solvex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""rearranged 4PL logoistic equation."""&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""rearranged 4PL logoistic equation."""&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(((&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -469,8 +466,8 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$&lt;h2 id="2.-실제-응�
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="정리하며,"&gt;정리하며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;결과값이 32000정도 나왔는데요, Standard curve에 대입해보면 얼추 맞는 것 같습니다.&lt;/p&gt;
+&lt;h2 id="%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;정리하며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/ELISA-python-analysis/#%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;결과값이 32000정도 나왔는데요, Standard curve에 대입해보면 얼추 맞는 것 같습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Curve fitting</category><category>ELISA</category><category>Python</category><guid>https://partrita.github.io/posts/ELISA-python-analysis/</guid><pubDate>Sun, 16 Dec 2018 08:27:02 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>Curve fitting</category><category>ELISA</category><category>Python</category><guid>https://partrita.github.io/posts/ELISA-python-analysis/</guid><pubDate>Sun, 16 Dec 2018 08:27:02 GMT</pubDate></item></channel></rss>

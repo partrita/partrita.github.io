@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Protein purification)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/protein-purification.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>컬럼의 DBC 측정하기</title><link>https://partrita.github.io/posts/determine-dbc/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Protein purification)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/protein-purification.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>컬럼의 DBC 측정하기</title><link>https://partrita.github.io/posts/determine-dbc/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="1.-DBC(dynamic-binding-capacity)란-무엇인가?"&gt;1. DBC(dynamic binding capacity)란 무엇인가?&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#1.-DBC(dynamic-binding-capacity)%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DBC는 단백질 정제에서 크로마토그래피 컬럼의 특정 실험 조건에 결합 할 수 있는 표적 단백질의 최대 양을 나타냅니다. 그러나 DBC는 유속이나 버퍼의 조성 및 단백질 시료에 따라 달라지기 때문에 실험 조건에 따라 달라 집니다.&lt;/p&gt;
+&lt;h2 id="1.-DBC(dynamic-binding-capacity)%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?"&gt;1. DBC(dynamic binding capacity)란 무엇인가?&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#1.-DBC(dynamic-binding-capacity)%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80?"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DBC는 단백질 정제에서 크로마토그래피 컬럼의 특정 실험 조건에 결합 할 수 있는 표적 단백질의 최대 양을 나타냅니다. 그러나 DBC는 유속이나 버퍼의 조성 및 단백질 시료에 따라 달라지기 때문에 실험 조건에 따라 달라 집니다.&lt;/p&gt;
 &lt;p&gt;그렇기 때문에 단백질 정제에서 적합한 레진을 선택하기 위해서는 DBC에 대한 정보가 매우 중요합니다. 보통 레진의 제조사는 일반적인 단백질 정제 조건에서의 DBC 정보를 제공하고는 있지만 특정 단백질에 대한 최상의 레진 및 실험 조건을 찾기 위해 직접 DBC를 측정해야 할 일 이 생깁니다.&lt;/p&gt;
-&lt;h3 id="1.1.-breakthrough-곡선"&gt;1.1. breakthrough 곡선&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#1.1.-breakthrough-%EA%B3%A1%EC%84%A0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://i.imgur.com/7tsSW8E.jpg" alt=""&gt;&lt;sup&gt;image from cytiva&lt;/sup&gt;&lt;/p&gt;
+&lt;h3 id="1.1.-breakthrough-%EA%B3%A1%EC%84%A0"&gt;1.1. breakthrough 곡선&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#1.1.-breakthrough-%EA%B3%A1%EC%84%A0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://i.imgur.com/7tsSW8E.jpg" alt=""&gt;&lt;sup&gt;image from cytiva&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;breakthrough 곡선은 컬럼에 결합하지 못하고 흘러 나온 단백질의 양을 그래프로 표현한 것입니다. 그리고 전체의 10%의 단백질이 흘러나온 경우를 &lt;strong&gt;QB10&lt;/strong&gt; 값이라 합니다.&lt;/p&gt;
-&lt;h3 id="1.2.-DBC-계산법"&gt;1.2. DBC 계산법&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#1.2.-DBC-%EA%B3%84%EC%82%B0%EB%B2%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://i.imgur.com/O0gVlb0.jpg" alt=""&gt;&lt;sup&gt;image from cytiva&lt;/sup&gt;&lt;/p&gt;
+&lt;h3 id="1.2.-DBC-%EA%B3%84%EC%82%B0%EB%B2%95"&gt;1.2. DBC 계산법&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#1.2.-DBC-%EA%B3%84%EC%82%B0%EB%B2%95"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://i.imgur.com/O0gVlb0.jpg" alt=""&gt;&lt;sup&gt;image from cytiva&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;위 그래프의 파란색 영역은 지연 볼륨(delay volume)으로 사용한 컬럼의 볼륨과 AKTA 시스템에 의해 발생합니다. 주황색 영역은 비 결합 단백질의 양을 나타냅니다. 파란색 곡선은 단백질 breakthrough를 나타내는 것으로 녹색 영역은 X% breakthrough에서 누출 된 단백질의 양을 나타냅니다. X% 에서의 총 DBC는 회색 영역으로 표시됩니다.&lt;/p&gt;
 &lt;p&gt;위 그림을 예시로 Aoffset은 50 mAu이고 Amax는 1000 mAu 이라는 것을 알 수 있습니다.&lt;/p&gt;
 &lt;p&gt;50 ml(Vx)에서 측정된 UV 흡광도는 126 mAu 이지만 아래의 계산을 통해 실제 값은 76 mAu라고 생각할 수 있습니다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;A- Aoffset = 126 – 50 = 76 mAu&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;A- Aoffset = 126 – 50 = 76 mAu
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;그리고 최대 UV 흡광도도 마찬가지로 950 mAu가 될 것입니다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Amax - Aoffset = 1000 – 50 = 950 mAu&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Amax - Aoffset = 1000 – 50 = 950 mAu
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;따라서 breakthrough의 비율은&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;(A - Aoffset) / (Amax - Aoffset) = Percentage of breakthrough&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;(A - Aoffset) / (Amax - Aoffset) = Percentage of breakthrough
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;를 통해 계산합니다. 결과적으로 50ml에서 breakthrough의 비율은 8%가 됩니다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% breakthrough = 76 / 950 = 8%&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="2.-DBC-계산하기"&gt;2. DBC 계산하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.-DBC-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;실제 실험을 통해 얻은 데이터를 통해 DBC(QB10)을 계산해보도록 하겠습니다.&lt;/p&gt;
-&lt;h3 id="2.1.-실험-데이터-불러오기"&gt;2.1. 실험 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.1.-%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;% breakthrough = 76 / 950 = 8%
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="2.-DBC-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0"&gt;2. DBC 계산하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.-DBC-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;실제 실험을 통해 얻은 데이터를 통해 DBC(QB10)을 계산해보도록 하겠습니다.&lt;/p&gt;
+&lt;h3 id="2.1.-%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;2.1. 실험 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.1.-%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -59,8 +59,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -206,8 +205,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -240,8 +238,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -327,8 +324,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -339,7 +335,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="2.2.--전체-데이터-시각화"&gt;2.2.  전체 데이터 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.2.--%EC%A0%84%EC%B2%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시각화를 통해 전체 데이터의 모습을 확인합니다.&lt;/p&gt;
+&lt;h3 id="2.2.--%EC%A0%84%EC%B2%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;2.2.  전체 데이터 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.2.--%EC%A0%84%EC%B2%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시각화를 통해 전체 데이터의 모습을 확인합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -397,7 +393,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="2.3.-그래프-피팅하기"&gt;2.3. 그래프 피팅하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.3.-%EA%B7%B8%EB%9E%98%ED%94%84-%ED%94%BC%ED%8C%85%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시그모이드 함수 정의하고 &lt;code&gt;curvefit&lt;/code&gt;으로 피팅하기&lt;/p&gt;
+&lt;h3 id="2.3.-%EA%B7%B8%EB%9E%98%ED%94%84-%ED%94%BC%ED%8C%85%ED%95%98%EA%B8%B0"&gt;2.3. 그래프 피팅하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.3.-%EA%B7%B8%EB%9E%98%ED%94%84-%ED%94%BC%ED%8C%85%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;시그모이드 함수 정의하고 &lt;code&gt;curvefit&lt;/code&gt;으로 피팅하기&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -432,7 +428,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="2.3.1.-Residence-time-3분-DBC-계산"&gt;2.3.1. Residence time 3분 DBC 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.3.1.-Residence-time-3%EB%B6%84-DBC-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;피팅이 올바른지 그림으로 확인한다.&lt;/p&gt;
+&lt;h4 id="2.3.1.-Residence-time-3%EB%B6%84-DBC-%EA%B3%84%EC%82%B0"&gt;2.3.1. Residence time 3분 DBC 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.3.1.-Residence-time-3%EB%B6%84-DBC-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;피팅이 올바른지 그림으로 확인한다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -446,7 +442,7 @@
 &lt;span class="n"&gt;y_fit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sigmoid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Run1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Run1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;Run1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s1"&gt;'o'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'data'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'k'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'fit'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'r'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'r_squared=&lt;/span&gt;&lt;span class="si"&gt;{Run1[3]:.3f}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'r_squared=&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Run1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.3f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Breakthrough(%)'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Volume(ml)'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -496,9 +492,9 @@
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;qb10_run1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;inversefunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sigmoid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Run1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="n"&gt;y_values&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'10% breakthrough 일때 fraction(ml)의 값 &lt;/span&gt;&lt;span class="si"&gt;{qb10_run1:.3f}&lt;/span&gt;&lt;span class="s1"&gt; ml 이고'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'10% breakthrough 일때 fraction(ml)의 값 &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;qb10_run1&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.3f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; ml 이고'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;dbc_run1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qb10_run1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;delayed_vol&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;protein_conc&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'따라서 DBC(QB10)의 값은 &lt;/span&gt;&lt;span class="si"&gt;{dbc_run1:.3f}&lt;/span&gt;&lt;span class="s1"&gt; mg/ml 이다.'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'따라서 DBC(QB10)의 값은 &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;dbc_run1&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.3f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; mg/ml 이다.'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -528,7 +524,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="2.3.1.-Residence-time-4분-DBC-계산"&gt;2.3.1. Residence time 4분 DBC 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.3.1.-Residence-time-4%EB%B6%84-DBC-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;앞서 사용한 방법과 동일하게 진행한다.&lt;/p&gt;
+&lt;h4 id="2.3.1.-Residence-time-4%EB%B6%84-DBC-%EA%B3%84%EC%82%B0"&gt;2.3.1. Residence time 4분 DBC 계산&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#2.3.1.-Residence-time-4%EB%B6%84-DBC-%EA%B3%84%EC%82%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;앞서 사용한 방법과 동일하게 진행한다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -542,7 +538,7 @@
 &lt;span class="n"&gt;y_fit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sigmoid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Run2&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Run2&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;Run2&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s1"&gt;'o'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'data'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'k'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_fit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'fit'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'r'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'r_squared=&lt;/span&gt;&lt;span class="si"&gt;{Run2[3]:.3f}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'r_squared=&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Run2&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.3f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Breakthrough(%)'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Volume(ml)'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -592,9 +588,9 @@
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;qb10_run2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;inversefunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sigmoid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Run2&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="n"&gt;y_values&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'10% breakthrough 일때 fraction(ml)의 값 &lt;/span&gt;&lt;span class="si"&gt;{qb10_run2:.3f}&lt;/span&gt;&lt;span class="s1"&gt; ml 이고'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'10% breakthrough 일때 fraction(ml)의 값 &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;qb10_run2&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.3f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; ml 이고'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;dbc_run2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qb10_run2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;delayed_vol&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;protein_conc&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'따라서 DBC(QB10)의 값은 &lt;/span&gt;&lt;span class="si"&gt;{dbc_run2:.3f}&lt;/span&gt;&lt;span class="s1"&gt; mg/ml 이다.'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;'따라서 DBC(QB10)의 값은 &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;dbc_run2&lt;/span&gt;&lt;span class="si"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;.3f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt; mg/ml 이다.'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -624,12 +620,12 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.-결론"&gt;3. 결론&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#3.-%EA%B2%B0%EB%A1%A0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Residence time은 평균적으로 단백질 시료가 정제 컬럼에 체류하는 시간의 값 입니다. 따라서 평균 체류 시간이 길수록 DBC는 증가할 것으로 예측할 수 있습니다. 위의 예시를 통해서도 3분일때는 72.902 mg/ml, 4분일때는 88.928 mg/ml 이라는 확인 할 수 있습니다.&lt;/p&gt;
-&lt;h3 id="3.1.-참고-자료"&gt;3.1. 참고 자료&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#3.1.-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h2 id="3.-%EA%B2%B0%EB%A1%A0"&gt;3. 결론&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#3.-%EA%B2%B0%EB%A1%A0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Residence time은 평균적으로 단백질 시료가 정제 컬럼에 체류하는 시간의 값 입니다. 따라서 평균 체류 시간이 길수록 DBC는 증가할 것으로 예측할 수 있습니다. 위의 예시를 통해서도 3분일때는 72.902 mg/ml, 4분일때는 88.928 mg/ml 이라는 확인 할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="3.1.-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C"&gt;3.1. 참고 자료&lt;a class="anchor-link" href="https://partrita.github.io/posts/determine-dbc/#3.1.-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.cytivalifesciences.com/en/us/news-center/how-to-determine-dynamic-binding-capacity-1000"&gt;GE Healthcare Life Sciences&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Pranav Gupte et. al, &lt;a href="https://bioprocessintl.com/downstream-processing/chromatography/dynamic-binding-capacities-of-protein-a-resins-for-antibody-capture-a-comparative-evaluation/"&gt;Dynamic Binding Capacities of Protein A Resins for Antibody Capture: A Comparative Evaluation&lt;/a&gt;, 2020, BioProcessInternational.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>DBC</category><category>Dynamic binding capacity</category><category>Protein purification</category><category>Python</category><guid>https://partrita.github.io/posts/determine-dbc/</guid><pubDate>Wed, 02 Sep 2020 11:07:20 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>DBC</category><category>Dynamic binding capacity</category><category>Protein purification</category><category>Python</category><guid>https://partrita.github.io/posts/determine-dbc/</guid><pubDate>Wed, 02 Sep 2020 11:07:20 GMT</pubDate></item></channel></rss>

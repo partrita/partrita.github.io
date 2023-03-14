@@ -66,10 +66,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -130,19 +131,18 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="R을-사용해-간트(Gantt)-차트-그리기">R을 사용해 간트(Gantt) 차트 그리기<a class="anchor-link" href="#R%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4-%EA%B0%84%ED%8A%B8(Gantt)-%EC%B0%A8%ED%8A%B8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+<h2 id="R%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4-%EA%B0%84%ED%8A%B8(Gantt)-%EC%B0%A8%ED%8A%B8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">R을 사용해 간트(Gantt) 차트 그리기<a class="anchor-link" href="#R%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4-%EA%B0%84%ED%8A%B8(Gantt)-%EC%B0%A8%ED%8A%B8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
 </h2>
 <blockquote>
 <p>간트 차트(Gantt chart)는 프로젝트 일정관리를 위한 바(bar)형태의 도구로서, 각 업무별로 일정의 시작과 끝을 그래픽으로 표시하여 전체 일정을 한눈에 볼 수 있다. -wiki</p>
 </blockquote>
 <p>회사 생활을 하다보니 종종 간트 차트를 그리는 일이 있습니다. 많은 사람들이 엑셀을 가지고 그리는 경우가 많은데 조금 더 미려한 플랏을 그리는 방법이 없을까 찾아보니 파이썬보다는 R로 그리는 편이 수월한 것 같더군요. 아래에는 <strong>ganttrify</strong> 와 <strong>plan</strong> 이라는 도구를 사용하는 방법에 대한 예제 코드 입니다.</p>
-<h3 id="0.-사용한-R-환경-정보">0. 사용한 R 환경 정보<a class="anchor-link" href="#0.-%EC%82%AC%EC%9A%A9%ED%95%9C-R-%ED%99%98%EA%B2%BD-%EC%A0%95%EB%B3%B4">¶</a>
+<h3 id="0.-%EC%82%AC%EC%9A%A9%ED%95%9C-R-%ED%99%98%EA%B2%BD-%EC%A0%95%EB%B3%B4">0. 사용한 R 환경 정보<a class="anchor-link" href="#0.-%EC%82%AC%EC%9A%A9%ED%95%9C-R-%ED%99%98%EA%B2%BD-%EC%A0%95%EB%B3%B4">¶</a>
 </h3>
 </div>
 </div>
@@ -169,8 +169,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea ">
-<dl>
+<div class="output_html rendered_html output_subarea "><dl>
 <dt>$platform</dt>
 		<dd>'x86_64-conda-linux-gnu'</dd>
 	<dt>$arch</dt>
@@ -199,8 +198,7 @@ navbar-dark bg-dark
 		<dd>'R version 4.1.1 (2021-08-10)'</dd>
 	<dt>$nickname</dt>
 		<dd>'Kick Things'</dd>
-</dl>
-</div>
+</dl></div>
 
 </div>
 
@@ -213,7 +211,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.-필요한-도구-설치하기">1. 필요한 도구 설치하기<a class="anchor-link" href="#1.-%ED%95%84%EC%9A%94%ED%95%9C-%EB%8F%84%EA%B5%AC-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="1.-%ED%95%84%EC%9A%94%ED%95%9C-%EB%8F%84%EA%B5%AC-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">1. 필요한 도구 설치하기<a class="anchor-link" href="#1.-%ED%95%84%EC%9A%94%ED%95%9C-%EB%8F%84%EA%B5%AC-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>R에서는 <code>install.packages('ganttrify')</code> 명령어로 간단하게 도구들을 설치할 수 있습니다. 설치가 완료되면 <code>library("ganttrify")</code> 명령어를 실행해 불러와야 합니다.</p>
 
@@ -228,7 +226,7 @@ navbar-dark bg-dark
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#install.packages('ganttrify')</span>
 <span class="nf">library</span><span class="p">(</span><span class="s">"ganttrify"</span><span class="p">)</span>
 
-<span class="nf">library</span><span class="p">(</span><span class="n">repr</span><span class="p">)</span> <span class="c1"># jupyter notebook에서 플랏의 크기를 조절하기 위한 도구</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">repr</span><span class="p">)</span><span class="w"> </span><span class="c1"># jupyter notebook에서 플랏의 크기를 조절하기 위한 도구</span>
 </pre></div>
 
     </div>
@@ -241,7 +239,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.-간트-차트-그리기">2. 간트 차트 그리기<a class="anchor-link" href="#2.-%EA%B0%84%ED%8A%B8-%EC%B0%A8%ED%8A%B8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+<h3 id="2.-%EA%B0%84%ED%8A%B8-%EC%B0%A8%ED%8A%B8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">2. 간트 차트 그리기<a class="anchor-link" href="#2.-%EA%B0%84%ED%8A%B8-%EC%B0%A8%ED%8A%B8-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
 </h3>
 <p>먼저 플랏의 크기를 설정해야 합니다. 간트차트는 일반적으로 옆으로 넓은 형태임으로 <code>repr</code>도구를 사용해 크기를 설정하였습니다.
 <code>ganttrify</code>에 이미 포함되어 있는 <code>test_project</code>데이터를 사용해 그려볼 것입니다. 다음의 간단한 코드로 미려한 플랏이 그려집니다.</p>
@@ -254,12 +252,12 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [54]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> 
+<div class=" highlight hl-r"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="w"> </span>
 <span class="c1"># jupyter notebook에서 플랏 크기 조절</span>
 
-<span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
-          <span class="n">project_start_date</span> <span class="o">=</span> <span class="s">"2021-03"</span><span class="p">,</span>
-          <span class="n">font_family</span> <span class="o">=</span> <span class="s">"Roboto Condensed"</span><span class="p">)</span>
+<span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
+<span class="w">          </span><span class="n">project_start_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"2021-03"</span><span class="p">,</span>
+<span class="w">          </span><span class="n">font_family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Roboto Condensed"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -292,7 +290,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2.1.-특정-시점-표기하기">2.1. 특정 시점 표기하기<a class="anchor-link" href="#2.1.-%ED%8A%B9%EC%A0%95-%EC%8B%9C%EC%A0%90-%ED%91%9C%EA%B8%B0%ED%95%98%EA%B8%B0">¶</a>
+<h4 id="2.1.-%ED%8A%B9%EC%A0%95-%EC%8B%9C%EC%A0%90-%ED%91%9C%EA%B8%B0%ED%95%98%EA%B8%B0">2.1. 특정 시점 표기하기<a class="anchor-link" href="#2.1.-%ED%8A%B9%EC%A0%95-%EC%8B%9C%EC%A0%90-%ED%91%9C%EA%B8%B0%ED%95%98%EA%B8%B0">¶</a>
 </h4>
 <p><code>spot</code>옵션을 사용하면 간트 차트에 시점을 표기할 수도 있습니다.</p>
 
@@ -304,10 +302,10 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [55]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
-          <span class="n">spots</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_spots</span><span class="p">,</span>
-          <span class="n">project_start_date</span> <span class="o">=</span> <span class="s">"2021-03"</span><span class="p">,</span>
-          <span class="n">font_family</span> <span class="o">=</span> <span class="s">"Roboto Condensed"</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
+<span class="w">          </span><span class="n">spots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_spots</span><span class="p">,</span>
+<span class="w">          </span><span class="n">project_start_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"2021-03"</span><span class="p">,</span>
+<span class="w">          </span><span class="n">font_family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Roboto Condensed"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -340,7 +338,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2.2.-분기-표시하기">2.2. 분기 표시하기<a class="anchor-link" href="#2.2.-%EB%B6%84%EA%B8%B0-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0">¶</a>
+<h4 id="2.2.-%EB%B6%84%EA%B8%B0-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0">2.2. 분기 표시하기<a class="anchor-link" href="#2.2.-%EB%B6%84%EA%B8%B0-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0">¶</a>
 </h4>
 <p>분기에 따른 선을 그어서 다음과 같이 그릴 수도 있습니다.</p>
 
@@ -352,12 +350,12 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [56]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
-          <span class="n">spots</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_spots</span><span class="p">,</span>
-          <span class="n">project_start_date</span> <span class="o">=</span> <span class="s">"2021-03"</span><span class="p">,</span>
-          <span class="n">size_text_relative</span> <span class="o">=</span> <span class="m">1.2</span><span class="p">,</span> 
-          <span class="n">mark_quarters</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
-          <span class="n">font_family</span> <span class="o">=</span> <span class="s">"Roboto Condensed"</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
+<span class="w">          </span><span class="n">spots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_spots</span><span class="p">,</span>
+<span class="w">          </span><span class="n">project_start_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"2021-03"</span><span class="p">,</span>
+<span class="w">          </span><span class="n">size_text_relative</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.2</span><span class="p">,</span><span class="w"> </span>
+<span class="w">          </span><span class="n">mark_quarters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">          </span><span class="n">font_family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Roboto Condensed"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -390,7 +388,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2.3.-대분류-감추기">2.3. 대분류 감추기<a class="anchor-link" href="#2.3.-%EB%8C%80%EB%B6%84%EB%A5%98-%EA%B0%90%EC%B6%94%EA%B8%B0">¶</a>
+<h4 id="2.3.-%EB%8C%80%EB%B6%84%EB%A5%98-%EA%B0%90%EC%B6%94%EA%B8%B0">2.3. 대분류 감추기<a class="anchor-link" href="#2.3.-%EB%8C%80%EB%B6%84%EB%A5%98-%EA%B0%90%EC%B6%94%EA%B8%B0">¶</a>
 </h4>
 <p>각각의 업무를 포괄하는 대분류(<code>WP</code>)를 감춘 그림을 그릴 수도 있습니다. 다만 아쉬운 것은 대분류는 표기하지만 bar graph는 그리지 않는 기능은 아직 없는 것 같습니다.</p>
 
@@ -402,9 +400,9 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [57]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
-          <span class="n">hide_wp</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
-          <span class="n">font_family</span> <span class="o">=</span> <span class="s">"Roboto Condensed"</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
+<span class="w">          </span><span class="n">hide_wp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">          </span><span class="n">font_family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Roboto Condensed"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -437,7 +435,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2.4.-그래프-모양을-변경하기">2.4. 그래프 모양을 변경하기<a class="anchor-link" href="#2.4.-%EA%B7%B8%EB%9E%98%ED%94%84-%EB%AA%A8%EC%96%91%EC%9D%84-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">¶</a>
+<h4 id="2.4.-%EA%B7%B8%EB%9E%98%ED%94%84-%EB%AA%A8%EC%96%91%EC%9D%84-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">2.4. 그래프 모양을 변경하기<a class="anchor-link" href="#2.4.-%EA%B7%B8%EB%9E%98%ED%94%84-%EB%AA%A8%EC%96%91%EC%9D%84-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">¶</a>
 </h4>
 <p>bar graph을 끝을 각지게 하는 방법과 반투명하게 만드는 방법은 다음과 같습니다.</p>
 
@@ -449,11 +447,11 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [58]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
-          <span class="n">project_start_date</span> <span class="o">=</span> <span class="s">"2021-04"</span><span class="p">,</span>
-          <span class="n">alpha_wp</span> <span class="o">=</span> <span class="m">0.9</span><span class="p">,</span>
-          <span class="n">alpha_activity</span> <span class="o">=</span> <span class="m">0.6</span><span class="p">,</span>
-          <span class="n">line_end</span> <span class="o">=</span> <span class="s">"butt"</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
+<span class="w">          </span><span class="n">project_start_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"2021-04"</span><span class="p">,</span>
+<span class="w">          </span><span class="n">alpha_wp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span>
+<span class="w">          </span><span class="n">alpha_activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.6</span><span class="p">,</span>
+<span class="w">          </span><span class="n">line_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"butt"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -486,7 +484,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2.5.-문자-왼쪽-정렬하기">2.5. 문자 왼쪽 정렬하기<a class="anchor-link" href="#2.5.-%EB%AC%B8%EC%9E%90-%EC%99%BC%EC%AA%BD-%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0">¶</a>
+<h4 id="2.5.-%EB%AC%B8%EC%9E%90-%EC%99%BC%EC%AA%BD-%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0">2.5. 문자 왼쪽 정렬하기<a class="anchor-link" href="#2.5.-%EB%AC%B8%EC%9E%90-%EC%99%BC%EC%AA%BD-%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0">¶</a>
 </h4>
 <p>기본적으로 업무들은 오른쪽 정렬로 그려집니다. 만약 왼쪽으로 정렬되기를 원하면 다음과 같이 작성하면 됩니다.</p>
 
@@ -498,10 +496,10 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [60]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
-          <span class="n">spots</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_spots</span><span class="p">,</span>
-          <span class="n">project_start_date</span> <span class="o">=</span> <span class="s">"2021-04"</span><span class="p">,</span>
-          <span class="n">axis_text_align</span> <span class="o">=</span> <span class="s">"left"</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
+<span class="w">          </span><span class="n">spots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_spots</span><span class="p">,</span>
+<span class="w">          </span><span class="n">project_start_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"2021-04"</span><span class="p">,</span>
+<span class="w">          </span><span class="n">axis_text_align</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"left"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -534,7 +532,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2.6.-플랏에-글씨-추가하기">2.6. 플랏에 글씨 추가하기<a class="anchor-link" href="#2.6.-%ED%94%8C%EB%9E%8F%EC%97%90-%EA%B8%80%EC%94%A8-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
+<h4 id="2.6.-%ED%94%8C%EB%9E%8F%EC%97%90-%EA%B8%80%EC%94%A8-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">2.6. 플랏에 글씨 추가하기<a class="anchor-link" href="#2.6.-%ED%94%8C%EB%9E%8F%EC%97%90-%EA%B8%80%EC%94%A8-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
 </h4>
 <p>다음과 같이 플랏의 제목과 출처등을 표기할 수도 있습니다.</p>
 
@@ -546,15 +544,15 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [63]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">7</span><span class="p">)</span> 
+<div class=" highlight hl-r"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="o">=</span><span class="m">7</span><span class="p">)</span><span class="w"> </span>
 <span class="c1"># jupyter notebook에서 fig size 조절</span>
 
-<span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
-          <span class="n">spots</span> <span class="o">=</span> <span class="n">ganttrify</span><span class="o">::</span><span class="n">test_spots</span><span class="p">,</span>
-          <span class="n">project_start_date</span> <span class="o">=</span> <span class="s">"2020-01"</span><span class="p">,</span>
-          <span class="n">font_family</span> <span class="o">=</span> <span class="s">"Roboto Condensed"</span><span class="p">)</span><span class="o">+</span> <span class="n">ggplot2</span><span class="o">::</span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">"My beautiful plans for 2020"</span><span class="p">,</span>
-                <span class="n">subtitle</span> <span class="o">=</span> <span class="s">"I will definitely comply with the exact timing of each and all activities*"</span><span class="p">,</span>
-                <span class="n">caption</span> <span class="o">=</span> <span class="s">"* I mean, I'll do my best, but if there's a pandemic or something, it's not my fault really"</span><span class="p">)</span>
+<span class="nf">ganttrify</span><span class="p">(</span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_project</span><span class="p">,</span>
+<span class="w">          </span><span class="n">spots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ganttrify</span><span class="o">::</span><span class="n">test_spots</span><span class="p">,</span>
+<span class="w">          </span><span class="n">project_start_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"2020-01"</span><span class="p">,</span>
+<span class="w">          </span><span class="n">font_family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Roboto Condensed"</span><span class="p">)</span><span class="o">+</span><span class="w"> </span><span class="n">ggplot2</span><span class="o">::</span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"My beautiful plans for 2020"</span><span class="p">,</span>
+<span class="w">                </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"I will definitely comply with the exact timing of each and all activities*"</span><span class="p">,</span>
+<span class="w">                </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"* I mean, I'll do my best, but if there's a pandemic or something, it's not my fault really"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -587,10 +585,10 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.-다른-도구-사용하기">3. 다른 도구 사용하기<a class="anchor-link" href="#3.-%EB%8B%A4%EB%A5%B8-%EB%8F%84%EA%B5%AC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="3.-%EB%8B%A4%EB%A5%B8-%EB%8F%84%EA%B5%AC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">3. 다른 도구 사용하기<a class="anchor-link" href="#3.-%EB%8B%A4%EB%A5%B8-%EB%8F%84%EA%B5%AC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p><strong>plan</strong> 이라는 도구를 사용해서 그려봅니다. 참고로 plan은 이미 오래전에 개발이 중단된 것 같습니다. 현재 시점에는 ganttrify를 사용하는것이 더 좋을 것 같습니다. 그래도 plan의 사용법이 아주 간단해 간략하게 알아보겠습니다.</p>
-<h4 id="3.1.-공식-예제-코드">3.1. 공식 예제 코드<a class="anchor-link" href="#3.1.-%EA%B3%B5%EC%8B%9D-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C">¶</a>
+<h4 id="3.1.-%EA%B3%B5%EC%8B%9D-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C">3.1. 공식 예제 코드<a class="anchor-link" href="#3.1.-%EA%B3%B5%EC%8B%9D-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C">¶</a>
 </h4>
 <p>다음은 plan의 개발자가 제공하는 공식 예제 코드입니다.</p>
 
@@ -603,32 +601,32 @@ navbar-dark bg-dark
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#install.packages('plan') # plan 도구 설치</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span> <span class="c1"># plan 도구를 불러옵니다.</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span><span class="w"> </span><span class="c1"># plan 도구를 불러옵니다.</span>
 
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">new</span><span class="p">(</span><span class="s">"gantt"</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Courses"</span><span class="p">)</span> <span class="c1"># no times, so a heading</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Physical Oceanography (A)"</span><span class="p">,</span> <span class="s">"2016-09-03"</span><span class="p">,</span> <span class="s">"2016-12-05"</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Chemistry Oceanography (B)"</span><span class="p">,</span> <span class="s">"2016-09-03"</span><span class="p">,</span> <span class="s">"2016-12-05"</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Fluid Dynamics (A+)"</span><span class="p">,</span> <span class="s">"2016-09-03"</span><span class="p">,</span> <span class="s">"2016-12-05"</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Biological Oceanography"</span><span class="p">,</span> <span class="s">"2017-01-03"</span><span class="p">,</span> <span class="s">"2017-04-05"</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Geological Oceanography"</span><span class="p">,</span> <span class="s">"2017-01-03"</span><span class="p">,</span> <span class="s">"2017-04-05"</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Time-series Analysis"</span><span class="p">,</span> <span class="s">"2017-01-03"</span><span class="p">,</span> <span class="s">"2017-04-05"</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Research"</span><span class="p">)</span> <span class="c1"># no times, so a heading</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Literature review"</span><span class="p">,</span> <span class="s">"2016-09-03"</span><span class="p">,</span> <span class="s">"2017-02-01"</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="m">20</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Develop analysis skills"</span><span class="p">,</span> <span class="s">"2016-09-03"</span><span class="p">,</span> <span class="s">"2017-08-01"</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="m">30</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Thesis work"</span><span class="p">,</span> <span class="s">"2016-10-01"</span><span class="p">,</span> <span class="s">"2018-07-15"</span><span class="p">,</span> <span class="n">done</span><span class="o">=</span><span class="m">30</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Thesis proposal"</span><span class="p">,</span> <span class="s">"2017-05-01"</span><span class="p">,</span> <span class="s">"2017-06-01"</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Writing (papers &amp; thesis)"</span><span class="p">,</span> <span class="s">"2017-03-01"</span><span class="p">,</span> <span class="s">"2018-07-15"</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Defend thesis"</span><span class="p">,</span> <span class="s">"2018-09-01"</span><span class="p">,</span> <span class="s">"2018-09-05"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="s">"gantt"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Courses"</span><span class="p">)</span><span class="w"> </span><span class="c1"># no times, so a heading</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Physical Oceanography (A)"</span><span class="p">,</span><span class="w"> </span><span class="s">"2016-09-03"</span><span class="p">,</span><span class="w"> </span><span class="s">"2016-12-05"</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Chemistry Oceanography (B)"</span><span class="p">,</span><span class="w"> </span><span class="s">"2016-09-03"</span><span class="p">,</span><span class="w"> </span><span class="s">"2016-12-05"</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Fluid Dynamics (A+)"</span><span class="p">,</span><span class="w"> </span><span class="s">"2016-09-03"</span><span class="p">,</span><span class="w"> </span><span class="s">"2016-12-05"</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Biological Oceanography"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-01-03"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-04-05"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Geological Oceanography"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-01-03"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-04-05"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Time-series Analysis"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-01-03"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-04-05"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Research"</span><span class="p">)</span><span class="w"> </span><span class="c1"># no times, so a heading</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Literature review"</span><span class="p">,</span><span class="w"> </span><span class="s">"2016-09-03"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-02-01"</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="o">=</span><span class="m">20</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Develop analysis skills"</span><span class="p">,</span><span class="w"> </span><span class="s">"2016-09-03"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-08-01"</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="o">=</span><span class="m">30</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Thesis work"</span><span class="p">,</span><span class="w"> </span><span class="s">"2016-10-01"</span><span class="p">,</span><span class="w"> </span><span class="s">"2018-07-15"</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="o">=</span><span class="m">30</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Thesis proposal"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-05-01"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-06-01"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Writing (papers &amp; thesis)"</span><span class="p">,</span><span class="w"> </span><span class="s">"2017-03-01"</span><span class="p">,</span><span class="w"> </span><span class="s">"2018-07-15"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Defend thesis"</span><span class="p">,</span><span class="w"> </span><span class="s">"2018-09-01"</span><span class="p">,</span><span class="w"> </span><span class="s">"2018-09-05"</span><span class="p">)</span>
 
-<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">8</span><span class="p">)</span> 
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="o">=</span><span class="m">8</span><span class="p">)</span><span class="w"> </span>
 <span class="c1"># jupyter notebook에서 fig size 조절</span>
 
-<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">g[[</span><span class="s">"start"</span><span class="n">]]</span><span class="p">),</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">)),</span>
-     <span class="n">event.time</span><span class="o">=</span><span class="s">"2016-12-13"</span><span class="p">,</span> <span class="n">event.label</span><span class="o">=</span><span class="s">"Report Date"</span><span class="p">)</span>
-<span class="nf">legend</span><span class="p">(</span><span class="s">"topright"</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="m">22</span><span class="p">,</span> <span class="n">pt.cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">pt.bg</span><span class="o">=</span><span class="nf">gray</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span> <span class="m">0.9</span><span class="p">)),</span>
-       <span class="n">border</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> 
-       <span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"Completed"</span><span class="p">,</span> <span class="s">"Not Yet Done"</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s">"MSc plan"</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">ylabel</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">g</span><span class="p">[[</span><span class="s">"start"</span><span class="p">]]),</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)),</span>
+<span class="w">     </span><span class="n">event.time</span><span class="o">=</span><span class="s">"2016-12-13"</span><span class="p">,</span><span class="w"> </span><span class="n">event.label</span><span class="o">=</span><span class="s">"Report Date"</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">"topright"</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="n">pt.cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">pt.bg</span><span class="o">=</span><span class="nf">gray</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="m">0.9</span><span class="p">)),</span>
+<span class="w">       </span><span class="n">border</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"Completed"</span><span class="p">,</span><span class="w"> </span><span class="s">"Not Yet Done"</span><span class="p">),</span><span class="w"> </span><span class="n">title</span><span class="o">=</span><span class="s">"MSc plan"</span><span class="p">,</span><span class="w"> </span><span class="n">bg</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -661,24 +659,24 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="3.2.-실제로-적용하기">3.2. 실제로 적용하기<a class="anchor-link" href="#3.2.-%EC%8B%A4%EC%A0%9C%EB%A1%9C-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
+<h4 id="3.2.-%EC%8B%A4%EC%A0%9C%EB%A1%9C-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0">3.2. 실제로 적용하기<a class="anchor-link" href="#3.2.-%EC%8B%A4%EC%A0%9C%EB%A1%9C-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0">¶</a>
 </h4>
 <p>plan은 할일 목록을 다음과 같이 직접 입력할 수 있어서 편리하기도 하지만 동시에 불편하기도 합니다.</p>
-<div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">new</span><span class="p">(</span><span class="s">"gantt"</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Cell line dev."</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Top3 RCB"</span><span class="p">,</span><span class="s">"2020-01-15"</span><span class="p">,</span><span class="s">"2020-07-18"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Cell line stability"</span><span class="p">,</span><span class="s">"2020-07-01"</span><span class="p">,</span><span class="s">"2020-10-01"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"MCB mfg and characterization"</span><span class="p">,</span><span class="s">"2020-07-15"</span><span class="p">,</span><span class="s">"2021-12-20"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">90</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Process development"</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"USP"</span><span class="p">,</span><span class="s">"2020-07-01"</span><span class="p">,</span><span class="s">"2021-03-01"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"DSP"</span><span class="p">,</span><span class="s">"2020-08-12"</span><span class="p">,</span><span class="s">"2021-02-26"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Manufacturing"</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Non-GMP DS"</span><span class="p">,</span><span class="s">"2021-02-26"</span><span class="p">,</span><span class="s">"2021-07-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Non-GMP DP"</span><span class="p">,</span><span class="s">"2021-07-26"</span><span class="p">,</span><span class="s">"2021-08-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"GMP DS"</span><span class="p">,</span><span class="s">"2021-07-30"</span><span class="p">,</span><span class="s">"2021-10-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"GMP DP"</span><span class="p">,</span><span class="s">"2021-10-26"</span><span class="p">,</span><span class="s">"2022-01-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"Virus clearance study"</span><span class="p">,</span><span class="s">"2021-04-02"</span><span class="p">,</span><span class="s">"2021-12-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">90</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"CTD documentation"</span><span class="p">,</span><span class="s">"2021-07-21"</span><span class="p">,</span><span class="s">"2022-01-31"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">40</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="s">"gantt"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Cell line dev."</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Top3 RCB"</span><span class="p">,</span><span class="s">"2020-01-15"</span><span class="p">,</span><span class="s">"2020-07-18"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Cell line stability"</span><span class="p">,</span><span class="s">"2020-07-01"</span><span class="p">,</span><span class="s">"2020-10-01"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"MCB mfg and characterization"</span><span class="p">,</span><span class="s">"2020-07-15"</span><span class="p">,</span><span class="s">"2021-12-20"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">90</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Process development"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"USP"</span><span class="p">,</span><span class="s">"2020-07-01"</span><span class="p">,</span><span class="s">"2021-03-01"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"DSP"</span><span class="p">,</span><span class="s">"2020-08-12"</span><span class="p">,</span><span class="s">"2021-02-26"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Manufacturing"</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Non-GMP DS"</span><span class="p">,</span><span class="s">"2021-02-26"</span><span class="p">,</span><span class="s">"2021-07-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Non-GMP DP"</span><span class="p">,</span><span class="s">"2021-07-26"</span><span class="p">,</span><span class="s">"2021-08-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"GMP DS"</span><span class="p">,</span><span class="s">"2021-07-30"</span><span class="p">,</span><span class="s">"2021-10-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"GMP DP"</span><span class="p">,</span><span class="s">"2021-10-26"</span><span class="p">,</span><span class="s">"2022-01-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"Virus clearance study"</span><span class="p">,</span><span class="s">"2021-04-02"</span><span class="p">,</span><span class="s">"2021-12-28"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">90</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ganttAddTask</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="s">"CTD documentation"</span><span class="p">,</span><span class="s">"2021-07-21"</span><span class="p">,</span><span class="s">"2022-01-31"</span><span class="p">,</span><span class="n">done</span><span class="o">=</span><span class="m">40</span><span class="p">)</span>
 </pre></div>
 <p>위의 할일 목록을 가지고 플랏을 그려봅니다.</p>
 
@@ -690,10 +688,10 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">time.format</span><span class="o">=</span><span class="s">"%Y-%m"</span><span class="p">,</span> <span class="n">time.labels.by</span><span class="p">,</span>
-     <span class="n">ylabel</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">g[[</span><span class="s">"start"</span><span class="n">]]</span><span class="p">),</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">)),</span>
-     <span class="n">event.label</span><span class="o">=</span><span class="s">'Report Date'</span><span class="p">,</span><span class="n">event.time</span><span class="o">=</span><span class="s">'2021-10-27'</span><span class="p">,</span>
-     <span class="n">main</span><span class="o">=</span><span class="s">"Gantt plot by R"</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">time.format</span><span class="o">=</span><span class="s">"%Y-%m"</span><span class="p">,</span><span class="w"> </span><span class="n">time.labels.by</span><span class="p">,</span>
+<span class="w">     </span><span class="n">ylabel</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">g</span><span class="p">[[</span><span class="s">"start"</span><span class="p">]]),</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)),</span>
+<span class="w">     </span><span class="n">event.label</span><span class="o">=</span><span class="s">'Report Date'</span><span class="p">,</span><span class="n">event.time</span><span class="o">=</span><span class="s">'2021-10-27'</span><span class="p">,</span>
+<span class="w">     </span><span class="n">main</span><span class="o">=</span><span class="s">"Gantt plot by R"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -726,7 +724,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="3.3.-이벤트-추가하기">3.3. 이벤트 추가하기<a class="anchor-link" href="#3.3.-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
+<h4 id="3.3.-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">3.3. 이벤트 추가하기<a class="anchor-link" href="#3.3.-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
 </h4>
 <p>만약 두가지 이상의 이벤트를 추가하고 싶다면 다음과 같이 작성합니다.</p>
 
@@ -739,13 +737,13 @@ navbar-dark bg-dark
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Plot with two events</span>
-<span class="n">event.label</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">"Proposal"</span><span class="p">,</span> <span class="s">"AGU"</span><span class="p">)</span>
-<span class="n">event.time</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">"2021-05-21"</span><span class="p">,</span> <span class="s">"2021-10-27"</span><span class="p">)</span>
+<span class="n">event.label</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"Proposal"</span><span class="p">,</span><span class="w"> </span><span class="s">"AGU"</span><span class="p">)</span>
+<span class="n">event.time</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"2021-05-21"</span><span class="p">,</span><span class="w"> </span><span class="s">"2021-10-27"</span><span class="p">)</span>
 
-<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">time.format</span><span class="o">=</span><span class="s">"%Y-%m"</span><span class="p">,</span> <span class="n">time.labels.by</span><span class="p">,</span>
-     <span class="n">ylabel</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">g[[</span><span class="s">"start"</span><span class="n">]]</span><span class="p">),</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">)),</span>
-     <span class="n">event.label</span><span class="o">=</span><span class="n">event.label</span><span class="p">,</span><span class="n">event.time</span><span class="o">=</span><span class="n">event.time</span><span class="p">,</span>
-     <span class="n">main</span><span class="o">=</span><span class="s">"Gantt plot by R"</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">time.format</span><span class="o">=</span><span class="s">"%Y-%m"</span><span class="p">,</span><span class="w"> </span><span class="n">time.labels.by</span><span class="p">,</span>
+<span class="w">     </span><span class="n">ylabel</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">g</span><span class="p">[[</span><span class="s">"start"</span><span class="p">]]),</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)),</span>
+<span class="w">     </span><span class="n">event.label</span><span class="o">=</span><span class="n">event.label</span><span class="p">,</span><span class="n">event.time</span><span class="o">=</span><span class="n">event.time</span><span class="p">,</span>
+<span class="w">     </span><span class="n">main</span><span class="o">=</span><span class="s">"Gantt plot by R"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -778,7 +776,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="3.4.-세부-설정-변경하기">3.4. 세부 설정 변경하기<a class="anchor-link" href="#3.4.-%EC%84%B8%EB%B6%80-%EC%84%A4%EC%A0%95-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">¶</a>
+<h4 id="3.4.-%EC%84%B8%EB%B6%80-%EC%84%A4%EC%A0%95-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">3.4. 세부 설정 변경하기<a class="anchor-link" href="#3.4.-%EC%84%B8%EB%B6%80-%EC%84%A4%EC%A0%95-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">¶</a>
 </h4>
 <p>아래 코드와 같이 흑백이 아닌 색상으로도 변경이 가능하고 생각보다 다양한 것을 조절할 수 있습니다.</p>
 
@@ -790,31 +788,31 @@ navbar-dark bg-dark
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">legend</span><span class="p">(</span><span class="s">"topright"</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="m">22</span><span class="p">,</span> <span class="n">pt.cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">cex</span><span class="o">=</span><span class="m">0.9</span><span class="p">,</span> <span class="n">pt.bg</span><span class="o">=</span><span class="nf">gray</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span> <span class="m">0.9</span><span class="p">)),</span>
-       <span class="n">border</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span>
-       <span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"Completed"</span><span class="p">,</span> <span class="s">"Not Yet Done"</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="s">"white"</span><span class="p">,</span> <span class="n">xpd</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
- 
+<div class=" highlight hl-r"><pre><span></span><span class="nf">legend</span><span class="p">(</span><span class="s">"topright"</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="n">pt.cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">pt.bg</span><span class="o">=</span><span class="nf">gray</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="m">0.9</span><span class="p">)),</span>
+<span class="w">       </span><span class="n">border</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span>
+<span class="w">       </span><span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"Completed"</span><span class="p">,</span><span class="w"> </span><span class="s">"Not Yet Done"</span><span class="p">),</span><span class="w"> </span><span class="n">bg</span><span class="o">=</span><span class="s">"white"</span><span class="p">,</span><span class="w"> </span><span class="n">xpd</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="w"> </span>
 
-<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">time.format</span><span class="o">=</span><span class="s">"%Y-%m"</span><span class="p">,</span>
-     <span class="n">event.label</span><span class="o">=</span><span class="s">'Report Date'</span><span class="p">,</span><span class="n">event.time</span><span class="o">=</span><span class="s">'2021-10-27'</span><span class="p">,</span>
-     <span class="n">col.event</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"red"</span><span class="p">),</span>
-     <span class="n">col.done</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"lightblue"</span><span class="p">),</span>
-     <span class="n">col.notdone</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"pink"</span><span class="p">),</span>
-     <span class="n">main</span><span class="o">=</span><span class="s">"Gantt plot by R"</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">time.format</span><span class="o">=</span><span class="s">"%Y-%m"</span><span class="p">,</span>
+<span class="w">     </span><span class="n">event.label</span><span class="o">=</span><span class="s">'Report Date'</span><span class="p">,</span><span class="n">event.time</span><span class="o">=</span><span class="s">'2021-10-27'</span><span class="p">,</span>
+<span class="w">     </span><span class="n">col.event</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"red"</span><span class="p">),</span>
+<span class="w">     </span><span class="n">col.done</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"lightblue"</span><span class="p">),</span>
+<span class="w">     </span><span class="n">col.notdone</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"pink"</span><span class="p">),</span>
+<span class="w">     </span><span class="n">main</span><span class="o">=</span><span class="s">"Gantt plot by R"</span><span class="p">)</span>
 
-<span class="nf">legend</span><span class="p">(</span><span class="s">"topright"</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="m">22</span><span class="p">,</span> <span class="n">pt.cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">cex</span><span class="o">=</span><span class="m">0.9</span><span class="p">,</span> <span class="n">pt.bg</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"lightblue"</span><span class="p">,</span> <span class="s">"pink"</span><span class="p">),</span>
-       <span class="n">border</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span>
-       <span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"Completed"</span><span class="p">,</span> <span class="s">"Not Yet Done"</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="s">"white"</span><span class="p">,</span> <span class="n">xpd</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
- 
-<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">time.format</span> <span class="o">=</span> <span class="s">"%Y-%m"</span><span class="p">,</span> <span class="n">time.labels.by</span><span class="o">=</span><span class="s">"8 weeks"</span><span class="p">,</span>
-    <span class="n">time.lines.by</span><span class="o">=</span><span class="s">"8 weeks"</span><span class="p">,</span> <span class="n">event.time</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">event.label</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">event.side</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span>
-    <span class="n">col.connector</span> <span class="o">=</span> <span class="s">"black"</span><span class="p">,</span> <span class="n">col.done</span> <span class="o">=</span> <span class="nf">gray</span><span class="p">(</span><span class="m">0.3</span><span class="p">),</span> <span class="n">col.notdone</span> <span class="o">=</span> <span class="nf">gray</span><span class="p">(</span><span class="m">0.9</span><span class="p">),</span>
-    <span class="n">col.eventLine</span> <span class="o">=</span> <span class="nf">gray</span><span class="p">(</span><span class="m">0.1</span><span class="p">),</span> <span class="n">col.event</span> <span class="o">=</span> <span class="nf">par</span><span class="p">(</span><span class="s">"fg"</span><span class="p">),</span>
-    <span class="n">cex.event</span> <span class="o">=</span> <span class="nf">par</span><span class="p">(</span><span class="s">"cex"</span><span class="p">),</span> <span class="n">font.event</span> <span class="o">=</span> <span class="nf">par</span><span class="p">(</span><span class="s">"font"</span><span class="p">),</span>
-    <span class="n">lty.eventLine</span> <span class="o">=</span> <span class="nf">par</span><span class="p">(</span><span class="s">"lty"</span><span class="p">),</span> <span class="n">lwd.eventLine</span> <span class="o">=</span> <span class="nf">par</span><span class="p">(</span><span class="s">"lwd"</span><span class="p">),</span> <span class="n">bg</span> <span class="o">=</span> <span class="nf">par</span><span class="p">(</span><span class="s">"bg"</span><span class="p">),</span>
-    <span class="n">grid.col</span> <span class="o">=</span> <span class="s">"lightgray"</span><span class="p">,</span> <span class="n">grid.lty</span> <span class="o">=</span> <span class="s">"dotted"</span><span class="p">,</span> <span class="n">ylabels</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">cex</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">font</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">justification</span> <span class="o">=</span> <span class="m">1</span><span class="p">),</span>
-    <span class="n">arrows</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span>
-    <span class="n">line.main</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">cex.main</span> <span class="o">=</span> <span class="nf">par</span><span class="p">(</span><span class="s">"cex"</span><span class="p">),</span> <span class="n">mgp</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">0.7</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="n">maiAdd</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span> <span class="n">axes</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">debug</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">"topright"</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="n">pt.cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">pt.bg</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"lightblue"</span><span class="p">,</span><span class="w"> </span><span class="s">"pink"</span><span class="p">),</span>
+<span class="w">       </span><span class="n">border</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span>
+<span class="w">       </span><span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"Completed"</span><span class="p">,</span><span class="w"> </span><span class="s">"Not Yet Done"</span><span class="p">),</span><span class="w"> </span><span class="n">bg</span><span class="o">=</span><span class="s">"white"</span><span class="p">,</span><span class="w"> </span><span class="n">xpd</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="w"> </span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="p">,</span><span class="w"> </span><span class="n">time.format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"%Y-%m"</span><span class="p">,</span><span class="w"> </span><span class="n">time.labels.by</span><span class="o">=</span><span class="s">"8 weeks"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">time.lines.by</span><span class="o">=</span><span class="s">"8 weeks"</span><span class="p">,</span><span class="w"> </span><span class="n">event.time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">event.label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">event.side</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">col.connector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"black"</span><span class="p">,</span><span class="w"> </span><span class="n">col.done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="m">0.3</span><span class="p">),</span><span class="w"> </span><span class="n">col.notdone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="m">0.9</span><span class="p">),</span>
+<span class="w">    </span><span class="n">col.eventLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="m">0.1</span><span class="p">),</span><span class="w"> </span><span class="n">col.event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">par</span><span class="p">(</span><span class="s">"fg"</span><span class="p">),</span>
+<span class="w">    </span><span class="n">cex.event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">par</span><span class="p">(</span><span class="s">"cex"</span><span class="p">),</span><span class="w"> </span><span class="n">font.event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">par</span><span class="p">(</span><span class="s">"font"</span><span class="p">),</span>
+<span class="w">    </span><span class="n">lty.eventLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">par</span><span class="p">(</span><span class="s">"lty"</span><span class="p">),</span><span class="w"> </span><span class="n">lwd.eventLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">par</span><span class="p">(</span><span class="s">"lwd"</span><span class="p">),</span><span class="w"> </span><span class="n">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">par</span><span class="p">(</span><span class="s">"bg"</span><span class="p">),</span>
+<span class="w">    </span><span class="n">grid.col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"lightgray"</span><span class="p">,</span><span class="w"> </span><span class="n">grid.lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"dotted"</span><span class="p">,</span><span class="w"> </span><span class="n">ylabels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">justification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">),</span>
+<span class="w">    </span><span class="n">arrows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">,</span>
+<span class="w">    </span><span class="n">line.main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">cex.main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">par</span><span class="p">(</span><span class="s">"cex"</span><span class="p">),</span><span class="w"> </span><span class="n">mgp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="n">maiAdd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="n">axes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">debug</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -873,11 +871,10 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-마치며,">4. 마치며,<a class="anchor-link" href="#4.-%EB%A7%88%EC%B9%98%EB%A9%B0,">¶</a>
+<h2 id="4.-%EB%A7%88%EC%B9%98%EB%A9%B0,">4. 마치며,<a class="anchor-link" href="#4.-%EB%A7%88%EC%B9%98%EB%A9%B0,">¶</a>
 </h2>
 <p>어떻게 생각하면 엑셀로 간단하게 할 수 있는 것을 번거롭게 하는 것일 수도 있겠습니다. 그래도 항상 같은 방법을 사용하는 것보다는 재미있으니까 예제 코드를 정리해 보았습니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -911,7 +908,7 @@ navbar-dark bg-dark
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -922,9 +919,7 @@ navbar-dark bg-dark
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

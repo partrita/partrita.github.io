@@ -64,10 +64,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -128,28 +129,27 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://www.reddit.com/r/Python/comments/7rppky/learn_how_to_create_a_neural_network_that/">Reddit</a> 에서 흥미로운 글을 봤어요. 인공신경망을 이용해서 당뇨를 예측하는 튜토리얼이었죠. <strong>파이썬</strong>을 이용해서 <strong>15줄</strong>의 코드가 전부였습니다.</p>
-<h2 id="0.-기계학습이라고?">0. 기계학습이라고?<a class="anchor-link" href="#0.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9D%BC%EA%B3%A0?">¶</a>
+<h2 id="0.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9D%BC%EA%B3%A0?">0. 기계학습이라고?<a class="anchor-link" href="#0.-%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9D%BC%EA%B3%A0?">¶</a>
 </h2>
 <p>2016년도 이세돌을 이겼던 <strong>AlphaGO</strong>를 기억하시나요? AlphaGO라는 인공지능을 바로 기계학습으로 만들었습니다.</p>
 <blockquote>
 <p>기계 학습 또는 머신 러닝(영어: machine learning)은 인공 지능의 한 분야로, 컴퓨터가 학습할 수 있도록 하는 알고리즘과 기술을 개발하는 분야를 말한다. 가령, 기계 학습을 통해서 수신한 이메일이 스팸인지 아닌지를 구분할 수 있도록 훈련할 수 있다.    - wikipedia</p>
 </blockquote>
 <p>모든 경우의 수를 사람이 코딩할 필요가 없이 최소한의 것만 해주면, 인공 지능이 알아서 한다. 그것이 기계학습의 매력이죠. 기계학습에도 여러 종류가 있습니다. 우리가 이번에 사용할 것은 인공 신경망이라는 것입니다.</p>
-<h3 id="인공신경망">인공신경망<a class="anchor-link" href="#%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D">¶</a>
+<h3 id="%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D">인공신경망<a class="anchor-link" href="#%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D">¶</a>
 </h3>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Colored_neural_network.svg/300px-Colored_neural_network.svg.png" alt=""></p>
 <blockquote>
 <p>인공신경망(artificial neural network, ANN)은 기계학습과 인지과학에서 생물학의 신경망(동물의 중추신경계중 특히 뇌)에서 영감을 얻은 통계학적 학습 알고리즘이다. - wikipedia</p>
 </blockquote>
 <p>어떻게 인공신경망을 만드냐고요? 파이썬에는 이미 기계학습에 사용되는 프레임워크(예를 들면 <em>TensorFlow</em>)가 존재해서, 우리는 그냥 쓰기만 하면되요!</p>
-<h2 id="1.-Keras를-사용할-거에요.">1. Keras를 사용할 거에요.<a class="anchor-link" href="#1.-Keras%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%A0-%EA%B1%B0%EC%97%90%EC%9A%94.">¶</a>
+<h2 id="1.-Keras%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%A0-%EA%B1%B0%EC%97%90%EC%9A%94.">1. Keras를 사용할 거에요.<a class="anchor-link" href="#1.-Keras%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%A0-%EA%B1%B0%EC%97%90%EC%9A%94.">¶</a>
 </h2>
 <p><img src="https://s3.amazonaws.com/keras.io/img/keras-logo-2018-large-1200.png" alt="keras"></p>
 <blockquote>
@@ -162,14 +162,14 @@ navbar-dark bg-dark
 <li>파이썬 2.7 - 3.6을 지원</li>
 </ul>
 <p>자세한 내용은 <a href="Keras.io.">공식 사이트</a>를 방문하세요.</p>
-<h2 id="데이터-세트-설명">데이터 세트 설명<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%B8%ED%8A%B8-%EC%84%A4%EB%AA%85">¶</a>
+<h2 id="%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%B8%ED%8A%B8-%EC%84%A4%EB%AA%85">데이터 세트 설명<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%B8%ED%8A%B8-%EC%84%A4%EB%AA%85">¶</a>
 </h2>
 <p>사용한 데이터 세트는 <strong>Pima Indians Diabetes Data Set</strong> 입니다. 출처는 <a href="http://rexa.info/paper/04587c10a7c92baa01948f71f2513d5928fe8e81">링크</a>를 확인하세요.</p>
 <p>미국 원주민 중 <em>Pima</em> 족은 원래는 당뇨병의 유병율이 적었는데, 서구식 식습관에 의해 급속도로 당뇨병에 걸렸습니다. 그래서 당뇨병을 연구하는데 귀중한 데이터로 사용되고 있습니다.</p>
 <p>데이터 세트는 <strong>CSV</strong> 포멧이고 총 <strong>9가지</strong>의 속성으로 구성되어 있습니다.</p>
 <ol>
 <li>임신횟수</li>
-<li>글루코스 내성(glucose tolerance)실험 후의 혈당수치 </li>
+<li>글루코스 내성(glucose tolerance)실험 후의 혈당수치</li>
 <li>확장기 혈압(mm Hg)</li>
 <li>상완 삼두근 피부 두께 (mm)</li>
 <li>혈액내 인슐린 수치 (mu U/ml)</li>
@@ -178,10 +178,10 @@ navbar-dark bg-dark
 <li>나이 (years)</li>
 <li>당뇨병 여부 (0 or 1; 1은 발병)</li>
 </ol>
-<h3 id="출처">출처<a class="anchor-link" href="#%EC%B6%9C%EC%B2%98">¶</a>
+<h3 id="%EC%B6%9C%EC%B2%98">출처<a class="anchor-link" href="#%EC%B6%9C%EC%B2%98">¶</a>
 </h3>
 <p>원작자의 코드를 확인하고 싶다면 다음 <a href="https://github.com/jg-fisher/diabetesNeuralNetwork">링크</a>를 확인하세요.</p>
-<h2 id="2.-이제-실습을-해봅시다.">2. 이제 실습을 해봅시다.<a class="anchor-link" href="#2.-%EC%9D%B4%EC%A0%9C-%EC%8B%A4%EC%8A%B5%EC%9D%84-%ED%95%B4%EB%B4%85%EC%8B%9C%EB%8B%A4.">¶</a>
+<h2 id="2.-%EC%9D%B4%EC%A0%9C-%EC%8B%A4%EC%8A%B5%EC%9D%84-%ED%95%B4%EB%B4%85%EC%8B%9C%EB%8B%A4.">2. 이제 실습을 해봅시다.<a class="anchor-link" href="#2.-%EC%9D%B4%EC%A0%9C-%EC%8B%A4%EC%8A%B5%EC%9D%84-%ED%95%B4%EB%B4%85%EC%8B%9C%EB%8B%A4.">¶</a>
 </h2>
 </div>
 </div>
@@ -239,7 +239,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>이걸로 데이터 세트는 준비가 되었습니다.</p>
-<h3 id="모델-만들기">모델 만들기<a class="anchor-link" href="#%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
+<h3 id="%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">모델 만들기<a class="anchor-link" href="#%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
 </h3>
 <p>다음으로 <strong>Keras</strong>를 이용해 간단한 모델을 만들고, 800번의 학습(epochs)을 해보겠습니다.
 800번 정도 실행시키면 시간이 좀 걸립니다. 기다려 주세요.</p>
@@ -307,7 +307,7 @@ acc: 87.89%
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>우리의 모델이 학습결과 <strong>87.89%</strong> 라는 정확도를 가지게 되었습니다.</p>
-<h2 id="2.-시각화하기">2. 시각화하기<a class="anchor-link" href="#2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
+<h2 id="2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">2. 시각화하기<a class="anchor-link" href="#2.-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>이제 다 끝났습니다. 다음으로는 <strong>Keras</strong>가 학습을 반복할 때마다 정확도가 얼마나 올라가는지 시각화를 해보겠습니다.</p>
 
@@ -375,18 +375,18 @@ acc: 87.89%
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>결과를 보니, 한 800번 정도 학습하면 꽤 정확한 모델을 얻을 수 있네요.</p>
-<h2 id="3.-마치며,">3. 마치며,<a class="anchor-link" href="#3.-%EB%A7%88%EC%B9%98%EB%A9%B0,">¶</a>
+<h2 id="3.-%EB%A7%88%EC%B9%98%EB%A9%B0,">3. 마치며,<a class="anchor-link" href="#3.-%EB%A7%88%EC%B9%98%EB%A9%B0,">¶</a>
 </h2>
 <p>모델을 만들었다면, 이제 모델을 유용하게 사용할 시간입니다. 가상의 환자 데이터를 만들어 그 환자가 당뇨에 걸릴 확률을 알아보겠습니다.</p>
 <p><code>patient_1</code> 는</p>
 <ol>
 <li>임신한 적 없음</li>
-<li>글루코스 내성(glucose tolerance)실험 후의 혈당수치는 137 </li>
+<li>글루코스 내성(glucose tolerance)실험 후의 혈당수치는 137</li>
 <li>확장기 혈압은 90(mm Hg)</li>
 <li>상완 삼두근 피부 두께는 35(mm)</li>
 <li>혈액내 인슐린 수치는 168 (mu U/ml)</li>
 <li>BMI(비만도) 수치는 43.1</li>
-<li>당뇨병 가족력은 2.288 </li>
+<li>당뇨병 가족력은 2.288</li>
 <li>나이 (years)는 33살</li>
 </ol>
 <p>이라고 가정합니다.</p>
@@ -442,7 +442,6 @@ acc: 87.89%
 </div>
 </div>
 </div>
-</div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/keras/" rel="tag">KERAS</a></li>
@@ -471,7 +470,7 @@ acc: 87.89%
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -482,9 +481,7 @@ acc: 87.89%
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

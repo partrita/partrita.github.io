@@ -65,10 +65,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -129,13 +130,12 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="회귀모델의-오류(Regression-error-metrics)">회귀모델의 오류(Regression error metrics)<a class="anchor-link" href="#%ED%9A%8C%EA%B7%80%EB%AA%A8%EB%8D%B8%EC%9D%98-%EC%98%A4%EB%A5%98(Regression-error-metrics)">¶</a>
+<h2 id="%ED%9A%8C%EA%B7%80%EB%AA%A8%EB%8D%B8%EC%9D%98-%EC%98%A4%EB%A5%98(Regression-error-metrics)">회귀모델의 오류(Regression error metrics)<a class="anchor-link" href="#%ED%9A%8C%EA%B7%80%EB%AA%A8%EB%8D%B8%EC%9D%98-%EC%98%A4%EB%A5%98(Regression-error-metrics)">¶</a>
 </h2>
 <p><img src="http://scikit-learn.org/stable/_images/sphx_glr_plot_ols_001.png" alt=""></p>
 <p>선형회귀 모델에서 오류를 측정하는 방법으로 아래 4가지를 예시를 통해 살펴보겠습니다.</p>
@@ -145,7 +145,7 @@ navbar-dark bg-dark
 <li>Mean Square Error</li>
 <li>Mean Percentage Error</li>
 </ul>
-<h2 id="데이터-설명">데이터 설명<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85">¶</a>
+<h2 id="%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85">데이터 설명<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85">¶</a>
 </h2>
 <p>이 글에서 사용한 데이터는 캐글(Kaggle)의 <a href="https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings/data">비디오 게임 판매</a> 입니다.</p>
 <p>먼저 <code>pandas</code>로 <strong>csv</strong>를 불러오겠습니다.</p>
@@ -177,8 +177,7 @@ navbar-dark bg-dark
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -303,8 +302,7 @@ navbar-dark bg-dark
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -346,7 +344,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="데이터-시각화">데이터 시각화<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
+<h2 id="%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94">데이터 시각화<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
 </h2>
 <p>시각화를 통해 데이터의 모양을 확인해 보겠습니다.</p>
 
@@ -411,7 +409,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>x축은 평론가 점수이고 y축은 비디오 게임의 판매량입니다. 그리고 유저들의 평가는 색상으로 표현했습니다. 점수가 높을 수록 판매량이 높은 분명한 <strong>선형</strong> 관계가 보이네요. 그리고 몇개의 특이값(outliners) 보입니다.</p>
-<h2 id="선형회귀">선형회귀<a class="anchor-link" href="#%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80">¶</a>
+<h2 id="%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80">선형회귀<a class="anchor-link" href="#%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80">¶</a>
 </h2>
 <p>이제 <code>sklearn</code>을 이용해 간단히 선형회귀 모델을 만들고 모델로 판매량을 예측해보겠습니다.</p>
 
@@ -448,7 +446,7 @@ navbar-dark bg-dark
 $$ MAE = \frac { \sum \vert y - \hat y \vert }{n} $$
 모델의 예측값과 실제값의 차이를 모두 더한다는 개념입니다.</p>
 <ul>
-<li>절대값을 취하기 때문에 가장 직관적으로 알 수 있는 지표입니다. </li>
+<li>절대값을 취하기 때문에 가장 직관적으로 알 수 있는 지표입니다.</li>
 <li>MSE 보다 특이치에 robust합니다.</li>
 <li>절대값을 취하기 때문에 모델이 underperformance 인지 overperformance 인지 알 수 없습니다.<ul>
 <li>underperformance: 모델이 실제보다 낮은 값으로 예측</li>
@@ -800,52 +798,51 @@ $$ MAE = \frac { \sum ( y - \hat y ) }{n}* 100\% $$<p>MPE의 가장 큰 장점�
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>음수의 값임으로, 모델이 overperformance임을 알 수있습니다.</p>
-<h2 id="마치며,">마치며,<a class="anchor-link" href="#%EB%A7%88%EC%B9%98%EB%A9%B0,">¶</a>
+<h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0,">마치며,<a class="anchor-link" href="#%EB%A7%88%EC%B9%98%EB%A9%B0,">¶</a>
 </h2>
 <p>테이블로 간단하게 정리해보겠습니다.</p>
 <table>
 <thead><tr>
 <th>Name</th>
-<th>Residual Operation</th>
-<th>Robust To Outliers</th>
+  <th>	Residual Operation	</th>
+  <th>Robust To Outliers</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>Mean Absolute Error</td>
-<td>Absolute Value</td>
-<td>Yes</td>
+  <td>Absolute Value</td>
+  <td>Yes</td>
 </tr>
 <tr>
 <td>Mean Squared Error</td>
-<td>Square</td>
-<td>No</td>
+  <td>Square</td>
+  <td>No</td>
 </tr>
 <tr>
 <td>Root Mean Squared Error</td>
-<td>Square</td>
-<td>No</td>
+  <td>Square</td>
+  <td>No</td>
 </tr>
 <tr>
 <td>Mean Absolute Percentage Error</td>
-<td>Absolute Value</td>
-<td>Yes</td>
+  <td>Absolute Value</td>
+  <td>Yes</td>
 </tr>
 <tr>
 <td>Mean Percentage Error</td>
-<td>N/A</td>
-<td>Yes</td>
+  <td>N/A</td>
+  <td>Yes</td>
 </tr>
 </tbody>
 </table>
 <p>회귀문제에서 RMSE가 일반적으로 선호되는 방법이지만, 상황에 맞는 다른 방식을 사용해야 합니다.  특이값이 많은 경우에는 MAE를 사용하는게 좋죠.</p>
-<h2 id="출처">출처<a class="anchor-link" href="#%EC%B6%9C%EC%B2%98">¶</a>
+<h2 id="%EC%B6%9C%EC%B2%98">출처<a class="anchor-link" href="#%EC%B6%9C%EC%B2%98">¶</a>
 </h2>
 <ul>
 <li>scikit-learn <a href="http://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics">공식문서</a>
 </li>
 <li><a href="https://www.dataquest.io/blog/understanding-regression-error-metrics/">Understanding Regression Error Metrics</a></li>
 </ul>
-</div>
 </div>
 </div>
 </div>
@@ -878,7 +875,7 @@ $$ MAE = \frac { \sum ( y - \hat y ) }{n}* 100\% $$<p>MPE의 가장 큰 장점�
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -889,9 +886,7 @@ $$ MAE = \frac { \sum ( y - \hat y ) }{n}* 100\% $$<p>MPE의 가장 큰 장점�
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

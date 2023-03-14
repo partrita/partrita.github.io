@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about deeplearning)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/deeplearning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:26 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>케라스로 딥러닝하기</title><link>https://partrita.github.io/posts/CNN-with-KERAS/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about deeplearning)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/deeplearning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>케라스로 딥러닝하기</title><link>https://partrita.github.io/posts/CNN-with-KERAS/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-시작하기전에"&gt;0. 시작하기전에&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;책 &lt;em&gt;김태영, 블록과 함께하는 파이썬 딥러닝 케라스, 디지털북스, 2017&lt;/em&gt; 을 읽고 (복습을 위해)마음대로 정리한 것입니다. 설명이 많이 부족하니 자세한 내용은 책이나 저자의 &lt;a href="https://tykimos.github.io/"&gt;블로그&lt;/a&gt;를 참고하세요.&lt;/p&gt;
-&lt;h2 id="1.-케라스(Keras)"&gt;1. 케라스(Keras)&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1.-%EC%BC%80%EB%9D%BC%EC%8A%A4(Keras)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;케라스는 Theano와 TensorFlow를 백엔드(back-end)로 사용하는 딥러닝 라이브러리로서 Torch에서 영감을 얻어 직관적 API를 제공합니다. 창시자는 Google의 소프트웨어 엔지니어인 Francois Chollet입니다.&lt;/p&gt;
+&lt;h2 id="0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90"&gt;0. 시작하기전에&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#0.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;책 &lt;em&gt;김태영, 블록과 함께하는 파이썬 딥러닝 케라스, 디지털북스, 2017&lt;/em&gt; 을 읽고 (복습을 위해)마음대로 정리한 것입니다. 설명이 많이 부족하니 자세한 내용은 책이나 저자의 &lt;a href="https://tykimos.github.io/"&gt;블로그&lt;/a&gt;를 참고하세요.&lt;/p&gt;
+&lt;h2 id="1.-%EC%BC%80%EB%9D%BC%EC%8A%A4(Keras)"&gt;1. 케라스(Keras)&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1.-%EC%BC%80%EB%9D%BC%EC%8A%A4(Keras)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;케라스는 Theano와 TensorFlow를 백엔드(back-end)로 사용하는 딥러닝 라이브러리로서 Torch에서 영감을 얻어 직관적 API를 제공합니다. 창시자는 Google의 소프트웨어 엔지니어인 Francois Chollet입니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;직관적 API&lt;/li&gt;
 &lt;li&gt;Theano, TensorFlow가 백엔드&lt;/li&gt;
 &lt;li&gt;빠르게 성장하고 있는 프레임워크&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="1.1-케라스의-기본개념"&gt;1.1 케라스의 기본개념&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1.1-%EC%BC%80%EB%9D%BC%EC%8A%A4%EC%9D%98-%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;케라스로 딥러닝모델을 만들 때는 다음과 같은 순서로 작성합니다.&lt;/p&gt;
+&lt;h3 id="1.1-%EC%BC%80%EB%9D%BC%EC%8A%A4%EC%9D%98-%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90"&gt;1.1 케라스의 기본개념&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1.1-%EC%BC%80%EB%9D%BC%EC%8A%A4%EC%9D%98-%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;케라스로 딥러닝모델을 만들 때는 다음과 같은 순서로 작성합니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;데이터 불러오고 전처리&lt;/li&gt;
 &lt;li&gt;모델을 구성하기&lt;/li&gt;
@@ -23,8 +23,8 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="2.-레이어"&gt;2. 레이어&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.-%EB%A0%88%EC%9D%B4%EC%96%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;케라스에서 사용되는 레이어는 층층이 쌓아서 모델을 만드는 개념입니다.&lt;/p&gt;
-&lt;h3 id="2.1-인공-신경망"&gt;2.1 인공 신경망&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.1-%EC%9D%B8%EA%B3%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;케라스에서는 &lt;code&gt;Dense&lt;/code&gt;라는 클래스로 구현이 되어 있습니다. 아래와 같이 사용하죠.&lt;/p&gt;
+&lt;h2 id="2.-%EB%A0%88%EC%9D%B4%EC%96%B4"&gt;2. 레이어&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.-%EB%A0%88%EC%9D%B4%EC%96%B4"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;케라스에서 사용되는 레이어는 층층이 쌓아서 모델을 만드는 개념입니다.&lt;/p&gt;
+&lt;h3 id="2.1-%EC%9D%B8%EA%B3%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D"&gt;2.1 인공 신경망&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.1-%EC%9D%B8%EA%B3%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;케라스에서는 &lt;code&gt;Dense&lt;/code&gt;라는 클래스로 구현이 되어 있습니다. 아래와 같이 사용하죠.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_dim&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'relu'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
@@ -38,14 +38,14 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="2.2-레이어-쌓기"&gt;2.2 레이어 쌓기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.2-%EB%A0%88%EC%9D%B4%EC%96%B4-%EC%8C%93%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;4개의 입력값을 받아 이진 분류하는 모델은 다음과 같습니다.&lt;/p&gt;
+&lt;h3 id="2.2-%EB%A0%88%EC%9D%B4%EC%96%B4-%EC%8C%93%EA%B8%B0"&gt;2.2 레이어 쌓기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.2-%EB%A0%88%EC%9D%B4%EC%96%B4-%EC%8C%93%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;4개의 입력값을 받아 이진 분류하는 모델은 다음과 같습니다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Sequential&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_dim&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'relu'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'relu'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'sigmoid'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="2.3-다층-퍼셉트론-신경망-모델"&gt;2.3 다층 퍼셉트론 신경망 모델&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.3-%EB%8B%A4%EC%B8%B5-%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;간단한 다층 퍼셉트론 신경망 모델로 이진 분류를 해보겠습니다. 예제로 사용할 데이터는 &lt;a href="https://www.kaggle.com/uciml/pima-indians-diabetes-database"&gt;Pima 인디언의 당뇨병 발병 데이터&lt;/a&gt; 입니다.&lt;/p&gt;
-&lt;h4 id="1)-데이터-준비하기"&gt;1) 데이터 준비하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;이제 ics.uci.edu 에서는 더이상 제공되지 않습니다. 그래서 저는 Kaggle에서 &lt;strong&gt;diabetes.csv&lt;/strong&gt; 파일을 다운로드 했습니다. 간략하게 파일을 살펴보면 다음과 같습니다.&lt;/p&gt;
+&lt;h3 id="2.3-%EB%8B%A4%EC%B8%B5-%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8"&gt;2.3 다층 퍼셉트론 신경망 모델&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.3-%EB%8B%A4%EC%B8%B5-%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;간단한 다층 퍼셉트론 신경망 모델로 이진 분류를 해보겠습니다. 예제로 사용할 데이터는 &lt;a href="https://www.kaggle.com/uciml/pima-indians-diabetes-database"&gt;Pima 인디언의 당뇨병 발병 데이터&lt;/a&gt; 입니다.&lt;/p&gt;
+&lt;h4 id="1)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84%ED%95%98%EA%B8%B0"&gt;1) 데이터 준비하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;이제 ics.uci.edu 에서는 더이상 제공되지 않습니다. 그래서 저는 Kaggle에서 &lt;strong&gt;diabetes.csv&lt;/strong&gt; 파일을 다운로드 했습니다. 간략하게 파일을 살펴보면 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;인스턴스의 수 : 768개&lt;/li&gt;
 &lt;li&gt;속성의 수 : 8 (자세한것은 생략)&lt;/li&gt;
@@ -80,8 +80,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -160,8 +159,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -172,7 +170,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="2)-데이터-전처리"&gt;2) 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;데이터를 불러오기 앞서, 랜덤 시드를 명시적으로 정합니다. 이것을 하지 않으면 실행할 때마다 다른 결과가 나오므로 파라미터 조정시에는 고정해 주는것이 좋습니다.&lt;/p&gt;
+&lt;h4 id="2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;2) 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;데이터를 불러오기 앞서, 랜덤 시드를 명시적으로 정합니다. 이것을 하지 않으면 실행할 때마다 다른 결과가 나오므로 파라미터 조정시에는 고정해 주는것이 좋습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -228,7 +226,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="3)-모델-구성하기"&gt;3) 모델 구성하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3)-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Dense 레이어만을 사용하여 다층 퍼셉트론 신경망 모델을 만들겠습니다.&lt;/p&gt;
+&lt;h4 id="3)-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0"&gt;3) 모델 구성하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3)-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Dense 레이어만을 사용하여 다층 퍼셉트론 신경망 모델을 만들겠습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;첫번째 레이어는 은닉층으로 8개의 속성을 입력받아 12개로 출력합니다.&lt;/li&gt;
 &lt;li&gt;두번째 레이어는 은닉층으로 12개의 뉴런을 입력받아 8개로 출력합니다.&lt;/li&gt;
@@ -286,7 +284,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="4)-학습과-평가"&gt;4) 학습과 평가&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4)-%ED%95%99%EC%8A%B5%EA%B3%BC-%ED%8F%89%EA%B0%80"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;먼저 &lt;code&gt;fit()&lt;/code&gt; 기능을 사용해 모델을 학습시킵니다. 필요한 설정은 다음과 같습니다.&lt;/p&gt;
+&lt;h4 id="4)-%ED%95%99%EC%8A%B5%EA%B3%BC-%ED%8F%89%EA%B0%80"&gt;4) 학습과 평가&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4)-%ED%95%99%EC%8A%B5%EA%B3%BC-%ED%8F%89%EA%B0%80"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;먼저 &lt;code&gt;fit()&lt;/code&gt; 기능을 사용해 모델을 학습시킵니다. 필요한 설정은 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;첫번째 인자 : 입력 변수, 여기서는 8가지 속성입니다.&lt;/li&gt;
 &lt;li&gt;두번째 인자 : 출력 변수, 여기서는 당뇨병 유/무 입니다.&lt;/li&gt;
@@ -336,7 +334,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="2.4-히스토리-기능"&gt;2.4 히스토리 기능&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.4-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EA%B8%B0%EB%8A%A5"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;히스토리 기능은 케라스에 기본으로 탑재되어 있습니다. 별도의 설정없이 아래와 같이 사용할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="2.4-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EA%B8%B0%EB%8A%A5"&gt;2.4 히스토리 기능&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2.4-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EA%B8%B0%EB%8A%A5"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;히스토리 기능은 케라스에 기본으로 탑재되어 있습니다. 별도의 설정없이 아래와 같이 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -397,7 +395,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.-합성곱(convolution)-신경망-레이어"&gt;3. 합성곱(convolution) 신경망 레이어&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3.-%ED%95%A9%EC%84%B1%EA%B3%B1(convolution)-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%A0%88%EC%9D%B4%EC%96%B4"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;케라스에서 제공하는 합성곱 레이어 중 영상처리에 주로 사용되는 &lt;code&gt;Conv2D&lt;/code&gt; 레이어를 살펴 보겠습니다. 아래는 사용 예제 입니다.&lt;/p&gt;
+&lt;h3 id="3.-%ED%95%A9%EC%84%B1%EA%B3%B1(convolution)-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%A0%88%EC%9D%B4%EC%96%B4"&gt;3. 합성곱(convolution) 신경망 레이어&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3.-%ED%95%A9%EC%84%B1%EA%B3%B1(convolution)-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%A0%88%EC%9D%B4%EC%96%B4"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;케라스에서 제공하는 합성곱 레이어 중 영상처리에 주로 사용되는 &lt;code&gt;Conv2D&lt;/code&gt; 레이어를 살펴 보겠습니다. 아래는 사용 예제 입니다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Conv2D&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;padding&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'valid'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_shape&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'relu'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
@@ -413,21 +411,23 @@
 &lt;/ul&gt;
 &lt;p&gt;사소한 변화를 무시하는 Max Pooling 레이어
 1차원으로 바꾸는 Flatten 레이어&lt;/p&gt;
-&lt;h3 id="3.1-합성곱(convolution)-신경망-모델-만들기"&gt;3.1 합성곱(convolution) 신경망 모델 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3.1-%ED%95%A9%EC%84%B1%EA%B3%B1(convolution)-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이미지 기반의 분류에는 합성곱 신경맘 모델이 적합합니다. 여기서 우리는 이미지파일의 분류를 해보도록 하겠습니다.&lt;/p&gt;
-&lt;h4 id="1)--데이터-준비하기"&gt;1)  데이터 준비하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1)--%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;a href="http://tykimos.github.io"&gt;저자의 블로그&lt;/a&gt; 에서 제공하고 있는 데이터를 가지고 살펴 보겠습니다. 
+&lt;h3 id="3.1-%ED%95%A9%EC%84%B1%EA%B3%B1(convolution)-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;3.1 합성곱(convolution) 신경망 모델 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3.1-%ED%95%A9%EC%84%B1%EA%B3%B1(convolution)-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이미지 기반의 분류에는 합성곱 신경맘 모델이 적합합니다. 여기서 우리는 이미지파일의 분류를 해보도록 하겠습니다.&lt;/p&gt;
+&lt;h4 id="1)--%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84%ED%95%98%EA%B8%B0"&gt;1)  데이터 준비하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1)--%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;a href="http://tykimos.github.io"&gt;저자의 블로그&lt;/a&gt; 에서 제공하고 있는 데이터를 가지고 살펴 보겠습니다. 
 원, 사각형, 삼각형 데이터셋을 예제로 살펴보겠습니다. 구성은 훈련셋과 시험셋으로 되어 있습니다.&lt;br&gt;
 아래 그림은 훈련셋입니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src="http://tykimos.github.io/warehouse/2017-3-8-CNN_Data_Augmentation_1.png" alt="훈련 데이터"&gt;&lt;/p&gt;
-&lt;center&gt; Figure from tykimos.github.io &lt;/center&gt;&lt;p&gt;다음은 시험용 데이터입니다.
+&lt;center&gt; Figure from tykimos.github.io &lt;/center&gt;
+&lt;p&gt;다음은 시험용 데이터입니다.
 &lt;img src="http://tykimos.github.io/warehouse/2017-3-8-CNN_Data_Augmentation_3.png" alt="시험 데이터"&gt;&lt;/p&gt;
 &lt;center&gt; Figure from tykimos.github.io &lt;/center&gt;
+
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="2)-데이터-전처리"&gt;2) 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;수정된 전체 코드는 다음과 같습니다. 참고로 시험셋은 데이터 부풀리기를 할 필요가 없으니, test_datagen 객체 생성 시에는 별도의 파라미터를 추가하지 않았습니다. 그리고 fit_generator함수에서 steps_per_epoch의 값은 기존 15개에서 더 많은 수 (현재 예는 1500개)로 설정합니다.&lt;br&gt;
+&lt;h4 id="2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;2) 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;수정된 전체 코드는 다음과 같습니다. 참고로 시험셋은 데이터 부풀리기를 할 필요가 없으니, test_datagen 객체 생성 시에는 별도의 파라미터를 추가하지 않았습니다. 그리고 fit_generator함수에서 steps_per_epoch의 값은 기존 15개에서 더 많은 수 (현재 예는 1500개)로 설정합니다.&lt;br&gt;
 batch_size * steps_per_epoch가 전체 샘플 수 인데, 데이터 부풀리기를 하지 않을 때는 기존의 15개의 배치사이즈(3개)로 전체 45개를 모두 학습에 사용할 수 있지만, ImageDataGenerator함수를 통해 데이터 부풀리기는 할 때는 하나의 샘플로 여러 개의 결과를 얻기 때문에 요청하는 데로 무한의 샘플이 제공됩니다.&lt;br&gt;
 여기서는 100배 정도인 1500개로 설정했습니다.&lt;/p&gt;
 
@@ -500,7 +500,7 @@ Found 15 images belonging to 3 classes.
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="3)-모델-학습및-평가하기"&gt;3) 모델 학습및 평가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3)-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5%EB%B0%8F-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="3)-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5%EB%B0%8F-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;3) 모델 학습및 평가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3)-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5%EB%B0%8F-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -543,7 +543,7 @@ Found 15 images belonging to 3 classes.
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="4)-모델로-예측하기"&gt;4) 모델로 예측하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="4)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;4) 모델로 예측하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -586,10 +586,11 @@ Found 15 images belonging to 3 classes.
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;도형을 분류하는 간단한 문제에서 데이터 부풀리기 방법에 대하여 알아보았고, 각 파라미터 별로 어떻게 데이터가 부풀어지는지 살펴보았습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;데이터 부풀리기 방법은 학습용 데이터가 충분하지 않을때 성능 개선에 큰 도움을 줍니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;데이터 부풀리기 방법은 학습용 데이터가 충분하지 않을때 성능 개선에 큰 도움을 줍니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id="4.-순환-신경망-모델-RNN-(Recurrent-Neural-Network)"&gt;4. 순환 신경망 모델 RNN (Recurrent Neural Network)&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4.-%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8-RNN-(Recurrent-Neural-Network)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;순환 신경망 모델은 순차적인 자료에서 규칙을 찾습니다. 케라스에서 제공하는 순환 신경망 레이어중 가장 흔히 쓰이는 LSTM(Long Short-Term Memory units) 레이어를 알아보겠습니다.&lt;/p&gt;
-&lt;h4 id="LSTM-레이어"&gt;LSTM 레이어&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#LSTM-%EB%A0%88%EC%9D%B4%EC%96%B4"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;사용법은 Dense 레이어와 비슷하지만, 시퀀스 출력여부와 상태 유지 설정으로 다양한 형태로 구성할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="4.-%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8-RNN-(Recurrent-Neural-Network)"&gt;4. 순환 신경망 모델 RNN (Recurrent Neural Network)&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4.-%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8-RNN-(Recurrent-Neural-Network)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;순환 신경망 모델은 순차적인 자료에서 규칙을 찾습니다. 케라스에서 제공하는 순환 신경망 레이어중 가장 흔히 쓰이는 LSTM(Long Short-Term Memory units) 레이어를 알아보겠습니다.&lt;/p&gt;
+&lt;h4 id="LSTM-%EB%A0%88%EC%9D%B4%EC%96%B4"&gt;LSTM 레이어&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#LSTM-%EB%A0%88%EC%9D%B4%EC%96%B4"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;사용법은 Dense 레이어와 비슷하지만, 시퀀스 출력여부와 상태 유지 설정으로 다양한 형태로 구성할 수 있습니다.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;LSTM&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_dim&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
@@ -597,9 +598,8 @@ Found 15 images belonging to 3 classes.
 &lt;li&gt;input_dim&lt;/li&gt;
 &lt;li&gt;input_length:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="4.1-순환-신경망-모델-만들기"&gt;4.1 순환 신경망 모델 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4.1-%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;앞서 살펴본 LSTM 레이어를 사용해 순환 신경망 모델을 만들어 보겠습니다.&lt;/p&gt;
-&lt;h4 id="1)-데이터-준비"&gt;1) 데이터 준비&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;준비한 데이터는 사람의 Y염색체 DNA서열중 반복서열이 있는 조각입니다. 서열은 아래와 같습니다.&lt;/p&gt;
-
+&lt;h3 id="4.1-%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;4.1 순환 신경망 모델 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4.1-%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;앞서 살펴본 LSTM 레이어를 사용해 순환 신경망 모델을 만들어 보겠습니다.&lt;/p&gt;
+&lt;h4 id="1)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84"&gt;1) 데이터 준비&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;준비한 데이터는 사람의 Y염색체 DNA서열중 반복서열이 있는 조각입니다. 서열은 아래와 같습니다.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;AGATAGACAGATTAGATGATAGGGAGATGATACATAGAAGGTAGATAGA
 TAGATAGATAGATAGATAGATAGATAGATAGATAGATAATACATAGATA
 ATTAATGGATAGATATATAGA
@@ -699,7 +699,7 @@ ATTAATGGATAGATATATAGA
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;DNA 서열을 5개씩 자르고 각각에 DNA를 숫자로 변환했습니다.&lt;/p&gt;
-&lt;h4 id="2)-데이터-전처리하기"&gt;2) 데이터 전처리하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0"&gt;2) 데이터 전처리하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -754,7 +754,7 @@ ATTAATGGATAGATATATAGA
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="3)-모델-학습-및-평가하기"&gt;3) 모델 학습 및 평가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3)-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5-%EB%B0%8F-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="3)-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5-%EB%B0%8F-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;3) 모델 학습 및 평가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3)-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5-%EB%B0%8F-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -840,7 +840,7 @@ ATTAATGGATAGATATATAGA
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="4)-모델로-예측하기"&gt;4) 모델로 예측하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="4)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;4) 모델로 예측하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -934,21 +934,20 @@ ATTAATGGATAGATATATAGA
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="예측결과-확인"&gt;예측결과 확인&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#%EC%98%88%EC%B8%A1%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Sequence alignment 한 결과는 다음과 같습니다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Original       AGATAGACAGATTAGATGATAGGGAGATGATACATAGAAGGTAGATAGATAGATAGATAG 60
-step-wise      AGATAGATGGATAAGATAATAGAGAGATAATAGATAGATGGTAGATAGATAGATAGATAG 60
-whole          AGATAGATAGATAGATAGATAGATAGAT--AGATAGATAGATAGATAGATAGATAGATAG 58
+&lt;h4 id="%EC%98%88%EC%B8%A1%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8"&gt;예측결과 확인&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#%EC%98%88%EC%B8%A1%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Sequence alignment 한 결과는 다음과 같습니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Original       AGATAGACAGATTAGATGATAGGGAGATGATACATAGAAGGTAGATAGATAGATAGATAG	60
+step-wise      AGATAGATGGATAAGATAATAGAGAGATAATAGATAGATGGTAGATAGATAGATAGATAG	60
+whole          AGATAGATAGATAGATAGATAGATAGAT--AGATAGATAGATAGATAGATAGATAGATAG	58
                *******  ***      ****  ****           * *******************
 
-Original       ATAGATAGATAGATAGATAGATAGATAATACATAGATAATT--AATGGATAGATATATAG 118
-step-wise      ATAGATAGATAGATAGATAGATAGATAGTACATAGATAGTA--AGTAAATAGATAGATAT 118
-whole          ATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAG 118
+Original       ATAGATAGATAGATAGATAGATAGATAATACATAGATAATT--AATGGATAGATATATAG	118
+step-wise      ATAGATAGATAGATAGATAGATAGATAGTACATAGATAGTA--AGTAAATAGATAGATAT	118
+whole          ATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAGATAG	118
                ***************************                  *  ******* *** 
 
-Original       A    119
-step-wise      A    119
-whole          A    119
+Original       A	119
+step-wise      A	119
+whole          A	119
                *
 
 &lt;/code&gt;&lt;/pre&gt;
@@ -960,8 +959,9 @@ whole          A    119
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="5.-상태유지-LSTM-모델"&gt;5. 상태유지 LSTM 모델&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#5.-%EC%83%81%ED%83%9C%EC%9C%A0%EC%A7%80-LSTM-%EB%AA%A8%EB%8D%B8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이번에는 상태유지(Stateful) LSTM 모델에 대해서 알아보겠습니다. 여기서 상태유지라는 것은 현재 학습된 상태가 다음 학습 시 초기 상태로 전달된다는 것을 의미합니다&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;상태 유지 모드에서는 현재 샘플의 학습 상태가 다음 샘플의 초기 상태&lt;/p&gt;
+&lt;h2 id="5.-%EC%83%81%ED%83%9C%EC%9C%A0%EC%A7%80-LSTM-%EB%AA%A8%EB%8D%B8"&gt;5. 상태유지 LSTM 모델&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#5.-%EC%83%81%ED%83%9C%EC%9C%A0%EC%A7%80-LSTM-%EB%AA%A8%EB%8D%B8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이번에는 상태유지(Stateful) LSTM 모델에 대해서 알아보겠습니다. 여기서 상태유지라는 것은 현재 학습된 상태가 다음 학습 시 초기 상태로 전달된다는 것을 의미합니다&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;상태 유지 모드에서는 현재 샘플의 학습 상태가 다음 샘플의 초기 상태&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;긴 시퀀스 데이터를 처리할 때 권장됩니다. 
 LSTM 레이어 생성시 다음과 같이 처리하면 됩니다.&lt;/p&gt;
@@ -969,7 +969,7 @@ LSTM 레이어 생성시 다음과 같이 처리하면 됩니다.&lt;/p&gt;
 &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LSTM&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;batch_input_shape&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;stateful&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;one_hot_vec_size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'softmax'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="5.1-상태유지-순환-신경망-RNN-모델-만들기"&gt;5.1 상태유지 순환 신경망 RNN 모델 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#5.1-%EC%83%81%ED%83%9C%EC%9C%A0%EC%A7%80-%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9D-RNN-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="1)-데이터-준비"&gt;1) 데이터 준비&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;시간의 흐름에 따라 진폭이 -1 에서 1사이로 변하는 코사인 데이터를 만들어 보겠습니다. 이러한 데이터를 시계열 수치라고 하죠.&lt;/p&gt;
+&lt;h3 id="5.1-%EC%83%81%ED%83%9C%EC%9C%A0%EC%A7%80-%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9D-RNN-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;5.1 상태유지 순환 신경망 RNN 모델 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#5.1-%EC%83%81%ED%83%9C%EC%9C%A0%EC%A7%80-%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9D-RNN-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="1)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84"&gt;1) 데이터 준비&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#1)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;시간의 흐름에 따라 진폭이 -1 에서 1사이로 변하는 코사인 데이터를 만들어 보겠습니다. 이러한 데이터를 시계열 수치라고 하죠.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1032,7 +1032,7 @@ LSTM 레이어 생성시 다음과 같이 처리하면 됩니다.&lt;/p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="2)-데이터-전처리"&gt;2) 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;데이터를 모델에 학습시키기 위해서 전처리가 필요합니다.&lt;/p&gt;
+&lt;h4 id="2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;2) 데이터 전처리&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#2)-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;데이터를 모델에 학습시키기 위해서 전처리가 필요합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1088,8 +1088,9 @@ LSTM 레이어 생성시 다음과 같이 처리하면 됩니다.&lt;/p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="3)-모델-학습과-평가"&gt;3) 모델 학습과 평가&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3)-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5%EA%B3%BC-%ED%8F%89%EA%B0%80"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;시계열 수치를 입력받아 예측하기 위해 상태 유지 다층 순환신경망 모델을 사용하겠습니다. 코드는 아래와 같습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;학습 시간이 아주 오래걸리니 주의하세요.&lt;/p&gt;
+&lt;h4 id="3)-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5%EA%B3%BC-%ED%8F%89%EA%B0%80"&gt;3) 모델 학습과 평가&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#3)-%EB%AA%A8%EB%8D%B8-%ED%95%99%EC%8A%B5%EA%B3%BC-%ED%8F%89%EA%B0%80"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;시계열 수치를 입력받아 예측하기 위해 상태 유지 다층 순환신경망 모델을 사용하겠습니다. 코드는 아래와 같습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;학습 시간이 아주 오래걸리니 주의하세요.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;
@@ -1229,7 +1230,7 @@ Test Score:  0.00211231139425
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="4)-모델로-예측하기"&gt;4) 모델로 예측하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;모델을 가지고 코사인 곡선이 그려지는지 예측해보겠습니다. 그리고 원본과 겹쳐서 시각화해보겠습니다.&lt;/p&gt;
+&lt;h4 id="4)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;4) 모델로 예측하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#4)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;모델을 가지고 코사인 곡선이 그려지는지 예측해보겠습니다. 그리고 원본과 겹쳐서 시각화해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1284,26 +1285,27 @@ Test Score:  0.00211231139425
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;그림에서 볼 수 있듯이 진폭과 주기가 유사한 형태의 결과를 얻었습니다. 상태유지 모드에서는 보통 배치 사이즈를 1로 설정합니다. 하지만 서로 성격이 다른 시계열 자료가 있다면 갯수를 추가해야 합니다. 예를 들어 주식 3종목을 학습한다면 배치 사이즈는 3이 되어야 합니다.&lt;/p&gt;
-&lt;h2 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;딥러닝 라이브러리 케라스에 대해 알아 보았습니다. 케라스는 너무나도 편리합니다. 짧은 코드로 다양한 딥러닝 모델(다층 퍼셉트론, 합성곱 신경망, 순환 신경망등)을 쉽게 생성하고 테스트 해볼수 있죠.&lt;/p&gt;
+&lt;h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/CNN-with-KERAS/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;딥러닝 라이브러리 케라스에 대해 알아 보았습니다. 케라스는 너무나도 편리합니다. 짧은 코드로 다양한 딥러닝 모델(다층 퍼셉트론, 합성곱 신경망, 순환 신경망등)을 쉽게 생성하고 테스트 해볼수 있죠.&lt;/p&gt;
 &lt;p&gt;진짜 문제는 어느 상황에 어떠한 모델을 쓰고 적절한 파라미터 값은 무엇인지 아는 것입니다. 이것은 좀 더 많은 경험과 공부가 필요 할 것 같습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>deeplearning</category><category>KERAS</category><category>machine learning</category><category>Python</category><guid>https://partrita.github.io/posts/CNN-with-KERAS/</guid><pubDate>Sat, 29 Feb 2020 02:56:47 GMT</pubDate></item><item><title>텐서플로(Tensorflow)로 배우는 딥러닝</title><link>https://partrita.github.io/posts/tensorflow-deeplearning/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>deeplearning</category><category>KERAS</category><category>machine learning</category><category>Python</category><guid>https://partrita.github.io/posts/CNN-with-KERAS/</guid><pubDate>Sat, 29 Feb 2020 02:56:47 GMT</pubDate></item><item><title>텐서플로(Tensorflow)로 배우는 딥러닝</title><link>https://partrita.github.io/posts/tensorflow-deeplearning/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;출처: &lt;em&gt;다카이 에츠지, 텐서플로로 시작하는 딥러닝, Jpub, 2017&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id="시작하며"&gt;시작하며&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;텐서플로로 시작하는 딥러닝&lt;/strong&gt;이라는 책을 읽고 복습하기 위한 jupyter notebook입니다. 마음대로 정리한 것이다 보니, 설명은 충분하지 않습니다. 구체적인 내용은 &lt;a href="http://jpub.tistory.com/695"&gt;책&lt;/a&gt;을 읽어보시기 바랍니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;파이썬과 텐서플로의 최근 버전에 맞추어 코드를 조금씩 수정하였습니다.&lt;/p&gt;
+&lt;h2 id="%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B0"&gt;시작하며&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;텐서플로로 시작하는 딥러닝&lt;/strong&gt;이라는 책을 읽고 복습하기 위한 jupyter notebook입니다. 마음대로 정리한 것이다 보니, 설명은 충분하지 않습니다. 구체적인 내용은 &lt;a href="http://jpub.tistory.com/695"&gt;책&lt;/a&gt;을 읽어보시기 바랍니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;파이썬과 텐서플로의 최근 버전에 맞추어 코드를 조금씩 수정하였습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id="1장.-텐서플로-입문"&gt;1장. 텐서플로 입문&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#1%EC%9E%A5.-%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%9E%85%EB%AC%B8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;텐서플로(TensorFlow)는 구글이 오픈 소스로 공개한 머신러닝 라이브러리 입니다.&lt;/p&gt;
-&lt;h3 id="머신러닝의-3단계"&gt;머신러닝의 3단계&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%98-3%EB%8B%A8%EA%B3%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;머신러닝은 데이터 속에 있는 &lt;strong&gt;수학적 규칙&lt;/strong&gt;을 컴퓨터로 발견해 내는 방법입니다. 여기서는 다음의 3단계에 걸쳐서 머신러닝을 수행합니다.&lt;/p&gt;
+&lt;h2 id="1%EC%9E%A5.-%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%9E%85%EB%AC%B8"&gt;1장. 텐서플로 입문&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#1%EC%9E%A5.-%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%9E%85%EB%AC%B8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;텐서플로(TensorFlow)는 구글이 오픈 소스로 공개한 머신러닝 라이브러리 입니다.&lt;/p&gt;
+&lt;h3 id="%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%98-3%EB%8B%A8%EA%B3%84"&gt;머신러닝의 3단계&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%98-3%EB%8B%A8%EA%B3%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;머신러닝은 데이터 속에 있는 &lt;strong&gt;수학적 규칙&lt;/strong&gt;을 컴퓨터로 발견해 내는 방법입니다. 여기서는 다음의 3단계에 걸쳐서 머신러닝을 수행합니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;주어진 데이터로 미지의 데이터를 예측하는 수식을 생각한다.&lt;/li&gt;
 &lt;li&gt;수식에 포함된 파라미터를 판단하는 오차 함수를 준비한다.&lt;/li&gt;
 &lt;li&gt;오차 함수를 최소화 할 수 있도록 파라미터 값을 결정한다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id="텐서플로-예제"&gt;텐서플로 예제&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%98%88%EC%A0%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 필요한 라이브러리를 불러옵니다. 여기서는 &lt;strong&gt;tensorflow&lt;/strong&gt;와 수치계산에 필요한 &lt;strong&gt;Numpy&lt;/strong&gt;와 시각화를 위한 &lt;strong&gt;matplotlib&lt;/strong&gt;을 추가로 사용했습니다.&lt;/p&gt;
+&lt;h3 id="%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%98%88%EC%A0%9C"&gt;텐서플로 예제&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%98%88%EC%A0%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 필요한 라이브러리를 불러옵니다. 여기서는 &lt;strong&gt;tensorflow&lt;/strong&gt;와 수치계산에 필요한 &lt;strong&gt;Numpy&lt;/strong&gt;와 시각화를 위한 &lt;strong&gt;matplotlib&lt;/strong&gt;을 추가로 사용했습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1348,37 +1350,39 @@ Test Score:  0.00211231139425
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="문제-설명"&gt;문제 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;월별 평균 기온을 예측하는 문제를 텐서플로를 사용해 풀어 보겠습니다. 다음은 1년간 월별 평균 기온입니다.&lt;/p&gt;
+&lt;h4 id="%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85"&gt;문제 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;월별 평균 기온을 예측하는 문제를 텐서플로를 사용해 풀어 보겠습니다. 다음은 1년간 월별 평균 기온입니다.&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;
-&lt;th&gt;1월&lt;/th&gt;
-&lt;th&gt;2월&lt;/th&gt;
-&lt;th&gt;3월&lt;/th&gt;
-&lt;th&gt;4월&lt;/th&gt;
-&lt;th&gt;5월&lt;/th&gt;
-&lt;th&gt;6월&lt;/th&gt;
-&lt;th&gt;7월&lt;/th&gt;
-&lt;th&gt;8월&lt;/th&gt;
-&lt;th&gt;9월&lt;/th&gt;
-&lt;th&gt;10월&lt;/th&gt;
-&lt;th&gt;11월&lt;/th&gt;
-&lt;th&gt;12월&lt;/th&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+  &lt;th&gt;1월&lt;/th&gt;
+  &lt;th&gt;2월&lt;/th&gt;
+  &lt;th&gt;3월&lt;/th&gt;
+  &lt;th&gt;4월&lt;/th&gt;
+  &lt;th&gt;5월&lt;/th&gt;
+  &lt;th&gt;6월&lt;/th&gt;
+  &lt;th&gt;7월&lt;/th&gt;
+  &lt;th&gt;8월&lt;/th&gt;
+  &lt;th&gt;9월&lt;/th&gt;
+  &lt;th&gt;10월&lt;/th&gt;
+  &lt;th&gt;11월&lt;/th&gt;
+  &lt;th&gt;12월&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;5.2&lt;/td&gt;
-&lt;td&gt;5.7&lt;/td&gt;
-&lt;td&gt;8.6&lt;/td&gt;
-&lt;td&gt;14.9&lt;/td&gt;
-&lt;td&gt;18.2&lt;/td&gt;
-&lt;td&gt;20.4&lt;/td&gt;
-&lt;td&gt;25.5&lt;/td&gt;
-&lt;td&gt;26.4&lt;/td&gt;
-&lt;td&gt;22.8&lt;/td&gt;
-&lt;td&gt;17.5&lt;/td&gt;
-&lt;td&gt;11.1&lt;/td&gt;
-&lt;td&gt;6.6&lt;/td&gt;
+  &lt;td&gt;5.2&lt;/td&gt;
+  &lt;td&gt;5.7&lt;/td&gt;
+  &lt;td&gt;8.6&lt;/td&gt;
+  &lt;td&gt;14.9&lt;/td&gt;
+  &lt;td&gt;18.2&lt;/td&gt;
+  &lt;td&gt;20.4&lt;/td&gt;
+  &lt;td&gt;25.5&lt;/td&gt;
+  &lt;td&gt;26.4&lt;/td&gt;
+  &lt;td&gt;22.8&lt;/td&gt;
+  &lt;td&gt;17.5&lt;/td&gt;
+  &lt;td&gt;11.1&lt;/td&gt;
+  &lt;td&gt;6.6&lt;/td&gt;
+  &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1439,10 +1443,10 @@ Test Score:  0.00211231139425
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;그림에서 볼 수 있듯이, 월별 평균 기온에서는 규칙성이 있어 보입니다. 이처럼 주어진 데이터에서 법칙을 발견한다면 내년의 기온을 계산할 수 있을 것입니다. 아래의 코드는 텐서플로를 사용해 규칙을 찾는 방법입니다.&lt;/p&gt;
-&lt;h4 id="주요-용어-설명"&gt;주요 용어 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EC%A3%BC%EC%9A%94-%EC%9A%A9%EC%96%B4-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;h4 id="%EC%A3%BC%EC%9A%94-%EC%9A%A9%EC%96%B4-%EC%84%A4%EB%AA%85"&gt;주요 용어 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EC%A3%BC%EC%9A%94-%EC%9A%A9%EC%96%B4-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;X&lt;/strong&gt;는 트레이닝 세트로서 주어진 데이터로 구성되어 있습니다. 텐서플로에서는 이러한 변수를 &lt;strong&gt;placeholder&lt;/strong&gt;라고 합니다.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;w&lt;/strong&gt; 최적화할 값입니다. 이과 같은 변수를 &lt;strong&gt;variable&lt;/strong&gt;이라고 합니다.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;y&lt;/strong&gt;는 placeholder와 variable로부터 계산된 값입니다. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;y&lt;/strong&gt;는 placeholder와 variable로부터 계산된 값입니다.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/div&gt;
@@ -1592,7 +1596,7 @@ Step: 100000, Loss: 22.416885
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;얻어진 결과를 시각화하였습니다. 점으로 찍혀진 실제 데이터 사이로 예측 곡선이 지나가는 것을 확인 할 수 있습니다. 예측선을 통해서 온도를 예상할 수 있습니다. 이렇게 텐서플로의 기본적인 과정을 살펴보았습니다. 앞으로도 머신러닝의 3단계를 잘 기억해 두기 바랍니다.&lt;/p&gt;
-&lt;h2 id="2장.-분류-알고리즘의-기초"&gt;2장. 분류 알고리즘의 기초&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#2%EC%9E%A5.-%EB%B6%84%EB%A5%98-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EA%B8%B0%EC%B4%88"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="이항-분류기"&gt;이항 분류기&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EC%9D%B4%ED%95%AD-%EB%B6%84%EB%A5%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터를 두 종류로 분류하는 것을 &lt;strong&gt;이항 분류기(binary classifier)&lt;/strong&gt; 라고 합니다. 다시한번 머신러닝 모델의 3단계에 따라 단계적으로 알아보겠습니다.&lt;/p&gt;
+&lt;h2 id="2%EC%9E%A5.-%EB%B6%84%EB%A5%98-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EA%B8%B0%EC%B4%88"&gt;2장. 분류 알고리즘의 기초&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#2%EC%9E%A5.-%EB%B6%84%EB%A5%98-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EA%B8%B0%EC%B4%88"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="%EC%9D%B4%ED%95%AD-%EB%B6%84%EB%A5%98%EA%B8%B0"&gt;이항 분류기&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EC%9D%B4%ED%95%AD-%EB%B6%84%EB%A5%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터를 두 종류로 분류하는 것을 &lt;strong&gt;이항 분류기(binary classifier)&lt;/strong&gt; 라고 합니다. 다시한번 머신러닝 모델의 3단계에 따라 단계적으로 알아보겠습니다.&lt;/p&gt;
 &lt;p&gt;여기서는 간단한 예로 &lt;em&gt;바이러스 감염 확률&lt;/em&gt;을 계산해보도록 하겠습니다. 주어진 데이터를 &lt;em&gt;감염되었다/감염되지 않았다&lt;/em&gt;로 분류하겠습니다.
 분석할 임의의 데이터를 다음같이 만들겠습니다.&lt;/p&gt;
 
@@ -1644,8 +1648,7 @@ Step: 100000, Loss: 22.416885
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -1688,8 +1691,7 @@ Step: 100000, Loss: 22.416885
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1749,7 +1751,8 @@ Step: 100000, Loss: 22.416885
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;직관적으로 감염자를 구분할 수 있는 가상의 선을 그려볼 수 있습니다. 이제 텐서플로를 사용해 풀어보도록 하겠습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;텐서플로로 계산할 때는 데이터를 numpy의 array로 사용해야 합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;텐서플로로 계산할 때는 데이터를 numpy의 array로 사용해야 합니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;
@@ -1908,7 +1911,7 @@ Step: 20000, Loss: 5.439410, Accuracy: 0.971429
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;농담(진하면 감염자)은 확률을 나타냅니다. 그래서 가상의 선의 경계부근에서 감염/비감염 데이터가 혼재되어 있다는 것을 알 수 있습니다.&lt;/p&gt;
-&lt;h3 id="테스트-세트를-통한-검증"&gt;테스트 세트를 통한 검증&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%84%B8%ED%8A%B8%EB%A5%BC-%ED%86%B5%ED%95%9C-%EA%B2%80%EC%A6%9D"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;머신러닝에서 트레이닝 세트에 대한 정확도를 계산하는 것은 그다지 의미가 없습니다. 중요한것은 미지의 데이터에 대한 예측 정확도를 향상시키는 것이기 때문입니다.&lt;/p&gt;
+&lt;h3 id="%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%84%B8%ED%8A%B8%EB%A5%BC-%ED%86%B5%ED%95%9C-%EA%B2%80%EC%A6%9D"&gt;테스트 세트를 통한 검증&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%84%B8%ED%8A%B8%EB%A5%BC-%ED%86%B5%ED%95%9C-%EA%B2%80%EC%A6%9D"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;머신러닝에서 트레이닝 세트에 대한 정확도를 계산하는 것은 그다지 의미가 없습니다. 중요한것은 미지의 데이터에 대한 예측 정확도를 향상시키는 것이기 때문입니다.&lt;/p&gt;
 &lt;p&gt;다수의 파라미터를 포함하는 모델을 사용하면 트레이닝 데이터에 대한 정확도는 높은 반면, 미지의 데이터에 대한 예측은 정확하지 못한 &lt;strong&gt;과적합(overfitting)&lt;/strong&gt; 이 일어날 수 있습니다.&lt;/p&gt;
 &lt;p&gt;과적합을 피하기 위한 방법으로는 트레이닝 데이터를 임의로 나누어 (보통, 80%은 트레이닝, 20%는 테스트용) 놓는 방법이 있습니다. 여기서는 앞서 사용한 코드를 수정해 확인하도록 하겠습니다.&lt;/p&gt;
 
@@ -2015,11 +2018,13 @@ Step: 20000, Loss: 5.439410, Accuracy: 0.971429
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;현저하지는 않지만, 트레이닝 세트와 데스트 세트에서 정답률의 변화 양상이 다르다는 것을 수 있습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;임의로 만든 난수 데이터이기 때문에 차이가 적을 수 밖에 없습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;임의로 만든 난수 데이터이기 때문에 차이가 적을 수 밖에 없습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;앞서 설명했듯 머신러닝으로 얻어진 &lt;strong&gt;모델의 성능&lt;/strong&gt;은 &lt;strong&gt;테스트 데이터에 대한 정확도&lt;/strong&gt;로 판정해야 한다는 것을 기억하세요.&lt;/p&gt;
-&lt;h2 id="3장.-단층-신경망을-이용한-분류"&gt;3장. 단층 신경망을 이용한 분류&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#3%EC%9E%A5.-%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B6%84%EB%A5%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="단층-신경망에-대한-설명"&gt;단층 신경망에 대한 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="http://www.inbi.ai/img/case_study/chapter4/technology-14.png" alt="단층신경망"&gt;&lt;/p&gt;
-&lt;center&gt;figure from [inbi](http://www.inbi.ai/case_study.html) &lt;/center&gt;&lt;p&gt;앞의 바이러스 감염확률을 계산하는 문제에서 단층 신경망을 사용해 분류를 진행 해보도록 하겠습니다. 여기서는 은닉 계층이 도입됨에 따라 달라지는 것에 집중하세요. 먼저, 필요한 모듈을 불러오고, 트레이닝 데이터를 생성하겠습니다.&lt;/p&gt;
+&lt;h2 id="3%EC%9E%A5.-%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B6%84%EB%A5%98"&gt;3장. 단층 신경망을 이용한 분류&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#3%EC%9E%A5.-%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B6%84%EB%A5%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85"&gt;단층 신경망에 대한 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="http://www.inbi.ai/img/case_study/chapter4/technology-14.png" alt="단층신경망"&gt;&lt;/p&gt;
+&lt;center&gt;figure from [inbi](http://www.inbi.ai/case_study.html) &lt;/center&gt;
+&lt;p&gt;앞의 바이러스 감염확률을 계산하는 문제에서 단층 신경망을 사용해 분류를 진행 해보도록 하겠습니다. 여기서는 은닉 계층이 도입됨에 따라 달라지는 것에 집중하세요. 먼저, 필요한 모듈을 불러오고, 트레이닝 데이터를 생성하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2074,8 +2079,7 @@ Step: 20000, Loss: 5.439410, Accuracy: 0.971429
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -2118,8 +2122,7 @@ Step: 20000, Loss: 5.439410, Accuracy: 0.971429
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -2258,7 +2261,7 @@ Step: 1000, Loss: 19.15259552001953, Accuracy: 0.9076923131942749
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;바이러스 감염확률을 농담으로 표현한 것으로 은닉계층에 의해 4개의 영역으로 분할되어 있을 알 수 있습니다. 오른쪽 위의 영역은 확률이 50% 이상으로 되고, 그 옆의 영역은 50%이하라고 생각할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;이렇게 해서 단일 신경망의 은닉 계층 효과를 구체적으로 확인 할 수 있었습니다. 그 다음으로 신경망의 노드 개수와 활성화 함수 변경 효과에 대해서 알아 보겠습니다.&lt;/p&gt;
-&lt;h3 id="3.2-노드의-개수를-늘렸을-때의-효과"&gt;3.2 노드의 개수를 늘렸을 때의 효과&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#3.2-%EB%85%B8%EB%93%9C%EC%9D%98-%EA%B0%9C%EC%88%98%EB%A5%BC-%EB%8A%98%EB%A0%B8%EC%9D%84-%EB%95%8C%EC%9D%98-%ED%9A%A8%EA%B3%BC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;노드의 개수를 늘리는 것은 그림에서 영역이 분할되는 개수를 늘리는것과 같습니다. 아래 코드를 실행해 봅시다.&lt;/p&gt;
+&lt;h3 id="3.2-%EB%85%B8%EB%93%9C%EC%9D%98-%EA%B0%9C%EC%88%98%EB%A5%BC-%EB%8A%98%EB%A0%B8%EC%9D%84-%EB%95%8C%EC%9D%98-%ED%9A%A8%EA%B3%BC"&gt;3.2 노드의 개수를 늘렸을 때의 효과&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#3.2-%EB%85%B8%EB%93%9C%EC%9D%98-%EA%B0%9C%EC%88%98%EB%A5%BC-%EB%8A%98%EB%A0%B8%EC%9D%84-%EB%95%8C%EC%9D%98-%ED%9A%A8%EA%B3%BC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;노드의 개수를 늘리는 것은 그림에서 영역이 분할되는 개수를 늘리는것과 같습니다. 아래 코드를 실행해 봅시다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2348,7 +2351,7 @@ Step: 1000, Loss: 19.15259552001953, Accuracy: 0.9076923131942749
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;결과를 보면 색이 짙은 부분의 모양이 변한것을 알 수 있습니다. 바이러스에 감염된 데이터를 보다 정확하게 감싸고 있습니다. 이와 같이 노드의 개수를 증가시킴으로 보다 복잡한 데이터에 대응할 수 있게 됩니다.&lt;/p&gt;
-&lt;h3 id="3.3-활성화-함수를-변경-할-때"&gt;3.3 활성화 함수를 변경 할 때&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#3.3-%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%A8%EC%88%98%EB%A5%BC-%EB%B3%80%EA%B2%BD-%ED%95%A0-%EB%95%8C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;신경망에서 들어오는 입력신호의 총합을 출력신호로 변환하는 함수를 활성화함수(activation function)라고 합니다. 활성화 함수를 기존의 &lt;strong&gt;하이퍼볼릭 탄젠트&lt;/strong&gt;에서 &lt;strong&gt;ReLU(정규화 선형 함수;Rectufued Linear Unit)&lt;/strong&gt;로 변경해보겠습니다.&lt;/p&gt;
+&lt;h3 id="3.3-%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%A8%EC%88%98%EB%A5%BC-%EB%B3%80%EA%B2%BD-%ED%95%A0-%EB%95%8C"&gt;3.3 활성화 함수를 변경 할 때&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#3.3-%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%A8%EC%88%98%EB%A5%BC-%EB%B3%80%EA%B2%BD-%ED%95%A0-%EB%95%8C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;신경망에서 들어오는 입력신호의 총합을 출력신호로 변환하는 함수를 활성화함수(activation function)라고 합니다. 활성화 함수를 기존의 &lt;strong&gt;하이퍼볼릭 탄젠트&lt;/strong&gt;에서 &lt;strong&gt;ReLU(정규화 선형 함수;Rectufued Linear Unit)&lt;/strong&gt;로 변경해보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2434,10 +2437,11 @@ Step: 1000, Loss: 19.15259552001953, Accuracy: 0.9076923131942749
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;그림을 자세히 보면 알 수 있듯이 경계가 완만하게 변한 것을 알 수 있습니다. 경계의 모양을 바꾸는것이 ReLU를 사용하는 본질적인 이유는 아니지만, 이과 같은 예를 통해 직감적인 효과를 이해 할 수 있습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;다수의 파라미터를 갖는 신경망에서는  ReLU가 최적화가 더 잘 이루어집니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;다수의 파라미터를 갖는 신경망에서는  ReLU가 최적화가 더 잘 이루어집니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id="3.3-다층-신경망으로의-확장"&gt;3.3 다층 신경망으로의 확장&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#3.3-%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%95%EC%9E%A5"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;지금까지는 은닉 계층이 하나인 단층 신경망에 대해 알아보았습니다. 다음 단계로 은닉 계층을 증가시킨 다층 신경망을 알아보겠습니다.&lt;/p&gt;
-&lt;h4 id="다층-신경망을-써야-하는-이유"&gt;다층 신경망을 써야 하는 이유&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%8D%A8%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;단층 신경망을 이용해 아래 그림과 같은 데이터를 제대로 분류할 수 없기 때문입니다.&lt;/p&gt;
+&lt;h3 id="3.3-%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%95%EC%9E%A5"&gt;3.3 다층 신경망으로의 확장&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#3.3-%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%95%EC%9E%A5"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;지금까지는 은닉 계층이 하나인 단층 신경망에 대해 알아보았습니다. 다음 단계로 은닉 계층을 증가시킨 다층 신경망을 알아보겠습니다.&lt;/p&gt;
+&lt;h4 id="%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%8D%A8%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0"&gt;다층 신경망을 써야 하는 이유&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%8D%A8%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;단층 신경망을 이용해 아래 그림과 같은 데이터를 제대로 분류할 수 없기 때문입니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2642,10 +2646,11 @@ Step: 5000, Loss: 24.682444, Accuracy: 0.941667
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;그림에서 볼 수 있듯이 두 개의 신경망을 구성함으로서 데이터를 제대로 분류 할 수 있는것을 볼 수 있습니다. 이제까지 예시들은 설명을 위한 간단한 것으로 앞으로 살펴볼 복잡한 데이터에서는 이것만으로 충분하지 않습니다.&lt;/p&gt;
-&lt;h2 id="4장.-합성곱-필터(Convolution-Filter)를-이용한-이미지분류"&gt;4장. 합성곱 필터(Convolution Filter)를 이용한 이미지분류&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#4%EC%9E%A5.-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0(Convolution-Filter)%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%B6%84%EB%A5%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="합성곱-필터"&gt;합성곱 필터&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;구체적인 내용은 다음 &lt;a href="http://excelsior-cjh.tistory.com/79"&gt;링크&lt;/a&gt;에 정리가 잘 되어 있습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;간단하게 말하자면 입력 데이터의 특징만 추려내는 방법이라고 할 수 있겠습니다.&lt;/p&gt;
+&lt;h2 id="4%EC%9E%A5.-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0(Convolution-Filter)%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%B6%84%EB%A5%98"&gt;4장. 합성곱 필터(Convolution Filter)를 이용한 이미지분류&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#4%EC%9E%A5.-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0(Convolution-Filter)%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%B6%84%EB%A5%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0"&gt;합성곱 필터&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;구체적인 내용은 다음 &lt;a href="http://excelsior-cjh.tistory.com/79"&gt;링크&lt;/a&gt;에 정리가 잘 되어 있습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;간단하게 말하자면 입력 데이터의 특징만 추려내는 방법이라고 할 수 있겠습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id="4.3-합성곱-필터를-이용한-필기체-분류"&gt;4.3 합성곱 필터를 이용한 필기체 분류&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#4.3-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%95%84%EA%B8%B0%EC%B2%B4-%EB%B6%84%EB%A5%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단층 합성곱 필터(CNN)를 사용해 &lt;strong&gt;MNIST&lt;/strong&gt; 데이터를 분석해보도록 하겠습니다.&lt;/p&gt;
+&lt;h3 id="4.3-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%95%84%EA%B8%B0%EC%B2%B4-%EB%B6%84%EB%A5%98"&gt;4.3 합성곱 필터를 이용한 필기체 분류&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#4.3-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%95%84%EA%B8%B0%EC%B2%B4-%EB%B6%84%EB%A5%98"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;단층 합성곱 필터(CNN)를 사용해 &lt;strong&gt;MNIST&lt;/strong&gt; 데이터를 분석해보도록 하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2919,7 +2924,7 @@ Step: 4000, Loss: 699.803589, Accuracy: 0.981300
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;각각의 이미지 위에 있는 숫자는 예측/정답을 나타내고 오른쪽 그래프는 각각의 확률을 나타내고 있습니다. 결과를 보면 정말 엉뚱하게 예측한 값도 있는 반면, 사람이 판단하기에도 애매한 숫자도 보입니다.&lt;/p&gt;
-&lt;h2 id="5장.-다층-합성곱-필터-신경망"&gt;5장. 다층 합성곱 필터 신경망&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#5%EC%9E%A5.-%EB%8B%A4%EC%B8%B5-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0-%EC%8B%A0%EA%B2%BD%EB%A7%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;드디어 합성곱 신경망의 전체 구조를 완성 시켜보겠습니다. 이전 장에서 합성곱 필터 -&amp;gt; 풀링 계층 -&amp;gt; 전 결합층 -&amp;gt; 소프트맥스 함수라는 과정을 통해 98%의 정확도를 달성했는데, 이번에는 합성곱 필터를 다층화한 CNN을 구성해서 얼마나 정확한 학습을 하는지 확인해 보겠습니다.&lt;/p&gt;
+&lt;h2 id="5%EC%9E%A5.-%EB%8B%A4%EC%B8%B5-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0-%EC%8B%A0%EA%B2%BD%EB%A7%9D"&gt;5장. 다층 합성곱 필터 신경망&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#5%EC%9E%A5.-%EB%8B%A4%EC%B8%B5-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0-%EC%8B%A0%EA%B2%BD%EB%A7%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;드디어 합성곱 신경망의 전체 구조를 완성 시켜보겠습니다. 이전 장에서 합성곱 필터 -&amp;gt; 풀링 계층 -&amp;gt; 전 결합층 -&amp;gt; 소프트맥스 함수라는 과정을 통해 98%의 정확도를 달성했는데, 이번에는 합성곱 필터를 다층화한 CNN을 구성해서 얼마나 정확한 학습을 하는지 확인해 보겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3038,8 +3043,8 @@ Step: 4000, Loss: 461.817566, Accuracy: 0.985200
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;아주 큰 차이는 아니지만, 다중 CNN 필터를 사용하면 0.4%의 정확도가 증가했습니다.&lt;/p&gt;
-&lt;h2 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;책 &lt;strong&gt;텐서플로로 시작하는 딥러닝&lt;/strong&gt;은 두껍지는 않지만 딥러닝의 개념을 설명하는데 많은 노력을 기울이고 있습니다. 쉬운 예시와 수학적 증명은 저와 같은 초보자가 감을 잡는데 도움을 줍니다. 딥러닝과 텐서플로를 이제 공부하려고 한다면 한번쯤 읽어 보시는것을 추천드립니다.&lt;/p&gt;
+&lt;h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/tensorflow-deeplearning/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;책 &lt;strong&gt;텐서플로로 시작하는 딥러닝&lt;/strong&gt;은 두껍지는 않지만 딥러닝의 개념을 설명하는데 많은 노력을 기울이고 있습니다. 쉬운 예시와 수학적 증명은 저와 같은 초보자가 감을 잡는데 도움을 줍니다. 딥러닝과 텐서플로를 이제 공부하려고 한다면 한번쯤 읽어 보시는것을 추천드립니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>deeplearning</category><category>machine learning</category><category>Python</category><category>tensorflow</category><guid>https://partrita.github.io/posts/tensorflow-deeplearning/</guid><pubDate>Tue, 25 Feb 2020 23:21:32 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>deeplearning</category><category>machine learning</category><category>Python</category><category>tensorflow</category><guid>https://partrita.github.io/posts/tensorflow-deeplearning/</guid><pubDate>Tue, 25 Feb 2020 23:21:32 GMT</pubDate></item></channel></rss>

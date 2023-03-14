@@ -45,6 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NHHK2BF');</script><meta name="author" content="Taeyoon Kim">
 <link rel="prev" href="../pubmedminer/" title="BERN2 API로 Network graph 그려보기" type="text/html">
+<link rel="next" href="../miniforge/" title="miniforge: 파이썬과 R의 패키지 및 개발 환경 관리 도구" type="text/html">
 <meta property="og:site_name" content="Biohacker">
 <meta property="og:title" content="파이썬으로 하는 통계 추론과 유의성 검정">
 <meta property="og:url" content="https://partrita.github.io/posts/StatTest/">
@@ -63,10 +64,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -127,13 +129,12 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="0.-통계적-추론과-유의성-검정">0. 통계적 추론과 유의성 검정<a class="anchor-link" href="#0.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%B6%94%EB%A1%A0%EA%B3%BC-%EC%9C%A0%EC%9D%98%EC%84%B1-%EA%B2%80%EC%A0%95">¶</a>
+<h2 id="0.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%B6%94%EB%A1%A0%EA%B3%BC-%EC%9C%A0%EC%9D%98%EC%84%B1-%EA%B2%80%EC%A0%95">0. 통계적 추론과 유의성 검정<a class="anchor-link" href="#0.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%B6%94%EB%A1%A0%EA%B3%BC-%EC%9C%A0%EC%9D%98%EC%84%B1-%EA%B2%80%EC%A0%95">¶</a>
 </h2>
 <p>여기에 사용한 코드는 모두 <a href="https://github.com/gedeck/practical-statistics-for-data-scientists">https://github.com/gedeck/practical-statistics-for-data-scientists</a> 
 에서 가져왔습니다.</p>
@@ -209,7 +210,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.-A/B-검정">1. A/B 검정<a class="anchor-link" href="#1.-A/B-%EA%B2%80%EC%A0%95">¶</a>
+<h2 id="1.-A/B-%EA%B2%80%EC%A0%95">1. A/B 검정<a class="anchor-link" href="#1.-A/B-%EA%B2%80%EC%A0%95">¶</a>
 </h2>
 <p>A/B 검정은 두 가지 중에 어떤 것이 더 좋은지를 증명하기 위해 실험군을 나누어 진행하는 실험입니다. 일반적으로 대조군(Negative control)과 처리군으로 나눕니다.</p>
 <p>예시로 웹페이지에서 고객들이 얼마나 머무는지 측정(session_time)하고 A/B 검정을 해보겠습니다.</p>
@@ -330,7 +331,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>대략적으로 36초정도 차이가 난다. 문제는 이 차이가 우연에 의한 것인지 아니면 통계적으로 중요한 것인지 판단하는 것이다.</p>
-<h3 id="1.1.-순열-검정을-통한-A/B-검정">1.1. 순열 검정을 통한 A/B 검정<a class="anchor-link" href="#1.1.-%EC%88%9C%EC%97%B4-%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-A/B-%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="1.1.-%EC%88%9C%EC%97%B4-%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-A/B-%EA%B2%80%EC%A0%95">1.1. 순열 검정을 통한 A/B 검정<a class="anchor-link" href="#1.1.-%EC%88%9C%EC%97%B4-%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-A/B-%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <blockquote>
 <p>순열검정(permutaion test): 두 개 이상의 표본을 함께 결합하여 관측값들을 무작위로 재표본으로 추출하는 과정을 말한다.</p>
@@ -490,7 +491,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.1.2.-t-Test를-사용한-A/B-검정">1.1.2. t-Test를 사용한 A/B 검정<a class="anchor-link" href="#1.1.2.-t-Test%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-A/B-%EA%B2%80%EC%A0%95">¶</a>
+<h3 id="1.1.2.-t-Test%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-A/B-%EA%B2%80%EC%A0%95">1.1.2. t-Test를 사용한 A/B 검정<a class="anchor-link" href="#1.1.2.-t-Test%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-A/B-%EA%B2%80%EC%A0%95">¶</a>
 </h3>
 <blockquote>
 <p>t-테스트(t-test) 또는 t-검정 또는 스튜던트 t-테스트(Student's t-test)는 검정통계량이 귀무가설 하에서 t-분포를 따르는 통계적 가설 검정법이다. t-테스트는 일반적으로 검정통계량이 정규 분포를 따르며 분포와 관련된 스케일링 변숫값들이 알려진 경우에 사용한다. 이때 모집단의 분산과 같은 스케일링 항을 알 수 없으나, 이를 데이터를 기반으로 한 추정값으로 대체하면 검정통계량은 t-분포를 따른다. 예를 들어 t-테스트를 사용하여 두 데이터 세트(집단)의 평균이 서로 유의하게 다른지 여부를 판별할 수 있다. -wiki</p>
@@ -508,7 +509,7 @@ navbar-dark bg-dark
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">session_times</span><span class="p">[</span><span class="n">session_times</span><span class="o">.</span><span class="n">Page</span> <span class="o">==</span> <span class="s1">'Page A'</span><span class="p">]</span><span class="o">.</span><span class="n">Time</span><span class="p">,</span> 
                       <span class="n">session_times</span><span class="p">[</span><span class="n">session_times</span><span class="o">.</span><span class="n">Page</span> <span class="o">==</span> <span class="s1">'Page B'</span><span class="p">]</span><span class="o">.</span><span class="n">Time</span><span class="p">,</span>
                       <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value for single sided test: {res.pvalue / 2:.4f}'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value for single sided test: </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">pvalue</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -553,7 +554,7 @@ navbar-dark bg-dark
     <span class="n">session_times</span><span class="p">[</span><span class="n">session_times</span><span class="o">.</span><span class="n">Page</span> <span class="o">==</span> <span class="s1">'Page A'</span><span class="p">]</span><span class="o">.</span><span class="n">Time</span><span class="p">,</span> 
     <span class="n">session_times</span><span class="p">[</span><span class="n">session_times</span><span class="o">.</span><span class="n">Page</span> <span class="o">==</span> <span class="s1">'Page B'</span><span class="p">]</span><span class="o">.</span><span class="n">Time</span><span class="p">,</span>
     <span class="n">usevar</span><span class="o">=</span><span class="s1">'unequal'</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s1">'smaller'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value: </span><span class="si">{pvalue:.4f}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value: </span><span class="si">{</span><span class="n">pvalue</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -584,26 +585,26 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-통계적-유의성과-P-Values">2. 통계적 유의성과 P-Values<a class="anchor-link" href="#2.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%9C%A0%EC%9D%98%EC%84%B1%EA%B3%BC-P-Values">¶</a>
+<h2 id="2.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%9C%A0%EC%9D%98%EC%84%B1%EA%B3%BC-P-Values">2. 통계적 유의성과 P-Values<a class="anchor-link" href="#2.-%ED%86%B5%EA%B3%84%EC%A0%81-%EC%9C%A0%EC%9D%98%EC%84%B1%EA%B3%BC-P-Values">¶</a>
 </h2>
 <p>통계적 유의성이란 실험 결과가 우연하게 일어난 것인지 아닌지 판단하는 것입니다. 유의 확률(p-value)는 통계적 유의성을 판단하기 위해 가정한 귀무가설에서 극단적인 결과를 얻을 확률입니다. 따라서 p-value가 낮을수록 우연한 일이 아니라고 생각 할 수 있습니다.</p>
 <p>다음의 예시 데이터를 가지고 예를 들어보도록 하겠습니다. 동일한 내용이지만 구성이 다른 상품판매 페이지A, 페이지B가 있고 방문자가 구매한 횟수와 그렇지 않은 데이터를 모았다고 생각합시다.</p>
 <table>
 <thead><tr>
 <th>결과</th>
-<th style="text-align:right">페이지A</th>
-<th style="text-align:right">페이지B</th>
+  <th style="text-align:right">페이지A</th>
+  <th style="text-align:right">페이지B</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>구매</td>
-<td style="text-align:right">200</td>
-<td style="text-align:right">182</td>
+  <td style="text-align:right">200</td>
+  <td style="text-align:right">182</td>
 </tr>
 <tr>
 <td>구매하지 않음</td>
-<td style="text-align:right">23539</td>
-<td style="text-align:right">22406</td>
+  <td style="text-align:right">23539</td>
+  <td style="text-align:right">22406</td>
 </tr>
 </tbody>
 </table>
@@ -619,7 +620,7 @@ navbar-dark bg-dark
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">obs_pct_diff</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">200</span> <span class="o">/</span> <span class="mi">23739</span> <span class="o">-</span> <span class="mi">182</span> <span class="o">/</span> <span class="mi">22588</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Observed difference: </span><span class="si">{obs_pct_diff:.4f}</span><span class="s1">%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Observed difference: </span><span class="si">{</span><span class="n">obs_pct_diff</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
 <span class="n">conversion</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">45945</span>
 <span class="n">conversion</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">382</span><span class="p">)</span>
 <span class="n">conversion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">conversion</span><span class="p">)</span>
@@ -680,7 +681,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>약 1000번의 순열 검정을 통해 얻은 히스토그램을 살펴보니 관측된 값은 충분히 우연에 의한 것으로 보입니다. 그러나 좀 더 명확하게 하기 위해 p-value를 계산해봅시다.</p>
-<h3 id="2.1.-P-Value-구하기">2.1. P-Value 구하기<a class="anchor-link" href="#2.1.-P-Value-%EA%B5%AC%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="2.1.-P-Value-%EA%B5%AC%ED%95%98%EA%B8%B0">2.1. P-Value 구하기<a class="anchor-link" href="#2.1.-P-Value-%EA%B5%AC%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>p-value는 순열 검정에서 얻은 결과 중에 관찰된 차이와 같거나 더 큰 차이를 보이는 경우의 비율이라고 할 수 있기에 다음과 같이 추정할 수 있습니다.</p>
 
@@ -724,7 +725,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>예상한 것처럼 30%의 확률로 우연에 의해서 나타날 수 있는 차이였습니다. 따라서 페이지A와 페이지B의 차이는 통계적으로 유의미하지 않다고 말할 수 있겠습니다.</p>
-<h2 id="3.-일원-분산분석(ANOVA-)">3. 일원 분산분석(ANOVA )<a class="anchor-link" href="#3.-%EC%9D%BC%EC%9B%90-%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(ANOVA-)">¶</a>
+<h2 id="3.-%EC%9D%BC%EC%9B%90-%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(ANOVA-)">3. 일원 분산분석(ANOVA )<a class="anchor-link" href="#3.-%EC%9D%BC%EC%9B%90-%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(ANOVA-)">¶</a>
 </h2>
 <p>A/B 검정이 아닌 여러 그룹간의 통계적 유의미한 차이를 검정하는 절차를 분산분석이라 합니다. 예시로 페이지 1,2,3,4에 방문자들이 머문 시간에 대한 데이터를 살펴보겠습니다. 먼저 데이터셋을 불러옵니다.</p>
 
@@ -825,7 +826,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.1.-순열검정을-통한-one-way-ANOVA">3.1. 순열검정을 통한 one-way ANOVA<a class="anchor-link" href="#3.1.-%EC%88%9C%EC%97%B4%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA">¶</a>
+<h3 id="3.1.-%EC%88%9C%EC%97%B4%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA">3.1. 순열검정을 통한 one-way ANOVA<a class="anchor-link" href="#3.1.-%EC%88%9C%EC%97%B4%EA%B2%80%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA">¶</a>
 </h3>
 <p>파이썬에서는 다음 코드를 사용해 순열 검정을 통해 ANOVA 분석을 진행할 수 있습니다.</p>
 
@@ -936,7 +937,7 @@ Variance: 55.426666666666655
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Pr(Prob)의 값은 p-value이며 결과는 0.07입니다. 통상적인 임계 p-value 값인 0.05이상임으로 네 페이지간의 차이가 우연히 발생할 수 있다고 결론 내릴 수 있습니다.</p>
-<h3 id="3.2.-F-통계량을-통한-one-way-ANOVA">3.2. F-통계량을 통한 one-way ANOVA<a class="anchor-link" href="#3.2.-F-%ED%86%B5%EA%B3%84%EB%9F%89%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA">¶</a>
+<h3 id="3.2.-F-%ED%86%B5%EA%B3%84%EB%9F%89%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA">3.2. F-통계량을 통한 one-way ANOVA<a class="anchor-link" href="#3.2.-F-%ED%86%B5%EA%B3%84%EB%9F%89%EC%9D%84-%ED%86%B5%ED%95%9C-one-way-ANOVA">¶</a>
 </h3>
 <p>F-통계량은 잔차 오류에 인한 분산과 그룹 평균의 분산에 대한 비율을 기초로 합니다. 비율이 높으면 통계적으로 유의미 하다고 할 수 있고 이를 토대로 p-value를 계산할 수 있습니다.</p>
 
@@ -998,8 +999,8 @@ Residual  16.0  1618.4  101.150000       NaN       NaN
                      <span class="n">four_sessions</span><span class="p">[</span><span class="n">four_sessions</span><span class="o">.</span><span class="n">Page</span> <span class="o">==</span> <span class="s1">'Page 2'</span><span class="p">]</span><span class="o">.</span><span class="n">Time</span><span class="p">,</span>
                      <span class="n">four_sessions</span><span class="p">[</span><span class="n">four_sessions</span><span class="o">.</span><span class="n">Page</span> <span class="o">==</span> <span class="s1">'Page 3'</span><span class="p">]</span><span class="o">.</span><span class="n">Time</span><span class="p">,</span>
                      <span class="n">four_sessions</span><span class="p">[</span><span class="n">four_sessions</span><span class="o">.</span><span class="n">Page</span> <span class="o">==</span> <span class="s1">'Page 4'</span><span class="p">]</span><span class="o">.</span><span class="n">Time</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'F-Statistic: {res.statistic / 2:.4f}'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value: {res.pvalue / 2:.4f}'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'F-Statistic: </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">statistic</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'p-value: </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">pvalue</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1032,11 +1033,10 @@ p-value: 0.0388
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>F-통계량을 사용한 방법은 p-value 값이 더 적게나와 임계값인 0.05 이하입니다. 그러나 ANOVA 분석의 p-value가 낮게 나왔다고 해서 모든 그룹에서 통계적으로 차이가 있다고 할 수는 없습니다. 추가적인 Ad hoc 분석을 진행해 어떤 그룹에서 차이가 있는지 확인해보아야 합니다.</p>
-<h2 id="4.-마무리하며">4. 마무리하며<a class="anchor-link" href="#4.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0">¶</a>
+<h2 id="4.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0">4. 마무리하며<a class="anchor-link" href="#4.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0">¶</a>
 </h2>
 <p>현재 실험 데이터를 분석할때는 통계적 추론과 유의성 검증은 필수적인 절차입니다. 그렇기 때문에 반대로 실험에 대조군을 반드시 포함하며 데이터에 인위적인 조작이 없도록 하는 것이 더욱 중요해 졌습니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -1052,6 +1052,9 @@ p-value: 0.0388
 <li class="previous">
                 <a href="../pubmedminer/" rel="prev" title="BERN2 API로 Network graph 그려보기">Previous post</a>
             </li>
+            <li class="next">
+                <a href="../miniforge/" rel="next" title="miniforge: 파이썬과 R의 패키지 및 개발 환경 관리 도구">Next post</a>
+            </li>
         </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
  MathJax.Hub.Config({
      tex2jax: {
@@ -1065,7 +1068,7 @@ p-value: 0.0388
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -1076,9 +1079,7 @@ p-value: 0.0388
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

@@ -63,10 +63,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -127,8 +128,7 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -144,13 +144,13 @@ navbar-dark bg-dark
 <li>다변량(Multivariate) 테스트</li>
 <li>신뢰성과 일관성 검정</li>
 <li>효과 크기 및 검정력 분석</li>
-<li>효과 크기 또는 상관 계수의 모수(Parametric) 혹은 부트스트랩(bootstrapped) 신뢰구간 </li>
+<li>효과 크기 또는 상관 계수의 모수(Parametric) 혹은 부트스트랩(bootstrapped) 신뢰구간</li>
 <li>순환(Circular) 통계</li>
 <li>카이제곱 검정(chi-squared test)</li>
 <li>Bland-Altman plot, Q-Q plot, paired plot, robust correlation 시각화</li>
 </ol>
 <p>Pingouin은 <strong>간단하지만 완전한 통계 기능</strong>를 위해 설계되었습니다. 예를 들어 기존의 SciPy 패키지의 <code>ttest_ind</code> 함수는 <code>T-value</code>과 <code>p-value</code>만 알려주지만 Pingouin의 <code>ttest</code> 함수는 <code>T-value</code>, <code>p-value</code>뿐만 아니라 자유도, 효과 크기(Cohen 's d), 95% 신뢰 구간, 통계적 검정력등을 동시에 출력합니다.</p>
-<h2 id="0.-설치법">0. 설치법<a class="anchor-link" href="#0.-%EC%84%A4%EC%B9%98%EB%B2%95">¶</a>
+<h2 id="0.-%EC%84%A4%EC%B9%98%EB%B2%95">0. 설치법<a class="anchor-link" href="#0.-%EC%84%A4%EC%B9%98%EB%B2%95">¶</a>
 </h2>
 <p>Pingouin은 파이썬3 패키지이며 현재 버전 3.6, 3.7에서 테스트되었습니다. 따라서 파이썬 2.7에서는 작동하지 않습니다.</p>
 <p>Pingouin의 주요 종속 패키지는 다음과 같습니다:</p>
@@ -169,19 +169,19 @@ navbar-dark bg-dark
 <li>Mpmath</li>
 </ul>
 <p>가장 쉬운 방법은 아래와 같이 <code>pip</code> 명령어를 사용하는 것입니다.</p>
-<div class="highlight"><pre><span></span>pip install pingouin
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pingouin
 </pre></div>
 <p>혹은 <code>conda</code>를 사용할 수도 있습니다.</p>
-<div class="highlight"><pre><span></span>conda install -c conda-forge pingouin
+<div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pingouin
 </pre></div>
 <p>아직 Pingouin은 개발 중에 있으며 버그 수정을 위해 새로운 버전이 계속 배포되고 있습니다(한 달에 약 1 회). 그러니 항상 최신 버전의 Pingouin을 사용하고 있는지 확인하세요. 새로운 버전이 출시 될 때마다 터미널 창에 다음 명령어를 입력해 업그레이드 할 수 있습니다.</p>
-<div class="highlight"><pre><span></span>pip install --upgrade pingouin
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pingouin
 
 <span class="c1"># conda를 사용할 경우</span>
-conda update pingouin
+conda<span class="w"> </span>update<span class="w"> </span>pingouin
 </pre></div>
 <p>자세한 내용은 <a href="https://pingouin-stats.org/">Pingouin 공식 페이지</a>을 참고하세요.</p>
-<h2 id="1.-예제-코드-살펴보기">1. 예제 코드 살펴보기<a class="anchor-link" href="#1.-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">¶</a>
+<h2 id="1.-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">1. 예제 코드 살펴보기<a class="anchor-link" href="#1.-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">¶</a>
 </h2>
 <p>필요한 패키지를 불러옵니다.</p>
 
@@ -242,8 +242,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -281,8 +280,7 @@ conda update pingouin
       <td>0.191796</td>
     </tr></tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -327,8 +325,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -366,8 +363,7 @@ conda update pingouin
       <td>0.12048</td>
     </tr></tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -408,8 +404,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -447,8 +442,7 @@ conda update pingouin
       <td>0.016865</td>
     </tr></tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -464,7 +458,7 @@ conda update pingouin
 <p><code>p-Value</code>가 엉망인것을 알 수 있습니다.</p>
 <h3 id="1.3.-Two-sample-T-test">1.3. Two-sample T-test<a class="anchor-link" href="#1.3.-Two-sample-T-test">¶</a>
 </h3>
-<h4 id="1.3.1.-표본-크기가-같은-경우">1.3.1. 표본 크기가 같은 경우<a class="anchor-link" href="#1.3.1.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EA%B0%99%EC%9D%80-%EA%B2%BD%EC%9A%B0">¶</a>
+<h4 id="1.3.1.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EA%B0%99%EC%9D%80-%EA%B2%BD%EC%9A%B0">1.3.1. 표본 크기가 같은 경우<a class="anchor-link" href="#1.3.1.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EA%B0%99%EC%9D%80-%EA%B2%BD%EC%9A%B0">¶</a>
 </h4>
 </div>
 </div>
@@ -493,8 +487,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -532,8 +525,7 @@ conda update pingouin
       <td>1.0</td>
     </tr></tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -546,7 +538,7 @@ conda update pingouin
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="1.3.2.-표본-크기가-다른경우">1.3.2. 표본 크기가 다른경우<a class="anchor-link" href="#1.3.2.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EB%8B%A4%EB%A5%B8%EA%B2%BD%EC%9A%B0">¶</a>
+<h4 id="1.3.2.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EB%8B%A4%EB%A5%B8%EA%B2%BD%EC%9A%B0">1.3.2. 표본 크기가 다른경우<a class="anchor-link" href="#1.3.2.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EB%8B%A4%EB%A5%B8%EA%B2%BD%EC%9A%B0">¶</a>
 </h4>
 </div>
 </div>
@@ -575,8 +567,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -614,8 +605,7 @@ conda update pingouin
       <td>1.0</td>
     </tr></tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -628,7 +618,7 @@ conda update pingouin
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.4.-Pearson’s-correlation">1.4. Pearson’s correlation<a class="anchor-link" href="#1.4.-Pearson%E2%80%99s-correlation">¶</a>
+<h3 id="1.4.-Pearson%E2%80%99s-correlation">1.4. Pearson’s correlation<a class="anchor-link" href="#1.4.-Pearson%E2%80%99s-correlation">¶</a>
 </h3>
 </div>
 </div>
@@ -638,7 +628,7 @@ conda update pingouin
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="mi">30</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">.6</span><span class="p">),</span> <span class="p">(</span><span class="mf">.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="mi">30</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 <span class="n">pg</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
@@ -657,8 +647,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -696,8 +685,7 @@ conda update pingouin
       <td>0.978466</td>
     </tr></tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -740,8 +728,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -779,8 +766,7 @@ conda update pingouin
       <td>0.586546</td>
     </tr></tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -793,7 +779,7 @@ conda update pingouin
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.6.-데이터의-정규성-테스트">1.6. 데이터의 정규성 테스트<a class="anchor-link" href="#1.6.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%A0%95%EA%B7%9C%EC%84%B1-%ED%85%8C%EC%8A%A4%ED%8A%B8">¶</a>
+<h3 id="1.6.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%A0%95%EA%B7%9C%EC%84%B1-%ED%85%8C%EC%8A%A4%ED%8A%B8">1.6. 데이터의 정규성 테스트<a class="anchor-link" href="#1.6.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%A0%95%EA%B7%9C%EC%84%B1-%ED%85%8C%EC%8A%A4%ED%8A%B8">¶</a>
 </h3>
 <p><code>pingouin.normality()</code>함수를 pandas의 데이터 프레임형식에 사용할 수 있습니다.</p>
 
@@ -823,8 +809,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -852,8 +837,7 @@ conda update pingouin
       <td>False</td>
     </tr></tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -900,7 +884,7 @@ conda update pingouin
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.7.-Q-Q-plot-시각화">1.7. Q-Q plot 시각화<a class="anchor-link" href="#1.7.-Q-Q-plot-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
+<h3 id="1.7.-Q-Q-plot-%EC%8B%9C%EA%B0%81%ED%99%94">1.7. Q-Q plot 시각화<a class="anchor-link" href="#1.7.-Q-Q-plot-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
 </h3>
 </div>
 </div>
@@ -975,8 +959,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1036,8 +1019,7 @@ conda update pingouin
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1069,8 +1051,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1118,8 +1099,7 @@ conda update pingouin
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1160,8 +1140,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1212,8 +1191,7 @@ conda update pingouin
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1258,8 +1236,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1341,8 +1318,7 @@ conda update pingouin
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1386,8 +1362,7 @@ conda update pingouin
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1453,8 +1428,7 @@ conda update pingouin
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1512,7 +1486,7 @@ conda update pingouin
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.13.-paired-T-test-검정력-시각화">1.13. paired T-test 검정력 시각화<a class="anchor-link" href="#1.13.-paired-T-test-%EA%B2%80%EC%A0%95%EB%A0%A5-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
+<h3 id="1.13.-paired-T-test-%EA%B2%80%EC%A0%95%EB%A0%A5-%EC%8B%9C%EA%B0%81%ED%99%94">1.13. paired T-test 검정력 시각화<a class="anchor-link" href="#1.13.-paired-T-test-%EA%B2%80%EC%A0%95%EB%A0%A5-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a>
 </h3>
 <p>T-검정의 표본 크기와 효과 크기(Cohen'd)에 따른 검정력 곡선을 시각화합니다.</p>
 
@@ -1632,7 +1606,7 @@ conda update pingouin
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-마무리하며,">2. 마무리하며,<a class="anchor-link" href="#2.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,">¶</a>
+<h2 id="2.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,">2. 마무리하며,<a class="anchor-link" href="#2.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,">¶</a>
 </h2>
 <p>파이썬을 사용한 통계 분석은 <code>R</code>언어에 비해 사용법과 기능이 부족했습니다. 그렇기 때문에 pingouin의 등장이 반갑습니다. 아직 <code>0.3.6</code>버전이지만 기존에 존재했던 통계 분석 패키지들을 뛰어 넘는 성능과 완성도를 보여주고 있어 앞으로가 더 기대가 됩니다.</p>
 
@@ -1672,7 +1646,6 @@ conda update pingouin
 </div>
 
 </div>
-</div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/pingouin/" rel="tag">Pingouin</a></li>
@@ -1700,7 +1673,7 @@ conda update pingouin
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -1711,9 +1684,7 @@ conda update pingouin
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

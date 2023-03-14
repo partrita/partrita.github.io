@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about isolation forest)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/isolation-forest.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:24 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Isolation forest을 이용한 이상탐지</title><link>https://partrita.github.io/posts/isolation-forest/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about isolation forest)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/isolation-forest.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Isolation forest을 이용한 이상탐지</title><link>https://partrita.github.io/posts/isolation-forest/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="1.-이상-탐지(Anomaly-detection)"&gt;1. 이상 탐지(Anomaly detection)&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#1.-%EC%9D%B4%EC%83%81-%ED%83%90%EC%A7%80(Anomaly-detection)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이상 탐지(anomaly detection)란 자료에서 다른 패턴을 보이는 자료를 찾는 것을 말합니다. 이런 데이터를 이상값(anomaly)라 하며 이상 탐지는 사기 탐지, 침입 탐지, 안전 관리를 포함한 다양한 분야에 널리 활용된다.&lt;/p&gt;
-&lt;h2 id="2.-이상의-종류"&gt;2. 이상의 종류&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#2.-%EC%9D%B4%EC%83%81%EC%9D%98-%EC%A2%85%EB%A5%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="2.1.-Point-anomaly"&gt;2.1. Point anomaly&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#2.1.-Point-anomaly"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터셋 내에 하나의 데이터가 나머지에 대해 이상하다고 판단되는 경우, 흔히 아웃라이어(Outlier)라고 부른다.&lt;/p&gt;
+&lt;h2 id="1.-%EC%9D%B4%EC%83%81-%ED%83%90%EC%A7%80(Anomaly-detection)"&gt;1. 이상 탐지(Anomaly detection)&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#1.-%EC%9D%B4%EC%83%81-%ED%83%90%EC%A7%80(Anomaly-detection)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이상 탐지(anomaly detection)란 자료에서 다른 패턴을 보이는 자료를 찾는 것을 말합니다. 이런 데이터를 이상값(anomaly)라 하며 이상 탐지는 사기 탐지, 침입 탐지, 안전 관리를 포함한 다양한 분야에 널리 활용된다.&lt;/p&gt;
+&lt;h2 id="2.-%EC%9D%B4%EC%83%81%EC%9D%98-%EC%A2%85%EB%A5%98"&gt;2. 이상의 종류&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#2.-%EC%9D%B4%EC%83%81%EC%9D%98-%EC%A2%85%EB%A5%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="2.1.-Point-anomaly"&gt;2.1. Point anomaly&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#2.1.-Point-anomaly"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터셋 내에 하나의 데이터가 나머지에 대해 이상하다고 판단되는 경우, 흔히 아웃라이어(Outlier)라고 부른다.&lt;/p&gt;
 &lt;h3 id="2.2.-Collective-anomaly"&gt;2.2. Collective anomaly&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#2.2.-Collective-anomaly"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;데이터셋 내에 여러 데이터 포인트가 이상하다고 판단되는 경우&lt;/p&gt;
 &lt;h3 id="2.3.-Contextual-anomaly"&gt;2.3. Contextual anomaly&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#2.3.-Contextual-anomaly"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;전체적인 데이터셋의 맥락을 고려했을때 이상하다고 판단되는 경우&lt;/p&gt;
 &lt;h2 id="3.-Isolation-forest"&gt;3. Isolation forest&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#3.-Isolation-forest"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;기계학습으로 이상을 탐지하는 다양한 알고리즘이 존재하고 문제 마다 적합한 알고리즘을 선택하는 것이 중요하다. 여기에서는 밀도기반으로 이상 탐지를 하는 &lt;a href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf"&gt;Isolation forest&lt;/a&gt;의 예제를 배운다.&lt;/p&gt;
@@ -14,7 +14,7 @@
 &lt;li&gt;군집기반 이상탐지 알고리즘에 비해 계산량이 매우 적다&lt;/li&gt;
 &lt;li&gt;강건한(Robust)한 모델을 만들 수 있다&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="4.-예제-살펴보기"&gt;4. 예제 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#4.-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="4.1.-가장-단순한-예제"&gt;4.1. 가장 단순한 예제&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#4.1.-%EA%B0%80%EC%9E%A5-%EB%8B%A8%EC%88%9C%ED%95%9C-%EC%98%88%EC%A0%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 사용할 라이브러리를 불러온다.&lt;/p&gt;
+&lt;h2 id="4.-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;4. 예제 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#4.-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="4.1.-%EA%B0%80%EC%9E%A5-%EB%8B%A8%EC%88%9C%ED%95%9C-%EC%98%88%EC%A0%9C"&gt;4.1. 가장 단순한 예제&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#4.1.-%EA%B0%80%EC%9E%A5-%EB%8B%A8%EC%88%9C%ED%95%9C-%EC%98%88%EC%A0%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 사용할 라이브러리를 불러온다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -261,7 +261,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.2.-더-복잡한-예제"&gt;4.2. 더 복잡한 예제&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#4.2.-%EB%8D%94-%EB%B3%B5%EC%9E%A1%ED%95%9C-%EC%98%88%EC%A0%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;좀 더 실용적인 예제로 직업에 따른 급여를 조사한 데이터셋을 가지고 이상 탐지를 해보자. 먼저 필요한 라이브러리와 데이터셋(&lt;code&gt;jobtitle_pay.csv&lt;/code&gt;)을 불러온다.&lt;/p&gt;
+&lt;h3 id="4.2.-%EB%8D%94-%EB%B3%B5%EC%9E%A1%ED%95%9C-%EC%98%88%EC%A0%9C"&gt;4.2. 더 복잡한 예제&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#4.2.-%EB%8D%94-%EB%B3%B5%EC%9E%A1%ED%95%9C-%EC%98%88%EC%A0%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;좀 더 실용적인 예제로 직업에 따른 급여를 조사한 데이터셋을 가지고 이상 탐지를 해보자. 먼저 필요한 라이브러리와 데이터셋(&lt;code&gt;jobtitle_pay.csv&lt;/code&gt;)을 불러온다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -318,8 +318,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -369,8 +368,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -519,8 +517,7 @@ Name: JobTitle, dtype: int64&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -570,8 +567,7 @@ Name: JobTitle, dtype: int64&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -659,8 +655,7 @@ Name: JobTitle, dtype: int64&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -765,8 +760,7 @@ Name: JobTitle, dtype: int64&lt;/pre&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;309 rows × 4 columns&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -908,8 +902,7 @@ Name: JobTitle, dtype: int64&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1104,8 +1097,7 @@ Name: JobTitle, dtype: int64&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1117,7 +1109,7 @@ Name: JobTitle, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 결과는 후견인들중 연봉이 1000달러 미만인 사람의 데이터를 정렬한 것이다. 연봉 1000달러도 사실 너무 낮지만 연봉을 받지 않는 사람들도 존재하고 있다. 이들의 데이터는 상식적으로 직업별 연봉 데이터셋에 불필요한 이상치라고 볼 수 있다.&lt;/p&gt;
-&lt;h2 id="5.-마치며,"&gt;5. 마치며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#5.-%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이 글에서 이상이 무엇인지, 그리고 Isolation forest 알고리즘을 사용해 감지하는 방법을 배웠다. 박스 플롯을 사용해 데이터셋을 살펴보고 마지막으로 Isolation forest 알고리즘을 구현했다.&lt;/p&gt;
+&lt;h2 id="5.-%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;5. 마치며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/isolation-forest/#5.-%EB%A7%88%EC%B9%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이 글에서 이상이 무엇인지, 그리고 Isolation forest 알고리즘을 사용해 감지하는 방법을 배웠다. 박스 플롯을 사용해 데이터셋을 살펴보고 마지막으로 Isolation forest 알고리즘을 구현했다.&lt;/p&gt;
 &lt;p&gt;추가적으로 더 알아보고 싶다면 다음 링크를 확인하라.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/erykml/medium_articles/blob/master/Machine%20Learning/outlier_detection_hampel_filter.ipynb"&gt;https://github.com/erykml/medium_articles/blob/master/Machine%20Learning/outlier_detection_hampel_filter.ipynb&lt;/a&gt;&lt;/li&gt;
@@ -1126,4 +1118,4 @@ Name: JobTitle, dtype: int64&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>anomaly detection</category><category>isolation forest</category><category>machine learning</category><category>Python</category><guid>https://partrita.github.io/posts/isolation-forest/</guid><pubDate>Mon, 09 Mar 2020 02:56:47 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>anomaly detection</category><category>isolation forest</category><category>machine learning</category><category>Python</category><guid>https://partrita.github.io/posts/isolation-forest/</guid><pubDate>Mon, 09 Mar 2020 02:56:47 GMT</pubDate></item></channel></rss>

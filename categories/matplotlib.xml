@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about matplotlib)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/matplotlib.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:22 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬 시각화 예제</title><link>https://partrita.github.io/posts/matplotlib-examples/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about matplotlib)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/matplotlib.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬 시각화 예제</title><link>https://partrita.github.io/posts/matplotlib-examples/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="소개"&gt;소개&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EC%86%8C%EA%B0%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Matplotlib는 파이썬에서 자료를 차트(chart)나 플롯(plot)으로 시각화(visulaization)하는 패키지입니다.&lt;/p&gt;
+&lt;h2 id="%EC%86%8C%EA%B0%9C"&gt;소개&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EC%86%8C%EA%B0%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Matplotlib는 파이썬에서 자료를 차트(chart)나 플롯(plot)으로 시각화(visulaization)하는 패키지입니다.&lt;/p&gt;
 &lt;p&gt;주피터(Jupyter) 노트북을 사용하는 경우에는 다음처럼 매직(magic) 명령으로 노트북 내부에 그림을 표시하도록 지정해야 합니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;%matplotlib inline
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;%matplotlib&lt;span class="w"&gt; &lt;/span&gt;inline
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="그림의-구조"&gt;그림의 구조&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EA%B7%B8%EB%A6%BC%EC%9D%98-%EA%B5%AC%EC%A1%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Matplotlib&lt;/code&gt;의 그림은 Figure 객체, Axes 객체, Axis 객체 등으로 구성되어 있습니다. Figure 객체는 한 개 이상의 Axes 객체를 포함하고 Axes 객체는 다시 두 개 이상의 Axis 객체를 포함합니다. 말로 하면 이해하기 힘드니 그림으로 보겠습니다.&lt;/p&gt;
+&lt;h3 id="%EA%B7%B8%EB%A6%BC%EC%9D%98-%EA%B5%AC%EC%A1%B0"&gt;그림의 구조&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EA%B7%B8%EB%A6%BC%EC%9D%98-%EA%B5%AC%EC%A1%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Matplotlib&lt;/code&gt;의 그림은 Figure 객체, Axes 객체, Axis 객체 등으로 구성되어 있습니다. Figure 객체는 한 개 이상의 Axes 객체를 포함하고 Axes 객체는 다시 두 개 이상의 Axis 객체를 포함합니다. 말로 하면 이해하기 힘드니 그림으로 보겠습니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://matplotlib.org/_images/anatomy.png" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;Figure는 그림이 그려지는 캔버스나 종이를 뜻하고 Axes는 하나의 그림, 그리고 Axis는 가로축이나 세로축 등의 축입니다.&lt;/p&gt;
-&lt;h3 id="참고"&gt;참고&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EC%B0%B8%EA%B3%A0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="%EC%B0%B8%EA%B3%A0"&gt;참고&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EC%B0%B8%EA%B3%A0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;효과적으로 &lt;code&gt;matplotlib&lt;/code&gt;사용하기 &lt;a href="http://pbpython.com/effective-matplotlib.html"&gt;링크&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Matplotlib를 사용한 시각화 예제들을 보고 싶다면 Matplotlib &lt;a href="http://matplotlib.org/gallery.html"&gt;갤러리&lt;/a&gt;를 방문하세요.&lt;/li&gt;
 &lt;li&gt;데이터 사이언스 스쿨의 Matplotlib &lt;a href="https://datascienceschool.net/view-notebook/d0b1637803754bb083b5722c9f2209d0/"&gt;소개&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="테스트하기"&gt;테스트하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%ED%85%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="%ED%85%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EA%B8%B0"&gt;테스트하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%ED%85%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -89,7 +89,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="막대-그래프-(Bar-graph)"&gt;막대 그래프 (Bar graph)&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84-(Bar-graph)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두가지 그룹 (group1, group2)에 각각 (E7, E8, E9, E10) 샘플이 있고 여러번 값을 측정하여 표준편차를 에러바로 표시하였습니다.&lt;/p&gt;
+&lt;h2 id="%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84-(Bar-graph)"&gt;막대 그래프 (Bar graph)&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84-(Bar-graph)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;두가지 그룹 (group1, group2)에 각각 (E7, E8, E9, E10) 샘플이 있고 여러번 값을 측정하여 표준편차를 에러바로 표시하였습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -166,7 +166,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="겹친-막대-그래프"&gt;겹친 막대 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EA%B2%B9%EC%B9%9C-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="%EA%B2%B9%EC%B9%9C-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;겹친 막대 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EA%B2%B9%EC%B9%9C-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -224,7 +224,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="수평-막대-그래프"&gt;수평 막대 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EC%88%98%ED%8F%89-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="%EC%88%98%ED%8F%89-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;수평 막대 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EC%88%98%ED%8F%89-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -286,7 +286,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="에러바-있는-선-그래프"&gt;에러바 있는 선 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EC%97%90%EB%9F%AC%EB%B0%94-%EC%9E%88%EB%8A%94-%EC%84%A0-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="%EC%97%90%EB%9F%AC%EB%B0%94-%EC%9E%88%EB%8A%94-%EC%84%A0-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;에러바 있는 선 그래프&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EC%97%90%EB%9F%AC%EB%B0%94-%EC%9E%88%EB%8A%94-%EC%84%A0-%EA%B7%B8%EB%9E%98%ED%94%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -410,7 +410,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="박스-그래프(Box-plot)"&gt;박스 그래프(Box plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EB%B0%95%EC%8A%A4-%EA%B7%B8%EB%9E%98%ED%94%84(Box-plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;정확한 명칭은 box-and-whisker plot입니다. 통계학적으로 유용한 여러값을 한번에 시각화 해줍니다.&lt;/p&gt;
+&lt;h2 id="%EB%B0%95%EC%8A%A4-%EA%B7%B8%EB%9E%98%ED%94%84(Box-plot)"&gt;박스 그래프(Box plot)&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%EB%B0%95%EC%8A%A4-%EA%B7%B8%EB%9E%98%ED%94%84(Box-plot)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;정확한 명칭은 box-and-whisker plot입니다. 통계학적으로 유용한 여러값을 한번에 시각화 해줍니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;중앙값(Median)&lt;/li&gt;
 &lt;li&gt;박스(Box): 25~75%의 값을 표현, 가장 아래가 Q1이고 가장 위가 Q3입니다.&lt;/li&gt;
@@ -531,7 +531,8 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="히스토그램(Histogram)"&gt;히스토그램(Histogram)&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8(Histogram)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;히스토그램(histogram)은 표로 되어 있는 도수 분포를 정보 그림으로 나타낸 것이다. 더 간단하게 말하면, 도수분포표를 그래프로 나타낸 것이다&lt;/p&gt;
+&lt;h2 id="%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8(Histogram)"&gt;히스토그램(Histogram)&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8(Histogram)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;히스토그램(histogram)은 표로 되어 있는 도수 분포를 정보 그림으로 나타낸 것이다. 더 간단하게 말하면, 도수분포표를 그래프로 나타낸 것이다&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;
@@ -547,7 +548,7 @@
 
 &lt;span class="c1"&gt;# Generate a normal distribution, center at x=0 and y=5&lt;/span&gt;
 &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;N_points&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;.4&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
 
 &lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subplots&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
@@ -644,7 +645,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="2.컬러와-스타일-사용자-정의"&gt;2.컬러와 스타일 사용자 정의&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#2.%EC%BB%AC%EB%9F%AC%EC%99%80-%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="2.%EC%BB%AC%EB%9F%AC%EC%99%80-%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98"&gt;2.컬러와 스타일 사용자 정의&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#2.%EC%BB%AC%EB%9F%AC%EC%99%80-%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -945,7 +946,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.주석사용"&gt;3.주석사용&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#3.%EC%A3%BC%EC%84%9D%EC%82%AC%EC%9A%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="3.%EC%A3%BC%EC%84%9D%EC%82%AC%EC%9A%A9"&gt;3.주석사용&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-examples/#3.%EC%A3%BC%EC%84%9D%EC%82%AC%EC%9A%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -955,7 +956,7 @@
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;Y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mf"&gt;4.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;2.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;.25&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mf"&gt;4.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;2.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Power curve'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Air speed'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1284,12 +1285,12 @@ common situation where you should not smooth signals is prior to statistical pro
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>matplotlib</category><category>Python</category><category>시각화</category><guid>https://partrita.github.io/posts/matplotlib-examples/</guid><pubDate>Wed, 24 Jan 2018 08:06:08 GMT</pubDate></item><item><title>matplotlib_tutorial</title><link>https://partrita.github.io/posts/matplotlib-tutorial/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>matplotlib</category><category>Python</category><category>시각화</category><guid>https://partrita.github.io/posts/matplotlib-examples/</guid><pubDate>Wed, 24 Jan 2018 08:06:08 GMT</pubDate></item><item><title>matplotlib_tutorial</title><link>https://partrita.github.io/posts/matplotlib-tutorial/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Matplotlib"&gt;Matplotlib&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-tutorial/#Matplotlib"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Matplotlib는 파이썬 자료를 &lt;strong&gt;시각화(visulaization)&lt;/strong&gt; 하는 라이브러리입니다. &lt;strong&gt;MATLAB&lt;/strong&gt;과 유사한 인터페이스로 복잡하지만 강력한 기능을 제공하죠. 아마도 파이썬 라이브러리 중에 가장 유용하고 따라서 가장 유명합니다. Matplotlib는 막대 그래프나 선 그래프 이외에도 다양한 시각화 기능을 제공합니다. 자세한건 &lt;a href="https://matplotlib.org/gallery.html"&gt;Gallery&lt;/a&gt;를 참고 하세요.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://matplotlib.org/users/beginner.html"&gt;튜토리얼 가이드&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="기본적인-정보"&gt;기본적인 정보&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-tutorial/#%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EC%A0%95%EB%B3%B4"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;사용하기 앞서, 다음 그림을 통해 구조를 알아 보겠습니다.
+&lt;h3 id="%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EC%A0%95%EB%B3%B4"&gt;기본적인 정보&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-tutorial/#%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EC%A0%95%EB%B3%B4"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;사용하기 앞서, 다음 그림을 통해 구조를 알아 보겠습니다.
 &lt;img src="https://datascienceschool.net/upfiles/4e20efe6352e4f4fac65c26cb660f522.png" alt="figure"&gt;&lt;/p&gt;
 &lt;p&gt;Matplotlib가 그리는 그림은 Figure, Axes, Axis으로 이어지는 구조를 가지고 있습니다. 따라서 아래와 같은 순서로 그림을 그리게 됩니다.&lt;/p&gt;
 &lt;ol&gt;
@@ -1365,7 +1366,7 @@ common situation where you should not smooth signals is prior to statistical pro
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="실험-데이터로-그려보기"&gt;실험 데이터로 그려보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-tutorial/#%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C-%EA%B7%B8%EB%A0%A4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;실제 실험에서 얻은 데이터를 가지고 에러바가 있는 선 그래프를 그려보도록 하겠습니다. 이미 간단하게 평균값과 표준편차를 구해 놓은 데이터를 사용했습니다.&lt;/p&gt;
+&lt;h3 id="%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C-%EA%B7%B8%EB%A0%A4%EB%B3%B4%EA%B8%B0"&gt;실험 데이터로 그려보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-tutorial/#%EC%8B%A4%ED%97%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C-%EA%B7%B8%EB%A0%A4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;실제 실험에서 얻은 데이터를 가지고 에러바가 있는 선 그래프를 그려보도록 하겠습니다. 이미 간단하게 평균값과 표준편차를 구해 놓은 데이터를 사용했습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1418,8 +1419,8 @@ common situation where you should not smooth signals is prior to statistical pro
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-tutorial/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이렇게 matplotlib을 사용하면 간단하게 실험 결과를 시각화 할 수 있습니다. 무엇보다도 &lt;strong&gt;공짜&lt;/strong&gt;로 말이죠.&lt;/p&gt;
+&lt;h3 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/matplotlib-tutorial/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;이렇게 matplotlib을 사용하면 간단하게 실험 결과를 시각화 할 수 있습니다. 무엇보다도 &lt;strong&gt;공짜&lt;/strong&gt;로 말이죠.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>matplotlib</category><category>Python</category><category>시각화</category><guid>https://partrita.github.io/posts/matplotlib-tutorial/</guid><pubDate>Mon, 11 Dec 2017 23:07:20 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>matplotlib</category><category>Python</category><category>시각화</category><guid>https://partrita.github.io/posts/matplotlib-tutorial/</guid><pubDate>Mon, 11 Dec 2017 23:07:20 GMT</pubDate></item></channel></rss>

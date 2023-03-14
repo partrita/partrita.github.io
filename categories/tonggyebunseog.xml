@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about 통계분석)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/tonggyebunseog.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:22 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>10분안에 배우는 Pingouin</title><link>https://partrita.github.io/posts/pingouin/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about 통계분석)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/tonggyebunseog.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>10분안에 배우는 Pingouin</title><link>https://partrita.github.io/posts/pingouin/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://pingouin-stats.org/_images/logo_pingouin.png" alt="logo"&gt;&lt;/p&gt;
@@ -13,13 +13,13 @@
 &lt;li&gt;다변량(Multivariate) 테스트&lt;/li&gt;
 &lt;li&gt;신뢰성과 일관성 검정&lt;/li&gt;
 &lt;li&gt;효과 크기 및 검정력 분석&lt;/li&gt;
-&lt;li&gt;효과 크기 또는 상관 계수의 모수(Parametric) 혹은 부트스트랩(bootstrapped) 신뢰구간 &lt;/li&gt;
+&lt;li&gt;효과 크기 또는 상관 계수의 모수(Parametric) 혹은 부트스트랩(bootstrapped) 신뢰구간&lt;/li&gt;
 &lt;li&gt;순환(Circular) 통계&lt;/li&gt;
 &lt;li&gt;카이제곱 검정(chi-squared test)&lt;/li&gt;
 &lt;li&gt;Bland-Altman plot, Q-Q plot, paired plot, robust correlation 시각화&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Pingouin은 &lt;strong&gt;간단하지만 완전한 통계 기능&lt;/strong&gt;를 위해 설계되었습니다. 예를 들어 기존의 SciPy 패키지의 &lt;code&gt;ttest_ind&lt;/code&gt; 함수는 &lt;code&gt;T-value&lt;/code&gt;과 &lt;code&gt;p-value&lt;/code&gt;만 알려주지만 Pingouin의 &lt;code&gt;ttest&lt;/code&gt; 함수는 &lt;code&gt;T-value&lt;/code&gt;, &lt;code&gt;p-value&lt;/code&gt;뿐만 아니라 자유도, 효과 크기(Cohen 's d), 95% 신뢰 구간, 통계적 검정력등을 동시에 출력합니다.&lt;/p&gt;
-&lt;h2 id="0.-설치법"&gt;0. 설치법&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#0.-%EC%84%A4%EC%B9%98%EB%B2%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pingouin은 파이썬3 패키지이며 현재 버전 3.6, 3.7에서 테스트되었습니다. 따라서 파이썬 2.7에서는 작동하지 않습니다.&lt;/p&gt;
+&lt;h2 id="0.-%EC%84%A4%EC%B9%98%EB%B2%95"&gt;0. 설치법&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#0.-%EC%84%A4%EC%B9%98%EB%B2%95"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pingouin은 파이썬3 패키지이며 현재 버전 3.6, 3.7에서 테스트되었습니다. 따라서 파이썬 2.7에서는 작동하지 않습니다.&lt;/p&gt;
 &lt;p&gt;Pingouin의 주요 종속 패키지는 다음과 같습니다:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;NumPy (&amp;gt;= 1.15)&lt;/li&gt;
@@ -36,19 +36,19 @@
 &lt;li&gt;Mpmath&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;가장 쉬운 방법은 아래와 같이 &lt;code&gt;pip&lt;/code&gt; 명령어를 사용하는 것입니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install pingouin
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;pingouin
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;혹은 &lt;code&gt;conda&lt;/code&gt;를 사용할 수도 있습니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda install -c conda-forge pingouin
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;-c&lt;span class="w"&gt; &lt;/span&gt;conda-forge&lt;span class="w"&gt; &lt;/span&gt;pingouin
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;아직 Pingouin은 개발 중에 있으며 버그 수정을 위해 새로운 버전이 계속 배포되고 있습니다(한 달에 약 1 회). 그러니 항상 최신 버전의 Pingouin을 사용하고 있는지 확인하세요. 새로운 버전이 출시 될 때마다 터미널 창에 다음 명령어를 입력해 업그레이드 할 수 있습니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install --upgrade pingouin
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;--upgrade&lt;span class="w"&gt; &lt;/span&gt;pingouin
 
 &lt;span class="c1"&gt;# conda를 사용할 경우&lt;/span&gt;
-conda update pingouin
+conda&lt;span class="w"&gt; &lt;/span&gt;update&lt;span class="w"&gt; &lt;/span&gt;pingouin
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;자세한 내용은 &lt;a href="https://pingouin-stats.org/"&gt;Pingouin 공식 페이지&lt;/a&gt;을 참고하세요.&lt;/p&gt;
-&lt;h2 id="1.-예제-코드-살펴보기"&gt;1. 예제 코드 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;필요한 패키지를 불러옵니다.&lt;/p&gt;
+&lt;h2 id="1.-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;1. 예제 코드 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;필요한 패키지를 불러옵니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -104,8 +104,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -147,8 +146,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -189,8 +187,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -232,8 +229,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -272,8 +268,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -315,8 +310,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -328,7 +322,7 @@ conda update pingouin
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;p-Value&lt;/code&gt;가 엉망인것을 알 수 있습니다.&lt;/p&gt;
-&lt;h3 id="1.3.-Two-sample-T-test"&gt;1.3. Two-sample T-test&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.3.-Two-sample-T-test"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="1.3.1.-표본-크기가-같은-경우"&gt;1.3.1. 표본 크기가 같은 경우&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.3.1.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EA%B0%99%EC%9D%80-%EA%B2%BD%EC%9A%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h3 id="1.3.-Two-sample-T-test"&gt;1.3. Two-sample T-test&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.3.-Two-sample-T-test"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="1.3.1.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EA%B0%99%EC%9D%80-%EA%B2%BD%EC%9A%B0"&gt;1.3.1. 표본 크기가 같은 경우&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.3.1.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EA%B0%99%EC%9D%80-%EA%B2%BD%EC%9A%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -356,8 +350,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -399,8 +392,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -411,7 +403,7 @@ conda update pingouin
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="1.3.2.-표본-크기가-다른경우"&gt;1.3.2. 표본 크기가 다른경우&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.3.2.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EB%8B%A4%EB%A5%B8%EA%B2%BD%EC%9A%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="1.3.2.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EB%8B%A4%EB%A5%B8%EA%B2%BD%EC%9A%B0"&gt;1.3.2. 표본 크기가 다른경우&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.3.2.-%ED%91%9C%EB%B3%B8-%ED%81%AC%EA%B8%B0%EA%B0%80-%EB%8B%A4%EB%A5%B8%EA%B2%BD%EC%9A%B0"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -439,8 +431,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -482,8 +473,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -494,7 +484,7 @@ conda update pingouin
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="1.4.-Pearson’s-correlation"&gt;1.4. Pearson’s correlation&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.4.-Pearson%E2%80%99s-correlation"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="1.4.-Pearson%E2%80%99s-correlation"&gt;1.4. Pearson’s correlation&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.4.-Pearson%E2%80%99s-correlation"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -503,7 +493,7 @@ conda update pingouin
 &lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cov&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)],&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cov&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;.6&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)],&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;
 &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;multivariate_normal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cov&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;
 &lt;span class="n"&gt;pg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;corr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -522,8 +512,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -565,8 +554,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -606,8 +594,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -649,8 +636,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -661,7 +647,7 @@ conda update pingouin
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="1.6.-데이터의-정규성-테스트"&gt;1.6. 데이터의 정규성 테스트&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.6.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%A0%95%EA%B7%9C%EC%84%B1-%ED%85%8C%EC%8A%A4%ED%8A%B8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;pingouin.normality()&lt;/code&gt;함수를 pandas의 데이터 프레임형식에 사용할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="1.6.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%A0%95%EA%B7%9C%EC%84%B1-%ED%85%8C%EC%8A%A4%ED%8A%B8"&gt;1.6. 데이터의 정규성 테스트&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.6.-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EC%A0%95%EA%B7%9C%EC%84%B1-%ED%85%8C%EC%8A%A4%ED%8A%B8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;pingouin.normality()&lt;/code&gt;함수를 pandas의 데이터 프레임형식에 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -689,8 +675,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -722,8 +707,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -768,7 +752,7 @@ conda update pingouin
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="1.7.-Q-Q-plot-시각화"&gt;1.7. Q-Q plot 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.7.-Q-Q-plot-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="1.7.-Q-Q-plot-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;1.7. Q-Q plot 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.7.-Q-Q-plot-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -838,8 +822,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -901,8 +884,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -934,8 +916,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -985,8 +966,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1024,8 +1004,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1078,8 +1057,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1121,8 +1099,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1206,8 +1183,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1248,8 +1224,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1317,8 +1292,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1371,7 +1345,7 @@ conda update pingouin
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="1.13.-paired-T-test-검정력-시각화"&gt;1.13. paired T-test 검정력 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.13.-paired-T-test-%EA%B2%80%EC%A0%95%EB%A0%A5-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;T-검정의 표본 크기와 효과 크기(Cohen'd)에 따른 검정력 곡선을 시각화합니다.&lt;/p&gt;
+&lt;h3 id="1.13.-paired-T-test-%EA%B2%80%EC%A0%95%EB%A0%A5-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;1.13. paired T-test 검정력 시각화&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#1.13.-paired-T-test-%EA%B2%80%EC%A0%95%EB%A0%A5-%EC%8B%9C%EA%B0%81%ED%99%94"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;T-검정의 표본 크기와 효과 크기(Cohen'd)에 따른 검정력 곡선을 시각화합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1483,7 +1457,7 @@ conda update pingouin
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="2.-마무리하며,"&gt;2. 마무리하며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#2.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;파이썬을 사용한 통계 분석은 &lt;code&gt;R&lt;/code&gt;언어에 비해 사용법과 기능이 부족했습니다. 그렇기 때문에 pingouin의 등장이 반갑습니다. 아직 &lt;code&gt;0.3.6&lt;/code&gt;버전이지만 기존에 존재했던 통계 분석 패키지들을 뛰어 넘는 성능과 완성도를 보여주고 있어 앞으로가 더 기대가 됩니다.&lt;/p&gt;
+&lt;h2 id="2.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;2. 마무리하며,&lt;a class="anchor-link" href="https://partrita.github.io/posts/pingouin/#2.-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0,"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;파이썬을 사용한 통계 분석은 &lt;code&gt;R&lt;/code&gt;언어에 비해 사용법과 기능이 부족했습니다. 그렇기 때문에 pingouin의 등장이 반갑습니다. 아직 &lt;code&gt;0.3.6&lt;/code&gt;버전이지만 기존에 존재했던 통계 분석 패키지들을 뛰어 넘는 성능과 완성도를 보여주고 있어 앞으로가 더 기대가 됩니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1520,12 +1494,13 @@ conda update pingouin
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>Pingouin</category><category>Python</category><category>statstics</category><category>통계분석</category><guid>https://partrita.github.io/posts/pingouin/</guid><pubDate>Mon, 20 Jul 2020 13:17:04 GMT</pubDate></item><item><title>파이썬으로 사후검정(Post Hoc Analysis)</title><link>https://partrita.github.io/posts/post-hoc-analysis/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>Pingouin</category><category>Python</category><category>statstics</category><category>통계분석</category><guid>https://partrita.github.io/posts/pingouin/</guid><pubDate>Mon, 20 Jul 2020 13:17:04 GMT</pubDate></item><item><title>파이썬으로 사후검정(Post Hoc Analysis)</title><link>https://partrita.github.io/posts/post-hoc-analysis/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;출처: &lt;a href="http://www.cs.sfu.ca/~ggbaker/data-science/content/stats-tests.html"&gt;ca.sfu.ca&lt;/a&gt; , &lt;a href="http://www.statedu.com/lecture/99807"&gt;statedu&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="사후검정(Post-Hoc-Analysis)의-필요성"&gt;사후검정(Post Hoc Analysis)의 필요성&lt;a class="anchor-link" href="https://partrita.github.io/posts/post-hoc-analysis/#%EC%82%AC%ED%9B%84%EA%B2%80%EC%A0%95(Post-Hoc-Analysis)%EC%9D%98-%ED%95%84%EC%9A%94%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ANOVA 분석의 문제는 다르다는 것은 알지만, 어떤 집단간의 차이가 있는지는 알 수 없다는 것입니다. 그래서 만들어진 방법이 사후검정입니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;post hoc은 라틴어로 "after this"의 뜻입니다.&lt;/p&gt;
+&lt;h2 id="%EC%82%AC%ED%9B%84%EA%B2%80%EC%A0%95(Post-Hoc-Analysis)%EC%9D%98-%ED%95%84%EC%9A%94%EC%84%B1"&gt;사후검정(Post Hoc Analysis)의 필요성&lt;a class="anchor-link" href="https://partrita.github.io/posts/post-hoc-analysis/#%EC%82%AC%ED%9B%84%EA%B2%80%EC%A0%95(Post-Hoc-Analysis)%EC%9D%98-%ED%95%84%EC%9A%94%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ANOVA 분석의 문제는 다르다는 것은 알지만, 어떤 집단간의 차이가 있는지는 알 수 없다는 것입니다. 그래서 만들어진 방법이 사후검정입니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;post hoc은 라틴어로 "after this"의 뜻입니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;사후검정에도 여러 종류가 있습니다. 그 중에서 대표적으로 쓰이는 3가지를 꼽으면 아래와 같습니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -1628,8 +1603,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1677,8 +1651,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1717,8 +1690,7 @@ conda update pingouin
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1768,8 +1740,7 @@ conda update pingouin
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1871,14 +1842,14 @@ group1 group2 meandiff   lower    upper  reject
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;그림에서 볼 수 있듯이, 그룹 1.0과 2.0은 서로 겹치지 않는것을 볼 수 있습니다. 반면에 다른 경우에서는 겹치기 때문에 유의미한 차이가 없다고 할 수 있죠.&lt;/p&gt;
-&lt;h2 id="결론"&gt;결론&lt;a class="anchor-link" href="https://partrita.github.io/posts/post-hoc-analysis/#%EA%B2%B0%EB%A1%A0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;h2 id="%EA%B2%B0%EB%A1%A0"&gt;결론&lt;a class="anchor-link" href="https://partrita.github.io/posts/post-hoc-analysis/#%EA%B2%B0%EB%A1%A0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;분산분석(ANOVA)를 통해 3가지 그룹간에 통계적인 차이가 있다는 것을 증명했고,&lt;/li&gt;
-&lt;li&gt;사후검정을 통해 그룹 1.0과 2.0의 평균이 유의미한 차이가 있다는 것을 보았습니다. &lt;/li&gt;
+&lt;li&gt;사후검정을 통해 그룹 1.0과 2.0의 평균이 유의미한 차이가 있다는 것을 보았습니다.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>post hoc</category><category>Python</category><category>statstics</category><category>사후검정</category><category>통계분석</category><guid>https://partrita.github.io/posts/post-hoc-analysis/</guid><pubDate>Mon, 19 Mar 2018 01:17:04 GMT</pubDate></item><item><title>파이썬으로 분산분석(ANOVA)</title><link>https://partrita.github.io/posts/ANOVA-python/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>post hoc</category><category>Python</category><category>statstics</category><category>사후검정</category><category>통계분석</category><guid>https://partrita.github.io/posts/post-hoc-analysis/</guid><pubDate>Mon, 19 Mar 2018 01:17:04 GMT</pubDate></item><item><title>파이썬으로 분산분석(ANOVA)</title><link>https://partrita.github.io/posts/ANOVA-python/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;출처 : &lt;a href="https://github.com/thomas-haslwanter/statsintro_python/blob/master/ipynb/8_anovaOneway.ipynb"&gt;Thomas Haslwanter&lt;/a&gt;, &lt;a href="http://www.cs.sfu.ca/~ggbaker/data-science/content/stats-tests.html"&gt;CMPT 318&lt;/a&gt;&lt;/p&gt;
@@ -1886,7 +1857,7 @@ group1 group2 meandiff   lower    upper  reject
 &lt;p&gt;분산분석에는 다음과 같은 3가지의 조건이 필요해요.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;정규성 : 각각의 그룹에서 변인은 정규분포.&lt;/li&gt;
-&lt;li&gt;분산의 동질성 : Y의 모집단 분산은 각각의 모집단에서 동일. &lt;/li&gt;
+&lt;li&gt;분산의 동질성 : Y의 모집단 분산은 각각의 모집단에서 동일.&lt;/li&gt;
 &lt;li&gt;관찰의 독립성: 각각의 모집단에서 크기가 각각인 표본들이 독립적으로 표집.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;파이썬에서 분산분석을 사용하기 위한 라이브러리를 불러오는 코드부터 실행하겠습니다.&lt;/p&gt;
@@ -1917,7 +1888,7 @@ group1 group2 meandiff   lower    upper  reject
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="분산(variance)의-중요함"&gt;분산(variance)의 중요함&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EB%B6%84%EC%82%B0(variance)%EC%9D%98-%EC%A4%91%EC%9A%94%ED%95%A8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;아래의 두개의 그림을 통해 분산에 대해 알아 보겠습니다. 평균값은 동일하지만 분산 값이 다름으로 인해 전체적인 데이터의 모습이 완전히 달라 보이는것을 알 수 있죠.&lt;/p&gt;
+&lt;h2 id="%EB%B6%84%EC%82%B0(variance)%EC%9D%98-%EC%A4%91%EC%9A%94%ED%95%A8"&gt;분산(variance)의 중요함&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EB%B6%84%EC%82%B0(variance)%EC%9D%98-%EC%A4%91%EC%9A%94%ED%95%A8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;아래의 두개의 그림을 통해 분산에 대해 알아 보겠습니다. 평균값은 동일하지만 분산 값이 다름으로 인해 전체적인 데이터의 모습이 완전히 달라 보이는것을 알 수 있죠.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2002,16 +1973,18 @@ group1 group2 meandiff   lower    upper  reject
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;blockquote&gt;&lt;p&gt;분산이 클수록 집단의 평균값의 차이가 무의미해집니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;분산이 클수록 집단의 평균값의 차이가 무의미해집니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;이것을 통해 두가지를 알 수 있는데요. 1. 집단 평균값 의 분산이 클수록 그리고, 2. 집단 내 분산이 작아질수록 평균의 차이가 분명해집니다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;집단 간 분산&lt;/strong&gt;과 &lt;strong&gt;집단 내 분산&lt;/strong&gt; 이 두가지를 이용해 분석을 하기에 &lt;strong&gt;분산분석&lt;/strong&gt;이라고 합니다.&lt;/p&gt;
 &lt;p&gt;분산분석에는 여러 종류가 있지만, 여기서는 &lt;strong&gt;일원분산분석(One-way ANOVA)&lt;/strong&gt;과 &lt;strong&gt;이원분산분석(Two-way ANOVA)&lt;/strong&gt;를 알아보겠습니다.&lt;/p&gt;
-&lt;h2 id="일원분산분석(One-way-ANOVA)"&gt;일원분산분석(One-way ANOVA)&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EC%9D%BC%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(One-way-ANOVA)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;종속변인은 1개이며, 독립변인의 집단도 1개인 경우입니다. 한가지 변수의 변화가 결과 변수에 미치는 영향을 보기 위해 사용됩니다.&lt;/p&gt;
+&lt;h2 id="%EC%9D%BC%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(One-way-ANOVA)"&gt;일원분산분석(One-way ANOVA)&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EC%9D%BC%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(One-way-ANOVA)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;종속변인은 1개이며, 독립변인의 집단도 1개인 경우입니다. 한가지 변수의 변화가 결과 변수에 미치는 영향을 보기 위해 사용됩니다.&lt;/p&gt;
 &lt;p&gt;파이썬에서 One-way ANOVA 분석은 &lt;code&gt;scipy.stats&lt;/code&gt;이나 &lt;code&gt;statsmodel&lt;/code&gt; 라이브러리를 이용해서 할 수 있습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;&lt;code&gt;statsmodel&lt;/code&gt; 라이브러리가 좀 더 많고 규격화된 정보를 제공합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;statsmodel&lt;/code&gt; 라이브러리가 좀 더 많고 규격화된 정보를 제공합니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id="예시-데이터(Altman-910)-설명"&gt;예시 데이터(Altman 910) 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EC%98%88%EC%8B%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(Altman-910)-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;22명의 심장 우회 수술을 받은 환자를 다음의 3가지 그룹으로 나누었습니다.&lt;/p&gt;
+&lt;h3 id="%EC%98%88%EC%8B%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(Altman-910)-%EC%84%A4%EB%AA%85"&gt;예시 데이터(Altman 910) 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EC%98%88%EC%8B%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(Altman-910)-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;22명의 심장 우회 수술을 받은 환자를 다음의 3가지 그룹으로 나누었습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Group I: 50% 아산화 질소(nitrous oxide)와 50%의 산소(oxygen) 혼합물을 24시간 동안 흡입한 환자&lt;/li&gt;
 &lt;li&gt;Group II: 50% 아산화 질소와 50% 산소 혼합물을 수술 받는 동안만 흡입한 환자&lt;/li&gt;
@@ -2071,7 +2044,7 @@ group1 group2 meandiff   lower    upper  reject
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Boxplot에서 볼 수 있듯이, 평균값의 차이가 실제로 의미가 있는 차이인지, 분산이 커서 그런것인지 애매한 상황입니다. 이런 상황에서 분산분석을 통해 통계적 유의성을 알아 볼 수 있습니다.&lt;/p&gt;
-&lt;h2 id="Scipy.stats으로-일원분산분석"&gt;Scipy.stats으로 일원분산분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#Scipy.stats%EC%9C%BC%EB%A1%9C-%EC%9D%BC%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;아래와 같은 간단한 코드로 분산분석을 할 수 있습니다.&lt;/p&gt;
+&lt;h2 id="Scipy.stats%EC%9C%BC%EB%A1%9C-%EC%9D%BC%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D"&gt;Scipy.stats으로 일원분산분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#Scipy.stats%EC%9C%BC%EB%A1%9C-%EC%9D%BC%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;아래와 같은 간단한 코드로 분산분석을 할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2116,7 +2089,7 @@ P-value 값이 충분히 작음으로 인해 그룹의 평균값이 통계적으
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;이번에는 좀 더 우아한 방법으로 &lt;code&gt;pandas&lt;/code&gt;와 &lt;code&gt;statsmodels&lt;/code&gt; 라이브러리를 사용해서 분산분석을 해보겠습니다.&lt;/p&gt;
-&lt;h2 id="Statsmodel을-사용한-일원분산분석"&gt;Statsmodel을 사용한 일원분산분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#Statsmodel%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C-%EC%9D%BC%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Statsmodel%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C-%EC%9D%BC%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D"&gt;Statsmodel을 사용한 일원분산분석&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#Statsmodel%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C-%EC%9D%BC%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2166,8 +2139,8 @@ Residual      19.0  39716.097222  2090.320906       NaN       NaN
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;보시다 싶이 &lt;code&gt;statsmodels&lt;/code&gt; 을 사용하면 보다 간편하면서도 깔끔한 결과를 얻을 수 있습니다.&lt;/p&gt;
-&lt;h2 id="이원분산분석(two-way-ANOVA)"&gt;이원분산분석(two-way ANOVA)&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EC%9D%B4%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(two-way-ANOVA)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;독립변인의 수가 두 개 이상일 때 집단 간 차이가 유의한지를 검증하는 데 사용합니다. 상호작용효과(Interaction effect), 한 변수의 변화가 결과에 미치는 영향이 다른 변수의 수준에 따라 달라지는지를 확인하기 위해 사용됩니다.&lt;/p&gt;
-&lt;h3 id="예제-데이터(altman_12_6)-설명"&gt;예제 데이터(altman_12_6) 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(altman_12_6)-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;태아의 머리 둘레 측정 데이터입니다. 4명의 관측자가 3명의 태아를 대상으로 측정을 했습니다. 이를 통해서 초음파로 태아의 머리 둘레측정 데이터가 재현성이 있는지를 조사하였습니다.&lt;/p&gt;
+&lt;h2 id="%EC%9D%B4%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(two-way-ANOVA)"&gt;이원분산분석(two-way ANOVA)&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EC%9D%B4%EC%9B%90%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D(two-way-ANOVA)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;독립변인의 수가 두 개 이상일 때 집단 간 차이가 유의한지를 검증하는 데 사용합니다. 상호작용효과(Interaction effect), 한 변수의 변화가 결과에 미치는 영향이 다른 변수의 수준에 따라 달라지는지를 확인하기 위해 사용됩니다.&lt;/p&gt;
+&lt;h3 id="%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(altman_12_6)-%EC%84%A4%EB%AA%85"&gt;예제 데이터(altman_12_6) 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EC%98%88%EC%A0%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0(altman_12_6)-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;태아의 머리 둘레 측정 데이터입니다. 4명의 관측자가 3명의 태아를 대상으로 측정을 했습니다. 이를 통해서 초음파로 태아의 머리 둘레측정 데이터가 재현성이 있는지를 조사하였습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2232,7 +2205,7 @@ Residual      19.0  39716.097222  2090.320906       NaN       NaN
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;그림을 보니 태아(fetus) 3명의 머리 둘레는 차이가 있어보입니다. 그런데 이것이 관측자와 상호작용이 있는것인지 분석을 통해 알아 보겠습니다.&lt;/p&gt;
-&lt;h3 id="분산분석으로-상관관계"&gt;분산분석으로 상관관계&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D%EC%9C%BC%EB%A1%9C-%EC%83%81%EA%B4%80%EA%B4%80%EA%B3%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;statmodels&lt;/code&gt; 라이브러리를 사용해 간단하게 계산할 수 있습니다.&lt;/p&gt;
+&lt;h3 id="%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D%EC%9C%BC%EB%A1%9C-%EC%83%81%EA%B4%80%EA%B4%80%EA%B3%84"&gt;분산분석으로 상관관계&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EB%B6%84%EC%82%B0%EB%B6%84%EC%84%9D%EC%9C%BC%EB%A1%9C-%EC%83%81%EA%B4%80%EA%B4%80%EA%B3%84"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;statmodels&lt;/code&gt; 라이브러리를 사용해 간단하게 계산할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2279,8 +2252,8 @@ Residual              24.0    1.840000    0.076667          NaN           NaN
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;P-value 가 0.05 이상 입니다, 따라서 귀무가설을 기각할 수 없고. 측정자와 태아의 머리둘레값에는 연관성이 없다고 할 수 있습니다. 측정하는 사람이 달라도 머리 둘레값은 일정하는 것이죠.&lt;/p&gt;
 &lt;p&gt;결론적으로 초음파로 측정하는 태아의 머리둘레값은 믿을 수 있다는 것입니다.&lt;/p&gt;
-&lt;h2 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분산분석(ANOVA)는 전체 그룹간의 평균값 차이가 통계적 의미가 있는지 판단하는데 유용한 도구 입니다. 하지만 정확히 어느 그룹의 평균값이 의미가 있는지는 알려주지 않습니다. 따라서 추가적인 &lt;strong&gt;사후분석(Post Hoc Analysis)&lt;/strong&gt; 이 필요합니다. 사후분석에 대해서는 다음 기회에 알아 보도록 하겠습니다.&lt;/p&gt;
+&lt;h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/ANOVA-python/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;분산분석(ANOVA)는 전체 그룹간의 평균값 차이가 통계적 의미가 있는지 판단하는데 유용한 도구 입니다. 하지만 정확히 어느 그룹의 평균값이 의미가 있는지는 알려주지 않습니다. 따라서 추가적인 &lt;strong&gt;사후분석(Post Hoc Analysis)&lt;/strong&gt; 이 필요합니다. 사후분석에 대해서는 다음 기회에 알아 보도록 하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>ANOVA</category><category>Python</category><category>statistics</category><category>통계분석</category><guid>https://partrita.github.io/posts/ANOVA-python/</guid><pubDate>Mon, 05 Mar 2018 23:21:32 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>ANOVA</category><category>Python</category><category>statistics</category><category>통계분석</category><guid>https://partrita.github.io/posts/ANOVA-python/</guid><pubDate>Mon, 05 Mar 2018 23:21:32 GMT</pubDate></item></channel></rss>

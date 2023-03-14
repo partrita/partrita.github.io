@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about API)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/api.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:38 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>BERN2 API로 Network graph 그려보기</title><link>https://partrita.github.io/posts/pubmedminer/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about API)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/api.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>BERN2 API로 Network graph 그려보기</title><link>https://partrita.github.io/posts/pubmedminer/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-개요"&gt;0. 개요&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#0.-%EA%B0%9C%EC%9A%94"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;고려대 DMIS Lab에서 공개한 BERN2 API를 살펴보다보니 기존의 &lt;code&gt;Biopython&lt;/code&gt;의 pmid(논문의 고유 ID) 검색 기능을 사용하면 여러 논문들의 관계를 시각화할 수 있지 않을까하는 생각이 들었습니다. 그래서 오랜만에 코드를 작성해보았습니다.&lt;/p&gt;
-&lt;h2 id="1.-코드의-구성"&gt;1. 코드의 구성&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#1.-%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;크게 3부분으로 구성되어 있습니다. 1. &lt;code&gt;Biopython&lt;/code&gt;을 사용해 pmid 목록 만들기. 2. 각 pmid에 해당하는 논문의 Abstract 부분을 BERN2 API로 biomedical entity 분석하기 3. &lt;code&gt;Networkx&lt;/code&gt; 를 사용해 네트워크 만들고 시각화하기&lt;/p&gt;
+&lt;h2 id="0.-%EA%B0%9C%EC%9A%94"&gt;0. 개요&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#0.-%EA%B0%9C%EC%9A%94"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;고려대 DMIS Lab에서 공개한 BERN2 API를 살펴보다보니 기존의 &lt;code&gt;Biopython&lt;/code&gt;의 pmid(논문의 고유 ID) 검색 기능을 사용하면 여러 논문들의 관계를 시각화할 수 있지 않을까하는 생각이 들었습니다. 그래서 오랜만에 코드를 작성해보았습니다.&lt;/p&gt;
+&lt;h2 id="1.-%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EC%84%B1"&gt;1. 코드의 구성&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#1.-%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EC%84%B1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;크게 3부분으로 구성되어 있습니다. 1. &lt;code&gt;Biopython&lt;/code&gt;을 사용해 pmid 목록 만들기. 2. 각 pmid에 해당하는 논문의 Abstract 부분을 BERN2 API로 biomedical entity 분석하기 3. &lt;code&gt;Networkx&lt;/code&gt; 를 사용해 네트워크 만들고 시각화하기&lt;/p&gt;
 &lt;p&gt;그리고 작성한 코드는 &lt;a href="https://github.com/partrita/pubmed-miner"&gt;github repo&lt;/a&gt;에 올려두었습니다.&lt;/p&gt;
-&lt;h3 id="1.1.-Biopython으로-Pubmed-검색하기"&gt;1.1. Biopython으로 Pubmed 검색하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#1.1.-Biopython%EC%9C%BC%EB%A1%9C-Pubmed-%EA%B2%80%EC%83%89%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 &lt;code&gt;Biopython&lt;/code&gt;의 &lt;code&gt;Entrez&lt;/code&gt;모듈을 사용해 주제문에 대한 pmid 목록을 만드는 함수 &lt;code&gt;get_pmid&lt;/code&gt;. 한번에 최대 10000개까지 할 수 있습니다. 너무 많이 그리고 빨리 요청할 경우 pubmed에서 IP ban을 맞을 수도 있어요.&lt;/p&gt;
+&lt;h3 id="1.1.-Biopython%EC%9C%BC%EB%A1%9C-Pubmed-%EA%B2%80%EC%83%89%ED%95%98%EA%B8%B0"&gt;1.1. Biopython으로 Pubmed 검색하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#1.1.-Biopython%EC%9C%BC%EB%A1%9C-Pubmed-%EA%B2%80%EC%83%89%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 &lt;code&gt;Biopython&lt;/code&gt;의 &lt;code&gt;Entrez&lt;/code&gt;모듈을 사용해 주제문에 대한 pmid 목록을 만드는 함수 &lt;code&gt;get_pmid&lt;/code&gt;. 한번에 최대 10000개까지 할 수 있습니다. 너무 많이 그리고 빨리 요청할 경우 pubmed에서 IP ban을 맞을 수도 있어요.&lt;/p&gt;
 &lt;h3 id="1.2.-BERN2-API"&gt;1.2. BERN2 API&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#1.2.-BERN2-API"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;BERN2 API를 사용해 biomedical entity 분석을 하는 함수 &lt;code&gt;query_pmid&lt;/code&gt;. &lt;a href="http://bern2.korea.ac.kr/"&gt;http://bern2.korea.ac.kr/&lt;/a&gt; 에 의하면 초당 한건이하로 처리하라고 되어있습니다.&lt;/p&gt;
-&lt;h3 id="1.3.-Networkx로-분석하기"&gt;1.3. Networkx로 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#1.3.-Networkx%EB%A1%9C-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;일단은 데이터를 정리하고 저장하는 것이 우선이기에 코드를 분리했고 이후에 설명하겠습니다.&lt;/p&gt;
+&lt;h3 id="1.3.-Networkx%EB%A1%9C-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;1.3. Networkx로 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#1.3.-Networkx%EB%A1%9C-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;일단은 데이터를 정리하고 저장하는 것이 우선이기에 코드를 분리했고 이후에 설명하겠습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -29,7 +29,7 @@
 &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"http://bern2.korea.ac.kr/pubmed"&lt;/span&gt;  &lt;span class="c1"&gt;# Remember 100 requests for 100 seconds&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_pmid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_list&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""&lt;/span&gt;
 &lt;span class="sd"&gt;    num_list should be below 10000&lt;/span&gt;
 &lt;span class="sd"&gt;    """&lt;/span&gt;
     &lt;span class="n"&gt;handle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Entrez&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;esearch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -94,7 +94,7 @@
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;entrez_query&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"What do want to search in PubMed? "&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;pmids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_pmid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;entrez_query&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"10"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# string is not a mistake&lt;/span&gt;
 &lt;span class="n"&gt;num_pmids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pmids&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"Number of search results is: &lt;/span&gt;&lt;span class="si"&gt;{num_pmids}&lt;/span&gt;&lt;span class="s2"&gt;!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"Number of search results is: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;num_pmids&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -135,7 +135,7 @@ Number of search results is: 10!
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_bern2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pmids&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"Shape of result table is: &lt;/span&gt;&lt;span class="si"&gt;{df.shape}&lt;/span&gt;&lt;span class="s2"&gt;."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"Shape of result table is: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -212,8 +212,7 @@ Number of search results is: 10!
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -275,8 +274,7 @@ Number of search results is: 10!
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -382,7 +380,8 @@ memory usage: 8.5+ KB
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="2.-Data-cleaning"&gt;2. Data cleaning&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#2.-Data-cleaning"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이제 전문지식이 조금 필요한 시점입니다. 왜냐하면 biomedical entity들은 동일한 것이지만 다양한 이름을 가진것들이 많기 때문입니다.&lt;/p&gt;
 &lt;p&gt;위 그림의 예를 들면 CXCL8은 IL-8(interleukin-8)과 동일한 것이기 때문입니다. 또한 첫글자만 대문자인 entity들이 있기 때문에 아래와 같이 하드코딩으로 처리해줍니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;pmid가 많을 수록 Data cleaning이 힘들겁니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;pmid가 많을 수록 Data cleaning이 힘들겁니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;
@@ -483,7 +482,7 @@ memory usage: 8.5+ KB
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.-Networkx-를-사용해-분석하기"&gt;3. Networkx 를 사용해 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.-Networkx-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Networkx&lt;/code&gt;라는 도구를 사용하면 앞에서 만든 데이터를 손쉽게 분석 할 수 있습니다. 다음 명령어는 &lt;code&gt;pandas&lt;/code&gt; dataframe을 노드와 엣지로 구성된 네트워크 graph 형식으로 변환해 줍니다.&lt;/p&gt;
+&lt;h2 id="3.-Networkx-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;3. Networkx 를 사용해 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.-Networkx-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Networkx&lt;/code&gt;라는 도구를 사용하면 앞에서 만든 데이터를 손쉽게 분석 할 수 있습니다. 다음 명령어는 &lt;code&gt;pandas&lt;/code&gt; dataframe을 노드와 엣지로 구성된 네트워크 graph 형식으로 변환해 줍니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -525,7 +524,7 @@ memory usage: 8.5+ KB
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="3.1.-Degree가-낮은-노드-제거하기"&gt;3.1. Degree가 낮은 노드 제거하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.1.-Degree%EA%B0%80-%EB%82%AE%EC%9D%80-%EB%85%B8%EB%93%9C-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;노드에 연결된 엣지(edge)의 수를 degree라고 합니다. 우리가 만든 데이터의 node의 degree는 대부분은 1이하 일 것입니다. 그리고 그렇게 낮은 degree의 노드들은 의미가 없으며 시각화하는데 불편하기만 하니 제거합니다. 일단은 데이터들의 degree가 어떤지 확인부터 해봅시다.&lt;/p&gt;
+&lt;h3 id="3.1.-Degree%EA%B0%80-%EB%82%AE%EC%9D%80-%EB%85%B8%EB%93%9C-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0"&gt;3.1. Degree가 낮은 노드 제거하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.1.-Degree%EA%B0%80-%EB%82%AE%EC%9D%80-%EB%85%B8%EB%93%9C-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;노드에 연결된 엣지(edge)의 수를 degree라고 합니다. 우리가 만든 데이터의 node의 degree는 대부분은 1이하 일 것입니다. 그리고 그렇게 낮은 degree의 노드들은 의미가 없으며 시각화하는데 불편하기만 하니 제거합니다. 일단은 데이터들의 degree가 어떤지 확인부터 해봅시다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -556,8 +555,7 @@ memory usage: 8.5+ KB
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -632,8 +630,7 @@ memory usage: 8.5+ KB
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -671,8 +668,7 @@ memory usage: 8.5+ KB
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -728,8 +724,7 @@ memory usage: 8.5+ KB
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -763,7 +758,7 @@ memory usage: 8.5+ KB
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.2.-간단한-시각화하기"&gt;3.2. 간단한 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.2.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Networkx&lt;/code&gt;에서 제공되는 &lt;code&gt;draw()&lt;/code&gt; 를 사용해 아래와 같이 그림을 그려봅니다.&lt;/p&gt;
+&lt;h2 id="3.2.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;3.2. 간단한 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.2.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Networkx&lt;/code&gt;에서 제공되는 &lt;code&gt;draw()&lt;/code&gt; 를 사용해 아래와 같이 그림을 그려봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -811,7 +806,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 그림을 살펴보면 pmid의 노드들이 특정 entity로 연결되어 있는 모습을 확인 할 수 있습니다.&lt;/p&gt;
-&lt;h3 id="3.3.-Betweeness-centrality와-Community-감지-시각화하기"&gt;3.3. Betweeness centrality와 Community 감지 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.3.-Betweeness-centrality%EC%99%80-Community-%EA%B0%90%EC%A7%80-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 Betweeness centrality는 네트워크에서 모든 노드를 쌍으로 만들고 해당 노드를 반드시 지나가야하는지 확인하는 평가법입니다. 이 값이 중요한 이유는 해당 노드가 사라졌을때 전체 네트워크의 흐름이 영향을 받는다는 의미이기 때문이죠.&lt;/p&gt;
+&lt;h3 id="3.3.-Betweeness-centrality%EC%99%80-Community-%EA%B0%90%EC%A7%80-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;3.3. Betweeness centrality와 Community 감지 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.3.-Betweeness-centrality%EC%99%80-Community-%EA%B0%90%EC%A7%80-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 Betweeness centrality는 네트워크에서 모든 노드를 쌍으로 만들고 해당 노드를 반드시 지나가야하는지 확인하는 평가법입니다. 이 값이 중요한 이유는 해당 노드가 사라졌을때 전체 네트워크의 흐름이 영향을 받는다는 의미이기 때문이죠.&lt;/p&gt;
 &lt;p&gt;그리고 community 감지는 일종의 클러스터링으로 연결된 노드와 엣지간의 연결 밀도가 높은 집단을 서로 묶어 분석하는 것입니다. 
 분석에 필요한 값은 아래 코드를 통해 계산합니다.&lt;/p&gt;
 
@@ -873,7 +868,7 @@ memory usage: 8.5+ KB
 
 &lt;span class="c1"&gt;# Title/legend&lt;/span&gt;
 &lt;span class="n"&gt;font&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"color"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"k"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"fontweight"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"bold"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"fontsize"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{entrez_query}&lt;/span&gt;&lt;span class="s2"&gt; network"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;entrez_query&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; network"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 
 &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -928,14 +923,14 @@ memory usage: 8.5+ KB
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="4.-마치며"&gt;4. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이번 포스팅은 &lt;code&gt;Biopython&lt;/code&gt;과 &lt;code&gt;BERN2&lt;/code&gt;를 사용해 특정 검색어에 대한 Biomedical entity 데이터를 모으고 네트워크 그래프를 그려보는 작업을 해보았습니다. 예시를 들기 위해 아주 단순하게 분석해보았는데 만약 10000개의 pmid를 모아서 해본다면 실제로 쓸모있는 결과를 얻을 수 있을 것 같습니다.&lt;/p&gt;
+&lt;h2 id="4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;4. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이번 포스팅은 &lt;code&gt;Biopython&lt;/code&gt;과 &lt;code&gt;BERN2&lt;/code&gt;를 사용해 특정 검색어에 대한 Biomedical entity 데이터를 모으고 네트워크 그래프를 그려보는 작업을 해보았습니다. 예시를 들기 위해 아주 단순하게 분석해보았는데 만약 10000개의 pmid를 모아서 해본다면 실제로 쓸모있는 결과를 얻을 수 있을 것 같습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>API</category><category>BERN2</category><category>Biopython</category><category>Networkx</category><category>Python</category><category>tutorial</category><category>바이오파이썬</category><guid>https://partrita.github.io/posts/pubmedminer/</guid><pubDate>Mon, 25 Apr 2022 23:22:12 GMT</pubDate></item><item><title>카카오의 REST API 사용하기</title><link>https://partrita.github.io/posts/kakao_api/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;</description><category>API</category><category>BERN2</category><category>Biopython</category><category>Networkx</category><category>Python</category><category>tutorial</category><category>바이오파이썬</category><guid>https://partrita.github.io/posts/pubmedminer/</guid><pubDate>Mon, 25 Apr 2022 23:22:12 GMT</pubDate></item><item><title>카카오의 REST API 사용하기</title><link>https://partrita.github.io/posts/kakao_api/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="0.-카카오-비전-API"&gt;0. 카카오 비전 API&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#0.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;카카오에서 최근에 흥미로운 서비스를 시작했습니다. 컴퓨터 비전(Computer Vision)으로 이미지 분석을 해주는 API를 &lt;strong&gt;카카오 비전&lt;/strong&gt;을 공개한 것입니다. 카카오 비전은 이미지를 분석해서 콘텐츠 형태와 의미를 이해하고, 이미지를 활용할 수 있게 도와주는 API입니다. 현재 제공되는 API의 종류는 다음과 같습니다.&lt;/p&gt;
+&lt;h2 id="0.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API"&gt;0. 카카오 비전 API&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#0.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;카카오에서 최근에 흥미로운 서비스를 시작했습니다. 컴퓨터 비전(Computer Vision)으로 이미지 분석을 해주는 API를 &lt;strong&gt;카카오 비전&lt;/strong&gt;을 공개한 것입니다. 카카오 비전은 이미지를 분석해서 콘텐츠 형태와 의미를 이해하고, 이미지를 활용할 수 있게 도와주는 API입니다. 현재 제공되는 API의 종류는 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;얼굴 검출&lt;/li&gt;
 &lt;li&gt;상품 검출&lt;/li&gt;
@@ -943,20 +938,20 @@ memory usage: 8.5+ KB
 &lt;li&gt;성인 이미지 판별&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;얼굴 인식은 컴퓨터 비전에서 특별히 새로운 기술은 아닙니다만, 저는 카카오에서 공개한 API의 성능을 한번 확인하고자 시도해 봤습니다. 카카오 비전에 대한 자세한 것은 &lt;a href="https://developers.kakao.com/docs/restapi/vision"&gt;이곳&lt;/a&gt;를 참고하세요.&lt;/p&gt;
-&lt;h2 id="1.-카카오-비전-API-준수사항"&gt;1. 카카오 비전 API 준수사항&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#1.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API-%EC%A4%80%EC%88%98%EC%82%AC%ED%95%AD"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;API 사용시 다음과 같은 사항을 준수해야 합니다.&lt;/p&gt;
+&lt;h2 id="1.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API-%EC%A4%80%EC%88%98%EC%82%AC%ED%95%AD"&gt;1. 카카오 비전 API 준수사항&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#1.-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%B9%84%EC%A0%84-API-%EC%A4%80%EC%88%98%EC%82%AC%ED%95%AD"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;API 사용시 다음과 같은 사항을 준수해야 합니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;서버에서 호출하는 경우 REST API 키를 사용해 호출합니다.&lt;/li&gt;
 &lt;li&gt;모든 API는 file 또는 image_url 중 하나의 값을 지정해야 합니다.&lt;/li&gt;
 &lt;li&gt;file에 업로드되는 이미지와 image_url에 지정되는 이미지는 png 또는 jpg 포맷만 지원합니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="2.-활용-예제-살펴보기"&gt;2. 활용 예제 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#2.-%ED%99%9C%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;카카오에서 간단한 &lt;code&gt;파이썬&lt;/code&gt; 예제 코드를 제공하고 있습니다. 저는 거기에서 &lt;strong&gt;얼굴을 추출해 모자이크 처리하는 예제&lt;/strong&gt;를 테스트 해보겠습니다. 작동원리를 간단하게 서술해 보면, 먼저 카카오 API로 사진상의 얼굴의 좌표를 인식하고 &lt;code&gt;pillow&lt;/code&gt; 라이브러리를 이용해서 얼굴 부분의 이미지를 잘라냅니다. 그리고 리사이즈를 한뒤 원본 사진에 다시 붙여(모자이크처리) 넣습니다.&lt;/p&gt;
+&lt;h2 id="2.-%ED%99%9C%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;2. 활용 예제 살펴보기&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#2.-%ED%99%9C%EC%9A%A9-%EC%98%88%EC%A0%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;카카오에서 간단한 &lt;code&gt;파이썬&lt;/code&gt; 예제 코드를 제공하고 있습니다. 저는 거기에서 &lt;strong&gt;얼굴을 추출해 모자이크 처리하는 예제&lt;/strong&gt;를 테스트 해보겠습니다. 작동원리를 간단하게 서술해 보면, 먼저 카카오 API로 사진상의 얼굴의 좌표를 인식하고 &lt;code&gt;pillow&lt;/code&gt; 라이브러리를 이용해서 얼굴 부분의 이미지를 잘라냅니다. 그리고 리사이즈를 한뒤 원본 사진에 다시 붙여(모자이크처리) 넣습니다.&lt;/p&gt;
 &lt;p&gt;예제로 사용할 사진은 아래와 같이 준비했습니다.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;원숭이 사진  &lt;/li&gt;
+&lt;li&gt;원숭이 사진&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/HIp4WAQ.jpg" alt="monkey"&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;단체사진  &lt;/li&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;단체사진&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/9n0fVoI.jpg" alt="peoples"&gt;&lt;/p&gt;
 &lt;p&gt;사용한 코드는 아래와 같습니다. 몇가지 설명을 덧붙이자면,&lt;/p&gt;
@@ -967,7 +962,7 @@ memory usage: 8.5+ KB
 &lt;li&gt;모자이크 처리된 파일은 파일명에 &lt;em&gt;mosaic_&lt;/em&gt;를 붙여서 생성됩니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;코드를 &lt;code&gt;kakao_api.py&lt;/code&gt;로 저장하고 터미널에서&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python kakao_api.py -f ./.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;kakao_api.py&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;./.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;라고 입력합니다.&lt;/p&gt;
 
@@ -1065,16 +1060,16 @@ memory usage: 8.5+ KB
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.-결과-확인"&gt;3. 결과 확인&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#3.-%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;원숭이 사진  &lt;/li&gt;
+&lt;h2 id="3.-%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8"&gt;3. 결과 확인&lt;a class="anchor-link" href="https://partrita.github.io/posts/kakao_api/#3.-%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;원숭이 사진&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/SMNZSM4.jpg" alt=""&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;단체사진  &lt;/li&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;단체사진&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/DwBjyNp.jpg" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;얼굴을 인식해서 모자이크 처리가 되는것을 볼수 있습니다. 첫 번째 원숭이 사진은 물론이고 단체사진의 얼굴도 인식을 잘 하는 것을 확인할 수 있습니다. 물론 모든 사진에서 성공적인 결과를 얻지는 못했습니다만, 얼굴 인식의 경우는 상당히 잘 작동합니다. 다른 API들도 테스트를 해보니 상품 검출 API는 아직 인식률과 오작동이 많습니다. 아마도 기술적으로 좀 더 어렵기 때문이겠죠. 테스트중에 알아낸 또 다른것은 사진 용량의 제한입니다. 사진 파일의 용량이 10MB 이상이면 에러메세지가 나오는데 아마도 제한을 걸어둔것 같습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>API</category><category>kakao</category><category>Python</category><category>RESTful</category><category>Web</category><guid>https://partrita.github.io/posts/kakao_api/</guid><pubDate>Fri, 16 Mar 2018 06:35:54 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>API</category><category>kakao</category><category>Python</category><category>RESTful</category><category>Web</category><guid>https://partrita.github.io/posts/kakao_api/</guid><pubDate>Fri, 16 Mar 2018 06:35:54 GMT</pubDate></item></channel></rss>

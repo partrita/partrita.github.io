@@ -50,9 +50,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://partrita.github.io/posts/tensorflow-deeplearning/">
 <meta property="og:description" content="출처: 다카이 에츠지, 텐서플로로 시작하는 딥러닝, Jpub, 2017
 시작하며¶텐서플로로 시작하는 딥러닝이라는 책을 읽고 복습하기 위한 jupyter notebook입니다. 마음대로 정리한 것이다 보니, 설명은 충분하지 않습니다. 구체적인 내용은 책을 읽어보시기 바랍니다.
+
 파이썬과 텐서플로의 최근 버전에 맞추어 코드를 조금씩 수정하였습니다.
 
-1장. 텐서">
+1장. 텐">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-02-26T08:21:32+09:00">
 <meta property="article:tag" content="deeplearning">
@@ -66,10 +67,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -130,23 +132,22 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>출처: <em>다카이 에츠지, 텐서플로로 시작하는 딥러닝, Jpub, 2017</em></p>
-<h2 id="시작하며">시작하며<a class="anchor-link" href="#%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B0">¶</a>
+<h2 id="%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B0">시작하며<a class="anchor-link" href="#%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B0">¶</a>
 </h2>
 <p><strong>텐서플로로 시작하는 딥러닝</strong>이라는 책을 읽고 복습하기 위한 jupyter notebook입니다. 마음대로 정리한 것이다 보니, 설명은 충분하지 않습니다. 구체적인 내용은 <a href="http://jpub.tistory.com/695">책</a>을 읽어보시기 바랍니다.</p>
 <blockquote>
 <p>파이썬과 텐서플로의 최근 버전에 맞추어 코드를 조금씩 수정하였습니다.</p>
 </blockquote>
-<h2 id="1장.-텐서플로-입문">1장. 텐서플로 입문<a class="anchor-link" href="#1%EC%9E%A5.-%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%9E%85%EB%AC%B8">¶</a>
+<h2 id="1%EC%9E%A5.-%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%9E%85%EB%AC%B8">1장. 텐서플로 입문<a class="anchor-link" href="#1%EC%9E%A5.-%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%9E%85%EB%AC%B8">¶</a>
 </h2>
 <p>텐서플로(TensorFlow)는 구글이 오픈 소스로 공개한 머신러닝 라이브러리 입니다.</p>
-<h3 id="머신러닝의-3단계">머신러닝의 3단계<a class="anchor-link" href="#%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%98-3%EB%8B%A8%EA%B3%84">¶</a>
+<h3 id="%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%98-3%EB%8B%A8%EA%B3%84">머신러닝의 3단계<a class="anchor-link" href="#%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%98-3%EB%8B%A8%EA%B3%84">¶</a>
 </h3>
 <p>머신러닝은 데이터 속에 있는 <strong>수학적 규칙</strong>을 컴퓨터로 발견해 내는 방법입니다. 여기서는 다음의 3단계에 걸쳐서 머신러닝을 수행합니다.</p>
 <ol>
@@ -154,7 +155,7 @@ navbar-dark bg-dark
 <li>수식에 포함된 파라미터를 판단하는 오차 함수를 준비한다.</li>
 <li>오차 함수를 최소화 할 수 있도록 파라미터 값을 결정한다.</li>
 </ol>
-<h3 id="텐서플로-예제">텐서플로 예제<a class="anchor-link" href="#%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%98%88%EC%A0%9C">¶</a>
+<h3 id="%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%98%88%EC%A0%9C">텐서플로 예제<a class="anchor-link" href="#%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C-%EC%98%88%EC%A0%9C">¶</a>
 </h3>
 <p>먼저 필요한 라이브러리를 불러옵니다. 여기서는 <strong>tensorflow</strong>와 수치계산에 필요한 <strong>Numpy</strong>와 시각화를 위한 <strong>matplotlib</strong>을 추가로 사용했습니다.</p>
 
@@ -203,37 +204,38 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="문제-설명">문제 설명<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85">¶</a>
+<h4 id="%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85">문제 설명<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85">¶</a>
 </h4>
 <p>월별 평균 기온을 예측하는 문제를 텐서플로를 사용해 풀어 보겠습니다. 다음은 1년간 월별 평균 기온입니다.</p>
 <table>
 <thead><tr>
 <th>1월</th>
-<th>2월</th>
-<th>3월</th>
-<th>4월</th>
-<th>5월</th>
-<th>6월</th>
-<th>7월</th>
-<th>8월</th>
-<th>9월</th>
-<th>10월</th>
-<th>11월</th>
-<th>12월</th>
+  <th>2월</th>
+  <th>3월</th>
+  <th>4월</th>
+  <th>5월</th>
+  <th>6월</th>
+  <th>7월</th>
+  <th>8월</th>
+  <th>9월</th>
+  <th>10월</th>
+  <th>11월</th>
+  <th>12월</th>
 </tr></thead>
 <tbody><tr>
 <td>5.2</td>
-<td>5.7</td>
-<td>8.6</td>
-<td>14.9</td>
-<td>18.2</td>
-<td>20.4</td>
-<td>25.5</td>
-<td>26.4</td>
-<td>22.8</td>
-<td>17.5</td>
-<td>11.1</td>
-<td>6.6</td>
+  <td>5.7</td>
+  <td>8.6</td>
+  <td>14.9</td>
+  <td>18.2</td>
+  <td>20.4</td>
+  <td>25.5</td>
+  <td>26.4</td>
+  <td>22.8</td>
+  <td>17.5</td>
+  <td>11.1</td>
+  <td>6.6</td>
+  <td></td>
 </tr></tbody>
 </table>
 <p>이 데이터를 기반으로 내년의 월별 평균 기온을 예측하려면 어떻게 해야 할까요?</p>
@@ -295,7 +297,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>그림에서 볼 수 있듯이, 월별 평균 기온에서는 규칙성이 있어 보입니다. 이처럼 주어진 데이터에서 법칙을 발견한다면 내년의 기온을 계산할 수 있을 것입니다. 아래의 코드는 텐서플로를 사용해 규칙을 찾는 방법입니다.</p>
-<h4 id="주요-용어-설명">주요 용어 설명<a class="anchor-link" href="#%EC%A3%BC%EC%9A%94-%EC%9A%A9%EC%96%B4-%EC%84%A4%EB%AA%85">¶</a>
+<h4 id="%EC%A3%BC%EC%9A%94-%EC%9A%A9%EC%96%B4-%EC%84%A4%EB%AA%85">주요 용어 설명<a class="anchor-link" href="#%EC%A3%BC%EC%9A%94-%EC%9A%A9%EC%96%B4-%EC%84%A4%EB%AA%85">¶</a>
 </h4>
 <ul>
 <li>
@@ -303,7 +305,7 @@ navbar-dark bg-dark
 <li>
 <strong>w</strong> 최적화할 값입니다. 이과 같은 변수를 <strong>variable</strong>이라고 합니다.</li>
 <li>
-<strong>y</strong>는 placeholder와 variable로부터 계산된 값입니다. </li>
+<strong>y</strong>는 placeholder와 variable로부터 계산된 값입니다.</li>
 </ul>
 </div>
 </div>
@@ -456,9 +458,9 @@ Step: 100000, Loss: 22.416885
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>얻어진 결과를 시각화하였습니다. 점으로 찍혀진 실제 데이터 사이로 예측 곡선이 지나가는 것을 확인 할 수 있습니다. 예측선을 통해서 온도를 예상할 수 있습니다. 이렇게 텐서플로의 기본적인 과정을 살펴보았습니다. 앞으로도 머신러닝의 3단계를 잘 기억해 두기 바랍니다.</p>
-<h2 id="2장.-분류-알고리즘의-기초">2장. 분류 알고리즘의 기초<a class="anchor-link" href="#2%EC%9E%A5.-%EB%B6%84%EB%A5%98-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EA%B8%B0%EC%B4%88">¶</a>
+<h2 id="2%EC%9E%A5.-%EB%B6%84%EB%A5%98-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EA%B8%B0%EC%B4%88">2장. 분류 알고리즘의 기초<a class="anchor-link" href="#2%EC%9E%A5.-%EB%B6%84%EB%A5%98-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EA%B8%B0%EC%B4%88">¶</a>
 </h2>
-<h3 id="이항-분류기">이항 분류기<a class="anchor-link" href="#%EC%9D%B4%ED%95%AD-%EB%B6%84%EB%A5%98%EA%B8%B0">¶</a>
+<h3 id="%EC%9D%B4%ED%95%AD-%EB%B6%84%EB%A5%98%EA%B8%B0">이항 분류기<a class="anchor-link" href="#%EC%9D%B4%ED%95%AD-%EB%B6%84%EB%A5%98%EA%B8%B0">¶</a>
 </h3>
 <p>데이터를 두 종류로 분류하는 것을 <strong>이항 분류기(binary classifier)</strong> 라고 합니다. 다시한번 머신러닝 모델의 3단계에 따라 단계적으로 알아보겠습니다.</p>
 <p>여기서는 간단한 예로 <em>바이러스 감염 확률</em>을 계산해보도록 하겠습니다. 주어진 데이터를 <em>감염되었다/감염되지 않았다</em>로 분류하겠습니다.
@@ -512,8 +514,7 @@ Step: 100000, Loss: 22.416885
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -554,8 +555,7 @@ Step: 100000, Loss: 22.416885
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -783,7 +783,7 @@ Step: 20000, Loss: 5.439410, Accuracy: 0.971429
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>농담(진하면 감염자)은 확률을 나타냅니다. 그래서 가상의 선의 경계부근에서 감염/비감염 데이터가 혼재되어 있다는 것을 알 수 있습니다.</p>
-<h3 id="테스트-세트를-통한-검증">테스트 세트를 통한 검증<a class="anchor-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%84%B8%ED%8A%B8%EB%A5%BC-%ED%86%B5%ED%95%9C-%EA%B2%80%EC%A6%9D">¶</a>
+<h3 id="%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%84%B8%ED%8A%B8%EB%A5%BC-%ED%86%B5%ED%95%9C-%EA%B2%80%EC%A6%9D">테스트 세트를 통한 검증<a class="anchor-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%84%B8%ED%8A%B8%EB%A5%BC-%ED%86%B5%ED%95%9C-%EA%B2%80%EC%A6%9D">¶</a>
 </h3>
 <p>머신러닝에서 트레이닝 세트에 대한 정확도를 계산하는 것은 그다지 의미가 없습니다. 중요한것은 미지의 데이터에 대한 예측 정확도를 향상시키는 것이기 때문입니다.</p>
 <p>다수의 파라미터를 포함하는 모델을 사용하면 트레이닝 데이터에 대한 정확도는 높은 반면, 미지의 데이터에 대한 예측은 정확하지 못한 <strong>과적합(overfitting)</strong> 이 일어날 수 있습니다.</p>
@@ -898,9 +898,9 @@ Step: 20000, Loss: 5.439410, Accuracy: 0.971429
 <p>임의로 만든 난수 데이터이기 때문에 차이가 적을 수 밖에 없습니다.</p>
 </blockquote>
 <p>앞서 설명했듯 머신러닝으로 얻어진 <strong>모델의 성능</strong>은 <strong>테스트 데이터에 대한 정확도</strong>로 판정해야 한다는 것을 기억하세요.</p>
-<h2 id="3장.-단층-신경망을-이용한-분류">3장. 단층 신경망을 이용한 분류<a class="anchor-link" href="#3%EC%9E%A5.-%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B6%84%EB%A5%98">¶</a>
+<h2 id="3%EC%9E%A5.-%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B6%84%EB%A5%98">3장. 단층 신경망을 이용한 분류<a class="anchor-link" href="#3%EC%9E%A5.-%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B6%84%EB%A5%98">¶</a>
 </h2>
-<h3 id="단층-신경망에-대한-설명">단층 신경망에 대한 설명<a class="anchor-link" href="#%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85">¶</a>
+<h3 id="%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85">단층 신경망에 대한 설명<a class="anchor-link" href="#%EB%8B%A8%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%97%90-%EB%8C%80%ED%95%9C-%EC%84%A4%EB%AA%85">¶</a>
 </h3>
 <p><img src="http://www.inbi.ai/img/case_study/chapter4/technology-14.png" alt="단층신경망"></p>
 <center>figure from [inbi](http://www.inbi.ai/case_study.html) </center>
@@ -959,8 +959,7 @@ Step: 20000, Loss: 5.439410, Accuracy: 0.971429
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -1001,8 +1000,7 @@ Step: 20000, Loss: 5.439410, Accuracy: 0.971429
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1145,7 +1143,7 @@ Step: 1000, Loss: 19.15259552001953, Accuracy: 0.9076923131942749
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>바이러스 감염확률을 농담으로 표현한 것으로 은닉계층에 의해 4개의 영역으로 분할되어 있을 알 수 있습니다. 오른쪽 위의 영역은 확률이 50% 이상으로 되고, 그 옆의 영역은 50%이하라고 생각할 수 있습니다.</p>
 <p>이렇게 해서 단일 신경망의 은닉 계층 효과를 구체적으로 확인 할 수 있었습니다. 그 다음으로 신경망의 노드 개수와 활성화 함수 변경 효과에 대해서 알아 보겠습니다.</p>
-<h3 id="3.2-노드의-개수를-늘렸을-때의-효과">3.2 노드의 개수를 늘렸을 때의 효과<a class="anchor-link" href="#3.2-%EB%85%B8%EB%93%9C%EC%9D%98-%EA%B0%9C%EC%88%98%EB%A5%BC-%EB%8A%98%EB%A0%B8%EC%9D%84-%EB%95%8C%EC%9D%98-%ED%9A%A8%EA%B3%BC">¶</a>
+<h3 id="3.2-%EB%85%B8%EB%93%9C%EC%9D%98-%EA%B0%9C%EC%88%98%EB%A5%BC-%EB%8A%98%EB%A0%B8%EC%9D%84-%EB%95%8C%EC%9D%98-%ED%9A%A8%EA%B3%BC">3.2 노드의 개수를 늘렸을 때의 효과<a class="anchor-link" href="#3.2-%EB%85%B8%EB%93%9C%EC%9D%98-%EA%B0%9C%EC%88%98%EB%A5%BC-%EB%8A%98%EB%A0%B8%EC%9D%84-%EB%95%8C%EC%9D%98-%ED%9A%A8%EA%B3%BC">¶</a>
 </h3>
 <p>노드의 개수를 늘리는 것은 그림에서 영역이 분할되는 개수를 늘리는것과 같습니다. 아래 코드를 실행해 봅시다.</p>
 
@@ -1239,7 +1237,7 @@ Step: 1000, Loss: 19.15259552001953, Accuracy: 0.9076923131942749
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>결과를 보면 색이 짙은 부분의 모양이 변한것을 알 수 있습니다. 바이러스에 감염된 데이터를 보다 정확하게 감싸고 있습니다. 이와 같이 노드의 개수를 증가시킴으로 보다 복잡한 데이터에 대응할 수 있게 됩니다.</p>
-<h3 id="3.3-활성화-함수를-변경-할-때">3.3 활성화 함수를 변경 할 때<a class="anchor-link" href="#3.3-%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%A8%EC%88%98%EB%A5%BC-%EB%B3%80%EA%B2%BD-%ED%95%A0-%EB%95%8C">¶</a>
+<h3 id="3.3-%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%A8%EC%88%98%EB%A5%BC-%EB%B3%80%EA%B2%BD-%ED%95%A0-%EB%95%8C">3.3 활성화 함수를 변경 할 때<a class="anchor-link" href="#3.3-%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%A8%EC%88%98%EB%A5%BC-%EB%B3%80%EA%B2%BD-%ED%95%A0-%EB%95%8C">¶</a>
 </h3>
 <p>신경망에서 들어오는 입력신호의 총합을 출력신호로 변환하는 함수를 활성화함수(activation function)라고 합니다. 활성화 함수를 기존의 <strong>하이퍼볼릭 탄젠트</strong>에서 <strong>ReLU(정규화 선형 함수;Rectufued Linear Unit)</strong>로 변경해보겠습니다.</p>
 
@@ -1332,10 +1330,10 @@ Step: 1000, Loss: 19.15259552001953, Accuracy: 0.9076923131942749
 <blockquote>
 <p>다수의 파라미터를 갖는 신경망에서는  ReLU가 최적화가 더 잘 이루어집니다.</p>
 </blockquote>
-<h3 id="3.3-다층-신경망으로의-확장">3.3 다층 신경망으로의 확장<a class="anchor-link" href="#3.3-%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%95%EC%9E%A5">¶</a>
+<h3 id="3.3-%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%95%EC%9E%A5">3.3 다층 신경망으로의 확장<a class="anchor-link" href="#3.3-%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%95%EC%9E%A5">¶</a>
 </h3>
 <p>지금까지는 은닉 계층이 하나인 단층 신경망에 대해 알아보았습니다. 다음 단계로 은닉 계층을 증가시킨 다층 신경망을 알아보겠습니다.</p>
-<h4 id="다층-신경망을-써야-하는-이유">다층 신경망을 써야 하는 이유<a class="anchor-link" href="#%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%8D%A8%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0">¶</a>
+<h4 id="%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%8D%A8%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0">다층 신경망을 써야 하는 이유<a class="anchor-link" href="#%EB%8B%A4%EC%B8%B5-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%84-%EC%8D%A8%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0">¶</a>
 </h4>
 <p>단층 신경망을 이용해 아래 그림과 같은 데이터를 제대로 분류할 수 없기 때문입니다.</p>
 
@@ -1546,15 +1544,15 @@ Step: 5000, Loss: 24.682444, Accuracy: 0.941667
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>그림에서 볼 수 있듯이 두 개의 신경망을 구성함으로서 데이터를 제대로 분류 할 수 있는것을 볼 수 있습니다. 이제까지 예시들은 설명을 위한 간단한 것으로 앞으로 살펴볼 복잡한 데이터에서는 이것만으로 충분하지 않습니다.</p>
-<h2 id="4장.-합성곱-필터(Convolution-Filter)를-이용한-이미지분류">4장. 합성곱 필터(Convolution Filter)를 이용한 이미지분류<a class="anchor-link" href="#4%EC%9E%A5.-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0(Convolution-Filter)%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%B6%84%EB%A5%98">¶</a>
+<h2 id="4%EC%9E%A5.-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0(Convolution-Filter)%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%B6%84%EB%A5%98">4장. 합성곱 필터(Convolution Filter)를 이용한 이미지분류<a class="anchor-link" href="#4%EC%9E%A5.-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0(Convolution-Filter)%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%B6%84%EB%A5%98">¶</a>
 </h2>
-<h3 id="합성곱-필터">합성곱 필터<a class="anchor-link" href="#%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0">¶</a>
+<h3 id="%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0">합성곱 필터<a class="anchor-link" href="#%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0">¶</a>
 </h3>
 <p>구체적인 내용은 다음 <a href="http://excelsior-cjh.tistory.com/79">링크</a>에 정리가 잘 되어 있습니다.</p>
 <blockquote>
 <p>간단하게 말하자면 입력 데이터의 특징만 추려내는 방법이라고 할 수 있겠습니다.</p>
 </blockquote>
-<h3 id="4.3-합성곱-필터를-이용한-필기체-분류">4.3 합성곱 필터를 이용한 필기체 분류<a class="anchor-link" href="#4.3-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%95%84%EA%B8%B0%EC%B2%B4-%EB%B6%84%EB%A5%98">¶</a>
+<h3 id="4.3-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%95%84%EA%B8%B0%EC%B2%B4-%EB%B6%84%EB%A5%98">4.3 합성곱 필터를 이용한 필기체 분류<a class="anchor-link" href="#4.3-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%95%84%EA%B8%B0%EC%B2%B4-%EB%B6%84%EB%A5%98">¶</a>
 </h3>
 <p>단층 합성곱 필터(CNN)를 사용해 <strong>MNIST</strong> 데이터를 분석해보도록 하겠습니다.</p>
 
@@ -1836,7 +1834,7 @@ Step: 4000, Loss: 699.803589, Accuracy: 0.981300
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>각각의 이미지 위에 있는 숫자는 예측/정답을 나타내고 오른쪽 그래프는 각각의 확률을 나타내고 있습니다. 결과를 보면 정말 엉뚱하게 예측한 값도 있는 반면, 사람이 판단하기에도 애매한 숫자도 보입니다.</p>
-<h2 id="5장.-다층-합성곱-필터-신경망">5장. 다층 합성곱 필터 신경망<a class="anchor-link" href="#5%EC%9E%A5.-%EB%8B%A4%EC%B8%B5-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0-%EC%8B%A0%EA%B2%BD%EB%A7%9D">¶</a>
+<h2 id="5%EC%9E%A5.-%EB%8B%A4%EC%B8%B5-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0-%EC%8B%A0%EA%B2%BD%EB%A7%9D">5장. 다층 합성곱 필터 신경망<a class="anchor-link" href="#5%EC%9E%A5.-%EB%8B%A4%EC%B8%B5-%ED%95%A9%EC%84%B1%EA%B3%B1-%ED%95%84%ED%84%B0-%EC%8B%A0%EA%B2%BD%EB%A7%9D">¶</a>
 </h2>
 <p>드디어 합성곱 신경망의 전체 구조를 완성 시켜보겠습니다. 이전 장에서 합성곱 필터 -&gt; 풀링 계층 -&gt; 전 결합층 -&gt; 소프트맥스 함수라는 과정을 통해 98%의 정확도를 달성했는데, 이번에는 합성곱 필터를 다층화한 CNN을 구성해서 얼마나 정확한 학습을 하는지 확인해 보겠습니다.</p>
 
@@ -1959,11 +1957,10 @@ Step: 4000, Loss: 461.817566, Accuracy: 0.985200
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>아주 큰 차이는 아니지만, 다중 CNN 필터를 사용하면 0.4%의 정확도가 증가했습니다.</p>
-<h2 id="마치며">마치며<a class="anchor-link" href="#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
+<h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0">마치며<a class="anchor-link" href="#%EB%A7%88%EC%B9%98%EB%A9%B0">¶</a>
 </h2>
 <p>책 <strong>텐서플로로 시작하는 딥러닝</strong>은 두껍지는 않지만 딥러닝의 개념을 설명하는데 많은 노력을 기울이고 있습니다. 쉬운 예시와 수학적 증명은 저와 같은 초보자가 감을 잡는데 도움을 줍니다. 딥러닝과 텐서플로를 이제 공부하려고 한다면 한번쯤 읽어 보시는것을 추천드립니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -1994,7 +1991,7 @@ Step: 4000, Loss: 461.817566, Accuracy: 0.985200
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -2005,9 +2002,7 @@ Step: 4000, Loss: 461.817566, Accuracy: 0.985200
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

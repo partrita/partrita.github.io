@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about uplift)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/uplift.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 업리프트 모델링</title><link>https://partrita.github.io/posts/python-uplift/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about uplift)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/uplift.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:35 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>파이썬으로 업리프트 모델링</title><link>https://partrita.github.io/posts/python-uplift/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;출처: &lt;em&gt;아리가 미치아키, 머신러닝 실무 프로젝트, 2018, 한빛미디어&lt;/em&gt;&lt;/p&gt;
@@ -7,65 +7,66 @@
 &lt;ul&gt;
 &lt;li&gt;무작위 대조시험: 모집단을 무작위로 실험군과 대조군으로 나누는 것을 말합니다. 예를 들어 신약 개발에서 실험군에는 신약을 투여하고 대조군에는 가짜 약을 투여하는 것 입니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="0.-데이터-설명"&gt;0. 데이터 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#0.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;과거 12개월 동안 구매이력이 있는 고객을 대상으로 '남성 타겟 판촉 메일', '여성 타겟 판촉 메일', '메일을 발송하지 않음'을 수행하고 이 행동이 사이트 방문으로 이어졌는지 조사한 것입니다.&lt;/p&gt;
+&lt;h2 id="0.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85"&gt;0. 데이터 설명&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#0.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%84%A4%EB%AA%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;과거 12개월 동안 구매이력이 있는 고객을 대상으로 '남성 타겟 판촉 메일', '여성 타겟 판촉 메일', '메일을 발송하지 않음'을 수행하고 이 행동이 사이트 방문으로 이어졌는지 조사한 것입니다.&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;
-&lt;th&gt;필드명&lt;/th&gt;
-&lt;th&gt;내용&lt;/th&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+  &lt;th&gt;필드명&lt;/th&gt;
+  &lt;th&gt;내용&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;recency&lt;/td&gt;
-&lt;td&gt;마지막 구매 기록으로부터 경과한 기간&lt;/td&gt;
+  &lt;td&gt;recency&lt;/td&gt;
+  &lt;td&gt;마지막 구매 기록으로부터 경과한 기간&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;history_segment&lt;/td&gt;
-&lt;td&gt;최근 1년 구매 금액에 따라 분류한 유형&lt;/td&gt;
+  &lt;td&gt;history_segment&lt;/td&gt;
+  &lt;td&gt;최근 1년 구매 금액에 따라 분류한 유형&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;history&lt;/td&gt;
-&lt;td&gt;최근 1년 구매 금액&lt;/td&gt;
+  &lt;td&gt;history&lt;/td&gt;
+  &lt;td&gt;최근 1년 구매 금액&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;mens&lt;/td&gt;
-&lt;td&gt;최근 1년 동안 남성용 제품 구매 여부&lt;/td&gt;
+  &lt;td&gt;mens&lt;/td&gt;
+  &lt;td&gt;최근 1년 동안 남성용 제품 구매 여부&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;womens&lt;/td&gt;
-&lt;td&gt;최근 1년 동안 여성용 제품 구매 여부&lt;/td&gt;
+  &lt;td&gt;womens&lt;/td&gt;
+  &lt;td&gt;최근 1년 동안 여성용 제품 구매 여부&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;zip_code&lt;/td&gt;
-&lt;td&gt;우편번호&lt;/td&gt;
+  &lt;td&gt;zip_code&lt;/td&gt;
+  &lt;td&gt;우편번호&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;newbies&lt;/td&gt;
-&lt;td&gt;신규고객 여부&lt;/td&gt;
+  &lt;td&gt;newbies&lt;/td&gt;
+  &lt;td&gt;신규고객 여부&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;channel&lt;/td&gt;
-&lt;td&gt;최근 1년동안 구매한 경로&lt;/td&gt;
+  &lt;td&gt;channel&lt;/td&gt;
+  &lt;td&gt;최근 1년동안 구매한 경로&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;segment&lt;/td&gt;
-&lt;td&gt;고객에게 보낸 판촉 메일 유형&lt;/td&gt;
+  &lt;td&gt;segment&lt;/td&gt;
+  &lt;td&gt;고객에게 보낸 판촉 메일 유형&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;visit&lt;/td&gt;
-&lt;td&gt;메일 수신후 2주 내 사이트 방문여부&lt;/td&gt;
+  &lt;td&gt;visit&lt;/td&gt;
+  &lt;td&gt;메일 수신후 2주 내 사이트 방문여부&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;conversion&lt;/td&gt;
-&lt;td&gt;메일 수신후 2주내 상품 구매 여부&lt;/td&gt;
+  &lt;td&gt;conversion&lt;/td&gt;
+  &lt;td&gt;메일 수신후 2주내 상품 구매 여부&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;spend&lt;/td&gt;
-&lt;td&gt;메일 수신후 2주내 구매 금액&lt;/td&gt;
+  &lt;td&gt;spend&lt;/td&gt;
+  &lt;td&gt;메일 수신후 2주내 구매 금액&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id="1.-데이터-불러오기"&gt;1. 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 데이터 파일을 &lt;code&gt;pandas&lt;/code&gt;를 이용해 읽어 들이고 구조를 확인합니다.&lt;/p&gt;
+&lt;h2 id="1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;1. 데이터 불러오기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저 데이터 파일을 &lt;code&gt;pandas&lt;/code&gt;를 이용해 읽어 들이고 구조를 확인합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -94,8 +95,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -192,8 +192,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -204,7 +203,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="2.-데이터-정리하기"&gt;2. 데이터 정리하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="2.1.-불필요한-데이터-제거"&gt;2.1. 불필요한 데이터 제거&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#2.1.-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%9C%EA%B1%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;메일을 받지 않은 고객의 데이터는 필요하지 않음으로 제거합니다.&lt;/p&gt;
+&lt;h2 id="2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0"&gt;2. 데이터 정리하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="2.1.-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%9C%EA%B1%B0"&gt;2.1. 불필요한 데이터 제거&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#2.1.-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%9C%EA%B1%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;메일을 받지 않은 고객의 데이터는 필요하지 않음으로 제거합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -232,8 +231,7 @@
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -330,8 +328,7 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -396,7 +393,7 @@ dtype: object&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위의 결과에서 zip_code, channe, segment가 object인것을 볼 수 있습니다.  segment는 label로 사용될 것입니다.&lt;/p&gt;
-&lt;h3 id="2.2.-원핫인코딩(one-hot-encoding)"&gt;2.2. 원핫인코딩(one-hot encoding)&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#2.2.-%EC%9B%90%ED%95%AB%EC%9D%B8%EC%BD%94%EB%94%A9(one-hot-encoding)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;zip_code, channel&lt;/strong&gt; 값은 범주형임으로 one-hot encoding을 수행합니다.&lt;/p&gt;
+&lt;h3 id="2.2.-%EC%9B%90%ED%95%AB%EC%9D%B8%EC%BD%94%EB%94%A9(one-hot-encoding)"&gt;2.2. 원핫인코딩(one-hot encoding)&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#2.2.-%EC%9B%90%ED%95%AB%EC%9D%B8%EC%BD%94%EB%94%A9(one-hot-encoding)"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;zip_code, channel&lt;/strong&gt; 값은 범주형임으로 one-hot encoding을 수행합니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -427,8 +424,7 @@ dtype: object&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -507,8 +503,7 @@ dtype: object&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -541,7 +536,7 @@ dtype: object&lt;/pre&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="3.-학습하기"&gt;3. 학습하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#3.-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저, 데이터를 학습용과 테스트 데이터로 나누어 줍니다.&lt;/p&gt;
+&lt;h2 id="3.-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0"&gt;3. 학습하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#3.-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;먼저, 데이터를 학습용과 테스트 데이터로 나누어 줍니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -623,7 +618,7 @@ dtype: object&lt;/pre&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="4.-모델-평가하기"&gt;4. 모델 평가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#4.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;학습한 모델을 평가하기 위한 점수 시스템을 만들어보겠습니다. 업리프트 모델링에서는 &lt;strong&gt;treat_model, control_model&lt;/strong&gt;로 부터 두개의 예측값을 얻게 됩니다 . 업리프트 모델링 점수는 실험군 예측값을 대조군 예측값으로 나눈 비율로 사용하겠습니다. &lt;code&gt;sklearn&lt;/code&gt;의 &lt;code&gt;predict_proba&lt;/code&gt; 함수를 통해 아래와 같이 간단히 할 수 있습니다.&lt;/p&gt;
+&lt;h2 id="4.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;4. 모델 평가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#4.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;학습한 모델을 평가하기 위한 점수 시스템을 만들어보겠습니다. 업리프트 모델링에서는 &lt;strong&gt;treat_model, control_model&lt;/strong&gt;로 부터 두개의 예측값을 얻게 됩니다 . 업리프트 모델링 점수는 실험군 예측값을 대조군 예측값으로 나눈 비율로 사용하겠습니다. &lt;code&gt;sklearn&lt;/code&gt;의 &lt;code&gt;predict_proba&lt;/code&gt; 함수를 통해 아래와 같이 간단히 할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -652,7 +647,7 @@ dtype: object&lt;/pre&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="4.1.-백분위수-단위로-나타낸-전환율"&gt;4.1. 백분위수 단위로 나타낸 전환율&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#4.1.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EB%82%98%ED%83%80%EB%82%B8-%EC%A0%84%ED%99%98%EC%9C%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 점수가 큰 순서대로 정렬하고 백분위수마다 점수를 계산해봅니다.&lt;/p&gt;
+&lt;h3 id="4.1.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EB%82%98%ED%83%80%EB%82%B8-%EC%A0%84%ED%99%98%EC%9C%A8"&gt;4.1. 백분위수 단위로 나타낸 전환율&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#4.1.-%EB%B0%B1%EB%B6%84%EC%9C%84%EC%88%98-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EB%82%98%ED%83%80%EB%82%B8-%EC%A0%84%ED%99%98%EC%9C%A8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;먼저 점수가 큰 순서대로 정렬하고 백분위수마다 점수를 계산해봅니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -735,7 +730,7 @@ dtype: object&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;백분위수 단위로 전환율을 시각화해보니 점수가 상위 60% 까지는 남성 타깃 메일을 보낸 쪽이 여성 타깃 메일을 보낸 쪽보다 반응이 좋음을 알 수 있습니다. 반대로 하위 40%까지는 여성 타깃 메일이 반응이 좋습니다. 그러므로 상위 60%는 남성 타깃 메일을 보내고 하위 40%는 여성 타깃 메일을 보내는 것이 좋음을 알 수 있습니다.&lt;/p&gt;
-&lt;h3 id="4.2.-AUC로-평가하기"&gt;4.2. AUC로 평가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#4.2.-AUC%EB%A1%9C-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3 id="4.2.-AUC%EB%A1%9C-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;4.2. AUC로 평가하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#4.2.-AUC%EB%A1%9C-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;점수가 높은 순서대로 각 대상을 훑으면서 매 시점의 점수를 측정합니다.&lt;/li&gt;
 &lt;li&gt;점수의 값 차이로부터 개입이 일으킨 증가 건수(lift)를 계산합니다.&lt;/li&gt;
 &lt;li&gt;lift의 원점과 끝점을 지나는 직선을 베이스라인으로 삼습니다.&lt;/li&gt;
@@ -867,10 +862,11 @@ dtype: object&lt;/pre&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;업리프트 모델링의 결과가 정확할 수록 방문하는 실험군의 고객과 방문하지 않은 대조군의 고객이 높은 점수대로 모입니다.  그리고 낮은 점수대에서는 반대현상이 일어납니다. 이 때문에 lift곡선은 실험군에서 방문하는 고객에 해당하는 초반 부분에서 양의 기울기를 가지며 정확도가 높을 수록 이 기울기가 가파릅니다. 같은 이유로 곡선의 후반 부분은 음의 기울기를 갖습니다. 또한 업리프트의 모델링의 정확도가 높을수록 이 기울기도 가팔라집니다. 결국 업리프트 모델링의 결과가 정확할수록 곡선의 형태가 볼록해지며 lift와 베이스라인 사이의 면적이 넓어지기 때문에 AUC값이 커지게 됩니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;이 점수를 기초로 개입여부를 결정할 수 있습니다. lift점수가 최고점일때 개입하면 됩니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이 점수를 기초로 개입여부를 결정할 수 있습니다. lift점수가 최고점일때 개입하면 됩니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id="5.-마치며"&gt;5. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#5.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;업리프트 모델링을 소개하고 예를 살펴보았습니다. 업리프트 모델링은 무작위 대조시험과 고객 정보로 부터 추출한 특징을 조합하여, 효과가 좋은 고객을 예측해주는 모델을 구축하는 기법입니다. 이 기법을 사용하면 비용을 절감하고 효과를 최대화 할 수 있습니다.&lt;/p&gt;
+&lt;h2 id="5.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;5. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-uplift/#5.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;업리프트 모델링을 소개하고 예를 살펴보았습니다. 업리프트 모델링은 무작위 대조시험과 고객 정보로 부터 추출한 특징을 조합하여, 효과가 좋은 고객을 예측해주는 모델을 구축하는 기법입니다. 이 기법을 사용하면 비용을 절감하고 효과를 최대화 할 수 있습니다.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>Python</category><category>uplift</category><category>업리프트</category><guid>https://partrita.github.io/posts/python-uplift/</guid><pubDate>Wed, 31 Oct 2018 23:21:32 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>Python</category><category>uplift</category><category>업리프트</category><guid>https://partrita.github.io/posts/python-uplift/</guid><pubDate>Wed, 31 Oct 2018 23:21:32 GMT</pubDate></item></channel></rss>

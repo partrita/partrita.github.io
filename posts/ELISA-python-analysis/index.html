@@ -62,10 +62,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -126,8 +127,7 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -139,23 +139,22 @@ navbar-dark bg-dark
 <h2 id="1.-Four-Parameter-Logistic-(4PL)-Regression">1. Four Parameter Logistic (4PL) Regression<a class="anchor-link" href="#1.-Four-Parameter-Logistic-(4PL)-Regression">¶</a>
 </h2>
 <p>많은 생물학적 데이터들은 간단한 선형회귀 모델과는 맞지 않습니다. 그래서 보다 복잡한 모델인 4PL이 더 잘 맞습니다. 4PL은 dose response 나 receptor-ligand binding 시험과 같은 실험에 적합합니다. 그래서 유용하죠. 이름에서 알 수 있듯 4개의 매개변수가 필요합니다. 그리고 S형태의 모양을 띄고 있습니다. 수식으로 표현하면 아래와 같죠.</p>
-$$ y = \frac{A-D}{1.0+(\frac{x}{C})^B} + D $$<p></p>
-<ul>
-<li>x = 독립 변수(예; 처리한 시료량)  </li>
+$$ y = \frac{A-D}{1.0+(\frac{x}{C})^B} + D $$<ul>
+<li>x = 독립 변수(예; 처리한 시료량)</li>
 <li>y = 종속 변수(예; 시료량에 따른 실험결과 값)</li>
 </ul>
 <p>4개의 매개 변수가 뜻하는것은 다음과 같습니다.</p>
 <ul>
 <li>A = 최솟값 (예; 시료를 처리하지 않았을때의 수치)</li>
-<li>B = 커브의 경사 기울기  </li>
+<li>B = 커브의 경사 기울기</li>
 <li>C = 커브의 중간점 (예; 경사가 급해지는 부분)</li>
 <li>D = 최고값</li>
 </ul>
 <p>위의 수식을 뒤집으면 실험에서 얻은 결과 값(y)로 부터 넣어준 미지의 시료의 값(x)를 알아낼 수 있습니다. 공식은 다음과 같습니다.</p>
-$$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용">2. 실제 응용<a class="anchor-link" href="#2.-%EC%8B%A4%EC%A0%9C-%EC%9D%91%EC%9A%A9">¶</a>
+$$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-%EC%8B%A4%EC%A0%9C-%EC%9D%91%EC%9A%A9">2. 실제 응용<a class="anchor-link" href="#2.-%EC%8B%A4%EC%A0%9C-%EC%9D%91%EC%9A%A9">¶</a>
 </h2>
 <p>ELISA 실험에서 얻은 데이터를 가지고, Standard curve를 그려 4개의 매개 변수값을 구해보겠습니다. 그런 다음 실험 측정값(y)을 통해 거꾸로 사용한 시료의 양(x)을 구해보겠습니다.</p>
-<h3 id="2.1.-Standard-curve-그리기">2.1. Standard curve 그리기<a class="anchor-link" href="#2.1.-Standard-curve-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
+<h3 id="2.1.-Standard-curve-%EA%B7%B8%EB%A6%AC%EA%B8%B0">2.1. Standard curve 그리기<a class="anchor-link" href="#2.1.-Standard-curve-%EA%B7%B8%EB%A6%AC%EA%B8%B0">¶</a>
 </h3>
 <p>사용할 라이브러리를 불러옵니다.</p>
 
@@ -215,8 +214,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용"
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -317,8 +315,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용"
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -344,7 +341,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용"
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># define 4pl logistic</span>
 <span class="k">def</span> <span class="nf">logistic4</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
-    <span class="sd">"""4PL logoistic equation."""</span>
+<span class="w">    </span><span class="sd">"""4PL logoistic equation."""</span>
     <span class="k">return</span> <span class="p">((</span><span class="n">A</span><span class="o">-</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="p">((</span><span class="n">x</span><span class="o">/</span><span class="n">C</span><span class="p">)</span><span class="o">**</span><span class="n">B</span><span class="p">)))</span> <span class="o">+</span> <span class="n">D</span>
 </pre></div>
 
@@ -553,7 +550,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용"
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>거의 절반의 샘플에서 0에 수렴하는 결과를 얻었지만, 전체적으로 curve fitting이 잘 된것을 확인할 수 있습니다.</p>
-<h3 id="2.2-미지의-샘플농도-구하기">2.2 미지의 샘플농도 구하기<a class="anchor-link" href="#2.2-%EB%AF%B8%EC%A7%80%EC%9D%98-%EC%83%98%ED%94%8C%EB%86%8D%EB%8F%84-%EA%B5%AC%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="2.2-%EB%AF%B8%EC%A7%80%EC%9D%98-%EC%83%98%ED%94%8C%EB%86%8D%EB%8F%84-%EA%B5%AC%ED%95%98%EA%B8%B0">2.2 미지의 샘플농도 구하기<a class="anchor-link" href="#2.2-%EB%AF%B8%EC%A7%80%EC%9D%98-%EC%83%98%ED%94%8C%EB%86%8D%EB%8F%84-%EA%B5%AC%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>이제 실험 값(y)을 가지고 standard curve에 대입해서 농도값(x)을 알아보겠습니다. 이것이 진짜 ELISA 실험을 하는 이유입니다.</p>
 <p>먼저 아래와 같은 함수를 정의합니다.</p>
@@ -568,7 +565,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용"
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 역수를 구해서 OD값에서 conc 값 알아내기</span>
 <span class="k">def</span> <span class="nf">solvex</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">):</span>
-    <span class="sd">"""rearranged 4PL logoistic equation."""</span>
+<span class="w">    </span><span class="sd">"""rearranged 4PL logoistic equation."""</span>
     <span class="k">return</span> <span class="n">C</span><span class="o">*</span><span class="p">(((</span><span class="n">A</span><span class="o">-</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">D</span><span class="p">)</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">B</span><span class="p">))</span>
 </pre></div>
 
@@ -625,11 +622,10 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용"
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="정리하며,">정리하며,<a class="anchor-link" href="#%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B0,">¶</a>
+<h2 id="%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B0,">정리하며,<a class="anchor-link" href="#%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B0,">¶</a>
 </h2>
 <p>결과값이 32000정도 나왔는데요, Standard curve에 대입해보면 얼추 맞는 것 같습니다.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -659,7 +655,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용"
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -670,9 +666,7 @@ $$ x = C\left(\frac{A-D}{y-D}-1.0\right)^\frac{1}{B} $$<h2 id="2.-실제-응용"
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 

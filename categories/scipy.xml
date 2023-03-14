@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about scipy)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/scipy.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Wed, 27 Apr 2022 04:43:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Model fitting by python</title><link>https://partrita.github.io/posts/python-model-fitting/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about scipy)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/scipy.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Model fitting by python</title><link>https://partrita.github.io/posts/python-model-fitting/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="python을-활용한-model-fitting-하기"&gt;python을 활용한 model fitting 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#python%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-model-fitting-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;python&lt;/code&gt;의 &lt;code&gt;scipy&lt;/code&gt; 라이브러리를 이용해 model fitting을 해보겠습니다. &lt;code&gt;scipy.optimize.curve_fit&lt;/code&gt; 기능을 사용할때는 두가지가 필요합니다.&lt;/p&gt;
+&lt;h2 id="python%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-model-fitting-%ED%95%98%EA%B8%B0"&gt;python을 활용한 model fitting 하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#python%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-model-fitting-%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;python&lt;/code&gt;의 &lt;code&gt;scipy&lt;/code&gt; 라이브러리를 이용해 model fitting을 해보겠습니다. &lt;code&gt;scipy.optimize.curve_fit&lt;/code&gt; 기능을 사용할때는 두가지가 필요합니다.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;실제의 데이터 &lt;/li&gt;
+&lt;li&gt;실제의 데이터&lt;/li&gt;
 &lt;li&gt;model로 사용할 방정식&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;말로 설명하는 것 보다는 예를 들어가면서 살펴보도록 하죠.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;먼저 다양한 수학적 도구와 자료구조를 위해 &lt;code&gt;numpy&lt;/code&gt;를 &lt;/li&gt;
+&lt;li&gt;먼저 다양한 수학적 도구와 자료구조를 위해 &lt;code&gt;numpy&lt;/code&gt;를&lt;/li&gt;
 &lt;li&gt;Model fitting을 위해 &lt;code&gt;scipy.optimize&lt;/code&gt;에서 &lt;code&gt;curve_fit&lt;/code&gt;을 불러옵니다.&lt;/li&gt;
 &lt;li&gt;마지막으로 시각화를 위해 &lt;code&gt;matplotlib&lt;/code&gt;을 사용했습니다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -37,8 +37,9 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="선형-회귀"&gt;선형 회귀&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;간단한 선형회귀의 예를 들어보겠습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;선형 회귀(linear regression)는 종속 변수 y와 한 개 이상의 독립 변수 (또는 설명 변수) X와의 선형 상관 관계를 모델링하는 회귀분석 기법이다. 한 개의 설명 변수에 기반한 경우에는 단순 선형 회귀, 둘 이상의 설명 변수에 기반한 경우에는 다중 선형 회귀라고 한다. -- wikipedia&lt;/p&gt;
+&lt;h3 id="%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80"&gt;선형 회귀&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;간단한 선형회귀의 예를 들어보겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;선형 회귀(linear regression)는 종속 변수 y와 한 개 이상의 독립 변수 (또는 설명 변수) X와의 선형 상관 관계를 모델링하는 회귀분석 기법이다. 한 개의 설명 변수에 기반한 경우에는 단순 선형 회귀, 둘 이상의 설명 변수에 기반한 경우에는 다중 선형 회귀라고 한다. -- wikipedia&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;먼저 모델로 사용할 방정식을 &lt;code&gt;python&lt;/code&gt; &lt;code&gt;function&lt;/code&gt;으로 구현합니다.&lt;/p&gt;
 
@@ -207,8 +208,9 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Gaussian-model을-fitting하는-것을-알아봅시다."&gt;Gaussian model을 fitting하는 것을 알아봅시다.&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#Gaussian-model%EC%9D%84-fitting%ED%95%98%EB%8A%94-%EA%B2%83%EC%9D%84-%EC%95%8C%EC%95%84%EB%B4%85%EC%8B%9C%EB%8B%A4."&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다른 예시로 가우시안 모델을 살펴 보겠습니다.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;가우시안 모델(Gaussian model)은 자연적인 현상을 표현하기에 좋은 모델이기 때문에, 많은 분야에서 가우시안 모델이 사용될 수 있다. --wikipedia&lt;/p&gt;
+&lt;h3 id="Gaussian-model%EC%9D%84-fitting%ED%95%98%EB%8A%94-%EA%B2%83%EC%9D%84-%EC%95%8C%EC%95%84%EB%B4%85%EC%8B%9C%EB%8B%A4."&gt;Gaussian model을 fitting하는 것을 알아봅시다.&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#Gaussian-model%EC%9D%84-fitting%ED%95%98%EB%8A%94-%EA%B2%83%EC%9D%84-%EC%95%8C%EC%95%84%EB%B4%85%EC%8B%9C%EB%8B%A4."&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다른 예시로 가우시안 모델을 살펴 보겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;가우시안 모델(Gaussian model)은 자연적인 현상을 표현하기에 좋은 모델이기 때문에, 많은 분야에서 가우시안 모델이 사용될 수 있다. --wikipedia&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;전과 동일하게&lt;/p&gt;
 &lt;ol&gt;
@@ -283,7 +285,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;6~8 사이에서는 조금 차이가 나는 것을 확인할 수 있죠.&lt;/p&gt;
-&lt;h3 id="마지막으로-2개의-독립적인-Gaussian함수로-fitting하는-예제입니다."&gt;마지막으로 2개의 독립적인 Gaussian함수로 fitting하는 예제입니다.&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#%EB%A7%88%EC%A7%80%EB%A7%89%EC%9C%BC%EB%A1%9C-2%EA%B0%9C%EC%9D%98-%EB%8F%85%EB%A6%BD%EC%A0%81%EC%9D%B8-Gaussian%ED%95%A8%EC%88%98%EB%A1%9C-fitting%ED%95%98%EB%8A%94-%EC%98%88%EC%A0%9C%EC%9E%85%EB%8B%88%EB%8B%A4."&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;방법은 동일합니다. 모델만 다를뿐이죠.&lt;/p&gt;
+&lt;h3 id="%EB%A7%88%EC%A7%80%EB%A7%89%EC%9C%BC%EB%A1%9C-2%EA%B0%9C%EC%9D%98-%EB%8F%85%EB%A6%BD%EC%A0%81%EC%9D%B8-Gaussian%ED%95%A8%EC%88%98%EB%A1%9C-fitting%ED%95%98%EB%8A%94-%EC%98%88%EC%A0%9C%EC%9E%85%EB%8B%88%EB%8B%A4."&gt;마지막으로 2개의 독립적인 Gaussian함수로 fitting하는 예제입니다.&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#%EB%A7%88%EC%A7%80%EB%A7%89%EC%9C%BC%EB%A1%9C-2%EA%B0%9C%EC%9D%98-%EB%8F%85%EB%A6%BD%EC%A0%81%EC%9D%B8-Gaussian%ED%95%A8%EC%88%98%EB%A1%9C-fitting%ED%95%98%EB%8A%94-%EC%98%88%EC%A0%9C%EC%9E%85%EB%8B%88%EB%8B%A4."&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;방법은 동일합니다. 모델만 다를뿐이죠.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -338,9 +340,9 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="마치며"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;scipy&lt;/code&gt;로  model fitting하는 방법을 간단히 알아보았습니다. 먼저 Model을 생성하고
+&lt;h3 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/python-model-fitting/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;scipy&lt;/code&gt;로  model fitting하는 방법을 간단히 알아보았습니다. 먼저 Model을 생성하고
 실험데이터에 &lt;code&gt;curve_fit&lt;/code&gt; 기능을 사용한다는 것을 꼭 기억해주세요.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>curve_fit</category><category>scipy</category><guid>https://partrita.github.io/posts/python-model-fitting/</guid><pubDate>Wed, 21 Feb 2018 09:07:20 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>curve_fit</category><category>scipy</category><guid>https://partrita.github.io/posts/python-model-fitting/</guid><pubDate>Wed, 21 Feb 2018 09:07:20 GMT</pubDate></item></channel></rss>

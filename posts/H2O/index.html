@@ -64,10 +64,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Menubar -->
 
 <nav class="navbar navbar-expand-md static-top mb-4
-navbar-dark bg-dark
+navbar-dark
+bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://partrita.github.io/">
+        <a class="navbar-brand" href="../../">
 
             <span id="blog-title">Biohacker</span>
         </a>
@@ -128,27 +129,21 @@ navbar-dark bg-dark
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
+    <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="내용">
+<h2 id="%EB%82%B4%EC%9A%A9">
 <a id="0">내용</a><a class="anchor-link" href="#%EB%82%B4%EC%9A%A9">¶</a>
 </h2>
 <ul>
-<li>
-<a href="#1">0. 들어가며</a>  </li>
-<li>
-<a href="#2">1. 라이브러리 불러오기</a>  </li>
-<li>
-<a href="#3">2. 데이터 불러오기</a>  </li>
-<li>
-<a href="#4">3. 데이터 확인하기</a>  </li>
+<li><a href="#1">0. 들어가며</a></li>
+<li><a href="#2">1. 라이브러리 불러오기</a></li>
+<li><a href="#3">2. 데이터 불러오기</a></li>
+<li><a href="#4">3. 데이터 확인하기</a></li>
 <li><a href="#5">4. 데이터 탐색하기</a></li>
-<li>
-<a href="#6">5. 예측 모델 만들기</a>    </li>
+<li><a href="#6">5. 예측 모델 만들기</a></li>
 <li><a href="#8">6. 참고</a></li>
 </ul>
 </div>
@@ -159,65 +154,65 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-0.-들어가며">
+<h2 id="-0.-%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0">
 <a id="1"> 0. 들어가며</a><a class="anchor-link" href="#-0.-%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0">¶</a>
 </h2>
-<h3 id="데이터셋-설명">데이터셋 설명<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85">¶</a>
+<h3 id="%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85">데이터셋 설명<a class="anchor-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EC%84%A4%EB%AA%85">¶</a>
 </h3>
 <p>여기서 사용한 데이터셋은 <strong>위스콘신 유방암 진단 데이터</strong> 입니다.<sup><a href="#8">[1]</a></sup> 이 데이터셋에는 30개의 특성(features)값이 들어있고 유방암의 진단결과가 포함되어 있습니다. 총 데이터의 수는 596개이며 위스콘신 대학교에서 제공한 유방암 진단결과 데이터 입니다. 데이터셋에 포함된 특성에 대한 간략한 설명을 아래 표에 나타내었습니다.</p>
 <table>
 <thead><tr>
 <th>특성</th>
-<th>설명</th>
+  <th>설명</th>
 </tr></thead>
 <tbody>
 <tr>
 <td>id</td>
-<td>환자 식별 번호</td>
+  <td>환자 식별 번호</td>
 </tr>
 <tr>
 <td>dignosis</td>
-<td>유방암 종양(M=악성, B=양성)</td>
+  <td>유방암 종양(M=악성, B=양성)</td>
 </tr>
 <tr>
 <td><strong>radius</strong></td>
-<td>세포의 크기</td>
+  <td>세포의 크기</td>
 </tr>
 <tr>
 <td><strong>texture</strong></td>
-<td>질감(흑백 처리했을때의 표준편차 값으로 계산) </td>
+  <td>질감(흑백 처리했을때의 표준편차 값으로 계산)</td>
 </tr>
 <tr>
 <td><strong>perimeter</strong></td>
-<td>둘레</td>
+  <td>둘레</td>
 </tr>
 <tr>
 <td><strong>area</strong></td>
-<td>면적</td>
+  <td>면적</td>
 </tr>
 <tr>
 <td><strong>smoothness</strong></td>
-<td>매끄러움(반경의 국소적 변화 측정)</td>
+  <td>매끄러움(반경의 국소적 변화 측정)</td>
 </tr>
 <tr>
 <td><strong>compactness</strong></td>
-<td>작은 정도($perimeter^2/area-1$로 계산)</td>
+  <td>작은 정도($perimeter^2/area-1$로 계산)</td>
 </tr>
 <tr>
 <td><strong>concavity</strong></td>
-<td>오목함(윤곽의 오목한 부분의 정도)</td>
+  <td>오목함(윤곽의 오목한 부분의 정도)</td>
 </tr>
 <tr>
 <td><strong>concave points</strong></td>
-<td>오목한곳의 수</td>
+  <td>오목한곳의 수</td>
 </tr>
 <tr>
 <td><strong>symmetry</strong></td>
-<td>대칭성</td>
+  <td>대칭성</td>
 </tr>
 <tr>
 <td><strong>fractal dimension</strong></td>
-<td>프랙탈 차원($coastline approximation-1$로 계산)  </td>
+  <td>프랙탈 차원($coastline approximation-1$로 계산)</td>
 </tr>
 </tbody>
 </table>
@@ -225,7 +220,7 @@ navbar-dark bg-dark
 <h3 id="H2O">H2O<a class="anchor-link" href="#H2O">¶</a>
 </h3>
 <p>H2O 는 자바(Java) 기반의 소프트웨어로 데이터 모델링에 사용된다. H2O의 첫번째 목적은 병렬 컴퓨팅을 통해 많은 CPU와 메모리를 프로세스 하는 것이다. 자바 기반이지만 파이썬과 <code>R</code> 인터페이스를 제공합니다<sup><a href="#8">[2]</a></sup>.</p>
-<h3 id="분석하기">분석하기<a class="anchor-link" href="#%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">분석하기<a class="anchor-link" href="#%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>먼저 유방암 진단에 대하여 이해하기 위해 데이터셋의 특성값을 분석해봅니다. 그런 다음 두 가지 알고리즘을 사용하여 모델을 생성하고 모델을 사용하여 유방암을 예측해봅니다.</p>
 
@@ -237,7 +232,7 @@ navbar-dark bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-1.-라이브러리-불러오기">
+<h2 id="-1.-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">
 <a id="2"> 1. 라이브러리 불러오기</a><a class="anchor-link" href="#-1.-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
 </h2>
 <p>분석에 사용할 라이브러리를 불러옵니다.</p>
@@ -273,7 +268,7 @@ navbar-dark bg-dark
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>데이터를 불러오는데 H2O를 사용합니다. 먼저 H2O를 초기화해야 합니다.</p>
-<h3 id="1.1.-H2O-시작하기">1.1. H2O 시작하기<a class="anchor-link" href="#1.1.-H2O-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">¶</a>
+<h3 id="1.1.-H2O-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">1.1. H2O 시작하기<a class="anchor-link" href="#1.1.-H2O-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>H2O는 먼저 기존 인스턴스에 연결을 시도합니다. 그리고 사용 가능한 것이 없다면 새로 인스턴스를 만듭니다. 새 인스턴스에 대한 정보가 콘솔창에 출력되면 H2O를 사용할 준비는 모두 된 것입니다.</p>
 
@@ -321,8 +316,7 @@ Connecting to H2O server at http://127.0.0.1:54321 ... successful.
 
 
 
-<div class="output_html rendered_html output_subarea ">
-<div style="overflow:auto"><table style="width:50%">
+<div class="output_html rendered_html output_subarea "><div style="overflow:auto"><table style="width:50%">
 <tr>
 <td>H2O cluster uptime:</td>
 <td>02 secs</td>
@@ -387,8 +381,7 @@ Connecting to H2O server at http://127.0.0.1:54321 ... successful.
 <td>Python version:</td>
 <td>3.6.6 final</td>
 </tr>
-</table></div>
-</div>
+</table></div></div>
 
 </div>
 
@@ -411,7 +404,7 @@ Connecting to H2O server at http://127.0.0.1:54321 ... successful.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-2.-데이터-불러오기">
+<h2 id="-2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">
 <a id="3"> 2. 데이터 불러오기</a><a class="anchor-link" href="#-2.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a>
 </h2>
 <p>이제 아래 코드를 사용해 H2O를 사용하여 데이터를 가져옵니다.</p>
@@ -455,7 +448,7 @@ Connecting to H2O server at http://127.0.0.1:54321 ... successful.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-3.-데이터-확인하기">
+<h2 id="-3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">
 <a id="4"> 3. 데이터 확인하기</a><a class="anchor-link" href="#-3.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>H2O의 <code>describe()</code> 기능을 사용해 불러온 데이터셋을 확인합니다.</p>
@@ -502,8 +495,7 @@ Cols:33
 
 
 
-<div class="output_html rendered_html output_subarea ">
-<table>
+<div class="output_html rendered_html output_subarea "><table>
 <thead><tr>
 <th>       </th>
 <th>id                </th>
@@ -1154,8 +1146,7 @@ Cols:33
 <td>nan  </td>
 </tr>
 </tbody>
-</table>
-</div>
+</table></div>
 
 </div>
 
@@ -1179,7 +1170,7 @@ Cols:33
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-데이터-탐색하기">
+<h2 id="4.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%90%EC%83%89%ED%95%98%EA%B8%B0">
 <a id="5">4. 데이터 탐색하기</a><a class="anchor-link" href="#4.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%90%EC%83%89%ED%95%98%EA%B8%B0">¶</a>
 </h2>
 <p>H2O에서 제공하는 기능을 사용해 데이터를 탐색해봅니다.</p>
@@ -1211,8 +1202,7 @@ Cols:33
 
 
 
-<div class="output_html rendered_html output_subarea ">
-<table>
+<div class="output_html rendered_html output_subarea "><table>
 <thead><tr>
 <th>diagnosis  </th>
 <th style="text-align: right;">  nrow</th>
@@ -1227,8 +1217,7 @@ Cols:33
 <td style="text-align: right;">   212</td>
 </tr>
 </tbody>
-</table>
-</div>
+</table></div>
 
 </div>
 
@@ -1332,12 +1321,12 @@ Cols:33
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그림을 통해 우리는 양성과 악성 종양을 구분할 수 있는 특성을 알 수 있습니다. 아래에는 그런 특성들의 목록입니다.</p>
 <ul>
-<li>radius_mean  </li>
-<li>texture_mean </li>
+<li>radius_mean</li>
+<li>texture_mean</li>
 <li>perimeter_mean</li>
 <li>area_mean</li>
-<li>radius_worst  </li>
-<li>texture_worst </li>
+<li>radius_worst</li>
+<li>texture_worst</li>
 <li>perimeter_worst</li>
 <li>area_worst</li>
 </ul>
@@ -1346,7 +1335,7 @@ Cols:33
 <li>compactness_se</li>
 <li>concavity_se</li>
 <li>concave_points_se</li>
-<li>simmetry_se </li>
+<li>simmetry_se</li>
 <li>smoothness_se</li>
 </ul>
 <p>이제 특성간의 상관관계(correlation) Heat map을 그려봅니다.</p>
@@ -1401,9 +1390,9 @@ Cols:33
 <p>아래 일부 특성은 서로 밀접하게 관련되어 있습니다.</p>
 <ul>
 <li>radius_mean 과 perimeter_mean</li>
-<li>radius_mean 과 texture_mean </li>
+<li>radius_mean 과 texture_mean</li>
 <li>perimeter_worst 와 radius_worst</li>
-<li>perimeter_worst 와 area_worst </li>
+<li>perimeter_worst 와 area_worst</li>
 <li>area_se 와 perimeter_se</li>
 </ul>
 </div>
@@ -1414,10 +1403,10 @@ Cols:33
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-5.-예측-모델만들기">
+<h2 id="-5.-%EC%98%88%EC%B8%A1-%EB%AA%A8%EB%8D%B8%EB%A7%8C%EB%93%A4%EA%B8%B0">
 <a id="6"> 5. 예측 모델만들기</a><a class="anchor-link" href="#-5.-%EC%98%88%EC%B8%A1-%EB%AA%A8%EB%8D%B8%EB%A7%8C%EB%93%A4%EA%B8%B0">¶</a>
 </h2>
-<h3 id="-5.1.-데이터-나누기">
+<h3 id="-5.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%98%EB%88%84%EA%B8%B0">
 <a id="61"> 5.1. 데이터 나누기</a><a class="anchor-link" href="#-5.1.-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%82%98%EB%88%84%EA%B8%B0">¶</a>
 </h3>
 <p>학습, 검증, 테스트 데이터셋으로 데이터를 분할합니다. 각각 60%, 20%, 20% 로 분할합니다.</p>
@@ -1466,7 +1455,7 @@ Cols:33
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="-5.2.-GBM(Gradient-Boosting-Algorithm)-모델로-학습하기">
+<h3 id="-5.2.-GBM(Gradient-Boosting-Algorithm)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0">
 <a id="62"> 5.2. GBM(Gradient Boosting Algorithm) 모델로 학습하기</a><a class="anchor-link" href="#-5.2.-GBM(Gradient-Boosting-Algorithm)-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%ED%95%99%EC%8A%B5%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>GBM 모델을 사용해 기계 학습을 합니다.</p>
@@ -1512,7 +1501,7 @@ Cols:33
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="-5.3.-모델-평가하기">
+<h3 id="-5.3.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0">
 <a id="63"> 5.3. 모델 평가하기</a><a class="anchor-link" href="#-5.3.-%EB%AA%A8%EB%8D%B8-%ED%8F%89%EA%B0%80%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>훈련 된 모델을 검사 해봅니다. 먼저 모델에 대한 요약을 출력합니다.</p>
@@ -1553,8 +1542,7 @@ Model Summary: </pre>
 
 
 
-<div class="output_html rendered_html output_subarea ">
-<div>
+<div class="output_html rendered_html output_subarea "><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1596,8 +1584,7 @@ Model Summary: </pre>
       <td>11.18</td>
     </tr></tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1673,8 +1660,7 @@ Confusion Matrix (Act/Pred) for max f1 @ threshold = 0.5851063290701174: </pre>
 
 
 
-<div class="output_html rendered_html output_subarea ">
-<div>
+<div class="output_html rendered_html output_subarea "><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1724,8 +1710,7 @@ Confusion Matrix (Act/Pred) for max f1 @ threshold = 0.5851063290701174: </pre>
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1747,8 +1732,7 @@ Maximum Metrics: Maximum metrics at their respective thresholds
 
 
 
-<div class="output_html rendered_html output_subarea ">
-<div>
+<div class="output_html rendered_html output_subarea "><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1899,8 +1883,7 @@ Maximum Metrics: Maximum metrics at their respective thresholds
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1922,8 +1905,7 @@ Gains/Lift Table: Avg response rate: 31.45 %, avg score: 31.14 %
 
 
 
-<div class="output_html rendered_html output_subarea ">
-<div>
+<div class="output_html rendered_html output_subarea "><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -2196,8 +2178,7 @@ Gains/Lift Table: Avg response rate: 31.45 %, avg score: 31.14 %
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -2269,7 +2250,7 @@ Gains/Lift Table: Avg response rate: 31.45 %, avg score: 31.14 %
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>위 그림을 통해 가장 중요한 변수는 <code>perimeter_worst</code>, <code>concave_points_mean</code>, <code>radius_worst</code>, <code>concave_points_worst</code>라는 것을 알 수 있습니다.</p>
 <p>이제 모델을 사용해 예측을 해봅니다.</p>
-<h3 id="-5.4.-예측하기">
+<h3 id="-5.4.-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0">
 <a id="64"> 5.4. 예측하기</a><a class="anchor-link" href="#-5.4.-%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 </div>
@@ -2325,13 +2306,12 @@ Prediction accuracy:  1.0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-6.참고">
+<h2 id="-6.%EC%B0%B8%EA%B3%A0">
 <a id="8"> 6.참고</a><a class="anchor-link" href="#-6.%EC%B0%B8%EA%B3%A0">¶</a>
 </h2>
 <p>[1] Breast Cancer Wisconsin (Diagnostic) Data Set, <a href="https://www.kaggle.com/uciml/breast-cancer-wisconsin-data">https://www.kaggle.com/uciml/breast-cancer-wisconsin-data</a><br>
 [2] SRK, Getting started with H2O,  <a href="https://www.kaggle.com/sudalairajkumar/getting-started-with-h2o">https://www.kaggle.com/sudalairajkumar/getting-started-with-h2o</a></p>
 
-</div>
 </div>
 </div>
 </div>
@@ -2363,7 +2343,7 @@ Prediction accuracy:  1.0
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
@@ -2374,9 +2354,7 @@ Prediction accuracy:  1.0
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script><!-- Modal --><div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
 
