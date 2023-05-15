@@ -44,7 +44,7 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NHHK2BF');</script><link rel="prefetch" href="posts/miniforge/" type="text/html">
+})(window,document,'script','dataLayer','GTM-NHHK2BF');</script><link rel="prefetch" href="posts/seurat-scRNAseq/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -107,142 +107,14 @@ bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/miniforge/" class="u-url">miniforge: 파이썬과 R의 패키지 및 개발 환경 관리 도구</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Taeyoon Kim
-            </span></p>
-            <p class="dateline">
-            <a href="posts/miniforge/" rel="bookmark">
-            <time class="published dt-published" datetime="2023-03-13T16:11:03+09:00" itemprop="datePublished" title="2023-03-13 16:11">2023-03-13 16:11</time></a>
-            </p>
-        </div>
-    </header><div class="e-content entry-content">
-    <h2>파이썬과 R의 의존성 지옥</h2>
-<p>파이썬과 R에는 유용한 라이브러리들이 아주 많습니다. 그러다보니 여러 라이브러리들이 버전이 서로 충돌하거나 호환되지 않는 경우가 발생하곤 합니다. 예를 들어 A 라이브러리가 B 라이브러리 1.0 버전에 기반해 만들어졌는데 C 라이브러리가 B 라이브러리 2.0 버전을 요구한다면 A와 C를 동시에 사용할 수 없는 경우가 생깁니다.</p>
-<p>이런 의존성 문제를 해결하기 위해 다양한 방법론들이 등장했습니다. 파이썬의 경우에는 <code>venv + pip</code>, <code>Pyenv</code>, <code>Poetry</code>, <code>Conda</code>, <code>PDM</code> 등과 같은 새로운 라이브러리를 이용해 프로젝트 별로 의존성을 관리할 수 있도록 합니다. 문제는 이런 도구들도 만능이 아니기에 의존성 지옥 탈출은 요원해 보입니다. </p>
-<h2>콘다(conda)</h2>
-<p>콘다는 Windows, macOS 및 Linux에서 실행되는 오픈 소스 패키지 관리 시스템이자 환경 관리 시스템으로 파이썬 뿐만 아니라 R 패키지도 지원합니다. 그래서 주로 과학 분야에서 많이 사용되는 도구입니다. 그러나 덩치가 커서 작은 프로젝트에는 너무 많은 의존성과 리소스를 잡아먹는다는 단점이 있죠.</p>
-<h3>miniforge</h3>
-<p><a href="https://github.com/conda-forge/miniforge">miniforge</a>는 덩치큰 아나콘다를 아주 날씬하게 만드는 프로젝트입니다. 그래서 아래와 같은 특징을 갖습니다.</p>
-<ul>
-<li>기본(그리고 유일한) 채널로 conda-forge를 사용.</li>
-<li>표준 Python 인터프리터(일명 "CPython") 대신 PyPy에 대한 지원.</li>
-<li>콘다보다 더 빠른 맘바(mamba)도 지원.</li>
-<li>다양한 CPU 아키텍처(x86_64, ppc64le, Apple M1을 포함한 aarch64)지원.</li>
-</ul>
-<h3>맘바(mamba)는 또 뭐죠?</h3>
-<p>콘다의 다른 단점에 라이브러리 설치 속도가 느리다는 점이 었습니다. 그래서 C++으로 작성된 맘바라는 도구가 새로 나오게 되었죠. </p>
-<blockquote>
-<p>파이썬 생태계는 이런 것이 특징입니다. 항상 새로운 도구가 우후죽순 나옵니다.</p>
-</blockquote>
-<h2>맘바포지(mamba-forge)</h2>
-<p>맘바포지는 제가 생각하는 현재 시점에서 패키지와 개발 환경 관리 문제를 가장 쉽게 해결하는 도구입니다. 맘바포지를 설치하는 방법과 개발 환경을 설정을 알아보도록 하죠.</p>
-<h3>설치하기</h3>
-<p><a href="https://github.com/conda-forge/miniforge/blob/main/README.md">공식문서</a>에서 각각의 OS에 맞는 설치 방법을 찾아 볼 수 있습니다. 저는 리눅스를 사용하기에 아래 명령어로 설치 하였습니다.</p>
-<div class="code"><pre class="code literal-block">wget<span class="w"> </span><span class="s2">"https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-</span><span class="k">$(</span>uname<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">.sh"</span>
-bash<span class="w"> </span>Mambaforge-<span class="k">$(</span>uname<span class="k">)</span>-<span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span>.sh
-</pre></div>
-
-<h3>개발 환경 설정</h3>
-<h4>가상환경 만들기</h4>
-<p>맘바포지의 <code>(base)</code> 환경에 왠만하면 아무런 패키지를 설치하지 않을 것을 권장합니다. 따라서 새로운 가상환경인 <code>ipynb</code>를 만들어 주피터랩을 사용해 보겠습니다.</p>
-<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>ipynb<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>r-base<span class="w"> </span>r-essentials<span class="w"> </span>jupyterlab
-</pre></div>
-
-<p>콘다를 써본적 있으시다면 바로 아시겠지만 <code>conda</code>를 <code>mamba</code>로 바꾸기만 하면 됩니다. 결과는 아래와 같습니다.</p>
-<div class="code"><pre class="code literal-block"><span class="w">                  </span>__<span class="w">    </span>__<span class="w">    </span>__<span class="w">    </span>__
-<span class="w">                 </span>/<span class="w">  </span><span class="se">\ </span><span class="w"> </span>/<span class="w">  </span><span class="se">\ </span><span class="w"> </span>/<span class="w">  </span><span class="se">\ </span><span class="w"> </span>/<span class="w">  </span><span class="se">\</span>
-<span class="w">                </span>/<span class="w">    </span><span class="se">\/</span><span class="w">    </span><span class="se">\/</span><span class="w">    </span><span class="se">\/</span><span class="w">    </span><span class="se">\</span>
-███████████████/<span class="w">  </span>/██/<span class="w">  </span>/██/<span class="w">  </span>/██/<span class="w">  </span>/████████████████████████
-<span class="w">              </span>/<span class="w">  </span>/<span class="w"> </span><span class="se">\ </span><span class="w">  </span>/<span class="w"> </span><span class="se">\ </span><span class="w">  </span>/<span class="w"> </span><span class="se">\ </span><span class="w">  </span>/<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="se">\_</span>___
-<span class="w">             </span>/<span class="w">  </span>/<span class="w">   </span><span class="se">\_</span>/<span class="w">   </span><span class="se">\_</span>/<span class="w">   </span><span class="se">\_</span>/<span class="w">   </span><span class="se">\ </span><span class="w">   </span>o<span class="w"> </span><span class="se">\_</span>_,
-<span class="w">            </span>/<span class="w"> </span>_/<span class="w">                       </span><span class="se">\_</span>____/<span class="w">  </span><span class="sb">`</span>
-<span class="w">            </span><span class="p">|</span>/
-<span class="w">        </span>███╗<span class="w">   </span>███╗<span class="w"> </span>█████╗<span class="w"> </span>███╗<span class="w">   </span>███╗██████╗<span class="w">  </span>█████╗
-<span class="w">        </span>████╗<span class="w"> </span>████║██╔══██╗████╗<span class="w"> </span>████║██╔══██╗██╔══██╗
-<span class="w">        </span>██╔████╔██║███████║██╔████╔██║██████╔╝███████║
-<span class="w">        </span>██║╚██╔╝██║██╔══██║██║╚██╔╝██║██╔══██╗██╔══██║
-<span class="w">        </span>██║<span class="w"> </span>╚═╝<span class="w"> </span>██║██║<span class="w">  </span>██║██║<span class="w"> </span>╚═╝<span class="w"> </span>██║██████╔╝██║<span class="w">  </span>██║
-<span class="w">        </span>╚═╝<span class="w">     </span>╚═╝╚═╝<span class="w">  </span>╚═╝╚═╝<span class="w">     </span>╚═╝╚═════╝<span class="w"> </span>╚═╝<span class="w">  </span>╚═╝
-
-<span class="w">        </span>mamba<span class="w"> </span><span class="o">(</span><span class="m">1</span>.1.0<span class="o">)</span><span class="w"> </span>supported<span class="w"> </span>by<span class="w"> </span>@QuantStack
-
-<span class="w">        </span>GitHub:<span class="w">  </span>https://github.com/mamba-org/mamba
-<span class="w">        </span>Twitter:<span class="w"> </span>https://twitter.com/QuantStack
-
-█████████████████████████████████████████████████████████████
-
-
-Looking<span class="w"> </span><span class="k">for</span>:<span class="w"> </span><span class="o">[</span><span class="s1">'python=3.11'</span>,<span class="w"> </span><span class="s1">'r-base'</span>,<span class="w"> </span><span class="s1">'r-essentials'</span>,<span class="w"> </span><span class="s1">'jupyterlab'</span><span class="o">]</span>
-conda-forge/noarch<span class="w">                                 </span>@<span class="w">   </span><span class="m">3</span>.7MB/s<span class="w">  </span><span class="m">3</span>.2s
-conda-forge/linux-64<span class="w">                              </span><span class="m">30</span>.2MB<span class="w"> </span>@<span class="w">   </span><span class="m">4</span>.2MB/s<span class="w">  </span><span class="m">7</span>.3s
-
-
-<span class="w">  </span>All<span class="w"> </span>requested<span class="w"> </span>packages<span class="w"> </span>already<span class="w"> </span>installed
-
-Preparing<span class="w"> </span>transaction:<span class="w"> </span><span class="k">done</span>
-Verifying<span class="w"> </span>transaction:<span class="w"> </span><span class="k">done</span>
-Executing<span class="w"> </span>transaction:<span class="w"> </span><span class="k">done</span>
-
-To<span class="w"> </span>activate<span class="w"> </span>this<span class="w"> </span>environment,<span class="w"> </span>use
-
-<span class="w">     </span>$<span class="w"> </span>mamba<span class="w"> </span>activate<span class="w"> </span>ipynb
-
-To<span class="w"> </span>deactivate<span class="w"> </span>an<span class="w"> </span>active<span class="w"> </span>environment,<span class="w"> </span>use
-
-<span class="w">     </span>$<span class="w"> </span>mamba<span class="w"> </span>deactivate
-</pre></div>
-
-<h4>가상환경 활성화 하기</h4>
-<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>activate<span class="w"> </span>ipynb
-</pre></div>
-
-<h4>파이썬 라이브러리 설치하기</h4>
-<p>아래 명령어를 통해 쉽게 설치할 수 있습니다.</p>
-<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>install<span class="w"> </span>pandas
-</pre></div>
-
-<h4>R 라이브러리 설치하기</h4>
-<p>R의 경우 보통 라이브러리 이름 앞에 <code>r-</code>을 붙이면 됩니다만, 확실하지 않기 때문에 다음 <code>search</code> 명령어를 통해 미리 확인하고 설치하면 좋습니다.</p>
-<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>search<span class="w"> </span>r-tidyverse
-</pre></div>
-
-<p>위 명령어를 통해 해당 라이브러리가 존재한다는 것을 알 수 있습니다.</p>
-<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>install<span class="w"> </span>r-tidyverse<span class="w"> </span>-y
-</pre></div>
-
-<h4>라이브러리 제거하기</h4>
-<p>설치한 라이브러리를 제거하고 싶다면 아래 명령어를 사용합니다.</p>
-<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>remove<span class="w"> </span>r-tidyverse
-</pre></div>
-
-<h4>의존성 파일로 저장하기</h4>
-<p>개발을 하다보면 배포 혹은 프로젝트간의 전환을 위해 의존성을 파일로 저장해야하는 경우가 생깁니다. 그럴 때에는 아래와 같이 하면 됩니다.</p>
-<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>env.yaml
-</pre></div>
-
-<h5>의존성 파일로 부터 가상환경 만들기</h5>
-<p>위 명령어로 생성된 파일을 가지고 다음 명령어를 사용해 새로운 가상환경을 만들 수 있습니다.</p>
-<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>env.yaml
-</pre></div>
-
-<h4>가상환경 비활성화하기</h4>
-<p>일반적으로는 그냥 터미널을 꺼버리고는 합니다만, 실수를 방지하기 위해 다음 명령어를 습관적으로 써주는 것이 좋습니다.</p>
-<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>deactivate<span class="w"> </span>
-</pre></div>
-
-<h2>끝으로,</h2>
-<p>파이썬과 R은 다양한 라이브러리를 사용해 프로젝트를 진행합니다. 그렇기에 라이브러리의 버전과 호환성을 관리하는 작업은 쉽지 않습니다. 여러 의존성 관리 도구들이 있지만 각각 장단점이 있고 개발자의 취향과 프로젝트의 요구사항에 따라 어떤 도구를 사용할지가 달라집니다. 파이썬과 R 라이브러리 관리에는 왕도가 없습니다. 최신 도구가 나오면 사용해보고 배우는 것을 멈추지 마세요.</p>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/seurat-scRNAseq/" class="u-url">Seurat으로 scRNA-seq 데이터 다루기</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/seurat-scRNAseq/" class="u-url">Seurat으로 scRNA-seq 데이터 다루기</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Taeyoon Kim
             </span></p>
             <p class="dateline">
             <a href="posts/seurat-scRNAseq/" rel="bookmark">
-            <time class="published dt-published" datetime="2022-05-15T11:57:23+09:00" itemprop="datePublished" title="2022-05-15 11:57">2022-05-15 11:57</time></a>
+            <time class="published dt-published" datetime="2023-05-15T11:57:23+09:00" itemprop="datePublished" title="2023-05-15 11:57">2023-05-15 11:57</time></a>
             </p>
         </div>
     </header><div class="e-content entry-content">
@@ -1726,6 +1598,134 @@ CD56bright NK 세포를 구별하는 유전자 마커로는 CD56(bright) (NCAM1)
 </div>
 </div>
 </div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/miniforge/" class="u-url">miniforge: 파이썬과 R의 패키지 및 개발 환경 관리 도구</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Taeyoon Kim
+            </span></p>
+            <p class="dateline">
+            <a href="posts/miniforge/" rel="bookmark">
+            <time class="published dt-published" datetime="2023-03-13T16:11:03+09:00" itemprop="datePublished" title="2023-03-13 16:11">2023-03-13 16:11</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <h2>파이썬과 R의 의존성 지옥</h2>
+<p>파이썬과 R에는 유용한 라이브러리들이 아주 많습니다. 그러다보니 여러 라이브러리들이 버전이 서로 충돌하거나 호환되지 않는 경우가 발생하곤 합니다. 예를 들어 A 라이브러리가 B 라이브러리 1.0 버전에 기반해 만들어졌는데 C 라이브러리가 B 라이브러리 2.0 버전을 요구한다면 A와 C를 동시에 사용할 수 없는 경우가 생깁니다.</p>
+<p>이런 의존성 문제를 해결하기 위해 다양한 방법론들이 등장했습니다. 파이썬의 경우에는 <code>venv + pip</code>, <code>Pyenv</code>, <code>Poetry</code>, <code>Conda</code>, <code>PDM</code> 등과 같은 새로운 라이브러리를 이용해 프로젝트 별로 의존성을 관리할 수 있도록 합니다. 문제는 이런 도구들도 만능이 아니기에 의존성 지옥 탈출은 요원해 보입니다. </p>
+<h2>콘다(conda)</h2>
+<p>콘다는 Windows, macOS 및 Linux에서 실행되는 오픈 소스 패키지 관리 시스템이자 환경 관리 시스템으로 파이썬 뿐만 아니라 R 패키지도 지원합니다. 그래서 주로 과학 분야에서 많이 사용되는 도구입니다. 그러나 덩치가 커서 작은 프로젝트에는 너무 많은 의존성과 리소스를 잡아먹는다는 단점이 있죠.</p>
+<h3>miniforge</h3>
+<p><a href="https://github.com/conda-forge/miniforge">miniforge</a>는 덩치큰 아나콘다를 아주 날씬하게 만드는 프로젝트입니다. 그래서 아래와 같은 특징을 갖습니다.</p>
+<ul>
+<li>기본(그리고 유일한) 채널로 conda-forge를 사용.</li>
+<li>표준 Python 인터프리터(일명 "CPython") 대신 PyPy에 대한 지원.</li>
+<li>콘다보다 더 빠른 맘바(mamba)도 지원.</li>
+<li>다양한 CPU 아키텍처(x86_64, ppc64le, Apple M1을 포함한 aarch64)지원.</li>
+</ul>
+<h3>맘바(mamba)는 또 뭐죠?</h3>
+<p>콘다의 다른 단점에 라이브러리 설치 속도가 느리다는 점이 었습니다. 그래서 C++으로 작성된 맘바라는 도구가 새로 나오게 되었죠. </p>
+<blockquote>
+<p>파이썬 생태계는 이런 것이 특징입니다. 항상 새로운 도구가 우후죽순 나옵니다.</p>
+</blockquote>
+<h2>맘바포지(mamba-forge)</h2>
+<p>맘바포지는 제가 생각하는 현재 시점에서 패키지와 개발 환경 관리 문제를 가장 쉽게 해결하는 도구입니다. 맘바포지를 설치하는 방법과 개발 환경을 설정을 알아보도록 하죠.</p>
+<h3>설치하기</h3>
+<p><a href="https://github.com/conda-forge/miniforge/blob/main/README.md">공식문서</a>에서 각각의 OS에 맞는 설치 방법을 찾아 볼 수 있습니다. 저는 리눅스를 사용하기에 아래 명령어로 설치 하였습니다.</p>
+<div class="code"><pre class="code literal-block">wget<span class="w"> </span><span class="s2">"https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-</span><span class="k">$(</span>uname<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">.sh"</span>
+bash<span class="w"> </span>Mambaforge-<span class="k">$(</span>uname<span class="k">)</span>-<span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span>.sh
+</pre></div>
+
+<h3>개발 환경 설정</h3>
+<h4>가상환경 만들기</h4>
+<p>맘바포지의 <code>(base)</code> 환경에 왠만하면 아무런 패키지를 설치하지 않을 것을 권장합니다. 따라서 새로운 가상환경인 <code>ipynb</code>를 만들어 주피터랩을 사용해 보겠습니다.</p>
+<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>ipynb<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>r-base<span class="w"> </span>r-essentials<span class="w"> </span>jupyterlab
+</pre></div>
+
+<p>콘다를 써본적 있으시다면 바로 아시겠지만 <code>conda</code>를 <code>mamba</code>로 바꾸기만 하면 됩니다. 결과는 아래와 같습니다.</p>
+<div class="code"><pre class="code literal-block"><span class="w">                  </span>__<span class="w">    </span>__<span class="w">    </span>__<span class="w">    </span>__
+<span class="w">                 </span>/<span class="w">  </span><span class="se">\ </span><span class="w"> </span>/<span class="w">  </span><span class="se">\ </span><span class="w"> </span>/<span class="w">  </span><span class="se">\ </span><span class="w"> </span>/<span class="w">  </span><span class="se">\</span>
+<span class="w">                </span>/<span class="w">    </span><span class="se">\/</span><span class="w">    </span><span class="se">\/</span><span class="w">    </span><span class="se">\/</span><span class="w">    </span><span class="se">\</span>
+███████████████/<span class="w">  </span>/██/<span class="w">  </span>/██/<span class="w">  </span>/██/<span class="w">  </span>/████████████████████████
+<span class="w">              </span>/<span class="w">  </span>/<span class="w"> </span><span class="se">\ </span><span class="w">  </span>/<span class="w"> </span><span class="se">\ </span><span class="w">  </span>/<span class="w"> </span><span class="se">\ </span><span class="w">  </span>/<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="se">\_</span>___
+<span class="w">             </span>/<span class="w">  </span>/<span class="w">   </span><span class="se">\_</span>/<span class="w">   </span><span class="se">\_</span>/<span class="w">   </span><span class="se">\_</span>/<span class="w">   </span><span class="se">\ </span><span class="w">   </span>o<span class="w"> </span><span class="se">\_</span>_,
+<span class="w">            </span>/<span class="w"> </span>_/<span class="w">                       </span><span class="se">\_</span>____/<span class="w">  </span><span class="sb">`</span>
+<span class="w">            </span><span class="p">|</span>/
+<span class="w">        </span>███╗<span class="w">   </span>███╗<span class="w"> </span>█████╗<span class="w"> </span>███╗<span class="w">   </span>███╗██████╗<span class="w">  </span>█████╗
+<span class="w">        </span>████╗<span class="w"> </span>████║██╔══██╗████╗<span class="w"> </span>████║██╔══██╗██╔══██╗
+<span class="w">        </span>██╔████╔██║███████║██╔████╔██║██████╔╝███████║
+<span class="w">        </span>██║╚██╔╝██║██╔══██║██║╚██╔╝██║██╔══██╗██╔══██║
+<span class="w">        </span>██║<span class="w"> </span>╚═╝<span class="w"> </span>██║██║<span class="w">  </span>██║██║<span class="w"> </span>╚═╝<span class="w"> </span>██║██████╔╝██║<span class="w">  </span>██║
+<span class="w">        </span>╚═╝<span class="w">     </span>╚═╝╚═╝<span class="w">  </span>╚═╝╚═╝<span class="w">     </span>╚═╝╚═════╝<span class="w"> </span>╚═╝<span class="w">  </span>╚═╝
+
+<span class="w">        </span>mamba<span class="w"> </span><span class="o">(</span><span class="m">1</span>.1.0<span class="o">)</span><span class="w"> </span>supported<span class="w"> </span>by<span class="w"> </span>@QuantStack
+
+<span class="w">        </span>GitHub:<span class="w">  </span>https://github.com/mamba-org/mamba
+<span class="w">        </span>Twitter:<span class="w"> </span>https://twitter.com/QuantStack
+
+█████████████████████████████████████████████████████████████
+
+
+Looking<span class="w"> </span><span class="k">for</span>:<span class="w"> </span><span class="o">[</span><span class="s1">'python=3.11'</span>,<span class="w"> </span><span class="s1">'r-base'</span>,<span class="w"> </span><span class="s1">'r-essentials'</span>,<span class="w"> </span><span class="s1">'jupyterlab'</span><span class="o">]</span>
+conda-forge/noarch<span class="w">                                 </span>@<span class="w">   </span><span class="m">3</span>.7MB/s<span class="w">  </span><span class="m">3</span>.2s
+conda-forge/linux-64<span class="w">                              </span><span class="m">30</span>.2MB<span class="w"> </span>@<span class="w">   </span><span class="m">4</span>.2MB/s<span class="w">  </span><span class="m">7</span>.3s
+
+
+<span class="w">  </span>All<span class="w"> </span>requested<span class="w"> </span>packages<span class="w"> </span>already<span class="w"> </span>installed
+
+Preparing<span class="w"> </span>transaction:<span class="w"> </span><span class="k">done</span>
+Verifying<span class="w"> </span>transaction:<span class="w"> </span><span class="k">done</span>
+Executing<span class="w"> </span>transaction:<span class="w"> </span><span class="k">done</span>
+
+To<span class="w"> </span>activate<span class="w"> </span>this<span class="w"> </span>environment,<span class="w"> </span>use
+
+<span class="w">     </span>$<span class="w"> </span>mamba<span class="w"> </span>activate<span class="w"> </span>ipynb
+
+To<span class="w"> </span>deactivate<span class="w"> </span>an<span class="w"> </span>active<span class="w"> </span>environment,<span class="w"> </span>use
+
+<span class="w">     </span>$<span class="w"> </span>mamba<span class="w"> </span>deactivate
+</pre></div>
+
+<h4>가상환경 활성화 하기</h4>
+<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>activate<span class="w"> </span>ipynb
+</pre></div>
+
+<h4>파이썬 라이브러리 설치하기</h4>
+<p>아래 명령어를 통해 쉽게 설치할 수 있습니다.</p>
+<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>install<span class="w"> </span>pandas
+</pre></div>
+
+<h4>R 라이브러리 설치하기</h4>
+<p>R의 경우 보통 라이브러리 이름 앞에 <code>r-</code>을 붙이면 됩니다만, 확실하지 않기 때문에 다음 <code>search</code> 명령어를 통해 미리 확인하고 설치하면 좋습니다.</p>
+<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>search<span class="w"> </span>r-tidyverse
+</pre></div>
+
+<p>위 명령어를 통해 해당 라이브러리가 존재한다는 것을 알 수 있습니다.</p>
+<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>install<span class="w"> </span>r-tidyverse<span class="w"> </span>-y
+</pre></div>
+
+<h4>라이브러리 제거하기</h4>
+<p>설치한 라이브러리를 제거하고 싶다면 아래 명령어를 사용합니다.</p>
+<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>remove<span class="w"> </span>r-tidyverse
+</pre></div>
+
+<h4>의존성 파일로 저장하기</h4>
+<p>개발을 하다보면 배포 혹은 프로젝트간의 전환을 위해 의존성을 파일로 저장해야하는 경우가 생깁니다. 그럴 때에는 아래와 같이 하면 됩니다.</p>
+<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>env.yaml
+</pre></div>
+
+<h5>의존성 파일로 부터 가상환경 만들기</h5>
+<p>위 명령어로 생성된 파일을 가지고 다음 명령어를 사용해 새로운 가상환경을 만들 수 있습니다.</p>
+<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>env.yaml
+</pre></div>
+
+<h4>가상환경 비활성화하기</h4>
+<p>일반적으로는 그냥 터미널을 꺼버리고는 합니다만, 실수를 방지하기 위해 다음 명령어를 습관적으로 써주는 것이 좋습니다.</p>
+<div class="code"><pre class="code literal-block">mamba<span class="w"> </span>deactivate<span class="w"> </span>
+</pre></div>
+
+<h2>끝으로,</h2>
+<p>파이썬과 R은 다양한 라이브러리를 사용해 프로젝트를 진행합니다. 그렇기에 라이브러리의 버전과 호환성을 관리하는 작업은 쉽지 않습니다. 여러 의존성 관리 도구들이 있지만 각각 장단점이 있고 개발자의 취향과 프로젝트의 요구사항에 따라 어떤 도구를 사용할지가 달라집니다. 파이썬과 R 라이브러리 관리에는 왕도가 없습니다. 최신 도구가 나오면 사용해보고 배우는 것을 멈추지 마세요.</p>
     </div>
     </article>
 </div>
