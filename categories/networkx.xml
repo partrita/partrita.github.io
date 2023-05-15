@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Networkx)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/networkx.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Mar 2023 00:05:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>BERN2 API로 Network graph 그려보기</title><link>https://partrita.github.io/posts/pubmedminer/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Networkx)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/networkx.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Mon, 15 May 2023 08:22:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>BERN2 API로 Network graph 그려보기</title><link>https://partrita.github.io/posts/pubmedminer/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div id="cell-id=0251a182" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="0.-%EA%B0%9C%EC%9A%94"&gt;0. 개요&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#0.-%EA%B0%9C%EC%9A%94"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;고려대 DMIS Lab에서 공개한 BERN2 API를 살펴보다보니 기존의 &lt;code&gt;Biopython&lt;/code&gt;의 pmid(논문의 고유 ID) 검색 기능을 사용하면 여러 논문들의 관계를 시각화할 수 있지 않을까하는 생각이 들었습니다. 그래서 오랜만에 코드를 작성해보았습니다.&lt;/p&gt;
@@ -12,7 +12,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=b68f295d" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -78,7 +78,7 @@
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=b407564d" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;사용자 입력을 받기위해 &lt;code&gt;input&lt;/code&gt; 함수를 사용합니다. 한번에 최대 10000건 이지만 예시에서는 10건의 pmid만 받아오도록 하겠습니다.&lt;/p&gt;
@@ -86,7 +86,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=8e1c9c8f" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -121,7 +121,7 @@ Number of search results is: 10!
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=cfeed7c2" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;BERN2 API에서 초당 한건으로 처리하라고 명시하였기 때문에 코드 중간에 &lt;code&gt;time.sleep(1)&lt;/code&gt;을 추가하였고 진행상황을 시각화하기 위해 &lt;code&gt;tqdm&lt;/code&gt; 도구를 사용했습니다.&lt;/p&gt;
@@ -129,7 +129,7 @@ Number of search results is: 10!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=654de00a" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -182,7 +182,7 @@ Number of search results is: 10!
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=ce7d5527" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;에러가 나지않은걸 보니 문제는 없는 것 같네요, 생성된 데이터 프레임의 끝을 살펴봅시다.&lt;/p&gt;
@@ -190,7 +190,7 @@ Number of search results is: 10!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=0b6b7fd7" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -282,7 +282,7 @@ Number of search results is: 10!
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=6fea01ec" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;총 450개의 데이터가 들어있습니다. 4개의 열로 구성되어 있군요. &lt;code&gt;mention&lt;/code&gt;열은 biomedical entity, &lt;code&gt;obj&lt;/code&gt;열은 biomedical entity의 분류(총 9가지가 존재한다고 합니다.) &lt;code&gt;prob&lt;/code&gt;는 BERN2 API가 예측하는 정확도, &lt;code&gt;pmid&lt;/code&gt;는 논문의 ID입니다. 데이터 타입과 결측치도 확인해봅시다.&lt;/p&gt;
@@ -290,7 +290,7 @@ Number of search results is: 10!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=f15f0a6d" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -331,7 +331,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=599955d1" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;code&gt;prob&lt;/code&gt;열에는 몇개가 비어 있다는 것을 알 수 있네요. 이번에는 &lt;code&gt;prob&lt;/code&gt; 값과 상관없이 전부 데이터를 사용할 것이라 무시해도 괜찮습니다.
@@ -340,7 +340,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=6031e55e" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [6]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -375,7 +375,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=70650d9c" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="2.-Data-cleaning"&gt;2. Data cleaning&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#2.-Data-cleaning"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이제 전문지식이 조금 필요한 시점입니다. 왜냐하면 biomedical entity들은 동일한 것이지만 다양한 이름을 가진것들이 많기 때문입니다.&lt;/p&gt;
@@ -387,7 +387,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=7e087da7" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -415,7 +415,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=26c653b3" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;다시한번 그래프를 그려서 잘 처리되었는지 확인해봅니다.&lt;/p&gt;
@@ -423,7 +423,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=e44c53ca" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -458,7 +458,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=22668649" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;이제 좀 더 나아보입니다. 만약 데이터를 저장하고 싶다면 다음 코드를 통해 CSV파일로 저장합니다.&lt;/p&gt;
@@ -466,7 +466,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=8e8f746b" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -479,7 +479,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=fbcdaf17" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="3.-Networkx-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;3. Networkx 를 사용해 분석하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.-Networkx-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Networkx&lt;/code&gt;라는 도구를 사용하면 앞에서 만든 데이터를 손쉽게 분석 할 수 있습니다. 다음 명령어는 &lt;code&gt;pandas&lt;/code&gt; dataframe을 노드와 엣지로 구성된 네트워크 graph 형식으로 변환해 줍니다.&lt;/p&gt;
@@ -487,7 +487,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=fe9ad52d" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -521,7 +521,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=aca3d6c4" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="3.1.-Degree%EA%B0%80-%EB%82%AE%EC%9D%80-%EB%85%B8%EB%93%9C-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0"&gt;3.1. Degree가 낮은 노드 제거하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.1.-Degree%EA%B0%80-%EB%82%AE%EC%9D%80-%EB%85%B8%EB%93%9C-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;노드에 연결된 엣지(edge)의 수를 degree라고 합니다. 우리가 만든 데이터의 node의 degree는 대부분은 1이하 일 것입니다. 그리고 그렇게 낮은 degree의 노드들은 의미가 없으며 시각화하는데 불편하기만 하니 제거합니다. 일단은 데이터들의 degree가 어떤지 확인부터 해봅시다.&lt;/p&gt;
@@ -529,7 +529,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=a8901ae0" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [11]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -638,7 +638,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=4ef597cc" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Degree가 높은 노드들은 대부분 논문의 pmid 값이네요. 간단한 산술 통계값을 계산해봅시다.&lt;/p&gt;
@@ -646,7 +646,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=15eaa9c4" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [12]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -732,7 +732,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=315ff4f8" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 결과를 통해 총 158개의 값중에 75%의 degree가 1인 것을 확인할 수 있습니다. 여기서는 좀 더 보기 좋은 시각화를 위해 degree가 2이하인 값들은 제거하고 사용해보겠습니다.&lt;/p&gt;
@@ -740,7 +740,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=eb6b2969" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [13]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -755,7 +755,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=843f8426" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="3.2.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;3.2. 간단한 시각화하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#3.2.-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Networkx&lt;/code&gt;에서 제공되는 &lt;code&gt;draw()&lt;/code&gt; 를 사용해 아래와 같이 그림을 그려봅니다.&lt;/p&gt;
@@ -763,7 +763,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=6df7f951" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [14]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -802,7 +802,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=c1a433d7" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;위 그림을 살펴보면 pmid의 노드들이 특정 entity로 연결되어 있는 모습을 확인 할 수 있습니다.&lt;/p&gt;
@@ -813,7 +813,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=7a56b52f" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [15]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -838,7 +838,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=9ee64216" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;이제 시각화를 통해 결과를 확인해봅니다.&lt;/p&gt;
@@ -846,7 +846,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div id="cell-id=c2271aee" class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [16]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -920,7 +920,7 @@ memory usage: 8.5+ KB
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;div id="cell-id=ca56542c" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;4. 마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/pubmedminer/#4.-%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이번 포스팅은 &lt;code&gt;Biopython&lt;/code&gt;과 &lt;code&gt;BERN2&lt;/code&gt;를 사용해 특정 검색어에 대한 Biomedical entity 데이터를 모으고 네트워크 그래프를 그려보는 작업을 해보았습니다. 예시를 들기 위해 아주 단순하게 분석해보았는데 만약 10000개의 pmid를 모아서 해본다면 실제로 쓸모있는 결과를 얻을 수 있을 것 같습니다.&lt;/p&gt;
