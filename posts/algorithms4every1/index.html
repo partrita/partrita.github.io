@@ -147,8 +147,8 @@ bg-dark
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법1</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 해법1</span>
 <span class="k">def</span> <span class="nf">sum_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
@@ -157,67 +157,43 @@ bg-dark
 
 <span class="n">sum_n</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[1]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[1]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>500500</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법 2</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 해법 2</span>
 <span class="k">def</span> <span class="nf">sum_n2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
 <span class="n">sum_n2</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[2]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[2]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>500500</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -229,9 +205,9 @@ bg-dark
 <p>입력의 크기(n)에 따라서 해법에 차이가 생깁니다.</p>
 <ol>
 <li>해법1의 경우는: 덧셈 n 번</li>
-<li>해법2의 경우 덧셈, 곱셈, 나눗셈 총 3번</li>
+<li>해법2의 경우 덧셈, 곱셈, 나눗셈 총 3번
+입력의 크기가 작을때는 큰 차이가 없지만, n의 크기가 커질수록 속도에 엄청난 차이가 납니다.</li>
 </ol>
-<p>입력의 크기가 작을때는 큰 차이가 없지만, n의 크기가 커질수록 속도에 엄청난 차이가 납니다.</p>
 <h3 id="O-%ED%91%9C%EA%B8%B0%EB%B2%95">O 표기법<a class="anchor-link" href="#O-%ED%91%9C%EA%B8%B0%EB%B2%95">¶</a>
 </h3>
 <p>계산복잡도를 표헌하는 방법 중 가장 많이 사용되는 방법입니다. <strong>빅 오</strong>표기법이라고도 부릅니다. 간단한 예를 들면, 입력 크기 n에 대해 계산을 n번 한다면, 계산 복잡도를 O(n)이라고 표현합니다.</p>
@@ -242,7 +218,6 @@ bg-dark
 <li>O(2^n) : 2의 n 제곱에 비례하여 계산 시간이 증가함</li>
 </ul>
 <p>Jupyter notebook의 <code>%%time</code> 기능을 사용해 위의 두가지 해법의 속도를 비교해보겠습니다.</p>
-
 </div>
 </div>
 </div>
@@ -250,102 +225,69 @@ bg-dark
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="n">sum_n</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
-
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>CPU times: user 12 ms, sys: 0 ns, total: 12 ms
 Wall time: 12.3 ms
 </pre>
 </div>
 </div>
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[3]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>5000050000</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="n">sum_n2</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
-
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>CPU times: user 0 ns, sys: 0 ns, total: 0 ns
 Wall time: 10.5 µs
 </pre>
 </div>
 </div>
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[4]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>5000050000</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>위의 두가지 알고리즘은 같은 문제를 해결하지만 시간에서 약 열배의 차이를 보여 주고 있습니다. 더 많은 양의 입력이 들어오면 차이는 더욱더 커지게 될겁니다. 
+<p>위의 두가지 알고리즘은 같은 문제를 해결하지만 시간에서 약 열배의 차이를 보여 주고 있습니다. 더 많은 양의 입력이 들어오면 차이는 더욱더 커지게 될겁니다.
 문제를 해결하는데 있어서 다양한 방법이 존재할 수 있지만 우리가 가능하면 빠른 알고리즘을 짜야할 이유는 이 때문입니다.</p>
-
 </div>
 </div>
 </div>
@@ -357,7 +299,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C2.-%EC%B5%9C%EB%8C%93%EA%B0%92-%EC%B0%BE%EA%B8%B0">문제2. 최댓값 찾기<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C2.-%EC%B5%9C%EB%8C%93%EA%B0%92-%EC%B0%BE%EA%B8%B0">¶</a>
 </h3>
 <p>주어진 숫자 n개 중 가장 큰 숫자를 찾는 알고리즘을 만들어 보세요</p>
-
 </div>
 </div>
 </div>
@@ -365,8 +306,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_max</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_max</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">max_v</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
@@ -377,31 +318,19 @@ Wall time: 10.5 µs
 <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
 <span class="n">find_max</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[5]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>6</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -417,8 +346,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_index</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_index</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">max_index</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
@@ -429,31 +358,19 @@ Wall time: 10.5 µs
 <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
 <span class="n">find_index</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[6]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>6</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -463,7 +380,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C3.-%EA%B0%99%EC%9D%80-%EA%B0%92-%EC%B0%BE%EA%B8%B0">문제3. 같은 값 찾기<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C3.-%EA%B0%99%EC%9D%80-%EA%B0%92-%EC%B0%BE%EA%B8%B0">¶</a>
 </h3>
 <p>n개의 데이터 중에서 같은 이름을 찾아 집함으로 돌려주는 알고리즘</p>
-
 </div>
 </div>
 </div>
@@ -471,8 +387,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_same_data</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_same_data</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># 결과 저장용 빈 집합</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -483,31 +399,19 @@ Wall time: 10.5 µs
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'C'</span><span class="p">,</span><span class="s1">'Cm'</span><span class="p">,</span><span class="s1">'D7'</span><span class="p">,</span><span class="s1">'E'</span><span class="p">,</span><span class="s1">'Cm'</span><span class="p">]</span>
 <span class="n">find_same_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[7]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>{'Cm'}</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -525,7 +429,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C4.-%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%96%BC-%EA%B5%AC%ED%95%98%EA%B8%B0">문제4. 팩토리얼 구하기<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C4.-%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%96%BC-%EA%B5%AC%ED%95%98%EA%B8%B0">¶</a>
 </h3>
 <p>1부터 n까지 연속한 정수의 곱을 구하는 알고리즘을 만들어 보세요.</p>
-
 </div>
 </div>
 </div>
@@ -533,8 +436,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법 1 </span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 해법 1 </span>
 <span class="k">def</span> <span class="nf">fact1</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
@@ -542,69 +445,45 @@ Wall time: 10.5 µs
     <span class="k">return</span> <span class="n">result</span>
 <span class="n">fact1</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[8]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>3628800</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법2, 재귀 호출 사용</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 해법2, 재귀 호출 사용</span>
 <span class="k">def</span> <span class="nf">fact2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">fact2</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">fact2</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[9]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>3628800</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -612,7 +491,6 @@ Wall time: 10.5 µs
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>1부터 n까지 합을 구하는 문제1을 재귀호출로 다시 한번 풀어보겠습니다.</p>
-
 </div>
 </div>
 </div>
@@ -620,39 +498,27 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sum_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sum_n</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">sum_n</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">n</span>
 <span class="n">sum_n</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[10]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>5050</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -665,7 +531,6 @@ Wall time: 10.5 µs
 <blockquote>
 <p>최대공약수는 두 개 이상의 정수의 공통약수중에서 가장 큰 값을 의미 합니다.</p>
 </blockquote>
-
 </div>
 </div>
 </div>
@@ -673,8 +538,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법1</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 해법1</span>
 <span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
     <span class="n">i</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -683,69 +548,45 @@ Wall time: 10.5 µs
         <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">gcd</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span><span class="mi">414</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[11]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>6</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법2, 유클리드 알고리즘을 이용해 최대 공약수를 구하는 알고리즘</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 해법2, 유클리드 알고리즘을 이용해 최대 공약수를 구하는 알고리즘</span>
 <span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">a</span>
     <span class="k">return</span> <span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">)</span>
 <span class="n">gcd</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span><span class="mi">414</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[12]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[12]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>6</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -755,7 +596,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C6.-%ED%95%98%EB%85%B8%EC%9D%B4-%ED%83%91-%EC%98%AE%EA%B8%B0%EA%B8%B0">문제6. 하노이 탑 옮기기<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C6.-%ED%95%98%EB%85%B8%EC%9D%B4-%ED%83%91-%EC%98%AE%EA%B8%B0%EA%B8%B0">¶</a>
 </h3>
 <p>원반이 n개인 하노이 탑을 옮기기 위한 이동순서를 출력해보세요.</p>
-
 </div>
 </div>
 </div>
@@ -763,8 +603,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">hanoi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">from_pos</span><span class="p">,</span> <span class="n">to_pos</span><span class="p">,</span> <span class="n">aux_pos</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">hanoi</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">from_pos</span><span class="p">,</span> <span class="n">to_pos</span><span class="p">,</span> <span class="n">aux_pos</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">i</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">from_pos</span><span class="p">,</span> <span class="s1">' &gt;&gt; '</span><span class="p">,</span> <span class="n">to_pos</span><span class="p">)</span>
         <span class="k">return</span>
@@ -773,11 +613,9 @@ Wall time: 10.5 µs
     <span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">aux_pos</span><span class="p">,</span> <span class="n">to_pos</span><span class="p">,</span> <span class="n">from_pos</span><span class="p">)</span>
     
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -790,7 +628,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C7.-%EC%88%9C%EC%B0%A8%ED%83%90%EC%83%89">문제7. 순차탐색<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C7.-%EC%88%9C%EC%B0%A8%ED%83%90%EC%83%89">¶</a>
 </h3>
 <p>리스트에 있는 첫 번째 자료부터 하나하나 비교하면서 탐색합니다.</p>
-
 </div>
 </div>
 </div>
@@ -798,8 +635,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법 1</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 해법 1</span>
 <span class="k">def</span> <span class="nf">search_list</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -812,38 +649,26 @@ Wall time: 10.5 µs
 <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
 <span class="n">search_list</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[14]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>4</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 해법2: 리스트에 같은 값이 여러개 있을 경우 </span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 해법2: 리스트에 같은 값이 여러개 있을 경우 </span>
 <span class="c1"># 모든 위치를 리스트로 돌려주는 알고리즘</span>
 <span class="k">def</span> <span class="nf">search_list</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -858,31 +683,19 @@ Wall time: 10.5 µs
 <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
 <span class="n">search_list</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[15]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[15]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>[4, 8]</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -892,7 +705,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C8.-%EC%84%A0%ED%83%9D-%EC%A0%95%EB%A0%AC">문제8. 선택 정렬<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C8.-%EC%84%A0%ED%83%9D-%EC%A0%95%EB%A0%AC">¶</a>
 </h3>
 <p>리스트 안의 자료를 한 번씩 비교하는 방법과 거의 같습니다. 비교횟수가 입력 크기의 제곱에 비례하는 O(n^2) 알고리즘이므로 시간이 굉장히 오래 걸립니다.</p>
-
 </div>
 </div>
 </div>
@@ -900,8 +712,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sel_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sel_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="n">min_index</span> <span class="o">=</span> <span class="n">i</span>
@@ -913,29 +725,20 @@ Wall time: 10.5 µs
 <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 <span class="n">sel_sort</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
-
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[1, 2, 4, 5, 7]
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -945,7 +748,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C9.-%EC%82%BD%EC%9E%85-%EC%A0%95%EB%A0%AC">문제9. 삽입 정렬<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C9.-%EC%82%BD%EC%9E%85-%EC%A0%95%EB%A0%AC">¶</a>
 </h3>
 <p>삽입 정렬은 특정 굥우를 제외하면 선택정렬과 같인 O(n^2)알고리즘 입니다. 그래서 시간이 굉장히 오래 걸립니다.</p>
-
 </div>
 </div>
 </div>
@@ -953,8 +755,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ins_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ins_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
         <span class="n">key</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -968,29 +770,20 @@ Wall time: 10.5 µs
 <span class="n">ins_sort</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
-
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[1, 2, 4, 5, 7]
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1000,7 +793,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C10.-%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC">문제10. 병합 정렬<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C10.-%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC">¶</a>
 </h3>
 <p>주어진 문제를 절반으로 나눈 다음 각각을 재귀 호출로 풀어가는 방식입니다. 이런 기법을 <strong>분할 정복</strong> 이라고 부릅니다. 계산의 복잡도는 O(n*logn)으로 선택정렬이나 삽입정렬보다 빠릅니다.</p>
-
 </div>
 </div>
 </div>
@@ -1008,8 +800,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> 
@@ -1044,29 +836,20 @@ Wall time: 10.5 µs
 <span class="n">merge_sort</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
-
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[1, 2, 3, 6, 6, 10, 23]
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1076,7 +859,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C11.-%ED%80%B5-%EC%A0%95%EB%A0%AC">문제11. 퀵 정렬<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C11.-%ED%80%B5-%EC%A0%95%EB%A0%AC">¶</a>
 </h3>
 <p>그룹을 둘로 나눠 재귀호출을하는 방식으로 앞서본 병랍 정렬과 유사하지만, 그룹을 나눌 떄 미리 기준과 비교해서 나누는 것이 다릅니다.</p>
-
 </div>
 </div>
 </div>
@@ -1084,8 +866,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="n">pivot</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
@@ -1105,29 +887,20 @@ Wall time: 10.5 µs
 <span class="n">quick_sort_</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
-
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[1, 2, 3, 4, 6, 8, 9, 10]
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1144,7 +917,6 @@ Wall time: 10.5 µs
 <p>이분 담색은 '둘로 나눈다'는 뜻입니다.</p>
 </blockquote>
 <p>탐색할 자료를 둘로 나누어 찾는 것이라 순차 탐색보다 훨씬 빨리 찾을 수 있습니다.</p>
-
 </div>
 </div>
 </div>
@@ -1152,8 +924,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
     <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
     <span class="k">while</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
@@ -1168,29 +940,20 @@ Wall time: 10.5 µs
 <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
-
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>2
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1206,7 +969,6 @@ Wall time: 10.5 µs
 <p>회문은 거꾸로 읽어도 내용이 같은 문장를 뜻합니다.</p>
 </blockquote>
 <p>예를 들면 '기러기', '일요일' 등이 있죠.</p>
-
 </div>
 </div>
 </div>
@@ -1214,8 +976,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="n">que</span> <span class="o">=</span><span class="p">[]</span>
     <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
@@ -1228,29 +990,20 @@ Wall time: 10.5 µs
     <span class="k">return</span> <span class="kc">True</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">palindrome</span><span class="p">(</span><span class="s1">'Kayak'</span><span class="p">))</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
-
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>True
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1260,7 +1013,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C14.-%EB%94%95%EC%85%94%EB%84%88%EB%A6%AC%EB%A1%9C-%EA%B0%99%EC%9D%80-%EC%9D%B4%EB%A6%84-%EC%B0%BE%EA%B8%B0">문제14. 딕셔너리로 같은 이름 찾기<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C14.-%EB%94%95%EC%85%94%EB%84%88%EB%A6%AC%EB%A1%9C-%EA%B0%99%EC%9D%80-%EC%9D%B4%EB%A6%84-%EC%B0%BE%EA%B8%B0">¶</a>
 </h3>
 <p>파이썬의 딕셔너리라는 자료 구조를 사용해 풀어보겠습니다.</p>
-
 </div>
 </div>
 </div>
@@ -1268,8 +1020,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_name</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_name</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="n">name_dic</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_dic</span><span class="p">:</span>
@@ -1284,31 +1036,19 @@ Wall time: 10.5 µs
 <span class="n">name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Jake'</span><span class="p">,</span><span class="s1">'Jim'</span><span class="p">,</span><span class="s1">'Jake'</span><span class="p">]</span>
 <span class="n">find_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt output_prompt">Out[22]:</div>
-
-
-
-
+<div class="prompt output_prompt">Out[22]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>{'Jake'}</pre>
 </div>
-
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1318,7 +1058,6 @@ Wall time: 10.5 µs
 <h3 id="%EB%AC%B8%EC%A0%9C15.-%EC%B9%9C%EA%B5%AC%EC%9D%98-%EC%B9%9C%EA%B5%AC%EC%B0%BE%EA%B8%B0">문제15. 친구의 친구찾기<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C15.-%EC%B9%9C%EA%B5%AC%EC%9D%98-%EC%B9%9C%EA%B5%AC%EC%B0%BE%EA%B8%B0">¶</a>
 </h3>
 <p>친구관계를 이용해 직간접적으로 아는 모든 사람을 출력하는 알고리즘을 만들어 보세요.</p>
-
 </div>
 </div>
 </div>
@@ -1326,8 +1065,8 @@ Wall time: 10.5 µs
 <div class="input">
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_all_friends</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_all_friends</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
     <span class="n">que</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">done</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">que</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
@@ -1350,20 +1089,13 @@ Wall time: 10.5 µs
 <span class="p">}</span>
 <span class="n">print_all_friends</span><span class="p">(</span><span class="n">friends</span><span class="p">,</span> <span class="s1">'Summer'</span><span class="p">)</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
-
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Summer
 John
@@ -1373,10 +1105,8 @@ Tom
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1386,7 +1116,6 @@ Tom
 <h2 id="%EB%81%9D%EC%9C%BC%EB%A1%9C">끝으로<a class="anchor-link" href="#%EB%81%9D%EC%9C%BC%EB%A1%9C">¶</a>
 </h2>
 <p><strong>알고리즘이란 무엇인가?</strong> 라는 질문에서 시작해 15가지의 문제를 통해 알아보았습니다. 풀어 본 문제들은 쉬운 문제지만 알고리즘에 대한 접근법은 동일합니다. 앞으로도 여러분들이 더 많은 문제와 해답을 위한 노력을 기울이길 기원합니다.</p>
-
 </div>
 </div>
 </div>
