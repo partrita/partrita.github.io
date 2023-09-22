@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about Scanpy)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/scanpy.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Fri, 22 Sep 2023 02:59:49 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>scRNA데이터 전처리하기</title><link>https://partrita.github.io/posts/scRNA-rawdata/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div id="cell-id=a156369d-3781-4a4d-94b5-6416ba74bf0f" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;시작하기 앞서&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%95%9E%EC%84%9C"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;다음과 같은 몇가지 가정을 하고 시작하겠습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;가정1. 10x Genomics Single Cell Solution을 통해 얻은 서열 데이터를 사용&lt;/li&gt;
+&lt;li&gt;가정2. 리눅스(Ubuntu 22.04.3 LTS x86_64) OS를 사용하며 기본적인 shell 명령어를 앎&lt;/li&gt;
+&lt;li&gt;가정3. 패키지 매니저인 Anaconda에 대한 사용법을 알고 있음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;터미널을 열고 원하는 폴더로 이동합니다. 저는 &lt;code&gt;/home/fkt/Downloads&lt;/code&gt;에서 시작하도록 하겠습니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$pwd&lt;/span&gt;
+/home/fkt/Downloads
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;가상환경 만들기&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;다음과 같이 사용가상환경을 만들어 사용합니다. 먼저 &lt;code&gt;TutorialEnvironment.yml&lt;/code&gt; 파일을 다음 명령어로 다운받습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;해당 파일에는 RNA velocity 분석을 위한 &lt;code&gt;velocyto&lt;/code&gt; 도구의 dependancy 정보가 들어 있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget&lt;span class="w"&gt; &lt;/span&gt;https://cf.10xgenomics.com/supp/cell-exp/neutrophils/TutorialEnvironment.yml
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;다음 명령어로 가상환경을 만들어 줍니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda&lt;span class="w"&gt; &lt;/span&gt;env&lt;span class="w"&gt; &lt;/span&gt;create&lt;span class="w"&gt; &lt;/span&gt;--file&lt;span class="w"&gt; &lt;/span&gt;TutorialEnvironment.yml
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;만들어진 가상환경을 활성화 시킵니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda&lt;span class="w"&gt; &lt;/span&gt;activate&lt;span class="w"&gt; &lt;/span&gt;tutorial
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;다운로드 받은 &lt;code&gt;yml&lt;/code&gt;파일은 삭제해줍니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rm&lt;span class="w"&gt; &lt;/span&gt;TutorialEnvironment.yml
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="Cell-ranger-%EC%84%A4%EC%B9%98"&gt;Cell ranger 설치&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#Cell-ranger-%EC%84%A4%EC%B9%98"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;10x Genomics Single Cell Solution을 통해 single cell RNA sequncing을 했다면 &lt;code&gt;10x Genomics&lt;/code&gt;에서 &lt;code&gt;Cell ranger&lt;/code&gt;라는 alignment 도구를 제공하고 있습니다. 속도는 좀 느려도 사용 용이성은 좋아서 저는 &lt;code&gt;Cellranger&lt;/code&gt;를 추천합니다. 자세한 것은 &lt;a href="https://www.10xgenomics.com/support/software/cell-ranger"&gt;공식사이트&lt;/a&gt;를 참고하시기 바랍니다.&lt;/p&gt;
+&lt;h3 id="%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD"&gt;시스템 요구사항&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Cellranger&lt;/code&gt;는 리눅스 시스템에서 작동하며 다음의 최소 사양을 요구합니다:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;8-core Intel or AMD processor (16 cores recommended).&lt;/li&gt;
+&lt;li&gt;64GB RAM (128GB recommended).&lt;/li&gt;
+&lt;li&gt;1TB free disk space.&lt;/li&gt;
+&lt;li&gt;64-bit CentOS/RedHat 7.0 or Ubuntu 14.04 - See the 10x Genomics OS Support page for details.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;터미널에 다음 명령어를 입력해 &lt;code&gt;cell ranger 7.2&lt;/code&gt;버전을 다운로드 합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;현재 기준으로 7.2 버전이 최신입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget&lt;span class="w"&gt; &lt;/span&gt;-O&lt;span class="w"&gt; &lt;/span&gt;cellranger-7.2.0.tar.gz&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"https://cf.10xgenomics.com/releases/cell-exp/cellranger-7.2.0.tar.gz?Expires=1695129121&amp;amp;Key-Pair-Id=APKAI7S6A5RYOXBWRPDA&amp;amp;Signature=ZipqR8Pg4YvVDQ3MvAVuuiPwEOC5c39~Wj0WTAxfoJW6xtrxqIFgIDySFSFnsWcwDpmAovJGrHXU24Y9Cptt88OJSPdEupyFRXoGKJvVzRtDJChmuMbSpVCy-2N-QnMKwxNtd8Yt8Mdp2Vcq4wxx1hVC0Yx54c7U9o~RFXIVsIp48thKR6JnKhJmCAC5U4dFLa86~NcB4s5Ic4HATrQP2KyWexyYZWgmBEw13mlKYtlVRUil0zseoq0-CZyGmE8oB0iDBSUBAyIqo~XMVjv~lkMz4cRcyCbQKBRDr~U36FM2KnE3rhv-Rlp4KD-uXCReRnBsY6N6t-HxpS2YDpN3mQ__"&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그리고 나서 다음 명령어로 압축을 풀어줍니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tar&lt;span class="w"&gt; &lt;/span&gt;-xvf&lt;span class="w"&gt; &lt;/span&gt;cellranger-7.2.0.tar.gz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;cellranger-7.2.0&lt;/code&gt; 폴더로 이동하기&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;cellranger-7.2.0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;정상적으로 되었다면 아래와 같은 폴더 구조를 볼 수 있습니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├──&lt;span class="w"&gt; &lt;/span&gt;bin
+├──&lt;span class="w"&gt; &lt;/span&gt;builtwith.json
+├──&lt;span class="w"&gt; &lt;/span&gt;cellranger&lt;span class="w"&gt; &lt;/span&gt;-&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;bin/cellranger
+├──&lt;span class="w"&gt; &lt;/span&gt;external
+├──&lt;span class="w"&gt; &lt;/span&gt;lib
+├──&lt;span class="w"&gt; &lt;/span&gt;LICENSE
+├──&lt;span class="w"&gt; &lt;/span&gt;mro
+├──&lt;span class="w"&gt; &lt;/span&gt;probe_sets&lt;span class="w"&gt; &lt;/span&gt;-&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;external/tenx_feature_references/targeted_panels
+├──&lt;span class="w"&gt; &lt;/span&gt;sourceme.bash
+├──&lt;span class="w"&gt; &lt;/span&gt;sourceme.csh
+└──&lt;span class="w"&gt; &lt;/span&gt;THIRD-PARTY-LICENSES.cellranger.txt
+
+&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;directories,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;files
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이제 &lt;code&gt;./cellranger&lt;/code&gt;명령어를 입력하면 아래와 같이 cell ranger 실행이 가능합니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./cellranger
+cellranger&lt;span class="w"&gt; &lt;/span&gt;cellranger-7.2.0
+
+Process&lt;span class="w"&gt; &lt;/span&gt;10x&lt;span class="w"&gt; &lt;/span&gt;Genomics&lt;span class="w"&gt; &lt;/span&gt;Gene&lt;span class="w"&gt; &lt;/span&gt;Expression,&lt;span class="w"&gt; &lt;/span&gt;Feature&lt;span class="w"&gt; &lt;/span&gt;Barcode,&lt;span class="w"&gt; &lt;/span&gt;and&lt;span class="w"&gt; &lt;/span&gt;Immune&lt;span class="w"&gt; &lt;/span&gt;Profiling&lt;span class="w"&gt; &lt;/span&gt;data
+
+Usage:&lt;span class="w"&gt; &lt;/span&gt;cellranger&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;COMMAND&amp;gt;
+
+Commands:
+&lt;span class="w"&gt;  &lt;/span&gt;count&lt;span class="w"&gt;           &lt;/span&gt;Count&lt;span class="w"&gt; &lt;/span&gt;gene&lt;span class="w"&gt; &lt;/span&gt;expression&lt;span class="w"&gt; &lt;/span&gt;and/or&lt;span class="w"&gt; &lt;/span&gt;feature&lt;span class="w"&gt; &lt;/span&gt;barcode&lt;span class="w"&gt; &lt;/span&gt;reads&lt;span class="w"&gt; &lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;single&lt;span class="w"&gt; &lt;/span&gt;sample&lt;span class="w"&gt; &lt;/span&gt;and&lt;span class="w"&gt; &lt;/span&gt;GEM&lt;span class="w"&gt; &lt;/span&gt;well
+&lt;span class="o"&gt;(&lt;/span&gt;중략&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;help&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;Print&lt;span class="w"&gt; &lt;/span&gt;this&lt;span class="w"&gt; &lt;/span&gt;message&lt;span class="w"&gt; &lt;/span&gt;or&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;help&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;of&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;given&lt;span class="w"&gt; &lt;/span&gt;subcommand&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;
+
+Options:
+&lt;span class="w"&gt;  &lt;/span&gt;-h,&lt;span class="w"&gt; &lt;/span&gt;--help&lt;span class="w"&gt;     &lt;/span&gt;Print&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;help&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;-V,&lt;span class="w"&gt; &lt;/span&gt;--version&lt;span class="w"&gt;  &lt;/span&gt;Print&lt;span class="w"&gt; &lt;/span&gt;version
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=5eca5895-081b-487e-8a4d-f8d19efc62d6" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="FASTQ-%ED%8C%8C%EC%9D%BC%EA%B3%BC-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84"&gt;FASTQ 파일과 레퍼런스 데이터 준비&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#FASTQ-%ED%8C%8C%EC%9D%BC%EA%B3%BC-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;10x Genomics사에서는 학습을 위한 데이터를 제공하고 있습니다. 이미 많은 예제에서 &lt;code&gt;Human 1k PBMC&lt;/code&gt;를 다루고 있으므로 저는 &lt;code&gt;Mouse 1k neuron&lt;/code&gt;으로 진행해보겠습니다. &lt;code&gt;Human 1k PBMC&lt;/code&gt;은 직접해보시기 바랍니다.&lt;/p&gt;
+&lt;h3 id="Human-PBMC-1k-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C"&gt;Human PBMC 1k 데이터 다운로드&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#Human-PBMC-1k-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;터미널에 다음과 같이 입력합니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;data&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;data
+&lt;span class="c1"&gt;#  Human PBMC 1k = 5.17GB&lt;/span&gt;
+wget&lt;span class="w"&gt; &lt;/span&gt;https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_fastqs.tar
+tar&lt;span class="w"&gt; &lt;/span&gt;-xvf&lt;span class="w"&gt; &lt;/span&gt;pbmc_1k_v3_fastqs.tar
+&lt;span class="c1"&gt;# Human reference (GRCh38) = 11GB&lt;/span&gt;
+wget&lt;span class="w"&gt; &lt;/span&gt;https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
+tar&lt;span class="w"&gt; &lt;/span&gt;-zxvf&lt;span class="w"&gt; &lt;/span&gt;refdata-gex-GRCh38-2020-A.tar.gz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="Mouse-1k-neuron-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C"&gt;Mouse 1k neuron 데이터 다운로드&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#Mouse-1k-neuron-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;터미널에 다음과 같이 입력합니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Mouse neron 1k data = 7GB&lt;/span&gt;
+wget&lt;span class="w"&gt; &lt;/span&gt;http://cf.10xgenomics.com/samples/cell-exp/3.0.0/neuron_1k_v3/neuron_1k_v3_fastqs.tar
+tar&lt;span class="w"&gt; &lt;/span&gt;-xvf&lt;span class="w"&gt; &lt;/span&gt;neuron_1k_v3_fastqs.tar
+&lt;span class="c1"&gt;# Mouse reference = 9.7GB&lt;/span&gt;
+wget&lt;span class="w"&gt; &lt;/span&gt;https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
+tar&lt;span class="w"&gt; &lt;/span&gt;-zxvf&lt;span class="w"&gt; &lt;/span&gt;refdata-gex-mm10-2020-A.tar.gz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%EB%90%9C-%ED%8C%8C%EC%9D%BC-%ED%99%95%EC%9D%B8"&gt;다운로드된 파일 확인&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%EB%90%9C-%ED%8C%8C%EC%9D%BC-%ED%99%95%EC%9D%B8"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;정상적으로 진행되었다면 아래와 같은 폴더와 52개의 파일을 확인할 수 있습니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$&lt;span class="w"&gt; &lt;/span&gt;tree&lt;span class="w"&gt; &lt;/span&gt;.
+.
+├──&lt;span class="w"&gt; &lt;/span&gt;neuron_1k_v3_fastqs
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;neuron_1k_v3_S1_L001_I1_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;neuron_1k_v3_S1_L001_R1_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;neuron_1k_v3_S1_L001_R2_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;neuron_1k_v3_S1_L002_I1_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;neuron_1k_v3_S1_L002_R1_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;neuron_1k_v3_S1_L002_R2_001.fastq.gz
+├──&lt;span class="w"&gt; &lt;/span&gt;pbmc_1k_v3_fastqs
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;pbmc_1k_v3_S1_L001_I1_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;pbmc_1k_v3_S1_L001_R1_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;pbmc_1k_v3_S1_L001_R2_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;pbmc_1k_v3_S1_L002_I1_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;pbmc_1k_v3_S1_L002_R1_001.fastq.gz
+│&lt;span class="w"&gt;   &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;pbmc_1k_v3_S1_L002_R2_001.fastq.gz
+├──&lt;span class="w"&gt; &lt;/span&gt;refdata-gex-GRCh38-2020-A
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;fasta
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;genes
+│&lt;span class="w"&gt;   &lt;/span&gt;│&lt;span class="w"&gt;   &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;genes.gtf
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;pickle
+│&lt;span class="w"&gt;   &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;reference.json
+│&lt;span class="w"&gt;   &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;star
+└──&lt;span class="w"&gt; &lt;/span&gt;refdata-gex-mm10-2020-A
+&lt;span class="w"&gt;    &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;fasta
+&lt;span class="w"&gt;    &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;genes
+&lt;span class="w"&gt;    &lt;/span&gt;│&lt;span class="w"&gt;   &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;genes.gtf
+&lt;span class="w"&gt;    &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;pickle
+&lt;span class="w"&gt;    &lt;/span&gt;├──&lt;span class="w"&gt; &lt;/span&gt;reference.json
+&lt;span class="w"&gt;    &lt;/span&gt;└──&lt;span class="w"&gt; &lt;/span&gt;star
+
+&lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;directories,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;52&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;files
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=1577bf9d-295e-4c77-a433-33bc3f9d21c2" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Cell-ranger-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;Cell ranger 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#Cell-ranger-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;데이터가 준비되었으니 &lt;code&gt;Cell ranger&lt;/code&gt;를 사용해 &lt;code&gt;count matrix&lt;/code&gt;를 만들어 보겠습니다.
+먼저 상위 디렉토리인 &lt;code&gt;cellranger-7.2.0&lt;/code&gt;으로 이동합니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;..
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;다음과 같이 &lt;code&gt;cellranger count&lt;/code&gt; 명령어를 사용하면 &lt;code&gt;count matrix&lt;/code&gt;데이터를 얻을 수 있습니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./cellranger&lt;span class="w"&gt; &lt;/span&gt;count&lt;span class="w"&gt; &lt;/span&gt;--id&lt;span class="o"&gt;=&lt;/span&gt;run_count_mNeuron1k&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+--fastqs&lt;span class="o"&gt;=&lt;/span&gt;data/neuron_1k_v3_fastqs&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+--sample&lt;span class="o"&gt;=&lt;/span&gt;neuron_1k_v3&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+--transcriptome&lt;span class="o"&gt;=&lt;/span&gt;data/refdata-gex-mm10-2020-A
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;--id&lt;/code&gt;는 생성되는 폴더명이며 &lt;code&gt;--fastqs&lt;/code&gt;는 다운로드한 &lt;code&gt;fastq&lt;/code&gt;파일의 위치입니다. 
+&lt;code&gt;--sample&lt;/code&gt;은 fastq 파일명의 접두사(prefix)를 의미하고 &lt;code&gt;--transcriptome&lt;/code&gt;은 레퍼런스데이터의 위치입니다.&lt;/p&gt;
+&lt;p&gt;시간이 좀 지나면 다음과 같은 출력을 볼 수 있습니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Running&lt;span class="w"&gt; &lt;/span&gt;preflight&lt;span class="w"&gt; &lt;/span&gt;checks&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;please&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;...
+Checking&lt;span class="w"&gt; &lt;/span&gt;sample&lt;span class="w"&gt; &lt;/span&gt;info...
+Checking&lt;span class="w"&gt; &lt;/span&gt;FASTQ&lt;span class="w"&gt; &lt;/span&gt;folder...
+Checking&lt;span class="w"&gt; &lt;/span&gt;reference...
+&lt;span class="o"&gt;(&lt;/span&gt;후략&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;정상적으로 작업이 완료된다면 아래처럼 &lt;code&gt;outs&lt;/code&gt;이라는 폴더가 생성됩니다. 여기에는 &lt;code&gt;count matrix&lt;/code&gt;뿐만 아니라 여러가지 분석 결과도 포함되어 있어 복잡해보입니다. 그러나 저희가 필요 한 것은 &lt;code&gt;filtered_feature_bc_matrix&lt;/code&gt; 폴더 안에 다들어 있습니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;outs
+├──&lt;span class="w"&gt; &lt;/span&gt;analysis
+├──&lt;span class="w"&gt; &lt;/span&gt;cloupe.cloupe
+├──&lt;span class="w"&gt; &lt;/span&gt;filtered_feature_bc_matrix
+├──&lt;span class="w"&gt; &lt;/span&gt;filtered_feature_bc_matrix.h5
+├──&lt;span class="w"&gt; &lt;/span&gt;metrics_summary.csv
+├──&lt;span class="w"&gt; &lt;/span&gt;molecule_info.h5
+├──&lt;span class="w"&gt; &lt;/span&gt;possorted_genome_bam.bam
+├──&lt;span class="w"&gt; &lt;/span&gt;possorted_genome_bam.bam.bai
+├──&lt;span class="w"&gt; &lt;/span&gt;raw_feature_bc_matrix
+├──&lt;span class="w"&gt; &lt;/span&gt;raw_feature_bc_matrix.h5
+└──&lt;span class="w"&gt; &lt;/span&gt;web_summary.html
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=5b336a12-9291-45dd-8ae0-3b7f2f4df52b" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="RNA-velocity-%EB%B6%84%EC%84%9D%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%9E%91%EC%97%85"&gt;RNA velocity 분석을 위한 작업&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#RNA-velocity-%EB%B6%84%EC%84%9D%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%9E%91%EC%97%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;RNA velocity이란? 스플라이싱된 RNA와 아직 스플라이싱되지 않은 RNA를 구분해 세포의 상태를 예측하는 기법으로 scRNA 데이터에서 클러스터간에 분화 과정에 대한 단서를 얻을 수 있습니다. 예를 들어 아래 그림에서 보면 cluster4에서 cluster2로의 방향성을 확인 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cdn.10xgenomics.com/image/upload/c_scale,w_600/v1646345944/analysis-guides/velocity-tutorial/scVelo-umap-cluster.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;안타깝게도 &lt;code&gt;Cell ranger&lt;/code&gt;를 통해 얻은 &lt;code&gt;count matrix&lt;/code&gt;로는 RNA velocity 분석을 할 수 없습니다. 추가적으로 &lt;code&gt;velocyto&lt;/code&gt;이라는 도구를 사용해 unspliced , spliced 데이터가 포함된 &lt;code&gt;loom&lt;/code&gt;파일을 만들어야 합니다. 아래 명령어를 사용하면 간단하게 얻을 수 있습니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;velocyto&lt;span class="w"&gt; &lt;/span&gt;run10x&lt;span class="w"&gt; &lt;/span&gt;run_count_mNeuron1k/&lt;span class="w"&gt; &lt;/span&gt;data/refdata-gex-mm10-2020-A/genes/genes.gtf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;실행이 완료되는 시간은 생각보다 오래 걸립니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="m"&gt;2023&lt;/span&gt;-09-19&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;:01:22,756&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;DEBUG&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;Using&lt;span class="w"&gt; &lt;/span&gt;logic:&lt;span class="w"&gt; &lt;/span&gt;Default
+&lt;span class="m"&gt;2023&lt;/span&gt;-09-19&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;:01:22,757&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;DEBUG&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;Example&lt;span class="w"&gt; &lt;/span&gt;of&lt;span class="w"&gt; &lt;/span&gt;barcode:&lt;span class="w"&gt; &lt;/span&gt;AAACGAATCAAAGCCT&lt;span class="w"&gt; &lt;/span&gt;and&lt;span class="w"&gt; &lt;/span&gt;cell_id:&lt;span class="w"&gt; &lt;/span&gt;run_count_mNeuron1k:AAACGAATCAAAGCCT-1
+&lt;span class="o"&gt;(&lt;/span&gt;중략&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="m"&gt;2023&lt;/span&gt;-09-19&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;:27:23,985&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;DEBUG&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1991314&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;reads&lt;span class="w"&gt; &lt;/span&gt;were&lt;span class="w"&gt; &lt;/span&gt;skipped&lt;span class="w"&gt; &lt;/span&gt;because&lt;span class="w"&gt; &lt;/span&gt;no&lt;span class="w"&gt; &lt;/span&gt;apropiate&lt;span class="w"&gt; &lt;/span&gt;cell&lt;span class="w"&gt; &lt;/span&gt;or&lt;span class="w"&gt; &lt;/span&gt;umi&lt;span class="w"&gt; &lt;/span&gt;barcode&lt;span class="w"&gt; &lt;/span&gt;was&lt;span class="w"&gt; &lt;/span&gt;found
+&lt;span class="m"&gt;2023&lt;/span&gt;-09-19&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;:27:23,985&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;DEBUG&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;Counting&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;!
+&lt;span class="m"&gt;2023&lt;/span&gt;-09-19&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;:27:23,988&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;DEBUG&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;Collecting&lt;span class="w"&gt; &lt;/span&gt;row&lt;span class="w"&gt; &lt;/span&gt;attributes
+&lt;span class="m"&gt;2023&lt;/span&gt;-09-19&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;:27:24,014&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;DEBUG&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;Generating&lt;span class="w"&gt; &lt;/span&gt;data&lt;span class="w"&gt; &lt;/span&gt;table
+&lt;span class="m"&gt;2023&lt;/span&gt;-09-19&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;:27:24,056&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;DEBUG&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;Writing&lt;span class="w"&gt; &lt;/span&gt;loom&lt;span class="w"&gt; &lt;/span&gt;file
+&lt;span class="m"&gt;2023&lt;/span&gt;-09-19&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;:27:25,286&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;DEBUG&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;Terminated&lt;span class="w"&gt; &lt;/span&gt;Succesfully!
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;완료가 되면 &lt;code&gt;run_count_mNeuron1k&lt;/code&gt;폴더안에 &lt;code&gt;velocyto&lt;/code&gt;라는 새로운 폴더가 생기고 &lt;code&gt;run_count_mNeuron1k.loom&lt;/code&gt; 파일이 생성됩니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=631401f0-e088-4ab6-8ca9-98c5de9435d4" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Count-matrix-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9D%BD%EA%B8%B0"&gt;Count matrix 데이터 읽기&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#Count-matrix-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9D%BD%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이제 힘든 데이터 준비 과정이 모두 끝났습니다. 데이터 분석을 시작해보죠. scRNA-seq 분야는 아직 초기이고 새로운 도구들이 계속 쏟아지고 있습니다. 나중은 어떻게 될지 모르겠지만 지금 시점에서는 &lt;code&gt;R&lt;/code&gt;에 익숙하다면 &lt;code&gt;Seurat&lt;/code&gt;, &lt;code&gt;Python&lt;/code&gt;에 익숙하다면 &lt;code&gt;Scanpy&lt;/code&gt;를 추천합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;참고로 속도적인 측면과 ML을 접목하기에는 Scanpy가 더 강점을 가지고 있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="Scanpy-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;Scanpy 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#Scanpy-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;다음 코드를 통해 count matrix를 scanpy로 불러 올 수 있습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=1e83ee5a-1b68-4e1b-915e-a29168d38d21" class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# conda install pandas scanpy&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;scanpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sc&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Cell ranger 결과 파일이 들어있는 경로&lt;/span&gt;
+&lt;span class="n"&gt;file_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"../input/run_count_mNeuron1k/outs/filtered_feature_bc_matrix"&lt;/span&gt;
+
+&lt;span class="c1"&gt;# read_10x_mtx 함수를 사용&lt;/span&gt;
+&lt;span class="n"&gt;adata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_10x_mtx&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;file_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;var_names&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'gene_symbols'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;cache&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;adata&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;AnnData object with n_obs × n_vars = 1311 × 32285
+    var: 'gene_ids', 'feature_types'&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div id="cell-id=ea6c40ad" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;scVelo를 사용해 RNA velocity분석을 한다면 아래의 추가적인 코드가 필요합니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=1868db07-40b2-4213-b062-f88b1fe0d693" class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# conda install -c bioconda scvelo&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;scvelo&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;scv&lt;/span&gt;
+
+&lt;span class="c1"&gt;# load loom files for spliced/unspliced matrices for each sample&lt;/span&gt;
+&lt;span class="n"&gt;loom&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;scv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;file_path&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/run_count_mNeuron1k.loom"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;validate&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cache&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# rename barcodes in order to merge:&lt;/span&gt;
+&lt;span class="n"&gt;barcodes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;bc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;':'&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;bc&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;loom&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;obs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tolist&lt;/span&gt;&lt;span class="p"&gt;()]&lt;/span&gt;
+&lt;span class="n"&gt;barcodes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;bc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bc&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;'-1'&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;bc&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;barcodes&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;loom&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;obs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;barcodes&lt;/span&gt;
+
+&lt;span class="c1"&gt;# make variable names unique&lt;/span&gt;
+&lt;span class="n"&gt;loom&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;var_names_make_unique&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# merge matrices into the original adata object&lt;/span&gt;
+&lt;span class="n"&gt;adata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;scv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;utils&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;merge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;adata&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;loom&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;adata&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;AnnData object with n_obs × n_vars = 1311 × 32285
+    obs: 'initial_size_unspliced', 'initial_size_spliced', 'initial_size'
+    var: 'gene_ids', 'feature_types', 'Accession', 'Chromosome', 'End', 'Start', 'Strand'
+    layers: 'matrix', 'ambiguous', 'spliced', 'unspliced'&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div id="cell-id=4ffd23b8-a12a-4920-9c5d-537386cda97a" class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;scv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pl&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;proportions&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;adata&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="output_png output_subarea "&gt;
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANMAAADGCAYAAABIHLXxAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9hAAAPYQGoP6dpAAAjeUlEQVR4nO2deXQc1Z2ov+rqXVJrbW2WbMkyXiRbi20Z7xgMJmAgBsySPJZwWCZhhiHvMWHy5pGcmXNg8piQR8hwMhOYmDwnQAi7YXgmGOLBgG0277K1r9aultQtqfeq94eQYgjgtlS93+8cHVtS9a1fterre+suvyupqqoiEAhmjS7aAQgEiYKQSSDQCCGTQKARQiaBQCOETAKBRgiZBAKNEDIJBBohZBIINEKvRSHBYBC/369FUQJBTGEwGJBlOaRjZy3T2NgYXV1diIkUgkREkiSKiopITU09+7GzmU4UDAZpbGzEarVit9uRJGmmRQkEMYeqqgwMDDAxMcF555131hpqVjWT3+9HVVXsdjsWi2U2RQkEMYndbqetrQ2/339WmTTpgBA1kiBROZd7W5MOiDP5m3sPa10kAI8/Vh2Wcvfu3cv3v/99Dh8+THd3NzfccAP79u3TrPycnBw+/vhjSkpKNCvzTF66fGtYygW45o3/DFvZM0WSJIaHh8nIyODyyy/n0UcfZdGiRZqUvX37dq644gq+853vzOj1mssUzxQWFmoqkiC8vPHGG9EO4XMk3DiT2+3mhhtuoLy8nKqqKrZs2cLevXtZunQpt9xyC0uXLmXFihUcPnz4L17b1tZGRkbG9Pf79+9n/fr1VFVVUVlZyauvvgpAY2MjW7dupba2lsrKSh5//PHp1+zatYslS5ZQWVnJ/fffH+7LjQkkSWJkZGT6+5ycHNra2gAoKSnhxz/+MWvWrKG0tJQHH3xw+rgHH3yQJUuWUF1dTXV1Ne3t7dPlPfDAA9TU1LBw4UKefvrpLz1vSUnJ9N/x9OnTbN++nWXLllFZWcmPfvQjAFwuF3feeSerVq2isrKSu+66C5/PB8CpU6dYu3YtFRUVbNu2DafTOav3IeFqpt27dzMyMkJdXR0ADoeDo0ePcuLECR577DF27tzJH/7wB2688UZOnjz5leU4HA62bdvGCy+8wIYNG1AUhZGREYLBIN/61rf43e9+x+LFi5mYmGD16tWcf/75zJs3j9tuu419+/ZRXl7OE088wdDQUKQuPWYZGRlh//79DA4OUlZWxm233YbVauWRRx6hp6cHi8XCxMQEOt2fP9slSeLQoUO0tLSwcuVK1q1b97VN5ZtuuoktW7bwwgsvADAwMADAfffdx4YNG3jyySdRVZU777yTxx57jB/84AfcfPPNfPe73+X222/n2LFjrFy5km9/+9szvs6Eq5mqqqo4efIkd999N8899xwGgwGY/BTbvHkzANdffz29vb10dnZ+ZTn79+9n0aJFbNiwAQCdTkdWVhb19fWcOHGCG2+8kerqatauXYvL5aKuro4DBw5QWVlJeXk5ALfffjtGozHMVxz7TN2gOTk5zJ8/n9bWVmw2G+eddx433XQTv/rVr3A4HJjN5unX3HHHHQDMnz+fjRs38u67735l+WNjY7z33nvcd9990z+z2+0AvPLKK/z0pz+lurqampoa9u3bR1NTE06nk8OHD08/Hy1btoz169fP6joTrmaaP38+dXV1vPPOO+zZs4f777+fn//8539xnCRJM+qFVFWVrKysL20m7tq16y/OkQzIskwwGJz+3uPxfO73Z0oiyzKBQABZljlw4AAffPABe/fuZfXq1Tz77LPTH15fZKbvpaqqvPjiiyxcuPBzP/+yJt1s/14JVzN1dXUhSRJXXXUVjzzyCKqq0tnZSVtbG3/6058AeOGFF8jLy6OoqOgry1m7di2NjY3THRKKouBwOFi0aBE2m42nnnpq+timpiYcDgdr1qzh6NGjnDp1CoAdO3ZMt88TmQULFnDw4EEAXnrpJcbHx8/6GpfLRV9fHxs2bOBHP/oR69ev59ChQ9O/n3p/29ra2Ldv31dKBpCamsrGjRv52c9+Nv2zqWbetm3bePjhhwkEAgAMDw/T1NSEzWajpqaGnTt3AnDixAnee++9c7zyz5NwMh07dox169ZRVVVFTU0NN998M5WVlVRUVPCb3/yGZcuW8ZOf/IRnn332az+JMjMzefnll/nhD39IZWUly5cv5/3330ev1/P666/z0ksvTZd7++2343a7sdvt7Nixg6uvvpqqqioaGxvJzs6O4NVHh0cffZR7772X5cuXc+jQoZCueXR0lGuuuWa6w8Dv93PrrbdO/z4YDFJTU8OWLVv4xS9+cdahhd/+9rd8/PHHVFRUUF1dPd0p9Oijj2KxWKiu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"&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div id="cell-id=07d220cf" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;scanpy는 &lt;code&gt;*.h5ad&lt;/code&gt; 포멧을 사용해 &lt;code&gt;count matrix&lt;/code&gt;를 저장합니다. 아래 코드를 사용하면 단일 파일로 모든 것을 저장할 수 있습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=14b6ea54-2dbd-4180-95cf-a4c16038a9c4" class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;adata&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"../output/mNeuron1k.h5ad"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compression&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'gzip'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div id="cell-id=0acb9d43-c2cf-4ddb-9bab-2479d1b8cf54" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Seurat-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;Seurat 사용하기&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#Seurat-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;R&lt;/code&gt;에 좀 더 익숙하시다면 &lt;code&gt;Seurat&lt;/code&gt;을 사용하세요. 저는 파이썬 문법을 더 좋아하지만 솔직히 분석 도구의 완성도 측면에서는 &lt;code&gt;Seurat&lt;/code&gt;이 더 나은 것 같습니다. 아래 코드는 &lt;code&gt;jupyter notebook&lt;/code&gt;에서 &lt;code&gt;R&lt;/code&gt;코드를 사용하기 위해 필요한 것으로 &lt;code&gt;rStudio&lt;/code&gt;를 사용하신다면 &lt;code&gt;%%R&lt;/code&gt;이 포함된 셀의 코드만 사용하시면 됩니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=fd9293cd-66d8-4aab-9a91-581156580ebb" class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;logging&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;rpy2.rinterface_lib.callbacks&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;rcb&lt;/span&gt;
+&lt;span class="c1"&gt;# import rpy2.robjects as ro&lt;/span&gt;
+
+&lt;span class="n"&gt;rcb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setLevel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ERROR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;load_ext&lt;/span&gt; rpy2.ipython
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div id="cell-id=26135b5f" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;필요한 &lt;code&gt;Seurat&lt;/code&gt; 라이브러리를 불러옵니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=c9b851da-9d12-465a-94b3-cb3979c9255e" class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;
+&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dplyr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Seurat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;
+    WARNING: The R package "reticulate" only fixed recently
+    an issue that caused a segfault when used with rpy2:
+    https://github.com/rstudio/reticulate/pull/1188
+    Make sure that you use a version of that package that includes
+    the fix.
+    &lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div id="cell-id=ad9076d5" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;아래의 코드를 사용하면 &lt;code&gt;count matrix&lt;/code&gt;를 &lt;code&gt;Seurat object&lt;/code&gt;로 만들 수 있습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=03a5512a-eef5-4b89-969d-0715287d90de" class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [6]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;
+&lt;span class="c1"&gt;# Load dataset&lt;/span&gt;
+&lt;span class="n"&gt;neuron.data&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;Read10X&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data.dir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"../input/run_count_mNeuron1k/outs/filtered_feature_bc_matrix"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# Initialize the Seurat object.&lt;/span&gt;
+&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;CreateSeuratObject&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;counts&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;neuron.data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;obj&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;An object of class Seurat 
+32285 features across 1311 samples within 1 assay 
+Active assay: RNA (32285 features, 0 variable features)
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div id="cell-id=8ab1d699" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;code&gt;Seurat object&lt;/code&gt;를 파일로 저장하는 방법에도 여러가지가 있지만 &lt;code&gt;R&lt;/code&gt;에서 많이 사용되는 &lt;code&gt;*.rds&lt;/code&gt;를 사용하는 코드는 아래와 같습니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="cell-id=2a3178bf-3aff-4ee4-a2a8-d7b36eefa45a" class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;
+&lt;span class="nf"&gt;saveRDS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"../output/mNeuron1k.rds"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div id="cell-id=1bc9da6c-c996-41df-98c9-965eddd39e6a" class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;마치며&lt;a class="anchor-link" href="https://partrita.github.io/posts/scRNA-rawdata/#%EB%A7%88%EC%B9%98%EB%A9%B0"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;이것으로 scRNA seq 데이터의 전처리 과정을 알아봤습니다. 여기 적힌 방법 외에도 더 효율적이고 나은 방법도 있고 앞으로도 더 생겨날 것입니다. 그러나 저도 배우는 입장에서 다른 분들에게 도움이 되고자 정리를 해봤습니다. 실제 실험을 통해 얻은 데이터를 분석하는데 도움이 되길 바랍니다.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description><category>10x</category><category>Cell ranger</category><category>Genomics</category><category>Raw data</category><category>Scanpy</category><category>scRNA</category><category>scRNA seq</category><category>Seurat</category><guid>https://partrita.github.io/posts/scRNA-rawdata/</guid><pubDate>Fri, 22 Sep 2023 02:57:20 GMT</pubDate></item></channel></rss>
