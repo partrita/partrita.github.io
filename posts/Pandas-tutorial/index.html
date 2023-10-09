@@ -43,7 +43,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NHHK2BF');</script><meta name="author" content="Taeyoon Kim">
-<link rel="prev" href="../protocols/" title="Protocols" type="text/html">
+<link rel="prev" href="../PCR/" title="PCR(polymerase chain reaction)" type="text/html">
 <link rel="next" href="../matplotlib-tutorial/" title="matplotlib_tutorial" type="text/html">
 <meta property="og:site_name" content="Biohacker">
 <meta property="og:title" content="파이썬 판다스(pandas) 사용법">
@@ -152,7 +152,7 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># import modules</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
@@ -176,7 +176,9 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># read data from web</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">'https://github.com/chris1610/pbpython/raw/master/data/salesfunnel.xlsx'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+    <span class="s2">"https://github.com/chris1610/pbpython/raw/master/data/salesfunnel.xlsx"</span>
+<span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -289,10 +291,12 @@ bg-dark
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'Status'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Status'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'category'</span><span class="p">)</span> <span class="c1"># 데이터 타입을 변경</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Status"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"Status"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span>  <span class="c1"># 데이터 타입을 변경</span>
 <span class="c1"># Status 컬럼을 .cat.set_categories로 카테고리형으로 변경합니다.</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'Status'</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">set_categories</span><span class="p">([</span><span class="s1">'won'</span><span class="p">,</span><span class="s1">'pending'</span><span class="p">,</span><span class="s1">'presented'</span><span class="p">,</span><span class="s1">'declined'</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"Status"</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">set_categories</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"won"</span><span class="p">,</span> <span class="s2">"pending"</span><span class="p">,</span> <span class="s2">"presented"</span><span class="p">,</span> <span class="s2">"declined"</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -396,7 +400,7 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 그리고... pd.pivot_table 명령을 Name 컬럼을 기준으로 적용합니다. 그러면 중복된 Name들을 모두 하나로 표현해서 위 그림과 같은 결과가 나타납니다. 중복된 항목의 숫자들은 모두 평균으로 처리됩니다.</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Name'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">,</span> <span class="s1">'Manager'</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Name"</span><span class="p">,</span> <span class="s2">"Rep"</span><span class="p">,</span> <span class="s2">"Manager"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -547,8 +551,8 @@ bg-dark
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#이번에는 Name, Rep, Manager를 모두 사용하는것입니다.</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'Manager'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 이번에는 Name, Rep, Manager를 모두 사용하는것입니다.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Manager"</span><span class="p">,</span> <span class="s2">"Rep"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -636,7 +640,7 @@ bg-dark
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Name은 빼고, Manager와 Rep만 사용하면, 먼저 언급한 Manger를 중복된 것을 정리하면 위와 같이 되고, 그 안에 Rep을 각각 표현해주고 있습니다.</span>
 <span class="c1"># values 옵션을 사용해서 Price만 표현되도록 할 수 있습니다.</span>
 
-<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Manager'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">],</span> <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Price'</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Manager"</span><span class="p">,</span> <span class="s2">"Rep"</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">"Price"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -708,7 +712,7 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 이제 aggfunc 옵션을 사용해서 기본적으로 평균값을 표현하던 것을 np.sum을 이용해서 합계를 표현하도록 할 수 있습니다.</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Manager'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">],</span> <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Price'</span><span class="p">],</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span> <span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Manager"</span><span class="p">,</span> <span class="s2">"Rep"</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">"Price"</span><span class="p">],</span> <span class="n">aggfunc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -780,7 +784,9 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 또한 이제 aggfunc 옵션을 사용해서 기본적으로 평균값을 표현하던 것을 np.sum을 이용해서 합계를 표현하도록 할 수 있습니다.</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Manager'</span><span class="p">,</span><span class="s1">'Rep'</span><span class="p">],</span> <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Price'</span><span class="p">],</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Manager"</span><span class="p">,</span> <span class="s2">"Rep"</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">"Price"</span><span class="p">],</span> <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -866,7 +872,7 @@ bg-dark
     </div>
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
-                <a href="../protocols/" rel="prev" title="Protocols">Previous post</a>
+                <a href="../PCR/" rel="prev" title="PCR(polymerase chain reaction)">Previous post</a>
             </li>
             <li class="next">
                 <a href="../matplotlib-tutorial/" rel="next" title="matplotlib_tutorial">Next post</a>

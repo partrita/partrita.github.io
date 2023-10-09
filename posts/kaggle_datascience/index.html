@@ -158,9 +158,11 @@ bg-dark
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">warnings</span> <span class="c1"># Suppress Deprecation and Incorrect Usage Warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">warnings</span>  <span class="c1"># Suppress Deprecation and Incorrect Usage Warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -181,8 +183,8 @@ bg-dark
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">question</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../input/schema.csv'</span><span class="p">)</span>
-<span class="n">response</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../input/multipleChoiceResponses.csv'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">'ISO-8859-1'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">question</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../input/schema.csv"</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../input/multipleChoiceResponses.csv"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"ISO-8859-1"</span><span class="p">)</span>
 <span class="c1"># question.shape</span>
 <span class="n">question</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
@@ -809,10 +811,21 @@ bg-dark
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'전체 응답자의 수: '</span><span class="p">,</span><span class="n">response</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'전체 국가의 수: '</span><span class="p">,</span><span class="n">response</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'가장 많이 응답한 국가: '</span><span class="p">,</span><span class="n">response</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">'with'</span><span class="p">,</span><span class="n">response</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">'respondents'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'가장 어린 응답자의 나이: '</span><span class="p">,</span><span class="n">response</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="s1">' 가장 나이 많은 응답자의 나이 : '</span><span class="p">,</span><span class="n">response</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"전체 응답자의 수: "</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"전체 국가의 수: "</span><span class="p">,</span> <span class="n">response</span><span class="p">[</span><span class="s2">"Country"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">"가장 많이 응답한 국가: "</span><span class="p">,</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">"Country"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="s2">"with"</span><span class="p">,</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">"Country"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="s2">"respondents"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">"가장 어린 응답자의 나이: "</span><span class="p">,</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+    <span class="s2">" 가장 나이 많은 응답자의 나이 : "</span><span class="p">,</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -849,7 +862,8 @@ bg-dark
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span> <span class="c1"># https://github.com/ResidentMario/missingno</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span>  <span class="c1"># https://github.com/ResidentMario/missingno</span>
+
 <span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -889,7 +903,9 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">'GenderSelect'</span><span class="p">],</span><span class="n">order</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">'GenderSelect'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">"GenderSelect"</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">"GenderSelect"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -922,10 +938,12 @@ bg-dark
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">resp_coun</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span> <span class="c1"># 응답률로 정렬하고 상위 15개만 분리합니다.</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">resp_coun</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">],</span><span class="n">resp_coun</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Top 15 Countries by number of respondents'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span> <span class="c1"># x레이블을 지웁니다.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">resp_coun</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">"Country"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="p">)</span>  <span class="c1"># 응답률로 정렬하고 상위 15개만 분리합니다.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">resp_coun</span><span class="p">[</span><span class="s2">"Country"</span><span class="p">],</span> <span class="n">resp_coun</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Top 15 Countries by number of respondents"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>  <span class="c1"># x레이블을 지웁니다.</span>
 </pre></div>
 </div>
 </div>
@@ -961,8 +979,8 @@ bg-dark
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">korean</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="n">response</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">]</span><span class="o">==</span><span class="s1">'South Korea'</span><span class="p">]</span> <span class="c1"># 국적이 한국인 데이터만</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'한국인 응답자 수:  '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">korean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">korean</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="n">response</span><span class="p">[</span><span class="s2">"Country"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"South Korea"</span><span class="p">]</span>  <span class="c1"># 국적이 한국인 데이터만</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"한국인 응답자 수:  "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">korean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -996,8 +1014,8 @@ bg-dark
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span> <span class="c1"># 무응답 데이터 제거</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="n">response</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">][</span><span class="s1">'Age'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1"># 평균 나이</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>  <span class="c1"># 무응답 데이터 제거</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="n">response</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">][</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>  <span class="c1"># 평균 나이</span>
 </pre></div>
 </div>
 </div>
@@ -1034,8 +1052,8 @@ bg-dark
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">korean</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">korean</span><span class="p">[</span><span class="n">korean</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">][</span><span class="s1">'Age'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1"># 평균 나이</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">korean</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">korean</span><span class="p">[</span><span class="n">korean</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">][</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>  <span class="c1"># 평균 나이</span>
 </pre></div>
 </div>
 </div>
@@ -1075,9 +1093,13 @@ bg-dark
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">major_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">'MajorSelect'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span><span class="c1"># value_counts 를 사용하면 그룹화된 데이터의 카운트 값을 보여준다.</span>
-<span class="n">major_df</span><span class="p">[</span><span class="s1">'ratio'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">'MajorSelect'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span> <span class="c1"># 해당 데이터가 전체 데이터에서 어느 정도의 비율을 차지하는지 알 수 있다.</span>
-<span class="n">major_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># 상위 10개의 전공</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">major_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">"MajorSelect"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="p">)</span>  <span class="c1"># value_counts 를 사용하면 그룹화된 데이터의 카운트 값을 보여준다.</span>
+<span class="n">major_df</span><span class="p">[</span><span class="s2">"ratio"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">"MajorSelect"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>  <span class="c1"># 해당 데이터가 전체 데이터에서 어느 정도의 비율을 차지하는지 알 수 있다.</span>
+<span class="n">major_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># 상위 10개의 전공</span>
 </pre></div>
 </div>
 </div>
@@ -1178,7 +1200,7 @@ bg-dark
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">major_df</span><span class="p">[</span><span class="s1">'ratio'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'barh'</span><span class="p">)</span> <span class="c1">#pandas를 이용한 간단한 시각화</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">major_df</span><span class="p">[</span><span class="s2">"ratio"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">)</span>  <span class="c1"># pandas를 이용한 간단한 시각화</span>
 </pre></div>
 </div>
 </div>
@@ -1216,7 +1238,7 @@ bg-dark
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">'Tenure'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">'Tenure'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">"Tenure"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">"Tenure"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1263,16 +1285,26 @@ bg-dark
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">[</span><span class="s1">'CompensationAmount'</span><span class="p">]</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">'CompensationAmount'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">','</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span>
-<span class="n">response</span><span class="p">[</span><span class="s1">'CompensationAmount'</span><span class="p">]</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">'CompensationAmount'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'-'</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span>
-<span class="n">rates</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../input/conversionRates.csv'</span><span class="p">)</span>
-<span class="n">rates</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'Unnamed: 0'</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">salary</span><span class="o">=</span><span class="n">response</span><span class="p">[[</span><span class="s1">'CompensationAmount'</span><span class="p">,</span><span class="s1">'CompensationCurrency'</span><span class="p">,</span><span class="s1">'GenderSelect'</span><span class="p">,</span><span class="s1">'Country'</span><span class="p">,</span><span class="s1">'CurrentJobTitleSelect'</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">salary</span><span class="o">=</span><span class="n">salary</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">rates</span><span class="p">,</span><span class="n">left_on</span><span class="o">=</span><span class="s1">'CompensationCurrency'</span><span class="p">,</span><span class="n">right_on</span><span class="o">=</span><span class="s1">'originCountry'</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
-<span class="n">salary</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s1">'CompensationAmount'</span><span class="p">])</span><span class="o">*</span><span class="n">salary</span><span class="p">[</span><span class="s1">'exchangeRate'</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'최고 연봉($)'</span><span class="p">,</span><span class="n">salary</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'최적 연봉($)'</span><span class="p">,</span><span class="n">salary</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'중위 연봉($)'</span><span class="p">,</span><span class="n">salary</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">[</span><span class="s2">"CompensationAmount"</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">"CompensationAmount"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+<span class="n">response</span><span class="p">[</span><span class="s2">"CompensationAmount"</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">"CompensationAmount"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"-"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+<span class="n">rates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../input/conversionRates.csv"</span><span class="p">)</span>
+<span class="n">rates</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">"Unnamed: 0"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">salary</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="s2">"CompensationAmount"</span><span class="p">,</span>
+        <span class="s2">"CompensationCurrency"</span><span class="p">,</span>
+        <span class="s2">"GenderSelect"</span><span class="p">,</span>
+        <span class="s2">"Country"</span><span class="p">,</span>
+        <span class="s2">"CurrentJobTitleSelect"</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">rates</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"CompensationCurrency"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"originCountry"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span>
+<span class="p">)</span>
+<span class="n">salary</span><span class="p">[</span><span class="s2">"Salary"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s2">"CompensationAmount"</span><span class="p">])</span> <span class="o">*</span> <span class="n">salary</span><span class="p">[</span><span class="s2">"exchangeRate"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"최고 연봉($)"</span><span class="p">,</span> <span class="n">salary</span><span class="p">[</span><span class="s2">"Salary"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"최적 연봉($)"</span><span class="p">,</span> <span class="n">salary</span><span class="p">[</span><span class="s2">"Salary"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"중위 연봉($)"</span><span class="p">,</span> <span class="n">salary</span><span class="p">[</span><span class="s2">"Salary"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1306,10 +1338,12 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">salary</span><span class="o">=</span><span class="n">salary</span><span class="p">[(</span><span class="n">salary</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">300000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1000</span><span class="p">)</span> <span class="p">]</span> <span class="c1"># 현실적인 연봉 값만 선택</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">])</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'dashed'</span><span class="p">)</span> <span class="c1"># 중위값 </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Salary Distribution'</span><span class="p">)</span>
+<span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s2">"Salary"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">300000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s2">"Salary"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="p">]</span>  <span class="c1"># 현실적인 연봉 값만 선택</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s2">"Salary"</span><span class="p">])</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s2">"Salary"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"dashed"</span><span class="p">)</span>  <span class="c1"># 중위값</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Salary Distribution"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1348,11 +1382,16 @@ bg-dark
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
-<span class="n">sal_coun</span> <span class="o">=</span> <span class="n">salary</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Country'</span><span class="p">)[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="s1">'Salary'</span><span class="p">,</span> <span class="n">sal_coun</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">sal_coun</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">'Spectral'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'dashed'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Highest Salary Paying Countries'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">sal_coun</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">salary</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Country"</span><span class="p">)[</span><span class="s2">"Salary"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">median</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">30</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="s2">"Salary"</span><span class="p">,</span> <span class="n">sal_coun</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sal_coun</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">"Spectral"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">salary</span><span class="p">[</span><span class="s2">"Salary"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"dashed"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Highest Salary Paying Countries"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1398,13 +1437,13 @@ bg-dark
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
-<span class="n">tool</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">'MLToolNextYearSelect'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">tool_nxt</span><span class="o">=</span><span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">tool</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">"MLToolNextYearSelect"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+<span class="n">tool_nxt</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tool</span><span class="o">.</span><span class="n">dropna</span><span class="p">():</span>
     <span class="n">tool_nxt</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tool_nxt</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'ML Tool Next Year'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"ML Tool Next Year"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1450,13 +1489,13 @@ bg-dark
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">learn</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">'LearningPlatformSelect'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">platform</span><span class="o">=</span><span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">learn</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">"LearningPlatformSelect"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+<span class="n">platform</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">learn</span><span class="o">.</span><span class="n">dropna</span><span class="p">():</span>
     <span class="n">platform</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">platform</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Best Platforms to Learn'</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Best Platforms to Learn"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1495,14 +1534,16 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">challenge</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">'WorkChallengesSelect'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">challenges</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">challenge</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">"WorkChallengesSelect"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+<span class="n">challenges</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">challenge</span><span class="o">.</span><span class="n">dropna</span><span class="p">():</span>
     <span class="n">challenges</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="n">plt1</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">challenges</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># 상위 5개만</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">plt1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">plt1</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Challenges in Data Science'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span> <span class="c1"># x레이블을 지웁니다.</span>
+<span class="n">plt1</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">challenges</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="p">)</span>  <span class="c1"># 상위 5개만</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">plt1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">plt1</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Challenges in Data Science"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>  <span class="c1"># x레이블을 지웁니다.</span>
 </pre></div>
 </div>
 </div>
@@ -1540,16 +1581,18 @@ bg-dark
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">question</span><span class="p">[</span> <span class="s1">'Column'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">'JobFactor'</span><span class="p">)]</span>
-<span class="n">job_factors</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'JobFactor'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">question</span><span class="p">[</span><span class="s2">"Column"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"JobFactor"</span><span class="p">)]</span>
+<span class="n">job_factors</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"JobFactor"</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">jfdf</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">job_factors</span><span class="p">:</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">jfdf</span><span class="p">[</span><span class="n">feature</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s1">'JobFactor'</span><span class="p">):]]</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">jfdf</span><span class="p">[</span><span class="n">feature</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">"JobFactor"</span><span class="p">)</span> <span class="p">:]]</span> <span class="o">=</span> <span class="n">a</span>
 <span class="n">jfdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">jfdf</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">jfdf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'Very Important'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"YlGnBu"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">jfdf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"Very Important"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"YlGnBu"</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>

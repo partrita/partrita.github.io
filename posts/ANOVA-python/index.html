@@ -157,6 +157,7 @@ bg-dark
 <span class="kn">from</span> <span class="nn">statsmodels.stats.anova</span> <span class="kn">import</span> <span class="n">anova_lm</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
@@ -179,14 +180,16 @@ bg-dark
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">centers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mf">5.3</span><span class="p">,</span><span class="mf">4.5</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">centers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">]</span>
 <span class="n">std</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="s1">'brg'</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="s2">"brg"</span>
 
 <span class="n">data_1</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">data_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">std</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">+</span><span class="n">i</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">data_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">data_1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">data_1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">"."</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -211,7 +214,9 @@ bg-dark
 <span class="n">data_2</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">data_2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">std_2</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">+</span><span class="n">i</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">data_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">data_2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_1</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">data_2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">"."</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -263,13 +268,13 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># url로 데이터 얻어오기</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://raw.githubusercontent.com/thomas-haslwanter/statsintro_python/master/ipynb/Data/data_altman/altman_910.txt'</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/thomas-haslwanter/statsintro_python/master/ipynb/Data/data_altman/altman_910.txt"</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">)</span>
 
 <span class="c1"># Sort them into groups, according to column 1</span>
-<span class="n">group1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">group2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">group3</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">group1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">group3</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># matplotlib plotting</span>
 <span class="n">plot_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">]</span>
@@ -309,9 +314,9 @@ bg-dark
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">F_statistic</span><span class="p">,</span> <span class="n">pVal</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">f_oneway</span><span class="p">(</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Altman 910 데이터의 일원분산분석 결과 : F=</span><span class="si">{0:.1f}</span><span class="s1">, p=</span><span class="si">{1:.5f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">F_statistic</span><span class="p">,</span> <span class="n">pVal</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Altman 910 데이터의 일원분산분석 결과 : F=</span><span class="si">{0:.1f}</span><span class="s2">, p=</span><span class="si">{1:.5f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">F_statistic</span><span class="p">,</span> <span class="n">pVal</span><span class="p">))</span>
 <span class="k">if</span> <span class="n">pVal</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'P-value 값이 충분히 작음으로 인해 그룹의 평균값이 통계적으로 유의미하게 차이납니다.'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"P-value 값이 충분히 작음으로 인해 그룹의 평균값이 통계적으로 유의미하게 차이납니다."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -347,12 +352,13 @@ P-value 값이 충분히 작음으로 인해 그룹의 평균값이 통계적으
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 경고 메세지 무시하기</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'value'</span><span class="p">,</span> <span class="s1">'treatment'</span><span class="p">])</span>    
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"value"</span><span class="p">,</span> <span class="s2">"treatment"</span><span class="p">])</span>
 
 <span class="c1"># the "C" indicates categorical data</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s1">'value ~ C(treatment)'</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">"value ~ C(treatment)"</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">anova_lm</span><span class="p">(</span><span class="n">model</span><span class="p">))</span>
 </pre></div>
@@ -393,17 +399,17 @@ Residual      19.0  39716.097222  2090.320906       NaN       NaN
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">inFile</span> <span class="o">=</span> <span class="s1">'altman_12_6.txt'</span>
-<span class="n">url_base</span> <span class="o">=</span> <span class="s1">'https://raw.githubusercontent.com/thomas-haslwanter/statsintro_python/master/ipynb/Data/data_altman/'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">inFile</span> <span class="o">=</span> <span class="s2">"altman_12_6.txt"</span>
+<span class="n">url_base</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/thomas-haslwanter/statsintro_python/master/ipynb/Data/data_altman/"</span>
 <span class="n">url</span> <span class="o">=</span> <span class="n">url_base</span> <span class="o">+</span> <span class="n">inFile</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">)</span>
 
 <span class="c1"># Bring them in dataframe-format</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'head_size'</span><span class="p">,</span> <span class="s1">'fetus'</span><span class="p">,</span> <span class="s1">'observer'</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"head_size"</span><span class="p">,</span> <span class="s2">"fetus"</span><span class="p">,</span> <span class="s2">"observer"</span><span class="p">])</span>
 <span class="c1"># df.tail()</span>
 
 <span class="c1"># 태아별 머리 둘레 plot 만들기</span>
-<span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">'head_size'</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">'fetus'</span> <span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">"head_size"</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">"fetus"</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -442,7 +448,7 @@ Residual      19.0  39716.097222  2090.320906       NaN       NaN
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">'head_size ~ C(fetus) + C(observer) + C(fetus):C(observer)'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s2">"head_size ~ C(fetus) + C(observer) + C(fetus):C(observer)"</span>
 <span class="n">lm</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anova_lm</span><span class="p">(</span><span class="n">lm</span><span class="p">))</span>
 </pre></div>

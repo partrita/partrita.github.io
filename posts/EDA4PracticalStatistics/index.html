@@ -182,9 +182,10 @@ bg-dark
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">common</span>
+
     <span class="n">DATA</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">dataDirectory</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">DATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span> <span class="o">/</span> <span class="s1">'data'</span>
+    <span class="n">DATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"data"</span>
 </pre></div>
 </div>
 </div>
@@ -195,13 +196,13 @@ bg-dark
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">AIRLINE_STATS_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">'airline_stats.csv'</span>
-<span class="n">KC_TAX_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">'kc_tax.csv.gz'</span>
-<span class="n">LC_LOANS_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">'lc_loans.csv'</span>
-<span class="n">AIRPORT_DELAYS_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">'dfw_airline.csv'</span>
-<span class="n">SP500_DATA_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">'sp500_data.csv.gz'</span>
-<span class="n">SP500_SECTORS_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">'sp500_sectors.csv'</span>
-<span class="n">STATE_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">'state.csv'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">AIRLINE_STATS_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s2">"airline_stats.csv"</span>
+<span class="n">KC_TAX_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s2">"kc_tax.csv.gz"</span>
+<span class="n">LC_LOANS_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s2">"lc_loans.csv"</span>
+<span class="n">AIRPORT_DELAYS_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s2">"dfw_airline.csv"</span>
+<span class="n">SP500_DATA_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s2">"sp500_data.csv.gz"</span>
+<span class="n">SP500_SECTORS_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s2">"sp500_sectors.csv"</span>
+<span class="n">STATE_CSV</span> <span class="o">=</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s2">"state.csv"</span>
 </pre></div>
 </div>
 </div>
@@ -337,7 +338,7 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">state</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">STATE_CSV</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -359,7 +360,7 @@ bg-dark
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">trim_mean</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">],</span> <span class="mf">0.1</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">trim_mean</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">],</span> <span class="mf">0.1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -381,7 +382,7 @@ bg-dark
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -413,7 +414,7 @@ bg-dark
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Murder.Rate'</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Murder.Rate"</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -435,7 +436,7 @@ bg-dark
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">wquantiles</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Murder.Rate'</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">wquantiles</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Murder.Rate"</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -579,7 +580,7 @@ bg-dark
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -610,7 +611,7 @@ bg-dark
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">robust</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">mad</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">robust</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">mad</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">]))</span>
 <span class="c1"># print(abs(state['Population'] - state['Population'].median()).median() / 0.6744897501960817)</span>
 </pre></div>
 </div>
@@ -645,7 +646,7 @@ bg-dark
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Murder.Rate'</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">]))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Murder.Rate"</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -683,8 +684,8 @@ Name: Murder.Rate, dtype: float64
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Table 1.4</span>
 <span class="n">percentages</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Murder.Rate'</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">percentages</span><span class="p">))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">p</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">}</span><span class="s1">%'</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">percentages</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Murder.Rate"</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">percentages</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">p</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">}</span><span class="s2">%"</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">percentages</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -717,8 +718,8 @@ Murder.Rate   1.6  2.425    4.0   5.55   6.51
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span><span class="o">/</span><span class="mi">1_000_000</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Population (millions)'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Population (millions)"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -753,7 +754,7 @@ Murder.Rate   1.6  2.425    4.0   5.55   6.51
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">binnedPopulation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">binnedPopulation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">binnedPopulation</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -798,17 +799,19 @@ Name: Population, dtype: int64
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Table 1.5</span>
-<span class="n">binnedPopulation</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'binnedPopulation'</span>
+<span class="n">binnedPopulation</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"binnedPopulation"</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">state</span><span class="p">,</span> <span class="n">binnedPopulation</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'Population'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"Population"</span><span class="p">)</span>
 
 <span class="n">groups</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">group</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'binnedPopulation'</span><span class="p">):</span>
-    <span class="n">groups</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s1">'BinRange'</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span>
-        <span class="s1">'Count'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">subset</span><span class="p">),</span>
-        <span class="s1">'States'</span><span class="p">:</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">Abbreviation</span><span class="p">)</span>
-    <span class="p">})</span>
+<span class="k">for</span> <span class="n">group</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"binnedPopulation"</span><span class="p">):</span>
+    <span class="n">groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">"BinRange"</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span>
+            <span class="s2">"Count"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">subset</span><span class="p">),</span>
+            <span class="s2">"States"</span><span class="p">:</span> <span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">Abbreviation</span><span class="p">),</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">groups</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -863,8 +866,8 @@ Name: Population, dtype: int64
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Population (millions)'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"Population"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Population (millions)"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -900,10 +903,11 @@ Name: Population, dtype: int64
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">'Murder.Rate'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> 
-                                    <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">state</span><span class="p">[</span><span class="s1">'Murder.Rate'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Murder Rate (per 100,000)'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"Murder.Rate"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">state</span><span class="p">[</span><span class="s2">"Murder.Rate"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Murder Rate (per 100,000)"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -973,8 +977,8 @@ Name: Population, dtype: int64
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">dfw</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Cause of delay'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Count'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Cause of delay"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Count"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1030,8 +1034,9 @@ Name: Population, dtype: int64
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">etfs</span> <span class="o">=</span> <span class="n">sp500_px</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sp500_px</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="s1">'2012-07-01'</span><span class="p">,</span> 
-                    <span class="n">sp500_sym</span><span class="p">[</span><span class="n">sp500_sym</span><span class="p">[</span><span class="s1">'sector'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'etf'</span><span class="p">][</span><span class="s1">'symbol'</span><span class="p">]]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">etfs</span> <span class="o">=</span> <span class="n">sp500_px</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">sp500_px</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="s2">"2012-07-01"</span><span class="p">,</span> <span class="n">sp500_sym</span><span class="p">[</span><span class="n">sp500_sym</span><span class="p">[</span><span class="s2">"sector"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"etf"</span><span class="p">][</span><span class="s2">"symbol"</span><span class="p">]</span>
+<span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">etfs</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -1074,9 +1079,13 @@ Name: Population, dtype: int64
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">etfs</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-                 <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-                 <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">etfs</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
+    <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1112,12 +1121,12 @@ Name: Population, dtype: int64
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">telecom</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'VZ'</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'$</span><span class="se">\u25EF</span><span class="s1">$'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">telecom</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"T"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"VZ"</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"$</span><span class="se">\u25EF</span><span class="s2">$"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="c1"># $\u25EF$는 속이 빈 원을 뜻한다.</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'ATT (T)'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Verizon (VZ)'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'grey'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'grey'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"ATT (T)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Verizon (VZ)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"grey"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"grey"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1158,9 +1167,12 @@ Name: Population, dtype: int64
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">kc_tax</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">KC_TAX_CSV</span><span class="p">)</span>
-<span class="n">kc_tax0</span> <span class="o">=</span> <span class="n">kc_tax</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">kc_tax</span><span class="o">.</span><span class="n">TaxAssessedValue</span> <span class="o">&lt;</span> <span class="mi">750000</span><span class="p">)</span> <span class="o">&amp;</span> 
-                     <span class="p">(</span><span class="n">kc_tax</span><span class="o">.</span><span class="n">SqFtTotLiving</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="o">&amp;</span>
-                     <span class="p">(</span><span class="n">kc_tax</span><span class="o">.</span><span class="n">SqFtTotLiving</span> <span class="o">&lt;</span> <span class="mi">3500</span><span class="p">),</span> <span class="p">:]</span>
+<span class="n">kc_tax0</span> <span class="o">=</span> <span class="n">kc_tax</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">kc_tax</span><span class="o">.</span><span class="n">TaxAssessedValue</span> <span class="o">&lt;</span> <span class="mi">750000</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">kc_tax</span><span class="o">.</span><span class="n">SqFtTotLiving</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">kc_tax</span><span class="o">.</span><span class="n">SqFtTotLiving</span> <span class="o">&lt;</span> <span class="mi">3500</span><span class="p">),</span>
+    <span class="p">:,</span>
+<span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">kc_tax0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1195,10 +1207,11 @@ Name: Population, dtype: int64
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">kc_tax0</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'SqFtTotLiving'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'TaxAssessedValue'</span><span class="p">,</span>
-                         <span class="n">gridsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Finished Square Feet'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Tax Assessed Value'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">kc_tax0</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"SqFtTotLiving"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"TaxAssessedValue"</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Finished Square Feet"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Tax Assessed Value"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1233,9 +1246,9 @@ Name: Population, dtype: int64
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">kc_tax0</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s1">'SqFtTotLiving'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'TaxAssessedValue'</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Finished Square Feet'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Tax Assessed Value'</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">kc_tax0</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s2">"SqFtTotLiving"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"TaxAssessedValue"</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Finished Square Feet"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Tax Assessed Value"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1282,9 +1295,9 @@ Name: Population, dtype: int64
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">crosstab</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'A'</span><span class="p">:</span><span class="s1">'G'</span><span class="p">,:]</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">'Charged Off'</span><span class="p">:</span><span class="s1">'Late'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">'Charged Off'</span><span class="p">:</span><span class="s1">'Late'</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'All'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'All'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'All'</span><span class="p">]</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'All'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">crosstab</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"A"</span><span class="p">:</span><span class="s2">"G"</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Charged Off"</span><span class="p">:</span><span class="s2">"Late"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Charged Off"</span><span class="p">:</span><span class="s2">"Late"</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"All"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"All"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"All"</span><span class="p">]</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"All"</span><span class="p">])</span>
 <span class="n">perc_crosstab</span> <span class="o">=</span> <span class="n">df</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">perc_crosstab</span><span class="p">)</span>
 </pre></div>
@@ -1330,11 +1343,10 @@ G          0.126196  0.614008    0.198396  0.061401  0.007187
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">airline_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">AIRLINE_STATS_CSV</span><span class="p">)</span>
 <span class="n">airline_stats</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">airline_stats</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'airline'</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">'pct_carrier_delay'</span><span class="p">,</span>
-                           <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Daily </span><span class="si">% o</span><span class="s1">f Delayed Flights'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">airline_stats</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"airline"</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">"pct_carrier_delay"</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Daily </span><span class="si">% o</span><span class="s2">f Delayed Flights"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1368,10 +1380,16 @@ G          0.126196  0.614008    0.198396  0.061401  0.007187
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">airline_stats</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'airline'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'pct_carrier_delay'</span><span class="p">,</span>
-               <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">inner</span><span class="o">=</span><span class="s1">'quartile'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Daily </span><span class="si">% o</span><span class="s1">f Delayed Flights'</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">airline_stats</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"airline"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"pct_carrier_delay"</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">inner</span><span class="o">=</span><span class="s2">"quartile"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Daily </span><span class="si">% o</span><span class="s2">f Delayed Flights"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1408,18 +1426,19 @@ G          0.126196  0.614008    0.198396  0.061401  0.007187
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">zip_codes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">98188</span><span class="p">,</span> <span class="mi">98105</span><span class="p">,</span> <span class="mi">98108</span><span class="p">,</span> <span class="mi">98126</span><span class="p">]</span>
-<span class="n">kc_tax_zip</span> <span class="o">=</span> <span class="n">kc_tax0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">kc_tax0</span><span class="o">.</span><span class="n">ZipCode</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">zip_codes</span><span class="p">),:]</span>
+<span class="n">kc_tax_zip</span> <span class="o">=</span> <span class="n">kc_tax0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">kc_tax0</span><span class="o">.</span><span class="n">ZipCode</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">zip_codes</span><span class="p">),</span> <span class="p">:]</span>
 <span class="n">kc_tax_zip</span>
+
 
 <span class="k">def</span> <span class="nf">hexbin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">kc_tax_zip</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">'ZipCode'</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">hexbin</span><span class="p">,</span> <span class="s1">'SqFtTotLiving'</span><span class="p">,</span> <span class="s1">'TaxAssessedValue'</span><span class="p">,</span> 
-      <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">700000</span><span class="p">])</span>
-<span class="n">g</span><span class="o">.</span><span class="n">set_axis_labels</span><span class="p">(</span><span class="s1">'Finished Square Feet'</span><span class="p">,</span> <span class="s1">'Tax Assessed Value'</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">set_titles</span><span class="p">(</span><span class="s1">'Zip code </span><span class="si">{col_name:.0f}</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">kc_tax_zip</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"ZipCode"</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">hexbin</span><span class="p">,</span> <span class="s2">"SqFtTotLiving"</span><span class="p">,</span> <span class="s2">"TaxAssessedValue"</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">700000</span><span class="p">])</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set_axis_labels</span><span class="p">(</span><span class="s2">"Finished Square Feet"</span><span class="p">,</span> <span class="s2">"Tax Assessed Value"</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set_titles</span><span class="p">(</span><span class="s2">"Zip code </span><span class="si">{col_name:.0f}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>

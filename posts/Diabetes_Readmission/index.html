@@ -178,16 +178,18 @@ bg-dark
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 분석에 필요한 라이브러리 불러오기</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline 
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./input/diabetic_data.csv'</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./input/diabetic_data.csv"</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">"?"</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1"># 결측치는 ?로 표시되어 있습니다.</span>
-<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span> 
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -537,7 +539,7 @@ bg-dark
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="c1"># Transpose를 통해 좀더 보기 쉽게 합니다</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>  <span class="c1"># Transpose를 통해 좀더 보기 쉽게 합니다</span>
 </pre></div>
 </div>
 </div>
@@ -726,11 +728,13 @@ bg-dark
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="p">([</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">],</span> <span class="p">[</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">])</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">f</span><span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">time_in_hospital</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax0</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">num_lab_procedures</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax1</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">num_medications</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax2</span><span class="p">)</span>
-<span class="n">f</span><span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">number_diagnoses</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax3</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="p">([</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">],</span> <span class="p">[</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">])</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">time_in_hospital</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">num_lab_procedures</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">num_medications</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">number_diagnoses</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -771,10 +775,18 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 피봇 테이블 만들기</span>
-<span class="n">df_race</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'race'</span><span class="p">,</span><span class="s1">'gender'</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'readmitted'</span><span class="p">]</span> <span class="p">,</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">],</span>
-                         <span class="n">aggfunc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span><span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_race</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"race"</span><span class="p">,</span> <span class="s2">"gender"</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"readmitted"</span><span class="p">],</span>
+    <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">],</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span>
+    <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="c1"># 재입원 비율을 계산해 행을 추가합니다.</span>
-<span class="n">df_race</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="s1">'readmit_ratio'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span> <span class="n">df_race</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="s1">'NO'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_race</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="s1">'All'</span><span class="p">]</span> 
+<span class="n">df_race</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"readmit_ratio"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mi">1</span> <span class="o">-</span> <span class="n">df_race</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"NO"</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_race</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"All"</span><span class="p">]</span>
+<span class="p">)</span>
 <span class="n">df_race</span>
 </pre></div>
 </div>
@@ -938,8 +950,8 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># f = df_race['encounter_id','readmit_ratio'].groupby('race').mean().plot(kind='barh')</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">df_race</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="s1">'readmit_ratio'</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'race'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'barh'</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">df_race</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"readmit_ratio"</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"race"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1019,43 +1031,88 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span> <span class="s1">'[0-10)'</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">'[10-20)'</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> 
-                     <span class="s1">'[20-30)'</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span> <span class="s1">'[30-40)'</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span> 
-                     <span class="s1">'[40-50)'</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span> <span class="s1">'[50-60)'</span><span class="p">:</span><span class="mi">55</span><span class="p">,</span> 
-                     <span class="s1">'[60-70)'</span><span class="p">:</span><span class="mi">65</span><span class="p">,</span> <span class="s1">'[70-80)'</span><span class="p">:</span><span class="mi">75</span><span class="p">,</span>
-                     <span class="s1">'[80-90)'</span><span class="p">:</span><span class="mi">85</span><span class="p">,</span> <span class="s1">'[90-100)'</span><span class="p">:</span><span class="mi">95</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">"[0-10)"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">"[10-20)"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="s2">"[20-30)"</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="s2">"[30-40)"</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span>
+        <span class="s2">"[40-50)"</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+        <span class="s2">"[50-60)"</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span>
+        <span class="s2">"[60-70)"</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span>
+        <span class="s2">"[70-80)"</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
+        <span class="s2">"[80-90)"</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+        <span class="s2">"[90-100)"</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">df</span><span class="p">[</span><span class="s1">'max_glu_serum'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'None'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s1">'Norm'</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
-                             <span class="s1">'&gt;200'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">'&gt;300'</span><span class="p">:</span><span class="mi">300</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"max_glu_serum"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">"None"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"Norm"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">"&gt;200"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">"&gt;300"</span><span class="p">:</span> <span class="mi">300</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 
-<span class="n">df</span><span class="p">[</span><span class="s1">'A1Cresult'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'None'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'Norm'</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
-                        <span class="s1">'&gt;7'</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="s1">'&gt;8'</span><span class="p">:</span><span class="mi">30</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"A1Cresult"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">"None"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"Norm"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"&gt;7"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">"&gt;8"</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">df</span><span class="p">[</span><span class="s1">'change'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'No'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'Ch'</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"change"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">"No"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"Ch"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">df</span><span class="p">[</span><span class="s1">'diabetesMed'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'No'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'Yes'</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"diabetesMed"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">"No"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"Yes"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">medications</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"metformin"</span><span class="p">,</span> <span class="s2">"repaglinide"</span><span class="p">,</span> <span class="s2">"nateglinide"</span><span class="p">,</span> <span class="s2">"chlorpropamide"</span><span class="p">,</span> <span class="s2">"glimepiride"</span><span class="p">,</span>
-               <span class="s2">"acetohexamide"</span><span class="p">,</span> <span class="s2">"glipizide"</span><span class="p">,</span> <span class="s2">"glyburide"</span><span class="p">,</span> <span class="s2">"tolbutamide"</span><span class="p">,</span> <span class="s2">"pioglitazone"</span><span class="p">,</span>
-               <span class="s2">"rosiglitazone"</span><span class="p">,</span> <span class="s2">"acarbose"</span><span class="p">,</span> <span class="s2">"miglitol"</span><span class="p">,</span> <span class="s2">"troglitazone"</span><span class="p">,</span> <span class="s2">"tolazamide"</span><span class="p">,</span> 
-               <span class="s2">"examide"</span><span class="p">,</span> <span class="s2">"citoglipton"</span><span class="p">,</span> <span class="s2">"insulin"</span><span class="p">,</span> <span class="s2">"glyburide-metformin"</span><span class="p">,</span> <span class="s2">"glipizide-metformin"</span><span class="p">,</span> 
-               <span class="s2">"glimepiride-pioglitazone"</span><span class="p">,</span> <span class="s2">"metformin-rosiglitazone"</span><span class="p">,</span> <span class="s2">"metformin-pioglitazone"</span><span class="p">]</span>
+<span class="n">medications</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"metformin"</span><span class="p">,</span>
+    <span class="s2">"repaglinide"</span><span class="p">,</span>
+    <span class="s2">"nateglinide"</span><span class="p">,</span>
+    <span class="s2">"chlorpropamide"</span><span class="p">,</span>
+    <span class="s2">"glimepiride"</span><span class="p">,</span>
+    <span class="s2">"acetohexamide"</span><span class="p">,</span>
+    <span class="s2">"glipizide"</span><span class="p">,</span>
+    <span class="s2">"glyburide"</span><span class="p">,</span>
+    <span class="s2">"tolbutamide"</span><span class="p">,</span>
+    <span class="s2">"pioglitazone"</span><span class="p">,</span>
+    <span class="s2">"rosiglitazone"</span><span class="p">,</span>
+    <span class="s2">"acarbose"</span><span class="p">,</span>
+    <span class="s2">"miglitol"</span><span class="p">,</span>
+    <span class="s2">"troglitazone"</span><span class="p">,</span>
+    <span class="s2">"tolazamide"</span><span class="p">,</span>
+    <span class="s2">"examide"</span><span class="p">,</span>
+    <span class="s2">"citoglipton"</span><span class="p">,</span>
+    <span class="s2">"insulin"</span><span class="p">,</span>
+    <span class="s2">"glyburide-metformin"</span><span class="p">,</span>
+    <span class="s2">"glipizide-metformin"</span><span class="p">,</span>
+    <span class="s2">"glimepiride-pioglitazone"</span><span class="p">,</span>
+    <span class="s2">"metformin-rosiglitazone"</span><span class="p">,</span>
+    <span class="s2">"metformin-pioglitazone"</span><span class="p">,</span>
+<span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">medications</span><span class="p">:</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'No'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">'Down'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="s1">'Steady'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">'Up'</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">"No"</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Down"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"Steady"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Up"</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">df</span><span class="p">[</span><span class="s1">'race'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'AfricanAmerican'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'Asian'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="s1">'Caucasian'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'Hispanic'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="s1">'Other'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span> <span class="p">:</span> <span class="mi">3</span> <span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'race'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int64'</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"race"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">"AfricanAmerican"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"Asian"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">"Caucasian"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"Hispanic"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"Other"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="kc">None</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"race"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"int64"</span><span class="p">)</span>
 
-<span class="n">categoricals</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'gender'</span><span class="p">,</span> <span class="s1">'payer_code'</span><span class="p">,</span> <span class="s1">'medical_specialty'</span><span class="p">,</span><span class="s1">'diag_1'</span><span class="p">,</span> <span class="s1">'diag_2'</span><span class="p">,</span> <span class="s1">'diag_3'</span><span class="p">]</span>
+<span class="n">categoricals</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"gender"</span><span class="p">,</span>
+    <span class="s2">"payer_code"</span><span class="p">,</span>
+    <span class="s2">"medical_specialty"</span><span class="p">,</span>
+    <span class="s2">"diag_1"</span><span class="p">,</span>
+    <span class="s2">"diag_2"</span><span class="p">,</span>
+    <span class="s2">"diag_3"</span><span class="p">,</span>
+<span class="p">]</span>
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">categoricals</span><span class="p">:</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">.</span><span class="n">codes</span> <span class="c1">#  integer 값으로 바꿔 줍니다.</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int64'</span><span class="p">)</span>
-    
-<span class="n">df</span><span class="p">[</span><span class="s1">'readmitted'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'NO'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'&gt;30'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'&lt;30'</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">.</span><span class="n">codes</span>  <span class="c1">#  integer 값으로 바꿔 줍니다.</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"int64"</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">"readmitted"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">"NO"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"&gt;30"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"&lt;30"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># 쓸모 없어 보이는 데이터 삭제</span>
-<span class="n">del_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'weight'</span><span class="p">,</span><span class="s1">'payer_code'</span><span class="p">,</span> <span class="s1">'medical_specialty'</span><span class="p">]</span> <span class="c1"># 삭제할 데이터</span>
+<span class="n">del_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"weight"</span><span class="p">,</span> <span class="s2">"payer_code"</span><span class="p">,</span> <span class="s2">"medical_specialty"</span><span class="p">]</span>  <span class="c1"># 삭제할 데이터</span>
 <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">del_columns</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1240,7 +1297,7 @@ dtype: int64</pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 나이</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">'Blues_d'</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">"Blues_d"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1302,9 +1359,17 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_age</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'age'</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'readmitted'</span><span class="p">]</span> <span class="p">,</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">],</span>
-                       <span class="n">aggfunc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span><span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df_age</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="s1">'readmitted_ratio'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_age</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_age</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="s1">'All'</span><span class="p">]</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_age</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"age"</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"readmitted"</span><span class="p">],</span>
+    <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">],</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span>
+    <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df_age</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"readmitted_ratio"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_age</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_age</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"All"</span><span class="p">]</span>
+<span class="p">)</span>
 <span class="n">df_age</span>
 </pre></div>
 </div>
@@ -1426,7 +1491,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">df_age</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="s1">'readmitted_ratio'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'barh'</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">df_age</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"readmitted_ratio"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1466,13 +1531,14 @@ dtype: int64</pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="p">),</span>
-    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">15</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">),</span>
-    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">65</span><span class="p">),</span>
-    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">65</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">95</span><span class="p">),</span>
-    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">95</span><span class="p">)]</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">15</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">65</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">65</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">95</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">95</span><span class="p">),</span>
+<span class="p">]</span>
 <span class="n">choices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">choices</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">choices</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1494,9 +1560,17 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_diag</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'number_diagnoses'</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'readmitted'</span><span class="p">]</span> <span class="p">,</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">],</span>
-                       <span class="n">aggfunc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span><span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df_diag</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="s1">'readmitted_ratio'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_diag</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_diag</span><span class="p">[</span><span class="s1">'encounter_id'</span><span class="p">,</span><span class="s1">'All'</span><span class="p">]</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_diag</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"number_diagnoses"</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"readmitted"</span><span class="p">],</span>
+    <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">],</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span>
+    <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df_diag</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"readmitted_ratio"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_diag</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_diag</span><span class="p">[</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"All"</span><span class="p">]</span>
+<span class="p">)</span>
 <span class="n">df_diag</span>
 </pre></div>
 </div>
@@ -1672,12 +1746,14 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">conditions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">'number_diagnoses'</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="p">),</span>
-    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'number_diagnoses'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'number_diagnoses'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">),</span>
-    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'number_diagnoses'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">6</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'number_diagnoses'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">),</span>
-    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'number_diagnoses'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">9</span> <span class="p">)]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"number_diagnoses"</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"number_diagnoses"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"number_diagnoses"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"number_diagnoses"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">6</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"number_diagnoses"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"number_diagnoses"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">9</span><span class="p">),</span>
+<span class="p">]</span>
 <span class="n">choices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'number_diagnoses'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">choices</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"number_diagnoses"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">choices</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1701,8 +1777,9 @@ dtype: int64</pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">readmitted</span> <span class="c1"># label</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'encounter_id'</span><span class="p">,</span> <span class="s1">'patient_nbr'</span><span class="p">,</span><span class="s1">'readmitted'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># label과 고유값을 제거</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">readmitted</span>  <span class="c1"># label</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"encounter_id"</span><span class="p">,</span> <span class="s2">"patient_nbr"</span><span class="p">,</span> <span class="s2">"readmitted"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># label과 고유값을 제거</span>
 <span class="n">train_X</span><span class="p">,</span> <span class="n">test_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">train_X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">test_X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1739,12 +1816,28 @@ dtype: int64</pre>
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-                      <span class="n">objective</span><span class="o">=</span><span class="s1">'binary:logistic'</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
-                      <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-                      <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">objective</span><span class="o">=</span><span class="s2">"binary:logistic"</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">eval_set</span> <span class="o">=</span> <span class="p">[(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_X</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">eval_metric</span><span class="o">=</span><span class="p">[</span><span class="s2">"error"</span><span class="p">,</span><span class="s2">"logloss"</span><span class="p">],</span> <span class="n">eval_set</span><span class="o">=</span><span class="n">eval_set</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">train_X</span><span class="p">,</span>
+    <span class="n">train_y</span><span class="p">,</span>
+    <span class="n">eval_metric</span><span class="o">=</span><span class="p">[</span><span class="s2">"error"</span><span class="p">,</span> <span class="s2">"logloss"</span><span class="p">],</span>
+    <span class="n">eval_set</span><span class="o">=</span><span class="n">eval_set</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evals_result</span><span class="p">()</span>
 <span class="c1"># print(results)</span>
 </pre></div>
@@ -1767,8 +1860,9 @@ dtype: int64</pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
 <span class="n">pred_y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">" Accuracy : </span><span class="si">{}</span><span class="s2"> %"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">pred_y</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">" Accuracy : </span><span class="si">{}</span><span class="s2"> %"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">pred_y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1801,19 +1895,19 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">'validation_0'</span><span class="p">][</span><span class="s1">'error'</span><span class="p">])</span> <span class="c1"># retrieve performance metrics</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">"validation_0"</span><span class="p">][</span><span class="s2">"error"</span><span class="p">])</span>  <span class="c1"># retrieve performance metrics</span>
 <span class="n">x_axis</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">epochs</span><span class="p">)</span>
 <span class="c1"># plot log loss</span>
-<span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">'validation_0'</span><span class="p">][</span><span class="s1">'logloss'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Train'</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">'validation_1'</span><span class="p">][</span><span class="s1">'logloss'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Test'</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'XGBoost Log Loss'</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Log loss'</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s2">"validation_0"</span><span class="p">][</span><span class="s2">"logloss"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Train"</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s2">"validation_1"</span><span class="p">][</span><span class="s2">"logloss"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Test"</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"XGBoost Log Loss"</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Log loss"</span><span class="p">)</span>
 <span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">'validation_0'</span><span class="p">][</span><span class="s1">'error'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Train'</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">'validation_1'</span><span class="p">][</span><span class="s1">'error'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Test'</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Classification Error'</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'XGBoost Classification Error'</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s2">"validation_0"</span><span class="p">][</span><span class="s2">"error"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Train"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s2">"validation_1"</span><span class="p">][</span><span class="s2">"error"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Test"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Classification Error"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"XGBoost Classification Error"</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1853,6 +1947,7 @@ dtype: int64</pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">plot_importance</span>
+
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plot_importance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 </pre></div>
@@ -1957,14 +2052,27 @@ dtype: int64</pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
-<span class="n">param_test1</span> <span class="o">=</span> <span class="p">{</span>
-     <span class="s1">'max_depth'</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
-     <span class="s1">'min_child_weight'</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="n">gsearch1</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span> <span class="n">learning_rate</span> <span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                                     <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-                                     <span class="n">objective</span><span class="o">=</span> <span class="s1">'binary:logistic'</span><span class="p">,</span> <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">),</span> 
-                                     <span class="n">param_grid</span> <span class="o">=</span> <span class="n">param_test1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">'accuracy'</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">iid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">param_test1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"max_depth"</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"min_child_weight"</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)}</span>
+<span class="n">gsearch1</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">XGBClassifier</span><span class="p">(</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span>
+        <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">objective</span><span class="o">=</span><span class="s2">"binary:logistic"</span><span class="p">,</span>
+        <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_test1</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">"accuracy"</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">iid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">gsearch1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
 <span class="n">gsearch1</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">gsearch1</span><span class="o">.</span><span class="n">best_params_</span><span class="p">,</span> <span class="n">gsearch1</span><span class="o">.</span><span class="n">best_score_</span>
 </pre></div>
@@ -2042,13 +2150,26 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">param_test3</span> <span class="o">=</span> <span class="p">{</span>
- <span class="s1">'gamma'</span><span class="p">:[</span><span class="n">i</span><span class="o">/</span><span class="mf">10.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span>
-<span class="p">}</span>
-<span class="n">gsearch3</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span> <span class="n">learning_rate</span> <span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-     <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-     <span class="n">objective</span><span class="o">=</span> <span class="s1">'binary:logistic'</span><span class="p">,</span> <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">),</span> 
-     <span class="n">param_grid</span> <span class="o">=</span> <span class="n">param_test3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">'accuracy'</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">iid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">param_test3</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"gamma"</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mf">10.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]}</span>
+<span class="n">gsearch3</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">XGBClassifier</span><span class="p">(</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span>
+        <span class="n">max_depth</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+        <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">objective</span><span class="o">=</span><span class="s2">"binary:logistic"</span><span class="p">,</span>
+        <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_test3</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">"accuracy"</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">iid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">gsearch3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
 <span class="n">gsearch3</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">gsearch3</span><span class="o">.</span><span class="n">best_params_</span><span class="p">,</span> <span class="n">gsearch3</span><span class="o">.</span><span class="n">best_score_</span>
 </pre></div>
@@ -2097,13 +2218,28 @@ dtype: int64</pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">param_test4</span> <span class="o">=</span> <span class="p">{</span>
- <span class="s1">'subsample'</span><span class="p">:[</span><span class="n">i</span><span class="o">/</span><span class="mf">10.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">)],</span>
- <span class="s1">'colsample_bytree'</span><span class="p">:[</span><span class="n">i</span><span class="o">/</span><span class="mf">10.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="s2">"subsample"</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mf">10.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">)],</span>
+    <span class="s2">"colsample_bytree"</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mf">10.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">)],</span>
 <span class="p">}</span>
-<span class="n">gsearch4</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span> <span class="n">learning_rate</span> <span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-     <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-     <span class="n">objective</span><span class="o">=</span> <span class="s1">'binary:logistic'</span><span class="p">,</span> <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">),</span> 
-     <span class="n">param_grid</span> <span class="o">=</span> <span class="n">param_test4</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">'accuracy'</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">iid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">gsearch4</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">XGBClassifier</span><span class="p">(</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span>
+        <span class="n">max_depth</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+        <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">objective</span><span class="o">=</span><span class="s2">"binary:logistic"</span><span class="p">,</span>
+        <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_test4</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">"accuracy"</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">iid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">gsearch4</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
 <span class="n">gsearch4</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">gsearch4</span><span class="o">.</span><span class="n">best_params_</span><span class="p">,</span> <span class="n">gsearch4</span><span class="o">.</span><span class="n">best_score_</span>
 </pre></div>
@@ -2162,13 +2298,26 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">param_test6</span> <span class="o">=</span> <span class="p">{</span>
- <span class="s1">'reg_alpha'</span><span class="p">:[</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
-<span class="p">}</span>
-<span class="n">gsearch6</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span> <span class="n">learning_rate</span> <span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
- <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
- <span class="n">objective</span><span class="o">=</span> <span class="s1">'binary:logistic'</span><span class="p">,</span> <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">),</span> 
- <span class="n">param_grid</span> <span class="o">=</span> <span class="n">param_test6</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">'accuracy'</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">iid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">param_test6</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"reg_alpha"</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+<span class="n">gsearch6</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">XGBClassifier</span><span class="p">(</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span>
+        <span class="n">max_depth</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+        <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">objective</span><span class="o">=</span><span class="s2">"binary:logistic"</span><span class="p">,</span>
+        <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_test6</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">"accuracy"</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">iid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">gsearch6</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
 <span class="n">gsearch6</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">gsearch6</span><span class="o">.</span><span class="n">best_params_</span><span class="p">,</span> <span class="n">gsearch6</span><span class="o">.</span><span class="n">best_score_</span>
 </pre></div>
@@ -2217,12 +2366,29 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">model2</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
-                      <span class="n">objective</span><span class="o">=</span><span class="s1">'binary:logistic'</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">reg_alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                      <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-                      <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">model2</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+    <span class="n">objective</span><span class="o">=</span><span class="s2">"binary:logistic"</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">reg_alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">eval_set</span> <span class="o">=</span> <span class="p">[(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_X</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)]</span>
-<span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">eval_metric</span><span class="o">=</span><span class="p">[</span><span class="s2">"error"</span><span class="p">,</span><span class="s2">"logloss"</span><span class="p">],</span> <span class="n">eval_set</span><span class="o">=</span><span class="n">eval_set</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">train_X</span><span class="p">,</span>
+    <span class="n">train_y</span><span class="p">,</span>
+    <span class="n">eval_metric</span><span class="o">=</span><span class="p">[</span><span class="s2">"error"</span><span class="p">,</span> <span class="s2">"logloss"</span><span class="p">],</span>
+    <span class="n">eval_set</span><span class="o">=</span><span class="n">eval_set</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">evals_result</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2235,7 +2401,7 @@ dtype: int64</pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">pred_y</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">" Accuracy : </span><span class="si">{}</span><span class="s2"> %"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">pred_y</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">" Accuracy : </span><span class="si">{}</span><span class="s2"> %"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">pred_y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2269,19 +2435,19 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">'validation_0'</span><span class="p">][</span><span class="s1">'error'</span><span class="p">])</span> <span class="c1"># retrieve performance metrics</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">"validation_0"</span><span class="p">][</span><span class="s2">"error"</span><span class="p">])</span>  <span class="c1"># retrieve performance metrics</span>
 <span class="n">x_axis</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">epochs</span><span class="p">)</span>
 <span class="c1"># plot log loss</span>
-<span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">'validation_0'</span><span class="p">][</span><span class="s1">'logloss'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Train'</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">'validation_1'</span><span class="p">][</span><span class="s1">'logloss'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Test'</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'XGBoost Log Loss'</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Log loss'</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s2">"validation_0"</span><span class="p">][</span><span class="s2">"logloss"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Train"</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s2">"validation_1"</span><span class="p">][</span><span class="s2">"logloss"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Test"</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"XGBoost Log Loss"</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Log loss"</span><span class="p">)</span>
 <span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">'validation_0'</span><span class="p">][</span><span class="s1">'error'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Train'</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">'validation_1'</span><span class="p">][</span><span class="s1">'error'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Test'</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Classification Error'</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'XGBoost Classification Error'</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s2">"validation_0"</span><span class="p">][</span><span class="s2">"error"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Train"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s2">"validation_1"</span><span class="p">][</span><span class="s2">"error"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Test"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Classification Error"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"XGBoost Classification Error"</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>

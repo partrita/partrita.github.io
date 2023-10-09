@@ -177,11 +177,11 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'adc.csv'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"adc.csv"</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -566,13 +566,24 @@ bg-dark
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-<span class="kn">from</span> <span class="nn">supervised.automl</span> <span class="kn">import</span> <span class="n">AutoML</span> <span class="c1"># mljar-supervised</span>
+<span class="kn">from</span> <span class="nn">supervised.automl</span> <span class="kn">import</span> <span class="n">AutoML</span>  <span class="c1"># mljar-supervised</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'Linker'</span><span class="p">,</span> <span class="s1">'HC/LC'</span><span class="p">,</span> <span class="s1">'Residue'</span><span class="p">,</span> <span class="s1">'MutationSite'</span><span class="p">,</span>
-        <span class="s1">'%Agg'</span><span class="p">,</span><span class="s1">'DAR'</span><span class="p">,</span> <span class="s1">'Reox'</span><span class="p">,</span> <span class="s1">'Avg.Stability'</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Conc.(mg/mL)'</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="s2">"Linker"</span><span class="p">,</span>
+        <span class="s2">"HC/LC"</span><span class="p">,</span>
+        <span class="s2">"Residue"</span><span class="p">,</span>
+        <span class="s2">"MutationSite"</span><span class="p">,</span>
+        <span class="s2">"%Agg"</span><span class="p">,</span>
+        <span class="s2">"DAR"</span><span class="p">,</span>
+        <span class="s2">"Reox"</span><span class="p">,</span>
+        <span class="s2">"Avg.Stability"</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"Conc.(mg/mL)"</span><span class="p">]</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -606,7 +617,7 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">automl</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"Explain"</span><span class="p">)</span>
-<span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  
+<span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -664,12 +675,12 @@ AutoML fit time: 27.45 seconds
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">predict_1</span> <span class="o">=</span> <span class="n">automl</span><span class="o">.</span><span class="n">predict_all</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
 <span class="n">df_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">df_plot</span><span class="p">[</span><span class="s1">'True_value'</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">values</span>
-<span class="n">df_plot</span><span class="p">[</span><span class="s1">'Pred_1'</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_1</span><span class="o">.</span><span class="n">prediction</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df_plot</span><span class="p">[</span><span class="s2">"True_value"</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df_plot</span><span class="p">[</span><span class="s2">"Pred_1"</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_1</span><span class="o">.</span><span class="n">prediction</span><span class="o">.</span><span class="n">values</span>
 
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'True_value'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Pred_1'</span><span class="p">,</span>
-                  <span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"reg"</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                  <span class="n">height</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"True_value"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Pred_1"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"reg"</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">7</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -701,7 +712,7 @@ AutoML fit time: 27.45 seconds
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">automl</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span><span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s1">'Random Forest'</span><span class="p">,</span> <span class="s1">'Xgboost'</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'Compete'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">automl</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span><span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">"Random Forest"</span><span class="p">,</span> <span class="s2">"Xgboost"</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"Compete"</span><span class="p">)</span>
 <span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -812,10 +823,10 @@ AutoML fit time: 210.63 seconds
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">predict_2</span> <span class="o">=</span> <span class="n">automl</span><span class="o">.</span><span class="n">predict_all</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="n">df_plot</span><span class="p">[</span><span class="s1">'Pred_2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_2</span><span class="o">.</span><span class="n">prediction</span><span class="o">.</span><span class="n">values</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'True_value'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Pred_2'</span><span class="p">,</span>
-                  <span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"reg"</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                  <span class="n">height</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">df_plot</span><span class="p">[</span><span class="s2">"Pred_2"</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_2</span><span class="o">.</span><span class="n">prediction</span><span class="o">.</span><span class="n">values</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"True_value"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Pred_2"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"reg"</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">7</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -846,10 +857,10 @@ AutoML fit time: 210.63 seconds
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predict_1</span><span class="o">.</span><span class="n">prediction</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'model1'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predict_2</span><span class="o">.</span><span class="n">prediction</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'model2'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">4.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">4.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predict_1</span><span class="o">.</span><span class="n">prediction</span><span class="p">,</span> <span class="s2">"."</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"model1"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predict_2</span><span class="o">.</span><span class="n">prediction</span><span class="p">,</span> <span class="s2">"."</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"model2"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"True value"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Predicted value"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>

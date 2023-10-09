@@ -398,10 +398,7 @@ Checking<span class="w"> </span>reference...
 <span class="n">file_path</span> <span class="o">=</span> <span class="s2">"../input/run_count_mNeuron1k/outs/filtered_feature_bc_matrix"</span>
 
 <span class="c1"># read_10x_mtx 함수를 사용</span>
-<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_10x_mtx</span><span class="p">(</span>
-    <span class="n">file_path</span><span class="p">,</span>
-    <span class="n">var_names</span><span class="o">=</span><span class="s1">'gene_symbols'</span><span class="p">,</span>
-    <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_10x_mtx</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">var_names</span><span class="o">=</span><span class="s2">"gene_symbols"</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">adata</span>
 </pre></div>
 </div>
@@ -440,8 +437,8 @@ Checking<span class="w"> </span>reference...
 <span class="n">loom</span> <span class="o">=</span> <span class="n">scv</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">/run_count_mNeuron1k.loom"</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># rename barcodes in order to merge:</span>
-<span class="n">barcodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">bc</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">':'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">loom</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
-<span class="n">barcodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">bc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">bc</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'-1'</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">barcodes</span><span class="p">]</span>
+<span class="n">barcodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">bc</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">loom</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
+<span class="n">barcodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">bc</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">bc</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"-1"</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">barcodes</span><span class="p">]</span>
 <span class="n">loom</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">barcodes</span>
 
 <span class="c1"># make variable names unique</span>
@@ -503,7 +500,7 @@ Checking<span class="w"> </span>reference...
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">adata</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"../output/mNeuron1k.h5ad"</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s1">'gzip'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">adata</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"../output/mNeuron1k.h5ad"</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">"gzip"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -527,6 +524,7 @@ Checking<span class="w"> </span>reference...
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">rpy2.rinterface_lib.callbacks</span> <span class="k">as</span> <span class="nn">rcb</span>
+
 <span class="c1"># import rpy2.robjects as ro</span>
 
 <span class="n">rcb</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>

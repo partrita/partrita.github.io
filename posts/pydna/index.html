@@ -194,9 +194,9 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># template template loading</span>
-<span class="n">C3</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">'CEACAM3.ape'</span><span class="p">,</span><span class="n">ds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">C3_F</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s1">'C3_F.ape'</span><span class="p">)</span>
-<span class="n">C3_R</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s1">'C3_R.ape'</span><span class="p">)</span>
+<span class="n">C3</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">"CEACAM3.ape"</span><span class="p">,</span> <span class="n">ds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">C3_F</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s2">"C3_F.ape"</span><span class="p">)</span>
+<span class="n">C3_R</span> <span class="o">=</span> <span class="n">pydna</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s2">"C3_R.ape"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -218,7 +218,7 @@ bg-dark
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># PCR</span>
-<span class="n">C3_pcr_prod</span> <span class="o">=</span> <span class="n">pcr</span><span class="p">(</span><span class="n">C3_F</span><span class="p">,</span><span class="n">C3_R</span><span class="p">,</span><span class="n">C3</span><span class="p">)</span>
+<span class="n">C3_pcr_prod</span> <span class="o">=</span> <span class="n">pcr</span><span class="p">(</span><span class="n">C3_F</span><span class="p">,</span> <span class="n">C3_R</span><span class="p">,</span> <span class="n">C3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -241,8 +241,9 @@ bg-dark
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">from</span> <span class="nn">pydna.gel</span> <span class="kn">import</span> <span class="n">weight_standard_sample</span><span class="p">,</span> <span class="n">Gel</span>
-<span class="n">st</span> <span class="o">=</span> <span class="n">weight_standard_sample</span><span class="p">(</span><span class="s1">'1kb+_GeneRuler'</span><span class="p">)</span>
-<span class="n">Gel</span><span class="p">([</span> <span class="n">st</span><span class="p">,[</span><span class="n">C3_pcr_prod</span><span class="p">]]</span> <span class="p">,</span> <span class="n">gel_len</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">st</span> <span class="o">=</span> <span class="n">weight_standard_sample</span><span class="p">(</span><span class="s2">"1kb+_GeneRuler"</span><span class="p">)</span>
+<span class="n">Gel</span><span class="p">([</span><span class="n">st</span><span class="p">,</span> <span class="p">[</span><span class="n">C3_pcr_prod</span><span class="p">]],</span> <span class="n">gel_len</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -276,7 +277,7 @@ bg-dark
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># general PCR </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># general PCR</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">C3_pcr_prod</span><span class="o">.</span><span class="n">program</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -396,10 +397,10 @@ __________|_____          72.0°C |72.0°C|Primer1C 1.0µM
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># C5 PCR</span>
-<span class="n">C5</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">'CEACAM5.ape'</span><span class="p">,</span><span class="n">ds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">C5_F</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s1">'Cyno_C5-F.ape'</span><span class="p">)</span>
-<span class="n">C5_R</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s1">'Cyno_C5-R.ape'</span><span class="p">)</span>
-<span class="n">C5_pcr_prod</span> <span class="o">=</span> <span class="n">pcr</span><span class="p">(</span><span class="n">C5_F</span><span class="p">,</span><span class="n">C5_R</span><span class="p">,</span><span class="n">C5</span><span class="p">)</span>
+<span class="n">C5</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">"CEACAM5.ape"</span><span class="p">,</span> <span class="n">ds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">C5_F</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s2">"Cyno_C5-F.ape"</span><span class="p">)</span>
+<span class="n">C5_R</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">parse_primers</span><span class="p">(</span><span class="s2">"Cyno_C5-R.ape"</span><span class="p">)</span>
+<span class="n">C5_pcr_prod</span> <span class="o">=</span> <span class="n">pcr</span><span class="p">(</span><span class="n">C5_F</span><span class="p">,</span> <span class="n">C5_R</span><span class="p">,</span> <span class="n">C5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

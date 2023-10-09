@@ -190,15 +190,16 @@ bg-dark
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="n">API_URL</span> <span class="o">=</span> <span class="s1">'https://kapi.kakao.com/v1/vision/face/detect'</span>
+<span class="n">API_URL</span> <span class="o">=</span> <span class="s2">"https://kapi.kakao.com/v1/vision/face/detect"</span>
 <span class="c1"># 아래 My Kakao api key, 본인 계정의 API 키로 변경해서 사용하세요.</span>
-<span class="n">MYAPP_KEY</span> <span class="o">=</span> <span class="s1">'b5f1dde7995c36168402318b69308ef218614'</span>
+<span class="n">MYAPP_KEY</span> <span class="o">=</span> <span class="s2">"b5f1dde7995c36168402318b69308ef218614"</span>
+
 
 <span class="k">def</span> <span class="nf">detect_face</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'KakaoAK </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">MYAPP_KEY</span><span class="p">)}</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"KakaoAK </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">MYAPP_KEY</span><span class="p">)}</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">files</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'file'</span> <span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)}</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"file"</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)}</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">API_URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
         <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -206,41 +207,48 @@ bg-dark
         <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
+
 <span class="k">def</span> <span class="nf">mosaic</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">detection_result</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">detection_result</span><span class="p">[</span><span class="s1">'result'</span><span class="p">][</span><span class="s1">'faces'</span><span class="p">]:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'w'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s1">'h'</span><span class="p">]</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
-        <span class="n">box</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">crop</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">detection_result</span><span class="p">[</span><span class="s2">"result"</span><span class="p">][</span><span class="s2">"faces"</span><span class="p">]:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span> <span class="o">*</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s2">"w"</span><span class="p">]</span> <span class="o">*</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">*</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">face</span><span class="p">[</span><span class="s2">"h"</span><span class="p">]</span> <span class="o">*</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">crop</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="p">))</span>
         <span class="c1"># 모자이크 강도를 조절하려면 사이즈를 조절하세요.</span>
-        <span class="n">box</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">NEAREST</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">NEAREST</span><span class="p">)</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">NEAREST</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">NEAREST</span><span class="p">)</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">image</span>
 
 
-
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">'Mosaic all of faces.'</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'-f'</span><span class="p">,</span> <span class="s1">'--folder'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">"./."</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s1">'image file to hide faces'</span><span class="p">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"Mosaic all of faces."</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">"-f"</span><span class="p">,</span>
+        <span class="s2">"--folder"</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+        <span class="n">nargs</span><span class="o">=</span><span class="s2">"?"</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">"./."</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">"image file to hide faces"</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
     <span class="c1"># Make files lists</span>
-    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.jpg'</span><span class="p">)</span> <span class="o">+</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.jpeg'</span><span class="p">)</span> <span class="o">+</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*.png'</span><span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.jpg"</span><span class="p">)</span> <span class="o">+</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.jpeg"</span><span class="p">)</span> <span class="o">+</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.png"</span><span class="p">)</span>
     <span class="c1"># make loop</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
         <span class="n">head</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">detection_result</span> <span class="o">=</span> <span class="n">detect_face</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-            <span class="n">image</span> <span class="o">=</span> <span class="n">mosaic</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">detection_result</span><span class="p">)</span>           
-            <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">head</span><span class="o">+</span><span class="s1">'mosaic_'</span><span class="o">+</span><span class="n">tail</span><span class="p">,</span><span class="s1">'JPEG'</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">'! Add mosaic on : '</span> <span class="o">+</span> <span class="n">tail</span><span class="p">)</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">mosaic</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">detection_result</span><span class="p">)</span>
+            <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">head</span> <span class="o">+</span> <span class="s2">"mosaic_"</span> <span class="o">+</span> <span class="n">tail</span><span class="p">,</span> <span class="s2">"JPEG"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"! Add mosaic on : "</span> <span class="o">+</span> <span class="n">tail</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">'! Face does not detected on : '</span> <span class="o">+</span> <span class="n">tail</span><span class="p">)</span> 
-    
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'!!  All process finished  !!'</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"! Face does not detected on : "</span> <span class="o">+</span> <span class="n">tail</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"!!  All process finished  !!"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -221,12 +221,21 @@ bg-dark
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"tips"</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="s2">"day"</span>
 <span class="n">y</span> <span class="o">=</span> <span class="s2">"total_bill"</span>
-<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Sun'</span><span class="p">,</span> <span class="s1">'Thur'</span><span class="p">,</span> <span class="s1">'Fri'</span><span class="p">,</span> <span class="s1">'Sat'</span><span class="p">]</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">]</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">,</span> <span class="n">test_results</span> <span class="o">=</span> <span class="n">add_stat_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
-                                   <span class="n">box_pairs</span><span class="o">=</span><span class="p">[(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)],</span>
-                                   <span class="n">test</span><span class="o">=</span><span class="s1">'Mann-Whitney'</span><span class="p">,</span> <span class="n">text_format</span><span class="o">=</span><span class="s1">'star'</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'outside'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span> <span class="c1"># 필요없는 axis border 제거</span>
+<span class="n">ax</span><span class="p">,</span> <span class="n">test_results</span> <span class="o">=</span> <span class="n">add_stat_annotation</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+    <span class="n">box_pairs</span><span class="o">=</span><span class="p">[(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)],</span>
+    <span class="n">test</span><span class="o">=</span><span class="s2">"Mann-Whitney"</span><span class="p">,</span>
+    <span class="n">text_format</span><span class="o">=</span><span class="s2">"star"</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">"outside"</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>  <span class="c1"># 필요없는 axis border 제거</span>
 </pre></div>
 </div>
 </div>
@@ -315,13 +324,22 @@ StatResult attributes: dict_keys(['test_str', 'test_short_name', 'stat_str', 'st
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">"day"</span>
 <span class="n">y</span> <span class="o">=</span> <span class="s2">"total_bill"</span>
-<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Sun'</span><span class="p">,</span> <span class="s1">'Thur'</span><span class="p">,</span> <span class="s1">'Fri'</span><span class="p">,</span> <span class="s1">'Sat'</span><span class="p">]</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">]</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
-<span class="n">test_results</span> <span class="o">=</span> <span class="n">add_stat_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
-                                   <span class="n">box_pairs</span><span class="o">=</span><span class="p">[(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)],</span>
-                                   <span class="n">test</span><span class="o">=</span><span class="s1">'Mann-Whitney'</span><span class="p">,</span> <span class="n">comparisons_correction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-                                   <span class="n">text_format</span><span class="o">=</span><span class="s1">'star'</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'outside'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span> <span class="c1"># 필요없는 axis border 제거</span>
+<span class="n">test_results</span> <span class="o">=</span> <span class="n">add_stat_annotation</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+    <span class="n">box_pairs</span><span class="o">=</span><span class="p">[(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)],</span>
+    <span class="n">test</span><span class="o">=</span><span class="s2">"Mann-Whitney"</span><span class="p">,</span>
+    <span class="n">comparisons_correction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">text_format</span><span class="o">=</span><span class="s2">"star"</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">"outside"</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>  <span class="c1"># 필요없는 axis border 제거</span>
 </pre></div>
 </div>
 </div>
@@ -371,13 +389,23 @@ Sun v.s. Fri: Mann-Whitney-Wilcoxon test two-sided, P_val=2.680e-02 U_stat=9.605
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">"day"</span>
 <span class="n">y</span> <span class="o">=</span> <span class="s2">"total_bill"</span>
-<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Sun'</span><span class="p">,</span> <span class="s1">'Thur'</span><span class="p">,</span> <span class="s1">'Fri'</span><span class="p">,</span> <span class="s1">'Sat'</span><span class="p">]</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">]</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
-<span class="n">add_stat_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
-                    <span class="n">box_pairs</span><span class="o">=</span><span class="p">[(</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"Thur"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)],</span>
-                    <span class="n">perform_stat_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pvalues</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span>
-                    <span class="n">test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text_format</span><span class="o">=</span><span class="s1">'star'</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'inside'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span> <span class="c1"># 필요없는 axis border 제거</span>
+<span class="n">add_stat_annotation</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+    <span class="n">box_pairs</span><span class="o">=</span><span class="p">[(</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"Thur"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)],</span>
+    <span class="n">perform_stat_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">pvalues</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span>
+    <span class="n">test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">text_format</span><span class="o">=</span><span class="s2">"star"</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">"inside"</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>  <span class="c1"># 필요없는 axis border 제거</span>
 </pre></div>
 </div>
 </div>
@@ -425,13 +453,21 @@ Sun v.s. Sat: Custom statistical test, P_val:1.000e-01
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">'diamonds'</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">'EIJ'</span><span class="p">)]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"diamonds"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">"EIJ"</span><span class="p">)]</span>
 <span class="c1"># Modifying data to yield unequal boxes in the hue value</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'cut'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Ideal'</span><span class="p">,</span> <span class="s1">'price'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'cut'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Ideal'</span><span class="p">,</span> <span class="s1">'price'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'cut'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Premium'</span><span class="p">,</span> <span class="s1">'price'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'cut'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Premium'</span><span class="p">,</span> <span class="s1">'price'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">7500</span><span class="p">))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'cut'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Good'</span><span class="p">,</span> <span class="s1">'price'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'cut'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Good'</span><span class="p">,</span> <span class="s1">'price'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">15000</span><span class="p">))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'cut'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Very Good'</span><span class="p">,</span> <span class="s1">'price'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'cut'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Very Good'</span><span class="p">,</span> <span class="s1">'price'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3000</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"cut"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Ideal"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"cut"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Ideal"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"cut"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Premium"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"cut"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Premium"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">7500</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"cut"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Good"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"cut"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Good"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">15000</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"cut"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Very Good"</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">"cut"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Very Good"</span><span class="p">,</span> <span class="s2">"price"</span>
+<span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3000</span><span class="p">))</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -550,8 +586,8 @@ Sun v.s. Sat: Custom statistical test, P_val:1.000e-01
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">"color"</span>
 <span class="n">y</span> <span class="o">=</span> <span class="s2">"price"</span>
 <span class="n">hue</span> <span class="o">=</span> <span class="s2">"cut"</span>
-<span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s1">'Ideal'</span><span class="p">,</span> <span class="s1">'Premium'</span><span class="p">,</span> <span class="s1">'Good'</span><span class="p">,</span> <span class="s1">'Very Good'</span><span class="p">,</span> <span class="s1">'Fair'</span><span class="p">]</span>
-<span class="n">box_pairs</span><span class="o">=</span><span class="p">[</span>
+<span class="n">hue_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Ideal"</span><span class="p">,</span> <span class="s2">"Premium"</span><span class="p">,</span> <span class="s2">"Good"</span><span class="p">,</span> <span class="s2">"Very Good"</span><span class="p">,</span> <span class="s2">"Fair"</span><span class="p">]</span>
+<span class="n">box_pairs</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">((</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"Ideal"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"Very Good"</span><span class="p">)),</span>
     <span class="p">((</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"Ideal"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"Premium"</span><span class="p">)),</span>
     <span class="p">((</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"Ideal"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"Good"</span><span class="p">)),</span>
@@ -561,12 +597,26 @@ Sun v.s. Sat: Custom statistical test, P_val:1.000e-01
     <span class="p">((</span><span class="s2">"J"</span><span class="p">,</span> <span class="s2">"Ideal"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"J"</span><span class="p">,</span> <span class="s2">"Good"</span><span class="p">)),</span>
     <span class="p">((</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"Good"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"I"</span><span class="p">,</span> <span class="s2">"Ideal"</span><span class="p">)),</span>
     <span class="p">((</span><span class="s2">"I"</span><span class="p">,</span> <span class="s2">"Premium"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"J"</span><span class="p">,</span> <span class="s2">"Ideal"</span><span class="p">)),</span>
-    <span class="p">]</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,)</span>
-<span class="n">add_stat_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span> <span class="n">box_pairs</span><span class="o">=</span><span class="n">box_pairs</span><span class="p">,</span>
-                    <span class="n">test</span><span class="o">=</span><span class="s1">'Mann-Whitney'</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'inside'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span> <span class="c1"># 필요없는 axis border 제거</span>
+<span class="p">]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">add_stat_annotation</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span>
+    <span class="n">box_pairs</span><span class="o">=</span><span class="n">box_pairs</span><span class="p">,</span>
+    <span class="n">test</span><span class="o">=</span><span class="s2">"Mann-Whitney"</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">"inside"</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>  <span class="c1"># 필요없는 axis border 제거</span>
 </pre></div>
 </div>
 </div>
@@ -620,7 +670,7 @@ I_Premium v.s. J_Ideal: Mann-Whitney-Wilcoxon test two-sided with Bonferroni cor
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"tips"</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'tip_bucket'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'tip'</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"tip_bucket"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"tip"</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -725,7 +775,7 @@ I_Premium v.s. J_Ideal: Mann-Whitney-Wilcoxon test two-sided with Bonferroni cor
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># In this case we just have to pass the list of categories objects to the add_stat_annotation function.</span>
-<span class="n">tip_bucket_list</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'tip_bucket'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">tip_bucket_list</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"tip_bucket"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">tip_bucket_list</span>
 </pre></div>
 </div>
@@ -753,11 +803,19 @@ Categories (3, interval[float64]): [(0.991, 4.0] &lt; (4.0, 7.0] &lt; (7.0, 10.0
 <span class="n">hue</span> <span class="o">=</span> <span class="s2">"tip_bucket"</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">df</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">)</span>
-<span class="n">add_stat_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span>
-                    <span class="n">box_pairs</span><span class="o">=</span><span class="p">[((</span><span class="s2">"Sat"</span><span class="p">,</span> <span class="n">tip_bucket_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="n">tip_bucket_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))],</span>
-                    <span class="n">test</span><span class="o">=</span><span class="s1">'t-test_ind'</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'inside'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span> <span class="c1"># 필요없는 axis border 제거</span>
+<span class="n">add_stat_annotation</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span>
+    <span class="n">box_pairs</span><span class="o">=</span><span class="p">[((</span><span class="s2">"Sat"</span><span class="p">,</span> <span class="n">tip_bucket_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="n">tip_bucket_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))],</span>
+    <span class="n">test</span><span class="o">=</span><span class="s2">"t-test_ind"</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">"inside"</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>  <span class="c1"># 필요없는 axis border 제거</span>
 </pre></div>
 </div>
 </div>
@@ -807,16 +865,29 @@ Fri_(0.991, 4.0] v.s. Sat_(7.0, 10.0]: t-test independent samples with Bonferron
 <span class="n">y</span> <span class="o">=</span> <span class="s2">"total_bill"</span>
 <span class="n">hue</span> <span class="o">=</span> <span class="s2">"smoker"</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">)</span>
-<span class="n">add_stat_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span>
-                    <span class="n">box_pairs</span><span class="o">=</span><span class="p">[((</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">)),</span>
-                                 <span class="p">((</span><span class="s2">"Sat"</span><span class="p">,</span> <span class="s2">"Yes"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Sat"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">)),</span>
-                                 <span class="p">((</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Yes"</span><span class="p">))</span>
-                                <span class="p">],</span>
-                    <span class="n">test</span><span class="o">=</span><span class="s1">'t-test_ind'</span><span class="p">,</span> <span class="n">text_format</span><span class="o">=</span><span class="s1">'full'</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'inside'</span><span class="p">,</span> <span class="n">comparisons_correction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                    <span class="n">line_offset_to_box</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">line_offset</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">line_height</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">text_offset</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span> <span class="c1"># 필요없는 axis border 제거</span>
+<span class="n">add_stat_annotation</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span>
+    <span class="n">box_pairs</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">((</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">"Sat"</span><span class="p">,</span> <span class="s2">"Yes"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Sat"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Yes"</span><span class="p">)),</span>
+    <span class="p">],</span>
+    <span class="n">test</span><span class="o">=</span><span class="s2">"t-test_ind"</span><span class="p">,</span>
+    <span class="n">text_format</span><span class="o">=</span><span class="s2">"full"</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">"inside"</span><span class="p">,</span>
+    <span class="n">comparisons_correction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">line_offset_to_box</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">line_offset</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">line_height</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">text_offset</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>  <span class="c1"># 필요없는 axis border 제거</span>
 </pre></div>
 </div>
 </div>
@@ -860,18 +931,25 @@ Thur_Yes v.s. Sun_No: t-test independent samples, P_val=5.623e-01 stat=-5.822e-0
 <span class="n">x</span> <span class="o">=</span> <span class="s2">"species"</span>
 <span class="n">y</span> <span class="o">=</span> <span class="s2">"sepal_length"</span>
 
-<span class="n">box_pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"setosa"</span><span class="p">,</span> <span class="s2">"versicolor"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"setosa"</span><span class="p">,</span> <span class="s2">"virginica"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"versicolor"</span><span class="p">,</span> <span class="s2">"virginica"</span><span class="p">)]</span>
+<span class="n">box_pairs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"setosa"</span><span class="p">,</span> <span class="s2">"versicolor"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"setosa"</span><span class="p">,</span> <span class="s2">"virginica"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"versicolor"</span><span class="p">,</span> <span class="s2">"virginica"</span><span class="p">),</span>
+<span class="p">]</span>
 
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">bartlett</span>
 
-<span class="n">test_short_name</span> <span class="o">=</span> <span class="s1">'Bartlett'</span>
+<span class="n">test_short_name</span> <span class="o">=</span> <span class="s2">"Bartlett"</span>
 <span class="n">pvalues</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">box_pairs</span><span class="p">:</span>
     <span class="n">data1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">data2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">stat</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">bartlett</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Performing Bartlett statistical test for equal variances on pair:"</span><span class="p">,</span>
-          <span class="n">pair</span><span class="p">,</span> <span class="s2">"stat=</span><span class="si">{:.2e}</span><span class="s2"> p-value=</span><span class="si">{:.2e}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">stat</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">"Performing Bartlett statistical test for equal variances on pair:"</span><span class="p">,</span>
+        <span class="n">pair</span><span class="p">,</span>
+        <span class="s2">"stat=</span><span class="si">{:.2e}</span><span class="s2"> p-value=</span><span class="si">{:.2e}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">stat</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span>
+    <span class="p">)</span>
     <span class="n">pvalues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"pvalues:"</span><span class="p">,</span> <span class="n">pvalues</span><span class="p">)</span>
 </pre></div>
@@ -899,11 +977,19 @@ pvalues: [0.008659557933879902, 6.378941946712463e-05, 0.14778816016231236]
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span> <span class="c1"># 필요없는 axis border 제거</span>
-<span class="n">test_results</span> <span class="o">=</span> <span class="n">add_stat_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-                                   <span class="n">box_pairs</span><span class="o">=</span><span class="n">box_pairs</span><span class="p">,</span>
-                                   <span class="n">perform_stat_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pvalues</span><span class="o">=</span><span class="n">pvalues</span><span class="p">,</span> <span class="n">test_short_name</span><span class="o">=</span><span class="n">test_short_name</span><span class="p">,</span>
-                                   <span class="n">text_format</span><span class="o">=</span><span class="s1">'star'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>  <span class="c1"># 필요없는 axis border 제거</span>
+<span class="n">test_results</span> <span class="o">=</span> <span class="n">add_stat_annotation</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">box_pairs</span><span class="o">=</span><span class="n">box_pairs</span><span class="p">,</span>
+    <span class="n">perform_stat_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">pvalues</span><span class="o">=</span><span class="n">pvalues</span><span class="p">,</span>
+    <span class="n">test_short_name</span><span class="o">=</span><span class="n">test_short_name</span><span class="p">,</span>
+    <span class="n">text_format</span><span class="o">=</span><span class="s2">"star"</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -953,14 +1039,22 @@ setosa v.s. virginica: Custom statistical test, P_val:6.379e-05
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"tips"</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="s2">"day"</span>
 <span class="n">y</span> <span class="o">=</span> <span class="s2">"total_bill"</span>
-<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Sun'</span><span class="p">,</span> <span class="s1">'Thur'</span><span class="p">,</span> <span class="s1">'Fri'</span><span class="p">,</span> <span class="s1">'Sat'</span><span class="p">]</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Sun"</span><span class="p">,</span> <span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">]</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span> <span class="c1"># 필요없는 axis border 제거</span>
-<span class="n">test_results</span> <span class="o">=</span> <span class="n">add_stat_annotation</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
-                                   <span class="n">box_pairs</span><span class="o">=</span><span class="p">[(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)],</span>
-                                   <span class="n">text_annot_custom</span><span class="o">=</span><span class="p">[</span><span class="s2">"first pair"</span><span class="p">,</span> <span class="s2">"second pair"</span><span class="p">,</span> <span class="s2">"third pair"</span><span class="p">],</span>
-                                   <span class="n">perform_stat_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pvalues</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-                                   <span class="n">loc</span><span class="o">=</span><span class="s1">'outside'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>  <span class="c1"># 필요없는 axis border 제거</span>
+<span class="n">test_results</span> <span class="o">=</span> <span class="n">add_stat_annotation</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+    <span class="n">box_pairs</span><span class="o">=</span><span class="p">[(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Thur"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)],</span>
+    <span class="n">text_annot_custom</span><span class="o">=</span><span class="p">[</span><span class="s2">"first pair"</span><span class="p">,</span> <span class="s2">"second pair"</span><span class="p">,</span> <span class="s2">"third pair"</span><span class="p">],</span>
+    <span class="n">perform_stat_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">pvalues</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">"outside"</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
