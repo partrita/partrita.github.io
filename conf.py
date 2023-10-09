@@ -26,7 +26,7 @@ SITE_URL = "https://partrita.github.io/"
 BLOG_EMAIL = "partrita@gmail.com"
 BLOG_DESCRIPTION = {
     "en": "Basically, all about my interest but something useful.",
-    "ko": "흥미롭거나 유용한것 아무거나!"
+    "ko": "흥미롭거나 유용한것 아무거나!",
 }
 # (translatable)
 
@@ -138,7 +138,7 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/pages/about/", "About"),
         ("/pages/resume/index.html", "Resume"),
-        ("/pages/books/index.html","Book"),
+        ("/pages/books/index.html", "Book"),
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
         ("/rss.xml", "RSS feed"),
@@ -150,7 +150,7 @@ THEME = "custom"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
-#THEME_COLOR = '#083551'
+# THEME_COLOR = '#083551'
 
 # POSTS and PAGES contains (wildcard, destination, template) tuples.
 # (translatable)
@@ -252,7 +252,7 @@ TIMEZONE = "Asia/Seoul"
 # One or more folders containing files to be copied as-is into the output.
 # The format is a dictionary of {source: relative destination}.
 # Default is:
-FILES_FOLDERS = {'files': ''}
+FILES_FOLDERS = {"files": ""}
 # Which means copy 'files' into 'output'
 
 # One or more folders containing code listings to be processed and published on
@@ -269,18 +269,18 @@ FILES_FOLDERS = {'files': ''}
 # 'markdown' is Markdown
 # 'html' assumes the file is HTML and just copies it
 COMPILERS = {
-    "rest": ('.rst', '.txt'),
-    "markdown": ('.md', '.mdown', '.markdown'),
-    "textile": ('.textile', ),
-    "txt2tags": ('.t2t', ),
-    "bbcode": ('.bb', ),
-    "wiki": ('.wiki', ),
-    "ipynb": ('.ipynb', ),
-    "html": ('.html', '.htm'),
+    "rest": (".rst", ".txt"),
+    "markdown": (".md", ".mdown", ".markdown"),
+    "textile": (".textile",),
+    "txt2tags": (".t2t",),
+    "bbcode": (".bb",),
+    "wiki": (".wiki",),
+    "ipynb": (".ipynb",),
+    "html": (".html", ".htm"),
     # PHP files are rendered the usual way (i.e. with the full templates).
     # The resulting files have .php extensions, making it possible to run
     # them without reconfiguring your server to recognize them.
-    "php": ('.php', ),
+    "php": (".php",),
     # Pandoc detects the input from the source filename
     # but is disabled by default as it would conflict
     # with many of the others.
@@ -440,7 +440,7 @@ WRITE_TAG_CLOUD = True
 # If you do not want to display a tag publicly, you can mark it as hidden.
 # The tag will not be displayed on the tag list page, the tag cloud and posts.
 # Tag pages will still be generated.
-HIDDEN_TAGS = ['mathjax']
+HIDDEN_TAGS = ["mathjax"]
 
 # Only include tags on the tag list/overview page if there are at least
 # TAGLIST_MINIMUM_POSTS number of posts or more with every tag. Every tag
@@ -549,7 +549,7 @@ HIDDEN_CATEGORIES = []
 # If you do not want to display an author publicly, you can mark it as hidden.
 # The author will not be displayed on the author list page and posts.
 # Tag pages will still be generated.
-HIDDEN_AUTHORS = ['Guest']
+HIDDEN_AUTHORS = ["Guest"]
 
 # Final location for the main blog page and sibling paginated pages is
 # output / TRANSLATION[lang] / INDEX_PATH / index-*.html
@@ -558,7 +558,7 @@ HIDDEN_AUTHORS = ['Guest']
 
 # Optional HTML that displayed on “main” blog index.html files.
 # May be used for a greeting. (translatable)
-FRONT_INDEX_HEADER = {DEFAULT_LANG: ''}
+FRONT_INDEX_HEADER = {DEFAULT_LANG: ""}
 
 # Create per-month archives instead of per-year
 # CREATE_MONTHLY_ARCHIVE = False
@@ -641,11 +641,11 @@ REDIRECTIONS = []
 # For more details, read the manual:
 # https://getnikola.com/handbook.html#deploying-to-github
 # You will need to configure the deployment branch on GitHub.
-GITHUB_SOURCE_BRANCH = 'src'
-GITHUB_DEPLOY_BRANCH = 'master'
+GITHUB_SOURCE_BRANCH = "src"
+GITHUB_DEPLOY_BRANCH = "master"
 
 # The name of the remote where you wish to push to, using github_deploy.
-GITHUB_REMOTE_NAME = 'origin'
+GITHUB_REMOTE_NAME = "origin"
 
 # Whether or not github_deploy should commit to the source branch automatically
 # before deploying.
@@ -820,7 +820,7 @@ GITHUB_COMMIT_SOURCE = True
 # (the thumbnail has ``.thumbnail`` added before the file extension by default,
 # but a different naming template can be configured with IMAGE_THUMBNAIL_FORMAT).
 
-IMAGE_FOLDERS = {'images': 'images'}
+IMAGE_FOLDERS = {"images": "images"}
 # IMAGE_THUMBNAIL_SIZE = 400
 # IMAGE_THUMBNAIL_FORMAT = '{name}.thumbnail{ext}'
 
@@ -958,18 +958,21 @@ CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{autho
 #          do not need formatting)
 # (translatable)
 CONTENT_FOOTER_FORMATS = {
-    DEFAULT_LANG: ((), {
-        "email": BLOG_EMAIL,
-        "author": BLOG_AUTHOR,
-        "date": time.gmtime().tm_year,
-        "license": LICENSE
-    })
+    DEFAULT_LANG: (
+        (),
+        {
+            "email": BLOG_EMAIL,
+            "author": BLOG_AUTHOR,
+            "date": time.gmtime().tm_year,
+            "license": LICENSE,
+        },
+    )
 }
 
 # A simple copyright tag for inclusion in RSS feeds that works just
 # like CONTENT_FOOTER and CONTENT_FOOTER_FORMATS
 RSS_COPYRIGHT = 'Contents © {date} <a href="mailto:{email}">{author}</a> {license}'
-RSS_COPYRIGHT_PLAIN = 'Contents © {date} {author} {license}'
+RSS_COPYRIGHT_PLAIN = "Contents © {date} {author} {license}"
 RSS_COPYRIGHT_FORMATS = CONTENT_FOOTER_FORMATS
 
 # To use comments, you can choose between different third party comment
@@ -1098,8 +1101,9 @@ MATHJAX_CONFIG = """
 #       with the MarkdownExtension class and should not be added here.
 # The default is ['fenced_code', 'codehilite']
 MARKDOWN_EXTENSIONS = [
-    'markdown.extensions.fenced_code', 'markdown.extensions.codehilite',
-    'markdown.extensions.extra'
+    "markdown.extensions.fenced_code",
+    "markdown.extensions.codehilite",
+    "markdown.extensions.extra",
 ]
 
 # Extra options to pass to the pandoc command.
@@ -1269,8 +1273,8 @@ INDEX_DISPLAY_POST_COUNT = 2
 
 # If you hate "Filenames with Capital Letters and Spaces.md", you should
 # set this to true.
-#UNSLUGIFY_TITLES = True
-FILE_METADATA_UNSLUGIFY_TITLES=True
+# UNSLUGIFY_TITLES = True
+FILE_METADATA_UNSLUGIFY_TITLES = True
 
 # Additional metadata that is added to a post when creating a new_post
 # ADDITIONAL_METADATA = {}
@@ -1446,7 +1450,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 """
 
-BODY_END = """
+BODY_END = (
+    """
 <!-- Modal -->
 <div id="search-results" class="modal fade" role="dialog" style="height: 80%;">
   <div class="modal-dialog">
@@ -1466,7 +1471,9 @@ BODY_END = """
   </div>
 </div>
 <script>
-var siteUrl = """ + json.dumps(SITE_URL) + """
+var siteUrl = """
+    + json.dumps(SITE_URL)
+    + """
 $(document).ready(function() {
     $.when(
         $.getScript( siteUrl + "/assets/js/tipuesearch_set.js" ),
@@ -1488,3 +1495,4 @@ $(document).ready(function() {
 });
 </script>
 """
+)

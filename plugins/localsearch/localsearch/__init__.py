@@ -57,15 +57,16 @@ class Tipue(LateTask):
         self.site.scan_posts()
 
         kw = {
-            "translations": self.site.config['TRANSLATIONS'],
-            "output_folder": self.site.config['OUTPUT_FOLDER'],
-            "filters": self.site.config['FILTERS'],
+            "translations": self.site.config["TRANSLATIONS"],
+            "output_folder": self.site.config["OUTPUT_FOLDER"],
+            "filters": self.site.config["FILTERS"],
             "timeline": self.site.timeline,
         }
 
         posts = self.site.timeline[:]
-        dst_path = os.path.join(kw["output_folder"], "assets", "js",
-                                "tipuesearch_content.json")
+        dst_path = os.path.join(
+            kw["output_folder"], "assets", "js", "tipuesearch_content.json"
+        )
 
         def save_data():
             pages = []
@@ -75,7 +76,7 @@ class Tipue(LateTask):
                     if post.is_draft or post.is_private or post.publish_later:
                         continue
                     text = post.text(lang, strip_html=True)
-                    text = text.replace('^', '')
+                    text = text.replace("^", "")
 
                     data = {}
                     data["title"] = post.title(lang)
@@ -93,13 +94,13 @@ class Tipue(LateTask):
             "name": dst_path,
             "targets": [dst_path],
             "actions": [(save_data, [])],
-            'uptodate': [config_changed(kw)],
-            'calc_dep': ['_scan_locs:sitemap']
+            "uptodate": [config_changed(kw)],
+            "calc_dep": ["_scan_locs:sitemap"],
         }
-        yield apply_filters(task, kw['filters'])
+        yield apply_filters(task, kw["filters"])
 
         # Copy all the assets to the right places
         asset_folder = os.path.join(os.path.dirname(__file__), "files")
         for task in copy_tree(asset_folder, kw["output_folder"]):
             task["basename"] = str(self.name)
-            yield apply_filters(task, kw['filters'])
+            yield apply_filters(task, kw["filters"])
