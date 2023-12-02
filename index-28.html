@@ -35,17 +35,11 @@
  </script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="assets/css/tipuesearch.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 <meta name="naver-site-verification" content="d38b92eb0fc0075616e5ff8008f707087bfee65e">
-<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-111815051-1"></script><script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-111815051-1');
-</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NHHK2BF');</script>
+})(window,document,'script','dataLayer','GTM-NHHK2BF');</script><!-- End Google Tag Manager -->
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -1116,7 +1110,7 @@ Name: birthwgt_lb, dtype: int64</pre>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
     <span class="n">place</span><span class="p">,</span> <span class="n">divtot</span><span class="p">,</span> <span class="n">div</span><span class="p">,</span> <span class="n">gun</span><span class="p">,</span> <span class="n">net</span><span class="p">,</span> <span class="n">pace</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="s2">"/"</span> <span class="ow">in</span> <span class="n">divtot</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">"/"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">divtot</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
     <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="p">[</span><span class="n">gun</span><span class="p">,</span> <span class="n">net</span><span class="p">,</span> <span class="n">pace</span><span class="p">]:</span>
         <span class="k">if</span> <span class="s2">":"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">time</span><span class="p">:</span>
@@ -2894,7 +2888,7 @@ ts max = 26.09852160851441
 <div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">thinkstats2</span> <span class="kn">import</span> <span class="n">Mean</span><span class="p">,</span> <span class="n">MeanVar</span><span class="p">,</span> <span class="n">Var</span><span class="p">,</span> <span class="n">Std</span><span class="p">,</span> <span class="n">Cov</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">thinkstats2</span> <span class="kn">import</span> <span class="n">Mean</span><span class="p">,</span> <span class="n">MeanVar</span><span class="p">,</span> <span class="n">Var</span><span class="p">,</span> <span class="n">Cov</span>
 
 
 <span class="k">def</span> <span class="nf">LeastSquares</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">):</span>
@@ -4459,7 +4453,7 @@ Warnings:
     <span class="n">live2</span> <span class="o">=</span> <span class="n">live</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"agepreg"</span><span class="p">,</span> <span class="s2">"totalwgt_lb"</span><span class="p">])</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">live2</span><span class="o">.</span><span class="n">agepreg</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">live2</span><span class="o">.</span><span class="n">totalwgt_lb</span><span class="o">.</span><span class="n">values</span>
     <span class="n">ht</span> <span class="o">=</span> <span class="n">CorrelationPermute</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">p_value</span> <span class="o">=</span> <span class="n">ht</span><span class="o">.</span><span class="n">PValue</span><span class="p">()</span>
+    <span class="n">ht</span><span class="o">.</span><span class="n">PValue</span><span class="p">()</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">live2</span><span class="p">),</span> <span class="n">ht</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">ht</span><span class="o">.</span><span class="n">test_cdf</span>
 
 
@@ -4646,6 +4640,9 @@ $(document).ready(function() {
         });
     });
 });
-</script>
+</script><!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NHHK2BF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
 </body>
 </html>

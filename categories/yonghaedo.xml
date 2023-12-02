@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about 용해도)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/yonghaedo.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Tue, 10 Oct 2023 00:26:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>머신러닝으로 단백질 용해도 예측하기</title><link>https://partrita.github.io/posts/solubility/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Biohacker (Posts about 용해도)</title><link>https://partrita.github.io/</link><description></description><atom:link href="https://partrita.github.io/categories/yonghaedo.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:partrita@gmail.com"&gt;Taeyoon Kim&lt;/a&gt; </copyright><lastBuildDate>Sat, 02 Dec 2023 15:31:00 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>머신러닝으로 단백질 용해도 예측하기</title><link>https://partrita.github.io/posts/solubility/</link><dc:creator>Taeyoon Kim</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="0.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9A%A9%ED%95%B4%EB%8F%84-%EC%98%88%EC%B8%A1"&gt;0. 단백질 용해도 예측&lt;a class="anchor-link" href="https://partrita.github.io/posts/solubility/#0.-%EB%8B%A8%EB%B0%B1%EC%A7%88-%EC%9A%A9%ED%95%B4%EB%8F%84-%EC%98%88%EC%B8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;유전자 재조합을 통해 특정 단백질을 과발현시키는 것은 생명과학에서 아주 중요한 일입니다. 그러나 대부분의 과발현 단백질은 &lt;a href="https://en.wikipedia.org/wiki/Inclusion_bodies"&gt;inclusion bodies&lt;/a&gt;를 형성해 용해도가 매우 낮은 문제가 있습니다. 그렇기 때문에 단백질 용해도를 예측하는 일은 실험의 시행착오를 줄이는데 도움이 됩니다.&lt;/p&gt;
@@ -1393,9 +1393,7 @@
 &lt;div class="prompt input_prompt"&gt;In [28]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.experimental&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;enable_hist_gradient_boosting&lt;/span&gt;
-
-&lt;span class="c1"&gt;# explicitly require this experimental feature&lt;/span&gt;
+&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# explicitly require this experimental feature&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.ensemble&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HistGradientBoostingRegressor&lt;/span&gt;
 
 &lt;span class="n"&gt;hgr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;HistGradientBoostingRegressor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1475,7 +1473,6 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="input_area"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.model_selection&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;GridSearchCV&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scipy.stats&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;randint&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.metrics&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;make_scorer&lt;/span&gt;
 
 

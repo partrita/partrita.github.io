@@ -35,17 +35,11 @@
  </script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="assets/css/tipuesearch.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 <meta name="naver-site-verification" content="d38b92eb0fc0075616e5ff8008f707087bfee65e">
-<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-111815051-1"></script><script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-111815051-1');
-</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NHHK2BF');</script>
+})(window,document,'script','dataLayer','GTM-NHHK2BF');</script><!-- End Google Tag Manager -->
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -682,17 +676,17 @@ dtype: object</pre>
 <span class="n">treat_is_cv_list</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">train_is_cv_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">train_sample_num</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">train_is_treat_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">train_is_treat_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span>
 <span class="p">]</span>
 <span class="n">treat_feature_vector_list</span> <span class="o">=</span> <span class="n">train_feature_vector_df</span><span class="p">[</span><span class="n">train_is_treat_list</span><span class="p">]</span>
 
 <span class="n">control_is_cv_list</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">train_is_cv_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">train_sample_num</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">train_is_treat_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">train_is_treat_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span>
 <span class="p">]</span>
 <span class="n">control_feature_vector_list</span> <span class="o">=</span> <span class="n">train_feature_vector_df</span><span class="p">[</span>
-    <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span> <span class="o">==</span> <span class="kc">False</span><span class="p">,</span> <span class="n">train_is_treat_list</span><span class="p">))</span>
+    <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">,</span> <span class="n">train_is_treat_list</span><span class="p">))</span>
 <span class="p">]</span>
 
 <span class="n">treat_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">treat_feature_vector_list</span><span class="p">,</span> <span class="n">treat_is_cv_list</span><span class="p">)</span>
@@ -775,8 +769,8 @@ dtype: object</pre>
     <span class="n">treat_uu</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">quantiled_result</span><span class="p">))</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">control_uu</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">quantiled_result</span><span class="p">))</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="c1"># 실험군과 대조군의 전환건수 세기</span>
-    <span class="n">treat_cv</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">quantiled_result</span> <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">control_cv</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">quantiled_result</span> <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">treat_cv</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">quantiled_result</span> <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">control_cv</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">quantiled_result</span> <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">treat_cvr</span> <span class="o">=</span> <span class="n">treat_cv</span> <span class="o">/</span> <span class="n">treat_uu</span>
     <span class="n">control_cvr</span> <span class="o">=</span> <span class="n">control_cv</span> <span class="o">/</span> <span class="n">control_uu</span>
@@ -1198,9 +1192,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="n">df</span><span class="p">[[</span><span class="s2">"Critic_Score"</span><span class="p">,</span> <span class="s2">"User_Score"</span><span class="p">,</span> <span class="s2">"Global_Sales"</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"float"</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="s2">"Critic_Score"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Global_Sales"</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">"User_Score"</span>
@@ -1661,6 +1653,9 @@ $(document).ready(function() {
         });
     });
 });
-</script>
+</script><!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NHHK2BF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
 </body>
 </html>
