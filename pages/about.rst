@@ -52,13 +52,14 @@
 
 오래전부터(아마도 2006년) 존재감 없는 블로그를 만들어왔습니다. 제가 기억하는 선에서 한번 나열해보죠.
 
-- http://netsphere.codex.kr/ : 호스팅 업체가 망해버렸습니다.
-- http://partrita.posterous.com/ : 서비스가 종료되었습니다.
-- https://partrita.blogspot.kr/ : 구글검색어 노출에 유리 [#]_ 했지만, 제약이 많아서 워드프레스로 이사
-- https://partrita.wordpress.com/ : 처음에는 설치형을 사용하다. 무료호스팅을 제공하는 *wordpress.com* 으로 이사했습니다.
-- https://partrita.github.io/ : PHP(워드프레스)는 너무 올드한 것 같고 핫한 깃헙으로 이전했습니다.
+- http://netsphere.codex.kr/: 호스팅 업체가 망해버렸습니다.
+- http://partrita.posterous.com/: 서비스가 종료되었습니다.
+- https://partrita.blogspot.kr/: 구글검색어 노출에 유리 [#]_ 했지만, 제약이 많아서 워드프레스로 이사
+- https://partrita.wordpress.com/: 처음에는 설치형을 사용하다. 무료호스팅을 제공하는 *wordpress.com* 으로 이사했습니다.
+- https://partrita.github.io/: PHP(워드프레스)는 너무 올드한 것 같고 핫한 깃헙으로 이전했습니다. *FutureWarning: This will be removed in a future version.*
+- https://tomorrow-lab.github.io/ : Quarto로 블로그툴을 변경했습니다.
 
-여러번 이전을 하면서 과거의 글은 소실(나중에 보니 부끄러워 삭제)되었네요. 뭐 괜찮습니다. 제가 블로그를 하는 이유도 명확하지 않거든요. 그냥 재미로 하는 겁니다.
+여러번 이전을 하면서 과거의 글은 없어져버렸네요. 제가 블로그를 하는 이유도 명확하지 않거든요. 그냥 재미로 하는 겁니다.
 
 Nikola 블로그
 -----------------------
@@ -77,14 +78,13 @@ Static site generator 중에 가장 유명한건 `Jekyll <https://jekyllrb-ko.gi
 
 ----------------------------
 
-라즈베리파이 [#]_
+웹프로그래밍과 고물 노트북
 -----------------------
-최근에 웹 프로그래밍에 관심이 생겨서 개인프로젝트용으로 서버로 사용하고 있습니다. 접속 주소는 `http://partrita.iptime.org <http://partrita.iptime.org/>`_ 입니다.
+웹 프로그래밍에 관심이 생겨서 개인프로젝트용으로 고물 노트북을 서버로 운영하고 있습니다.  접속 주소는 `http://partrita.iptime.org <http://partrita.iptime.org/>`_ 입니다. 
 
-- 라즈베리안 OS를 사용 중입니다.
-- 간이 NAS로 더 유용하게 쓰고 있습니다.
-
-라즈베리에 대해서도 정리해서 올려놓도록 하겠습니다.  
+- 처음에는 플라스크를 썼었습니다.
+- 다음에는 장고를 가지고 서비스를 구현했습니다.
+- 지금은 `NiceGui`로 만들어봤습니다.
 
 ---------------------------------------
 
@@ -102,6 +102,5 @@ Static site generator 중에 가장 유명한건 `Jekyll <https://jekyllrb-ko.gi
 .. [#] 거의 반강제적으로 사용하는거라 좋아하진 않습니다.
 .. [#] 리누스 토발즈가 개발한 컴퓨터 운영 체제.
 .. [#] 블로거 서비스가 구글에 인수되었습니다.
-.. [#] 영국 라즈베리 파이(Raspberry Pi) 재단에서 만든 초소형/초저가 PC
 .. [#] partrita@gmail.com
 
