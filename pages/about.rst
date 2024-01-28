@@ -8,6 +8,10 @@
 .. type: text
 
 
+.. warning::
+    FutureWarning: 2024-01-27일 이후로 작성되는 모든 포스팅이나 문서는 https://tomorrow-lab.github.io/ 에서 확인 할 수 있습니다.
+    
+
 .. image:: https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/PublicInformationSymbol_EmergencyExit.svg/250px-PublicInformationSymbol_EmergencyExit.svg.png
    :align: center
    :height: 250 px
@@ -20,20 +24,13 @@
 -----------
 
 이 블로그는 제가 **생물학자** 겸 **개발자** 로서 흥미롭고 유용하다고 생각되는 것을 올리고 있어요. **과학자로서의 삶** 은 흥미로운 것들로 가득찬 모험이어야 합니다. 그래서 뒤죽박죽 엉망처럼 보일 수 있지만 나름 공을 들여 정리한 것들 입니다.  
-    
 
-    **‘과학자는 유용(有用)하게 쓸 수 있다고 해서 연구하는 것이 아니다. 그 속에서 희열을 느끼기 때문이다.’** 
-
-    -- Henri Poincaré
-
--------------------------------
 
 무계획이 계획
 -------------
 
 습관적으로 일을 미루는 나의 행동을 정당하기 위한 변명입니다. 언젠가 하겠다는 생각은 늘해왔지만 글을 쓰는 일은 하기 싫은 일입니다. 아무리 적어도 다시 읽어보면 내용이 형편 없기 때문입니다. 그래도 조금이나마 글쓰는 힘을 키우기 위해 이 블로그를 만들었습니다. 그래서 큰 목표와 목적 없이 일벌레와 게으름뱅이 과학자 사이에서 내 마음대로 조금 유익한 일을 하려고 합니다.
 
----------------------------------
 
 작업 환경
 -------------
@@ -44,8 +41,6 @@
 - 코딩할 때는 `Visual studio code <https://code.visualstudio.com/>`_ 를 쓰고, 파이펫팅 할 때는 `Eppendorf 파이펫 <https://www.pipette.com/eppendorfpipettes>`_ 을 씁니다, 가볍거든요.  
 - 주로 쓰는 프로그래밍 언어는 `Python <https://www.python.org/>`_ 이고 `R <https://www.r-project.org/>`_ 과 `Julia <https://julialang.org/>`_ 를 공부하고 있습니다.
 - 이 블로그는 Github 에서 **무료** 호스팅되고, Static site generator 인 **Nikola** 를 사용했습니다. 
-
----------------------------------------
 
 왜 블로그를 하는가?
 -------------------
@@ -76,7 +71,6 @@ Static site generator 중에 가장 유명한건 `Jekyll <https://jekyllrb-ko.gi
 
 저처럼 Jupyter notebook으로 블로그 포스트를 작성하고 싶으신 분들은 `설치 가이드 <http://partrita.github.io/posts/nikola-for-jupyer-blog/>`_ 를 참고 하세요.
 
-----------------------------
 
 웹프로그래밍과 고물 노트북
 -----------------------
@@ -84,7 +78,7 @@ Static site generator 중에 가장 유명한건 `Jekyll <https://jekyllrb-ko.gi
 
 - 처음에는 플라스크를 썼었습니다.
 - 다음에는 장고를 가지고 서비스를 구현했습니다.
-- 지금은 `NiceGui`로 만들어봤습니다.
+- 지금은 `NiceGui`와 `FastAPI`를 써보고 있습니다.
 
 ---------------------------------------
 
