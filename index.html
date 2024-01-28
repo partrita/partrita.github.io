@@ -18,7 +18,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://partrita.github.io/">
-<link rel="next" href="index-33.html" type="text/html">
+<link rel="next" href="index-34.html" type="text/html">
 <script type="text/x-mathjax-config">
  MathJax.Hub.Config({
      tex2jax: {
@@ -117,17 +117,18 @@ bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>파이썬으로 <code>numpy</code>로 배우는 수학</p>
 <h2 id="%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98">선형대수<a class="anchor-link" href="posts/math-4-ML/#%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98">¶</a>
 </h2>
+<p>다차원의 구조를 가진 수치를 다루는 수학의 분야입니다. 따라서 많은 데이터를 다루는 기계학습에서 선형대수는 필수 입니다.</p>
 <h3 id="%EC%8A%A4%EC%B9%BC%EB%9D%BC,-%EB%B2%A1%ED%84%B0,-%ED%96%89%EB%A0%AC,-%ED%85%90%EC%84%9C">스칼라, 벡터, 행렬, 텐서<a class="anchor-link" href="posts/math-4-ML/#%EC%8A%A4%EC%B9%BC%EB%9D%BC,-%EB%B2%A1%ED%84%B0,-%ED%96%89%EB%A0%AC,-%ED%85%90%EC%84%9C">¶</a>
 </h3>
+<p>스칼라는 숫자 하나로 구성된 데이터를 의미합니다. 벡터는 여러 스칼라로 구성된 것으로 배열(array)라고도 합니다. 행렬은 여러개의 벡터가 2차원 배열로 구성되어 표처럼 나열한 것입니다. 텐서는 크기가 같은 행렬의 집합으로 다차원 배열을 의미합니다. 거꾸로 말해보면 0차원 텐서가 스칼라, 1차원 텐서가 벡터, 2차원 텐서가 행렬입니다.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=9401f7ea-1ae4-4126-b440-ac34bb9ef5eb">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -136,10 +137,10 @@ bg-dark
 <span class="n">a</span> <span class="o">=</span> <span class="mf">1.5</span>
 <span class="c1"># 1차원 벡터</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="c1"># 2x2 벡터</span>
+<span class="c1"># 2x2 벡터 = 행렬</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
-<span class="c1"># 텐서</span>
+<span class="c1"># 2x2x2 벡터 = 텐서</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
                <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
@@ -154,7 +155,12 @@ bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id=""><a class="anchor-link" href="posts/math-4-ML/">¶</a></h3>
+<h3 id="%EB%B2%A1%ED%84%B0%EC%9D%98-%ED%8A%B9%EC%84%B1">벡터의 특성<a class="anchor-link" href="posts/math-4-ML/#%EB%B2%A1%ED%84%B0%EC%9D%98-%ED%8A%B9%EC%84%B1">¶</a>
+</h3>
+<h3 id="%EB%B2%A1%ED%84%B0%EC%9D%98-%EC%97%B0%EC%82%B0">벡터의 연산<a class="anchor-link" href="posts/math-4-ML/#%EB%B2%A1%ED%84%B0%EC%9D%98-%EC%97%B0%EC%82%B0">¶</a>
+</h3>
+<h4 id="%EB%B2%A1%ED%84%B0%EC%9D%98-%EB%8D%A7%EC%85%88%EA%B3%BC-%EB%BA%84%EC%85%88">벡터의 덧셈과 뺄셈<a class="anchor-link" href="posts/math-4-ML/#%EB%B2%A1%ED%84%B0%EC%9D%98-%EB%8D%A7%EC%85%88%EA%B3%BC-%EB%BA%84%EC%85%88">¶</a>
+</h4>
 </div>
 </div>
 </div>
@@ -172,7 +178,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=a787418f-f523-4161-958b-e52e006af9f6">
 <div class="input">
-<div class="prompt input_prompt">In [35]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
@@ -186,7 +192,7 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[35]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[ 4, 10],
        [ 4, 10]])</pre>
@@ -210,7 +216,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=b23e59c8-f999-4e0a-ae13-09f7afd8ea07">
 <div class="input">
-<div class="prompt input_prompt">In [32]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
@@ -221,7 +227,7 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[32]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[ 6,  9],
        [21, 30]])</pre>
@@ -232,7 +238,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=eac5848b-8c62-4dc8-b55c-7f8ed5aa8094">
 <div class="input">
-<div class="prompt input_prompt">In [33]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
@@ -243,7 +249,7 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[33]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[24, 33],
        [ 9, 12]])</pre>
@@ -265,7 +271,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=ca292194-9b14-4fc7-8ead-290df6a7a182">
 <div class="input">
-<div class="prompt input_prompt">In [40]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>  <span class="c1"># 2x3행렬</span>
@@ -279,7 +285,7 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[40]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[32, 14],
        [77, 32]])</pre>
@@ -297,15 +303,13 @@ bg-dark
 </h3>
 <p>$A \times B$,  A cross B 라고 읽습니다.</p>
 <p>cross product = X : 외적 연산자로 좌변의 벡터에서 우변의 벡터로 cross 곱하면 두 벡터에 동시에 수직인 법선벡터의 방향이 표시된다.</p>
-<blockquote>
-<p>내적과 외적은 서로 전혀 관련이 없단다. 그냥 벡터의 여러가지 성질을 나타내기 위한 서로 다른 개념일 뿐이지.</p>
-</blockquote>
+<p>추가적으로 벡터의 내적과 외적은 서로 반대되는 개념이 아닙니다. 그냥 벡터의 여러가지 성질을 나타내기 위한 서로 다른 개념입니다.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=9c8eaf01-ebd4-4aa0-abb5-ec78a1d8e29c">
 <div class="input">
-<div class="prompt input_prompt">In [34]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
@@ -316,9 +320,10 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[34]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>array([-3,  3])</pre>
+<pre>array([[-3,  6, -3],
+       [ 3, -6,  3]])</pre>
 </div>
 </div>
 </div>
@@ -359,7 +364,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=4b7c1e26-da58-44e3-8742-886ccb4ac805">
 <div class="input">
-<div class="prompt input_prompt">In [36]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># L1 놈</span>
@@ -371,9 +376,9 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[36]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>7.0</pre>
+<pre>9.0</pre>
 </div>
 </div>
 </div>
@@ -381,7 +386,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=fb55bc7a-8c25-4865-96e5-42445f03ea82">
 <div class="input">
-<div class="prompt input_prompt">In [37]:</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># L2 놈</span>
@@ -393,9 +398,47 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[37]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>6.782329983125268</pre>
+<pre>9.539392014169456</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=e852e75c-3a01-46f9-9ef8-1d071461d1ec">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="%EC%BD%94%EC%82%AC%EC%9D%B8-%EC%9C%A0%EC%82%AC%EB%8F%84">코사인 유사도<a class="anchor-link" href="posts/math-4-ML/#%EC%BD%94%EC%82%AC%EC%9D%B8-%EC%9C%A0%EC%82%AC%EB%8F%84">¶</a>
+</h4>
+<p>이름에서 알 수 있듯이 벡터의 유사도를 수치화하는 방법입니다. 같은 방향인 경우 최댓값이 1이고 반대 방향인 경우 최솟값이 -1입니다. 코사인 유사도를 구하는 방법은 내적과 놈을 사용합니다.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=eb69f07a-fa4b-40c4-8d6c-6502cc8c2130">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># 2x2행렬</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>  <span class="c1"># 2x2행렬</span>
+
+<span class="k">def</span> <span class="nf">cosine_similar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">cosine_similar</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[9]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>0.9778024140774094</pre>
 </div>
 </div>
 </div>
@@ -406,6 +449,8 @@ bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%ED%96%89%EB%A0%AC">행렬<a class="anchor-link" href="posts/math-4-ML/#%ED%96%89%EB%A0%AC">¶</a>
+</h2>
 <h3 id="%EB%8B%A8%EC%9C%84%ED%96%89%EB%A0%AC">단위행렬<a class="anchor-link" href="posts/math-4-ML/#%EB%8B%A8%EC%9C%84%ED%96%89%EB%A0%AC">¶</a>
 </h3>
 <p>단위행렬은 행과 열의 수가 같고, 왼쪽 위에서부터 오른쪽 아래로 1이며, 나머지 요소는 0인 행렬입니다. $E$로 표기합니다. <code>Numpy</code>에서는 <code>eye()</code> 함수로 단위행렬을 만들 수 있습니다.</p>
@@ -414,7 +459,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=2576503a-4e73-45aa-9ef5-be447a217eef">
 <div class="input">
-<div class="prompt input_prompt">In [42]:</div>
+<div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 2x2 단위 행렬</span>
@@ -425,7 +470,7 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[42]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[1., 0.],
        [0., 1.]])</pre>
@@ -447,7 +492,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=e3550f84-b7ed-4e4e-a2ff-ec103a68bedd">
 <div class="input">
-<div class="prompt input_prompt">In [44]:</div>
+<div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
@@ -459,7 +504,7 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[44]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>-2.9999999999999996</pre>
 </div>
@@ -469,7 +514,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=e7e44116-d61f-484e-b151-f06a7dfa2332">
 <div class="input">
-<div class="prompt input_prompt">In [45]:</div>
+<div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -480,7 +525,7 @@ bg-dark
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[45]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[-1.66666667,  0.66666667],
        [ 1.33333333, -0.33333333]])</pre>
@@ -494,8 +539,300 @@ bg-dark
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="%EC%84%A0%ED%98%95%EB%B3%80%ED%99%98">선형변환<a class="anchor-link" href="posts/math-4-ML/#%EC%84%A0%ED%98%95%EB%B3%80%ED%99%98">¶</a>
+<h2 id="%EB%AF%B8%EB%B6%84%EA%B3%BC-%EC%A0%81%EB%B6%84">미분과 적분<a class="anchor-link" href="posts/math-4-ML/#%EB%AF%B8%EB%B6%84%EA%B3%BC-%EC%A0%81%EB%B6%84">¶</a>
+</h2>
+<p>미분과 적분은 변화를 예측하고 원인을 이해하는데 필요합니다. 예를 들어 운전을 할때 시간당 변화율을 안다면 얼마나 멀리 갔는지를 예측할 수 있죠.</p>
+<!-- ## 상미분과 편미분
+상미분은 구하려는 함수가 하나의 독립 변수만을 가지고 있는 미분 방정식입니다. 반대되는 개념으로 여러 변수에 대한 편미분 방정식이 있습니다. -->
+<h3 id="%EC%8B%AC%ED%8C%8C%EC%9D%B4(Sympy)">심파이(Sympy)<a class="anchor-link" href="posts/math-4-ML/#%EC%8B%AC%ED%8C%8C%EC%9D%B4(Sympy)">¶</a>
 </h3>
+<p><code>Sympy</code>은 수학적인 심볼들을 사용하여 수식을 표현하고, 이러한 심볼들을 다루는 연산을 수행하기 위한 라이브러리입니다. <code>Sympy</code>를 사용하면 파이썬으로 다양한 수학적인 문제를 해결할 수 있습니다. 아래와 같이 <code>sympy</code>를 설치하세요.</p>
+<pre><code>conda install sympy
+# 혹은 pip install sympy
+</code></pre>
+<!-- ### 상미분 풀이
+
+다음 상미분 선형 미분방정식을 파이썬으로 풀어봅니다.
+$$ xy′ + y = 5x$$
+
+```
+# 함수 설정
+x = sp.symbols('x')
+f = sp.symbols('f', cls=sp.Function)
+y = f(x)
+
+# 방정식 정의
+eq = sp.Eq(x * sp.diff(y, x) + y, 5 * x)
+
+# dsolve 함수는 미분방정식의 해를 구합니다.
+sp.dsolve(eq, y)
+``` -->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=0878caac">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span> <span class="nn">sympy.abc</span> <span class="kn">import</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="c1"># Juypter에서 LaTeX 표현을 위해 필요</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="s1">'mathjax'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=11276c88">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>간단한 수식 만들기</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c3f66e02">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">exp</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">6</span>
+<span class="n">exp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[14]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle x^{2} + x + 6$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=0fe927f7">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%ED%8E%B8%EB%AF%B8%EB%B6%84">편미분<a class="anchor-link" href="posts/math-4-ML/#%ED%8E%B8%EB%AF%B8%EB%B6%84">¶</a>
+</h3>
+<p>편미분은 다변수 함수에서 관심이 있는 한 변수만 변수로 생각하고, 나머지 변수들은 상수로 취급한 뒤 미분하는 방법입니다.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=2e5e3376">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 2 x + 1$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=2ee40bef">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># x로 2번 미분</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 2$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=83132f03">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%EC%A0%84%EB%AF%B8%EB%B6%84">전미분<a class="anchor-link" href="posts/math-4-ML/#%EC%A0%84%EB%AF%B8%EB%B6%84">¶</a>
+</h3>
+<p>다변수 함수를 모든 변수에 대해 미분하는 것을 전미분이라 합니다.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=50732c28">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">exp</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="n">exp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[17]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle x^{3} + x + y^{2} + 5$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=e424521f">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># dy/dx</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">idiff</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[18]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle - \frac{3 x^{2} + 1}{2 y}$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=4c6e927d">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># dx/dy</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">idiff</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[19]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle - \frac{2 y}{3 x^{2} + 1}$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=ce4ab0df">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%EC%A0%81%EB%B6%84">적분<a class="anchor-link" href="posts/math-4-ML/#%EC%A0%81%EB%B6%84">¶</a>
+</h3>
+<p>적분(integral)은 미분과 반대되는 개념입니다. 적분에는 부정적분(indefinite integral)과 정적분(definite integral)이 있습니다. 부정적분은 미분되기 전의 원래 함수를 찾는 과정이라고 할 수 있으며 정적분은 특정 구간에서의 함수의 면적을 구하는 것으로 구분할 수 있습니다.</p>
+<h4 id="%EB%B6%80%EC%A0%95%EC%A0%81%EB%B6%84">부정적분<a class="anchor-link" href="posts/math-4-ML/#%EB%B6%80%EC%A0%95%EC%A0%81%EB%B6%84">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f9a720ce">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">'x y'</span><span class="p">)</span>
+<span class="n">exp</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">25</span>
+<span class="n">exp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[20]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle x^{3} - 2 x^{2} + x + 25$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=ffedef61">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 부정 적분</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+<span class="n">F</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[21]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \frac{x^{4}}{4} - \frac{2 x^{3}}{3} + \frac{x^{2}}{2} + 25 x$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=d6225b85">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="%EC%A0%95%EC%A0%81%EB%B6%84">정적분<a class="anchor-link" href="posts/math-4-ML/#%EC%A0%95%EC%A0%81%EB%B6%84">¶</a>
+</h4>
+<p>위에서 구한 부정적분 값에 구간(0에서 3)을 넣어 계산을 합니다.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=7c1abf41">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">F</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[22]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 81.75$
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1021,7 +1358,7 @@ Active assay: RNA (32285 features, 0 variable features)
 </div>
 
         <ul class="pager postindexpager clearfix">
-<li class="next"><a href="index-33.html" rel="next">Older posts</a></li>
+<li class="next"><a href="index-34.html" rel="next">Older posts</a></li>
         </ul>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
  MathJax.Hub.Config({
@@ -1036,7 +1373,7 @@ Active assay: RNA (32285 features, 0 variable features)
      }
  });
  </script><!--End of body content--><footer id="footer">
-            Contents © 2023         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2024         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
