@@ -137,8 +137,8 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/pages/about/", "About"),
-        ("/pages/resume/index.html", "Resume"),
-        ("/pages/books/index.html", "Book"),
+        # ("/pages/resume/index.html", "Resume"),
+        # ("/pages/books/index.html", "Book"),
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
         ("/rss.xml", "RSS feed"),
@@ -1431,13 +1431,22 @@ EXTRA_HEAD_DATA = """
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 <meta name="naver-site-verification" content="d38b92eb0fc0075616e5ff8008f707087bfee65e"/>
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111815051-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111815051-1');
+</script>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NHHK2BF');</script>
-<!-- End Google Tag Manager -->
 
 """
 
@@ -1485,10 +1494,5 @@ $(document).ready(function() {
     });
 });
 </script>
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NHHK2BF"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 """
 )
