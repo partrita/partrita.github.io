@@ -934,7 +934,9 @@ ATTAATGGATAGATATATAGA</code></pre>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pred_count</span><span class="p">):</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pred_out</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># one-hot 인코딩을 인덱스 값으로 변환</span>
-    <span class="n">seq_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx2code</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>  <span class="c1"># seq_out는 최종 서열이므로 인덱스 값을 코드로 변환하여 저장</span>
+    <span class="n">seq_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">idx2code</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="p">)</span>  <span class="c1"># seq_out는 최종 서열이므로 인덱스 값을 코드로 변환하여 저장</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"조각씩 서열 예측하기  : "</span><span class="p">,</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">seq_out</span><span class="p">))</span>
 </pre></div>
