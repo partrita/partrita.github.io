@@ -17,3 +17,12 @@
 - [x] Tag 수정
 - [x] 카테고리 수정
 - [ ] 정기적으로 포스팅
+
+# Deploy on github
+
+Run `nikola github_deploy`. This will build the site, commit the output folder to your deploy branch, and push to GitHub. Your website should be up and running within a few minutes.
+
+# Automated rebuilds (GitHub Actions, GitLab)
+
+If you want automated rebuilds and GitHub Pages deployment, allowing you to blog from anywhere in the world, you have multiple options:
+- Automating Nikola rebuilds with GitHub Actions (easier for GitHub)
