@@ -5,7 +5,7 @@
 .. tags: Python
 .. category: python
 .. link: 
-.. description: 파이썬 10분안에 배우기, 진짜로? 
+.. description: 
 .. type: text
 -->
 

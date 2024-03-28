@@ -72,14 +72,6 @@ Static site generator 중에 가장 유명한건 `Jekyll <https://jekyllrb-ko.gi
 저처럼 Jupyter notebook으로 블로그 포스트를 작성하고 싶으신 분들은 `설치 가이드 <http://partrita.github.io/posts/nikola-for-jupyer-blog/>`_ 를 참고 하세요.
 
 
-웹프로그래밍과 고물 노트북
------------------------
-웹 프로그래밍에 관심이 생겨서 개인프로젝트용으로 고물 노트북을 서버로 운영하고 있습니다.  접속 주소는 `http://partrita.iptime.org <http://partrita.iptime.org/>`_ 입니다. 
-
-- 처음에는 플라스크를 썼었습니다.
-- 다음에는 장고를 가지고 서비스를 구현했습니다.
-- 지금은 `NiceGui`와 `FastAPI`를 써보고 있습니다.
-
 ---------------------------------------
 
 저작권에 대해
