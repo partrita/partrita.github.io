@@ -368,7 +368,7 @@ Checking<span class="w"> </span>reference...
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># conda install pandas scanpy</span>
-<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scanpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sc</span>
 
 <span class="c1"># Cell ranger 결과 파일이 들어있는 경로</span>
 <span class="n">file_path</span> <span class="o">=</span> <span class="s2">"../input/run_count_mNeuron1k/outs/filtered_feature_bc_matrix"</span>
@@ -407,7 +407,7 @@ Checking<span class="w"> </span>reference...
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># conda install -c bioconda scvelo</span>
-<span class="kn">import</span> <span class="nn">scvelo</span> <span class="k">as</span> <span class="nn">scv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scvelo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">scv</span>
 
 <span class="c1"># load loom files for spliced/unspliced matrices for each sample</span>
 <span class="n">loom</span> <span class="o">=</span> <span class="n">scv</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">/run_count_mNeuron1k.loom"</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -498,8 +498,8 @@ Checking<span class="w"> </span>reference...
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">rpy2.rinterface_lib.callbacks</span> <span class="k">as</span> <span class="nn">rcb</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rpy2.rinterface_lib.callbacks</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rcb</span>
 
 <span class="c1"># import rpy2.robjects as ro</span>
 
@@ -1462,7 +1462,7 @@ Threshold found:0.519
 <span class="n">gene_number</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1"># 10개의 유전자만 찾아낼때</span>
 
 <span class="c1"># for loop으로 리스트에 값 추가</span>
-<span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">unique</span><span class="p">(</span><span class="nf">Idents</span><span class="p">(</span><span class="n">seurat_obj</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">unique</span><span class="p">(</span><span class="nf">Idents</span><span class="p">(</span><span class="n">seurat_obj</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">marker_list</span><span class="p">[[</span><span class="nf">paste0</span><span class="p">(</span><span class="s">"cluster"</span><span class="p">,</span><span class="n">i</span><span class="p">)]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">markers</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">group_by</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">top_n</span><span class="p">(</span><span class="n">gene_number</span><span class="p">,</span><span class="w"> </span><span class="n">avg_log2FC</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
 <span class="w">      </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">arrange</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span><span class="w"> </span><span class="nf">desc</span><span class="p">(</span><span class="n">avg_log2FC</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">cluster</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">.</span><span class="o">$</span><span class="n">gene</span>
 <span class="p">}</span>
@@ -1916,7 +1916,7 @@ CD56bright NK 세포를 구별하는 유전자 마커로는 CD56(bright) (NCAM1)
      }
  });
  </script><!--End of body content--><footer id="footer">
-            Contents © 2024         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2025         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>

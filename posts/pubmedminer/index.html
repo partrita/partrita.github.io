@@ -151,22 +151,22 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=b68f295d">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Entrez</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Bio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Entrez</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="n">Entrez</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">"youremail@dot.com"</span>  <span class="c1"># Always tell NCBI who you are</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">"http://bern2.korea.ac.kr/pubmed"</span>  <span class="c1"># Remember 100 requests for 100 seconds</span>
 
 
-<span class="k">def</span> <span class="nf">get_pmid</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">num_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_pmid</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">num_list</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    num_list should be below 10000</span>
 <span class="sd">    """</span>
@@ -177,14 +177,14 @@ bg-dark
     <span class="k">return</span> <span class="n">records</span><span class="p">[</span><span class="s2">"IdList"</span><span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">query_pmid</span><span class="p">(</span><span class="n">pmids</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s2">"http://bern2.korea.ac.kr/pubmed"</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">query_pmid</span><span class="p">(</span><span class="n">pmids</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s2">"http://bern2.korea.ac.kr/pubmed"</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s2">"/"</span> <span class="o">+</span> <span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pmids</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span><span class="p">:</span>
         <span class="k">pass</span>
 
 
-<span class="k">def</span> <span class="nf">make_table</span><span class="p">(</span><span class="n">json_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_table</span><span class="p">(</span><span class="n">json_list</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">json_list</span><span class="p">,</span> <span class="n">record_path</span><span class="o">=</span><span class="p">[</span><span class="s2">"annotations"</span><span class="p">],</span> <span class="n">meta</span><span class="o">=</span><span class="p">[</span><span class="s2">"pmid"</span><span class="p">])</span>
         <span class="n">refine_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">"mention"</span><span class="p">,</span> <span class="s2">"obj"</span><span class="p">,</span> <span class="s2">"prob"</span><span class="p">,</span> <span class="s2">"pmid"</span><span class="p">]]</span>
@@ -196,11 +196,11 @@ bg-dark
             <span class="p">}</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">refine_df</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># Catching a general Exception for broader error handling</span>
         <span class="k">return</span> <span class="p">[]</span>
 
 
-<span class="k">def</span> <span class="nf">get_bern2</span><span class="p">(</span><span class="n">pmids</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_bern2</span><span class="p">(</span><span class="n">pmids</span><span class="p">):</span>
     <span class="n">temp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">pmids</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">"pmid"</span><span class="p">):</span>
         <span class="c1"># print(query_pmid(i))</span>
@@ -208,7 +208,7 @@ bg-dark
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># delay for BERN2 API</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">temp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">temp_df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># Catching a general Exception for broader error handling</span>
             <span class="k">pass</span>
     <span class="k">return</span> <span class="n">temp_df</span>
 </pre></div>
@@ -227,7 +227,7 @@ bg-dark
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=8e1c9c8f">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">entrez_query</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"What do want to search in PubMed? "</span><span class="p">)</span>
@@ -262,7 +262,7 @@ Number of search results is: 10!
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=654de00a">
 <div class="input">
-<div class="prompt input_prompt">In [3]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">get_bern2</span><span class="p">(</span><span class="n">pmids</span><span class="p">)</span>
@@ -307,7 +307,7 @@ Number of search results is: 10!
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=0b6b7fd7">
 <div class="input">
-<div class="prompt input_prompt">In [4]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
@@ -318,7 +318,7 @@ Number of search results is: 10!
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[ ]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -395,7 +395,7 @@ Number of search results is: 10!
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=f15f0a6d">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -437,7 +437,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=6031e55e">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"mention"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -475,7 +475,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=7e087da7">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"mention"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"mention"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s2">"CXCL8"</span><span class="p">],</span> <span class="s2">"IL-8"</span><span class="p">)</span>
@@ -512,7 +512,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=e44c53ca">
 <div class="input">
-<div class="prompt input_prompt">In [8]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"mention"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -544,7 +544,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=8e8f746b">
 <div class="input">
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># df.to_csv(f"./output/{entrez_query}.csv") # CSV 파일 저장</span>
@@ -566,7 +566,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=fe9ad52d">
 <div class="input">
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"pmid"</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"mention"</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="s2">"obj"</span><span class="p">)</span>
@@ -578,7 +578,7 @@ memory usage: 8.5+ KB
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[ ]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>158</pre>
 </div>
@@ -599,7 +599,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=a8901ae0">
 <div class="input">
-<div class="prompt input_prompt">In [11]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">degrees</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
@@ -614,7 +614,7 @@ memory usage: 8.5+ KB
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[ ]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -704,7 +704,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=15eaa9c4">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">degree_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -715,7 +715,7 @@ memory usage: 8.5+ KB
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt output_prompt">Out[ ]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result"><div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -786,7 +786,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=eb6b2969">
 <div class="input">
-<div class="prompt input_prompt">In [13]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># remove low-degree nodes</span>
@@ -810,7 +810,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=6df7f951">
 <div class="input">
-<div class="prompt input_prompt">In [14]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Specify figure size</span>
@@ -858,7 +858,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=7a56b52f">
 <div class="input">
-<div class="prompt input_prompt">In [15]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"pmid"</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"mention"</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="s2">"obj"</span><span class="p">)</span>
@@ -890,7 +890,7 @@ memory usage: 8.5+ KB
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=c2271aee">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#### draw graph ####</span>
@@ -991,7 +991,7 @@ memory usage: 8.5+ KB
      }
  });
  </script></article><!--End of body content--><footer id="footer">
-            Contents © 2024         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2025         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>

@@ -281,7 +281,7 @@ Flow control statements
 </pre></div>
 
 <div class="code"><pre class="code literal-block"><span class="c1"># an_int 와 a_string 은 선택적 인자로 기본값을 가진다.</span>
-<span class="k">def</span> <span class="nf">passing_example</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="n">an_int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a_string</span><span class="o">=</span><span class="s2">"A default string"</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">passing_example</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="n">an_int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a_string</span><span class="o">=</span><span class="s2">"A default string"</span><span class="p">):</span>
     <span class="n">a_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"A new item"</span><span class="p">)</span>
     <span class="n">an_int</span> <span class="o">=</span> <span class="mi">4</span>
     <span class="k">return</span> <span class="n">a_list</span><span class="p">,</span> <span class="n">an_int</span><span class="p">,</span> <span class="n">a_string</span>
@@ -309,11 +309,11 @@ Flow control statements
 <h2>클래스(Classes)</h2>
 <p>파이썬은 제한적으로 다중 상속을 지원한다. private 변수와, 함수는 앞에 __ 을 붙인다. 관습일 뿐이며, python 언어 자체는 private 이란 개념이 없다.</p>
 <div class="code"><pre class="code literal-block"><span class="c1"># 클래스 객체를 만든다.</span>
-<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">common</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">myvariable</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="k">def</span> <span class="nf">myfunction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">myfunction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">myvariable</span>
 <span class="n">classinstance</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
 <span class="n">classinstance</span><span class="o">.</span><span class="n">myfunction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -380,10 +380,10 @@ Flow control statements
 
 <div class="code"><pre class="code literal-block"><span class="c1"># MyClass 클래스를 상속받는다.</span>
 <span class="c1"># class OtherClass(MyClass1, MyClass2, MyClassN) 형태로 다중상속 받을 수 있다.</span>
-<span class="k">class</span> <span class="nc">OtherClass</span><span class="p">(</span><span class="n">MyClass</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">OtherClass</span><span class="p">(</span><span class="n">MyClass</span><span class="p">):</span>
     <span class="c1"># "self" 인자는 자동으로 넘어오는 인자로 객체 자신을 가리킨다.</span>
     <span class="c1"># 즉 self 를 이용하여 다음처럼 객체를 변경할 수 있다.</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg1</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">myvariable</span> <span class="o">=</span> <span class="mi">3</span>
         <span class="nb">print</span> <span class="n">arg1</span>
 
@@ -410,7 +410,7 @@ Flow control statements
 
 <h3>예외 처리(Exceptions)</h3>
 <p><code>try-exept [exceptionname]</code> 형태로 처리합니다.</p>
-<div class="code"><pre class="code literal-block"><span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+<div class="code"><pre class="code literal-block"><span class="k">def</span><span class="w"> </span><span class="nf">some_function</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># 0 으로 나눠서 exception 을 발생시킨다.</span>
         <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
@@ -432,8 +432,8 @@ Importing
 </pre></div>
 
 <p>라이브러리를 <code>import [library_name]</code> 으로 불러와 사용할 수 있다. <code>from [library_name] import [name]</code> 으로 라이브러리의 특정 이름만 가져올 수 있습니다.</p>
-<div class="code"><pre class="code literal-block"><span class="kn">import</span> <span class="nn">random</span> <span class="c1"># random library 를 불러온다</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">clock</span> <span class="c1"># time 라이브러리의 clock 함수를 가져온다.</span>
+<div class="code"><pre class="code literal-block"><span class="kn">import</span><span class="w"> </span><span class="nn">random</span> <span class="c1"># random library 를 불러온다</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">clock</span> <span class="c1"># time 라이브러리의 clock 함수를 가져온다.</span>
 
 <span class="n">randomint</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="nb">print</span> <span class="n">randomint</span>
@@ -444,7 +444,7 @@ Importing
 
 <h3>파일 입출력(File I/O)</h3>
 <p>파이썬은 다수의 내장 라이브러리를 제공한다. 다음 예제는 pickle 라이브러리를 이용하여 데이터를 serialize 하여 파일로 저장하는 것을 보여준다.</p>
-<div class="code"><pre class="code literal-block"><span class="kn">import</span> <span class="nn">pickle</span>
+<div class="code"><pre class="code literal-block"><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 <span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"This"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">13327</span><span class="p">]</span>
 <span class="c1"># C:binary.dat 파일을 쓰기 모드로 연다.</span>
 <span class="c1"># 'r' 은 raw 라는 뜻으로, 가 escaping 을 의미하지 않도록 한다.</span>
@@ -514,18 +514,18 @@ Importing
 <p>함수 바깥에 정의하는 변수는 글로벌 변수이다. 어디서도 이 변수를 접근할 수 있지만, 이 값을 함수내에서 변경할 때에는 global 키워드를 사용하여 선언해줘야 한다. 그렇지 않으면, 파이썬은 같은 이름의 새로운 로컬 변수를 만든다.</p>
 <div class="code"><pre class="code literal-block"><span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
 
-<span class="k">def</span> <span class="nf">myfunc</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">():</span>
     <span class="c1"># 5 를 출력한다.</span>
     <span class="nb">print</span> <span class="n">number</span>
 
-<span class="k">def</span> <span class="nf">anotherfunc</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">anotherfunc</span><span class="p">():</span>
     <span class="c1"># execption 을 발생시킨다:</span>
     <span class="c1"># 파이썬은 이 함수에서 number 가 사용될 것을 알고, 로컬 객체를 만든다.</span>
     <span class="c1"># 그런데 이 변수에 값을 설정하기 전에 print 하려고 해서 에러가 발생한다.</span>
     <span class="nb">print</span> <span class="n">number</span>
     <span class="n">number</span> <span class="o">=</span> <span class="mi">3</span>
 
-<span class="k">def</span> <span class="nf">yetanotherfunc</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">yetanotherfunc</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">number</span>
     <span class="c1"># global 변수를 수정한다.</span>
     <span class="n">number</span> <span class="o">=</span> <span class="mi">3</span>
@@ -545,7 +545,7 @@ Importing
                 <a href="../python_beutifulsoup/" rel="next" title="BeautifulSoup을 사용해 웹 스크래핑하기">Next post</a>
             </li>
         </ul></nav></aside></article><!--End of body content--><footer id="footer">
-            Contents © 2024         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2025         <a href="mailto:partrita@gmail.com">Taeyoon Kim</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
