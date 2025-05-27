@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-
+import json
 import time
 
 # !! This is the configuration of Nikola. !! #
@@ -1419,7 +1419,6 @@ GLOBAL_CONTEXT_FILLER = []
 # This is an example that works well with Nikola's default Bootstrap3 theme.
 # It displays the search field in the navigation bar, and the results
 # in a modal dialog.
-import json
 
 SEARCH_FORM = """
 <span class="navbar-form navbar-right">

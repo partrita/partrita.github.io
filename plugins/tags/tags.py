@@ -280,7 +280,6 @@ def _posts_per_tag(site, include_special=True):
 
 
 class CommandTags(Command):
-
     """Manage tags on the site.
 
     This plugin is inspired by `jtags <https://github.com/ttscoff/jtag>`_.
